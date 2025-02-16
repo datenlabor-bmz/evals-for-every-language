@@ -1,7 +1,9 @@
 import asyncio
 import json
 import os
+import sys
 from os import getenv
+from pathlib import Path
 
 import evaluate
 import pandas as pd
@@ -43,9 +45,9 @@ def reorder(language_name):
         return language_name.split(",")[1] + " " + language_name.split(",")[0]
     return language_name
 
-
 # load benchmark languages and scripts
-benchmark_dir = "floresp-v2.0-rc.3/dev"
+data = Path("src/data")
+benchmark_dir = data / "floresp-v2.0-rc.3/dev"
 benchmark_languages = pd.DataFrame(
     [f.split(".")[1].split("_", 1) for f in os.listdir(benchmark_dir)],
     columns=["language_code", "script_code"],
@@ -56,7 +58,7 @@ benchmark_languages["in_benchmark"] = True
 
 # load Ethnologue language names
 language_names = (
-    pd.read_csv("LanguageCodes.tab", sep="\t")
+    pd.read_csv(data / "LanguageCodes.tab", sep="\t")
     .rename(columns={"LangID": "language_code", "Name": "language_name"})[
         ["language_code", "language_name"]
     ]
@@ -65,7 +67,7 @@ language_names = (
 
 # load Wikidata speaker stats
 language_stats = (
-    pd.read_csv("languages.tsv", sep="\t")
+    pd.read_csv(data / "languages.tsv", sep="\t")
     .rename(columns={"iso639_3": "language_code", "maxSpeakers": "speakers"})[
         ["language_code", "speakers"]
     ]
@@ -84,7 +86,7 @@ language_stats = language_stats[
 ]
 
 # load unicode script names
-script_names = pd.read_csv("ScriptCodes.csv").rename(
+script_names = pd.read_csv(data / "ScriptCodes.csv").rename(
     columns={"Code": "script_code", "English Name": "script_name"}
 )[["script_code", "script_name"]]
 
@@ -166,7 +168,7 @@ async def main():
             if not pd.isna(language.language_name)
             else language.language_code
         )
-        print(name)
+        print(name, file=sys.stderr)
         scores = []
         if language.in_benchmark:
             target_sentences = load_sentences(language)[:n_sentences]
@@ -185,7 +187,7 @@ async def main():
                     load_sentences(lang)[i]
                     for i, lang in enumerate(_original_languages.itertuples())
                 ]
-                print(model)
+                print(model, file=sys.stderr)
                 predictions = [
                     translate(
                         model, language.language_name, language.script_name, sentence
@@ -220,8 +222,7 @@ async def main():
                 # "bert_score": mean([s["bert_score"] for s in scores]),
             }
         )
-        with open("src/data/languagebench.json", "w") as f:
-            json.dump(results, f, indent=2, ensure_ascii=False)
+    print(json.dumps(results, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":
