@@ -1,4 +1,17 @@
-# Local Language Monitor 🌍
+---
+title: AI Language Monitor
+emoji: 👀
+colorFrom: purple
+colorTo: pink
+sdk: static
+pinned: false
+license: mit
+short_description: Evaluating LLM performance across all human languages.
+---
+
+<!-- Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference -->
+
+# AI Language Monitor 🌍
 
 Benchmarking all big AI models on all benchmarkable languages.
 
