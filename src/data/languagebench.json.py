@@ -15,14 +15,14 @@ from transformers import NllbTokenizer
 
 # config
 models = [
-    "openai/gpt-4o",
-    "anthropic/claude-3.5-sonnet",
-    "meta-llama/llama-3.1-405b-instruct",  # lots of slow repetitions for LRLs
-    "mistralai/mistral-large",
+    "openai/gpt-4o-mini",
+    "anthropic/claude-3.5-haiku",
+    # "meta-llama/llama-3.1-405b-instruct",  # lots of slow repetitions for LRLs
+    # "mistralai/mistral-large",
     # "google/gemini-flash-1.5",  # very fast
-    "qwen/qwen-2.5-72b-instruct",  # somewhat slow
+    # "qwen/qwen-2.5-72b-instruct",  # somewhat slow
 ]
-fast_model = "anthropic/claude-3.5-sonnet"
+fast_model = "anthropic/claude-3.5-haiku"
 n_sentences = 30
 
 # setup
@@ -160,7 +160,7 @@ def load_sentences(language):
 # evaluation!
 async def main():
     results = []
-    for language in languages.itertuples():
+    for language in list(languages.itertuples())[:5]:
         name = (
             language.language_name
             if not pd.isna(language.language_name)
@@ -220,7 +220,7 @@ async def main():
                 # "bert_score": mean([s["bert_score"] for s in scores]),
             }
         )
-        with open("results.json", "w") as f:
+        with open("src/data/languagebench.json", "w") as f:
             json.dump(results, f, indent=2, ensure_ascii=False)
 
 
