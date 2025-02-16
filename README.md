@@ -1,6 +1,6 @@
 ---
 title: AI Language Monitor
-emoji: 👀
+emoji: 🌍
 colorFrom: purple
 colorTo: pink
 sdk: static

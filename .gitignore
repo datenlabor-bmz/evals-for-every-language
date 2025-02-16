@@ -4,6 +4,12 @@ ScriptCodes.csv
 .cache
 .env
 
+# Observable
+.DS_Store
+/dist/
+node_modules/
+yarn-error.log
+
 # Python-generated files
 __pycache__/
 *.py[oc]
