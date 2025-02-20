@@ -3,13 +3,26 @@ title: AI Language Monitor
 emoji: 🌍
 colorFrom: purple
 colorTo: pink
-sdk: static
-pinned: false
+sdk: gradio
 license: mit
 short_description: Evaluating LLM performance across all human languages.
+tags:
+- leaderboard
+- submission:manual
+- test:public
+- judge:auto
+- modality:text
+- modality:artefacts
+- eval:generation
+- language:English
+- language:German
 ---
 
-<!-- Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference -->
+<!--
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference 
+For tag meaning, see https://huggingface.co/spaces/leaderboards/LeaderboardsExplorer
+-->
+
 
 # AI Language Monitor 🌍
 

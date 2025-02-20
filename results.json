@@ -1,0 +1,78 @@
+[
+  {
+    "language_name": "English",
+    "language_code": "eng",
+    "speakers": 1132366680.0,
+    "scores": [
+      {
+        "model": "anthropic/claude-3.5-haiku",
+        "bleu": 0.5911781645744415
+      }
+    ],
+    "bleu": 0.5911781645744415
+  },
+  {
+    "language_name": "Mandarin Chinese",
+    "language_code": "cmn",
+    "speakers": 1074000000.0,
+    "scores": [
+      {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.5423652619241204
+      },
+      {
+        "model": "anthropic/claude-3.5-haiku",
+        "bleu": 0.4734856962747124
+      },
+      {
+        "model": "google/gemini-flash-1.5",
+        "bleu": 0.430570062499388
+      }
+    ],
+    "bleu": 0.4821403402327402
+  },
+  {
+    "language_name": "Spanish",
+    "language_code": "spa",
+    "speakers": 485000000.0,
+    "scores": [
+      {
+        "model": "anthropic/claude-3.5-haiku",
+        "bleu": 0.4131404308980914
+      }
+    ],
+    "bleu": 0.4131404308980914
+  },
+  {
+    "language_name": "Hindi",
+    "language_code": "hin",
+    "speakers": 341000000.0,
+    "scores": [
+      {
+        "model": "anthropic/claude-3.5-haiku",
+        "bleu": 0.3710125447937959
+      }
+    ],
+    "bleu": 0.3710125447937959
+  },
+  {
+    "language_name": "Bengali",
+    "language_code": "ben",
+    "speakers": 300000000.0,
+    "scores": [
+      {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.40080430939726097
+      },
+      {
+        "model": "anthropic/claude-3.5-haiku",
+        "bleu": 0.3733558186182232
+      },
+      {
+        "model": "google/gemini-flash-1.5",
+        "bleu": 0.4337794805645439
+      }
+    ],
+    "bleu": 0.4026465361933427
+  }
+]

@@ -1,9 +1,7 @@
 import asyncio
 import json
 import os
-import sys
 from os import getenv
-from pathlib import Path
 
 import evaluate
 import pandas as pd
@@ -21,7 +19,7 @@ models = [
     "anthropic/claude-3.5-haiku",
     # "meta-llama/llama-3.1-405b-instruct",  # lots of slow repetitions for LRLs
     # "mistralai/mistral-large",
-    # "google/gemini-flash-1.5",  # very fast
+    "google/gemini-flash-1.5",  # very fast
     # "qwen/qwen-2.5-72b-instruct",  # somewhat slow
 ]
 fast_model = "anthropic/claude-3.5-haiku"
@@ -46,8 +44,7 @@ def reorder(language_name):
     return language_name
 
 # load benchmark languages and scripts
-data = Path("src/data")
-benchmark_dir = data / "floresp-v2.0-rc.3/dev"
+benchmark_dir = "data/floresp-v2.0-rc.3/dev"
 benchmark_languages = pd.DataFrame(
     [f.split(".")[1].split("_", 1) for f in os.listdir(benchmark_dir)],
     columns=["language_code", "script_code"],
@@ -58,7 +55,7 @@ benchmark_languages["in_benchmark"] = True
 
 # load Ethnologue language names
 language_names = (
-    pd.read_csv(data / "LanguageCodes.tab", sep="\t")
+    pd.read_csv("data/LanguageCodes.tab", sep="\t")
     .rename(columns={"LangID": "language_code", "Name": "language_name"})[
         ["language_code", "language_name"]
     ]
@@ -67,7 +64,7 @@ language_names = (
 
 # load Wikidata speaker stats
 language_stats = (
-    pd.read_csv(data / "languages.tsv", sep="\t")
+    pd.read_csv("data/languages.tsv", sep="\t")
     .rename(columns={"iso639_3": "language_code", "maxSpeakers": "speakers"})[
         ["language_code", "speakers"]
     ]
@@ -86,7 +83,7 @@ language_stats = language_stats[
 ]
 
 # load unicode script names
-script_names = pd.read_csv(data / "ScriptCodes.csv").rename(
+script_names = pd.read_csv("data/ScriptCodes.csv").rename(
     columns={"Code": "script_code", "English Name": "script_name"}
 )[["script_code", "script_name"]]
 
@@ -96,15 +93,15 @@ languages = pd.merge(benchmark_languages, languages, on="language_code", how="ou
 languages = pd.merge(languages, script_names, on="script_code", how="left")
 languages["in_benchmark"] = languages["in_benchmark"].fillna(False)
 languages = languages.sort_values(by="speakers", ascending=False)
+languages = languages.iloc[:5]
 
-# sample languages to translate from
-# when translating e.g. to Mandarin, we drop Mandarin from the sample and use the next samples from the list instead; therefore we need to sample more than n_sentences
-original_languages = languages[languages["in_benchmark"]].sample(
-    n=n_sentences * 2, weights="speakers", replace=True, random_state=42
+# sample languages to translate to
+target_languages_NEW = languages[languages["in_benchmark"]].sample(
+    n=n_sentences, weights="speakers", replace=True, random_state=42
 )
 # sample languages to analyze with all models
-detailed_target_languages = languages[languages["in_benchmark"]].sample(
-    n=3, random_state=42
+detailed_languages = languages[languages["in_benchmark"]].sample(
+    n=2, random_state=42
 )
 
 
@@ -162,42 +159,39 @@ def load_sentences(language):
 # evaluation!
 async def main():
     results = []
-    for language in list(languages.itertuples())[:5]:
+    for language in list(languages.itertuples()):
         name = (
             language.language_name
             if not pd.isna(language.language_name)
             else language.language_code
         )
-        print(name, file=sys.stderr)
+        print(name)
         scores = []
         if language.in_benchmark:
-            target_sentences = load_sentences(language)[:n_sentences]
+            original_sentences_NEW = load_sentences(language)[:n_sentences]
             for model in models:
                 if (
                     model != fast_model
                     and language.language_code
-                    not in detailed_target_languages.language_code.values
+                    not in detailed_languages.language_code.values
                 ):
                     continue
-                # drop the target language from the original languages sample
-                _original_languages = original_languages[
-                    original_languages.language_code != language.language_code
-                ].iloc[:n_sentences]
-                original_sentences = [
-                    load_sentences(lang)[i]
-                    for i, lang in enumerate(_original_languages.itertuples())
-                ]
-                print(model, file=sys.stderr)
+                
+                print(model)
                 predictions = [
                     translate(
                         model, language.language_name, language.script_name, sentence
                     )
-                    for sentence in original_sentences
+                    for sentence, language in zip(original_sentences_NEW, target_languages_NEW.itertuples())
                 ]
                 predictions = await tqdm_asyncio.gather(*predictions, miniters=1)
+                target_sentences_NEW = [
+                    load_sentences(lang)[i]
+                    for i, lang in enumerate(target_languages_NEW.itertuples())
+                ]
                 metrics_bleu = bleu.compute(
                     predictions=predictions,
-                    references=target_sentences,
+                    references=target_sentences_NEW,
                     tokenizer=tokenizer.tokenize,
                 )
                 # metrics_bert = bertscore.compute(
@@ -222,7 +216,8 @@ async def main():
                 # "bert_score": mean([s["bert_score"] for s in scores]),
             }
         )
-    print(json.dumps(results, indent=2, ensure_ascii=False))
+    with open("results.json", "w") as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
 
 
 if __name__ == "__main__":
