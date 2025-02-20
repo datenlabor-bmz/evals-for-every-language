@@ -2,6 +2,7 @@ import gradio as gr
 import json
 import pandas as pd
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 # Load and process results
 with open("results.json") as f:
@@ -43,6 +44,37 @@ def create_model_comparison_plot(results):
     )
     return fig
 
+def create_scatter_plot(results):
+    fig = go.Figure()
+    
+    x_vals = [lang["speakers"] / 1_000_000 for lang in results]  # Convert to millions
+    y_vals = [lang["bleu"] for lang in results]
+    labels = [lang["language_name"] for lang in results]
+    
+    fig.add_trace(go.Scatter(
+        x=x_vals,
+        y=y_vals,
+        mode='markers+text',
+        text=labels,
+        textposition="top center",
+        hovertemplate="<b>%{text}</b><br>" +
+                      "Speakers: %{x:.1f}M<br>" +
+                      "BLEU Score: %{y:.3f}<extra></extra>"
+    ))
+    
+    fig.update_layout(
+        title="Language Coverage: Speakers vs BLEU Score",
+        xaxis_title="Number of Speakers (Millions)",
+        yaxis_title="Average BLEU Score",
+        height=500,
+        showlegend=False
+    )
+    
+    # Use log scale for x-axis since speaker numbers vary widely
+    fig.update_xaxes(type="log")
+    
+    return fig
+
 def create_results_df(results):
     # Create a list to store flattened data
     flat_data = []
@@ -68,9 +100,11 @@ with gr.Blocks(title="AI Language Translation Benchmark") as demo:
     gr.Markdown("Comparing translation performance across different AI models and languages")
     
     df = create_results_df(results)
-    plot = create_model_comparison_plot(results)
+    bar_plot = create_model_comparison_plot(results)
+    scatter_plot = create_scatter_plot(results)
     
-    gr.DataFrame(value=df, label="Translation Results")
-    gr.Plot(value=plot, label="Model Comparison")
+    gr.DataFrame(value=df, label="Translation Results", show_search="search")
+    gr.Plot(value=bar_plot, label="Model Comparison")
+    gr.Plot(value=scatter_plot, label="Language Coverage")
 
 demo.launch()
