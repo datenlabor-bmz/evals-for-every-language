@@ -5,11 +5,31 @@
     "speakers": 1132366680.0,
     "scores": [
       {
-        "model": "anthropic/claude-3.5-haiku",
-        "bleu": 0.5911781645744415
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.5103385437635193
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.4845283039311465
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.4735424836788773
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.5639490578152662
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.5547524505965893
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.48008677312779885
       }
     ],
-    "bleu": 0.5911781645744415
+    "bleu": 0.5111996021521995
   },
   {
     "language_name": "Mandarin Chinese",
@@ -18,18 +38,30 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.5423652619241204
+        "bleu": 0.38427885971806375
       },
       {
-        "model": "anthropic/claude-3.5-haiku",
-        "bleu": 0.4734856962747124
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.4309762560114817
       },
       {
-        "model": "google/gemini-flash-1.5",
-        "bleu": 0.430570062499388
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.40933363203497697
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.4486368724887284
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.4354691779014211
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.3597312915524714
       }
     ],
-    "bleu": 0.4821403402327402
+    "bleu": 0.41140434828452394
   },
   {
     "language_name": "Spanish",
@@ -37,11 +69,11 @@
     "speakers": 485000000.0,
     "scores": [
       {
-        "model": "anthropic/claude-3.5-haiku",
-        "bleu": 0.4131404308980914
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.41303609006378467
       }
     ],
-    "bleu": 0.4131404308980914
+    "bleu": 0.41303609006378467
   },
   {
     "language_name": "Hindi",
@@ -49,11 +81,11 @@
     "speakers": 341000000.0,
     "scores": [
       {
-        "model": "anthropic/claude-3.5-haiku",
-        "bleu": 0.3710125447937959
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.39051313583666847
       }
     ],
-    "bleu": 0.3710125447937959
+    "bleu": 0.39051313583666847
   },
   {
     "language_name": "Bengali",
@@ -61,18 +93,250 @@
     "speakers": 300000000.0,
     "scores": [
       {
-        "model": "openai/gpt-4o-mini",
-        "bleu": 0.40080430939726097
-      },
-      {
-        "model": "anthropic/claude-3.5-haiku",
-        "bleu": 0.3733558186182232
-      },
-      {
-        "model": "google/gemini-flash-1.5",
-        "bleu": 0.4337794805645439
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3922760582029
       }
     ],
-    "bleu": 0.4026465361933427
+    "bleu": 0.3922760582029
+  },
+  {
+    "language_name": "Portuguese",
+    "language_code": "por",
+    "speakers": 254300000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3569933404494365
+      }
+    ],
+    "bleu": 0.3569933404494365
+  },
+  {
+    "language_name": "French",
+    "language_code": "fra",
+    "speakers": 208157220.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.4092873981445945
+      }
+    ],
+    "bleu": 0.4092873981445945
+  },
+  {
+    "language_name": "Indonesian",
+    "language_code": "ind",
+    "speakers": 198996550.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3671689105193036
+      }
+    ],
+    "bleu": 0.3671689105193036
+  },
+  {
+    "language_name": "Russian",
+    "language_code": "rus",
+    "speakers": 171428900.0,
+    "scores": [
+      {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.3821837153890323
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3974431757931015
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.2541840010941474
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.43388586741780116
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.4148930468752925
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.3530948239011605
+      }
+    ],
+    "bleu": 0.3726141050784226
+  },
+  {
+    "language_name": "Japanese",
+    "language_code": "jpn",
+    "speakers": 128000000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.294012705268792
+      }
+    ],
+    "bleu": 0.294012705268792
+  },
+  {
+    "language_name": "Eastern Punjabi",
+    "language_code": "pan",
+    "speakers": 125000000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.37715805829458243
+      }
+    ],
+    "bleu": 0.37715805829458243
+  },
+  {
+    "language_name": "Standard German",
+    "language_code": "deu",
+    "speakers": 105000000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.39190456406769925
+      }
+    ],
+    "bleu": 0.39190456406769925
+  },
+  {
+    "language_name": "Egyptian Arabic",
+    "language_code": "arz",
+    "speakers": 100542400.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.2769739921069721
+      }
+    ],
+    "bleu": 0.2769739921069721
+  },
+  {
+    "language_name": "Urdu",
+    "language_code": "urd",
+    "speakers": 94022900.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.30532627541695706
+      }
+    ],
+    "bleu": 0.30532627541695706
+  },
+  {
+    "language_name": "Filipino",
+    "language_code": "fil",
+    "speakers": 90000000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.38380780370055084
+      }
+    ],
+    "bleu": 0.38380780370055084
+  },
+  {
+    "language_name": "Javanese",
+    "language_code": "jav",
+    "speakers": 84308740.0,
+    "scores": [
+      {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.303156768433342
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3147001751424492
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.1507764424388819
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.41409824694226155
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.3240536705195471
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.22770614610795217
+      }
+    ],
+    "bleu": 0.2890819082640723
+  },
+  {
+    "language_name": "Marathi",
+    "language_code": "mar",
+    "speakers": 83100000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3754377211201414
+      }
+    ],
+    "bleu": 0.3754377211201414
+  },
+  {
+    "language_name": "Swahili",
+    "language_code": "swh",
+    "speakers": 82300000.0,
+    "scores": [
+      {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.3698648558947496
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.31914577240036923
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.16066681130875948
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.3934769032884265
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.3605623890073268
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.175030478984087
+      }
+    ],
+    "bleu": 0.2964578684806198
+  },
+  {
+    "language_name": "Turkish",
+    "language_code": "tur",
+    "speakers": 82231620.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.37080958221553817
+      }
+    ],
+    "bleu": 0.37080958221553817
+  },
+  {
+    "language_name": "Telugu",
+    "language_code": "tel",
+    "speakers": 82000000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.35400532981470717
+      }
+    ],
+    "bleu": 0.35400532981470717
   }
 ]

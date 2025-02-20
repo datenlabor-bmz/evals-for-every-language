@@ -15,14 +15,16 @@ from transformers import NllbTokenizer
 
 # config
 models = [
-    "openai/gpt-4o-mini",
-    "anthropic/claude-3.5-haiku",
-    # "meta-llama/llama-3.1-405b-instruct",  # lots of slow repetitions for LRLs
-    # "mistralai/mistral-large",
-    "google/gemini-flash-1.5",  # very fast
-    # "qwen/qwen-2.5-72b-instruct",  # somewhat slow
+    "openai/gpt-4o-mini", # 0.6$/M tokens
+    # "anthropic/claude-3.5-haiku", # 4$/M tokens -> too expensive
+    "meta-llama/llama-3.3-70b-instruct", # 0.3$/M tokens
+    "mistralai/mistral-small-24b-instruct-2501", # 0.14$/M tokens
+    "google/gemini-2.0-flash-001", # 0.4$/M tokens
+    # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
+    "deepseek/deepseek-chat", # 0.9$/M tokens
+    "microsoft/phi-4", # 0.07$/M tokens
 ]
-fast_model = "anthropic/claude-3.5-haiku"
+fast_model = "meta-llama/llama-3.3-70b-instruct"
 n_sentences = 30
 
 # setup
@@ -93,7 +95,7 @@ languages = pd.merge(benchmark_languages, languages, on="language_code", how="ou
 languages = pd.merge(languages, script_names, on="script_code", how="left")
 languages["in_benchmark"] = languages["in_benchmark"].fillna(False)
 languages = languages.sort_values(by="speakers", ascending=False)
-languages = languages.iloc[:5]
+languages = languages.iloc[:20]
 
 # sample languages to translate to
 target_languages_NEW = languages[languages["in_benchmark"]].sample(
@@ -101,7 +103,7 @@ target_languages_NEW = languages[languages["in_benchmark"]].sample(
 )
 # sample languages to analyze with all models
 detailed_languages = languages[languages["in_benchmark"]].sample(
-    n=2, random_state=42
+    n=5, random_state=42
 )
 
 
