@@ -1,11 +1,112 @@
-import gradio as gr
 import json
+
+import gradio as gr
 import pandas as pd
 import plotly.graph_objects as go
 
 # Load and process results
 with open("results.json") as f:
     results = json.load(f)
+
+
+def create_leaderboard_df(results):
+    # Sort languages by average BLEU to determine resource categories
+    langs_with_bleu = [lang for lang in results if lang["bleu"] is not None]
+    sorted_langs = sorted(langs_with_bleu, key=lambda x: x["bleu"], reverse=True)
+    n_langs = len(sorted_langs)
+    high_cutoff = n_langs // 4  # top 25%
+    low_cutoff = n_langs - n_langs // 4  # bottom 25%
+
+    # Create sets of languages for each category
+    high_resource = {lang["language_name"] for lang in sorted_langs[:high_cutoff]}
+    low_resource = {lang["language_name"] for lang in sorted_langs[low_cutoff:]}
+
+    # Get all model scores with categorization
+    model_scores = {}
+    for lang in results:
+        category = (
+            "High-Resource"
+            if lang["language_name"] in high_resource
+            else "Low-Resource"
+            if lang["language_name"] in low_resource
+            else "Mid-Resource"
+        )
+
+        for score in lang["scores"]:
+            model_name = score["model"].split("/")[-1]
+            if model_name not in model_scores:
+                model_scores[model_name] = {
+                    "High-Resource": [],
+                    "Mid-Resource": [],
+                    "Low-Resource": [],
+                }
+            model_scores[model_name][category].append(score["bleu"])
+
+    # Calculate average scores and create DataFrame
+    leaderboard_data = []
+    for model, categories in model_scores.items():
+        # Calculate averages for each category
+        high_avg = (
+            round(
+                sum(categories["High-Resource"]) / len(categories["High-Resource"]), 3
+            )
+            if categories["High-Resource"]
+            else 0
+        )
+        mid_avg = (
+            round(sum(categories["Mid-Resource"]) / len(categories["Mid-Resource"]), 3)
+            if categories["Mid-Resource"]
+            else 0
+        )
+        low_avg = (
+            round(sum(categories["Low-Resource"]) / len(categories["Low-Resource"]), 3)
+            if categories["Low-Resource"]
+            else 0
+        )
+
+        # Calculate overall average
+        all_scores = (
+            categories["High-Resource"]
+            + categories["Mid-Resource"]
+            + categories["Low-Resource"]
+        )
+        overall_avg = round(sum(all_scores) / len(all_scores), 3)
+
+        leaderboard_data.append(
+            {
+                "Model": model,
+                "Overall BLEU": overall_avg,
+                "High-Resource BLEU": high_avg,
+                "Mid-Resource BLEU": mid_avg,
+                "Low-Resource BLEU": low_avg,
+                "Languages Tested": len(all_scores),
+            }
+        )
+
+    # Sort by overall BLEU
+    df = pd.DataFrame(leaderboard_data)
+    df = df.sort_values("Overall BLEU", ascending=False)
+
+    # Add rank and medals
+    df["Rank"] = range(1, len(df) + 1)
+    df["Rank"] = df["Rank"].apply(
+        lambda x: "🥇" if x == 1 else "🥈" if x == 2 else "🥉" if x == 3 else str(x)
+    )
+
+    # Reorder columns
+    df = df[
+        [
+            "Rank",
+            "Model",
+            "Overall BLEU",
+            "High-Resource BLEU",
+            "Mid-Resource BLEU",
+            "Low-Resource BLEU",
+            "Languages Tested",
+        ]
+    ]
+
+    return df
 
 
 def create_model_comparison_plot(results):
@@ -49,6 +150,35 @@ def create_model_comparison_plot(results):
     return fig
 
 
+def create_language_stats_df(results):
+    # Create a list to store flattened data
+    flat_data = []
+
+    for lang in results:
+        # Find the best model and its BLEU score
+        best_score = max(
+            lang["scores"] or [{"bleu": None, "model": None}], key=lambda x: x["bleu"]
+        )
+
+        row = {
+            "Language": lang["language_name"],
+            "Speakers (M)": round(lang["speakers"] / 1_000_000, 1),
+            "Models Tested": len(lang["scores"]),
+            "Average BLEU": round(lang["bleu"], 3)
+            if lang["bleu"] is not None
+            else "N/A",
+            "Best Model": best_score["model"]
+            if best_score["model"] is not None
+            else "N/A",
+            "Best Model BLEU": round(best_score["bleu"], 3)
+            if best_score["bleu"] is not None
+            else "N/A",
+        }
+        flat_data.append(row)
+
+    return pd.DataFrame(flat_data)
+
+
 def create_scatter_plot(results):
     fig = go.Figure()
 
@@ -83,96 +213,6 @@ def create_scatter_plot(results):
     return fig
 
 
-def create_results_df(results):
-    # Create a list to store flattened data
-    flat_data = []
-
-    for lang in results:
-        # Find the best model and its BLEU score
-        best_score = max(lang["scores"] or [{"bleu": None, "model": None}], key=lambda x: x["bleu"])
-        
-        row = {
-            "Language": lang["language_name"],
-            "Speakers (M)": round(lang["speakers"] / 1_000_000, 1),
-            "Models Tested": len(lang["scores"]),
-            "Average BLEU": round(lang["bleu"], 3) if lang["bleu"] is not None else "N/A",
-            "Best Model": best_score["model"] if best_score["model"] is not None else "N/A",
-            "Best Model BLEU": round(best_score["bleu"], 3) if best_score["bleu"] is not None else "N/A",
-        }
-        flat_data.append(row)
-
-    return pd.DataFrame(flat_data)
-
-
-def create_leaderboard_df(results):
-    # Sort languages by average BLEU to determine resource categories
-    langs_with_bleu = [lang for lang in results if lang["bleu"] is not None]
-    sorted_langs = sorted(langs_with_bleu, key=lambda x: x["bleu"], reverse=True)
-    n_langs = len(sorted_langs)
-    high_cutoff = n_langs // 4  # top 25%
-    low_cutoff = n_langs - n_langs // 4  # bottom 25%
-    
-    # Create sets of languages for each category
-    high_resource = {lang["language_name"] for lang in sorted_langs[:high_cutoff]}
-    low_resource = {lang["language_name"] for lang in sorted_langs[low_cutoff:]}
-    
-    # Get all model scores with categorization
-    model_scores = {}
-    for lang in results:
-        category = ("High-Resource" if lang["language_name"] in high_resource else
-                   "Low-Resource" if lang["language_name"] in low_resource else
-                   "Mid-Resource")
-        
-        for score in lang["scores"]:
-            model_name = score["model"].split("/")[-1]
-            if model_name not in model_scores:
-                model_scores[model_name] = {
-                    "High-Resource": [],
-                    "Mid-Resource": [],
-                    "Low-Resource": []
-                }
-            model_scores[model_name][category].append(score["bleu"])
-    
-    # Calculate average scores and create DataFrame
-    leaderboard_data = []
-    for model, categories in model_scores.items():
-        # Calculate averages for each category
-        high_avg = round(sum(categories["High-Resource"]) / len(categories["High-Resource"]), 3) if categories["High-Resource"] else 0
-        mid_avg = round(sum(categories["Mid-Resource"]) / len(categories["Mid-Resource"]), 3) if categories["Mid-Resource"] else 0
-        low_avg = round(sum(categories["Low-Resource"]) / len(categories["Low-Resource"]), 3) if categories["Low-Resource"] else 0
-        
-        # Calculate overall average
-        all_scores = (categories["High-Resource"] + 
-                     categories["Mid-Resource"] + 
-                     categories["Low-Resource"])
-        overall_avg = round(sum(all_scores) / len(all_scores), 3)
-        
-        leaderboard_data.append({
-            "Model": model,
-            "Overall BLEU": overall_avg,
-            "High-Resource BLEU": high_avg,
-            "Mid-Resource BLEU": mid_avg,
-            "Low-Resource BLEU": low_avg,
-            "Languages Tested": len(all_scores),
-        })
-    
-    # Sort by overall BLEU
-    df = pd.DataFrame(leaderboard_data)
-    df = df.sort_values("Overall BLEU", ascending=False)
-    
-    # Add rank and medals
-    df["Rank"] = range(1, len(df) + 1)
-    df["Rank"] = df["Rank"].apply(
-        lambda x: "🥇" if x == 1 else "🥈" if x == 2 else "🥉" if x == 3 else str(x)
-    )
-    
-    # Reorder columns
-    df = df[["Rank", "Model", "Overall BLEU", "High-Resource BLEU", 
-             "Mid-Resource BLEU", "Low-Resource BLEU", "Languages Tested"]]
-    
-    return df
-
-
 # Create the visualization components
 with gr.Blocks(title="AI Language Translation Benchmark") as demo:
     gr.Markdown("# AI Language Translation Benchmark")
@@ -180,7 +220,7 @@ with gr.Blocks(title="AI Language Translation Benchmark") as demo:
         "Comparing translation performance across different AI models and languages"
     )
 
-    df = create_results_df(results)
+    df = create_language_stats_df(results)
     leaderboard_df = create_leaderboard_df(results)
     bar_plot = create_model_comparison_plot(results)
     scatter_plot = create_scatter_plot(results)
@@ -190,8 +230,8 @@ with gr.Blocks(title="AI Language Translation Benchmark") as demo:
     gr.DataFrame(value=df, label="Language Results", show_search="search")
     gr.Plot(value=scatter_plot, label="Language Coverage")
 
-
-    gr.Markdown("""
+    gr.Markdown(
+        """
         ## Methodology
         ### Dataset
         - Using [FLORES-200](https://huggingface.co/datasets/openlanguagedata/flores_plus) evaluation set, a high-quality human-translated benchmark comprising 200 languages
@@ -208,6 +248,8 @@ with gr.Blocks(title="AI Language Translation Benchmark") as demo:
         - High-Resource: Top 25% of languages by BLEU score (easiest to translate)
         - Mid-Resource: Middle 50% of languages
         - Low-Resource: Bottom 25% of languages (hardest to translate)
-    """, container=True)
+    """,
+        container=True,
+    )
 
 demo.launch()
