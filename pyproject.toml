@@ -16,6 +16,7 @@ dev-dependencies = [
     "bert-score>=0.3.13",
     "evaluate==0.4.0",
     "joblib>=1.4.2",
+    "langcodes>=3.5.0",
     "openai>=1.52.2",
     "protobuf>=5.28.3",
     "python-dotenv>=1.0.1",
