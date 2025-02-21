@@ -61,10 +61,14 @@ languages = pd.DataFrame(list(languages.items()), columns=["bcp_47", "speakers"]
 languages["name"] = languages["bcp_47"].apply(lambda x: Language.get(x).display_name())
 
 # load script codes and names
-scripts = pd.read_csv("data/ScriptCodes.csv").rename(columns={"Code": "iso15924", "English Name": "script_name"})
+scripts = pd.read_csv("data/ScriptCodes.csv").rename(
+    columns={"Code": "iso15924", "English Name": "script_name"}
+)
+
 
 def script_name(iso15924):
     return scripts[scripts["iso15924"] == iso15924]["script_name"].values[0]
+
 
 # load benchmark languages and scripts
 benchmark_dir = "data/floresp-v2.0-rc.3/dev"
@@ -94,16 +98,20 @@ def get_commonvoice_stats(date: date):
 
 
 commonvoice_stats = pd.DataFrame(get_commonvoice_stats(date.today())).rename(
-    columns={"locale": "bcp_47", "validatedHours": "commonvoice_hours"}
-)[["bcp_47", "commonvoice_hours"]]
+    columns={"locale": "commonvoice_locale", "validatedHours": "commonvoice_hours"}
+)[["commonvoice_locale", "commonvoice_hours"]]
 # ignore country (language is language) (in practive this is only relevant to zh-CN/zh-TW/zh-HK)
-commonvoice_stats["bcp_47"] = commonvoice_stats["bcp_47"].apply(
+commonvoice_stats["bcp_47"] = commonvoice_stats["commonvoice_locale"].apply(
     lambda x: re.sub(r"-[A-Z]{2}$", "", x)
 )
 commonvoice_stats["bcp_47"] = commonvoice_stats["bcp_47"].apply(
     lambda x: standardize_tag(x, macro=True)
 )  # this does not really seem to get macrolanguages though, e.g. not for Quechua
-commonvoice_stats = commonvoice_stats.groupby("bcp_47").sum().reset_index()
+commonvoice_stats = (
+    commonvoice_stats.groupby("bcp_47")
+    .agg({"commonvoice_hours": "sum", "commonvoice_locale": "first"})
+    .reset_index()
+)
 
 # merge data
 languages = pd.merge(
@@ -149,6 +157,7 @@ async def complete(**kwargs):
         raise Exception(response)
     return response
 
+
 async def translate(model, target_language, sentence):
     script = script_name(target_language.iso15924)
     reply = await complete(
@@ -170,7 +179,9 @@ def mean(l):
 
 
 def load_sentences(language):
-    return open(f"{benchmark_dir}/dev.{language.iso639_3}_{language.iso15924}").readlines()
+    return open(
+        f"{benchmark_dir}/dev.{language.iso639_3}_{language.iso15924}"
+    ).readlines()
 
 
 # evaluation!
@@ -196,7 +207,11 @@ async def main():
                         original_sentences, target_languages.itertuples()
                     )
                 ]
-                predictions = await tqdm_asyncio.gather(*predictions, miniters=1, desc=f"{language.name} {model.split('/')[0]}")
+                predictions = await tqdm_asyncio.gather(
+                    *predictions,
+                    miniters=1,
+                    desc=f"{language.name} {model.split('/')[0]}",
+                )
                 target_sentences = [
                     load_sentences(lang)[i]
                     for i, lang in enumerate(target_languages.itertuples())
@@ -227,6 +242,7 @@ async def main():
                 "bleu": mean([s["bleu"] for s in scores]) if scores else None,
                 # "bert_score": mean([s["bert_score"] for s in scores]),
                 "commonvoice_hours": language.commonvoice_hours,
+                "commonvoice_locale": language.commonvoice_locale,
             }
         )
     with open("results.json", "w") as f:

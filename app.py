@@ -178,6 +178,7 @@ def create_language_stats_df(results):
         model = best_score['model']
         model_name = model.split('/')[-1] if model else "N/A"
         model_link = f"<a href='https://openrouter.ai/{model}' style='text-decoration: none; color: inherit;'>{model_name}</a>" if model else "N/A"
+        commonvoice_link = f"<!--{lang['commonvoice_hours']:07} (for sorting)--> <a href='https://commonvoice.mozilla.org/{lang['commonvoice_locale']}/speak' style='text-decoration: none; color: inherit;'>🎙️ {lang['commonvoice_hours']}</a>" if lang["commonvoice_hours"] else "N/A"
         row = {
             "Language": f"**{lang['language_name']}**",
             "Speakers (M)": round(lang["speakers"] / 1_000_000, 1),
@@ -189,7 +190,7 @@ def create_language_stats_df(results):
             "Best Model BLEU": round(best_score["bleu"], 3)
             if best_score["bleu"] is not None
             else "N/A",
-            "CommonVoice Hours": lang["commonvoice_hours"],
+            "CommonVoice Hours": commonvoice_link,
         }
         flat_data.append(row)
 
@@ -198,7 +199,7 @@ def create_language_stats_df(results):
         value=df,
         label="Language Results",
         show_search="search",
-        datatype=["markdown", "number", "number", "number", "markdown", "number"],
+        datatype=["markdown", "number", "number", "number", "markdown", "number", "markdown"],
     )
 
 

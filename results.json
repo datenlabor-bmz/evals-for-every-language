@@ -10,7 +10,8 @@
       }
     ],
     "bleu": 0.4931825583688982,
-    "commonvoice_hours": 2649.0
+    "commonvoice_hours": 2649.0,
+    "commonvoice_locale": "en"
   },
   {
     "language_name": "Chinese",
@@ -43,7 +44,8 @@
       }
     ],
     "bleu": 0.4356399559223496,
-    "commonvoice_hours": 422.0
+    "commonvoice_hours": 422.0,
+    "commonvoice_locale": "zh-TW"
   },
   {
     "language_name": "Hindi",
@@ -56,7 +58,8 @@
       }
     ],
     "bleu": 0.42910938007537924,
-    "commonvoice_hours": 16.0
+    "commonvoice_hours": 16.0,
+    "commonvoice_locale": "hi-IN"
   },
   {
     "language_name": "Spanish",
@@ -69,7 +72,8 @@
       }
     ],
     "bleu": 0.3335615012680206,
-    "commonvoice_hours": 446.0
+    "commonvoice_hours": 446.0,
+    "commonvoice_locale": "es"
   },
   {
     "language_name": "Arabic",
@@ -82,7 +86,8 @@
       }
     ],
     "bleu": 0.19072998559991275,
-    "commonvoice_hours": 91.0
+    "commonvoice_hours": 91.0,
+    "commonvoice_locale": "ar"
   },
   {
     "language_name": "Urdu",
@@ -115,7 +120,8 @@
       }
     ],
     "bleu": 0.32276445473356513,
-    "commonvoice_hours": 76.0
+    "commonvoice_hours": 76.0,
+    "commonvoice_locale": "ur"
   },
   {
     "language_name": "French",
@@ -128,7 +134,8 @@
       }
     ],
     "bleu": 0.40595466651226686,
-    "commonvoice_hours": 1051.0
+    "commonvoice_hours": 1051.0,
+    "commonvoice_locale": "fr"
   },
   {
     "language_name": "Bangla",
@@ -141,7 +148,8 @@
       }
     ],
     "bleu": 0.30570858536443696,
-    "commonvoice_hours": 49.0
+    "commonvoice_hours": 49.0,
+    "commonvoice_locale": "bn"
   },
   {
     "language_name": "Portuguese",
@@ -174,7 +182,8 @@
       }
     ],
     "bleu": 0.3778453994295843,
-    "commonvoice_hours": 176.0
+    "commonvoice_hours": 176.0,
+    "commonvoice_locale": "pt"
   },
   {
     "language_name": "Punjabi",
@@ -187,6 +196,7 @@
       }
     ],
     "bleu": 0.34311946995454473,
-    "commonvoice_hours": 2.3
+    "commonvoice_hours": 2.3,
+    "commonvoice_locale": "pa-IN"
   }
 ]
