@@ -4,8 +4,15 @@ emoji: 🌍
 colorFrom: purple
 colorTo: pink
 sdk: gradio
-license: mit
+license: cc-by-sa-4.0
 short_description: Evaluating LLM performance across all human languages.
+datasets:
+- openlanguagedata/flores_plus
+models:
+- meta-llama/Llama-3.3-70B-Instruct
+- mistralai/Mistral-Small-24B-Instruct-2501
+- deepseek-ai/DeepSeek-V3
+- microsoft/phi-4
 tags:
 - leaderboard
 - submission:manual
@@ -23,6 +30,7 @@ Check out the configuration reference at https://huggingface.co/docs/hub/spaces-
 For tag meaning, see https://huggingface.co/spaces/leaderboards/LeaderboardsExplorer
 -->
 
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Space-purple)](https://huggingface.co/spaces/datenlabor-bmz/ai-language-monitor)
 
 # AI Language Monitor 🌍
 

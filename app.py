@@ -190,4 +190,24 @@ with gr.Blocks(title="AI Language Translation Benchmark") as demo:
     gr.DataFrame(value=df, label="Language Results", show_search="search")
     gr.Plot(value=scatter_plot, label="Language Coverage")
 
+
+    gr.Markdown("""
+        ## Methodology
+        ### Dataset
+        - Using [FLORES-200](https://huggingface.co/datasets/openlanguagedata/flores_plus) evaluation set, a high-quality human-translated benchmark comprising 200 languages
+        - Each language is tested with the same 100 sentences
+        - All translations are from the evaluated language to a fixed set of representative languages sampled by number of speakers
+        - Language statistics sourced from Ethnologue and Wikidata
+
+        ### Models & Evaluation
+        - Models accessed through [OpenRouter](https://openrouter.ai/), including fast models of all big labs, open and closed
+        - **BLEU Score**: Translations are evaluated using the BLEU metric, which measures how similar the AI's translation is to a human reference translation -- higher is better
+        
+        ### Language Categories
+        Languages are divided into three tiers based on translation difficulty:
+        - High-Resource: Top 25% of languages by BLEU score (easiest to translate)
+        - Mid-Resource: Middle 50% of languages
+        - Low-Resource: Bottom 25% of languages (hardest to translate)
+    """, container=True)
+
 demo.launch()
