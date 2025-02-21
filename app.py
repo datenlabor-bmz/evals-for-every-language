@@ -4,9 +4,12 @@ import gradio as gr
 import pandas as pd
 import plotly.graph_objects as go
 
-# Load and process results
 with open("results.json") as f:
     results = json.load(f)
+
+
+def mean(lst):
+    return sum(lst) / len(lst)
 
 
 def create_leaderboard_df(results):
@@ -33,33 +36,31 @@ def create_leaderboard_df(results):
         )
 
         for score in lang["scores"]:
-            model_name = score["model"].split("/")[-1]
-            if model_name not in model_scores:
-                model_scores[model_name] = {
+            model = score["model"]
+            if model not in model_scores:
+                model_scores[model] = {
                     "High-Resource": [],
                     "Mid-Resource": [],
                     "Low-Resource": [],
                 }
-            model_scores[model_name][category].append(score["bleu"])
+            model_scores[model][category].append(score["bleu"])
 
     # Calculate average scores and create DataFrame
     leaderboard_data = []
     for model, categories in model_scores.items():
         # Calculate averages for each category
         high_avg = (
-            round(
-                sum(categories["High-Resource"]) / len(categories["High-Resource"]), 3
-            )
+            round(mean(categories["High-Resource"]), 3)
             if categories["High-Resource"]
             else 0
         )
         mid_avg = (
-            round(sum(categories["Mid-Resource"]) / len(categories["Mid-Resource"]), 3)
+            round(mean(categories["Mid-Resource"]), 3)
             if categories["Mid-Resource"]
             else 0
         )
         low_avg = (
-            round(sum(categories["Low-Resource"]) / len(categories["Low-Resource"]), 3)
+            round(mean(categories["Low-Resource"]), 3)
             if categories["Low-Resource"]
             else 0
         )
@@ -72,9 +73,10 @@ def create_leaderboard_df(results):
         )
         overall_avg = round(sum(all_scores) / len(all_scores), 3)
 
+        model_name = model.split("/")[-1]
         leaderboard_data.append(
             {
-                "Model": model,
+                "Model": f"[{model_name}](https://openrouter.ai/{model})",
                 "Overall BLEU": overall_avg,
                 "High-Resource BLEU": high_avg,
                 "Mid-Resource BLEU": mid_avg,
@@ -106,7 +108,20 @@ def create_leaderboard_df(results):
         ]
     ]
 
-    return df
+    return gr.DataFrame(
+        value=df,
+        label="Model Leaderboard",
+        show_search=False,
+        datatype=[
+            "number",
+            "markdown",
+            "number",
+            "number",
+            "number",
+            "number",
+            "number",
+        ],
+    )
 
 
 def create_model_comparison_plot(results):
@@ -160,23 +175,30 @@ def create_language_stats_df(results):
             lang["scores"] or [{"bleu": None, "model": None}], key=lambda x: x["bleu"]
         )
 
+        model = best_score['model']
+        model_name = model.split('/')[-1] if model else "N/A"
+        model_link = f"<a href='https://openrouter.ai/{model}' style='text-decoration: none; color: inherit;'>{model_name}</a>" if model else "N/A"
         row = {
-            "Language": lang["language_name"],
+            "Language": f"**{lang['language_name']}**",
             "Speakers (M)": round(lang["speakers"] / 1_000_000, 1),
             "Models Tested": len(lang["scores"]),
             "Average BLEU": round(lang["bleu"], 3)
             if lang["bleu"] is not None
             else "N/A",
-            "Best Model": best_score["model"]
-            if best_score["model"] is not None
-            else "N/A",
+            "Best Model": model_link,
             "Best Model BLEU": round(best_score["bleu"], 3)
             if best_score["bleu"] is not None
             else "N/A",
         }
         flat_data.append(row)
 
-    return pd.DataFrame(flat_data)
+    df = pd.DataFrame(flat_data)
+    return gr.DataFrame(
+        value=df,
+        label="Language Results",
+        show_search="search",
+        datatype=["markdown", "number", "number", "number", "markdown", "number"],
+    )
 
 
 def create_scatter_plot(results):
@@ -220,14 +242,12 @@ with gr.Blocks(title="AI Language Translation Benchmark") as demo:
         "Comparing translation performance across different AI models and languages"
     )
 
-    df = create_language_stats_df(results)
-    leaderboard_df = create_leaderboard_df(results)
     bar_plot = create_model_comparison_plot(results)
     scatter_plot = create_scatter_plot(results)
 
-    gr.DataFrame(value=leaderboard_df, label="Model Leaderboard", show_search=False)
+    create_leaderboard_df(results)
     gr.Plot(value=bar_plot, label="Model Comparison")
-    gr.DataFrame(value=df, label="Language Results", show_search="search")
+    create_language_stats_df(results)
     gr.Plot(value=scatter_plot, label="Language Coverage")
 
     gr.Markdown(
