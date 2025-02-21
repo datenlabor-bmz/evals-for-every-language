@@ -6,30 +6,30 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.5103385437635193
+        "bleu": 0.47104084248165595
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.4845283039311465
+        "bleu": 0.4207265890491719
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.4735424836788773
+        "bleu": 0.4642719176436136
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.5639490578152662
+        "bleu": 0.5237470882988915
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.5547524505965893
+        "bleu": 0.516570670982587
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.48008677312779885
+        "bleu": 0.44668905281921456
       }
     ],
-    "bleu": 0.5111996021521995
+    "bleu": 0.47384102687918905
   },
   {
     "language_name": "Mandarin Chinese",
@@ -37,31 +37,11 @@
     "speakers": 1074000000.0,
     "scores": [
       {
-        "model": "openai/gpt-4o-mini",
-        "bleu": 0.38427885971806375
-      },
-      {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.4309762560114817
-      },
-      {
-        "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.40933363203497697
-      },
-      {
-        "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.4486368724887284
-      },
-      {
-        "model": "deepseek/deepseek-chat",
-        "bleu": 0.4354691779014211
-      },
-      {
-        "model": "microsoft/phi-4",
-        "bleu": 0.3597312915524714
+        "bleu": 0.48254866511762295
       }
     ],
-    "bleu": 0.41140434828452394
+    "bleu": 0.48254866511762295
   },
   {
     "language_name": "Spanish",
@@ -70,10 +50,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.41303609006378467
+        "bleu": 0.31606621368361204
       }
     ],
-    "bleu": 0.41303609006378467
+    "bleu": 0.31606621368361204
   },
   {
     "language_name": "Hindi",
@@ -82,10 +62,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.39051313583666847
+        "bleu": 0.3273225856613046
       }
     ],
-    "bleu": 0.39051313583666847
+    "bleu": 0.3273225856613046
   },
   {
     "language_name": "Bengali",
@@ -94,10 +74,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3922760582029
+        "bleu": 0.23110496173302814
       }
     ],
-    "bleu": 0.3922760582029
+    "bleu": 0.23110496173302814
   },
   {
     "language_name": "Portuguese",
@@ -106,10 +86,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3569933404494365
+        "bleu": 0.35032125995743685
       }
     ],
-    "bleu": 0.3569933404494365
+    "bleu": 0.35032125995743685
   },
   {
     "language_name": "French",
@@ -118,10 +98,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.4092873981445945
+        "bleu": 0.31625053573185663
       }
     ],
-    "bleu": 0.4092873981445945
+    "bleu": 0.31625053573185663
   },
   {
     "language_name": "Indonesian",
@@ -130,10 +110,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3671689105193036
+        "bleu": 0.3112185444311794
       }
     ],
-    "bleu": 0.3671689105193036
+    "bleu": 0.3112185444311794
   },
   {
     "language_name": "Russian",
@@ -142,30 +122,30 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.3821837153890323
+        "bleu": 0.32615858913589074
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3974431757931015
+        "bleu": 0.3244999119385425
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.2541840010941474
+        "bleu": 0.315801608032821
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.43388586741780116
+        "bleu": 0.3683733679689521
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.4148930468752925
+        "bleu": 0.35988734604889566
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.3530948239011605
+        "bleu": 0.31289371159965956
       }
     ],
-    "bleu": 0.3726141050784226
+    "bleu": 0.3346024224541269
   },
   {
     "language_name": "Japanese",
@@ -173,11 +153,31 @@
     "speakers": 128000000.0,
     "scores": [
       {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.28991739992953497
+      },
+      {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.294012705268792
+        "bleu": 0.2675679907215641
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.21348802780641032
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.3345265427223546
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.3101203037558905
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.2585222780278109
       }
     ],
-    "bleu": 0.294012705268792
+    "bleu": 0.2790237571605942
   },
   {
     "language_name": "Eastern Punjabi",
@@ -186,10 +186,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.37715805829458243
+        "bleu": 0.27325501919134315
       }
     ],
-    "bleu": 0.37715805829458243
+    "bleu": 0.27325501919134315
   },
   {
     "language_name": "Standard German",
@@ -197,11 +197,31 @@
     "speakers": 105000000.0,
     "scores": [
       {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.39019323183176663
+      },
+      {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.39190456406769925
+        "bleu": 0.37266353070949576
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.3647632576435612
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.4466723425292597
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.4045496243095387
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.36047992103881465
       }
     ],
-    "bleu": 0.39190456406769925
+    "bleu": 0.3898869846770727
   },
   {
     "language_name": "Egyptian Arabic",
@@ -209,11 +229,31 @@
     "speakers": 100542400.0,
     "scores": [
       {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.2339779422333898
+      },
+      {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2769739921069721
+        "bleu": 0.20475486619797384
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.20783660453505234
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.2840808045687292
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.2786287793608212
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.19969813973959594
       }
     ],
-    "bleu": 0.2769739921069721
+    "bleu": 0.23482952277259375
   },
   {
     "language_name": "Urdu",
@@ -221,11 +261,31 @@
     "speakers": 94022900.0,
     "scores": [
       {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.297325653414119
+      },
+      {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.30532627541695706
+        "bleu": 0.24593966310665433
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.21988755291389567
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.31796430998058983
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.3043614136242901
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.2285337340113323
       }
     ],
-    "bleu": 0.30532627541695706
+    "bleu": 0.2690020545084802
   },
   {
     "language_name": "Filipino",
@@ -234,10 +294,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.38380780370055084
+        "bleu": 0.33268969497468076
       }
     ],
-    "bleu": 0.38380780370055084
+    "bleu": 0.33268969497468076
   },
   {
     "language_name": "Javanese",
@@ -245,31 +305,11 @@
     "speakers": 84308740.0,
     "scores": [
       {
-        "model": "openai/gpt-4o-mini",
-        "bleu": 0.303156768433342
-      },
-      {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3147001751424492
-      },
-      {
-        "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.1507764424388819
-      },
-      {
-        "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.41409824694226155
-      },
-      {
-        "model": "deepseek/deepseek-chat",
-        "bleu": 0.3240536705195471
-      },
-      {
-        "model": "microsoft/phi-4",
-        "bleu": 0.22770614610795217
+        "bleu": 0.2528746866064681
       }
     ],
-    "bleu": 0.2890819082640723
+    "bleu": 0.2528746866064681
   },
   {
     "language_name": "Marathi",
@@ -278,10 +318,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3754377211201414
+        "bleu": 0.24876051941895777
       }
     ],
-    "bleu": 0.3754377211201414
+    "bleu": 0.24876051941895777
   },
   {
     "language_name": "Swahili",
@@ -290,30 +330,30 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.3698648558947496
+        "bleu": 0.34863560100932933
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.31914577240036923
+        "bleu": 0.30524292832054034
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.16066681130875948
+        "bleu": 0.23580256234118713
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3934769032884265
+        "bleu": 0.3871437234807849
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.3605623890073268
+        "bleu": 0.3476225063617937
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.175030478984087
+        "bleu": 0.21803176063271826
       }
     ],
-    "bleu": 0.2964578684806198
+    "bleu": 0.3070798470243923
   },
   {
     "language_name": "Turkish",
@@ -322,10 +362,10 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.37080958221553817
+        "bleu": 0.29874140544434125
       }
     ],
-    "bleu": 0.37080958221553817
+    "bleu": 0.29874140544434125
   },
   {
     "language_name": "Telugu",
@@ -334,9 +374,179 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.35400532981470717
+        "bleu": 0.28869836899054496
       }
     ],
-    "bleu": 0.35400532981470717
+    "bleu": 0.28869836899054496
+  },
+  {
+    "language_name": "Wu Chinese",
+    "language_code": "wuu",
+    "speakers": 81400000.0,
+    "scores": [],
+    "bleu": null
+  },
+  {
+    "language_name": "Korean",
+    "language_code": "kor",
+    "speakers": 77300000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.2566453806044083
+      }
+    ],
+    "bleu": 0.2566453806044083
+  },
+  {
+    "language_name": "Vietnamese",
+    "language_code": "vie",
+    "speakers": 76000000.0,
+    "scores": [
+      {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.3104431723374164
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3098478561790782
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.28074941515909896
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.37327273228460267
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.3487726531917602
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.18355331419148843
+      }
+    ],
+    "bleu": 0.3011065238905742
+  },
+  {
+    "language_name": "Tamil",
+    "language_code": "tam",
+    "speakers": 75000000.0,
+    "scores": [
+      {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.24593649157372188
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.24009996232522382
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.16785828803139252
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.3411457686951495
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.2875340171253509
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.12646276530642359
+      }
+    ],
+    "bleu": 0.23483954884287706
+  },
+  {
+    "language_name": "Yue Chinese",
+    "language_code": "yue",
+    "speakers": 73100000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.2663995648378034
+      }
+    ],
+    "bleu": 0.2663995648378034
+  },
+  {
+    "language_name": "Italian",
+    "language_code": "ita",
+    "speakers": 64819790.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3190660116366235
+      }
+    ],
+    "bleu": 0.3190660116366235
+  },
+  {
+    "language_name": "Gujarati",
+    "language_code": "guj",
+    "speakers": 56400000.0,
+    "scores": [
+      {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.25754571533357745
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.24145756515188838
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.20092063514315023
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.3664134239402827
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "bleu": 0.2908883229704476
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.19669824113063106
+      }
+    ],
+    "bleu": 0.2589873172783296
+  },
+  {
+    "language_name": "Iranian Persian",
+    "language_code": "pes",
+    "speakers": 52800000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.28359916806993934
+      }
+    ],
+    "bleu": 0.28359916806993934
+  },
+  {
+    "language_name": "Bhojpuri",
+    "language_code": "bho",
+    "speakers": 52200000.0,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.24311504988281543
+      }
+    ],
+    "bleu": 0.24311504988281543
+  },
+  {
+    "language_name": "Hakka Chinese",
+    "language_code": "hak",
+    "speakers": 48200000.0,
+    "scores": [],
+    "bleu": null
   }
 ]

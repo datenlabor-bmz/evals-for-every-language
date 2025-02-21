@@ -95,7 +95,7 @@ languages = pd.merge(benchmark_languages, languages, on="language_code", how="ou
 languages = pd.merge(languages, script_names, on="script_code", how="left")
 languages["in_benchmark"] = languages["in_benchmark"].fillna(False)
 languages = languages.sort_values(by="speakers", ascending=False)
-languages = languages.iloc[:20]
+languages = languages.iloc[:30]
 
 # sample languages to translate to
 target_languages_NEW = languages[languages["in_benchmark"]].sample(
@@ -103,7 +103,7 @@ target_languages_NEW = languages[languages["in_benchmark"]].sample(
 )
 # sample languages to analyze with all models
 detailed_languages = languages[languages["in_benchmark"]].sample(
-    n=5, random_state=42
+    n=10, random_state=42
 )
 
 
@@ -214,7 +214,7 @@ async def main():
                 "language_code": language.language_code,
                 "speakers": language.speakers if not pd.isna(language.speakers) else 0,
                 "scores": scores,
-                "bleu": mean([s["bleu"] for s in scores]) or -0.02,
+                "bleu": mean([s["bleu"] for s in scores]) if scores else None,
                 # "bert_score": mean([s["bert_score"] for s in scores]),
             }
         )
