@@ -29,7 +29,8 @@
         "bleu": 0.44668905281921456
       }
     ],
-    "bleu": 0.47384102687918905
+    "bleu": 0.47384102687918905,
+    "commonvoice_hours": 2649.0
   },
   {
     "language_name": "Mandarin Chinese",
@@ -41,7 +42,8 @@
         "bleu": 0.48254866511762295
       }
     ],
-    "bleu": 0.48254866511762295
+    "bleu": 0.48254866511762295,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Spanish",
@@ -53,7 +55,8 @@
         "bleu": 0.31606621368361204
       }
     ],
-    "bleu": 0.31606621368361204
+    "bleu": 0.31606621368361204,
+    "commonvoice_hours": 446.0
   },
   {
     "language_name": "Hindi",
@@ -65,7 +68,8 @@
         "bleu": 0.3273225856613046
       }
     ],
-    "bleu": 0.3273225856613046
+    "bleu": 0.3273225856613046,
+    "commonvoice_hours": 16.0
   },
   {
     "language_name": "Bengali",
@@ -77,7 +81,8 @@
         "bleu": 0.23110496173302814
       }
     ],
-    "bleu": 0.23110496173302814
+    "bleu": 0.23110496173302814,
+    "commonvoice_hours": 49.0
   },
   {
     "language_name": "Portuguese",
@@ -89,7 +94,8 @@
         "bleu": 0.35032125995743685
       }
     ],
-    "bleu": 0.35032125995743685
+    "bleu": 0.35032125995743685,
+    "commonvoice_hours": 176.0
   },
   {
     "language_name": "French",
@@ -101,7 +107,8 @@
         "bleu": 0.31625053573185663
       }
     ],
-    "bleu": 0.31625053573185663
+    "bleu": 0.31625053573185663,
+    "commonvoice_hours": 1051.0
   },
   {
     "language_name": "Indonesian",
@@ -113,7 +120,8 @@
         "bleu": 0.3112185444311794
       }
     ],
-    "bleu": 0.3112185444311794
+    "bleu": 0.3112185444311794,
+    "commonvoice_hours": 33.0
   },
   {
     "language_name": "Russian",
@@ -145,7 +153,8 @@
         "bleu": 0.31289371159965956
       }
     ],
-    "bleu": 0.3346024224541269
+    "bleu": 0.3346024224541269,
+    "commonvoice_hours": 241.0
   },
   {
     "language_name": "Japanese",
@@ -177,7 +186,8 @@
         "bleu": 0.2585222780278109
       }
     ],
-    "bleu": 0.2790237571605942
+    "bleu": 0.2790237571605942,
+    "commonvoice_hours": 222.0
   },
   {
     "language_name": "Eastern Punjabi",
@@ -189,7 +199,8 @@
         "bleu": 0.27325501919134315
       }
     ],
-    "bleu": 0.27325501919134315
+    "bleu": 0.27325501919134315,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Standard German",
@@ -221,7 +232,8 @@
         "bleu": 0.36047992103881465
       }
     ],
-    "bleu": 0.3898869846770727
+    "bleu": 0.3898869846770727,
+    "commonvoice_hours": 1357.0
   },
   {
     "language_name": "Egyptian Arabic",
@@ -253,7 +265,8 @@
         "bleu": 0.19969813973959594
       }
     ],
-    "bleu": 0.23482952277259375
+    "bleu": 0.23482952277259375,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Urdu",
@@ -285,7 +298,8 @@
         "bleu": 0.2285337340113323
       }
     ],
-    "bleu": 0.2690020545084802
+    "bleu": 0.2690020545084802,
+    "commonvoice_hours": 76.0
   },
   {
     "language_name": "Filipino",
@@ -297,7 +311,8 @@
         "bleu": 0.33268969497468076
       }
     ],
-    "bleu": 0.33268969497468076
+    "bleu": 0.33268969497468076,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Javanese",
@@ -309,7 +324,8 @@
         "bleu": 0.2528746866064681
       }
     ],
-    "bleu": 0.2528746866064681
+    "bleu": 0.2528746866064681,
+    "commonvoice_hours": 0.0
   },
   {
     "language_name": "Marathi",
@@ -321,7 +337,8 @@
         "bleu": 0.24876051941895777
       }
     ],
-    "bleu": 0.24876051941895777
+    "bleu": 0.24876051941895777,
+    "commonvoice_hours": 20.0
   },
   {
     "language_name": "Swahili",
@@ -353,7 +370,8 @@
         "bleu": 0.21803176063271826
       }
     ],
-    "bleu": 0.3070798470243923
+    "bleu": 0.3070798470243923,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Turkish",
@@ -365,7 +383,8 @@
         "bleu": 0.29874140544434125
       }
     ],
-    "bleu": 0.29874140544434125
+    "bleu": 0.29874140544434125,
+    "commonvoice_hours": 127.0
   },
   {
     "language_name": "Telugu",
@@ -377,14 +396,16 @@
         "bleu": 0.28869836899054496
       }
     ],
-    "bleu": 0.28869836899054496
+    "bleu": 0.28869836899054496,
+    "commonvoice_hours": 0.3
   },
   {
     "language_name": "Wu Chinese",
     "language_code": "wuu",
     "speakers": 81400000.0,
     "scores": [],
-    "bleu": null
+    "bleu": null,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Korean",
@@ -396,7 +417,8 @@
         "bleu": 0.2566453806044083
       }
     ],
-    "bleu": 0.2566453806044083
+    "bleu": 0.2566453806044083,
+    "commonvoice_hours": 1.7
   },
   {
     "language_name": "Vietnamese",
@@ -428,7 +450,8 @@
         "bleu": 0.18355331419148843
       }
     ],
-    "bleu": 0.3011065238905742
+    "bleu": 0.3011065238905742,
+    "commonvoice_hours": 5.9
   },
   {
     "language_name": "Tamil",
@@ -460,7 +483,8 @@
         "bleu": 0.12646276530642359
       }
     ],
-    "bleu": 0.23483954884287706
+    "bleu": 0.23483954884287706,
+    "commonvoice_hours": 234.0
   },
   {
     "language_name": "Yue Chinese",
@@ -472,7 +496,8 @@
         "bleu": 0.2663995648378034
       }
     ],
-    "bleu": 0.2663995648378034
+    "bleu": 0.2663995648378034,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Italian",
@@ -484,7 +509,8 @@
         "bleu": 0.3190660116366235
       }
     ],
-    "bleu": 0.3190660116366235
+    "bleu": 0.3190660116366235,
+    "commonvoice_hours": 362.0
   },
   {
     "language_name": "Gujarati",
@@ -516,7 +542,8 @@
         "bleu": 0.19669824113063106
       }
     ],
-    "bleu": 0.2589873172783296
+    "bleu": 0.2589873172783296,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Iranian Persian",
@@ -528,7 +555,8 @@
         "bleu": 0.28359916806993934
       }
     ],
-    "bleu": 0.28359916806993934
+    "bleu": 0.28359916806993934,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Bhojpuri",
@@ -540,13 +568,15 @@
         "bleu": 0.24311504988281543
       }
     ],
-    "bleu": 0.24311504988281543
+    "bleu": 0.24311504988281543,
+    "commonvoice_hours": "N/A"
   },
   {
     "language_name": "Hakka Chinese",
     "language_code": "hak",
     "speakers": 48200000.0,
     "scores": [],
-    "bleu": null
+    "bleu": null,
+    "commonvoice_hours": "N/A"
   }
 ]

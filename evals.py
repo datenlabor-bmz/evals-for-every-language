@@ -12,6 +12,8 @@ from joblib.memory import Memory
 from openai import AsyncOpenAI
 from tqdm.asyncio import tqdm_asyncio
 from transformers import NllbTokenizer
+from datetime import date
+from requests import get
 
 # config
 models = [
@@ -68,7 +70,7 @@ language_names = (
 language_stats = (
     pd.read_csv("data/languages.tsv", sep="\t")
     .rename(columns={"iso639_3": "language_code", "maxSpeakers": "speakers"})[
-        ["language_code", "speakers"]
+        ["language_code", "speakers", "iso639_1"]
     ]
     .dropna(subset=["language_code"])
 )
@@ -97,8 +99,15 @@ languages["in_benchmark"] = languages["in_benchmark"].fillna(False)
 languages = languages.sort_values(by="speakers", ascending=False)
 languages = languages.iloc[:30]
 
+# retrieve CommonVoice stats
+@cache # cache for 1 day
+def get_commonvoice_stats(date: date):
+    return get("https://commonvoice.mozilla.org/api/v1/stats/languages").json()
+
+commonvoice_stats = pd.DataFrame(get_commonvoice_stats(date.today()))
+
 # sample languages to translate to
-target_languages_NEW = languages[languages["in_benchmark"]].sample(
+target_languages = languages[languages["in_benchmark"]].sample(
     n=n_sentences, weights="speakers", replace=True, random_state=42
 )
 # sample languages to analyze with all models
@@ -170,7 +179,7 @@ async def main():
         print(name)
         scores = []
         if language.in_benchmark:
-            original_sentences_NEW = load_sentences(language)[:n_sentences]
+            original_sentences = load_sentences(language)[:n_sentences]
             for model in models:
                 if (
                     model != fast_model
@@ -184,16 +193,16 @@ async def main():
                     translate(
                         model, language.language_name, language.script_name, sentence
                     )
-                    for sentence, language in zip(original_sentences_NEW, target_languages_NEW.itertuples())
+                    for sentence, language in zip(original_sentences, target_languages.itertuples())
                 ]
                 predictions = await tqdm_asyncio.gather(*predictions, miniters=1)
-                target_sentences_NEW = [
+                target_sentences = [
                     load_sentences(lang)[i]
-                    for i, lang in enumerate(target_languages_NEW.itertuples())
+                    for i, lang in enumerate(target_languages.itertuples())
                 ]
                 metrics_bleu = bleu.compute(
                     predictions=predictions,
-                    references=target_sentences_NEW,
+                    references=target_sentences,
                     tokenizer=tokenizer.tokenize,
                 )
                 # metrics_bert = bertscore.compute(
@@ -208,6 +217,8 @@ async def main():
                         # "bert_score": mean(metrics_bert["f1"]),
                     }
                 )
+        commonvoice_hours = commonvoice_stats[commonvoice_stats["locale"] == language.iso639_1]["validatedHours"].values
+        commonvoice_hours = commonvoice_hours[0] if commonvoice_hours.size > 0 else "N/A"
         results.append(
             {
                 "language_name": name,
@@ -216,6 +227,7 @@ async def main():
                 "scores": scores,
                 "bleu": mean([s["bleu"] for s in scores]) if scores else None,
                 # "bert_score": mean([s["bert_score"] for s in scores]),
+                "commonvoice_hours": commonvoice_hours,
             }
         )
     with open("results.json", "w") as f:

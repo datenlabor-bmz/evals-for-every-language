@@ -189,6 +189,7 @@ def create_language_stats_df(results):
             "Best Model BLEU": round(best_score["bleu"], 3)
             if best_score["bleu"] is not None
             else "N/A",
+            "CommonVoice Hours": lang["commonvoice_hours"],
         }
         flat_data.append(row)
 

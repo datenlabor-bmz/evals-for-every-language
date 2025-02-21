@@ -8,6 +8,7 @@ license: cc-by-sa-4.0
 short_description: Evaluating LLM performance across all human languages.
 datasets:
 - openlanguagedata/flores_plus
+- mozilla-foundation/common_voice_1_0
 models:
 - meta-llama/Llama-3.3-70B-Instruct
 - mistralai/Mistral-Small-24B-Instruct-2501
