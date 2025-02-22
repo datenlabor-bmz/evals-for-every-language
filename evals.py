@@ -2,6 +2,7 @@ import asyncio
 import json
 import os
 import re
+from datetime import date
 from os import getenv
 
 import evaluate
@@ -10,13 +11,12 @@ import requests
 from aiolimiter import AsyncLimiter
 from dotenv import load_dotenv
 from joblib.memory import Memory
+from langcodes import Language, standardize_tag
+from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
 from openai import AsyncOpenAI
+from requests import get
 from tqdm.asyncio import tqdm_asyncio
 from transformers import NllbTokenizer
-from datetime import date
-from requests import get
-from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
-from langcodes import standardize_tag, Language
 
 # config
 models = [
@@ -40,15 +40,9 @@ client = AsyncOpenAI(
 )
 cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
-bertscore = evaluate.load("bertscore")
+# bertscore = evaluate.load("bertscore")
 tokenizer = NllbTokenizer.from_pretrained("facebook/nllb-200-distilled-600M")
 rate_limit = AsyncLimiter(max_rate=20, time_period=1)
-
-
-def reorder(language_name):
-    if "," in language_name and "(" not in language_name:
-        return language_name.split(",")[1] + " " + language_name.split(",")[0]
-    return language_name
 
 
 # load general language data
@@ -58,7 +52,9 @@ languages = {
     if not re.match(r".*-[A-Z]{2}$", lang)
 }
 languages = pd.DataFrame(list(languages.items()), columns=["bcp_47", "speakers"])
-languages["name"] = languages["bcp_47"].apply(lambda x: Language.get(x).display_name())
+languages["language_name"] = languages["bcp_47"].apply(
+    lambda x: Language.get(x).display_name()
+)
 
 # load script codes and names
 scripts = pd.read_csv("data/ScriptCodes.csv").rename(
@@ -70,15 +66,26 @@ def script_name(iso15924):
     return scripts[scripts["iso15924"] == iso15924]["script_name"].values[0]
 
 
+def aggregate_flores_paths(flores_paths):
+    # takes a list of paths from the same language but different scripts
+    # returns the one with the largest writing population
+    if len(flores_paths) == 1:
+        return flores_paths.values[0]
+    populations = [
+        Language.get(standardize_tag(x, macro=True)).writing_population()
+        for x in flores_paths.values
+    ]
+    return flores_paths.values[populations.index(max(populations))]
+
+
 # load benchmark languages and scripts
 benchmark_dir = "data/floresp-v2.0-rc.3/dev"
 benchmark_languages = pd.DataFrame(
-    [f.split(".")[1].split("_", 1) for f in os.listdir(benchmark_dir)],
-    columns=["iso639_3", "iso15924"],
+    [f.split(".")[1] for f in os.listdir(benchmark_dir)],
+    columns=["flores_path"],
 )
-benchmark_languages["bcp_47"] = benchmark_languages.apply(
-    lambda row: standardize_tag(row["iso639_3"] + "-" + row["iso15924"], macro=True),
-    axis=1,
+benchmark_languages["bcp_47"] = benchmark_languages["flores_path"].apply(
+    lambda x: standardize_tag(x, macro=True),
 )
 # ignore script (language is language)
 benchmark_languages["bcp_47"] = benchmark_languages["bcp_47"].apply(
@@ -86,7 +93,7 @@ benchmark_languages["bcp_47"] = benchmark_languages["bcp_47"].apply(
 )
 benchmark_languages = (
     benchmark_languages.groupby("bcp_47")
-    .agg({"iso639_3": "first", "iso15924": "first"})
+    .agg({"flores_path": aggregate_flores_paths})
     .reset_index()
 )
 
@@ -123,14 +130,14 @@ languages = pd.merge(
 languages["in_benchmark"] = languages["bcp_47"].isin(benchmark_languages["bcp_47"])
 
 languages = languages.sort_values(by="speakers", ascending=False)
-languages = languages.iloc[:10]
+languages = languages.iloc[:30]
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
     n=n_sentences, weights="speakers", replace=True, random_state=42
 )
 # sample languages to analyze with all models
-detailed_languages = languages[languages["in_benchmark"]].sample(n=3, random_state=42)
+detailed_languages = languages[languages["in_benchmark"]].sample(n=10, random_state=42)
 
 
 # utils
@@ -158,93 +165,91 @@ async def complete(**kwargs):
     return response
 
 
-async def translate(model, target_language, sentence):
-    script = script_name(target_language.iso15924)
+def load_sentences(language):
+    return open(f"{benchmark_dir}/dev.{language.flores_path}").readlines()
+
+
+@cache
+async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
+    original_language = languages[languages["bcp_47"] == original_language_bcp_47].iloc[
+        0
+    ]
+    target_language = target_languages.iloc[sentence_nr]
+    original_sentence = load_sentences(original_language)[sentence_nr].strip()
+    target_sentence = load_sentences(target_language)[sentence_nr].strip()
+    script = script_name(target_language.flores_path.split("_")[1])
     reply = await complete(
         model=model,
         messages=[
             {
                 "role": "user",
-                "content": f"Translate the following text to the {target_language.name} language; use the {script} script; reply only with the translation:\n\n{sentence}",
+                "content": f"Translate the following text to the {target_language.language_name} language; use the {script} script; reply only with the translation:\n\n{original_sentence}",
             }
         ],
         temperature=0,
         max_tokens=1024,
     )
-    return reply.choices[0].message.content
+    prediction = reply.choices[0].message.content.strip()
+    score = bleu.compute(
+        predictions=[prediction],
+        references=[target_sentence],
+        tokenizer=tokenizer.tokenize,
+    )
+    return {
+        "model": model,
+        "bcp_47": original_language["bcp_47"],
+        "bleu": score["bleu"],
+        "sentence_nr": sentence_nr,
+    }
 
 
-def mean(l):
-    return sum(l) / len(l) if l else 0
-
-
-def load_sentences(language):
-    return open(
-        f"{benchmark_dir}/dev.{language.iso639_3}_{language.iso15924}"
-    ).readlines()
+def mean(lst):
+    return sum(lst) / len(lst) if lst else 0
 
 
 # evaluation!
 async def main():
+    scores = [
+        translate_and_evaluate(model, original_language.bcp_47, i)
+        for i in range(n_sentences)
+        for original_language in languages.itertuples()
+        for model in models
+        if original_language.in_benchmark
+        and (
+            model == fast_model
+            or original_language.bcp_47 in detailed_languages.bcp_47.values
+        )
+    ]
+    scores = await tqdm_asyncio.gather(*scores, miniters=1)
     results = []
-    for language in list(languages.itertuples()):
-        scores = []
-        if language.in_benchmark:
-            original_sentences = load_sentences(language)[:n_sentences]
-            for model in models:
-                if (
-                    model != fast_model
-                    and language.bcp_47 not in detailed_languages.bcp_47.values
-                ):
-                    continue
-                predictions = [
-                    translate(
-                        model,
-                        language,
-                        sentence,
-                    )
-                    for sentence, language in zip(
-                        original_sentences, target_languages.itertuples()
-                    )
-                ]
-                predictions = await tqdm_asyncio.gather(
-                    *predictions,
-                    miniters=1,
-                    desc=f"{language.name} {model.split('/')[0]}",
-                )
-                target_sentences = [
-                    load_sentences(lang)[i]
-                    for i, lang in enumerate(target_languages.itertuples())
-                ]
-                metrics_bleu = bleu.compute(
-                    predictions=predictions,
-                    references=target_sentences,
-                    tokenizer=tokenizer.tokenize,
-                )
-                # metrics_bert = bertscore.compute(
-                #     predictions=predictions,
-                #     references=target_sentences,
-                #     model_type="distilbert-base-uncased",
-                # )
-                scores.append(
+    for language in languages.itertuples():
+        results_for_language = []
+        for model in models:
+            results_for_model = [
+                score
+                for score in scores
+                if score["bcp_47"] == language.bcp_47 and score["model"] == model
+            ]
+            if results_for_model:
+                bleu = mean([s["bleu"] for s in results_for_model])
+                results_for_language.append(
                     {
                         "model": model,
-                        "bleu": metrics_bleu["bleu"],
-                        # "bert_score": mean(metrics_bert["f1"]),
+                        "bleu": bleu,
                     }
                 )
-        results.append(
-            {
-                "language_name": language.name,
-                "bcp_47": language.bcp_47,
-                "speakers": language.speakers if not pd.isna(language.speakers) else 0,
-                "scores": scores,
-                "bleu": mean([s["bleu"] for s in scores]) if scores else None,
-                # "bert_score": mean([s["bert_score"] for s in scores]),
-                "commonvoice_hours": language.commonvoice_hours,
-                "commonvoice_locale": language.commonvoice_locale,
-            }
-        )
+        if results_for_language:
+            results.append(
+                {
+                    "language_name": language.language_name,
+                    "bcp_47": language.bcp_47,
+                    "speakers": language.speakers,
+                    "scores": results_for_language,
+                    "bleu": mean([s["bleu"] for s in results_for_language]),
+                    "commonvoice_hours": language.commonvoice_hours,
+                    "commonvoice_locale": language.commonvoice_locale,
+                }
+            )
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 
