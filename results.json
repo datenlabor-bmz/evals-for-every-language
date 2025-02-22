@@ -31,7 +31,164 @@
     ],
     "bleu": 0.5035795595158651,
     "commonvoice_hours": 2649.0,
-    "commonvoice_locale": "en"
+    "commonvoice_locale": "en",
+    "population": {
+      "AC": 931,
+      "AE": 4996040,
+      "AG": 84434,
+      "AI": 17186,
+      "AQ": 300,
+      "AR": 3183537,
+      "AS": 47954,
+      "AT": 6467398,
+      "AU": 24447840,
+      "AW": 2986,
+      "BA": 1726016,
+      "BB": 294560,
+      "BD": 29277180,
+      "BE": 6915213,
+      "BG": 1741725,
+      "BI": 6289,
+      "BM": 66010,
+      "BN": 7896,
+      "BR": 16937280,
+      "BS": 337721,
+      "BT": 86055,
+      "BV": 1,
+      "BW": 1876956,
+      "BZ": 399598,
+      "CA": 32416926,
+      "CC": 101,
+      "CH": 5126434,
+      "CK": 8574,
+      "CL": 1727746,
+      "CM": 10543100,
+      "CN": 62731,
+      "CP": 1,
+      "CQ": 482,
+      "CX": 1389,
+      "CY": 924676,
+      "CZ": 2889675,
+      "DE": 51302208,
+      "DG": 495,
+      "DK": 5047693,
+      "DM": 69788,
+      "DO": 7980,
+      "DZ": 3008103,
+      "EE": 614310,
+      "EG": 36443400,
+      "ER": 3587908,
+      "ES": 12003792,
+      "ET": 46488590,
+      "FI": 3900169,
+      "FJ": 879816,
+      "FK": 2814,
+      "FM": 58389,
+      "FR": 26460798,
+      "GB": 64445878,
+      "GD": 108570,
+      "GG": 67052,
+      "GH": 6161442,
+      "GI": 23665,
+      "GM": 869600,
+      "GR": 5409621,
+      "GS": 20,
+      "GU": 153321,
+      "GY": 750204,
+      "HK": 3697454,
+      "HM": 1,
+      "HN": 40635,
+      "HR": 2071598,
+      "HU": 1954366,
+      "IE": 5073039,
+      "IL": 7374158,
+      "IM": 90499,
+      "IN": 251957100,
+      "IO": 3500,
+      "IQ": 13605445,
+      "IT": 21216918,
+      "JE": 96019,
+      "JM": 2752399,
+      "JO": 4869270,
+      "KE": 10170301,
+      "KI": 111796,
+      "KN": 52745,
+      "KY": 60705,
+      "KZ": 2863785,
+      "LB": 2187844,
+      "LC": 149838,
+      "LK": 2288920,
+      "LR": 4210839,
+      "LS": 531719,
+      "LT": 1037955,
+      "LU": 351893,
+      "LV": 865366,
+      "MA": 4978638,
+      "MG": 4852026,
+      "MH": 72463,
+      "MO": 14133,
+      "MP": 49890,
+      "MS": 3492,
+      "MT": 402395,
+      "MU": 993146,
+      "MV": 293928,
+      "MW": 13353858,
+      "MX": 16724500,
+      "MY": 6856941,
+      "NA": 184105,
+      "NF": 1678,
+      "NG": 113434840,
+      "NL": 15552360,
+      "NP": 909837,
+      "NR": 9350,
+      "NU": 1120,
+      "NZ": 4826970,
+      "PA": 545171,
+      "PG": 3629730,
+      "PH": 69875840,
+      "PK": 116750500,
+      "PL": 12633159,
+      "PM": 187,
+      "PN": 46,
+      "PR": 1562644,
+      "PT": 2781729,
+      "PW": 1887,
+      "RO": 6603899,
+      "RW": 1906860,
+      "SB": 685097,
+      "SC": 36473,
+      "SD": 27792576,
+      "SE": 8774150,
+      "SG": 5774984,
+      "SH": 5425,
+      "SI": 1240581,
+      "SK": 1414556,
+      "SL": 2318726,
+      "SS": 2851524,
+      "SX": 29816,
+      "SZ": 883584,
+      "TA": 272,
+      "TC": 54807,
+      "TH": 18623898,
+      "TK": 1285,
+      "TO": 29707,
+      "TR": 13942975,
+      "TT": 1063735,
+      "TV": 1066,
+      "TZ": 40401432,
+      "UG": 1686867,
+      "UM": 316,
+      "US": 319333440,
+      "VC": 97334,
+      "VG": 36633,
+      "VI": 79676,
+      "VU": 247616,
+      "WS": 4279,
+      "YE": 2689596,
+      "ZA": 17503716,
+      "ZM": 2788256,
+      "ZW": 6109446
+    }
   },
   {
     "language_name": "Chinese",
@@ -45,7 +202,29 @@
     ],
     "bleu": 0.35763875438716014,
     "commonvoice_hours": 422.0,
-    "commonvoice_locale": "zh-HK"
+    "commonvoice_locale": "zh-TW",
+    "population": {
+      "AU": 534796,
+      "BN": 51093,
+      "CA": 678494,
+      "CN": 1254618000,
+      "GB": 197283,
+      "GF": 4988,
+      "HK": 7249910,
+      "ID": 2456639,
+      "MN": 44352,
+      "MO": 632892,
+      "MY": 5550857,
+      "PA": 5841,
+      "PF": 23019,
+      "PH": 797021,
+      "SG": 4781438,
+      "SR": 6705,
+      "TH": 1241593,
+      "TW": 22422850,
+      "US": 2295209,
+      "VN": 1085934
+    }
   },
   {
     "language_name": "Hindi",
@@ -59,7 +238,15 @@
     ],
     "bleu": 0.33760351976648345,
     "commonvoice_hours": 16.0,
-    "commonvoice_locale": "hi"
+    "commonvoice_locale": "hi-IN",
+    "population": {
+      "CA": 188470,
+      "FJ": 411829,
+      "IN": 545022990,
+      "NP": 127377,
+      "UG": 2206,
+      "ZA": 1129272
+    }
   },
   {
     "language_name": "Spanish",
@@ -73,7 +260,48 @@
     ],
     "bleu": 0.3600460831160618,
     "commonvoice_hours": 446.0,
-    "commonvoice_locale": "es"
+    "commonvoice_locale": "es",
+    "population": {
+      "AD": 33110,
+      "AR": 45479100,
+      "BO": 7100339,
+      "BR": 76218,
+      "BZ": 111887,
+      "CA": 603106,
+      "CL": 17823064,
+      "CO": 45648864,
+      "CR": 4843090,
+      "CU": 11059100,
+      "CW": 5751,
+      "DE": 4809582,
+      "DO": 8189766,
+      "EA": 147000,
+      "EC": 16228704,
+      "ES": 49515642,
+      "FR": 8820266,
+      "GB": 5260888,
+      "GI": 14790,
+      "GQ": 727475,
+      "GT": 15952569,
+      "HN": 7203565,
+      "IC": 2056618,
+      "MA": 23115,
+      "MX": 106779500,
+      "NI": 4838683,
+      "PA": 2686915,
+      "PE": 23297950,
+      "PH": 33846110,
+      "PR": 2774491,
+      "PT": 1030270,
+      "PY": 230134,
+      "RO": 2130290,
+      "SV": 5768179,
+      "SX": 4823,
+      "TT": 4110,
+      "US": 31933344,
+      "UY": 2981097,
+      "VE": 23488572
+    }
   },
   {
     "language_name": "Arabic",
@@ -87,7 +315,47 @@
     ],
     "bleu": 0.3046598747480405,
     "commonvoice_hours": 91.0,
-    "commonvoice_locale": "ar"
+    "commonvoice_locale": "ar",
+    "population": {
+      "AE": 7793822,
+      "BH": 1309350,
+      "CA": 565412,
+      "CM": 108206,
+      "CY": 1267,
+      "DJ": 67292,
+      "DZ": 31799946,
+      "EG": 97876560,
+      "EH": 652271,
+      "ER": 297979,
+      "GB": 197283,
+      "IL": 1735096,
+      "IQ": 26433436,
+      "IR": 1698466,
+      "JO": 10820600,
+      "KE": 24623,
+      "KM": 558545,
+      "KW": 2993710,
+      "LB": 4703865,
+      "LY": 5099000,
+      "MA": 22048254,
+      "ML": 175981,
+      "MR": 3404658,
+      "NE": 47822,
+      "NG": 151960,
+      "OM": 3778520,
+      "PS": 4818260,
+      "QA": 2175311,
+      "SA": 34173500,
+      "SD": 27792576,
+      "SO": 3997414,
+      "SS": 2851524,
+      "SY": 15518720,
+      "TD": 2869158,
+      "TJ": 976,
+      "TN": 10549080,
+      "TR": 459298,
+      "YE": 22114456
+    }
   },
   {
     "language_name": "Urdu",
@@ -101,7 +369,14 @@
     ],
     "bleu": 0.331647033312127,
     "commonvoice_hours": 76.0,
-    "commonvoice_locale": "ur"
+    "commonvoice_locale": "ur",
+    "population": {
+      "CA": 286475,
+      "GB": 2301638,
+      "IN": 66304500,
+      "MU": 71727,
+      "PK": 221825950
+    }
   },
   {
     "language_name": "French",
@@ -115,7 +390,71 @@
     ],
     "bleu": 0.3141809404018014,
     "commonvoice_hours": 1051.0,
-    "commonvoice_locale": "fr"
+    "commonvoice_locale": "fr",
+    "population": {
+      "AD": 5775,
+      "AT": 974540,
+      "BE": 4453866,
+      "BF": 4583788,
+      "BI": 7000822,
+      "BJ": 4502610,
+      "BL": 6837,
+      "CA": 11308230,
+      "CD": 3867640,
+      "CF": 2935521,
+      "CG": 4446179,
+      "CH": 1764838,
+      "CI": 13465739,
+      "CM": 18866600,
+      "CY": 88668,
+      "DE": 14428746,
+      "DJ": 19358,
+      "DZ": 8594580,
+      "FR": 67169718,
+      "GA": 1405473,
+      "GB": 15125053,
+      "GF": 153622,
+      "GN": 3632946,
+      "GP": 407498,
+      "GQ": 73584,
+      "GR": 954639,
+      "HT": 520187,
+      "HU": 293155,
+      "IE": 880017,
+      "IT": 3931370,
+      "KM": 473917,
+      "LB": 20238,
+      "LU": 546691,
+      "MA": 7112340,
+      "MC": 38610,
+      "MF": 32556,
+      "MG": 18599433,
+      "ML": 8994564,
+      "MQ": 427408,
+      "MR": 680932,
+      "MT": 50299,
+      "MU": 41381,
+      "NC": 278409,
+      "NE": 6603996,
+      "NL": 5011316,
+      "PF": 180024,
+      "PM": 5133,
+      "PT": 1545405,
+      "RE": 700950,
+      "RO": 3621493,
+      "RW": 2288,
+      "SC": 57589,
+      "SN": 6137196,
+      "SY": 1144506,
+      "TD": 4388124,
+      "TF": 140,
+      "TG": 5251148,
+      "TN": 8673688,
+      "US": 1862778,
+      "VU": 149166,
+      "WF": 7610,
+      "YT": 110580
+    }
   },
   {
     "language_name": "Bangla",
@@ -129,7 +468,14 @@
     ],
     "bleu": 0.27472181972977344,
     "commonvoice_hours": 49.0,
-    "commonvoice_locale": "bn"
+    "commonvoice_locale": "bn",
+    "population": {
+      "BD": 159397980,
+      "CA": 90466,
+      "GB": 263044,
+      "IN": 107413290,
+      "NP": 28508
+    }
   },
   {
     "language_name": "Portuguese",
@@ -163,7 +509,25 @@
     ],
     "bleu": 0.367787171884892,
     "commonvoice_hours": 176.0,
-    "commonvoice_locale": "pt"
+    "commonvoice_locale": "pt",
+    "population": {
+      "AG": 1571,
+      "AO": 21789941,
+      "BR": 192661560,
+      "CA": 229934,
+      "CH": 285736,
+      "CV": 443274,
+      "FR": 882027,
+      "GB": 131522,
+      "GQ": 1,
+      "GW": 1927100,
+      "LU": 100541,
+      "MO": 30723,
+      "MZ": 8126514,
+      "PT": 9890592,
+      "ST": 179454,
+      "TL": 816395
+    }
   },
   {
     "language_name": "Punjabi",
@@ -197,7 +561,15 @@
     ],
     "bleu": 0.31594664710428266,
     "commonvoice_hours": 2.3,
-    "commonvoice_locale": "pa-IN"
+    "commonvoice_locale": "pa-IN",
+    "population": {
+      "CA": 603106,
+      "GB": 2367400,
+      "IN": 37130520,
+      "KE": 10170,
+      "PK": 163450700,
+      "SG": 9314
+    }
   },
   {
     "language_name": "Russian",
@@ -211,7 +583,32 @@
     ],
     "bleu": 0.2920291935463745,
     "commonvoice_hours": 241.0,
-    "commonvoice_locale": "ru"
+    "commonvoice_locale": "ru",
+    "population": {
+      "BG": 1602387,
+      "BY": 1137350,
+      "CA": 211087,
+      "CN": 13940,
+      "DE": 4809582,
+      "EE": 688027,
+      "FI": 45131,
+      "GE": 359730,
+      "IL": 954303,
+      "KG": 2147364,
+      "KZ": 13746168,
+      "LT": 2185168,
+      "LV": 714867,
+      "MD": 100935,
+      "MN": 4118,
+      "PL": 6890814,
+      "RU": 133218680,
+      "SJ": 1200,
+      "TJ": 1064840,
+      "TM": 663436,
+      "UA": 20204534,
+      "US": 798334,
+      "UZ": 4279156
+    }
   },
   {
     "language_name": "Swahili",
@@ -245,7 +642,18 @@
     ],
     "bleu": 0.3018786362743097,
     "commonvoice_hours": 411.0,
-    "commonvoice_locale": "sw"
+    "commonvoice_locale": "sw",
+    "population": {
+      "BI": 6408,
+      "CD": 50890000,
+      "KE": 35328414,
+      "MZ": 9330,
+      "SO": 235142,
+      "TZ": 52697520,
+      "UG": 32439750,
+      "YT": 2716,
+      "ZA": 1016
+    }
   },
   {
     "language_name": "Indonesian",
@@ -279,7 +687,11 @@
     ],
     "bleu": 0.31132422822400946,
     "commonvoice_hours": 33.0,
-    "commonvoice_locale": "id"
+    "commonvoice_locale": "id",
+    "population": {
+      "ID": 170896640,
+      "NL": 311047
+    }
   },
   {
     "language_name": "German",
@@ -313,7 +725,36 @@
     ],
     "bleu": 0.3992689214831344,
     "commonvoice_hours": 1357.0,
-    "commonvoice_locale": "de"
+    "commonvoice_locale": "de",
+    "population": {
+      "AT": 8593666,
+      "BE": 2578554,
+      "BG": 557352,
+      "BR": 1778414,
+      "CA": 294014,
+      "CH": 6134913,
+      "CZ": 1605375,
+      "DE": 72945327,
+      "DK": 2758623,
+      "FI": 1002901,
+      "FR": 3392410,
+      "GB": 5918499,
+      "GR": 530355,
+      "HU": 1758929,
+      "IT": 998443,
+      "KZ": 1221882,
+      "LI": 39137,
+      "LT": 382404,
+      "LU": 395880,
+      "NA": 23671,
+      "NL": 12269084,
+      "PL": 7273637,
+      "PY": 208559,
+      "RO": 44736,
+      "SI": 883126,
+      "SK": 1196932,
+      "US": 1563403
+    }
   },
   {
     "language_name": "Japanese",
@@ -327,7 +768,12 @@
     ],
     "bleu": 0.2954810072264808,
     "commonvoice_hours": 222.0,
-    "commonvoice_locale": "ja"
+    "commonvoice_locale": "ja",
+    "population": {
+      "BR": 444604,
+      "CA": 52772,
+      "JP": 119231650
+    }
   },
   {
     "language_name": "Telugu",
@@ -341,7 +787,10 @@
     ],
     "bleu": 0.37949545228579734,
     "commonvoice_hours": 0.3,
-    "commonvoice_locale": "te"
+    "commonvoice_locale": "te",
+    "population": {
+      "IN": 95478480
+    }
   },
   {
     "language_name": "Marathi",
@@ -355,7 +804,10 @@
     ],
     "bleu": 0.2852384896861461,
     "commonvoice_hours": 20.0,
-    "commonvoice_locale": "mr"
+    "commonvoice_locale": "mr",
+    "population": {
+      "IN": 92826300
+    }
   },
   {
     "language_name": "Javanese",
@@ -389,7 +841,11 @@
     ],
     "bleu": 0.2505244065073906,
     "commonvoice_hours": 0.0,
-    "commonvoice_locale": "jv"
+    "commonvoice_locale": "jv",
+    "population": {
+      "ID": 90788840,
+      "MY": 391825
+    }
   },
   {
     "language_name": "Vietnamese",
@@ -403,7 +859,13 @@
     ],
     "bleu": 0.2956750563565745,
     "commonvoice_hours": 5.9,
-    "commonvoice_locale": "vi"
+    "commonvoice_locale": "vi",
+    "population": {
+      "CA": 184701,
+      "CN": 6970,
+      "US": 1130973,
+      "VN": 84900318
+    }
   },
   {
     "language_name": "Tamil",
@@ -417,7 +879,17 @@
     ],
     "bleu": 0.27547489589987734,
     "commonvoice_hours": 234.0,
-    "commonvoice_locale": "ta"
+    "commonvoice_locale": "ta",
+    "population": {
+      "CA": 184701,
+      "GB": 2104355,
+      "IN": 78239310,
+      "LK": 3433380,
+      "MU": 34484,
+      "MY": 1371388,
+      "RE": 118138,
+      "SG": 130403
+    }
   },
   {
     "language_name": "Persian",
@@ -431,7 +903,18 @@
     ],
     "bleu": 0.2858012364771329,
     "commonvoice_hours": 370.0,
-    "commonvoice_locale": "fa"
+    "commonvoice_locale": "fa",
+    "population": {
+      "AE": 189850,
+      "AF": 18321900,
+      "CA": 245012,
+      "IQ": 338192,
+      "IR": 63692475,
+      "OM": 43849,
+      "PK": 1541107,
+      "QA": 268859,
+      "TJ": 69215
+    }
   },
   {
     "language_name": "Turkish",
@@ -465,7 +948,21 @@
     ],
     "bleu": 0.30402386618673855,
     "commonvoice_hours": 127.0,
-    "commonvoice_locale": "tr"
+    "commonvoice_locale": "tr",
+    "population": {
+      "BG": 766359,
+      "CA": 37694,
+      "CY": 291336,
+      "DE": 2003992,
+      "GB": 131522,
+      "GR": 127285,
+      "MK": 74409,
+      "NL": 207365,
+      "RO": 27694,
+      "TR": 76276275,
+      "UA": 184476,
+      "UZ": 232297
+    }
   },
   {
     "language_name": "Cantonese",
@@ -499,7 +996,12 @@
     ],
     "bleu": 0.27975991005230577,
     "commonvoice_hours": 203.0,
-    "commonvoice_locale": "yue"
+    "commonvoice_locale": "yue",
+    "population": {
+      "CA": 640800,
+      "CN": 72489040,
+      "HK": 6524919
+    }
   },
   {
     "language_name": "Korean",
@@ -513,7 +1015,16 @@
     ],
     "bleu": 0.24501349273295708,
     "commonvoice_hours": 1.7,
-    "commonvoice_locale": "ko"
+    "commonvoice_locale": "ko",
+    "population": {
+      "BR": 44460,
+      "CA": 169623,
+      "CN": 2091030,
+      "JP": 652636,
+      "KP": 22566280,
+      "KR": 51835100,
+      "US": 997917
+    }
   },
   {
     "language_name": "Italian",
@@ -527,7 +1038,24 @@
     ],
     "bleu": 0.3273249067267197,
     "commonvoice_hours": 362.0,
-    "commonvoice_locale": "it"
+    "commonvoice_locale": "it",
+    "population": {
+      "AT": 797350,
+      "AU": 483864,
+      "BR": 592805,
+      "CA": 343016,
+      "CH": 361372,
+      "DE": 5611179,
+      "FR": 1153419,
+      "GB": 131522,
+      "HR": 67644,
+      "IT": 59282565,
+      "MT": 256070,
+      "SI": 3995,
+      "SM": 30466,
+      "US": 1130973,
+      "VA": 820
+    }
   },
   {
     "language_name": "Filipino",
@@ -561,7 +1089,12 @@
     ],
     "bleu": 0.3353425581350746,
     "commonvoice_hours": 0.0,
-    "commonvoice_locale": "tl"
+    "commonvoice_locale": "tl",
+    "population": {
+      "CA": 565412,
+      "PH": 65508600,
+      "US": 1397084
+    }
   },
   {
     "language_name": "Egyptian Arabic",
@@ -574,8 +1107,11 @@
       }
     ],
     "bleu": 0.23431638822117362,
-    "commonvoice_hours": NaN,
-    "commonvoice_locale": NaN
+    "commonvoice_hours": null,
+    "commonvoice_locale": null,
+    "population": {
+      "EG": 66639360
+    }
   },
   {
     "language_name": "Gujarati",
@@ -589,6 +1125,12 @@
     ],
     "bleu": 0.27834507803114356,
     "commonvoice_hours": 0.0,
-    "commonvoice_locale": "gu-IN"
+    "commonvoice_locale": "gu-IN",
+    "population": {
+      "CA": 135699,
+      "GB": 1907072,
+      "IN": 59674050,
+      "KE": 4978
+    }
   }
 ]

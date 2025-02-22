@@ -62,6 +62,15 @@ scripts = pd.read_csv("data/ScriptCodes.csv").rename(
 )
 
 
+def population(bcp_47):
+    items = {
+        re.sub(r"^[a-z]+-", "", lang): pop
+        for lang, pop in LANGUAGE_SPEAKING_POPULATION.items()
+        if re.match(rf"^{bcp_47}-[A-Z]{{2}}$", lang)
+    }
+    return items
+
+
 def script_name(iso15924):
     return scripts[scripts["iso15924"] == iso15924]["script_name"].values[0]
 
@@ -246,8 +255,13 @@ async def main():
                     "speakers": language.speakers,
                     "scores": results_for_language,
                     "bleu": mean([s["bleu"] for s in results_for_language]),
-                    "commonvoice_hours": language.commonvoice_hours,
-                    "commonvoice_locale": language.commonvoice_locale,
+                    "commonvoice_hours": language.commonvoice_hours
+                    if not pd.isna(language.commonvoice_hours)
+                    else None,
+                    "commonvoice_locale": language.commonvoice_locale
+                    if not pd.isna(language.commonvoice_locale)
+                    else None,
+                    "population": population(language.bcp_47),
                 }
             )
     with open("results.json", "w") as f:

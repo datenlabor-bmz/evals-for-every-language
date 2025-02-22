@@ -88,6 +88,8 @@ pillow==11.1.0
     # via gradio
 plotly==6.0.0
     # via languagebench (pyproject.toml)
+pycountry==24.6.1
+    # via languagebench (pyproject.toml)
 pydantic==2.10.6
     # via
     #   fastapi

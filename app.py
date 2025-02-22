@@ -1,8 +1,10 @@
 import json
 
 import gradio as gr
+import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+import pycountry
 
 with open("results.json") as f:
     results = json.load(f)
@@ -157,10 +159,17 @@ def create_model_comparison_plot(results):
     fig = go.Figure(data=traces)
     fig.update_layout(
         title="BLEU Scores by Model and Language",
-        xaxis_title="Language",
+        xaxis_title=None,
         yaxis_title="BLEU Score",
         barmode="group",
         height=500,
+        legend=dict(
+            orientation="h",  # horizontal orientation
+            yanchor="bottom",
+            y=-0.3,  # position below plot
+            xanchor="center",
+            x=0.5,  # center horizontally
+        ),
     )
     return fig
 
@@ -175,10 +184,18 @@ def create_language_stats_df(results):
             lang["scores"] or [{"bleu": None, "model": None}], key=lambda x: x["bleu"]
         )
 
-        model = best_score['model']
-        model_name = model.split('/')[-1] if model else "N/A"
-        model_link = f"<a href='https://openrouter.ai/{model}' style='text-decoration: none; color: inherit;'>{model_name}</a>" if model else "N/A"
-        commonvoice_link = f"<!--{lang['commonvoice_hours']:07} (for sorting)--> <a href='https://commonvoice.mozilla.org/{lang['commonvoice_locale']}/speak' style='text-decoration: none; color: inherit;'>🎙️ {lang['commonvoice_hours']}</a>" if lang["commonvoice_hours"] else "N/A"
+        model = best_score["model"]
+        model_name = model.split("/")[-1] if model else "N/A"
+        model_link = (
+            f"<a href='https://openrouter.ai/{model}' style='text-decoration: none; color: inherit;'>{model_name}</a>"
+            if model
+            else "N/A"
+        )
+        commonvoice_link = (
+            f"<!--{lang['commonvoice_hours']:07} (for sorting)--> <a href='https://commonvoice.mozilla.org/{lang['commonvoice_locale']}/speak' style='text-decoration: none; color: inherit;'>🎙️ {lang['commonvoice_hours']}</a>"
+            if lang["commonvoice_hours"]
+            else "N/A"
+        )
         row = {
             "Language": f"**{lang['language_name']}**",
             "Speakers (M)": round(lang["speakers"] / 1_000_000, 1),
@@ -199,7 +216,15 @@ def create_language_stats_df(results):
         value=df,
         label="Language Results",
         show_search="search",
-        datatype=["markdown", "number", "number", "number", "markdown", "number", "markdown"],
+        datatype=[
+            "markdown",
+            "number",
+            "number",
+            "number",
+            "markdown",
+            "number",
+            "markdown",
+        ],
     )
 
 
@@ -224,7 +249,7 @@ def create_scatter_plot(results):
     )
 
     fig.update_layout(
-        title="Language Coverage: Speakers vs BLEU Score",
+        title=None,
         xaxis_title="Number of Speakers (Millions)",
         yaxis_title="Average BLEU Score",
         height=500,
@@ -233,6 +258,186 @@ def create_scatter_plot(results):
 
     # Use log scale for x-axis since speaker numbers vary widely
     fig.update_xaxes(type="log")
+
+    return fig
+
+
+def format_number(n):
+    """Format number with K/M suffix"""
+    if n >= 1_000_000:
+        return f"{n/1_000_000:.1f}M"
+    elif n >= 1_000:
+        return f"{n/1_000:.0f}K"
+    return str(n)
+
+
+def create_world_map(results):
+    # Collect all country data
+    country_data = {}
+    for lang in results:
+        if "population" not in lang or lang["bleu"] is None:
+            continue
+
+        for country_code, speakers in lang["population"].items():
+            try:
+                # Convert alpha_2 (2-letter) to alpha_3 (3-letter) code
+                country = pycountry.countries.get(alpha_2=country_code)
+                if country is None:
+                    continue
+
+                iso3_code = country.alpha_3
+                if iso3_code not in country_data:
+                    country_data[iso3_code] = {
+                        "total_speakers": 0,
+                        "weighted_bleu_sum": 0,
+                        "languages": [],
+                    }
+
+                country_data[iso3_code]["total_speakers"] += speakers
+                country_data[iso3_code]["weighted_bleu_sum"] += speakers * lang["bleu"]
+                country_data[iso3_code]["languages"].append(
+                    {
+                        "name": lang["language_name"],
+                        "speakers": speakers,
+                        "bleu": lang["bleu"],
+                    }
+                )
+            except (KeyError, AttributeError):
+                # Skip invalid or unrecognized country codes
+                continue
+
+    # Calculate final weighted averages and prepare hover text
+    countries = []
+    bleu_scores = []
+    hover_texts = []
+
+    def make_black_bar(value, max_width=10):
+        filled = int(value * max_width)
+        return "⬛️" * filled + "⬜️" * (max_width - filled)
+
+    def make_colored_bar(value, max_width=10):
+        """Create a colored bar using Unicode blocks
+        🟦 for high values (>0.35)
+        🟨 for medium values (0.25-0.35)
+        🟥 for low values (<0.25)
+        ⬜ for empty space
+        """
+        filled = int(value * max_width)
+        filled = max(0, min(filled, max_width))
+        empty = max_width - filled
+
+        if value > 0.35:
+            return "🟦" * filled + "⬜" * empty
+        elif value > 0.25:
+            return "🟨" * filled + "⬜" * empty
+        else:
+            return "🟥" * filled + "⬜" * empty
+
+    for country_code, data in country_data.items():
+        weighted_avg = data["weighted_bleu_sum"] / data["total_speakers"]
+
+        try:
+            country_name = pycountry.countries.get(alpha_3=country_code).name
+        except AttributeError:
+            country_name = country_code
+
+        # Sort languages by number of speakers
+        langs = sorted(data["languages"], key=lambda x: x["speakers"], reverse=True)
+        total_speakers = sum(lang["speakers"] for lang in langs)
+
+        # Take top 5 languages and summarize the rest
+        main_langs = langs[:5]
+        other_langs = langs[5:]
+
+        # Create language rows with bars
+        lang_rows = []
+        for lang in main_langs:
+            percentage = (lang["speakers"] / total_speakers) * 100
+            speaker_bar = make_black_bar(percentage / 100)
+            bleu_bar = make_colored_bar((lang["bleu"] - 0.2) / 0.2)
+
+            lang_rows.append(
+                f"<b>{lang['name']}</b><br>"
+                f"{speaker_bar} {format_number(lang['speakers'])} speakers<br>"
+                f"{bleu_bar} {lang['bleu']:.3f} BLEU<br>"
+            )
+
+        # Add summary for other languages if any
+        if other_langs:
+            other_speakers = sum(lang["speakers"] for lang in other_langs)
+            other_percentage = (other_speakers / total_speakers) * 100
+            other_avg_bleu = sum(lang["bleu"] for lang in other_langs) / len(
+                other_langs
+            )
+
+            speaker_bar = make_black_bar(other_percentage / 100)
+            bleu_bar = make_colored_bar((other_avg_bleu - 0.2) / 0.2)
+
+            lang_rows.append(
+                f"<b>+{len(other_langs)} other languages</b><br>"
+                f"{speaker_bar} {format_number(other_speakers)} speakers<br>"
+                f"{bleu_bar} {other_avg_bleu:.3f} BLEU<br>"
+            )
+
+        # Create overall BLEU visualization
+        bleu_percentage = (weighted_avg - 0.2) / 0.2  # Scale from 0.2-0.4 to 0-1
+        overall_bleu_bar = make_colored_bar(bleu_percentage)
+
+        hover_text = (
+            f"<b>{country_name}</b><br><br>"
+            f"{format_number(data['total_speakers'])} speakers*<br>"
+            f"{overall_bleu_bar} {weighted_avg:.3f} BLEU<br><br>"
+            f"<b>Languages:</b><br><br>"
+            f"{'<br>'.join(lang_rows)}"
+        )
+
+        countries.append(country_code)
+        bleu_scores.append(weighted_avg)
+        hover_texts.append(hover_text)
+
+    # Create the choropleth map
+    fig = go.Figure(
+        data=go.Choropleth(
+            locations=countries,
+            locationmode="ISO-3",
+            z=bleu_scores,
+            text=hover_texts,
+            hoverinfo="text",
+            colorscale=[[0, "#ff9999"], [1, "#99ccff"]],
+            colorbar=dict(
+                title="BLEU Score",
+                orientation="h",  # horizontal orientation
+                y=-0.2,  # position below map
+                yanchor="bottom",
+                len=0.5,  # length of colorbar
+                x=0.5,  # center horizontally
+                xanchor="center",
+                thickness=20,  # make it a bit thicker when horizontal
+            ),
+            zmin=0.2,
+            zmax=0.5,
+        )
+    )
+
+    fig.update_layout(
+        title=dict(text="BLEU Score by Country", x=0.5, xanchor="center"),
+        geo=dict(
+            showframe=True,
+            showcoastlines=True,
+            projection_type="equal earth",
+            showland=True,
+            landcolor="#f8f9fa",
+            coastlinecolor="#e0e0e0",
+            countrycolor="#e0e0e0",
+        ),
+        height=600,
+        margin=dict(l=0, r=0, t=30, b=0),
+        paper_bgcolor="white",
+        hoverlabel=dict(
+            bgcolor="beige",
+            font_size=12,
+        ),
+    )
 
     return fig
 
@@ -246,11 +451,13 @@ with gr.Blocks(title="AI Language Translation Benchmark") as demo:
 
     bar_plot = create_model_comparison_plot(results)
     scatter_plot = create_scatter_plot(results)
+    world_map = create_world_map(results)
 
     create_leaderboard_df(results)
     gr.Plot(value=bar_plot, label="Model Comparison")
     create_language_stats_df(results)
-    gr.Plot(value=scatter_plot, label="Language Coverage")
+    gr.Plot(value=scatter_plot, label="Speaker population vs BLEU")
+    gr.Plot(value=world_map, container=False, elem_classes="fullwidth-plot")
 
     gr.Markdown(
         """
