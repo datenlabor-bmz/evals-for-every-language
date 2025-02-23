@@ -414,7 +414,7 @@ def create_world_map(results):
                 xanchor="center",
                 thickness=20,  # make it a bit thicker when horizontal
             ),
-            zmin=0.2,
+            zmin=0.1,
             zmax=0.5,
         )
     )

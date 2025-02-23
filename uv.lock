@@ -955,7 +955,7 @@ requires-dist = [
     { name = "gradio", specifier = ">=5.16.2" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "plotly", specifier = ">=6.0.0" },
-    { name = "pycountry" },
+    { name = "pycountry", specifier = ">=24.6.1" },
 ]
 
 [package.metadata.requires-dev]

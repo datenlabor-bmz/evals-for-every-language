@@ -139,14 +139,13 @@ languages = pd.merge(
 languages["in_benchmark"] = languages["bcp_47"].isin(benchmark_languages["bcp_47"])
 
 languages = languages.sort_values(by="speakers", ascending=False)
-languages = languages.iloc[:30]
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
     n=n_sentences, weights="speakers", replace=True, random_state=42
 )
 # sample languages to analyze with all models
-detailed_languages = languages[languages["in_benchmark"]].sample(n=10, random_state=42)
+detailed_languages = languages[languages["in_benchmark"]].sample(n=30, random_state=42)
 
 
 # utils
