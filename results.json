@@ -6,10 +6,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.465648126623753
+        "bleu": 0.4351349353198866,
+        "chrf": 54.9504915580248
       }
     ],
-    "bleu": 0.465648126623753,
+    "bleu": 0.4351349353198866,
+    "chrf": 54.9504915580248,
     "commonvoice_hours": 2649.0,
     "commonvoice_locale": "en",
     "population": {
@@ -177,10 +179,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.35763875438716014
+        "bleu": 0.3977775857451761,
+        "chrf": 57.672913792439125
       }
     ],
-    "bleu": 0.35763875438716014,
+    "bleu": 0.3977775857451761,
+    "chrf": 57.672913792439125,
     "commonvoice_hours": 422.0,
     "commonvoice_locale": "zh-TW",
     "population": {
@@ -213,10 +217,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.33760351976648345
+        "bleu": 0.333521621016373,
+        "chrf": 50.48364584189306
       }
     ],
-    "bleu": 0.33760351976648345,
+    "bleu": 0.333521621016373,
+    "chrf": 50.48364584189306,
     "commonvoice_hours": 16.0,
     "commonvoice_locale": "hi-IN",
     "population": {
@@ -235,10 +241,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3600460831160618
+        "bleu": 0.29160032861883095,
+        "chrf": 47.668399832701844
       }
     ],
-    "bleu": 0.3600460831160618,
+    "bleu": 0.29160032861883095,
+    "chrf": 47.668399832701844,
     "commonvoice_hours": 446.0,
     "commonvoice_locale": "es",
     "population": {
@@ -290,10 +298,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3046598747480405
+        "bleu": 0.277257629790728,
+        "chrf": 46.62779335380641
       }
     ],
-    "bleu": 0.3046598747480405,
+    "bleu": 0.277257629790728,
+    "chrf": 46.62779335380641,
     "commonvoice_hours": 91.0,
     "commonvoice_locale": "ar",
     "population": {
@@ -344,10 +354,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.331647033312127
+        "bleu": 0.2659144372728079,
+        "chrf": 44.14831240898717
       }
     ],
-    "bleu": 0.331647033312127,
+    "bleu": 0.2659144372728079,
+    "chrf": 44.14831240898717,
     "commonvoice_hours": 76.0,
     "commonvoice_locale": "ur",
     "population": {
@@ -365,11 +377,13 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3141809404018014
+        "bleu": 0.315663773358301,
+        "chrf": 49.253978669350964
       }
     ],
-    "bleu": 0.3141809404018014,
-    "commonvoice_hours": 1051.0,
+    "bleu": 0.315663773358301,
+    "chrf": 49.253978669350964,
+    "commonvoice_hours": 1052.0,
     "commonvoice_locale": "fr",
     "population": {
       "AD": 5775,
@@ -443,10 +457,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.27472181972977344
+        "bleu": 0.21265887286151353,
+        "chrf": 41.501657722373686
       }
     ],
-    "bleu": 0.27472181972977344,
+    "bleu": 0.21265887286151353,
+    "chrf": 41.501657722373686,
     "commonvoice_hours": 49.0,
     "commonvoice_locale": "bn",
     "population": {
@@ -464,10 +480,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.36847793827413045
+        "bleu": 0.27514792195783394,
+        "chrf": 45.901248962808694
       }
     ],
-    "bleu": 0.36847793827413045,
+    "bleu": 0.27514792195783394,
+    "chrf": 45.901248962808694,
     "commonvoice_hours": 176.0,
     "commonvoice_locale": "pt",
     "population": {
@@ -496,30 +514,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.29479385926490154
+        "bleu": 0.32250608979374484,
+        "chrf": 48.43043110055342
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.34372813238670347
+        "bleu": 0.3048037308116852,
+        "chrf": 48.4304965568793
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.24553184949811938
+        "bleu": 0.2314793285308931,
+        "chrf": 37.53667069805556
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3934178960662497
+        "bleu": 0.37468960333154994,
+        "chrf": 53.381398796420086
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.3489400123993954
+        "bleu": 0.359056244961623,
+        "chrf": 52.278269268214366
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.26926813301032654
+        "bleu": 0.27331521881795146,
+        "chrf": 45.15087304059057
       }
     ],
-    "bleu": 0.31594664710428266,
+    "bleu": 0.31097503604124127,
+    "chrf": 47.53468991011888,
     "commonvoice_hours": 2.3,
     "commonvoice_locale": "pa-IN",
     "population": {
@@ -538,10 +563,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2920291935463745
+        "bleu": 0.26108507692625094,
+        "chrf": 45.063308940468154
       }
     ],
-    "bleu": 0.2920291935463745,
+    "bleu": 0.26108507692625094,
+    "chrf": 45.063308940468154,
     "commonvoice_hours": 241.0,
     "commonvoice_locale": "ru",
     "population": {
@@ -577,10 +604,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3021494866906426
+        "bleu": 0.2709203338132304,
+        "chrf": 44.36399636969686
       }
     ],
-    "bleu": 0.3021494866906426,
+    "bleu": 0.2709203338132304,
+    "chrf": 44.36399636969686,
     "commonvoice_hours": 411.0,
     "commonvoice_locale": "sw",
     "population": {
@@ -602,10 +631,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.32764790212460226
+        "bleu": 0.27441353638286026,
+        "chrf": 46.025445629112156
       }
     ],
-    "bleu": 0.32764790212460226,
+    "bleu": 0.27441353638286026,
+    "chrf": 46.025445629112156,
     "commonvoice_hours": 33.0,
     "commonvoice_locale": "id",
     "population": {
@@ -620,10 +651,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3886659265736507
+        "bleu": 0.3338682761061998,
+        "chrf": 50.216731068308064
       }
     ],
-    "bleu": 0.3886659265736507,
+    "bleu": 0.3338682761061998,
+    "chrf": 50.216731068308064,
     "commonvoice_hours": 1357.0,
     "commonvoice_locale": "de",
     "population": {
@@ -663,10 +696,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2954810072264808
+        "bleu": 0.2940100667664714,
+        "chrf": 46.403097021492236
       }
     ],
-    "bleu": 0.2954810072264808,
+    "bleu": 0.2940100667664714,
+    "chrf": 46.403097021492236,
     "commonvoice_hours": 222.0,
     "commonvoice_locale": "ja",
     "population": {
@@ -682,30 +717,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.28964452051612244
+        "bleu": 0.28964452051612244,
+        "chrf": 45.75290973782886
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.37949545228579734
+        "bleu": 0.2750887189010237,
+        "chrf": 46.31463752811596
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.1314237858560668
+        "bleu": 0.1314237858560668,
+        "chrf": 27.750433857144273
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.35187073123584545
+        "bleu": 0.35187073123584545,
+        "chrf": 52.04190885735586
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.2808664068178743
+        "bleu": 0.2808664068178743,
+        "chrf": 48.221979700718
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.16468103557770178
+        "bleu": 0.16468103557770178,
+        "chrf": 36.43981433605732
       }
     ],
-    "bleu": 0.2663303220482347,
+    "bleu": 0.24892919981743908,
+    "chrf": 42.75361400287005,
     "commonvoice_hours": 0.3,
     "commonvoice_locale": "te",
     "population": {
@@ -719,30 +761,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.235200323237626
+        "bleu": 0.235200323237626,
+        "chrf": 39.43789667749676
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2852384896861461
+        "bleu": 0.2584800238292114,
+        "chrf": 44.69889855306244
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.1158656438579424
+        "bleu": 0.1158656438579424,
+        "chrf": 27.118712681006436
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3039098126596327
+        "bleu": 0.3039098126596327,
+        "chrf": 48.26657289026638
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.23702154369195902
+        "bleu": 0.23702154369195902,
+        "chrf": 43.039588362590955
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.14770612974379574
+        "bleu": 0.14770612974379574,
+        "chrf": 35.63558588907277
       }
     ],
-    "bleu": 0.22082365714618368,
+    "bleu": 0.21636391283669454,
+    "chrf": 39.69954250891596,
     "commonvoice_hours": 20.0,
     "commonvoice_locale": "mr",
     "population": {
@@ -756,10 +805,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2494035065095152
+        "bleu": 0.23082586428104943,
+        "chrf": 41.42591471734489
       }
     ],
-    "bleu": 0.2494035065095152,
+    "bleu": 0.23082586428104943,
+    "chrf": 41.42591471734489,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "jv",
     "population": {
@@ -774,30 +825,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.2790022403255029
+        "bleu": 0.2790022403255029,
+        "chrf": 44.76577365559692
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2956750563565745
+        "bleu": 0.252552287345529,
+        "chrf": 43.351007120897606
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.17142561681893811
+        "bleu": 0.17142561681893811,
+        "chrf": 34.23876708175754
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.32076560886563743
+        "bleu": 0.32076560886563743,
+        "chrf": 49.46269756420099
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.269842412561934
+        "bleu": 0.269842412561934,
+        "chrf": 44.17252674642975
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.19118351096728373
+        "bleu": 0.19118351096728373,
+        "chrf": 37.642090247027234
       }
     ],
-    "bleu": 0.25464907431597844,
+    "bleu": 0.24746194614747083,
+    "chrf": 42.272143735985004,
     "commonvoice_hours": 5.9,
     "commonvoice_locale": "vi",
     "population": {
@@ -814,30 +872,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.2159676106476219
+        "bleu": 0.2159676106476219,
+        "chrf": 38.592451568525966
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.27547489589987734
+        "bleu": 0.24147470924504938,
+        "chrf": 41.98664320436057
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.11055269618146167
+        "bleu": 0.11055269618146167,
+        "chrf": 26.929660798631293
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.2993653070835946
+        "bleu": 0.2993653070835946,
+        "chrf": 46.760725728832945
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.22772498517043588
+        "bleu": 0.22772498517043588,
+        "chrf": 40.963440857462984
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.14949134449145374
+        "bleu": 0.14949134449145374,
+        "chrf": 33.188135588116566
       }
     ],
-    "bleu": 0.21309613991240753,
+    "bleu": 0.2074294421366029,
+    "chrf": 38.07017629098839,
     "commonvoice_hours": 234.0,
     "commonvoice_locale": "ta",
     "population": {
@@ -858,10 +923,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2858012364771329
+        "bleu": 0.2543274430452483,
+        "chrf": 44.798186786819564
       }
     ],
-    "bleu": 0.2858012364771329,
+    "bleu": 0.2543274430452483,
+    "chrf": 44.798186786819564,
     "commonvoice_hours": 370.0,
     "commonvoice_locale": "fa",
     "population": {
@@ -883,10 +950,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3128582218784996
+        "bleu": 0.2848412390293461,
+        "chrf": 45.023438128876236
       }
     ],
-    "bleu": 0.3128582218784996,
+    "bleu": 0.2848412390293461,
+    "chrf": 45.023438128876236,
     "commonvoice_hours": 127.0,
     "commonvoice_locale": "tr",
     "population": {
@@ -911,10 +980,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2901127503841879
+        "bleu": 0.2745324223697869,
+        "chrf": 46.18505717482203
       }
     ],
-    "bleu": 0.2901127503841879,
+    "bleu": 0.2745324223697869,
+    "chrf": 46.18505717482203,
     "commonvoice_hours": 203.0,
     "commonvoice_locale": "yue",
     "population": {
@@ -930,10 +1001,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.24501349273295708
+        "bleu": 0.21423807187509414,
+        "chrf": 42.31955622695572
       }
     ],
-    "bleu": 0.24501349273295708,
+    "bleu": 0.21423807187509414,
+    "chrf": 42.31955622695572,
     "commonvoice_hours": 1.7,
     "commonvoice_locale": "ko",
     "population": {
@@ -953,30 +1026,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.29744196180619636
+        "bleu": 0.29744196180619636,
+        "chrf": 46.58884190721562
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3273249067267197
+        "bleu": 0.2947459489130278,
+        "chrf": 48.23578446556176
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.26709213193768344
+        "bleu": 0.26709213193768344,
+        "chrf": 43.42719841351614
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.34518602347709243
+        "bleu": 0.34518602347709243,
+        "chrf": 51.45922256128821
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.3136120219290237
+        "bleu": 0.3136120219290237,
+        "chrf": 49.456527591725454
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.26629405288011837
+        "bleu": 0.26629405288011837,
+        "chrf": 44.95821657057411
       }
     ],
-    "bleu": 0.302825183126139,
+    "bleu": 0.29739535682385704,
+    "chrf": 47.35429858498022,
     "commonvoice_hours": 362.0,
     "commonvoice_locale": "it",
     "population": {
@@ -1004,10 +1084,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3458571802193247
+        "bleu": 0.3020075248846111,
+        "chrf": 45.148692233744825
       }
     ],
-    "bleu": 0.3458571802193247,
+    "bleu": 0.3020075248846111,
+    "chrf": 45.148692233744825,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "tl",
     "population": {
@@ -1023,10 +1105,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.23431638822117362
+        "bleu": 0.18353324091064518,
+        "chrf": 37.67362087042454
       }
     ],
-    "bleu": 0.23431638822117362,
+    "bleu": 0.18353324091064518,
+    "chrf": 37.67362087042454,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1040,10 +1124,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.27834507803114356
+        "bleu": 0.27618486571036477,
+        "chrf": 45.30697533607047
       }
     ],
-    "bleu": 0.27834507803114356,
+    "bleu": 0.27618486571036477,
+    "chrf": 45.30697533607047,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "gu-IN",
     "population": {
@@ -1060,10 +1146,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2461561900137243
+        "bleu": 0.2461561900137243,
+        "chrf": 43.886996888191135
       }
     ],
     "bleu": 0.2461561900137243,
+    "chrf": 43.886996888191135,
     "commonvoice_hours": 172.0,
     "commonvoice_locale": "th",
     "population": {
@@ -1077,10 +1165,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.25650866519447973
+        "bleu": 0.25650866519447973,
+        "chrf": 43.53706086839864
       }
     ],
     "bleu": 0.25650866519447973,
+    "chrf": 43.53706086839864,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "kn",
     "population": {
@@ -1094,30 +1184,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.23073727076678055
+        "bleu": 0.23073727076678055,
+        "chrf": 41.53402359471923
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.21782657144614825
+        "bleu": 0.21782657144614825,
+        "chrf": 41.630569782738704
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.1695641998407403
+        "bleu": 0.1695641998407403,
+        "chrf": 33.20242503336964
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3195014249623395
+        "bleu": 0.3195014249623395,
+        "chrf": 50.399254960139395
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.2633223158501049
+        "bleu": 0.2633223158501049,
+        "chrf": 45.473592535604965
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.19162873119255258
+        "bleu": 0.19162873119255258,
+        "chrf": 38.21485785002488
       }
     ],
     "bleu": 0.23209675234311103,
+    "chrf": 41.7424539594328,
     "commonvoice_hours": 2.8,
     "commonvoice_locale": "ml",
     "population": {
@@ -1137,10 +1234,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2616054244059909
+        "bleu": 0.2616054244059909,
+        "chrf": 44.81898318236423
       }
     ],
     "bleu": 0.2616054244059909,
+    "chrf": 44.81898318236423,
     "commonvoice_hours": 2.8,
     "commonvoice_locale": "or",
     "population": {
@@ -1154,10 +1253,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.24382878885531348
+        "bleu": 0.24382878885531348,
+        "chrf": 43.88802125000008
       }
     ],
     "bleu": 0.24382878885531348,
+    "chrf": 43.88802125000008,
     "commonvoice_hours": 174.0,
     "commonvoice_locale": "pl",
     "population": {
@@ -1179,10 +1280,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1493358875548207
+        "bleu": 0.1493358875548207,
+        "chrf": 31.734228520521885
       }
     ],
     "bleu": 0.1493358875548207,
+    "chrf": 31.734228520521885,
     "commonvoice_hours": 4.1,
     "commonvoice_locale": "ha",
     "population": {
@@ -1200,10 +1303,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.22524971121549384
+        "bleu": 0.22524971121549384,
+        "chrf": 41.35718488130492
       }
     ],
     "bleu": 0.22524971121549384,
+    "chrf": 41.35718488130492,
     "commonvoice_hours": 0.4,
     "commonvoice_locale": "sd",
     "population": {
@@ -1218,30 +1323,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.27545115634664297
+        "bleu": 0.27545115634664297,
+        "chrf": 46.5366529956061
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2445459295400275
+        "bleu": 0.2445459295400275,
+        "chrf": 43.683725288188164
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.23380594556884363
+        "bleu": 0.23380594556884363,
+        "chrf": 38.09288562825641
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3521510571182875
+        "bleu": 0.3521510571182875,
+        "chrf": 51.6107732437805
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.2984537737499322
+        "bleu": 0.2984537737499322,
+        "chrf": 47.07139912930323
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.20974647653543713
+        "bleu": 0.20974647653543713,
+        "chrf": 40.94603982712764
       }
     ],
     "bleu": 0.2690257231431951,
+    "chrf": 44.656912685377016,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ms",
     "population": {
@@ -1259,10 +1371,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.17529594258449108
+        "bleu": 0.17529594258449108,
+        "chrf": 38.09396067803311
       }
     ],
     "bleu": 0.17529594258449108,
+    "chrf": 38.09396067803311,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "my",
     "population": {
@@ -1277,10 +1391,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.16453710162389373
+        "bleu": 0.16453710162389373,
+        "chrf": 34.89886094698235
       }
     ],
     "bleu": 0.16453710162389373,
+    "chrf": 34.89886094698235,
     "commonvoice_hours": 1.8,
     "commonvoice_locale": "am",
     "population": {
@@ -1295,10 +1411,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.0691897827221633
+        "bleu": 0.0691897827221633,
+        "chrf": 22.166735299684706
       }
     ],
     "bleu": 0.0691897827221633,
+    "chrf": 22.166735299684706,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "om",
     "population": {
@@ -1314,10 +1432,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.23176648838308359
+        "bleu": 0.23176648838308359,
+        "chrf": 42.06617216025931
       }
     ],
     "bleu": 0.23176648838308359,
+    "chrf": 42.06617216025931,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1333,10 +1453,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2038544554531401
+        "bleu": 0.2038544554531401,
+        "chrf": 39.8364082393657
       }
     ],
     "bleu": 0.2038544554531401,
+    "chrf": 39.8364082393657,
     "commonvoice_hours": 100.0,
     "commonvoice_locale": "uz",
     "population": {
@@ -1354,10 +1476,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1911853993562902
+        "bleu": 0.1911853993562902,
+        "chrf": 38.284553121320506
       }
     ],
     "bleu": 0.1911853993562902,
+    "chrf": 38.284553121320506,
     "commonvoice_hours": 0.5,
     "commonvoice_locale": "az",
     "population": {
@@ -1376,30 +1500,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.18638464691782505
+        "bleu": 0.18638464691782505,
+        "chrf": 36.390067106438586
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.22413489641063433
+        "bleu": 0.22413489641063433,
+        "chrf": 39.08607675576149
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.12396443500389862
+        "bleu": 0.12396443500389862,
+        "chrf": 27.44605100630464
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.31100961611618916
+        "bleu": 0.31100961611618916,
+        "chrf": 48.684591434160616
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.23467068441612768
+        "bleu": 0.23467068441612768,
+        "chrf": 40.54860164135514
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.1315217916431994
+        "bleu": 0.1315217916431994,
+        "chrf": 32.71394871178255
       }
     ],
     "bleu": 0.20194767841797903,
+    "chrf": 37.47822277596717,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1413,10 +1544,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2592795402705898
+        "bleu": 0.2592795402705898,
+        "chrf": 44.356739380497835
       }
     ],
     "bleu": 0.2592795402705898,
+    "chrf": 44.356739380497835,
     "commonvoice_hours": 114.0,
     "commonvoice_locale": "nl",
     "population": {
@@ -1439,10 +1572,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1795140543637709
+        "bleu": 0.1795140543637709,
+        "chrf": 37.426822543484725
       }
     ],
     "bleu": 0.1795140543637709,
+    "chrf": 37.426822543484725,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1456,30 +1591,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.2564463888571809
+        "bleu": 0.2564463888571809,
+        "chrf": 41.5181715644979
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2922812040972885
+        "bleu": 0.2922812040972885,
+        "chrf": 46.82127627710616
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.24225796102393954
+        "bleu": 0.24225796102393954,
+        "chrf": 39.42058485499366
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3452563778145038
+        "bleu": 0.3452563778145038,
+        "chrf": 50.96771482708702
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.3292127494173498
+        "bleu": 0.3292127494173498,
+        "chrf": 48.580427643849056
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.2452825737163755
+        "bleu": 0.2452825737163755,
+        "chrf": 42.05493360532406
       }
     ],
     "bleu": 0.28512287582110635,
+    "chrf": 44.893851462142976,
     "commonvoice_hours": 98.0,
     "commonvoice_locale": "uk",
     "population": {
@@ -1498,10 +1640,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.09852676389614487
+        "bleu": 0.09852676389614487,
+        "chrf": 25.656950226425916
       }
     ],
     "bleu": 0.09852676389614487,
+    "chrf": 25.656950226425916,
     "commonvoice_hours": 5.9,
     "commonvoice_locale": "yo",
     "population": {
@@ -1516,10 +1660,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1549827013842116
+        "bleu": 0.1549827013842116,
+        "chrf": 35.431035675871804
       }
     ],
     "bleu": 0.1549827013842116,
+    "chrf": 35.431035675871804,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ig",
     "population": {
@@ -1533,10 +1679,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.27783470672988303
+        "bleu": 0.27783470672988303,
+        "chrf": 43.53549785827671
       }
     ],
     "bleu": 0.27783470672988303,
+    "chrf": 43.53549785827671,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1550,10 +1698,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2554810263222905
+        "bleu": 0.2554810263222905,
+        "chrf": 42.35795046006446
       }
     ],
     "bleu": 0.2554810263222905,
+    "chrf": 42.35795046006446,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1568,10 +1718,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.15163299980391426
+        "bleu": 0.15163299980391426,
+        "chrf": 32.41299083831688
       }
     ],
     "bleu": 0.15163299980391426,
+    "chrf": 32.41299083831688,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "mg",
     "population": {
@@ -1585,30 +1737,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.33899025568959984
+        "bleu": 0.33899025568959984,
+        "chrf": 49.419389839471826
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.26666997541189236
+        "bleu": 0.26666997541189236,
+        "chrf": 44.76525386460237
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.24172488724041316
+        "bleu": 0.24172488724041316,
+        "chrf": 37.98045602918644
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.37365302832845815
+        "bleu": 0.37365302832845815,
+        "chrf": 52.777299654432
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.332600965807992
+        "bleu": 0.332600965807992,
+        "chrf": 49.14582652136321
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.2510789925018768
+        "bleu": 0.2510789925018768,
+        "chrf": 42.27877315264307
       }
     ],
     "bleu": 0.30078635083003874,
+    "chrf": 46.06116651028316,
     "commonvoice_hours": 21.0,
     "commonvoice_locale": "ro",
     "population": {
@@ -1628,10 +1787,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.26199282928489126
+        "bleu": 0.26199282928489126,
+        "chrf": 44.7560662712792
       }
     ],
     "bleu": 0.26199282928489126,
+    "chrf": 44.7560662712792,
     "commonvoice_hours": 1.3,
     "commonvoice_locale": "ne-NP",
     "population": {
@@ -1647,10 +1808,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.23975507119180453
+        "bleu": 0.23975507119180453,
+        "chrf": 41.8894484718934
       }
     ],
     "bleu": 0.23975507119180453,
+    "chrf": 41.8894484718934,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "mai",
     "population": {
@@ -1665,10 +1828,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.19363225565136952
+        "bleu": 0.19363225565136952,
+        "chrf": 38.96237165376663
       }
     ],
     "bleu": 0.19363225565136952,
+    "chrf": 38.96237165376663,
     "commonvoice_hours": 2.8,
     "commonvoice_locale": "as",
     "population": {
@@ -1682,10 +1847,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.09504458945778768
+        "bleu": 0.09504458945778768,
+        "chrf": 27.576030002164906
       }
     ],
     "bleu": 0.09504458945778768,
+    "chrf": 27.576030002164906,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ny",
     "population": {
@@ -1702,30 +1869,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.2024994684991584
+        "bleu": 0.2024994684991584,
+        "chrf": 37.37281822856629
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1532133716194419
+        "bleu": 0.1532133716194419,
+        "chrf": 32.05620028647162
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.043408496427191995
+        "bleu": 0.043408496427191995,
+        "chrf": 15.267715935014895
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3048371831537258
+        "bleu": 0.3048371831537258,
+        "chrf": 46.24092673305936
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.21360545410615966
+        "bleu": 0.21360545410615966,
+        "chrf": 38.32357547187653
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.06484340154849859
+        "bleu": 0.06484340154849859,
+        "chrf": 22.781181465233722
       }
     ],
     "bleu": 0.16373456255902938,
+    "chrf": 32.00706968670374,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "so",
     "population": {
@@ -1744,10 +1918,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.29925558767802407
+        "bleu": 0.29925558767802407,
+        "chrf": 47.539870710677974
       }
     ],
     "bleu": 0.29925558767802407,
+    "chrf": 47.539870710677974,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1761,10 +1937,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.26029402164210574
+        "bleu": 0.26029402164210574,
+        "chrf": 44.75391848259974
       }
     ],
     "bleu": 0.26029402164210574,
+    "chrf": 44.75391848259974,
     "commonvoice_hours": 7.4,
     "commonvoice_locale": "sr",
     "population": {
@@ -1785,10 +1963,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.20259734060180434
+        "bleu": 0.20259734060180434,
+        "chrf": 39.00188422851495
       }
     ],
     "bleu": 0.20259734060180434,
+    "chrf": 39.00188422851495,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "si",
     "population": {
@@ -1802,30 +1982,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.21699232146684352
+        "bleu": 0.21699232146684352,
+        "chrf": 41.99979148031644
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.21417349432612984
+        "bleu": 0.21417349432612984,
+        "chrf": 41.35771196976409
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.03287369352293625
+        "bleu": 0.03287369352293625,
+        "chrf": 14.140423341647319
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.34264229339556035
+        "bleu": 0.34264229339556035,
+        "chrf": 51.55826045210756
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.24630515818736093
+        "bleu": 0.24630515818736093,
+        "chrf": 44.60963216433486
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.11830648687368288
+        "bleu": 0.11830648687368288,
+        "chrf": 31.534012306448343
       }
     ],
     "bleu": 0.1952155746287523,
+    "chrf": 37.53330528576977,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "km",
     "population": {
@@ -1839,10 +2026,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2212498883000727
+        "bleu": 0.2212498883000727,
+        "chrf": 39.102114067893005
       }
     ],
     "bleu": 0.2212498883000727,
+    "chrf": 39.102114067893005,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1856,10 +2045,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.08190470208193343
+        "bleu": 0.08190470208193343,
+        "chrf": 23.041107899884107
       }
     ],
     "bleu": 0.08190470208193343,
+    "chrf": 23.041107899884107,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -1873,10 +2064,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.15449146502209737
+        "bleu": 0.15449146502209737,
+        "chrf": 33.087212745906356
       }
     ],
     "bleu": 0.15449146502209737,
+    "chrf": 33.087212745906356,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "zu",
     "population": {
@@ -1894,10 +2087,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2392246097188628
+        "bleu": 0.2392246097188628,
+        "chrf": 42.67763456362536
       }
     ],
     "bleu": 0.2392246097188628,
+    "chrf": 42.67763456362536,
     "commonvoice_hours": 2.1,
     "commonvoice_locale": "kk",
     "population": {
@@ -1916,10 +2111,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2844520855192069
+        "bleu": 0.2844520855192069,
+        "chrf": 47.327010269160255
       }
     ],
     "bleu": 0.2844520855192069,
+    "chrf": 47.327010269160255,
     "commonvoice_hours": 74.0,
     "commonvoice_locale": "cs",
     "population": {
@@ -1934,10 +2131,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.31838456223051165
+        "bleu": 0.31838456223051165,
+        "chrf": 48.08041424667649
       }
     ],
     "bleu": 0.31838456223051165,
+    "chrf": 48.08041424667649,
     "commonvoice_hours": 47.0,
     "commonvoice_locale": "sv-SE",
     "population": {
@@ -1954,10 +2153,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2517614908428288
+        "bleu": 0.2517614908428288,
+        "chrf": 42.77520440394925
       }
     ],
     "bleu": 0.2517614908428288,
+    "chrf": 42.77520440394925,
     "commonvoice_hours": 92.0,
     "commonvoice_locale": "hu",
     "population": {
@@ -1979,30 +2180,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.24888370153898132
+        "bleu": 0.24888370153898132,
+        "chrf": 42.743109839531535
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.27269196827838943
+        "bleu": 0.27269196827838943,
+        "chrf": 45.53483489961114
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.21351544070708506
+        "bleu": 0.21351544070708506,
+        "chrf": 39.64425368969459
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3500489758234636
+        "bleu": 0.3500489758234636,
+        "chrf": 51.1729677922222
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.32858632704534785
+        "bleu": 0.32858632704534785,
+        "chrf": 49.70348294319061
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.1903000734693107
+        "bleu": 0.1903000734693107,
+        "chrf": 39.41911092527115
       }
     ],
     "bleu": 0.2673377478104297,
+    "chrf": 44.7029600149202,
     "commonvoice_hours": 20.0,
     "commonvoice_locale": "el",
     "population": {
@@ -2025,30 +2233,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.10438047654339373
+        "bleu": 0.10438047654339373,
+        "chrf": 28.358507205354343
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1054140213254438
+        "bleu": 0.1054140213254438,
+        "chrf": 28.275522446025796
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.049580893458705456
+        "bleu": 0.049580893458705456,
+        "chrf": 18.458313551880636
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.20979752102494492
+        "bleu": 0.20979752102494492,
+        "chrf": 38.7737276002067
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.14066476436038525
+        "bleu": 0.14066476436038525,
+        "chrf": 32.050887533047465
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.060530921002659346
+        "bleu": 0.060530921002659346,
+        "chrf": 22.35054590384825
       }
     ],
     "bleu": 0.11172809961925541,
+    "chrf": 28.04458404006053,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2062,10 +2277,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.20654412682006296
+        "bleu": 0.20654412682006296,
+        "chrf": 38.66802600490074
       }
     ],
     "bleu": 0.20654412682006296,
+    "chrf": 38.66802600490074,
     "commonvoice_hours": 135.0,
     "commonvoice_locale": "ckb",
     "population": {
@@ -2080,10 +2297,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.14006909985587948
+        "bleu": 0.14006909985587948,
+        "chrf": 31.739340000779823
       }
     ],
     "bleu": 0.14006909985587948,
+    "chrf": 31.739340000779823,
     "commonvoice_hours": 2002.0,
     "commonvoice_locale": "rw",
     "population": {
@@ -2099,10 +2318,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.08408628490585719
+        "bleu": 0.08408628490585719,
+        "chrf": 23.767561072306325
       }
     ],
     "bleu": 0.08408628490585719,
+    "chrf": 23.767561072306325,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "wo",
     "population": {
@@ -2117,10 +2338,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.23738824104522893
+        "bleu": 0.23738824104522893,
+        "chrf": 42.85642541970995
       }
     ],
     "bleu": 0.23738824104522893,
+    "chrf": 42.85642541970995,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2134,10 +2357,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.20685666710862224
+        "bleu": 0.20685666710862224,
+        "chrf": 37.066073786659494
       }
     ],
     "bleu": 0.20685666710862224,
+    "chrf": 37.066073786659494,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2151,10 +2376,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1143143326923908
+        "bleu": 0.1143143326923908,
+        "chrf": 28.93119601652647
       }
     ],
     "bleu": 0.1143143326923908,
+    "chrf": 28.93119601652647,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "xh",
     "population": {
@@ -2169,10 +2396,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.08532345270447181
+        "bleu": 0.08532345270447181,
+        "chrf": 25.148121650983146
       }
     ],
     "bleu": 0.08532345270447181,
+    "chrf": 25.148121650983146,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ti",
     "population": {
@@ -2188,10 +2417,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.18341973561481445
+        "bleu": 0.18341973561481445,
+        "chrf": 39.828398360117035
       }
     ],
     "bleu": 0.18341973561481445,
+    "chrf": 39.828398360117035,
     "commonvoice_hours": 1804.0,
     "commonvoice_locale": "be",
     "population": {
@@ -2207,10 +2438,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.11581604983636683
+        "bleu": 0.11581604983636683,
+        "chrf": 28.08252510561598
       }
     ],
     "bleu": 0.11581604983636683,
+    "chrf": 28.08252510561598,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2224,10 +2457,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1846236171638531
+        "bleu": 0.1846236171638531,
+        "chrf": 39.50004300248175
       }
     ],
     "bleu": 0.1846236171638531,
+    "chrf": 39.50004300248175,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "tg",
     "population": {
@@ -2242,10 +2477,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.05520341910203098
+        "bleu": 0.05520341910203098,
+        "chrf": 20.443280736080066
       }
     ],
     "bleu": 0.05520341910203098,
+    "chrf": 20.443280736080066,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2259,10 +2496,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.07227674667013836
+        "bleu": 0.07227674667013836,
+        "chrf": 22.136582910055218
       }
     ],
     "bleu": 0.07227674667013836,
+    "chrf": 22.136582910055218,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "bm",
     "population": {
@@ -2276,30 +2515,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.3277177864074156
+        "bleu": 0.3277177864074156,
+        "chrf": 48.61873150516328
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.31538459755111
+        "bleu": 0.31538459755111,
+        "chrf": 47.75260784921264
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.26710030799119333
+        "bleu": 0.26710030799119333,
+        "chrf": 38.869810330084285
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.4361740814378139
+        "bleu": 0.4361740814378139,
+        "chrf": 56.524736028951835
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.37149647257024515
+        "bleu": 0.37149647257024515,
+        "chrf": 53.20003536968165
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.2883662842075808
+        "bleu": 0.2883662842075808,
+        "chrf": 45.203083386764426
       }
     ],
     "bleu": 0.3343732550275598,
+    "chrf": 48.361500744976354,
     "commonvoice_hours": 0.5,
     "commonvoice_locale": "af",
     "population": {
@@ -2315,10 +2561,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.0883556207236924
+        "bleu": 0.0883556207236924,
+        "chrf": 24.868277910094278
       }
     ],
     "bleu": 0.0883556207236924,
+    "chrf": 24.868277910094278,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ki",
     "population": {
@@ -2332,10 +2580,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1872609836464467
+        "bleu": 0.1872609836464467,
+        "chrf": 37.00166091804026
       }
     ],
     "bleu": 0.1872609836464467,
+    "chrf": 37.00166091804026,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ht",
     "population": {
@@ -2349,10 +2599,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.29445274007068095
+        "bleu": 0.29445274007068095,
+        "chrf": 47.46074814103581
       }
     ],
     "bleu": 0.29445274007068095,
+    "chrf": 47.46074814103581,
     "commonvoice_hours": 2842.0,
     "commonvoice_locale": "ca",
     "population": {
@@ -2369,10 +2621,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2824719214447976
+        "bleu": 0.2824719214447976,
+        "chrf": 46.279771845770604
       }
     ],
     "bleu": 0.2824719214447976,
+    "chrf": 46.279771845770604,
     "commonvoice_hours": 1.1,
     "commonvoice_locale": "he",
     "population": {
@@ -2386,10 +2640,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.08102496244147746
+        "bleu": 0.08102496244147746,
+        "chrf": 22.184797797745208
       }
     ],
     "bleu": 0.08102496244147746,
+    "chrf": 22.184797797745208,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "mos",
     "population": {
@@ -2403,10 +2659,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.07329500673809967
+        "bleu": 0.07329500673809967,
+        "chrf": 22.838222030254723
       }
     ],
     "bleu": 0.07329500673809967,
+    "chrf": 22.838222030254723,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2420,10 +2678,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.18397910035998616
+        "bleu": 0.18397910035998616,
+        "chrf": 35.50154017198535
       }
     ],
     "bleu": 0.18397910035998616,
+    "chrf": 35.50154017198535,
     "commonvoice_hours": 361.0,
     "commonvoice_locale": "ug",
     "population": {
@@ -2440,10 +2700,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.22401269807719826
+        "bleu": 0.22401269807719826,
+        "chrf": 40.34678123737912
       }
     ],
     "bleu": 0.22401269807719826,
+    "chrf": 40.34678123737912,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2457,10 +2719,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.24723779163445408
+        "bleu": 0.24723779163445408,
+        "chrf": 45.55403997487483
       }
     ],
     "bleu": 0.24723779163445408,
+    "chrf": 45.55403997487483,
     "commonvoice_hours": 16.0,
     "commonvoice_locale": "bg",
     "population": {
@@ -2479,10 +2743,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.0366272802298245
+        "bleu": 0.0366272802298245,
+        "chrf": 15.463910171449278
       }
     ],
     "bleu": 0.0366272802298245,
+    "chrf": 15.463910171449278,
     "commonvoice_hours": 1.3,
     "commonvoice_locale": "zgh",
     "population": {
@@ -2496,10 +2762,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3051247921441283
+        "bleu": 0.3051247921441283,
+        "chrf": 48.3731481201238
       }
     ],
     "bleu": 0.3051247921441283,
+    "chrf": 48.3731481201238,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "bs",
     "population": {
@@ -2513,10 +2781,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.0957054530624
+        "bleu": 0.0957054530624,
+        "chrf": 28.269164219007447
       }
     ],
     "bleu": 0.0957054530624,
+    "chrf": 28.269164219007447,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2530,10 +2800,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.11554870024021023
+        "bleu": 0.11554870024021023,
+        "chrf": 29.549934477174254
       }
     ],
     "bleu": 0.11554870024021023,
+    "chrf": 29.549934477174254,
     "commonvoice_hours": 0.5,
     "commonvoice_locale": "sat",
     "population": {
@@ -2547,10 +2819,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3512857581168584
+        "bleu": 0.3512857581168584,
+        "chrf": 51.12453594191334
       }
     ],
     "bleu": 0.3512857581168584,
+    "chrf": 51.12453594191334,
     "commonvoice_hours": 13.0,
     "commonvoice_locale": "da",
     "population": {
@@ -2567,30 +2841,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.15410064596625964
+        "bleu": 0.15410064596625964,
+        "chrf": 36.3602620147462
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.14820890318014426
+        "bleu": 0.14820890318014426,
+        "chrf": 34.78567738931005
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.07938993687949465
+        "bleu": 0.07938993687949465,
+        "chrf": 24.385063397578556
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.2761834512123037
+        "bleu": 0.2761834512123037,
+        "chrf": 47.41646574422384
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.1718597543270264
+        "bleu": 0.1718597543270264,
+        "chrf": 38.84762953076257
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.10118596975980092
+        "bleu": 0.10118596975980092,
+        "chrf": 28.31840639855478
       }
     ],
     "bleu": 0.15515477688750492,
+    "chrf": 35.018917412529326,
     "commonvoice_hours": 2.8,
     "commonvoice_locale": "tk",
     "population": {
@@ -2606,30 +2887,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.14440915289810186
+        "bleu": 0.14440915289810186,
+        "chrf": 31.3622869278075
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.15987085387022903
+        "bleu": 0.15987085387022903,
+        "chrf": 35.18523232721762
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.10987778830152085
+        "bleu": 0.10987778830152085,
+        "chrf": 25.91454653951599
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.28985769410441137
+        "bleu": 0.28985769410441137,
+        "chrf": 46.64309582634758
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.1865343501300658
+        "bleu": 0.1865343501300658,
+        "chrf": 37.28483871763787
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.10000019378200214
+        "bleu": 0.10000019378200214,
+        "chrf": 26.406217887319293
       }
     ],
     "bleu": 0.16509167218105517,
+    "chrf": 33.79936970430764,
     "commonvoice_hours": 69.0,
     "commonvoice_locale": "kmr",
     "population": {
@@ -2650,10 +2938,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2290484937313612
+        "bleu": 0.2290484937313612,
+        "chrf": 41.79307139114272
       }
     ],
     "bleu": 0.2290484937313612,
+    "chrf": 41.79307139114272,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "hr",
     "population": {
@@ -2675,10 +2965,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.26490711574268994
+        "bleu": 0.26490711574268994,
+        "chrf": 44.54318851690701
       }
     ],
     "bleu": 0.26490711574268994,
+    "chrf": 44.54318851690701,
     "commonvoice_hours": 8.8,
     "commonvoice_locale": "sq",
     "population": {
@@ -2698,11 +2990,13 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2826836020834733
+        "bleu": 0.2826836020834733,
+        "chrf": 45.73110764547564
       }
     ],
     "bleu": 0.2826836020834733,
-    "commonvoice_hours": 39.0,
+    "chrf": 45.73110764547564,
+    "commonvoice_hours": 40.0,
     "commonvoice_locale": "sk",
     "population": {
       "CZ": 1712400,
@@ -2718,10 +3012,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.0633017924291756
+        "bleu": 0.0633017924291756,
+        "chrf": 21.71247042480193
       }
     ],
     "bleu": 0.0633017924291756,
+    "chrf": 21.71247042480193,
     "commonvoice_hours": 0.3,
     "commonvoice_locale": "dyu",
     "population": {
@@ -2735,10 +3031,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1950781841033538
+        "bleu": 0.1950781841033538,
+        "chrf": 41.09779803278993
       }
     ],
     "bleu": 0.1950781841033538,
+    "chrf": 41.09779803278993,
     "commonvoice_hours": 46.0,
     "commonvoice_locale": "mn",
     "population": {
@@ -2754,10 +3052,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.12381413258013083
+        "bleu": 0.12381413258013083,
+        "chrf": 28.651371806370722
       }
     ],
     "bleu": 0.12381413258013083,
+    "chrf": 28.651371806370722,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "st",
     "population": {
@@ -2772,10 +3072,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.09139131060492443
+        "bleu": 0.09139131060492443,
+        "chrf": 25.97258334431281
       }
     ],
     "bleu": 0.09139131060492443,
+    "chrf": 25.97258334431281,
     "commonvoice_hours": 4.2,
     "commonvoice_locale": "tn",
     "population": {
@@ -2792,10 +3094,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.12296923497272805
+        "bleu": 0.12296923497272805,
+        "chrf": 29.040238903610113
       }
     ],
     "bleu": 0.12296923497272805,
+    "chrf": 29.040238903610113,
     "commonvoice_hours": 3.7,
     "commonvoice_locale": "gn",
     "population": {
@@ -2811,10 +3115,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2306868672081301
+        "bleu": 0.2306868672081301,
+        "chrf": 42.094559446408105
       }
     ],
     "bleu": 0.2306868672081301,
+    "chrf": 42.094559446408105,
     "commonvoice_hours": 15.0,
     "commonvoice_locale": "fi",
     "population": {
@@ -2831,10 +3137,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.09865217050437662
+        "bleu": 0.09865217050437662,
+        "chrf": 25.926064361947446
       }
     ],
     "bleu": 0.09865217050437662,
+    "chrf": 25.926064361947446,
     "commonvoice_hours": 437.0,
     "commonvoice_locale": "lg",
     "population": {
@@ -2848,10 +3156,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1344939664526747
+        "bleu": 0.1344939664526747,
+        "chrf": 32.68903932403509
       }
     ],
     "bleu": 0.1344939664526747,
+    "chrf": 32.68903932403509,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2866,10 +3176,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3568538739752233
+        "bleu": 0.3568538739752233,
+        "chrf": 50.18863565152686
       }
     ],
     "bleu": 0.3568538739752233,
+    "chrf": 50.18863565152686,
     "commonvoice_hours": 0.1,
     "commonvoice_locale": "nb-NO",
     "population": {
@@ -2884,30 +3196,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.07496563614353445
+        "bleu": 0.07496563614353445,
+        "chrf": 23.431580504923282
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.10425825663987873
+        "bleu": 0.10425825663987873,
+        "chrf": 26.156513526794825
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.048552315311727906
+        "bleu": 0.048552315311727906,
+        "chrf": 17.052116746764433
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.20820762589055672
+        "bleu": 0.20820762589055672,
+        "chrf": 37.899164894105404
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.13037194233770932
+        "bleu": 0.13037194233770932,
+        "chrf": 29.069219847377738
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.07919429950933718
+        "bleu": 0.07919429950933718,
+        "chrf": 22.45526755754465
       }
     ],
     "bleu": 0.10759167930545738,
+    "chrf": 26.01064384625172,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -2921,10 +3240,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2525113198548088
+        "bleu": 0.2525113198548088,
+        "chrf": 44.115149170486895
       }
     ],
     "bleu": 0.2525113198548088,
+    "chrf": 44.115149170486895,
     "commonvoice_hours": 31.0,
     "commonvoice_locale": "hy-AM",
     "population": {
@@ -2945,30 +3266,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.1287306186367617
+        "bleu": 0.1287306186367617,
+        "chrf": 28.538499437787404
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.11431860079235977
+        "bleu": 0.11431860079235977,
+        "chrf": 29.789689541768464
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.048032427671766596
+        "bleu": 0.048032427671766596,
+        "chrf": 16.511000736562355
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.277532484522071
+        "bleu": 0.277532484522071,
+        "chrf": 43.725160462861595
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.1559013863573944
+        "bleu": 0.1559013863573944,
+        "chrf": 31.344526297642712
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.08683694629684643
+        "bleu": 0.08683694629684643,
+        "chrf": 24.176752802670837
       }
     ],
     "bleu": 0.13522541071286664,
+    "chrf": 29.014271546548898,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "nso",
     "population": {
@@ -2982,10 +3310,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.07123028733548639
+        "bleu": 0.07123028733548639,
+        "chrf": 21.84956735049654
       }
     ],
     "bleu": 0.07123028733548639,
+    "chrf": 21.84956735049654,
     "commonvoice_hours": 30.0,
     "commonvoice_locale": "luo",
     "population": {
@@ -2999,10 +3329,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.17665711931817996
+        "bleu": 0.17665711931817996,
+        "chrf": 35.46692292627831
       }
     ],
     "bleu": 0.17665711931817996,
+    "chrf": 35.46692292627831,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3016,10 +3348,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.17291556794348653
+        "bleu": 0.17291556794348653,
+        "chrf": 35.37210957380201
       }
     ],
     "bleu": 0.17291556794348653,
+    "chrf": 35.37210957380201,
     "commonvoice_hours": 0.2,
     "commonvoice_locale": "lo",
     "population": {
@@ -3033,30 +3367,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.1264498146181144
+        "bleu": 0.1264498146181144,
+        "chrf": 26.535888048377064
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.09614725376527729
+        "bleu": 0.09614725376527729,
+        "chrf": 26.35974604226704
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.043920591728788254
+        "bleu": 0.043920591728788254,
+        "chrf": 15.171343812958735
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.2843690426617385
+        "bleu": 0.2843690426617385,
+        "chrf": 43.51952547276378
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.10072669531344912
+        "bleu": 0.10072669531344912,
+        "chrf": 24.778318092682298
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.0708900783780892
+        "bleu": 0.0708900783780892,
+        "chrf": 24.114324582460767
       }
     ],
     "bleu": 0.12041724607757613,
+    "chrf": 26.746524341918285,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ts",
     "population": {
@@ -3072,10 +3413,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.20937766416587725
+        "bleu": 0.20937766416587725,
+        "chrf": 37.802202729584685
       }
     ],
     "bleu": 0.20937766416587725,
+    "chrf": 37.802202729584685,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3089,10 +3432,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.06328122760447334
+        "bleu": 0.06328122760447334,
+        "chrf": 21.930232101484705
       }
     ],
     "bleu": 0.06328122760447334,
+    "chrf": 21.930232101484705,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ee",
     "population": {
@@ -3107,10 +3452,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.11888625287150432
+        "bleu": 0.11888625287150432,
+        "chrf": 26.566035803697112
       }
     ],
     "bleu": 0.11888625287150432,
+    "chrf": 26.566035803697112,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3125,10 +3472,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.17517997036818814
+        "bleu": 0.17517997036818814,
+        "chrf": 35.662782661637515
       }
     ],
     "bleu": 0.17517997036818814,
+    "chrf": 35.662782661637515,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "gom",
     "population": {
@@ -3142,10 +3491,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.09766297423802607
+        "bleu": 0.09766297423802607,
+        "chrf": 24.328994687372596
       }
     ],
     "bleu": 0.09766297423802607,
+    "chrf": 24.328994687372596,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3159,10 +3510,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.21429523594040997
+        "bleu": 0.21429523594040997,
+        "chrf": 37.997802850700054
       }
     ],
     "bleu": 0.21429523594040997,
+    "chrf": 37.997802850700054,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3177,30 +3530,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.19986098660959015
+        "bleu": 0.19986098660959015,
+        "chrf": 38.27348032712485
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.21159778572935684
+        "bleu": 0.21159778572935684,
+        "chrf": 40.44461475492081
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.1588300738463149
+        "bleu": 0.1588300738463149,
+        "chrf": 31.614789846388156
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.30563834118855027
+        "bleu": 0.30563834118855027,
+        "chrf": 47.111364119506355
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.22666325208418955
+        "bleu": 0.22666325208418955,
+        "chrf": 42.07703156302399
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.18882590620933629
+        "bleu": 0.18882590620933629,
+        "chrf": 37.12550972377164
       }
     ],
     "bleu": 0.215236057611223,
+    "chrf": 39.44113172245597,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3215,10 +3575,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.16911632683538352
+        "bleu": 0.16911632683538352,
+        "chrf": 35.055560798896856
       }
     ],
     "bleu": 0.16911632683538352,
+    "chrf": 35.055560798896856,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ace",
     "population": {
@@ -3232,30 +3594,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.03567194702202585
+        "bleu": 0.03567194702202585,
+        "chrf": 15.061253284595894
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.14589621017705648
+        "bleu": 0.14589621017705648,
+        "chrf": 32.36640913542123
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.011114664716630177
+        "bleu": 0.011114664716630177,
+        "chrf": 9.54345606166579
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.24688742301342204
+        "bleu": 0.24688742301342204,
+        "chrf": 43.47153430068834
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.11534595629433392
+        "bleu": 0.11534595629433392,
+        "chrf": 32.685789872044445
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.06564720827517354
+        "bleu": 0.06564720827517354,
+        "chrf": 21.409820368208937
       }
     ],
     "bleu": 0.10342723491644035,
+    "chrf": 25.756377170437435,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "shn",
     "population": {
@@ -3270,10 +3639,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.22489436376782782
+        "bleu": 0.22489436376782782,
+        "chrf": 42.05355918136569
       }
     ],
     "bleu": 0.22489436376782782,
+    "chrf": 42.05355918136569,
     "commonvoice_hours": 158.0,
     "commonvoice_locale": "ka",
     "population": {
@@ -3289,10 +3660,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2463790593991139
+        "bleu": 0.2463790593991139,
+        "chrf": 43.16984633200989
       }
     ],
     "bleu": 0.2463790593991139,
+    "chrf": 43.16984633200989,
     "commonvoice_hours": 109.0,
     "commonvoice_locale": "gl",
     "population": {
@@ -3307,10 +3680,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.10115588577551943
+        "bleu": 0.10115588577551943,
+        "chrf": 26.041173534129616
       }
     ],
     "bleu": 0.10115588577551943,
+    "chrf": 26.041173534129616,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ln",
     "population": {
@@ -3327,10 +3702,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.03368838568519845
+        "bleu": 0.03368838568519845,
+        "chrf": 17.84430440143716
       }
     ],
     "bleu": 0.03368838568519845,
+    "chrf": 17.84430440143716,
     "commonvoice_hours": 571.0,
     "commonvoice_locale": "kab",
     "population": {
@@ -3344,10 +3721,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.21002212869070494
+        "bleu": 0.21002212869070494,
+        "chrf": 39.3726736717899
       }
     ],
     "bleu": 0.21002212869070494,
+    "chrf": 39.3726736717899,
     "commonvoice_hours": 39.0,
     "commonvoice_locale": "ky",
     "population": {
@@ -3363,10 +3742,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.0832678269022026
+        "bleu": 0.0832678269022026,
+        "chrf": 21.627442109362057
       }
     ],
     "bleu": 0.0832678269022026,
+    "chrf": 21.627442109362057,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3380,10 +3761,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2156899984074879
+        "bleu": 0.2156899984074879,
+        "chrf": 38.73293471051519
       }
     ],
     "bleu": 0.2156899984074879,
+    "chrf": 38.73293471051519,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3398,10 +3781,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.11883469874802492
+        "bleu": 0.11883469874802492,
+        "chrf": 29.188000714511094
       }
     ],
     "bleu": 0.11883469874802492,
+    "chrf": 29.188000714511094,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "bo",
     "population": {
@@ -3417,10 +3802,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.052708457503892185
+        "bleu": 0.052708457503892185,
+        "chrf": 21.077342933150366
       }
     ],
     "bleu": 0.052708457503892185,
+    "chrf": 21.077342933150366,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3434,10 +3821,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.07563412710891973
+        "bleu": 0.07563412710891973,
+        "chrf": 23.042901816075858
       }
     ],
     "bleu": 0.07563412710891973,
+    "chrf": 23.042901816075858,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3452,10 +3841,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.18698274115592
+        "bleu": 0.18698274115592,
+        "chrf": 36.17811444987121
       }
     ],
     "bleu": 0.18698274115592,
+    "chrf": 36.17811444987121,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3469,10 +3860,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.23629191535308328
+        "bleu": 0.23629191535308328,
+        "chrf": 41.457632804056466
       }
     ],
     "bleu": 0.23629191535308328,
+    "chrf": 41.457632804056466,
     "commonvoice_hours": 25.0,
     "commonvoice_locale": "lt",
     "population": {
@@ -3488,10 +3881,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.10571792263190831
+        "bleu": 0.10571792263190831,
+        "chrf": 26.72182646364123
       }
     ],
     "bleu": 0.10571792263190831,
+    "chrf": 26.72182646364123,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "ss",
     "population": {
@@ -3507,10 +3902,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3116700967049491
+        "bleu": 0.3116700967049491,
+        "chrf": 49.33859359679982
       }
     ],
     "bleu": 0.3116700967049491,
+    "chrf": 49.33859359679982,
     "commonvoice_hours": 1.8,
     "commonvoice_locale": "oc",
     "population": {
@@ -3525,10 +3922,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.20199966692246552
+        "bleu": 0.20199966692246552,
+        "chrf": 38.969447814905855
       }
     ],
     "bleu": 0.20199966692246552,
+    "chrf": 38.969447814905855,
     "commonvoice_hours": 32.0,
     "commonvoice_locale": "tt",
     "population": {
@@ -3542,10 +3941,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.25710751649810404
+        "bleu": 0.25710751649810404,
+        "chrf": 43.97419502631293
       }
     ],
     "bleu": 0.25710751649810404,
+    "chrf": 43.97419502631293,
     "commonvoice_hours": 17.0,
     "commonvoice_locale": "sl",
     "population": {
@@ -3562,10 +3963,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.07193315161893905
+        "bleu": 0.07193315161893905,
+        "chrf": 21.198050861825372
       }
     ],
     "bleu": 0.07193315161893905,
+    "chrf": 21.198050861825372,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3579,10 +3982,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.16319209573807847
+        "bleu": 0.16319209573807847,
+        "chrf": 35.5605244185656
       }
     ],
     "bleu": 0.16319209573807847,
+    "chrf": 35.5605244185656,
     "commonvoice_hours": 27.0,
     "commonvoice_locale": "cv",
     "population": {
@@ -3596,10 +4001,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.23494956875272427
+        "bleu": 0.23494956875272427,
+        "chrf": 43.58361096793536
       }
     ],
     "bleu": 0.23494956875272427,
+    "chrf": 43.58361096793536,
     "commonvoice_hours": 259.0,
     "commonvoice_locale": "ba",
     "population": {
@@ -3613,30 +4020,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.09211959148198216
+        "bleu": 0.09211959148198216,
+        "chrf": 25.078974624106454
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.08953119623294435
+        "bleu": 0.08953119623294435,
+        "chrf": 26.60406076382521
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.036353192983993324
+        "bleu": 0.036353192983993324,
+        "chrf": 15.247949668242475
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.21852974820220555
+        "bleu": 0.21852974820220555,
+        "chrf": 40.790711915222424
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.13308678184347988
+        "bleu": 0.13308678184347988,
+        "chrf": 31.89595169117875
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.06252197708878435
+        "bleu": 0.06252197708878435,
+        "chrf": 23.417269345311365
       }
     ],
     "bleu": 0.10535708130556494,
+    "chrf": 27.172486334647783,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3650,10 +4064,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2635416107541368
+        "bleu": 0.2635416107541368,
+        "chrf": 46.15461303306508
       }
     ],
     "bleu": 0.2635416107541368,
+    "chrf": 46.15461303306508,
     "commonvoice_hours": 18.0,
     "commonvoice_locale": "mk",
     "population": {
@@ -3669,30 +4085,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.14637588345836686
+        "bleu": 0.14637588345836686,
+        "chrf": 33.27328635596556
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.17061619096272593
+        "bleu": 0.17061619096272593,
+        "chrf": 35.63408741214199
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.11313843155080379
+        "bleu": 0.11313843155080379,
+        "chrf": 26.507505375137484
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.27369890360254523
+        "bleu": 0.27369890360254523,
+        "chrf": 44.34141738332121
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.19116528491340065
+        "bleu": 0.19116528491340065,
+        "chrf": 36.672507303893106
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.11054650956119119
+        "bleu": 0.11054650956119119,
+        "chrf": 30.67803234997905
       }
     ],
     "bleu": 0.16759020067483896,
+    "chrf": 34.51780603007307,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3706,10 +4129,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.061702153982680315
+        "bleu": 0.061702153982680315,
+        "chrf": 20.627265799751633
       }
     ],
     "bleu": 0.061702153982680315,
+    "chrf": 20.627265799751633,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "mni",
     "population": {
@@ -3724,10 +4149,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.24764447442173138
+        "bleu": 0.24764447442173138,
+        "chrf": 41.97335861313842
       }
     ],
     "bleu": 0.24764447442173138,
+    "chrf": 41.97335861313842,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "vec",
     "population": {
@@ -3745,10 +4172,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.31661912673403325
+        "bleu": 0.31661912673403325,
+        "chrf": 48.792392911852595
       }
     ],
     "bleu": 0.31661912673403325,
+    "chrf": 48.792392911852595,
     "commonvoice_hours": 1.5,
     "commonvoice_locale": "nn-NO",
     "population": {
@@ -3762,10 +4191,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2768559181644857
+        "bleu": 0.2768559181644857,
+        "chrf": 46.47151564403362
       }
     ],
     "bleu": 0.2768559181644857,
+    "chrf": 46.47151564403362,
     "commonvoice_hours": 5.8,
     "commonvoice_locale": "ga-IE",
     "population": {
@@ -3780,10 +4211,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.23200427142275887
+        "bleu": 0.23200427142275887,
+        "chrf": 44.00679383253316
       }
     ],
     "bleu": 0.23200427142275887,
+    "chrf": 44.00679383253316,
     "commonvoice_hours": 260.0,
     "commonvoice_locale": "lv",
     "population": {
@@ -3797,10 +4230,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1907277513380933
+        "bleu": 0.1907277513380933,
+        "chrf": 40.633564870804214
       }
     ],
     "bleu": 0.1907277513380933,
+    "chrf": 40.633564870804214,
     "commonvoice_hours": 335.0,
     "commonvoice_locale": "eu",
     "population": {
@@ -3815,10 +4250,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2003666163856343
+        "bleu": 0.2003666163856343,
+        "chrf": 39.97859549386356
       }
     ],
     "bleu": 0.2003666163856343,
+    "chrf": 39.97859549386356,
     "commonvoice_hours": 2.9,
     "commonvoice_locale": "sc",
     "population": {
@@ -3832,30 +4269,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.26325866988203733
+        "bleu": 0.26325866988203733,
+        "chrf": 45.79452460253912
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.25411630061861235
+        "bleu": 0.25411630061861235,
+        "chrf": 45.68081123321704
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.19634428413472024
+        "bleu": 0.19634428413472024,
+        "chrf": 37.402576382999925
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3267312117229826
+        "bleu": 0.3267312117229826,
+        "chrf": 50.07524798517934
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.27947088689796734
+        "bleu": 0.27947088689796734,
+        "chrf": 47.70370329275568
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.23043700347741075
+        "bleu": 0.23043700347741075,
+        "chrf": 40.64509062227617
       }
     ],
     "bleu": 0.2583930594556218,
+    "chrf": 44.550325686494546,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3869,10 +4313,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2748989006328114
+        "bleu": 0.2748989006328114,
+        "chrf": 44.151717001541904
       }
     ],
     "bleu": 0.2748989006328114,
+    "chrf": 44.151717001541904,
     "commonvoice_hours": 0.5,
     "commonvoice_locale": "yi",
     "population": {
@@ -3889,10 +4335,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.06343642810657522
+        "bleu": 0.06343642810657522,
+        "chrf": 21.96116119019238
       }
     ],
     "bleu": 0.06343642810657522,
+    "chrf": 21.96116119019238,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3906,10 +4354,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.28017358847160223
+        "bleu": 0.28017358847160223,
+        "chrf": 45.82764538788154
       }
     ],
     "bleu": 0.28017358847160223,
+    "chrf": 45.82764538788154,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -3923,10 +4373,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.31667961925197524
+        "bleu": 0.31667961925197524,
+        "chrf": 48.49344578612579
       }
     ],
     "bleu": 0.31667961925197524,
+    "chrf": 48.49344578612579,
     "commonvoice_hours": 124.0,
     "commonvoice_locale": "cy",
     "population": {
@@ -3941,10 +4393,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.23762161272302187
+        "bleu": 0.23762161272302187,
+        "chrf": 42.90409268311042
       }
     ],
     "bleu": 0.23762161272302187,
+    "chrf": 42.90409268311042,
     "commonvoice_hours": 58.0,
     "commonvoice_locale": "et",
     "population": {
@@ -3959,10 +4413,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.3066166431048003
+        "bleu": 0.3066166431048003,
+        "chrf": 47.792858053998366
       }
     ],
     "bleu": 0.3066166431048003,
+    "chrf": 47.792858053998366,
     "commonvoice_hours": 0.7,
     "commonvoice_locale": "ast",
     "population": {
@@ -3976,30 +4432,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.0026829540009563496
+        "bleu": 0.0026829540009563496,
+        "chrf": 8.366238228343608
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.0028810767141941676
+        "bleu": 0.0028810767141941676,
+        "chrf": 11.711522538883516
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.002244809403558117
+        "bleu": 0.002244809403558117,
+        "chrf": 6.87154254960649
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.1373860974763018
+        "bleu": 0.1373860974763018,
+        "chrf": 29.63649387292498
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.005449384832055512
+        "bleu": 0.005449384832055512,
+        "chrf": 13.63303465097306
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.001220306675003964
+        "bleu": 0.001220306675003964,
+        "chrf": 11.614232149229839
       }
     ],
     "bleu": 0.02531077151701165,
+    "chrf": 13.638843998326914,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "nqo",
     "population": {
@@ -4013,10 +4476,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.04422064781985695
+        "bleu": 0.04422064781985695,
+        "chrf": 18.101658717442856
       }
     ],
     "bleu": 0.04422064781985695,
+    "chrf": 18.101658717442856,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4030,30 +4495,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.2433180508520944
+        "bleu": 0.2433180508520944,
+        "chrf": 42.16628456571689
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2730358021257564
+        "bleu": 0.2730358021257564,
+        "chrf": 43.59770121161605
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.1659569541464764
+        "bleu": 0.1659569541464764,
+        "chrf": 32.04882604989477
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.3868854055493315
+        "bleu": 0.3868854055493315,
+        "chrf": 52.982923067584665
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.30131335750773747
+        "bleu": 0.30131335750773747,
+        "chrf": 47.80059076162273
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.22953082347299453
+        "bleu": 0.22953082347299453,
+        "chrf": 39.89195612874355
       }
     ],
     "bleu": 0.26667339894239844,
+    "chrf": 43.08138029752978,
     "commonvoice_hours": 5.1,
     "commonvoice_locale": "lij",
     "population": {
@@ -4067,10 +4539,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2049568393036302
+        "bleu": 0.2049568393036302,
+        "chrf": 39.12735936405683
       }
     ],
     "bleu": 0.2049568393036302,
+    "chrf": 39.12735936405683,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4084,10 +4558,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.1477332953533076
+        "bleu": 0.1477332953533076,
+        "chrf": 33.28969144955911
       }
     ],
     "bleu": 0.1477332953533076,
+    "chrf": 33.28969144955911,
     "commonvoice_hours": 282.0,
     "commonvoice_locale": "mhr",
     "population": {
@@ -4101,10 +4577,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.26991391704955275
+        "bleu": 0.26991391704955275,
+        "chrf": 44.10988575231252
       }
     ],
     "bleu": 0.26991391704955275,
+    "chrf": 44.10988575231252,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "scn",
     "population": {
@@ -4118,10 +4596,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2478859256009672
+        "bleu": 0.2478859256009672,
+        "chrf": 42.936549641246145
       }
     ],
     "bleu": 0.2478859256009672,
+    "chrf": 42.936549641246145,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4135,30 +4615,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.27335683193570975
+        "bleu": 0.27335683193570975,
+        "chrf": 45.920903610737895
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.28654849898846085
+        "bleu": 0.28654849898846085,
+        "chrf": 46.936205424540766
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.15248109554681186
+        "bleu": 0.15248109554681186,
+        "chrf": 30.516627088468166
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.38954095833662916
+        "bleu": 0.38954095833662916,
+        "chrf": 54.945196672005885
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.3175303995061197
+        "bleu": 0.3175303995061197,
+        "chrf": 51.04064318379729
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.11179045198515461
+        "bleu": 0.11179045198515461,
+        "chrf": 30.191257026189298
       }
     ],
     "bleu": 0.2552080393831477,
+    "chrf": 43.25847216762322,
     "commonvoice_hours": 8.7,
     "commonvoice_locale": "mt",
     "population": {
@@ -4172,10 +4659,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2835765541228824
+        "bleu": 0.2835765541228824,
+        "chrf": 44.80618475111259
       }
     ],
     "bleu": 0.2835765541228824,
+    "chrf": 44.80618475111259,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "lb",
     "population": {
@@ -4189,10 +4678,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.05723633975042216
+        "bleu": 0.05723633975042216,
+        "chrf": 23.461346449303786
       }
     ],
     "bleu": 0.05723633975042216,
+    "chrf": 23.461346449303786,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4207,10 +4698,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.10451524271139898
+        "bleu": 0.10451524271139898,
+        "chrf": 24.713018515709646
       }
     ],
     "bleu": 0.10451524271139898,
+    "chrf": 24.713018515709646,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4224,10 +4717,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2142644347281729
+        "bleu": 0.2142644347281729,
+        "chrf": 40.04812999157868
       }
     ],
     "bleu": 0.2142644347281729,
+    "chrf": 40.04812999157868,
     "commonvoice_hours": 0.1,
     "commonvoice_locale": "is",
     "population": {
@@ -4241,30 +4736,37 @@
     "scores": [
       {
         "model": "openai/gpt-4o-mini",
-        "bleu": 0.13327372905795537
+        "bleu": 0.13327372905795537,
+        "chrf": 28.9583532166856
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.11602460228698847
+        "bleu": 0.11602460228698847,
+        "chrf": 29.156949243212015
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.05771585788755527
+        "bleu": 0.05771585788755527,
+        "chrf": 16.752178728973906
       },
       {
         "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.2585259997356889
+        "bleu": 0.2585259997356889,
+        "chrf": 45.18784342425295
       },
       {
         "model": "deepseek/deepseek-chat",
-        "bleu": 0.22221137013078898
+        "bleu": 0.22221137013078898,
+        "chrf": 39.7496231353589
       },
       {
         "model": "microsoft/phi-4",
-        "bleu": 0.04756300118196289
+        "bleu": 0.04756300118196289,
+        "chrf": 21.060764155029197
       }
     ],
     "bleu": 0.13921909338015664,
+    "chrf": 30.144285317252095,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4279,10 +4781,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.22725256040555009
+        "bleu": 0.22725256040555009,
+        "chrf": 42.07005703444819
       }
     ],
     "bleu": 0.22725256040555009,
+    "chrf": 42.07005703444819,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "crh",
     "population": {
@@ -4296,10 +4800,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.21648792499796674
+        "bleu": 0.21648792499796674,
+        "chrf": 41.57061175824069
       }
     ],
     "bleu": 0.21648792499796674,
+    "chrf": 41.57061175824069,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "pap-AW",
     "population": {
@@ -4315,10 +4821,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.13475273241606922
+        "bleu": 0.13475273241606922,
+        "chrf": 32.044009672423776
       }
     ],
     "bleu": 0.13475273241606922,
+    "chrf": 32.044009672423776,
     "commonvoice_hours": 28.0,
     "commonvoice_locale": "ltg",
     "population": {
@@ -4332,10 +4840,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.17610729049259877
+        "bleu": 0.17610729049259877,
+        "chrf": 35.01961886760811
       }
     ],
     "bleu": 0.17610729049259877,
+    "chrf": 35.01961886760811,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4349,10 +4859,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2154279041570466
+        "bleu": 0.2154279041570466,
+        "chrf": 37.40630914857015
       }
     ],
     "bleu": 0.2154279041570466,
+    "chrf": 37.40630914857015,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4366,10 +4878,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.21180629663838063
+        "bleu": 0.21180629663838063,
+        "chrf": 39.28673819745006
       }
     ],
     "bleu": 0.21180629663838063,
+    "chrf": 39.28673819745006,
     "commonvoice_hours": 0.0,
     "commonvoice_locale": "fo",
     "population": {
@@ -4384,10 +4898,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.2255876860328074
+        "bleu": 0.2255876860328074,
+        "chrf": 40.6191779521821
       }
     ],
     "bleu": 0.2255876860328074,
+    "chrf": 40.6191779521821,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4401,10 +4917,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.14313294345831834
+        "bleu": 0.14313294345831834,
+        "chrf": 32.44676491537583
       }
     ],
     "bleu": 0.14313294345831834,
+    "chrf": 32.44676491537583,
     "commonvoice_hours": null,
     "commonvoice_locale": null,
     "population": {
@@ -4418,10 +4936,12 @@
     "scores": [
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
-        "bleu": 0.27440987441620224
+        "bleu": 0.27440987441620224,
+        "chrf": 44.40715599582661
       }
     ],
     "bleu": 0.27440987441620224,
+    "chrf": 44.40715599582661,
     "commonvoice_hours": 1436.0,
     "commonvoice_locale": "eo",
     "population": {

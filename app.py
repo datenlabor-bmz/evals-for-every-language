@@ -231,7 +231,7 @@ def create_language_stats_df(results):
 def create_scatter_plot(results):
     fig = go.Figure()
 
-    x_vals = [lang["speakers"] / 1_000_000 for lang in results]  # Convert to millions
+    x_vals = [lang["speakers"] / 1_000_000 for lang in results if lang["speakers"] >= 10_000]  # Convert to millions
     y_vals = [lang["bleu"] for lang in results]
     labels = [lang["language_name"] for lang in results]
 
@@ -259,7 +259,7 @@ def create_scatter_plot(results):
     # Use log scale for x-axis since speaker numbers vary widely
     fig.update_xaxes(type="log")
 
-    return fig
+    return gr.Plot(value=fig, label="Speaker population vs BLEU")
 
 
 def format_number(n):
@@ -450,13 +450,12 @@ with gr.Blocks(title="AI Language Translation Benchmark") as demo:
     )
 
     bar_plot = create_model_comparison_plot(results)
-    scatter_plot = create_scatter_plot(results)
     world_map = create_world_map(results)
 
     create_leaderboard_df(results)
     gr.Plot(value=bar_plot, label="Model Comparison")
     create_language_stats_df(results)
-    gr.Plot(value=scatter_plot, label="Speaker population vs BLEU")
+    create_scatter_plot(results)
     gr.Plot(value=world_map, container=False, elem_classes="fullwidth-plot")
 
     gr.Markdown(

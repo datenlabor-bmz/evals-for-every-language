@@ -40,7 +40,7 @@ client = AsyncOpenAI(
 )
 cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
-# bertscore = evaluate.load("bertscore")
+chrf = evaluate.load("chrf")
 tokenizer = NllbTokenizer.from_pretrained("facebook/nllb-200-distilled-600M")
 rate_limit = AsyncLimiter(max_rate=20, time_period=1)
 
@@ -198,15 +198,17 @@ async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
         max_tokens=1024,
     )
     prediction = reply.choices[0].message.content.strip()
-    score = bleu.compute(
+    bleu_score = bleu.compute(
         predictions=[prediction],
         references=[target_sentence],
         tokenizer=tokenizer.tokenize,
     )
+    chrf_score = chrf.compute(predictions=[prediction], references=[target_sentence])
     return {
         "model": model,
         "bcp_47": original_language["bcp_47"],
-        "bleu": score["bleu"],
+        "bleu": bleu_score["bleu"],
+        "chrf": chrf_score["score"],
         "sentence_nr": sentence_nr,
     }
 
@@ -239,11 +241,11 @@ async def main():
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
             if results_for_model:
-                bleu = mean([s["bleu"] for s in results_for_model])
                 results_for_language.append(
                     {
                         "model": model,
-                        "bleu": bleu,
+                        "bleu": mean([s["bleu"] for s in results_for_model]),
+                        "chrf": mean([s["chrf"] for s in results_for_model]),
                     }
                 )
         if results_for_language:
@@ -254,6 +256,7 @@ async def main():
                     "speakers": language.speakers,
                     "scores": results_for_language,
                     "bleu": mean([s["bleu"] for s in results_for_language]),
+                    "chrf": mean([s["chrf"] for s in results_for_language]),
                     "commonvoice_hours": language.commonvoice_hours
                     if not pd.isna(language.commonvoice_hours)
                     else None,
