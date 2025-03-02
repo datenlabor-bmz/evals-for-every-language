@@ -4,6 +4,7 @@ import gradio as gr
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 import pycountry
 
 with open("results.json") as f:
@@ -127,36 +128,14 @@ def create_leaderboard_df(results):
 
 
 def create_model_comparison_plot(results):
-    # Extract all unique models
-    models = set()
-    for lang in results:
-        for score in lang["scores"]:
-            models.add(score["model"])
-    models = list(models)
-
-    # Create traces for each model
-    traces = []
-    for model in models:
-        x_vals = []  # languages
-        y_vals = []  # BLEU scores
-
-        for lang in results:
-            model_score = next(
-                (s["bleu"] for s in lang["scores"] if s["model"] == model), None
-            )
-            if model_score is not None:
-                x_vals.append(lang["language_name"])
-                y_vals.append(model_score)
-
-        traces.append(
-            go.Bar(
-                name=model.split("/")[-1],
-                x=x_vals,
-                y=y_vals,
-            )
-        )
-
-    fig = go.Figure(data=traces)
+    top_languages = sorted(results, key=lambda x: x["speakers"], reverse=True)[:10]
+    scores_flat = [
+        {"language": lang["language_name"], "model": score["model"], "bleu": score["bleu"]}
+        for lang in top_languages
+        for score in lang["scores"]
+    ]
+    df = pd.DataFrame(scores_flat)
+    fig = px.bar(df, x="language", y="bleu", color="model", barmode="group")
     fig.update_layout(
         title="BLEU Scores by Model and Language",
         xaxis_title=None,
@@ -231,7 +210,9 @@ def create_language_stats_df(results):
 def create_scatter_plot(results):
     fig = go.Figure()
 
-    x_vals = [lang["speakers"] / 1_000_000 for lang in results if lang["speakers"] >= 10_000]  # Convert to millions
+    x_vals = [
+        lang["speakers"] / 1_000_000 for lang in results if lang["speakers"] >= 10_000
+    ]  # Convert to millions
     y_vals = [lang["bleu"] for lang in results]
     labels = [lang["language_name"] for lang in results]
 
