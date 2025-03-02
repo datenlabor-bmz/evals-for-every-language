@@ -251,9 +251,24 @@ def format_number(n):
         return f"{n/1_000:.0f}K"
     return str(n)
 
+def get_population_data():
+    import xml.etree.ElementTree as ET
+    from language_data.util import data_filename
+
+    filename = data_filename("supplementalData.xml")
+    root = ET.fromstring(open(filename).read())
+    territories = root.findall("./territoryInfo/territory")
+
+    data = {}
+    for territory in territories:
+        t_code = territory.attrib['type']
+        t_population = float(territory.attrib['population'])
+        data[t_code] = t_population
+    return data
 
 def create_world_map(results):
     # Collect all country data
+    population_data = get_population_data()
     country_data = {}
     for lang in results:
         if "population" not in lang or lang["bleu"] is None:
@@ -270,6 +285,7 @@ def create_world_map(results):
                 if iso3_code not in country_data:
                     country_data[iso3_code] = {
                         "total_speakers": 0,
+                        "population": population_data.get(country_code, 0),
                         "weighted_bleu_sum": 0,
                         "languages": [],
                     }
@@ -324,7 +340,6 @@ def create_world_map(results):
 
         # Sort languages by number of speakers
         langs = sorted(data["languages"], key=lambda x: x["speakers"], reverse=True)
-        total_speakers = sum(lang["speakers"] for lang in langs)
 
         # Take top 5 languages and summarize the rest
         main_langs = langs[:5]
@@ -333,7 +348,7 @@ def create_world_map(results):
         # Create language rows with bars
         lang_rows = []
         for lang in main_langs:
-            percentage = (lang["speakers"] / total_speakers) * 100
+            percentage = (lang["speakers"] / data["population"]) * 100
             speaker_bar = make_black_bar(percentage / 100)
             bleu_bar = make_colored_bar((lang["bleu"] - 0.2) / 0.2)
 
@@ -346,7 +361,7 @@ def create_world_map(results):
         # Add summary for other languages if any
         if other_langs:
             other_speakers = sum(lang["speakers"] for lang in other_langs)
-            other_percentage = (other_speakers / total_speakers) * 100
+            other_percentage = (other_speakers / data["population"]) * 100
             other_avg_bleu = sum(lang["bleu"] for lang in other_langs) / len(
                 other_langs
             )
@@ -360,15 +375,8 @@ def create_world_map(results):
                 f"{bleu_bar} {other_avg_bleu:.3f} BLEU<br>"
             )
 
-        # Create overall BLEU visualization
-        bleu_percentage = (weighted_avg - 0.2) / 0.2  # Scale from 0.2-0.4 to 0-1
-        overall_bleu_bar = make_colored_bar(bleu_percentage)
-
         hover_text = (
             f"<b>{country_name}</b><br><br>"
-            f"{format_number(data['total_speakers'])} speakers*<br>"
-            f"{overall_bleu_bar} {weighted_avg:.3f} BLEU<br><br>"
-            f"<b>Languages:</b><br><br>"
             f"{'<br>'.join(lang_rows)}"
         )
 
