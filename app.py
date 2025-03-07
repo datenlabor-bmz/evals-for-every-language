@@ -187,6 +187,9 @@ def create_language_stats_df(results):
             "Classi-fication": round(lang["accuracy"], 3)
             if lang["accuracy"] is not None
             else "N/A",
+            "MLM": round(lang["mlm"], 3)
+            if lang["mlm"] is not None
+            else "N/A",
             "Best Model": model_link,
             "CommonVoice Hours": commonvoice_link,
         }
@@ -204,6 +207,7 @@ def create_language_stats_df(results):
             "number", # Overall
             "number", # Translation
             "number", # Classification
+            "number", # MLM
             "markdown", # Best Model
             "markdown", # CommonVoice Hours
         ],

@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+import random
 import re
 from datetime import date
 from os import getenv
@@ -216,6 +217,7 @@ async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
 
 metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
 
+
 @cache
 async def classify_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
@@ -238,8 +240,10 @@ async def classify_and_evaluate(model, language_bcp_47, nr):
         frac=1, random_state=42
     )
     test_paragraph = test_paragraphs.iloc[nr]
+
     def topic_to_number(topic):
         return top_topics.get_loc(topic)
+
     messages = []
     for example in examples.itertuples():
         messages += [
@@ -267,6 +271,52 @@ async def classify_and_evaluate(model, language_bcp_47, nr):
         "bcp_47": language["bcp_47"],
         "true": topic_to_number(test_paragraph.topic),
         "pred": prediction,
+        "sentence_nr": nr,
+    }
+
+
+def corrupt_sentence(sentence):
+    # replace 5% of the sentence with <mask>
+    mask_length = round(len(sentence) * 0.05)
+    start = random.randint(0, len(sentence) - mask_length)
+    end = start + mask_length
+    return sentence[:start] + "<mask>" + sentence[end:]
+
+
+@cache
+async def mlm_and_evaluate(model, language_bcp_47, nr):
+    language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
+    sentences = pd.DataFrame(load_sentences(language), columns=["text"])
+    sentences["corrupt_text"] = sentences["text"].apply(corrupt_sentence)
+    examples = sentences.sample(n=10, random_state=42)
+    test_sentences = sentences[~sentences["text"].isin(examples["text"])].sample(
+        frac=1, random_state=42
+    )
+    test_sentence = test_sentences.iloc[nr]
+    messages = []
+    for example in examples.itertuples():
+        messages += [
+            {"role": "user", "content": example.corrupt_text},
+            {"role": "assistant", "content": example.text},
+        ]
+    reply = await complete(
+        model=model,
+        messages=[
+            *messages,
+            {
+                "role": "user",
+                "content": test_sentence.corrupt_text,
+            },
+        ],
+        temperature=0,
+        max_tokens=1024,
+    )
+    prediction = reply.choices[0].message.content.strip()
+    chrf_score = chrf.compute(predictions=[prediction], references=[test_sentence.text])
+    return {
+        "model": model,
+        "bcp_47": language["bcp_47"],
+        "chrf": chrf_score["score"],
         "sentence_nr": nr,
     }
 
@@ -302,6 +352,16 @@ async def main():
     classification_scores = await tqdm_asyncio.gather(
         *classification_scores, miniters=1
     )
+    print("evaluate mlm")
+    mlm_scores = [
+        mlm_and_evaluate(model, language.bcp_47, i)
+        for i in range(n_sentences)
+        for language in languages.itertuples()
+        for model in models
+        if language.in_benchmark
+        and (model == fast_model or language.bcp_47 in detailed_languages.bcp_47.values)
+    ]
+    mlm_scores = await tqdm_asyncio.gather(*mlm_scores, miniters=1)
     results = []
     for language in languages.itertuples():
         results_for_language = []
@@ -316,10 +376,16 @@ async def main():
                 for score in classification_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
+            mlm_for_model = [
+                score
+                for score in mlm_scores
+                if score["bcp_47"] == language.bcp_47 and score["model"] == model
+            ]
             bleu = mean([s["bleu"] for s in translations_for_model])
             chrf = mean([s["chrf"] for s in translations_for_model])
             accuracy = mean([s["true"] == s["pred"] for s in classifications_for_model])
-            overall_score = (bleu + accuracy) / 2
+            mlm = mean([s["chrf"] for s in mlm_for_model]) / 100
+            overall_score = (bleu + accuracy + mlm) / 3
             if translations_for_model:
                 results_for_language.append(
                     {
@@ -327,6 +393,7 @@ async def main():
                         "bleu": bleu,
                         "chrf": chrf,
                         "accuracy": accuracy,
+                        "mlm": mlm,
                         "overall_score": overall_score,
                     }
                 )
@@ -340,7 +407,10 @@ async def main():
                     "bleu": mean([s["bleu"] for s in results_for_language]),
                     "chrf": mean([s["chrf"] for s in results_for_language]),
                     "accuracy": mean([s["accuracy"] for s in results_for_language]),
-                    "overall_score": mean([s["overall_score"] for s in results_for_language]),
+                    "mlm": mean([s["mlm"] for s in results_for_language]),
+                    "overall_score": mean(
+                        [s["overall_score"] for s in results_for_language]
+                    ),
                     "commonvoice_hours": language.commonvoice_hours
                     if not pd.isna(language.commonvoice_hours)
                     else None,
