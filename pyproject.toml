@@ -20,6 +20,7 @@ dev-dependencies = [
     "langcodes>=3.5.0",
     "openai>=1.52.2",
     "protobuf>=5.28.3",
+    "pyglottolog>=3.14.0",
     "python-dotenv>=1.0.1",
     "sacrebleu>=2.4.3",
     "sentencepiece>=0.2.0",

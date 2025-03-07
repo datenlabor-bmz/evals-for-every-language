@@ -19,6 +19,7 @@ from requests import get
 from rich import print
 from tqdm.asyncio import tqdm_asyncio
 from transformers import NllbTokenizer
+from pyglottolog import Glottolog
 
 # config
 models = [
@@ -71,6 +72,15 @@ def population(bcp_47):
         if re.match(rf"^{bcp_47}-[A-Z]{{2}}$", lang)
     }
     return items
+
+
+glottolog = Glottolog("data/glottolog-5.1")
+
+
+@cache
+def language_family(iso_639_3):
+    languoid = glottolog.languoid(iso_639_3)
+    return languoid.family.name if languoid else None
 
 
 def script_name(iso15924):
@@ -406,12 +416,8 @@ async def main():
                     "scores": results,
                     "mt_bleu": mean([s["mt_bleu"] for s in results]),
                     "mt_chrf": mean([s["mt_chrf"] for s in results]),
-                    "cls_acc": mean(
-                        [s["cls_acc"] for s in results]
-                    ),
-                    "mlm_chrf": mean(
-                        [s["mlm_chrf"] for s in results]
-                    ),
+                    "cls_acc": mean([s["cls_acc"] for s in results]),
+                    "mlm_chrf": mean([s["mlm_chrf"] for s in results]),
                     "overall_score": mean([s["overall_score"] for s in results]),
                     "commonvoice_hours": language.commonvoice_hours
                     if not pd.isna(language.commonvoice_hours)
@@ -420,6 +426,9 @@ async def main():
                     if not pd.isna(language.commonvoice_locale)
                     else None,
                     "population": population(language.bcp_47),
+                    "language_family": language_family(
+                        language.flores_path.split("_")[0]
+                    ),
                 }
             )
     with open("results.json", "w") as f:

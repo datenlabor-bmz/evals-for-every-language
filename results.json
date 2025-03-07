@@ -208,7 +208,8 @@
       "ZA": 17503716,
       "ZM": 2788256,
       "ZW": 6109446
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Chinese",
@@ -252,7 +253,8 @@
       "TW": 22422850,
       "US": 2295209,
       "VN": 1085934
-    }
+    },
+    "language_family": "Sino-Tibetan"
   },
   {
     "language_name": "Hindi",
@@ -282,7 +284,8 @@
       "NP": 127377,
       "UG": 2206,
       "ZA": 1129272
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Spanish",
@@ -345,7 +348,8 @@
       "US": 31933344,
       "UY": 2981097,
       "VE": 23488572
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Arabic",
@@ -407,7 +411,8 @@
       "TN": 10549080,
       "TR": 459298,
       "YE": 22114456
-    }
+    },
+    "language_family": "Afro-Asiatic"
   },
   {
     "language_name": "Urdu",
@@ -436,7 +441,8 @@
       "IN": 66304500,
       "MU": 71727,
       "PK": 221825950
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "French",
@@ -522,7 +528,8 @@
       "VU": 149166,
       "WF": 7610,
       "YT": 110580
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Bangla",
@@ -551,7 +558,8 @@
       "GB": 263044,
       "IN": 107413290,
       "NP": 28508
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Portuguese",
@@ -591,7 +599,8 @@
       "PT": 9890592,
       "ST": 179454,
       "TL": 816395
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Punjabi",
@@ -621,7 +630,8 @@
       "KE": 10170,
       "PK": 163450700,
       "SG": 9314
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Russian",
@@ -668,7 +678,8 @@
       "UA": 20204534,
       "US": 798334,
       "UZ": 4279156
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Swahili",
@@ -701,7 +712,8 @@
       "UG": 32439750,
       "YT": 2716,
       "ZA": 1016
-    }
+    },
+    "language_family": "Atlantic-Congo"
   },
   {
     "language_name": "Indonesian",
@@ -727,7 +739,8 @@
     "population": {
       "ID": 170896640,
       "NL": 311047
-    }
+    },
+    "language_family": "Austronesian"
   },
   {
     "language_name": "German",
@@ -778,7 +791,8 @@
       "SI": 883126,
       "SK": 1196932,
       "US": 1563403
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Japanese",
@@ -805,7 +819,8 @@
       "BR": 444604,
       "CA": 52772,
       "JP": 119231650
-    }
+    },
+    "language_family": "Japonic"
   },
   {
     "language_name": "Telugu",
@@ -830,7 +845,8 @@
     "commonvoice_locale": "te",
     "population": {
       "IN": 95478480
-    }
+    },
+    "language_family": "Dravidian"
   },
   {
     "language_name": "Marathi",
@@ -855,7 +871,8 @@
     "commonvoice_locale": "mr",
     "population": {
       "IN": 92826300
-    }
+    },
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Javanese",
@@ -881,7 +898,8 @@
     "population": {
       "ID": 90788840,
       "MY": 391825
-    }
+    },
+    "language_family": "Austronesian"
   },
   {
     "language_name": "Vietnamese",
@@ -909,6 +927,7 @@
       "CN": 6970,
       "US": 1130973,
       "VN": 84900318
-    }
+    },
+    "language_family": "Austroasiatic"
   }
 ]
