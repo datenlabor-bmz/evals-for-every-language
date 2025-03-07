@@ -209,8 +209,8 @@ async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
     return {
         "model": model,
         "bcp_47": original_language["bcp_47"],
-        "bleu": bleu_score["bleu"],
-        "chrf": chrf_score["score"],
+        "mt_bleu": bleu_score["bleu"],
+        "mt_chrf": chrf_score["score"],
         "sentence_nr": sentence_nr,
     }
 
@@ -316,7 +316,7 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
     return {
         "model": model,
         "bcp_47": language["bcp_47"],
-        "chrf": chrf_score["score"],
+        "mlm_chrf": chrf_score["score"],
         "sentence_nr": nr,
     }
 
@@ -352,7 +352,7 @@ async def main():
     classification_scores = await tqdm_asyncio.gather(
         *classification_scores, miniters=1
     )
-    print("evaluate mlm")
+    print("evaluate masked language modeling")
     mlm_scores = [
         mlm_and_evaluate(model, language.bcp_47, i)
         for i in range(n_sentences)
@@ -362,9 +362,9 @@ async def main():
         and (model == fast_model or language.bcp_47 in detailed_languages.bcp_47.values)
     ]
     mlm_scores = await tqdm_asyncio.gather(*mlm_scores, miniters=1)
-    results = []
+    all_results = []
     for language in languages.itertuples():
-        results_for_language = []
+        results = []
         for model in models:
             translations_for_model = [
                 score
@@ -381,36 +381,38 @@ async def main():
                 for score in mlm_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
-            bleu = mean([s["bleu"] for s in translations_for_model])
-            chrf = mean([s["chrf"] for s in translations_for_model])
-            accuracy = mean([s["true"] == s["pred"] for s in classifications_for_model])
-            mlm = mean([s["chrf"] for s in mlm_for_model]) / 100
-            overall_score = (bleu + accuracy + mlm) / 3
+            mt_bleu = mean([s["mt_bleu"] for s in translations_for_model])
+            mt_chrf = mean([s["mt_chrf"] for s in translations_for_model])
+            cls_acc = mean([s["true"] == s["pred"] for s in classifications_for_model])
+            mlm_chrf = mean([s["mlm_chrf"] for s in mlm_for_model])
+            overall_score = (mt_chrf / 100 + cls_acc + mlm_chrf / 100) / 3
             if translations_for_model:
-                results_for_language.append(
+                results.append(
                     {
                         "model": model,
-                        "bleu": bleu,
-                        "chrf": chrf,
-                        "accuracy": accuracy,
-                        "mlm": mlm,
+                        "mt_bleu": mt_bleu,
+                        "mt_chrf": mt_chrf,
+                        "cls_acc": cls_acc,
+                        "mlm_chrf": mlm_chrf,
                         "overall_score": overall_score,
                     }
                 )
-        if results_for_language:
-            results.append(
+        if results:
+            all_results.append(
                 {
                     "language_name": language.language_name,
                     "bcp_47": language.bcp_47,
                     "speakers": language.speakers,
-                    "scores": results_for_language,
-                    "bleu": mean([s["bleu"] for s in results_for_language]),
-                    "chrf": mean([s["chrf"] for s in results_for_language]),
-                    "accuracy": mean([s["accuracy"] for s in results_for_language]),
-                    "mlm": mean([s["mlm"] for s in results_for_language]),
-                    "overall_score": mean(
-                        [s["overall_score"] for s in results_for_language]
+                    "scores": results,
+                    "mt_bleu": mean([s["mt_bleu"] for s in results]),
+                    "mt_chrf": mean([s["mt_chrf"] for s in results]),
+                    "cls_acc": mean(
+                        [s["cls_acc"] for s in results]
                     ),
+                    "mlm_chrf": mean(
+                        [s["mlm_chrf"] for s in results]
+                    ),
+                    "overall_score": mean([s["overall_score"] for s in results]),
                     "commonvoice_hours": language.commonvoice_hours
                     if not pd.isna(language.commonvoice_hours)
                     else None,
@@ -421,7 +423,7 @@ async def main():
                 }
             )
     with open("results.json", "w") as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
+        json.dump(all_results, f, indent=2, ensure_ascii=False)
 
 
 if __name__ == "__main__":
