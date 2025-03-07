@@ -1,4 +1,5 @@
 import json
+from functools import partial
 
 import gradio as gr
 import pandas as pd
@@ -68,8 +69,12 @@ def mean(lst):
 
 def create_leaderboard_df(metric):
     # Sort languages by average BLEU to determine resource categories
-    langs_with_score = [lang for lang in results if lang[metric['field_name']] is not None]
-    sorted_langs = sorted(langs_with_score, key=lambda x: x[metric['field_name']], reverse=True)
+    langs_with_score = [
+        lang for lang in results if lang[metric["field_name"]] is not None
+    ]
+    sorted_langs = sorted(
+        langs_with_score, key=lambda x: x[metric["field_name"]], reverse=True
+    )
     n_langs = len(sorted_langs)
     high_cutoff = n_langs // 4  # top 25%
     low_cutoff = n_langs - n_langs // 4  # bottom 25%
@@ -97,7 +102,7 @@ def create_leaderboard_df(metric):
                     "Mid-Resource": [],
                     "Low-Resource": [],
                 }
-            model_scores[model][category].append(score[metric['field_name']])
+            model_scores[model][category].append(score[metric["field_name"]])
 
     # Calculate average scores and create DataFrame
     leaderboard_data = []
@@ -183,14 +188,14 @@ def create_model_comparison_plot(metric):
 
     # Create appropriate title and y-axis label based on metric
     title = f"{metric['display_name']} by Model and Language"
-    y_label = metric['label']
+    y_label = metric["label"]
 
     # Flatten the data for the selected metric
     scores_flat = []
     for lang in top_languages:
         for score in lang["scores"]:
             # Get the value directly using the field name
-            value = score[metric['field_name']]
+            value = score[metric["field_name"]]
             if value is not None:
                 scores_flat.append(
                     {
@@ -292,9 +297,9 @@ def create_scatter_plot(metric):
     for lang in filtered_results:
         # Calculate average score for this metric across all models
         scores = [
-            score[metric['field_name']]
+            score[metric["field_name"]]
             for score in lang["scores"]
-            if score[metric['field_name']] is not None
+            if score[metric["field_name"]] is not None
         ]
         if scores:  # Only include if we have valid scores
             avg_score = sum(scores) / len(scores)
@@ -332,7 +337,7 @@ def create_scatter_plot(metric):
     fig.update_layout(
         title=None,
         xaxis_title="Number of Speakers (Millions)",
-        yaxis_title=metric['label'],
+        yaxis_title=metric["label"],
         height=500,
         showlegend=False,
     )
@@ -368,6 +373,7 @@ def get_population_data():
         data[t_code] = t_population
     return data
 
+
 # Helper functions for visualization
 def make_black_bar(value, max_width=10):
     filled = int(value * max_width)
@@ -396,13 +402,14 @@ def make_colored_bar(score, max_width=10):
     else:
         return "🟥" * filled + "⬜" * empty
 
+
 def create_world_map(metric):
     # Collect all country data
     population_data = get_population_data()
     country_data = {}
     for lang in results:
         # Skip languages without the required data
-        if "population" not in lang or lang[metric['field_name']] is None:
+        if "population" not in lang or lang[metric["field_name"]] is None:
             continue
 
         for country_code, speakers in lang["population"].items():
@@ -423,13 +430,13 @@ def create_world_map(metric):
 
                 country_data[iso3_code]["total_speakers"] += speakers
                 country_data[iso3_code]["weighted_score_sum"] += (
-                    speakers * lang[metric['field_name']]
+                    speakers * lang[metric["field_name"]]
                 )
                 country_data[iso3_code]["languages"].append(
                     {
                         "name": lang["language_name"],
                         "speakers": speakers,
-                        "score": lang[metric['field_name']],
+                        "score": lang[metric["field_name"]],
                     }
                 )
             except (KeyError, AttributeError):
@@ -506,7 +513,7 @@ def create_world_map(metric):
             hoverinfo="text",
             colorscale=[[0, "#ff9999"], [1, "#99ccff"]],
             colorbar=dict(
-                title=metric['label'],
+                title=metric["label"],
                 orientation="h",  # horizontal orientation
                 y=-0.2,  # position below map
                 yanchor="bottom",
@@ -519,7 +526,9 @@ def create_world_map(metric):
     )
 
     fig.update_layout(
-        title=dict(text=f"{metric['display_name']} by Country", x=0.5, xanchor="center"),
+        title=dict(
+            text=f"{metric['display_name']} by Country", x=0.5, xanchor="center"
+        ),
         geo=dict(
             showframe=True,
             showcoastlines=True,
@@ -540,23 +549,19 @@ def create_world_map(metric):
 
     return fig
 
+
 def create_metric_explanation(metric):
-    return gr.Markdown(metric['explanation'])
+    return gr.Markdown(metric["explanation"])
 
 
 # Create the visualization components
 with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
     gr.Markdown("# AI Language Proficiency Benchmark")
-    gr.Markdown(
-        "Comparing language proficiency across different models and languages."
-    )
+    gr.Markdown("Comparing language proficiency across different models and languages.")
     start_metric = METRICS["overall_performance"]
 
     metric = gr.Dropdown(
-        choices=[
-            metric_info["display_name"]
-            for metric_info in METRICS.values()
-        ],
+        choices=[metric_info["display_name"] for metric_info in METRICS.values()],
         value=start_metric["display_name"],
         label="Select Metric",
         interactive=True,
@@ -586,38 +591,58 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
     gr.Markdown(
         """
         ## Methodology
-        ### Dataset
-        - Using [FLORES-200](https://huggingface.co/datasets/openlanguagedata/flores_plus) evaluation set, a high-quality human-translated benchmark comprising 200 languages
-        - Each language is tested with the same 100 sentences
-        - All translations are from the evaluated language to a fixed set of representative languages sampled by number of speakers
-        - Language statistics sourced from Ethnologue and Wikidata
 
-        ### Models & Evaluation
-        - Models accessed through [OpenRouter](https://openrouter.ai/), including fast models of all big labs, open and closed
-        - **BLEU Score**: Translations are evaluated using the BLEU metric, which measures how similar the AI's translation is to a human reference translation -- higher is better
-        
-        ### Language Categories
-        Languages are divided into three tiers based on translation difficulty:
-        - High-Resource: Top 25% of languages by BLEU score (easiest to translate)
-        - Mid-Resource: Middle 50% of languages
-        - Low-Resource: Bottom 25% of languages (hardest to translate)
+        ### Benchmark Data
+        We use the [FLORES+](https://huggingface.co/datasets/openlanguagedata/flores_plus) dataset for evaluation, which contains parallel text in over 200 languages, as well as topic labels for each sentence. Where FLORES+ includes multiple scripts for one language, we use only the most common one.
+
+        Population and speaker data and language code resolution are from Unicode [CLDR](https://github.com/unicode-org/cldr) via the [langcodes](https://github.com/rspeer/langcodes) package.
+
+        ### AI Models
+        We use [OpenRouter](https://openrouter.ai/) to access all relevant AI models via a unified API.
+
+        ### Evaluation Tasks
+        Our benchmark includes three core tasks to assess different aspects of language understanding:
+
+        1. **Machine Translation**: Models translate text _from_ the evaluated language _to_ a fixed set of target languages. The set of target languages is representative of global speaker populations. Performance is measured using:
+           - [BLEU Score](https://huggingface.co/metrics/bleu): Measures n-gram precision with a brevity penalty
+           - [ChrF Score](https://huggingface.co/metrics/chrf): Character-level F-score that better captures morphological variations
+
+        2. **Text Classification**: Models classify text into predefined topics after being shown examples. We:
+           - Group sentences by URL into paragraphs with the same topic
+           - Use the 5 most common topics, encoded as numbers rather than English labels
+           - Provide 5 examples of each topic as few-shot examples
+           - Test the model's ability to classify new text
+           - Report accuracy as the primary metric
+
+        3. **Masked Language Modeling**: Models predict missing portions of text (marked with `<mask>`). We:
+           - Mask approximately 5% of each sentence at a random position
+           - Provide 10 examples of complete sentences paired with masked versions in a few-shot setting
+           - Evaluate predictions using ChrF score against the original text
+
+        The overall performance score combines metrics from all tasks to provide a holistic assessment of model capabilities across languages.
     """,
         container=True,
     )
-    
+
     def update_component(fn, metric_choice):
         metric = [m for m in METRICS.values() if m["display_name"] == metric_choice][0]
         return fn(metric)
-    
-    from functools import partial
 
-    # Connect the dropdown to update all plots
-    metric.change(fn=partial(update_component, create_metric_explanation), inputs=metric, outputs=metric_explanation)
+
     metric.change(
-        fn=partial(update_component, create_model_comparison_plot), inputs=metric, outputs=model_comparison_plot
+        fn=partial(update_component, create_metric_explanation),
+        inputs=metric,
+        outputs=metric_explanation,
     )
     metric.change(
-        fn=partial(update_component, create_scatter_plot), inputs=metric, outputs=scatter_plot
+        fn=partial(update_component, create_model_comparison_plot),
+        inputs=metric,
+        outputs=model_comparison_plot,
+    )
+    metric.change(
+        fn=partial(update_component, create_scatter_plot),
+        inputs=metric,
+        outputs=scatter_plot,
     )
     metric.change(
         fn=partial(update_component, create_world_map), inputs=metric, outputs=world_map
