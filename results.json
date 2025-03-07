@@ -5,17 +5,45 @@
     "speakers": 1636485840,
     "scores": [
       {
+        "model": "openai/gpt-4o-mini",
+        "bleu": 0.89404322120213,
+        "chrf": 92.53933977489264,
+        "accuracy": 0.5666666666666667,
+        "overall_score": 0.7303549439343984
+      },
+      {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.4351349353198866,
         "chrf": 54.9504915580248,
-        "accuracy": 1.0,
-        "overall_score": 0.7175674676599433
+        "accuracy": 0.6,
+        "overall_score": 0.5175674676599433
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "bleu": 0.8800468872938262,
+        "chrf": 94.30164664106223,
+        "accuracy": 0.5333333333333333,
+        "overall_score": 0.7066901103135798
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "bleu": 0.8489646963773831,
+        "chrf": 92.73129066280984,
+        "accuracy": 0.8666666666666667,
+        "overall_score": 0.8578156815220249
+      },
+      {
+        "model": "microsoft/phi-4",
+        "bleu": 0.8230104823079876,
+        "chrf": 91.69043412576788,
+        "accuracy": 0.7,
+        "overall_score": 0.7615052411539938
       }
     ],
-    "bleu": 0.4351349353198866,
-    "chrf": 54.9504915580248,
-    "accuracy": 1.0,
-    "overall_score": 0.7175674676599433,
+    "bleu": 0.7762400445002428,
+    "chrf": 85.24264055251147,
+    "accuracy": 0.6533333333333333,
+    "overall_score": 0.714786688916788,
     "commonvoice_hours": 2651.0,
     "commonvoice_locale": "en",
     "population": {
@@ -185,14 +213,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.3977775857451761,
         "chrf": 57.672913792439125,
-        "accuracy": 1.0,
-        "overall_score": 0.698888792872588
+        "accuracy": 0.5666666666666667,
+        "overall_score": 0.48222212620592136
       }
     ],
     "bleu": 0.3977775857451761,
     "chrf": 57.672913792439125,
-    "accuracy": 1.0,
-    "overall_score": 0.698888792872588,
+    "accuracy": 0.5666666666666667,
+    "overall_score": 0.48222212620592136,
     "commonvoice_hours": 422.0,
     "commonvoice_locale": "zh-TW",
     "population": {
@@ -227,14 +255,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.333521621016373,
         "chrf": 50.48364584189306,
-        "accuracy": 0.9333333333333333,
-        "overall_score": 0.6334274771748531
+        "accuracy": 0.5,
+        "overall_score": 0.4167608105081865
       }
     ],
     "bleu": 0.333521621016373,
     "chrf": 50.48364584189306,
-    "accuracy": 0.9333333333333333,
-    "overall_score": 0.6334274771748531,
+    "accuracy": 0.5,
+    "overall_score": 0.4167608105081865,
     "commonvoice_hours": 16.0,
     "commonvoice_locale": "hi-IN",
     "population": {
@@ -255,14 +283,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.29160032861883095,
         "chrf": 47.668399832701844,
-        "accuracy": 0.9666666666666667,
-        "overall_score": 0.6291334976427488
+        "accuracy": 0.5,
+        "overall_score": 0.39580016430941545
       }
     ],
     "bleu": 0.29160032861883095,
     "chrf": 47.668399832701844,
-    "accuracy": 0.9666666666666667,
-    "overall_score": 0.6291334976427488,
+    "accuracy": 0.5,
+    "overall_score": 0.39580016430941545,
     "commonvoice_hours": 446.0,
     "commonvoice_locale": "es",
     "population": {
@@ -316,14 +344,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.277257629790728,
         "chrf": 46.62779335380641,
-        "accuracy": 0.9333333333333333,
-        "overall_score": 0.6052954815620306
+        "accuracy": 0.4666666666666667,
+        "overall_score": 0.37196214822869733
       }
     ],
     "bleu": 0.277257629790728,
     "chrf": 46.62779335380641,
-    "accuracy": 0.9333333333333333,
-    "overall_score": 0.6052954815620306,
+    "accuracy": 0.4666666666666667,
+    "overall_score": 0.37196214822869733,
     "commonvoice_hours": 91.0,
     "commonvoice_locale": "ar",
     "population": {
@@ -376,14 +404,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.2659144372728079,
         "chrf": 44.14831240898717,
-        "accuracy": 0.8333333333333334,
-        "overall_score": 0.5496238853030706
+        "accuracy": 0.43333333333333335,
+        "overall_score": 0.34962388530307065
       }
     ],
     "bleu": 0.2659144372728079,
     "chrf": 44.14831240898717,
-    "accuracy": 0.8333333333333334,
-    "overall_score": 0.5496238853030706,
+    "accuracy": 0.43333333333333335,
+    "overall_score": 0.34962388530307065,
     "commonvoice_hours": 77.0,
     "commonvoice_locale": "ur",
     "population": {
@@ -403,14 +431,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.315663773358301,
         "chrf": 49.253978669350964,
-        "accuracy": 0.9666666666666667,
-        "overall_score": 0.6411652200124838
+        "accuracy": 0.5666666666666667,
+        "overall_score": 0.4411652200124838
       }
     ],
     "bleu": 0.315663773358301,
     "chrf": 49.253978669350964,
-    "accuracy": 0.9666666666666667,
-    "overall_score": 0.6411652200124838,
+    "accuracy": 0.5666666666666667,
+    "overall_score": 0.4411652200124838,
     "commonvoice_hours": 1052.0,
     "commonvoice_locale": "fr",
     "population": {
@@ -487,14 +515,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.21265887286151353,
         "chrf": 41.501657722373686,
-        "accuracy": 0.9333333333333333,
-        "overall_score": 0.5729961030974234
+        "accuracy": 0.4,
+        "overall_score": 0.3063294364307568
       }
     ],
     "bleu": 0.21265887286151353,
     "chrf": 41.501657722373686,
-    "accuracy": 0.9333333333333333,
-    "overall_score": 0.5729961030974234,
+    "accuracy": 0.4,
+    "overall_score": 0.3063294364307568,
     "commonvoice_hours": 49.0,
     "commonvoice_locale": "bn",
     "population": {
@@ -511,52 +539,17 @@
     "speakers": 237496885,
     "scores": [
       {
-        "model": "openai/gpt-4o-mini",
-        "bleu": 0.37370265193281843,
-        "chrf": 57.010201314973216,
-        "accuracy": 0.9666666666666667,
-        "overall_score": 0.6701846592997426
-      },
-      {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.27514792195783394,
         "chrf": 45.901248962808694,
-        "accuracy": 0.9666666666666667,
-        "overall_score": 0.6209072943122503
-      },
-      {
-        "model": "mistralai/mistral-small-24b-instruct-2501",
-        "bleu": 0.3691905380990064,
-        "chrf": 54.842418095352954,
-        "accuracy": 0.9666666666666667,
-        "overall_score": 0.6679286023828366
-      },
-      {
-        "model": "google/gemini-2.0-flash-001",
-        "bleu": 0.4020145367576223,
-        "chrf": 60.73156386707501,
-        "accuracy": 0.9,
-        "overall_score": 0.6510072683788112
-      },
-      {
-        "model": "deepseek/deepseek-chat",
-        "bleu": 0.39831859400698993,
-        "chrf": 59.99225659809846,
-        "accuracy": 0.9666666666666667,
-        "overall_score": 0.6824926303368283
-      },
-      {
-        "model": "microsoft/phi-4",
-        "bleu": 0.35576182901107084,
-        "chrf": 56.05856754270042,
-        "accuracy": 0.9,
-        "overall_score": 0.6278809145055354
+        "accuracy": 0.5666666666666667,
+        "overall_score": 0.42090729431225027
       }
     ],
-    "bleu": 0.36235601196089035,
-    "chrf": 55.756042730168126,
-    "accuracy": 0.9444444444444445,
-    "overall_score": 0.6534002282026674,
+    "bleu": 0.27514792195783394,
+    "chrf": 45.901248962808694,
+    "accuracy": 0.5666666666666667,
+    "overall_score": 0.42090729431225027,
     "commonvoice_hours": 177.0,
     "commonvoice_locale": "pt",
     "population": {
@@ -587,14 +580,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.3048037308116852,
         "chrf": 48.4304965568793,
-        "accuracy": 0.9666666666666667,
-        "overall_score": 0.6357351987391759
+        "accuracy": 0.5333333333333333,
+        "overall_score": 0.41906853207250927
       }
     ],
     "bleu": 0.3048037308116852,
     "chrf": 48.4304965568793,
-    "accuracy": 0.9666666666666667,
-    "overall_score": 0.6357351987391759,
+    "accuracy": 0.5333333333333333,
+    "overall_score": 0.41906853207250927,
     "commonvoice_hours": 2.3,
     "commonvoice_locale": "pa-IN",
     "population": {
@@ -604,6 +597,276 @@
       "KE": 10170,
       "PK": 163450700,
       "SG": 9314
+    }
+  },
+  {
+    "language_name": "Russian",
+    "bcp_47": "ru",
+    "speakers": 195841151,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.26108507692625094,
+        "chrf": 45.063308940468154,
+        "accuracy": 0.5666666666666667,
+        "overall_score": 0.4138758717964588
+      }
+    ],
+    "bleu": 0.26108507692625094,
+    "chrf": 45.063308940468154,
+    "accuracy": 0.5666666666666667,
+    "overall_score": 0.4138758717964588,
+    "commonvoice_hours": 242.0,
+    "commonvoice_locale": "ru",
+    "population": {
+      "BG": 1602387,
+      "BY": 1137350,
+      "CA": 211087,
+      "CN": 13940,
+      "DE": 4809582,
+      "EE": 688027,
+      "FI": 45131,
+      "GE": 359730,
+      "IL": 954303,
+      "KG": 2147364,
+      "KZ": 13746168,
+      "LT": 2185168,
+      "LV": 714867,
+      "MD": 100935,
+      "MN": 4118,
+      "PL": 6890814,
+      "RU": 133218680,
+      "SJ": 1200,
+      "TJ": 1064840,
+      "TM": 663436,
+      "UA": 20204534,
+      "US": 798334,
+      "UZ": 4279156
+    }
+  },
+  {
+    "language_name": "Swahili",
+    "bcp_47": "sw",
+    "speakers": 171610296,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.2709203338132304,
+        "chrf": 44.36399636969686,
+        "accuracy": 0.5,
+        "overall_score": 0.3854601669066152
+      }
+    ],
+    "bleu": 0.2709203338132304,
+    "chrf": 44.36399636969686,
+    "accuracy": 0.5,
+    "overall_score": 0.3854601669066152,
+    "commonvoice_hours": 411.0,
+    "commonvoice_locale": "sw",
+    "population": {
+      "BI": 6408,
+      "CD": 50890000,
+      "KE": 35328414,
+      "MZ": 9330,
+      "SO": 235142,
+      "TZ": 52697520,
+      "UG": 32439750,
+      "YT": 2716,
+      "ZA": 1016
+    }
+  },
+  {
+    "language_name": "Indonesian",
+    "bcp_47": "id",
+    "speakers": 171207687,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.27441353638286026,
+        "chrf": 46.025445629112156,
+        "accuracy": 0.6,
+        "overall_score": 0.4372067681914301
+      }
+    ],
+    "bleu": 0.27441353638286026,
+    "chrf": 46.025445629112156,
+    "accuracy": 0.6,
+    "overall_score": 0.4372067681914301,
+    "commonvoice_hours": 33.0,
+    "commonvoice_locale": "id",
+    "population": {
+      "ID": 170896640,
+      "NL": 311047
+    }
+  },
+  {
+    "language_name": "German",
+    "bcp_47": "de",
+    "speakers": 136350226,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.3338682761061998,
+        "chrf": 50.216731068308064,
+        "accuracy": 0.5666666666666667,
+        "overall_score": 0.4502674713864332
+      }
+    ],
+    "bleu": 0.3338682761061998,
+    "chrf": 50.216731068308064,
+    "accuracy": 0.5666666666666667,
+    "overall_score": 0.4502674713864332,
+    "commonvoice_hours": 1358.0,
+    "commonvoice_locale": "de",
+    "population": {
+      "AT": 8593666,
+      "BE": 2578554,
+      "BG": 557352,
+      "BR": 1778414,
+      "CA": 294014,
+      "CH": 6134913,
+      "CZ": 1605375,
+      "DE": 72945327,
+      "DK": 2758623,
+      "FI": 1002901,
+      "FR": 3392410,
+      "GB": 5918499,
+      "GR": 530355,
+      "HU": 1758929,
+      "IT": 998443,
+      "KZ": 1221882,
+      "LI": 39137,
+      "LT": 382404,
+      "LU": 395880,
+      "NA": 23671,
+      "NL": 12269084,
+      "PL": 7273637,
+      "PY": 208559,
+      "RO": 44736,
+      "SI": 883126,
+      "SK": 1196932,
+      "US": 1563403
+    }
+  },
+  {
+    "language_name": "Japanese",
+    "bcp_47": "ja",
+    "speakers": 119729026,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.2940100667664714,
+        "chrf": 46.403097021492236,
+        "accuracy": 0.6,
+        "overall_score": 0.4470050333832357
+      }
+    ],
+    "bleu": 0.2940100667664714,
+    "chrf": 46.403097021492236,
+    "accuracy": 0.6,
+    "overall_score": 0.4470050333832357,
+    "commonvoice_hours": 222.0,
+    "commonvoice_locale": "ja",
+    "population": {
+      "BR": 444604,
+      "CA": 52772,
+      "JP": 119231650
+    }
+  },
+  {
+    "language_name": "Telugu",
+    "bcp_47": "te",
+    "speakers": 95478480,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.2750887189010237,
+        "chrf": 46.31463752811596,
+        "accuracy": 0.4,
+        "overall_score": 0.33754435945051187
+      }
+    ],
+    "bleu": 0.2750887189010237,
+    "chrf": 46.31463752811596,
+    "accuracy": 0.4,
+    "overall_score": 0.33754435945051187,
+    "commonvoice_hours": 0.3,
+    "commonvoice_locale": "te",
+    "population": {
+      "IN": 95478480
+    }
+  },
+  {
+    "language_name": "Marathi",
+    "bcp_47": "mr",
+    "speakers": 92826300,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.2584800238292114,
+        "chrf": 44.69889855306244,
+        "accuracy": 0.5666666666666667,
+        "overall_score": 0.41257334524793904
+      }
+    ],
+    "bleu": 0.2584800238292114,
+    "chrf": 44.69889855306244,
+    "accuracy": 0.5666666666666667,
+    "overall_score": 0.41257334524793904,
+    "commonvoice_hours": 20.0,
+    "commonvoice_locale": "mr",
+    "population": {
+      "IN": 92826300
+    }
+  },
+  {
+    "language_name": "Javanese",
+    "bcp_47": "jv",
+    "speakers": 91180665,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.23082586428104943,
+        "chrf": 41.42591471734489,
+        "accuracy": 0.4666666666666667,
+        "overall_score": 0.34874626547385806
+      }
+    ],
+    "bleu": 0.23082586428104943,
+    "chrf": 41.42591471734489,
+    "accuracy": 0.4666666666666667,
+    "overall_score": 0.34874626547385806,
+    "commonvoice_hours": 0.0,
+    "commonvoice_locale": "jv",
+    "population": {
+      "ID": 90788840,
+      "MY": 391825
+    }
+  },
+  {
+    "language_name": "Vietnamese",
+    "bcp_47": "vi",
+    "speakers": 86222962,
+    "scores": [
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "bleu": 0.252552287345529,
+        "chrf": 43.351007120897606,
+        "accuracy": 0.5333333333333333,
+        "overall_score": 0.3929428103394311
+      }
+    ],
+    "bleu": 0.252552287345529,
+    "chrf": 43.351007120897606,
+    "accuracy": 0.5333333333333333,
+    "overall_score": 0.3929428103394311,
+    "commonvoice_hours": 5.9,
+    "commonvoice_locale": "vi",
+    "population": {
+      "CA": 184701,
+      "CN": 6970,
+      "US": 1130973,
+      "VN": 84900318
     }
   }
 ]

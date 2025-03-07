@@ -27,7 +27,7 @@ models = [
     "mistralai/mistral-small-24b-instruct-2501",  # 0.14$/M tokens
     "google/gemini-2.0-flash-001",  # 0.4$/M tokens
     # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
-    "deepseek/deepseek-chat",  # 0.9$/M tokens
+    # "deepseek/deepseek-chat",  # 0.9$/M tokens
     "microsoft/phi-4",  # 0.07$/M tokens
 ]
 fast_model = "meta-llama/llama-3.3-70b-instruct"
@@ -139,7 +139,7 @@ languages = pd.merge(
 )  # "left" because keep it simple for now
 languages["in_benchmark"] = languages["bcp_47"].isin(benchmark_languages["bcp_47"])
 
-languages = languages.sort_values(by="speakers", ascending=False).iloc[:10]
+languages = languages.sort_values(by="speakers", ascending=False).iloc[:20]
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
@@ -238,16 +238,13 @@ async def classify_and_evaluate(model, language_bcp_47, nr):
         frac=1, random_state=42
     )
     test_paragraph = test_paragraphs.iloc[nr]
-    messages = [
-        {
-            "role": "system",
-            "content": f"Categories: {'; '.join(examples['topic'].drop_duplicates())}.",
-        }
-    ]
+    def topic_to_number(topic):
+        return top_topics.get_loc(topic)
+    messages = []
     for example in examples.itertuples():
         messages += [
             {"role": "user", "content": example.text},
-            {"role": "assistant", "content": example.topic},
+            {"role": "assistant", "content": str(topic_to_number(example.topic))},
         ]
     reply = await complete(
         model=model,
@@ -259,13 +256,16 @@ async def classify_and_evaluate(model, language_bcp_47, nr):
             },
         ],
         temperature=0,
-        max_tokens=1024,
+        max_tokens=5,
     )
-    prediction = reply.choices[0].message.content.strip()
+    try:
+        prediction = int(reply.choices[0].message.content.strip())
+    except ValueError:
+        prediction = -1
     return {
         "model": model,
         "bcp_47": language["bcp_47"],
-        "true": test_paragraph.topic,
+        "true": topic_to_number(test_paragraph.topic),
         "pred": prediction,
         "sentence_nr": nr,
     }
