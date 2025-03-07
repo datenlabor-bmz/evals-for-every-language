@@ -8,12 +8,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.4351349353198866,
         "chrf": 54.9504915580248,
-        "accuracy": 1.0
+        "accuracy": 1.0,
+        "overall_score": 0.7175674676599433
       }
     ],
     "bleu": 0.4351349353198866,
     "chrf": 54.9504915580248,
     "accuracy": 1.0,
+    "overall_score": 0.7175674676599433,
     "commonvoice_hours": 2651.0,
     "commonvoice_locale": "en",
     "population": {
@@ -183,12 +185,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.3977775857451761,
         "chrf": 57.672913792439125,
-        "accuracy": 1.0
+        "accuracy": 1.0,
+        "overall_score": 0.698888792872588
       }
     ],
     "bleu": 0.3977775857451761,
     "chrf": 57.672913792439125,
     "accuracy": 1.0,
+    "overall_score": 0.698888792872588,
     "commonvoice_hours": 422.0,
     "commonvoice_locale": "zh-TW",
     "population": {
@@ -223,12 +227,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.333521621016373,
         "chrf": 50.48364584189306,
-        "accuracy": 0.9333333333333333
+        "accuracy": 0.9333333333333333,
+        "overall_score": 0.6334274771748531
       }
     ],
     "bleu": 0.333521621016373,
     "chrf": 50.48364584189306,
     "accuracy": 0.9333333333333333,
+    "overall_score": 0.6334274771748531,
     "commonvoice_hours": 16.0,
     "commonvoice_locale": "hi-IN",
     "population": {
@@ -249,12 +255,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.29160032861883095,
         "chrf": 47.668399832701844,
-        "accuracy": 0.9666666666666667
+        "accuracy": 0.9666666666666667,
+        "overall_score": 0.6291334976427488
       }
     ],
     "bleu": 0.29160032861883095,
     "chrf": 47.668399832701844,
     "accuracy": 0.9666666666666667,
+    "overall_score": 0.6291334976427488,
     "commonvoice_hours": 446.0,
     "commonvoice_locale": "es",
     "population": {
@@ -308,12 +316,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.277257629790728,
         "chrf": 46.62779335380641,
-        "accuracy": 0.9333333333333333
+        "accuracy": 0.9333333333333333,
+        "overall_score": 0.6052954815620306
       }
     ],
     "bleu": 0.277257629790728,
     "chrf": 46.62779335380641,
     "accuracy": 0.9333333333333333,
+    "overall_score": 0.6052954815620306,
     "commonvoice_hours": 91.0,
     "commonvoice_locale": "ar",
     "population": {
@@ -366,12 +376,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.2659144372728079,
         "chrf": 44.14831240898717,
-        "accuracy": 0.8333333333333334
+        "accuracy": 0.8333333333333334,
+        "overall_score": 0.5496238853030706
       }
     ],
     "bleu": 0.2659144372728079,
     "chrf": 44.14831240898717,
     "accuracy": 0.8333333333333334,
+    "overall_score": 0.5496238853030706,
     "commonvoice_hours": 77.0,
     "commonvoice_locale": "ur",
     "population": {
@@ -391,12 +403,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.315663773358301,
         "chrf": 49.253978669350964,
-        "accuracy": 0.9666666666666667
+        "accuracy": 0.9666666666666667,
+        "overall_score": 0.6411652200124838
       }
     ],
     "bleu": 0.315663773358301,
     "chrf": 49.253978669350964,
     "accuracy": 0.9666666666666667,
+    "overall_score": 0.6411652200124838,
     "commonvoice_hours": 1052.0,
     "commonvoice_locale": "fr",
     "population": {
@@ -473,12 +487,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.21265887286151353,
         "chrf": 41.501657722373686,
-        "accuracy": 0.9333333333333333
+        "accuracy": 0.9333333333333333,
+        "overall_score": 0.5729961030974234
       }
     ],
     "bleu": 0.21265887286151353,
     "chrf": 41.501657722373686,
     "accuracy": 0.9333333333333333,
+    "overall_score": 0.5729961030974234,
     "commonvoice_hours": 49.0,
     "commonvoice_locale": "bn",
     "population": {
@@ -498,42 +514,49 @@
         "model": "openai/gpt-4o-mini",
         "bleu": 0.37370265193281843,
         "chrf": 57.010201314973216,
-        "accuracy": 0.9666666666666667
+        "accuracy": 0.9666666666666667,
+        "overall_score": 0.6701846592997426
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.27514792195783394,
         "chrf": 45.901248962808694,
-        "accuracy": 0.9666666666666667
+        "accuracy": 0.9666666666666667,
+        "overall_score": 0.6209072943122503
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
         "bleu": 0.3691905380990064,
         "chrf": 54.842418095352954,
-        "accuracy": 0.9666666666666667
+        "accuracy": 0.9666666666666667,
+        "overall_score": 0.6679286023828366
       },
       {
         "model": "google/gemini-2.0-flash-001",
         "bleu": 0.4020145367576223,
         "chrf": 60.73156386707501,
-        "accuracy": 0.9
+        "accuracy": 0.9,
+        "overall_score": 0.6510072683788112
       },
       {
         "model": "deepseek/deepseek-chat",
         "bleu": 0.39831859400698993,
         "chrf": 59.99225659809846,
-        "accuracy": 0.9666666666666667
+        "accuracy": 0.9666666666666667,
+        "overall_score": 0.6824926303368283
       },
       {
         "model": "microsoft/phi-4",
         "bleu": 0.35576182901107084,
         "chrf": 56.05856754270042,
-        "accuracy": 0.9
+        "accuracy": 0.9,
+        "overall_score": 0.6278809145055354
       }
     ],
     "bleu": 0.36235601196089035,
     "chrf": 55.756042730168126,
     "accuracy": 0.9444444444444445,
+    "overall_score": 0.6534002282026674,
     "commonvoice_hours": 177.0,
     "commonvoice_locale": "pt",
     "population": {
@@ -564,12 +587,14 @@
         "model": "meta-llama/llama-3.3-70b-instruct",
         "bleu": 0.3048037308116852,
         "chrf": 48.4304965568793,
-        "accuracy": 0.9666666666666667
+        "accuracy": 0.9666666666666667,
+        "overall_score": 0.6357351987391759
       }
     ],
     "bleu": 0.3048037308116852,
     "chrf": 48.4304965568793,
     "accuracy": 0.9666666666666667,
+    "overall_score": 0.6357351987391759,
     "commonvoice_hours": 2.3,
     "commonvoice_locale": "pa-IN",
     "population": {

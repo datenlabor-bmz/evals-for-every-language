@@ -1,7 +1,6 @@
 import json
 
 import gradio as gr
-import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
@@ -160,7 +159,7 @@ def create_language_stats_df(results):
     for lang in results:
         # Find the best model and its BLEU score
         best_score = max(
-            lang["scores"] or [{"bleu": None, "model": None}], key=lambda x: x["bleu"]
+            lang["scores"] or [{"overall_score": None, "model": None}], key=lambda x: x["overall_score"]
         )
 
         model = best_score["model"]
@@ -178,18 +177,18 @@ def create_language_stats_df(results):
         row = {
             "Language": f"**{lang['language_name']}**",
             "Speakers (M)": round(lang["speakers"] / 1_000_000, 1),
-            "Models Tested": len(lang["scores"]),
-            "Average BLEU": round(lang["bleu"], 3)
+            # "Models Tested": len(lang["scores"]),
+            "Overall": round(lang["overall_score"], 3)
+            if lang["overall_score"] is not None
+            else "N/A",
+            "Trans-lation": round(lang["bleu"], 3)
             if lang["bleu"] is not None
             else "N/A",
-            "Best Model": model_link,
-            "Best Model BLEU": round(best_score["bleu"], 3)
-            if best_score["bleu"] is not None
-            else "N/A",
-            "CommonVoice Hours": commonvoice_link,
-            "Accuracy": round(lang["accuracy"], 3)
+            "Classi-fication": round(lang["accuracy"], 3)
             if lang["accuracy"] is not None
             else "N/A",
+            "Best Model": model_link,
+            "CommonVoice Hours": commonvoice_link,
         }
         flat_data.append(row)
 
@@ -199,13 +198,14 @@ def create_language_stats_df(results):
         label="Language Results",
         show_search="search",
         datatype=[
-            "markdown",
-            "number",
-            "number",
-            "number",
-            "markdown",
-            "number",
-            "markdown",
+            "markdown", # Language
+            "number", # Speakers
+            # "number", # Models Tested
+            "number", # Overall
+            "number", # Translation
+            "number", # Classification
+            "markdown", # Best Model
+            "markdown", # CommonVoice Hours
         ],
     )
 

@@ -316,14 +316,18 @@ async def main():
                 for score in classification_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
+            bleu = mean([s["bleu"] for s in translations_for_model])
+            chrf = mean([s["chrf"] for s in translations_for_model])
             accuracy = mean([s["true"] == s["pred"] for s in classifications_for_model])
+            overall_score = (bleu + accuracy) / 2
             if translations_for_model:
                 results_for_language.append(
                     {
                         "model": model,
-                        "bleu": mean([s["bleu"] for s in translations_for_model]),
-                        "chrf": mean([s["chrf"] for s in translations_for_model]),
+                        "bleu": bleu,
+                        "chrf": chrf,
                         "accuracy": accuracy,
+                        "overall_score": overall_score,
                     }
                 )
         if results_for_language:
@@ -336,6 +340,7 @@ async def main():
                     "bleu": mean([s["bleu"] for s in results_for_language]),
                     "chrf": mean([s["chrf"] for s in results_for_language]),
                     "accuracy": mean([s["accuracy"] for s in results_for_language]),
+                    "overall_score": mean([s["overall_score"] for s in results_for_language]),
                     "commonvoice_hours": language.commonvoice_hours
                     if not pd.isna(language.commonvoice_hours)
                     else None,
