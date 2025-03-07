@@ -15,13 +15,14 @@ from langcodes import Language, standardize_tag
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
 from openai import AsyncOpenAI
 from requests import get
+from rich import print
 from tqdm.asyncio import tqdm_asyncio
 from transformers import NllbTokenizer
 
 # config
 models = [
     "openai/gpt-4o-mini",  # 0.6$/M tokens
-    # "anthropic/claude-3.5-haiku", # 4$/M tokens -> too expensive
+    # "anthropic/claude-3.5-haiku", # 4$/M tokens -> too expensive for dev
     "meta-llama/llama-3.3-70b-instruct",  # 0.3$/M tokens
     "mistralai/mistral-small-24b-instruct-2501",  # 0.14$/M tokens
     "google/gemini-2.0-flash-001",  # 0.4$/M tokens
@@ -138,14 +139,14 @@ languages = pd.merge(
 )  # "left" because keep it simple for now
 languages["in_benchmark"] = languages["bcp_47"].isin(benchmark_languages["bcp_47"])
 
-languages = languages.sort_values(by="speakers", ascending=False)
+languages = languages.sort_values(by="speakers", ascending=False).iloc[:10]
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
     n=n_sentences, weights="speakers", replace=True, random_state=42
 )
 # sample languages to analyze with all models
-detailed_languages = languages[languages["in_benchmark"]].sample(n=30, random_state=42)
+detailed_languages = languages[languages["in_benchmark"]].sample(n=1, random_state=42)
 
 
 # utils
@@ -213,13 +214,71 @@ async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
     }
 
 
+metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
+
+@cache
+async def classify_and_evaluate(model, language_bcp_47, nr):
+    language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
+    sentences = pd.DataFrame(load_sentences(language), columns=["text"])
+    sentences = pd.concat([metadata, sentences], axis=1)
+    sentences = sentences.dropna(subset=["topic"])
+    sentences["topic"] = sentences["topic"].str.lower()
+    paragraphs = (
+        sentences.groupby("URL").agg({"text": " ".join, "topic": "first"}).reset_index()
+    )
+    top_topics = paragraphs.value_counts("topic").head(5).index
+    paragraphs = paragraphs[paragraphs["topic"].isin(top_topics)]
+    examples = pd.concat(
+        [
+            paragraphs[paragraphs["topic"] == t].sample(n=5, random_state=42)
+            for t in top_topics
+        ]
+    ).sample(frac=1, random_state=42)
+    test_paragraphs = paragraphs[~paragraphs["URL"].isin(examples["URL"])].sample(
+        frac=1, random_state=42
+    )
+    test_paragraph = test_paragraphs.iloc[nr]
+    messages = [
+        {
+            "role": "system",
+            "content": f"Categories: {'; '.join(examples['topic'].drop_duplicates())}.",
+        }
+    ]
+    for example in examples.itertuples():
+        messages += [
+            {"role": "user", "content": example.text},
+            {"role": "assistant", "content": example.topic},
+        ]
+    reply = await complete(
+        model=model,
+        messages=[
+            *messages,
+            {
+                "role": "user",
+                "content": test_paragraph.text,
+            },
+        ],
+        temperature=0,
+        max_tokens=1024,
+    )
+    prediction = reply.choices[0].message.content.strip()
+    return {
+        "model": model,
+        "bcp_47": language["bcp_47"],
+        "true": test_paragraph.topic,
+        "pred": prediction,
+        "sentence_nr": nr,
+    }
+
+
 def mean(lst):
     return sum(lst) / len(lst) if lst else 0
 
 
 # evaluation!
 async def main():
-    scores = [
+    print("evaluate translation")
+    translation_scores = [
         translate_and_evaluate(model, original_language.bcp_47, i)
         for i in range(n_sentences)
         for original_language in languages.itertuples()
@@ -230,22 +289,41 @@ async def main():
             or original_language.bcp_47 in detailed_languages.bcp_47.values
         )
     ]
-    scores = await tqdm_asyncio.gather(*scores, miniters=1)
+    translation_scores = await tqdm_asyncio.gather(*translation_scores, miniters=1)
+    print("evaluate classification")
+    classification_scores = [
+        classify_and_evaluate(model, language.bcp_47, i)
+        for i in range(n_sentences)
+        for language in languages.itertuples()
+        for model in models
+        if language.in_benchmark
+        and (model == fast_model or language.bcp_47 in detailed_languages.bcp_47.values)
+    ]
+    classification_scores = await tqdm_asyncio.gather(
+        *classification_scores, miniters=1
+    )
     results = []
     for language in languages.itertuples():
         results_for_language = []
         for model in models:
-            results_for_model = [
+            translations_for_model = [
                 score
-                for score in scores
+                for score in translation_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
-            if results_for_model:
+            classifications_for_model = [
+                score
+                for score in classification_scores
+                if score["bcp_47"] == language.bcp_47 and score["model"] == model
+            ]
+            accuracy = mean([s["true"] == s["pred"] for s in classifications_for_model])
+            if translations_for_model:
                 results_for_language.append(
                     {
                         "model": model,
-                        "bleu": mean([s["bleu"] for s in results_for_model]),
-                        "chrf": mean([s["chrf"] for s in results_for_model]),
+                        "bleu": mean([s["bleu"] for s in translations_for_model]),
+                        "chrf": mean([s["chrf"] for s in translations_for_model]),
+                        "accuracy": accuracy,
                     }
                 )
         if results_for_language:
@@ -257,6 +335,7 @@ async def main():
                     "scores": results_for_language,
                     "bleu": mean([s["bleu"] for s in results_for_language]),
                     "chrf": mean([s["chrf"] for s in results_for_language]),
+                    "accuracy": mean([s["accuracy"] for s in results_for_language]),
                     "commonvoice_hours": language.commonvoice_hours
                     if not pd.isna(language.commonvoice_hours)
                     else None,

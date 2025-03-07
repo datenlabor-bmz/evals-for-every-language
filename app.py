@@ -187,6 +187,9 @@ def create_language_stats_df(results):
             if best_score["bleu"] is not None
             else "N/A",
             "CommonVoice Hours": commonvoice_link,
+            "Accuracy": round(lang["accuracy"], 3)
+            if lang["accuracy"] is not None
+            else "N/A",
         }
         flat_data.append(row)
 
