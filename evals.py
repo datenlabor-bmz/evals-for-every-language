@@ -42,11 +42,11 @@ models = [
 model_fast = "meta-llama/llama-3.3-70b-instruct"
 transcription_models = [
     "elevenlabs/scribe_v1",
-    "openai/whisper-large-v3-turbo",
+    "openai/whisper-large-v3",
     # "openai/whisper-small",
     # "facebook/seamless-m4t-v2-large",
 ]
-transcription_model_fast = "openai/whisper-large-v3-turbo"
+transcription_model_fast = "elevenlabs/scribe_v1"
 n_sentences = 30
 
 # ===== setup =====
@@ -203,14 +203,14 @@ languages = pd.merge(
 )  # "left" because keep it simple for now
 languages["in_benchmark"] = languages["bcp_47"].isin(benchmark_languages["bcp_47"])
 
-languages = languages.sort_values(by="speakers", ascending=False).iloc[:5]
+languages = languages.sort_values(by="speakers", ascending=False).iloc[:10]
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
     n=n_sentences, weights="speakers", replace=True, random_state=42
 )
 # sample languages to analyze with all models
-detailed_languages = languages[languages["in_benchmark"]].iloc[:2]
+detailed_languages = languages[languages["in_benchmark"]].iloc[:5]
 
 
 # ===== define tasks and metrics =====

@@ -286,7 +286,7 @@ def create_language_stats_df(metric):
 
     df = pd.DataFrame(flat_data)
     return gr.DataFrame(
-        value=df,
+        value=df, 
         label="Language Results",
         show_search="search",
         datatype=[
@@ -297,6 +297,7 @@ def create_language_stats_df(metric):
             "number",  # Translation
             "number",  # Classification
             "number",  # MLM
+            "number",  # ASR
             "markdown",  # Best Model
             "markdown",  # CommonVoice Hours
         ],
