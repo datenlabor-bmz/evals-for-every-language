@@ -1215,6 +1215,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "gradio" },
+    { name = "language-data" },
     { name = "pandas" },
     { name = "plotly" },
     { name = "pycountry" },
@@ -1244,6 +1245,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "gradio", specifier = ">=5.16.2" },
+    { name = "language-data" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "plotly", specifier = ">=6.0.0" },
     { name = "pycountry", specifier = ">=24.6.1" },
