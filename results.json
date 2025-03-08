@@ -10,6 +10,7 @@
         "mt_chrf": 65.25187717981981,
         "cls_acc": 0.5666666666666667,
         "mlm_chrf": 97.84704595784264,
+        "asr_wer": 0,
         "overall_score": 0.7325519660144305
       },
       {
@@ -18,6 +19,7 @@
         "mt_chrf": 63.24229348441665,
         "cls_acc": 0.6,
         "mlm_chrf": 93.62602669879945,
+        "asr_wer": 0,
         "overall_score": 0.7228944006107203
       },
       {
@@ -26,6 +28,7 @@
         "mt_chrf": 63.8187259254881,
         "cls_acc": 0.5333333333333333,
         "mlm_chrf": 79.91140615317198,
+        "asr_wer": 0,
         "overall_score": 0.656878218039978
       },
       {
@@ -34,6 +37,7 @@
         "mt_chrf": 71.2288943066563,
         "cls_acc": 0.8666666666666667,
         "mlm_chrf": 98.79868693366329,
+        "asr_wer": 0,
         "overall_score": 0.8556474930232877
       },
       {
@@ -42,14 +46,34 @@
         "mt_chrf": 66.05410510011644,
         "cls_acc": 0.7,
         "mlm_chrf": 97.2290729316734,
+        "asr_wer": 0,
         "overall_score": 0.7776105934392995
+      },
+      {
+        "model": "elevenlabs/scribe_v1",
+        "mt_bleu": 0,
+        "mt_chrf": 0,
+        "cls_acc": 0,
+        "mlm_chrf": 0,
+        "asr_wer": 0.3384224589434353,
+        "overall_score": 0.0
+      },
+      {
+        "model": "openai/whisper-large-v3-turbo",
+        "mt_bleu": 0,
+        "mt_chrf": 0,
+        "cls_acc": 0,
+        "mlm_chrf": 0,
+        "asr_wer": 0.2670470041301468,
+        "overall_score": 0.0
       }
     ],
-    "mt_bleu": 0.5249271223073668,
-    "mt_chrf": 65.91917919929946,
-    "cls_acc": 0.6533333333333333,
-    "mlm_chrf": 93.48244773503015,
-    "overall_score": 0.7491165342255433,
+    "mt_bleu": 0.37494794450526203,
+    "mt_chrf": 47.08512799949961,
+    "cls_acc": 0.4666666666666667,
+    "mlm_chrf": 66.77317695359297,
+    "asr_wer": 0.08649563758194032,
+    "overall_score": 0.5350832387325309,
     "commonvoice_hours": 2651.0,
     "commonvoice_locale": "en",
     "population": {
@@ -209,8 +233,7 @@
       "ZM": 2788256,
       "ZW": 6109446
     },
-    "language_family": "Indo-European",
-    "fleurs_tag": "en_us"
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Chinese",
@@ -218,19 +241,75 @@
     "speakers": 1304678914,
     "scores": [
       {
+        "model": "openai/gpt-4o-mini",
+        "mt_bleu": 0.4887591978835982,
+        "mt_chrf": 70.23584222732792,
+        "cls_acc": 0.43333333333333335,
+        "mlm_chrf": 91.54177259254774,
+        "asr_wer": 0,
+        "overall_score": 0.6837031605106967
+      },
+      {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "mt_bleu": 0.38557580495281013,
         "mt_chrf": 61.11151378837755,
         "cls_acc": 0.5666666666666667,
         "mlm_chrf": 94.55849047452216,
+        "asr_wer": 0,
         "overall_score": 0.7077889030985546
+      },
+      {
+        "model": "mistralai/mistral-small-24b-instruct-2501",
+        "mt_bleu": 0.48838341708028316,
+        "mt_chrf": 71.48446350451079,
+        "cls_acc": 0.7666666666666667,
+        "mlm_chrf": 91.82889304045095,
+        "asr_wer": 0,
+        "overall_score": 0.799933410705428
+      },
+      {
+        "model": "google/gemini-2.0-flash-001",
+        "mt_bleu": 0.392664198976078,
+        "mt_chrf": 58.52460212908651,
+        "cls_acc": 0.8666666666666667,
+        "mlm_chrf": 94.26439448464122,
+        "asr_wer": 0,
+        "overall_score": 0.7981855442679814
+      },
+      {
+        "model": "microsoft/phi-4",
+        "mt_bleu": 0.4892212172376435,
+        "mt_chrf": 69.23023880157619,
+        "cls_acc": 0.7,
+        "mlm_chrf": 93.53779735205161,
+        "asr_wer": 0,
+        "overall_score": 0.7758934538454261
+      },
+      {
+        "model": "elevenlabs/scribe_v1",
+        "mt_bleu": 0,
+        "mt_chrf": 0,
+        "cls_acc": 0,
+        "mlm_chrf": 0,
+        "asr_wer": 1.0,
+        "overall_score": 0.0
+      },
+      {
+        "model": "openai/whisper-large-v3-turbo",
+        "mt_bleu": 0,
+        "mt_chrf": 0,
+        "cls_acc": 0,
+        "mlm_chrf": 0,
+        "asr_wer": 1.0,
+        "overall_score": 0.0
       }
     ],
-    "mt_bleu": 0.38557580495281013,
-    "mt_chrf": 61.11151378837755,
-    "cls_acc": 0.5666666666666667,
-    "mlm_chrf": 94.55849047452216,
-    "overall_score": 0.7077889030985546,
+    "mt_bleu": 0.3206576908757733,
+    "mt_chrf": 47.226665778697,
+    "cls_acc": 0.47619047619047616,
+    "mlm_chrf": 66.53304970631623,
+    "asr_wer": 0.2857142857142857,
+    "overall_score": 0.5379292103468696,
     "commonvoice_hours": 422.0,
     "commonvoice_locale": "zh-TW",
     "population": {
@@ -255,8 +334,7 @@
       "US": 2295209,
       "VN": 1085934
     },
-    "language_family": "Sino-Tibetan",
-    "fleurs_tag": "cmn_hans_cn"
+    "language_family": "Sino-Tibetan"
   },
   {
     "language_name": "Hindi",
@@ -269,14 +347,25 @@
         "mt_chrf": 53.54085104449268,
         "cls_acc": 0.5,
         "mlm_chrf": 96.17240172798218,
+        "asr_wer": 0,
         "overall_score": 0.6657108425749162
+      },
+      {
+        "model": "openai/whisper-large-v3-turbo",
+        "mt_bleu": 0,
+        "mt_chrf": 0,
+        "cls_acc": 0,
+        "mlm_chrf": 0,
+        "asr_wer": 0.40237814140706235,
+        "overall_score": 0.0
       }
     ],
-    "mt_bleu": 0.32404902340686065,
-    "mt_chrf": 53.54085104449268,
-    "cls_acc": 0.5,
-    "mlm_chrf": 96.17240172798218,
-    "overall_score": 0.6657108425749162,
+    "mt_bleu": 0.16202451170343032,
+    "mt_chrf": 26.77042552224634,
+    "cls_acc": 0.25,
+    "mlm_chrf": 48.08620086399109,
+    "asr_wer": 0.20118907070353118,
+    "overall_score": 0.3328554212874581,
     "commonvoice_hours": 16.0,
     "commonvoice_locale": "hi-IN",
     "population": {
@@ -287,8 +376,7 @@
       "UG": 2206,
       "ZA": 1129272
     },
-    "language_family": "Indo-European",
-    "fleurs_tag": "hi_in"
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Spanish",
@@ -301,14 +389,25 @@
         "mt_chrf": 52.142851262301726,
         "cls_acc": 0.5,
         "mlm_chrf": 96.92768852306384,
+        "asr_wer": 0,
         "overall_score": 0.6635684659512185
+      },
+      {
+        "model": "openai/whisper-large-v3-turbo",
+        "mt_bleu": 0,
+        "mt_chrf": 0,
+        "cls_acc": 0,
+        "mlm_chrf": 0,
+        "asr_wer": 0.16641846898275137,
+        "overall_score": 0.0
       }
     ],
-    "mt_bleu": 0.31587937116142056,
-    "mt_chrf": 52.142851262301726,
-    "cls_acc": 0.5,
-    "mlm_chrf": 96.92768852306384,
-    "overall_score": 0.6635684659512185,
+    "mt_bleu": 0.15793968558071028,
+    "mt_chrf": 26.071425631150863,
+    "cls_acc": 0.25,
+    "mlm_chrf": 48.46384426153192,
+    "asr_wer": 0.08320923449137568,
+    "overall_score": 0.3317842329756093,
     "commonvoice_hours": 446.0,
     "commonvoice_locale": "es",
     "population": {
@@ -352,8 +451,7 @@
       "UY": 2981097,
       "VE": 23488572
     },
-    "language_family": "Indo-European",
-    "fleurs_tag": "es_419"
+    "language_family": "Indo-European"
   },
   {
     "language_name": "Arabic",
@@ -366,14 +464,25 @@
         "mt_chrf": 57.51652731936118,
         "cls_acc": 0.4666666666666667,
         "mlm_chrf": 94.97026443937914,
+        "asr_wer": 0,
         "overall_score": 0.6638448614180232
+      },
+      {
+        "model": "openai/whisper-large-v3-turbo",
+        "mt_bleu": 0,
+        "mt_chrf": 0,
+        "cls_acc": 0,
+        "mlm_chrf": 0,
+        "asr_wer": 0.17249214841393012,
+        "overall_score": 0.0
       }
     ],
-    "mt_bleu": 0.39547934933771334,
-    "mt_chrf": 57.51652731936118,
-    "cls_acc": 0.4666666666666667,
-    "mlm_chrf": 94.97026443937914,
-    "overall_score": 0.6638448614180232,
+    "mt_bleu": 0.19773967466885667,
+    "mt_chrf": 28.75826365968059,
+    "cls_acc": 0.23333333333333334,
+    "mlm_chrf": 47.48513221968957,
+    "asr_wer": 0.08624607420696506,
+    "overall_score": 0.3319224307090116,
     "commonvoice_hours": 91.0,
     "commonvoice_locale": "ar",
     "population": {
@@ -416,537 +525,6 @@
       "TR": 459298,
       "YE": 22114456
     },
-    "language_family": "Afro-Asiatic",
-    "fleurs_tag": "ar_eg"
-  },
-  {
-    "language_name": "Urdu",
-    "bcp_47": "ur",
-    "speakers": 290790290,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.26585004461425726,
-        "mt_chrf": 47.37157150967947,
-        "cls_acc": 0.43333333333333335,
-        "mlm_chrf": 94.38802161979918,
-        "overall_score": 0.6169764215427066
-      }
-    ],
-    "mt_bleu": 0.26585004461425726,
-    "mt_chrf": 47.37157150967947,
-    "cls_acc": 0.43333333333333335,
-    "mlm_chrf": 94.38802161979918,
-    "overall_score": 0.6169764215427066,
-    "commonvoice_hours": 77.0,
-    "commonvoice_locale": "ur",
-    "population": {
-      "CA": 286475,
-      "GB": 2301638,
-      "IN": 66304500,
-      "MU": 71727,
-      "PK": 221825950
-    },
-    "language_family": "Indo-European",
-    "fleurs_tag": "ur_pk"
-  },
-  {
-    "language_name": "French",
-    "bcp_47": "fr",
-    "speakers": 278611507,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.3510210872150948,
-        "mt_chrf": 55.795595938804894,
-        "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 97.12318847922649,
-        "overall_score": 0.6986181702823268
-      }
-    ],
-    "mt_bleu": 0.3510210872150948,
-    "mt_chrf": 55.795595938804894,
-    "cls_acc": 0.5666666666666667,
-    "mlm_chrf": 97.12318847922649,
-    "overall_score": 0.6986181702823268,
-    "commonvoice_hours": 1052.0,
-    "commonvoice_locale": "fr",
-    "population": {
-      "AD": 5775,
-      "AT": 974540,
-      "BE": 4453866,
-      "BF": 4583788,
-      "BI": 7000822,
-      "BJ": 4502610,
-      "BL": 6837,
-      "CA": 11308230,
-      "CD": 3867640,
-      "CF": 2935521,
-      "CG": 4446179,
-      "CH": 1764838,
-      "CI": 13465739,
-      "CM": 18866600,
-      "CY": 88668,
-      "DE": 14428746,
-      "DJ": 19358,
-      "DZ": 8594580,
-      "FR": 67169718,
-      "GA": 1405473,
-      "GB": 15125053,
-      "GF": 153622,
-      "GN": 3632946,
-      "GP": 407498,
-      "GQ": 73584,
-      "GR": 954639,
-      "HT": 520187,
-      "HU": 293155,
-      "IE": 880017,
-      "IT": 3931370,
-      "KM": 473917,
-      "LB": 20238,
-      "LU": 546691,
-      "MA": 7112340,
-      "MC": 38610,
-      "MF": 32556,
-      "MG": 18599433,
-      "ML": 8994564,
-      "MQ": 427408,
-      "MR": 680932,
-      "MT": 50299,
-      "MU": 41381,
-      "NC": 278409,
-      "NE": 6603996,
-      "NL": 5011316,
-      "PF": 180024,
-      "PM": 5133,
-      "PT": 1545405,
-      "RE": 700950,
-      "RO": 3621493,
-      "RW": 2288,
-      "SC": 57589,
-      "SN": 6137196,
-      "SY": 1144506,
-      "TD": 4388124,
-      "TF": 140,
-      "TG": 5251148,
-      "TN": 8673688,
-      "US": 1862778,
-      "VU": 149166,
-      "WF": 7610,
-      "YT": 110580
-    },
-    "language_family": "Indo-European",
-    "fleurs_tag": "fr_fr"
-  },
-  {
-    "language_name": "Bangla",
-    "bcp_47": "bn",
-    "speakers": 267193288,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.2874920154082786,
-        "mt_chrf": 51.49279116112809,
-        "cls_acc": 0.4,
-        "mlm_chrf": 90.6067262108039,
-        "overall_score": 0.6069983912397733
-      }
-    ],
-    "mt_bleu": 0.2874920154082786,
-    "mt_chrf": 51.49279116112809,
-    "cls_acc": 0.4,
-    "mlm_chrf": 90.6067262108039,
-    "overall_score": 0.6069983912397733,
-    "commonvoice_hours": 49.0,
-    "commonvoice_locale": "bn",
-    "population": {
-      "BD": 159397980,
-      "CA": 90466,
-      "GB": 263044,
-      "IN": 107413290,
-      "NP": 28508
-    },
-    "language_family": "Indo-European",
-    "fleurs_tag": "bn_in"
-  },
-  {
-    "language_name": "Portuguese",
-    "bcp_47": "pt",
-    "speakers": 237496885,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.33491649454450034,
-        "mt_chrf": 54.60211868234021,
-        "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 96.52676764996336,
-        "overall_score": 0.6926518433299008
-      }
-    ],
-    "mt_bleu": 0.33491649454450034,
-    "mt_chrf": 54.60211868234021,
-    "cls_acc": 0.5666666666666667,
-    "mlm_chrf": 96.52676764996336,
-    "overall_score": 0.6926518433299008,
-    "commonvoice_hours": 177.0,
-    "commonvoice_locale": "pt",
-    "population": {
-      "AG": 1571,
-      "AO": 21789941,
-      "BR": 192661560,
-      "CA": 229934,
-      "CH": 285736,
-      "CV": 443274,
-      "FR": 882027,
-      "GB": 131522,
-      "GQ": 1,
-      "GW": 1927100,
-      "LU": 100541,
-      "MO": 30723,
-      "MZ": 8126514,
-      "PT": 9890592,
-      "ST": 179454,
-      "TL": 816395
-    },
-    "language_family": "Indo-European",
-    "fleurs_tag": "pt_br"
-  },
-  {
-    "language_name": "Punjabi",
-    "bcp_47": "pa",
-    "speakers": 203571210,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.3078917767345886,
-        "mt_chrf": 50.505686987696365,
-        "cls_acc": 0.5333333333333333,
-        "mlm_chrf": 90.10119297923285,
-        "overall_score": 0.6464673776675418
-      }
-    ],
-    "mt_bleu": 0.3078917767345886,
-    "mt_chrf": 50.505686987696365,
-    "cls_acc": 0.5333333333333333,
-    "mlm_chrf": 90.10119297923285,
-    "overall_score": 0.6464673776675418,
-    "commonvoice_hours": 2.3,
-    "commonvoice_locale": "pa-IN",
-    "population": {
-      "CA": 603106,
-      "GB": 2367400,
-      "IN": 37130520,
-      "KE": 10170,
-      "PK": 163450700,
-      "SG": 9314
-    },
-    "language_family": "Indo-European",
-    "fleurs_tag": "pa_in"
-  },
-  {
-    "language_name": "Russian",
-    "bcp_47": "ru",
-    "speakers": 195841151,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.32647288591882895,
-        "mt_chrf": 53.107657805277526,
-        "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 96.21400287169976,
-        "overall_score": 0.6866277578121466
-      }
-    ],
-    "mt_bleu": 0.32647288591882895,
-    "mt_chrf": 53.107657805277526,
-    "cls_acc": 0.5666666666666667,
-    "mlm_chrf": 96.21400287169976,
-    "overall_score": 0.6866277578121466,
-    "commonvoice_hours": 242.0,
-    "commonvoice_locale": "ru",
-    "population": {
-      "BG": 1602387,
-      "BY": 1137350,
-      "CA": 211087,
-      "CN": 13940,
-      "DE": 4809582,
-      "EE": 688027,
-      "FI": 45131,
-      "GE": 359730,
-      "IL": 954303,
-      "KG": 2147364,
-      "KZ": 13746168,
-      "LT": 2185168,
-      "LV": 714867,
-      "MD": 100935,
-      "MN": 4118,
-      "PL": 6890814,
-      "RU": 133218680,
-      "SJ": 1200,
-      "TJ": 1064840,
-      "TM": 663436,
-      "UA": 20204534,
-      "US": 798334,
-      "UZ": 4279156
-    },
-    "language_family": "Indo-European",
-    "fleurs_tag": "ru_ru"
-  },
-  {
-    "language_name": "Swahili",
-    "bcp_47": "sw",
-    "speakers": 171610296,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.29267168415814176,
-        "mt_chrf": 49.16720485265401,
-        "cls_acc": 0.5,
-        "mlm_chrf": 94.82776161604177,
-        "overall_score": 0.646649888228986
-      }
-    ],
-    "mt_bleu": 0.29267168415814176,
-    "mt_chrf": 49.16720485265401,
-    "cls_acc": 0.5,
-    "mlm_chrf": 94.82776161604177,
-    "overall_score": 0.646649888228986,
-    "commonvoice_hours": 411.0,
-    "commonvoice_locale": "sw",
-    "population": {
-      "BI": 6408,
-      "CD": 50890000,
-      "KE": 35328414,
-      "MZ": 9330,
-      "SO": 235142,
-      "TZ": 52697520,
-      "UG": 32439750,
-      "YT": 2716,
-      "ZA": 1016
-    },
-    "language_family": "Atlantic-Congo",
-    "fleurs_tag": "sw_ke"
-  },
-  {
-    "language_name": "Indonesian",
-    "bcp_47": "id",
-    "speakers": 171207687,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.30782604302717903,
-        "mt_chrf": 52.62467814017025,
-        "cls_acc": 0.6,
-        "mlm_chrf": 95.83373661382923,
-        "overall_score": 0.6948613825133316
-      }
-    ],
-    "mt_bleu": 0.30782604302717903,
-    "mt_chrf": 52.62467814017025,
-    "cls_acc": 0.6,
-    "mlm_chrf": 95.83373661382923,
-    "overall_score": 0.6948613825133316,
-    "commonvoice_hours": 33.0,
-    "commonvoice_locale": "id",
-    "population": {
-      "ID": 170896640,
-      "NL": 311047
-    },
-    "language_family": "Austronesian",
-    "fleurs_tag": "id_id"
-  },
-  {
-    "language_name": "German",
-    "bcp_47": "de",
-    "speakers": 136350226,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.3880450110946665,
-        "mt_chrf": 57.659717194572515,
-        "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 96.78268690494019,
-        "overall_score": 0.7036969025539311
-      }
-    ],
-    "mt_bleu": 0.3880450110946665,
-    "mt_chrf": 57.659717194572515,
-    "cls_acc": 0.5666666666666667,
-    "mlm_chrf": 96.78268690494019,
-    "overall_score": 0.7036969025539311,
-    "commonvoice_hours": 1358.0,
-    "commonvoice_locale": "de",
-    "population": {
-      "AT": 8593666,
-      "BE": 2578554,
-      "BG": 557352,
-      "BR": 1778414,
-      "CA": 294014,
-      "CH": 6134913,
-      "CZ": 1605375,
-      "DE": 72945327,
-      "DK": 2758623,
-      "FI": 1002901,
-      "FR": 3392410,
-      "GB": 5918499,
-      "GR": 530355,
-      "HU": 1758929,
-      "IT": 998443,
-      "KZ": 1221882,
-      "LI": 39137,
-      "LT": 382404,
-      "LU": 395880,
-      "NA": 23671,
-      "NL": 12269084,
-      "PL": 7273637,
-      "PY": 208559,
-      "RO": 44736,
-      "SI": 883126,
-      "SK": 1196932,
-      "US": 1563403
-    },
-    "language_family": "Indo-European",
-    "fleurs_tag": "de_de"
-  },
-  {
-    "language_name": "Japanese",
-    "bcp_47": "ja",
-    "speakers": 119729026,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.2478415746367755,
-        "mt_chrf": 47.19744231900874,
-        "cls_acc": 0.6,
-        "mlm_chrf": 92.47052714876749,
-        "overall_score": 0.6655598982259208
-      }
-    ],
-    "mt_bleu": 0.2478415746367755,
-    "mt_chrf": 47.19744231900874,
-    "cls_acc": 0.6,
-    "mlm_chrf": 92.47052714876749,
-    "overall_score": 0.6655598982259208,
-    "commonvoice_hours": 222.0,
-    "commonvoice_locale": "ja",
-    "population": {
-      "BR": 444604,
-      "CA": 52772,
-      "JP": 119231650
-    },
-    "language_family": "Japonic",
-    "fleurs_tag": "ja_jp"
-  },
-  {
-    "language_name": "Telugu",
-    "bcp_47": "te",
-    "speakers": 95478480,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.3785489421990512,
-        "mt_chrf": 56.9267557487146,
-        "cls_acc": 0.4,
-        "mlm_chrf": 94.3625059002704,
-        "overall_score": 0.6376308721632834
-      }
-    ],
-    "mt_bleu": 0.3785489421990512,
-    "mt_chrf": 56.9267557487146,
-    "cls_acc": 0.4,
-    "mlm_chrf": 94.3625059002704,
-    "overall_score": 0.6376308721632834,
-    "commonvoice_hours": 0.3,
-    "commonvoice_locale": "te",
-    "population": {
-      "IN": 95478480
-    },
-    "language_family": "Dravidian",
-    "fleurs_tag": "te_in"
-  },
-  {
-    "language_name": "Marathi",
-    "bcp_47": "mr",
-    "speakers": 92826300,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.29576799752528954,
-        "mt_chrf": 51.55512571221437,
-        "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 95.03930657100632,
-        "overall_score": 0.6775369964996245
-      }
-    ],
-    "mt_bleu": 0.29576799752528954,
-    "mt_chrf": 51.55512571221437,
-    "cls_acc": 0.5666666666666667,
-    "mlm_chrf": 95.03930657100632,
-    "overall_score": 0.6775369964996245,
-    "commonvoice_hours": 20.0,
-    "commonvoice_locale": "mr",
-    "population": {
-      "IN": 92826300
-    },
-    "language_family": "Indo-European",
-    "fleurs_tag": "mr_in"
-  },
-  {
-    "language_name": "Javanese",
-    "bcp_47": "jv",
-    "speakers": 91180665,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.26767127029757953,
-        "mt_chrf": 48.9335568346396,
-        "cls_acc": 0.4666666666666667,
-        "mlm_chrf": 91.68807278010077,
-        "overall_score": 0.6242943209380235
-      }
-    ],
-    "mt_bleu": 0.26767127029757953,
-    "mt_chrf": 48.9335568346396,
-    "cls_acc": 0.4666666666666667,
-    "mlm_chrf": 91.68807278010077,
-    "overall_score": 0.6242943209380235,
-    "commonvoice_hours": 0.0,
-    "commonvoice_locale": "jv",
-    "population": {
-      "ID": 90788840,
-      "MY": 391825
-    },
-    "language_family": "Austronesian",
-    "fleurs_tag": "jv_id"
-  },
-  {
-    "language_name": "Vietnamese",
-    "bcp_47": "vi",
-    "speakers": 86222962,
-    "scores": [
-      {
-        "model": "meta-llama/llama-3.3-70b-instruct",
-        "mt_bleu": 0.26736329890789995,
-        "mt_chrf": 49.52763533189073,
-        "cls_acc": 0.5333333333333333,
-        "mlm_chrf": 94.33244905535389,
-        "overall_score": 0.6573113924019266
-      }
-    ],
-    "mt_bleu": 0.26736329890789995,
-    "mt_chrf": 49.52763533189073,
-    "cls_acc": 0.5333333333333333,
-    "mlm_chrf": 94.33244905535389,
-    "overall_score": 0.6573113924019266,
-    "commonvoice_hours": 5.9,
-    "commonvoice_locale": "vi",
-    "population": {
-      "CA": 184701,
-      "CN": 6970,
-      "US": 1130973,
-      "VN": 84900318
-    },
-    "language_family": "Austroasiatic",
-    "fleurs_tag": "vi_vn"
+    "language_family": "Afro-Asiatic"
   }
 ]

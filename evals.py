@@ -1,21 +1,20 @@
 import asyncio
-import io
 import json
 import os
 import random
 import re
+import tarfile
 from datetime import date
 from os import getenv
+from pathlib import Path
 
 import evaluate
 import pandas as pd
 import requests
-import soundfile as sf
 from aiolimiter import AsyncLimiter
-from datasets import load_dataset
 from dotenv import load_dotenv
-from elevenlabs import ElevenLabs
-from huggingface_hub import InferenceClient
+from elevenlabs import AsyncElevenLabs
+from huggingface_hub import AsyncInferenceClient
 from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
@@ -26,7 +25,10 @@ from rich import print
 from tqdm.asyncio import tqdm_asyncio
 from transformers import NllbTokenizer
 
-# config
+# ===== config =====
+
+# for development purposes, all languages will be evaluated on the fast models
+# and only a sample of languages will be evaluated on all models
 models = [
     "openai/gpt-4o-mini",  # 0.6$/M tokens
     # "anthropic/claude-3.5-haiku", # 4$/M tokens -> too expensive for dev
@@ -37,15 +39,18 @@ models = [
     # "deepseek/deepseek-chat",  # 0.9$/M tokens
     "microsoft/phi-4",  # 0.07$/M tokens
 ]
-fast_model = "meta-llama/llama-3.3-70b-instruct"
+model_fast = "meta-llama/llama-3.3-70b-instruct"
 transcription_models = [
     "elevenlabs/scribe_v1",
     "openai/whisper-large-v3-turbo",
-    "openai/whisper-tiny",
+    # "openai/whisper-small",
+    # "facebook/seamless-m4t-v2-large",
 ]
+transcription_model_fast = "openai/whisper-large-v3-turbo"
 n_sentences = 30
 
-# setup
+# ===== setup =====
+
 load_dotenv()
 client = AsyncOpenAI(
     base_url="https://openrouter.ai/api/v1",
@@ -56,8 +61,11 @@ bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
 wer = evaluate.load("wer")
 tokenizer = NllbTokenizer.from_pretrained("facebook/nllb-200-distilled-600M")
-rate_limit = AsyncLimiter(max_rate=20, time_period=1)
+openrouter_rate_limit = AsyncLimiter(max_rate=20, time_period=1)
+elevenlabs_rate_limit = AsyncLimiter(max_rate=2, time_period=1)
+huggingface_rate_limit = AsyncLimiter(max_rate=5, time_period=1)
 
+# ===== load metadata =====
 
 # load general language data
 languages = {
@@ -129,60 +137,36 @@ benchmark_languages = (
     .reset_index()
 )
 
-fleurs_tags = "af_za,am_et,ar_eg,as_in,ast_es,az_az,be_by,bg_bg,bn_in,bs_ba,ca_es,ceb_ph,ckb_iq,cmn_hans_cn,cs_cz,cy_gb,da_dk,de_de,el_gr,en_us,es_419,et_ee,fa_ir,ff_sn,fi_fi,fil_ph,fr_fr,ga_ie,gl_es,gu_in,ha_ng,he_il,hi_in,hr_hr,hu_hu,hy_am,id_id,ig_ng,is_is,it_it,ja_jp,jv_id,ka_ge,kam_ke,kea_cv,kk_kz,km_kh,kn_in,ko_kr,ky_kg,lb_lu,lg_ug,ln_cd,lo_la,lt_lt,luo_ke,lv_lv,mi_nz,mk_mk,ml_in,mn_mn,mr_in,ms_my,mt_mt,my_mm,nb_no,ne_np,nl_nl,nso_za,ny_mw,oc_fr,om_et,or_in,pa_in,pl_pl,ps_af,pt_br,ro_ro,ru_ru,sd_in,sk_sk,sl_si,sn_zw,so_so,sr_rs,sv_se,sw_ke,ta_in,te_in,tg_tj,th_th,tr_tr,uk_ua,umb_ao,ur_pk,uz_uz,vi_vn,wo_sn,xh_za,yo_ng,yue_hant_hk,zu_za".split(
-    ","
-)
-fleurs = pd.DataFrame(fleurs_tags, columns=["fleurs_tag"])
+fleurs_tags = "af_za,am_et,ar_eg,as_in,ast_es,az_az,be_by,bg_bg,bn_in,bs_ba,ca_es,ceb_ph,ckb_iq,cmn_hans_cn,cs_cz,cy_gb,da_dk,de_de,el_gr,en_us,es_419,et_ee,fa_ir,ff_sn,fi_fi,fil_ph,fr_fr,ga_ie,gl_es,gu_in,ha_ng,he_il,hi_in,hr_hr,hu_hu,hy_am,id_id,ig_ng,is_is,it_it,ja_jp,jv_id,ka_ge,kam_ke,kea_cv,kk_kz,km_kh,kn_in,ko_kr,ky_kg,lb_lu,lg_ug,ln_cd,lo_la,lt_lt,luo_ke,lv_lv,mi_nz,mk_mk,ml_in,mn_mn,mr_in,ms_my,mt_mt,my_mm,nb_no,ne_np,nl_nl,nso_za,ny_mw,oc_fr,om_et,or_in,pa_in,pl_pl,ps_af,pt_br,ro_ro,ru_ru,sd_in,sk_sk,sl_si,sn_zw,so_so,sr_rs,sv_se,sw_ke,ta_in,te_in,tg_tj,th_th,tr_tr,uk_ua,umb_ao,ur_pk,uz_uz,vi_vn,wo_sn,xh_za,yo_ng,yue_hant_hk,zu_za"
+fleurs = pd.DataFrame(fleurs_tags.split(","), columns=["fleurs_tag"])
 fleurs["bcp_47"] = fleurs["fleurs_tag"].apply(
     lambda x: standardize_tag(x.rsplit("_")[0], macro=True)
 )
 
 
-@cache
-def transcribe(file, model="elevenlabs/scribe_v1"):
-    provider, modelname = model.split("/")
-    match provider:
-        case "elevenlabs":
-            client = ElevenLabs(api_key=getenv("ELEVENLABS_API_KEY"))
-            response = client.speech_to_text.convert(model_id=modelname, file=file)
-            return response.text
-        case "openai":
-            client = InferenceClient(api_key=getenv("HUGGINGFACE_ACCESS_TOKEN"))
-            output = client.automatic_speech_recognition(model=model, audio=file)
-            return output.text
-        case _:
-            raise ValueError(f"Model {model} not supported")
+def download_file(url, path):
+    response = requests.get(url)
+    with open(path, "wb") as f:
+        f.write(response.content)
 
 
-def audio_array_to_bytes(array, sample_rate=16000):
-    # convert audio array to WAV bytes
-    audio_bytes = io.BytesIO()
-    sf.write(audio_bytes, array, sample_rate, format="wav")
-    audio_bytes.seek(0)
-    return audio_bytes.getvalue()
-
-
-for tag in ["de_de"]:
-    print(tag)
-    fleurs = load_dataset(
-        "google/fleurs",
-        tag,
-        split="validation",
-        trust_remote_code=True,
-        streaming=True,
-    )
-    item = next(iter(fleurs))
-    file = audio_array_to_bytes(item["audio"]["array"])
-    true = item["raw_transcription"]
-    print(true)
-    for model in transcription_models:
-        print(model)
-        pred = transcribe(file, model=model)
-        print(pred)
-        score = wer.compute(predictions=[pred], references=[true])
-        print(f"WER: {score}")
-        print("-" * 100)
-exit()
+def download_fleurs():
+    # the huggingface loader does not allow loading only the dev set, so do it manually
+    for language in languages[languages["in_benchmark"]].itertuples():
+        tar_url = f"https://huggingface.co/datasets/google/fleurs/resolve/main/data/{language.fleurs_tag}/audio/dev.tar.gz"
+        tar_path = Path(f"data/fleurs/{language.fleurs_tag}/audio/dev.tar.gz")
+        if not tar_path.exists():
+            print(f"Downloading {tar_url} to {tar_path}")
+            tar_path.parent.mkdir(parents=True, exist_ok=True)
+            download_file(tar_url, tar_path)
+        with tarfile.open(tar_path, "r:gz") as tar:
+            tar.extractall(path=f"data/fleurs/{language.fleurs_tag}/audio")
+        tsv_url = f"https://huggingface.co/datasets/google/fleurs/resolve/main/data/{language.fleurs_tag}/dev.tsv"
+        tsv_path = Path(f"data/fleurs/{language.fleurs_tag}/dev.tsv")
+        if not tsv_path.exists():
+            print(f"Downloading {tsv_url} to {tsv_path}")
+            tsv_path.parent.mkdir(parents=True, exist_ok=True)
+            download_file(tsv_url, tsv_path)
 
 
 # load CommonVoice stats
@@ -219,35 +203,22 @@ languages = pd.merge(
 )  # "left" because keep it simple for now
 languages["in_benchmark"] = languages["bcp_47"].isin(benchmark_languages["bcp_47"])
 
-languages = languages.sort_values(by="speakers", ascending=False).iloc[:20]
+languages = languages.sort_values(by="speakers", ascending=False).iloc[:5]
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
     n=n_sentences, weights="speakers", replace=True, random_state=42
 )
 # sample languages to analyze with all models
-detailed_languages = languages[languages["in_benchmark"]].sample(n=1, random_state=42)
+detailed_languages = languages[languages["in_benchmark"]].iloc[:2]
 
 
-# utils
-def check_rate_limit():
-    print(
-        requests.get(
-            "https://openrouter.ai/api/v1/auth/key",
-            headers={"Authorization": f"Bearer {getenv('OPENROUTER_API_KEY')}"},
-        ).json()
-    )
-    models = requests.get(
-        "https://openrouter.ai/api/v1/models",
-        headers={"Authorization": f"Bearer {getenv('OPENROUTER_API_KEY')}"},
-    ).json()["data"]
-    model = next((m for m in models if m["id"] == "google/gemini-flash-1.5"), None)
-    print(model)
+# ===== define tasks and metrics =====
 
 
 @cache
 async def complete(**kwargs):
-    async with rate_limit:
+    async with openrouter_rate_limit:
         response = await client.chat.completions.create(**kwargs)
     if not response.choices:
         raise Exception(response)
@@ -401,16 +372,56 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
 
 
 @cache
+async def transcribe_elevenlabs(path, model):
+    modelname = model.split("/")[-1]
+    client = AsyncElevenLabs(api_key=getenv("ELEVENLABS_API_KEY"))
+    async with elevenlabs_rate_limit:
+        with open(path, "rb") as file:
+            response = await client.speech_to_text.convert(model_id=modelname, file=file)
+    return response.text
+
+
+@cache
+async def transcribe_huggingface(path, model):
+    client = AsyncInferenceClient(api_key=getenv("HUGGINGFACE_ACCESS_TOKEN"))
+    async with huggingface_rate_limit:
+        output = await client.automatic_speech_recognition(model=model, audio=path)
+    return output.text
+
+
+async def transcribe(path, model="elevenlabs/scribe_v1"):
+    provider, modelname = model.split("/")
+    match provider:
+        case "elevenlabs":
+            return await transcribe_elevenlabs(path, modelname)
+        case "openai" | "facebook":
+            return await transcribe_huggingface(path, model)
+        case _:
+            raise ValueError(f"Model {model} not supported")
+
+
 async def transcribe_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
-    sentences = pd.DataFrame(load_sentences(language), columns=["text"])
+    fleurs = pd.read_csv(f"data/fleurs/{language.fleurs_tag}/dev.tsv", sep="\t", names=["id", "fname", "raw_transcription", "transcription", "words", "id2", "gender"])
+    item = fleurs.iloc[nr]
+    path = f"data/fleurs/{language.fleurs_tag}/audio/dev/{item.fname}"
+    pred = await transcribe(path, model=model)
+    score = wer.compute(predictions=[pred], references=[item.transcription])    
+    return {
+        "model": model,
+        "bcp_47": language["bcp_47"],
+        "asr_wer": score,
+        "sentence_nr": nr,
+    }
+
+
+# ===== run evaluation and aggregate results =====
 
 
 def mean(lst):
     return sum(lst) / len(lst) if lst else 0
 
 
-# evaluation!
 async def main():
     print("evaluate translation")
     translation_scores = [
@@ -420,7 +431,7 @@ async def main():
         for model in models
         if original_language.in_benchmark
         and (
-            model == fast_model
+            model == model_fast
             or original_language.bcp_47 in detailed_languages.bcp_47.values
         )
     ]
@@ -432,7 +443,7 @@ async def main():
         for language in languages.itertuples()
         for model in models
         if language.in_benchmark
-        and (model == fast_model or language.bcp_47 in detailed_languages.bcp_47.values)
+        and (model == model_fast or language.bcp_47 in detailed_languages.bcp_47.values)
     ]
     classification_scores = await tqdm_asyncio.gather(
         *classification_scores, miniters=1
@@ -444,34 +455,53 @@ async def main():
         for language in languages.itertuples()
         for model in models
         if language.in_benchmark
-        and (model == fast_model or language.bcp_47 in detailed_languages.bcp_47.values)
+        and (model == model_fast or language.bcp_47 in detailed_languages.bcp_47.values)
     ]
     mlm_scores = await tqdm_asyncio.gather(*mlm_scores, miniters=1)
+    print("evaluate transcription")
+    transcription_scores = [
+        transcribe_and_evaluate(model, language.bcp_47, i)
+        for i in range(n_sentences)
+        for language in languages.itertuples()
+        for model in transcription_models
+        if language.in_benchmark
+        and (
+            model == transcription_model_fast
+            or language.bcp_47 in detailed_languages.bcp_47.values
+        )
+    ]
+    transcription_scores = await tqdm_asyncio.gather(*transcription_scores, miniters=1)
     all_results = []
     for language in languages.itertuples():
         results = []
-        for model in models:
-            translations_for_model = [
+        for model in models + transcription_models:
+            scores_mt = [
                 score
                 for score in translation_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
-            classifications_for_model = [
+            scores_cls = [
                 score
                 for score in classification_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
-            mlm_for_model = [
+            scores_mlm = [
                 score
                 for score in mlm_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
-            mt_bleu = mean([s["mt_bleu"] for s in translations_for_model])
-            mt_chrf = mean([s["mt_chrf"] for s in translations_for_model])
-            cls_acc = mean([s["true"] == s["pred"] for s in classifications_for_model])
-            mlm_chrf = mean([s["mlm_chrf"] for s in mlm_for_model])
+            scores_asr = [
+                score
+                for score in transcription_scores
+                if score["bcp_47"] == language.bcp_47 and score["model"] == model
+            ]
+            mt_bleu = mean([s["mt_bleu"] for s in scores_mt])
+            mt_chrf = mean([s["mt_chrf"] for s in scores_mt])
+            cls_acc = mean([s["true"] == s["pred"] for s in scores_cls])
+            mlm_chrf = mean([s["mlm_chrf"] for s in scores_mlm])
+            asr_wer = mean([s["asr_wer"] for s in scores_asr])
             overall_score = (mt_chrf / 100 + cls_acc + mlm_chrf / 100) / 3
-            if translations_for_model:
+            if scores_mt or scores_asr:
                 results.append(
                     {
                         "model": model,
@@ -479,6 +509,7 @@ async def main():
                         "mt_chrf": mt_chrf,
                         "cls_acc": cls_acc,
                         "mlm_chrf": mlm_chrf,
+                        "asr_wer": asr_wer,
                         "overall_score": overall_score,
                     }
                 )
@@ -493,6 +524,7 @@ async def main():
                     "mt_chrf": mean([s["mt_chrf"] for s in results]),
                     "cls_acc": mean([s["cls_acc"] for s in results]),
                     "mlm_chrf": mean([s["mlm_chrf"] for s in results]),
+                    "asr_wer": mean([s["asr_wer"] for s in results]),
                     "overall_score": mean([s["overall_score"] for s in results]),
                     "commonvoice_hours": language.commonvoice_hours
                     if not pd.isna(language.commonvoice_hours)
@@ -504,7 +536,6 @@ async def main():
                     "language_family": language_family(
                         language.flores_path.split("_")[0]
                     ),
-                    "fleurs_tag": language.fleurs_tag,
                 }
             )
     with open("results.json", "w") as f:
@@ -512,5 +543,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    # check_rate_limit()
+    download_fleurs()
     asyncio.run(main())
