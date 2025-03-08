@@ -60,6 +60,17 @@ METRICS = {
     between predicted and actual text. Higher scores indicate better language understanding.
     """,
     },
+    "asr_wer": {
+        "display_name": "Automatic Speech Recognition (WER)",
+        "field_name": "asr_wer",
+        "label": "WER",
+        "explanation": """
+    **Automatic Speech Recognition Word Error Rate**: Measures the accuracy of speech-to-text transcription.
+    It calculates the minimum number of word edits (insertions, deletions, substitutions) needed to transform the 
+    transcription into the reference text, divided by the number of words in the reference.
+    Lower scores indicate better performance, with 0 being perfect transcription.
+    """,
+    },
 }
 
 
@@ -195,6 +206,8 @@ def create_model_comparison_plot(metric):
     for lang in top_languages:
         for score in lang["scores"]:
             # Get the value directly using the field name
+            if metric["field_name"] not in score:
+                continue
             value = score[metric["field_name"]]
             if value is not None:
                 scores_flat.append(
@@ -254,14 +267,17 @@ def create_language_stats_df(metric):
             "Overall": round(lang["overall_score"], 3)
             if lang["overall_score"] is not None
             else "N/A",
-            "Trans-lation": round(lang["mt_bleu"], 3)
+            "Translation": round(lang["mt_bleu"], 3)
             if lang["mt_bleu"] is not None
             else "N/A",
-            "Classi-fication": round(lang["cls_acc"], 3)
+            "Classification": round(lang["cls_acc"], 3)
             if lang["cls_acc"] is not None
             else "N/A",
             "MLM": round(lang["mlm_chrf"], 3)
             if lang["mlm_chrf"] is not None
+            else "N/A",
+            "ASR": round(lang["asr_wer"], 3)
+            if lang["asr_wer"] is not None
             else "N/A",
             "Best Model": model_link,
             "CommonVoice Hours": commonvoice_link,
@@ -299,7 +315,7 @@ def create_scatter_plot(metric):
         scores = [
             score[metric["field_name"]]
             for score in lang["scores"]
-            if score[metric["field_name"]] is not None
+            if metric["field_name"] in score and score[metric["field_name"]] is not None
         ]
         if scores:  # Only include if we have valid scores
             avg_score = sum(scores) / len(scores)
