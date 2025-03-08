@@ -15,7 +15,9 @@ dependencies = [
 dev-dependencies = [
     "aiolimiter>=1.1.0",
     "bert-score>=0.3.13",
+    "elevenlabs>=1.53.0",
     "evaluate==0.4.0",
+    "huggingface-hub>=0.29.1",
     "joblib>=1.4.2",
     "langcodes>=3.5.0",
     "openai>=1.52.2",

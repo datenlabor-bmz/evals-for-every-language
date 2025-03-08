@@ -566,6 +566,23 @@ wheels = [
 ]
 
 [[package]]
+name = "elevenlabs"
+version = "1.53.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "pydantic" },
+    { name = "pydantic-core" },
+    { name = "requests" },
+    { name = "typing-extensions" },
+    { name = "websockets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/83/c1/5bf18b8f8be29032196484a4f55d1ec85ada125d3a5df87a5ebe5b754a0e/elevenlabs-1.53.0.tar.gz", hash = "sha256:bc900f7e6123575014672e5f4f004a12c75508d6b22e370a1327bd0d536b0f0a", size = 149562 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5f/b8/63c7bbbe9d02b1a16afe02512727e4afa17e25ed85c2a0f298b31ac1ddb1/elevenlabs-1.53.0-py3-none-any.whl", hash = "sha256:90b33135204bdd538ab3624dff31aa57b3192f660f72b71c2bf18b8436a53e2d", size = 344998 },
+]
+
+[[package]]
 name = "evaluate"
 version = "0.4.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1194,7 +1211,9 @@ dependencies = [
 dev = [
     { name = "aiolimiter" },
     { name = "bert-score" },
+    { name = "elevenlabs" },
     { name = "evaluate" },
+    { name = "huggingface-hub" },
     { name = "joblib" },
     { name = "langcodes" },
     { name = "openai" },
@@ -1220,7 +1239,9 @@ requires-dist = [
 dev = [
     { name = "aiolimiter", specifier = ">=1.1.0" },
     { name = "bert-score", specifier = ">=0.3.13" },
+    { name = "elevenlabs", specifier = ">=1.53.0" },
     { name = "evaluate", specifier = "==0.4.0" },
+    { name = "huggingface-hub" },
     { name = "joblib", specifier = ">=1.4.2" },
     { name = "langcodes", specifier = ">=3.5.0" },
     { name = "openai", specifier = ">=1.52.2" },

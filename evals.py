@@ -11,15 +11,17 @@ import pandas as pd
 import requests
 from aiolimiter import AsyncLimiter
 from dotenv import load_dotenv
+from elevenlabs import ElevenLabs
 from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
 from openai import AsyncOpenAI
+from pyglottolog import Glottolog
 from requests import get
 from rich import print
 from tqdm.asyncio import tqdm_asyncio
 from transformers import NllbTokenizer
-from pyglottolog import Glottolog
+from huggingface_hub import InferenceClient
 
 # config
 models = [
@@ -46,6 +48,28 @@ bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
 tokenizer = NllbTokenizer.from_pretrained("facebook/nllb-200-distilled-600M")
 rate_limit = AsyncLimiter(max_rate=20, time_period=1)
+
+
+@cache
+def transcribe(filename, model="elevenlabs/scribe_v1"):
+    provider, modelname = model.split("/")
+    with open(filename, "rb") as f:
+        audio = f.read()
+    match provider:
+        case "elevenlabs":
+            client = ElevenLabs(api_key=getenv("ELEVENLABS_API_KEY"))
+            response = client.speech_to_text.convert(model_id=modelname, file=audio)
+            return response.text
+        case "openai":
+            client = InferenceClient(api_key=getenv("HUGGINGFACE_ACCESS_TOKEN"))
+            output = client.automatic_speech_recognition(model=model, audio=audio)
+            return output.text
+        case _:
+            raise ValueError(f"Model {model} not supported")
+
+
+print(transcribe("data/test.m4a", "openai/whisper-large-v3-turbo"))
+exit()
 
 
 # load general language data
