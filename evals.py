@@ -377,7 +377,9 @@ async def transcribe_elevenlabs(path, model):
     client = AsyncElevenLabs(api_key=getenv("ELEVENLABS_API_KEY"))
     async with elevenlabs_rate_limit:
         with open(path, "rb") as file:
-            response = await client.speech_to_text.convert(model_id=modelname, file=file)
+            response = await client.speech_to_text.convert(
+                model_id=modelname, file=file
+            )
     return response.text
 
 
@@ -400,13 +402,26 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
             raise ValueError(f"Model {model} not supported")
 
 
+@cache
 async def transcribe_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
-    fleurs = pd.read_csv(f"data/fleurs/{language.fleurs_tag}/dev.tsv", sep="\t", names=["id", "fname", "raw_transcription", "transcription", "words", "id2", "gender"])
+    fleurs = pd.read_csv(
+        f"data/fleurs/{language.fleurs_tag}/dev.tsv",
+        sep="\t",
+        names=[
+            "id",
+            "fname",
+            "raw_transcription",
+            "transcription",
+            "words",
+            "id2",
+            "gender",
+        ],
+    )
     item = fleurs.iloc[nr]
     path = f"data/fleurs/{language.fleurs_tag}/audio/dev/{item.fname}"
     pred = await transcribe(path, model=model)
-    score = wer.compute(predictions=[pred], references=[item.transcription])    
+    score = wer.compute(predictions=[pred], references=[item.transcription])
     return {
         "model": model,
         "bcp_47": language["bcp_47"],
@@ -419,7 +434,7 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
 
 
 def mean(lst):
-    return sum(lst) / len(lst) if lst else 0
+    return sum(lst) / len(lst) if lst else None
 
 
 async def main():
@@ -474,7 +489,7 @@ async def main():
     all_results = []
     for language in languages.itertuples():
         results = []
-        for model in models + transcription_models:
+        for model in models:
             scores_mt = [
                 score
                 for score in translation_scores
@@ -490,54 +505,68 @@ async def main():
                 for score in mlm_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
+            if not scores_mt:
+                continue
+            mt_bleu = mean([s["mt_bleu"] for s in scores_mt])
+            mt_chrf = mean([s["mt_chrf"] for s in scores_mt])
+            cls_acc = mean([s["true"] == s["pred"] for s in scores_cls])
+            mlm_chrf = mean([s["mlm_chrf"] for s in scores_mlm])
+            overall_score = (mt_chrf / 100 + cls_acc + mlm_chrf / 100) / 3
+            results.append(
+                {
+                    "model": model,
+                    "model_type": "text-to-text",
+                    "mt_bleu": mt_bleu,
+                    "mt_chrf": mt_chrf,
+                    "cls_acc": cls_acc,
+                    "mlm_chrf": mlm_chrf,
+                    "overall_score": overall_score,
+                }
+            )
+        for model in transcription_models:
             scores_asr = [
                 score
                 for score in transcription_scores
                 if score["bcp_47"] == language.bcp_47 and score["model"] == model
             ]
-            mt_bleu = mean([s["mt_bleu"] for s in scores_mt])
-            mt_chrf = mean([s["mt_chrf"] for s in scores_mt])
-            cls_acc = mean([s["true"] == s["pred"] for s in scores_cls])
-            mlm_chrf = mean([s["mlm_chrf"] for s in scores_mlm])
+            if not scores_asr:
+                continue
             asr_wer = mean([s["asr_wer"] for s in scores_asr])
-            overall_score = (mt_chrf / 100 + cls_acc + mlm_chrf / 100) / 3
-            if scores_mt or scores_asr:
-                results.append(
-                    {
-                        "model": model,
-                        "mt_bleu": mt_bleu,
-                        "mt_chrf": mt_chrf,
-                        "cls_acc": cls_acc,
-                        "mlm_chrf": mlm_chrf,
-                        "asr_wer": asr_wer,
-                        "overall_score": overall_score,
-                    }
-                )
-        if results:
-            all_results.append(
+            results.append(
                 {
-                    "language_name": language.language_name,
-                    "bcp_47": language.bcp_47,
-                    "speakers": language.speakers,
-                    "scores": results,
-                    "mt_bleu": mean([s["mt_bleu"] for s in results]),
-                    "mt_chrf": mean([s["mt_chrf"] for s in results]),
-                    "cls_acc": mean([s["cls_acc"] for s in results]),
-                    "mlm_chrf": mean([s["mlm_chrf"] for s in results]),
-                    "asr_wer": mean([s["asr_wer"] for s in results]),
-                    "overall_score": mean([s["overall_score"] for s in results]),
-                    "commonvoice_hours": language.commonvoice_hours
-                    if not pd.isna(language.commonvoice_hours)
-                    else None,
-                    "commonvoice_locale": language.commonvoice_locale
-                    if not pd.isna(language.commonvoice_locale)
-                    else None,
-                    "population": population(language.bcp_47),
-                    "language_family": language_family(
-                        language.flores_path.split("_")[0]
-                    ),
+                    "model": model,
+                    "model_type": "speech-to-text",
+                    "asr_wer": asr_wer,
+                    "overall_score": asr_wer,
                 }
             )
+        if results:
+            language_results = {
+                "language_name": language.language_name,
+                "bcp_47": language.bcp_47,
+                "speakers": language.speakers,
+                "scores": results,
+                "commonvoice_hours": language.commonvoice_hours
+                if not pd.isna(language.commonvoice_hours)
+                else None,
+                "commonvoice_locale": language.commonvoice_locale
+                if not pd.isna(language.commonvoice_locale)
+                else None,
+                "population": population(language.bcp_47),
+                "language_family": language_family(language.flores_path.split("_")[0]),
+            }
+            for score in [
+                "mt_bleu",
+                "mt_chrf",
+                "cls_acc",
+                "mlm_chrf",
+                "asr_wer",
+                "overall_score",
+            ]:
+                language_results[score] = mean(
+                    [s[score] for s in results if score in s]
+                )
+            all_results.append(language_results)
     with open("results.json", "w") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 
