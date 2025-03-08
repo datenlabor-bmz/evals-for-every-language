@@ -1,4 +1,5 @@
 import asyncio
+import io
 import json
 import os
 import random
@@ -9,9 +10,12 @@ from os import getenv
 import evaluate
 import pandas as pd
 import requests
+import soundfile as sf
 from aiolimiter import AsyncLimiter
+from datasets import load_dataset
 from dotenv import load_dotenv
 from elevenlabs import ElevenLabs
+from huggingface_hub import InferenceClient
 from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
@@ -21,7 +25,6 @@ from requests import get
 from rich import print
 from tqdm.asyncio import tqdm_asyncio
 from transformers import NllbTokenizer
-from huggingface_hub import InferenceClient
 
 # config
 models = [
@@ -35,6 +38,11 @@ models = [
     "microsoft/phi-4",  # 0.07$/M tokens
 ]
 fast_model = "meta-llama/llama-3.3-70b-instruct"
+transcription_models = [
+    "elevenlabs/scribe_v1",
+    "openai/whisper-large-v3-turbo",
+    "openai/whisper-tiny",
+]
 n_sentences = 30
 
 # setup
@@ -46,30 +54,9 @@ client = AsyncOpenAI(
 cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
+wer = evaluate.load("wer")
 tokenizer = NllbTokenizer.from_pretrained("facebook/nllb-200-distilled-600M")
 rate_limit = AsyncLimiter(max_rate=20, time_period=1)
-
-
-@cache
-def transcribe(filename, model="elevenlabs/scribe_v1"):
-    provider, modelname = model.split("/")
-    with open(filename, "rb") as f:
-        audio = f.read()
-    match provider:
-        case "elevenlabs":
-            client = ElevenLabs(api_key=getenv("ELEVENLABS_API_KEY"))
-            response = client.speech_to_text.convert(model_id=modelname, file=audio)
-            return response.text
-        case "openai":
-            client = InferenceClient(api_key=getenv("HUGGINGFACE_ACCESS_TOKEN"))
-            output = client.automatic_speech_recognition(model=model, audio=audio)
-            return output.text
-        case _:
-            raise ValueError(f"Model {model} not supported")
-
-
-print(transcribe("data/test.m4a", "openai/whisper-large-v3-turbo"))
-exit()
 
 
 # load general language data
@@ -142,6 +129,61 @@ benchmark_languages = (
     .reset_index()
 )
 
+fleurs_tags = "af_za,am_et,ar_eg,as_in,ast_es,az_az,be_by,bg_bg,bn_in,bs_ba,ca_es,ceb_ph,ckb_iq,cmn_hans_cn,cs_cz,cy_gb,da_dk,de_de,el_gr,en_us,es_419,et_ee,fa_ir,ff_sn,fi_fi,fil_ph,fr_fr,ga_ie,gl_es,gu_in,ha_ng,he_il,hi_in,hr_hr,hu_hu,hy_am,id_id,ig_ng,is_is,it_it,ja_jp,jv_id,ka_ge,kam_ke,kea_cv,kk_kz,km_kh,kn_in,ko_kr,ky_kg,lb_lu,lg_ug,ln_cd,lo_la,lt_lt,luo_ke,lv_lv,mi_nz,mk_mk,ml_in,mn_mn,mr_in,ms_my,mt_mt,my_mm,nb_no,ne_np,nl_nl,nso_za,ny_mw,oc_fr,om_et,or_in,pa_in,pl_pl,ps_af,pt_br,ro_ro,ru_ru,sd_in,sk_sk,sl_si,sn_zw,so_so,sr_rs,sv_se,sw_ke,ta_in,te_in,tg_tj,th_th,tr_tr,uk_ua,umb_ao,ur_pk,uz_uz,vi_vn,wo_sn,xh_za,yo_ng,yue_hant_hk,zu_za".split(
+    ","
+)
+fleurs = pd.DataFrame(fleurs_tags, columns=["fleurs_tag"])
+fleurs["bcp_47"] = fleurs["fleurs_tag"].apply(
+    lambda x: standardize_tag(x.rsplit("_")[0], macro=True)
+)
+
+
+@cache
+def transcribe(file, model="elevenlabs/scribe_v1"):
+    provider, modelname = model.split("/")
+    match provider:
+        case "elevenlabs":
+            client = ElevenLabs(api_key=getenv("ELEVENLABS_API_KEY"))
+            response = client.speech_to_text.convert(model_id=modelname, file=file)
+            return response.text
+        case "openai":
+            client = InferenceClient(api_key=getenv("HUGGINGFACE_ACCESS_TOKEN"))
+            output = client.automatic_speech_recognition(model=model, audio=file)
+            return output.text
+        case _:
+            raise ValueError(f"Model {model} not supported")
+
+
+def audio_array_to_bytes(array, sample_rate=16000):
+    # convert audio array to WAV bytes
+    audio_bytes = io.BytesIO()
+    sf.write(audio_bytes, array, sample_rate, format="wav")
+    audio_bytes.seek(0)
+    return audio_bytes.getvalue()
+
+
+for tag in ["de_de"]:
+    print(tag)
+    fleurs = load_dataset(
+        "google/fleurs",
+        tag,
+        split="validation",
+        trust_remote_code=True,
+        streaming=True,
+    )
+    item = next(iter(fleurs))
+    file = audio_array_to_bytes(item["audio"]["array"])
+    true = item["raw_transcription"]
+    print(true)
+    for model in transcription_models:
+        print(model)
+        pred = transcribe(file, model=model)
+        print(pred)
+        score = wer.compute(predictions=[pred], references=[true])
+        print(f"WER: {score}")
+        print("-" * 100)
+exit()
+
 
 # load CommonVoice stats
 @cache  # cache for 1 day
@@ -168,6 +210,9 @@ commonvoice_stats = (
 # merge data
 languages = pd.merge(
     languages, benchmark_languages, on="bcp_47", how="left"
+)  # "left" because keep it simple for now
+languages = pd.merge(
+    languages, fleurs, on="bcp_47", how="left"
 )  # "left" because keep it simple for now
 languages = pd.merge(
     languages, commonvoice_stats, on="bcp_47", how="left"
@@ -355,6 +400,12 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
     }
 
 
+@cache
+async def transcribe_and_evaluate(model, language_bcp_47, nr):
+    language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
+    sentences = pd.DataFrame(load_sentences(language), columns=["text"])
+
+
 def mean(lst):
     return sum(lst) / len(lst) if lst else 0
 
@@ -453,6 +504,7 @@ async def main():
                     "language_family": language_family(
                         language.flores_path.split("_")[0]
                     ),
+                    "fleurs_tag": language.fleurs_tag,
                 }
             )
     with open("results.json", "w") as f:

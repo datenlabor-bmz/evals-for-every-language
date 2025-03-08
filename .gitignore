@@ -1,6 +1,5 @@
 floresp-*
 glottolog-*
-*.m4a
 LanguageCodes.tab
 ScriptCodes.csv
 .cache
