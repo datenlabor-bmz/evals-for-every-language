@@ -6,95 +6,98 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import pycountry
+from gradio_rangeslider import RangeSlider
 
 with open("results.json") as f:
     languages = json.load(f)
 
-languages_with_scores = [
-    lang for lang in languages if lang["t2t_score"] is not None
-]
+languages_with_scores = [lang for lang in languages if lang["t2t_score"] is not None]
 
 # Global constants for metric mappings
-METRICS = [
-    {
-        "display_name": "Overall Text-to-Text Performance",
-        "field_name": "t2t_score",
-        "label": "Overall Score",
-        "explanation": """
+METRICS = {
+    "t2t": [
+        {
+            "display_name": "Overall Text-to-Text Performance",
+            "field_name": "t2t_score",
+            "label": "Overall Score",
+            "explanation": """
     **Overall Score for Text-to-Text Performance**: A weighted combination of all metrics, providing a holistic view of model performance across different language tasks. 
     Higher scores indicate better overall language capabilities.
     """,
-    },
-    {
-        "display_name": "Translation (BLEU)",
-        "field_name": "mt_bleu",
-        "label": "BLEU Score",
-        "explanation": """
+        },
+        {
+            "display_name": "Translation (BLEU)",
+            "field_name": "mt_bleu",
+            "label": "BLEU Score",
+            "explanation": """
     **Translation BLEU**: BiLingual Evaluation Understudy (BLEU) measures how similar AI-generated translations are to human reference translations.
     It calculates n-gram precision and applies a brevity penalty. Scores range from 0 to 1, with higher values indicating better translation quality.
     """,
-    },
-    {
-        "display_name": "Translation (ChrF)",
-        "field_name": "mt_chrf",
-        "label": "ChrF Score",
-        "explanation": """
+        },
+        {
+            "display_name": "Translation (ChrF)",
+            "field_name": "mt_chrf",
+            "label": "ChrF Score",
+            "explanation": """
     **Translation ChrF**: Character n-gram F-score evaluates translations at the character level rather than word level.
     This metric is particularly valuable for morphologically rich languages and can better capture partial word matches.
     Higher scores (0-1) indicate better translations.
     """,
-    },
-    {
-        "display_name": "Classification (Accuracy)",
-        "field_name": "cls_acc",
-        "label": "Classification Accuracy",
-        "explanation": """
+        },
+        {
+            "display_name": "Classification (Accuracy)",
+            "field_name": "cls_acc",
+            "label": "Classification Accuracy",
+            "explanation": """
     **Classification Accuracy**: Measures how accurately models can classify text into predefined categories.
     This evaluates a model's understanding of content and context across different languages.
     Reported as a percentage where higher values indicate better classification performance.
     """,
-    },
-    {
-        "display_name": "Masked Language Modeling (ChrF)",
-        "field_name": "mlm_chrf",
-        "label": "MLM ChrF Score",
-        "explanation": """
+        },
+        {
+            "display_name": "Masked Language Modeling (ChrF)",
+            "field_name": "mlm_chrf",
+            "label": "MLM ChrF Score",
+            "explanation": """
     **Masked Language Modeling ChrF**: Evaluates how well models can predict masked (hidden) portions of text.
     This tests a model's understanding of language structure and semantics by measuring the character-level similarity
     between predicted and actual text. Higher scores indicate better language understanding.
     """,
-    },
-    {
-        "display_name": "Overall Speech-to-Text Performance",
-        "field_name": "s2t_score",
-        "label": "Overall Score",
-        "explanation": """
+        },
+    ],
+    "s2t": [
+        {
+            "display_name": "Overall Speech-to-Text Performance",
+            "field_name": "s2t_score",
+            "label": "Overall Score",
+            "explanation": """
     **Overall Score for Speech-to-Text Performance**: A weighted combination of all metrics, providing a holistic view of model performance across different language tasks. 
     Higher scores indicate better overall language capabilities.
     """,
-    },
-    {
-        "display_name": "Automatic Speech Recognition (WER)",
-        "field_name": "asr_wer",
-        "label": "WER",
-        "explanation": """ 
+        },
+        {
+            "display_name": "Automatic Speech Recognition (WER)",
+            "field_name": "asr_wer",
+            "label": "WER",
+            "explanation": """ 
     **Automatic Speech Recognition Word Error Rate**: Measures the accuracy of speech-to-text transcription.
     It calculates the minimum number of word edits (insertions, deletions, substitutions) needed to transform the 
     transcription into the reference text, divided by the number of words in the reference.
     Lower scores indicate better performance, with 0 being perfect transcription.
     """,
-    },
-    {
-        "display_name": "Automatic Speech Recognition ChrF",
-        "field_name": "asr_chrf",
-        "label": "ChrF",
-        "explanation": """
+        },
+        {
+            "display_name": "Automatic Speech Recognition ChrF",
+            "field_name": "asr_chrf",
+            "label": "ChrF",
+            "explanation": """
     **Automatic Speech Recognition ChrF**: Character n-gram F-score evaluates translations at the character level rather than word level.
     This metric is particularly valuable for morphologically rich languages and can better capture partial word matches.
     Higher scores (0-1) indicate better translations.
     """,
-    },
-]
+        },
+    ],
+}
 
 
 def mean(lst):
@@ -136,7 +139,10 @@ def create_leaderboard_df(metric):
                     "Mid-Resource": [],
                     "Low-Resource": [],
                 }
-            model_scores[model][category].append(score[metric["field_name"]])
+            # Check if the metric field exists in the score dictionary before accessing it
+            if metric["field_name"] in score:
+                model_scores[model][category].append(score[metric["field_name"]])
+            # If the metric is missing, we'll skip this score
 
     # Calculate average scores and create DataFrame
     leaderboard_data = []
@@ -164,7 +170,8 @@ def create_leaderboard_df(metric):
             + categories["Mid-Resource"]
             + categories["Low-Resource"]
         )
-        overall_avg = round(sum(all_scores) / len(all_scores), 3)
+        # Check if all_scores is empty to avoid division by zero
+        overall_avg = round(sum(all_scores) / len(all_scores), 3) if all_scores else 0
 
         model_name = model.split("/")[-1]
         leaderboard_data.append(
@@ -218,7 +225,9 @@ def create_leaderboard_df(metric):
 
 
 def create_model_comparison_plot(metric):
-    top_languages = sorted(languages_with_scores, key=lambda x: x["speakers"], reverse=True)[:10]
+    top_languages = sorted(
+        languages_with_scores, key=lambda x: x["speakers"], reverse=True
+    )[:10]
 
     # Create appropriate title and y-axis label based on metric
     title = f"{metric['display_name']} by Model and Language"
@@ -266,10 +275,14 @@ def create_language_stats_df(metric):
 
     for lang in languages:
         # Find the best model and its BLEU score
-        best_model = max(
-            lang["scores"] or [{"t2t_score": None, "model": None}],
-            key=lambda x: x.get("t2t_score", 0),
-        ) if lang["t2t_score"] is not None else None
+        best_model = (
+            max(
+                lang["scores"] or [{"t2t_score": None, "model": None}],
+                key=lambda x: x.get("t2t_score", 0),
+            )
+            if lang["t2t_score"] is not None
+            else None
+        )
 
         model = best_model["model"] if best_model else None
         model_name = model.split("/")[-1] if model else "N/A"
@@ -340,7 +353,9 @@ def create_language_stats_df(metric):
 
 def create_scatter_plot(metric):
     # Filter results to include only languages with sufficient speakers
-    filtered_results = [lang for lang in languages_with_scores if lang["speakers"] >= 10_000]
+    filtered_results = [
+        lang for lang in languages_with_scores if lang["speakers"] >= 10_000
+    ]
 
     # Create a list to store data for the scatter plot
     scatter_data = []
@@ -602,25 +617,119 @@ def create_world_map(metric):
 
 
 def create_metric_explanation(metric):
-    return gr.Markdown(metric["explanation"])
+    return gr.Markdown(metric["explanation"], container=True)
+
 
 
 # Create the visualization components
 with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
     gr.Markdown("# AI Language Proficiency Benchmark")
     gr.Markdown("Comparing language proficiency across different models and languages.")
-    start_metric = METRICS[0]
 
-    metric = gr.Dropdown(
-        choices=[metric_info["display_name"] for metric_info in METRICS],
-        value=start_metric["display_name"],
-        label="Select Metric",
+    language_choices = [
+        f"{lang['language_name']} ({lang['bcp_47']})" for lang in languages
+    ]
+    models = {score["model"] for lang in languages for score in lang["scores"]}
+    search = gr.Dropdown(
+        choices=list(models) + language_choices,
+        value=None,
+        label="Search for Language or Model",
         interactive=True,
     )
-    metric_explanation = create_metric_explanation(start_metric)
+    with gr.Row():
+        with gr.Column():
+            with gr.Accordion("Model Filters", open=False):
+                model_type = gr.Radio(
+                    choices=["Text-to-Text", "Speech-to-Text"],
+                    value="Text-to-Text",
+                    label="Select Model Type",
+                    interactive=True,
+                )
+                model_licenses = gr.CheckboxGroup(
+                    choices=["open source", "commercial"],
+                    value=["open source", "commercial"],
+                    label="Filter by Model License",
+                    interactive=True,
+                )
+                model_sizes = RangeSlider(
+                    minimum=0,
+                    maximum=1000,
+                    value=(0, 1000),
+                    label="Filter by Model Size (in Billion Parameters)",
+                    interactive=True,
+                )
+
+        with gr.Column():
+            with gr.Accordion("Language Filters", open=False):
+                unit_of_analysis = gr.Radio(
+                    choices=["Languages", "Language Families", "Regions"],
+                    value="Languages",
+                    label="Select Unit of Analysis",
+                    interactive=True,
+                )
+                region_filter = gr.CheckboxGroup(
+                    choices=[
+                        "Africa",
+                        "Asia",
+                        "Europe",
+                        "North America",
+                        "South America",
+                        "Oceania",
+                    ],
+                    value=[
+                        "Africa",
+                        "Asia",
+                        "Europe",
+                        "North America",
+                        "South America",
+                        "Oceania",
+                    ],
+                    label="Filter by Region",
+                    interactive=True,
+                )
+                family_filter = gr.CheckboxGroup(
+                    choices=[
+                        "Indo-European",
+                        "Sino-Tibetan",
+                        "Afro-Asiatic",
+                        "Dravidian",
+                        "Uralic",
+                        "Austronesian",
+                        "Other",
+                    ],
+                    value=[
+                        "Indo-European",
+                        "Sino-Tibetan",
+                        "Afro-Asiatic",
+                        "Dravidian",
+                        "Uralic",
+                        "Austronesian",
+                        "Other",
+                    ],
+                    label="Filter by Language Family",
+                    interactive=True,
+                )
+                speakers_filter = RangeSlider(
+                    minimum=0,
+                    maximum=100_000_000,
+                    value=(0, 100_000_000),
+                    label="Filter by Number of Speakers",
+                    interactive=True,
+                )
+    with gr.Row():
+        start_metric = METRICS["t2t"][0]
+        metric = gr.Dropdown(
+            choices=[metric["display_name"] for metric in METRICS["t2t"]],
+            value=start_metric["display_name"],
+            label="Main metric to display in figures and map",
+            interactive=True,
+        )
+
+        metric_explanation = create_metric_explanation(start_metric)
 
     gr.Markdown("## Model Comparison")
-    # create_leaderboard_df(start_metric)
+    create_leaderboard_df(start_metric)
+    
     model_comparison_plot = gr.Plot(
         value=create_model_comparison_plot(start_metric),
         label="Model Comparison",
@@ -639,63 +748,64 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
         elem_classes="fullwidth-plot",
     )
 
-    gr.Markdown(
-        """
-        ## Methodology
-
-        ### Benchmark Data
-        We use the [FLORES+](https://huggingface.co/datasets/openlanguagedata/flores_plus) dataset for evaluation, which contains parallel text in over 200 languages, as well as topic labels for each sentence. Where FLORES+ includes multiple scripts for one language, we use only the most common one.
-
-        Population and speaker data and language code resolution are from Unicode [CLDR](https://github.com/unicode-org/cldr) via the [langcodes](https://github.com/rspeer/langcodes) package.
-
-        ### AI Models
-        We use [OpenRouter](https://openrouter.ai/) to access all relevant AI models via a unified API.
-
-        ### Evaluation Tasks
-        Our benchmark includes three core tasks to assess different aspects of language understanding:
-
-        1. **Machine Translation**: Models translate text _from_ the evaluated language _to_ a fixed set of target languages. The set of target languages is representative of global speaker populations. Performance is measured using:
-           - [BLEU Score](https://huggingface.co/metrics/bleu): Measures n-gram precision with a brevity penalty
-           - [ChrF Score](https://huggingface.co/metrics/chrf): Character-level F-score that better captures morphological variations
-
-        2. **Text Classification**: Models classify text into predefined topics after being shown examples. We:
-           - Group sentences by URL into paragraphs with the same topic
-           - Use the 5 most common topics, encoded as numbers rather than English labels
-           - Provide 5 examples of each topic as few-shot examples
-           - Test the model's ability to classify new text
-           - Report accuracy as the primary metric
-
-        3. **Masked Language Modeling**: Models predict missing portions of text (marked with `<mask>`). We:
-           - Mask approximately 5% of each sentence at a random position
-           - Provide 10 examples of complete sentences paired with masked versions in a few-shot setting
-           - Evaluate predictions using ChrF score against the original text
-
-        The overall performance score combines metrics from all tasks to provide a holistic assessment of model capabilities across languages.
-    """,
-        container=True,
-    )
-
     def update_component(fn, metric_choice):
         metric = [m for m in METRICS if m["display_name"] == metric_choice][0]
         return fn(metric)
 
-    metric.change(
-        fn=partial(update_component, create_metric_explanation),
-        inputs=metric,
-        outputs=metric_explanation,
-    )
-    metric.change(
-        fn=partial(update_component, create_model_comparison_plot),
-        inputs=metric,
-        outputs=model_comparison_plot,
-    )
-    metric.change(
-        fn=partial(update_component, create_scatter_plot),
-        inputs=metric,
-        outputs=scatter_plot,
-    )
-    metric.change(
-        fn=partial(update_component, create_world_map), inputs=metric, outputs=world_map
-    )
+    # metric.change(
+    #     fn=partial(update_component, create_metric_explanation),
+    #     inputs=metric,
+    #     outputs=metric_explanation,
+    # )
+    # metric.change(
+    #     fn=partial(update_component, create_model_comparison_plot),
+    #     inputs=metric,
+    #     outputs=model_comparison_plot,
+    # )
+    # metric.change(
+    #     fn=partial(update_component, create_scatter_plot),
+    #     inputs=metric,
+    #     outputs=scatter_plot,
+    # )
+    # metric.change(
+    #     fn=partial(update_component, create_world_map), inputs=metric, outputs=world_map
+    # )
+
+    with gr.Accordion("Methodology", open=False):
+        gr.Markdown(
+            """
+            ## Methodology
+
+            ### Benchmark Data
+            We use the [FLORES+](https://huggingface.co/datasets/openlanguagedata/flores_plus) dataset for evaluation, which contains parallel text in over 200 languages, as well as topic labels for each sentence. Where FLORES+ includes multiple scripts for one language, we use only the most common one.
+
+            Population and speaker data and language code resolution are from Unicode [CLDR](https://github.com/unicode-org/cldr) via the [langcodes](https://github.com/rspeer/langcodes) package.
+
+            ### AI Models
+            We use [OpenRouter](https://openrouter.ai/) to access all relevant AI models via a unified API.
+
+            ### Evaluation Tasks
+            Our benchmark includes three core tasks to assess different aspects of language understanding:
+
+            1. **Machine Translation**: Models translate text _from_ the evaluated language _to_ a fixed set of target languages. The set of target languages is representative of global speaker populations. Performance is measured using:
+            - [BLEU Score](https://huggingface.co/metrics/bleu): Measures n-gram precision with a brevity penalty
+            - [ChrF Score](https://huggingface.co/metrics/chrf): Character-level F-score that better captures morphological variations
+
+            2. **Text Classification**: Models classify text into predefined topics after being shown examples. We:
+            - Group sentences by URL into paragraphs with the same topic
+            - Use the 5 most common topics, encoded as numbers rather than English labels
+            - Provide 5 examples of each topic as few-shot examples
+            - Test the model's ability to classify new text
+            - Report accuracy as the primary metric
+
+            3. **Masked Language Modeling**: Models predict missing portions of text (marked with `<mask>`). We:
+            - Mask approximately 5% of each sentence at a random position
+            - Provide 10 examples of complete sentences paired with masked versions in a few-shot setting
+            - Evaluate predictions using ChrF score against the original text
+
+            The overall performance score combines metrics from all tasks to provide a holistic assessment of model capabilities across languages.
+        """,
+            container=True,
+        )
 
 demo.launch()
