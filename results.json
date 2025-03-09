@@ -7,61 +7,61 @@
       {
         "model": "openai/gpt-4o-mini",
         "model_type": "text-to-text",
-        "mt_bleu": 0.5245466124037277,
-        "mt_chrf": 65.25187717981981,
+        "mt_bleu": 0.40476391184425853,
+        "mt_chrf": 0.5350771248567329,
         "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 97.84704595784264,
-        "t2t_score": 0.7325519660144305
+        "mlm_chrf": 0.9792909796569321,
+        "t2t_score": 0.6936782570601107
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.48750797044187216,
-        "mt_chrf": 63.24229348441665,
-        "cls_acc": 0.6,
-        "mlm_chrf": 93.62602669879945,
-        "t2t_score": 0.7228944006107203
+        "mt_bleu": 0.42039857566100747,
+        "mt_chrf": 0.5300571003447904,
+        "cls_acc": 0.5,
+        "mlm_chrf": 0.9378674673892118,
+        "t2t_score": 0.6559748559113341
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
         "model_type": "text-to-text",
-        "mt_bleu": 0.486501959595472,
-        "mt_chrf": 63.8187259254881,
-        "cls_acc": 0.5333333333333333,
-        "mlm_chrf": 79.91140615317198,
-        "t2t_score": 0.656878218039978
+        "mt_bleu": 0.39023213290403214,
+        "mt_chrf": 0.501310810487581,
+        "cls_acc": 0.43333333333333335,
+        "mlm_chrf": 0.7876173555317149,
+        "t2t_score": 0.5740871664508763
       },
       {
         "model": "google/gemini-2.0-flash-001",
         "model_type": "text-to-text",
-        "mt_bleu": 0.6060954569411976,
-        "mt_chrf": 71.2288943066563,
+        "mt_bleu": 0.5005636231739998,
+        "mt_chrf": 0.6083608181074219,
         "cls_acc": 0.8666666666666667,
-        "mlm_chrf": 98.79868693366329,
-        "t2t_score": 0.8556474930232877
+        "mlm_chrf": 0.9820612175447262,
+        "t2t_score": 0.819029567439605
       },
       {
         "model": "microsoft/phi-4",
         "model_type": "text-to-text",
-        "mt_bleu": 0.5199836121545649,
-        "mt_chrf": 66.05410510011644,
-        "cls_acc": 0.7,
-        "mlm_chrf": 97.2290729316734,
-        "t2t_score": 0.7776105934392995
+        "mt_bleu": 0.37572897166941227,
+        "mt_chrf": 0.5070735300311086,
+        "cls_acc": 0.6666666666666666,
+        "mlm_chrf": 0.969030413937307,
+        "t2t_score": 0.714256870211694
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
-        "asr_wer": 0.34916319968417603,
-        "asr_chrf": 78.55986690446153,
-        "s2t_score": 39.45451505207285
+        "asr_wer": 0.32249653301750936,
+        "asr_chrf": 0.8168177351797856,
+        "s2t_score": 0.5696571340986475
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.25418986127300397,
-        "asr_chrf": 86.52016887049808,
-        "s2t_score": 43.387179365885544
+        "asr_chrf": 0.8652016887049812,
+        "s2t_score": 0.5596957749889926
       }
     ],
     "commonvoice_hours": 2651.0,
@@ -224,14 +224,14 @@
       "ZW": 6109446
     },
     "language_family": "Indo-European",
-    "mt_bleu": 0.5249271223073668,
-    "mt_chrf": 65.91917919929946,
-    "cls_acc": 0.6533333333333333,
-    "mlm_chrf": 93.48244773503015,
-    "asr_wer": 0.30167653047859,
-    "asr_chrf": 82.5400178874798,
-    "t2t_score": 0.7491165342255433,
-    "s2t_score": 41.4208472089792
+    "mt_bleu": 0.41833744305054205,
+    "mt_chrf": 0.5363758767655269,
+    "cls_acc": 0.6066666666666667,
+    "mlm_chrf": 0.9311734868119783,
+    "asr_wer": 0.2883431971452567,
+    "asr_chrf": 0.8410097119423834,
+    "t2t_score": 0.691405343414724,
+    "s2t_score": 0.5646764545438201
   },
   {
     "language_name": "Chinese",
@@ -241,61 +241,61 @@
       {
         "model": "openai/gpt-4o-mini",
         "model_type": "text-to-text",
-        "mt_bleu": 0.4887591978835982,
-        "mt_chrf": 70.23584222732792,
-        "cls_acc": 0.43333333333333335,
-        "mlm_chrf": 91.54177259254774,
-        "t2t_score": 0.6837031605106967
+        "mt_bleu": 0.37010453186602793,
+        "mt_chrf": 0.5495542857606343,
+        "cls_acc": 0.4666666666666667,
+        "mlm_chrf": 0.900779581057449,
+        "t2t_score": 0.63900017782825
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.38557580495281013,
-        "mt_chrf": 61.11151378837755,
+        "mt_bleu": 0.3904811079178694,
+        "mt_chrf": 0.5665464429871689,
         "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 94.55849047452216,
-        "t2t_score": 0.7077889030985546
+        "mlm_chrf": 0.9044414344868564,
+        "t2t_score": 0.6792181813802306
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
         "model_type": "text-to-text",
-        "mt_bleu": 0.48838341708028316,
-        "mt_chrf": 71.48446350451079,
-        "cls_acc": 0.7666666666666667,
-        "mlm_chrf": 91.82889304045095,
-        "t2t_score": 0.799933410705428
+        "mt_bleu": 0.3631466653543813,
+        "mt_chrf": 0.552006597905903,
+        "cls_acc": 0.6666666666666666,
+        "mlm_chrf": 0.8851414000070698,
+        "t2t_score": 0.7012715548598797
       },
       {
         "model": "google/gemini-2.0-flash-001",
         "model_type": "text-to-text",
-        "mt_bleu": 0.392664198976078,
-        "mt_chrf": 58.52460212908651,
+        "mt_bleu": 0.41028031844473206,
+        "mt_chrf": 0.5607632287491137,
         "cls_acc": 0.8666666666666667,
-        "mlm_chrf": 94.26439448464122,
-        "t2t_score": 0.7981855442679814
+        "mlm_chrf": 0.9353777720326482,
+        "t2t_score": 0.7876025558161427
       },
       {
         "model": "microsoft/phi-4",
         "model_type": "text-to-text",
-        "mt_bleu": 0.4892212172376435,
-        "mt_chrf": 69.23023880157619,
-        "cls_acc": 0.7,
-        "mlm_chrf": 93.53779735205161,
-        "t2t_score": 0.7758934538454261
+        "mt_bleu": 0.3516110848479108,
+        "mt_chrf": 0.5536738005415017,
+        "cls_acc": 0.7333333333333333,
+        "mlm_chrf": 0.9080915180096581,
+        "t2t_score": 0.7316995506281644
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 1.0,
-        "asr_chrf": 70.77419107011707,
-        "s2t_score": 35.887095535058535
+        "asr_chrf": 0.7077419107011705,
+        "s2t_score": 0.8538709553505852
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 1.0,
-        "asr_chrf": 77.48220275963784,
-        "s2t_score": 39.24110137981892
+        "asr_chrf": 0.7748220275963785,
+        "s2t_score": 0.8874110137981892
       }
     ],
     "commonvoice_hours": 422.0,
@@ -323,14 +323,14 @@
       "VN": 1085934
     },
     "language_family": "Sino-Tibetan",
-    "mt_bleu": 0.4489207672260826,
-    "mt_chrf": 66.1173320901758,
-    "cls_acc": 0.6666666666666666,
-    "mlm_chrf": 93.14626958884273,
+    "mt_bleu": 0.3771247416861843,
+    "mt_chrf": 0.5565088711888644,
+    "cls_acc": 0.6599999999999999,
+    "mlm_chrf": 0.9067663411187363,
     "asr_wer": 1.0,
-    "asr_chrf": 74.12819691487746,
-    "t2t_score": 0.7531008944856173,
-    "s2t_score": 37.56409845743873
+    "asr_chrf": 0.7412819691487745,
+    "t2t_score": 0.7077584041025334,
+    "s2t_score": 0.8706409845743872
   },
   {
     "language_name": "Hindi",
@@ -340,61 +340,61 @@
       {
         "model": "openai/gpt-4o-mini",
         "model_type": "text-to-text",
-        "mt_bleu": 0.3647010036099328,
-        "mt_chrf": 55.294100726869324,
+        "mt_bleu": 0.30348099344592144,
+        "mt_chrf": 0.46828573138186164,
         "cls_acc": 0.5,
-        "mlm_chrf": 93.01665261992896,
-        "t2t_score": 0.6610358444893277
+        "mlm_chrf": 0.9491600973221963,
+        "t2t_score": 0.6391486095680193
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.32404902340686065,
-        "mt_chrf": 53.54085104449268,
-        "cls_acc": 0.5,
-        "mlm_chrf": 96.17240172798218,
-        "t2t_score": 0.6657108425749162
+        "mt_bleu": 0.30694468553453214,
+        "mt_chrf": 0.4717417673162039,
+        "cls_acc": 0.5666666666666667,
+        "mlm_chrf": 0.9225335146094515,
+        "t2t_score": 0.6536473161974407
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
         "model_type": "text-to-text",
-        "mt_bleu": 0.346304931512649,
-        "mt_chrf": 52.59738987149503,
+        "mt_bleu": 0.21739461408317115,
+        "mt_chrf": 0.35902002421447704,
         "cls_acc": 0.5,
-        "mlm_chrf": 90.59820426203353,
-        "t2t_score": 0.6439853137784286
+        "mlm_chrf": 0.8896017448529104,
+        "t2t_score": 0.5828739230224625
       },
       {
         "model": "google/gemini-2.0-flash-001",
         "model_type": "text-to-text",
-        "mt_bleu": 0.43820082761650603,
-        "mt_chrf": 61.68241787594198,
+        "mt_bleu": 0.34270244014502865,
+        "mt_chrf": 0.5241272552859138,
         "cls_acc": 0.8666666666666667,
-        "mlm_chrf": 96.5534261573122,
-        "t2t_score": 0.8163417023330695
+        "mlm_chrf": 0.9648559476590244,
+        "t2t_score": 0.7852166232038682
       },
       {
         "model": "microsoft/phi-4",
         "model_type": "text-to-text",
-        "mt_bleu": 0.388038924689894,
-        "mt_chrf": 56.13147190849697,
+        "mt_bleu": 0.27124364337229007,
+        "mt_chrf": 0.43849820754378105,
         "cls_acc": 0.8,
-        "mlm_chrf": 94.47772196307584,
-        "t2t_score": 0.7686973129052427
+        "mlm_chrf": 0.9387109966783314,
+        "t2t_score": 0.7257364014073708
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
-        "asr_wer": 0.2338948365728121,
-        "asr_chrf": 83.13389660250954,
-        "s2t_score": 41.68389571954118
+        "asr_wer": 0.28107684996172205,
+        "asr_chrf": 0.7778871091355449,
+        "s2t_score": 0.5294819795486335
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.43522263872986894,
-        "asr_chrf": 63.049286642268754,
-        "s2t_score": 31.74225464049931
+        "asr_chrf": 0.6304928664226873,
+        "s2t_score": 0.5328577525762781
       }
     ],
     "commonvoice_hours": 16.0,
@@ -408,14 +408,14 @@
       "ZA": 1129272
     },
     "language_family": "Indo-European",
-    "mt_bleu": 0.3722589421671684,
-    "mt_chrf": 55.849246285459195,
-    "cls_acc": 0.6333333333333334,
-    "mlm_chrf": 94.16368134606655,
-    "asr_wer": 0.33455873765134053,
-    "asr_chrf": 73.09159162238915,
-    "t2t_score": 0.7111542032161969,
-    "s2t_score": 36.71307518002024
+    "mt_bleu": 0.2883532753161887,
+    "mt_chrf": 0.4523345971484474,
+    "cls_acc": 0.6466666666666667,
+    "mlm_chrf": 0.9329724602243828,
+    "asr_wer": 0.3581497443457955,
+    "asr_chrf": 0.7041899877791161,
+    "t2t_score": 0.6773245746798323,
+    "s2t_score": 0.5311698660624558
   },
   {
     "language_name": "Spanish",
@@ -425,61 +425,61 @@
       {
         "model": "openai/gpt-4o-mini",
         "model_type": "text-to-text",
-        "mt_bleu": 0.3313892289629975,
-        "mt_chrf": 52.582336167000754,
+        "mt_bleu": 0.3047910872340331,
+        "mt_chrf": 0.4664322514490113,
         "cls_acc": 0.6,
-        "mlm_chrf": 96.34068599793908,
-        "t2t_score": 0.6964100738831327
+        "mlm_chrf": 0.9773594806492754,
+        "t2t_score": 0.6812639106994288
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.31587937116142056,
-        "mt_chrf": 52.142851262301726,
-        "cls_acc": 0.5,
-        "mlm_chrf": 96.92768852306384,
-        "t2t_score": 0.6635684659512185
+        "mt_bleu": 0.2681893620935732,
+        "mt_chrf": 0.4507327709042758,
+        "cls_acc": 0.5333333333333333,
+        "mlm_chrf": 0.9387079449855046,
+        "t2t_score": 0.6409246830743712
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
         "model_type": "text-to-text",
-        "mt_bleu": 0.3120516523386294,
-        "mt_chrf": 50.14036662376262,
+        "mt_bleu": 0.2794753489249633,
+        "mt_chrf": 0.4300653056934316,
         "cls_acc": 0.6333333333333333,
-        "mlm_chrf": 93.9463761308063,
-        "t2t_score": 0.6914002536263407
+        "mlm_chrf": 0.9521615389464084,
+        "t2t_score": 0.6718533926577245
       },
       {
         "model": "google/gemini-2.0-flash-001",
         "model_type": "text-to-text",
-        "mt_bleu": 0.3318101035886167,
-        "mt_chrf": 53.80973313056067,
+        "mt_bleu": 0.34138272852201396,
+        "mt_chrf": 0.5025141961861047,
         "cls_acc": 0.8666666666666667,
-        "mlm_chrf": 96.46210398041012,
-        "t2t_score": 0.7897950125921249
+        "mlm_chrf": 0.9816202595213187,
+        "t2t_score": 0.7836003741246967
       },
       {
         "model": "microsoft/phi-4",
         "model_type": "text-to-text",
-        "mt_bleu": 0.2808051746473726,
-        "mt_chrf": 49.858821063770044,
+        "mt_bleu": 0.2422835449771352,
+        "mt_chrf": 0.4339464294262581,
         "cls_acc": 0.7666666666666667,
-        "mlm_chrf": 96.28984542933327,
-        "t2t_score": 0.7427177771992333
+        "mlm_chrf": 0.9650899128314744,
+        "t2t_score": 0.7219010029747998
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
-        "asr_wer": 0.19653905528613333,
-        "asr_chrf": 89.3473231669277,
-        "s2t_score": 44.771931111106916
+        "asr_wer": 0.1927295314766095,
+        "asr_chrf": 0.8941604003451139,
+        "s2t_score": 0.5434449659108617
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.17561491933862197,
-        "asr_chrf": 91.85915393819565,
-        "s2t_score": 46.01738442876714
+        "asr_chrf": 0.9185915393819567,
+        "s2t_score": 0.5471032293602893
       }
     ],
     "commonvoice_hours": 446.0,
@@ -526,14 +526,14 @@
       "VE": 23488572
     },
     "language_family": "Indo-European",
-    "mt_bleu": 0.31438710613980736,
-    "mt_chrf": 51.70682164947916,
-    "cls_acc": 0.6733333333333333,
-    "mlm_chrf": 95.99334001231053,
-    "asr_wer": 0.18607698731237765,
-    "asr_chrf": 90.60323855256166,
-    "t2t_score": 0.71677831665041,
-    "s2t_score": 45.39465776993703
+    "mt_bleu": 0.28722441435034374,
+    "mt_chrf": 0.4567381907318164,
+    "cls_acc": 0.6799999999999999,
+    "mlm_chrf": 0.9629878273867962,
+    "asr_wer": 0.18417222540761574,
+    "asr_chrf": 0.9063759698635353,
+    "t2t_score": 0.6999086727062043,
+    "s2t_score": 0.5452740976355754
   },
   {
     "language_name": "Arabic",
@@ -543,61 +543,61 @@
       {
         "model": "openai/gpt-4o-mini",
         "model_type": "text-to-text",
-        "mt_bleu": 0.312307215788044,
-        "mt_chrf": 51.50028782321851,
+        "mt_bleu": 0.26593690487060095,
+        "mt_chrf": 0.46048583874582116,
         "cls_acc": 0.6,
-        "mlm_chrf": 96.57677413527875,
-        "t2t_score": 0.6935902065283241
+        "mlm_chrf": 0.9386512881662338,
+        "t2t_score": 0.6663790423040182
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.39547934933771334,
-        "mt_chrf": 57.51652731936118,
+        "mt_bleu": 0.2811587891139184,
+        "mt_chrf": 0.4610903378292814,
         "cls_acc": 0.4666666666666667,
-        "mlm_chrf": 94.97026443937914,
-        "t2t_score": 0.6638448614180232
+        "mlm_chrf": 0.9425014853511972,
+        "t2t_score": 0.623419496615715
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
         "model_type": "text-to-text",
-        "mt_bleu": 0.26940670420361396,
-        "mt_chrf": 46.07654794208784,
+        "mt_bleu": 0.20683544337550522,
+        "mt_chrf": 0.3857194391808861,
         "cls_acc": 0.7,
-        "mlm_chrf": 90.92876728332028,
-        "t2t_score": 0.690017717418027
+        "mlm_chrf": 0.9148307958510079,
+        "t2t_score": 0.6668500783439647
       },
       {
         "model": "google/gemini-2.0-flash-001",
         "model_type": "text-to-text",
-        "mt_bleu": 0.3928034519711188,
-        "mt_chrf": 57.47507639595937,
+        "mt_bleu": 0.3368489944570755,
+        "mt_chrf": 0.5132383488065384,
         "cls_acc": 0.9,
-        "mlm_chrf": 96.82551362297947,
-        "t2t_score": 0.8143353000631294
+        "mlm_chrf": 0.97921999148367,
+        "t2t_score": 0.7974861134300695
       },
       {
         "model": "microsoft/phi-4",
         "model_type": "text-to-text",
-        "mt_bleu": 0.2700754695807907,
-        "mt_chrf": 45.896533062231306,
+        "mt_bleu": 0.2419401543819311,
+        "mt_chrf": 0.4175700747114916,
         "cls_acc": 0.7,
-        "mlm_chrf": 93.60903960225609,
-        "t2t_score": 0.6983519088816247
+        "mlm_chrf": 0.9332394461837199,
+        "t2t_score": 0.6836031736317372
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
-        "asr_wer": 0.2685436379713873,
-        "asr_chrf": 83.61712973768607,
-        "s2t_score": 41.94283668782873
+        "asr_wer": 0.2976757980818083,
+        "asr_chrf": 0.8082975812173028,
+        "s2t_score": 0.5529866896495556
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.17370718156523782,
-        "asr_chrf": 88.68973505122798,
-        "s2t_score": 44.43172111639661
+        "asr_chrf": 0.8868973505122795,
+        "s2t_score": 0.5303022660387586
       }
     ],
     "commonvoice_hours": 91.0,
@@ -643,14 +643,14 @@
       "YE": 22114456
     },
     "language_family": "Afro-Asiatic",
-    "mt_bleu": 0.32801443817625614,
-    "mt_chrf": 51.692994508571644,
+    "mt_bleu": 0.26654405723980623,
+    "mt_chrf": 0.44762080785480374,
     "cls_acc": 0.6733333333333332,
-    "mlm_chrf": 94.58207181664275,
-    "asr_wer": 0.22112540976831258,
-    "asr_chrf": 86.15343239445703,
-    "t2t_score": 0.7120279988618257,
-    "s2t_score": 43.187278902112666
+    "mlm_chrf": 0.9416886014071657,
+    "asr_wer": 0.23569148982352306,
+    "asr_chrf": 0.8475974658647911,
+    "t2t_score": 0.6875475808651009,
+    "s2t_score": 0.5416444778441571
   },
   {
     "language_name": "Urdu",
@@ -660,18 +660,18 @@
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.26585004461425726,
-        "mt_chrf": 47.37157150967947,
-        "cls_acc": 0.43333333333333335,
-        "mlm_chrf": 94.38802161979918,
-        "t2t_score": 0.6169764215427066
+        "mt_bleu": 0.21847309277555946,
+        "mt_chrf": 0.4036061618297173,
+        "cls_acc": 0.4666666666666667,
+        "mlm_chrf": 0.9330700955297437,
+        "t2t_score": 0.6011143080087092
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
-        "asr_wer": 0.2982973325975355,
-        "asr_chrf": 78.04754030614318,
-        "s2t_score": 39.17291881937036
+        "asr_wer": 0.33586677704198,
+        "asr_chrf": 0.7430938264813908,
+        "s2t_score": 0.5394803017616854
       }
     ],
     "commonvoice_hours": 77.0,
@@ -684,14 +684,14 @@
       "PK": 221825950
     },
     "language_family": "Indo-European",
-    "mt_bleu": 0.26585004461425726,
-    "mt_chrf": 47.37157150967947,
-    "cls_acc": 0.43333333333333335,
-    "mlm_chrf": 94.38802161979918,
-    "asr_wer": 0.2982973325975355,
-    "asr_chrf": 78.04754030614318,
-    "t2t_score": 0.6169764215427066,
-    "s2t_score": 39.17291881937036
+    "mt_bleu": 0.21847309277555946,
+    "mt_chrf": 0.4036061618297173,
+    "cls_acc": 0.4666666666666667,
+    "mlm_chrf": 0.9330700955297437,
+    "asr_wer": 0.33586677704198,
+    "asr_chrf": 0.7430938264813908,
+    "t2t_score": 0.6011143080087092,
+    "s2t_score": 0.5394803017616854
   },
   {
     "language_name": "French",
@@ -701,18 +701,18 @@
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.3510210872150948,
-        "mt_chrf": 55.795595938804894,
+        "mt_bleu": 0.32618133837885355,
+        "mt_chrf": 0.4952644559037655,
         "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 97.12318847922649,
-        "t2t_score": 0.6986181702823268
+        "mlm_chrf": 0.9639910578331403,
+        "t2t_score": 0.6753073934678575
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2610754929736961,
-        "asr_chrf": 87.75590287945104,
-        "s2t_score": 44.00848918621237
+        "asr_chrf": 0.8775590287945104,
+        "s2t_score": 0.5693172608841033
       }
     ],
     "commonvoice_hours": 1052.0,
@@ -782,14 +782,14 @@
       "YT": 110580
     },
     "language_family": "Indo-European",
-    "mt_bleu": 0.3510210872150948,
-    "mt_chrf": 55.795595938804894,
+    "mt_bleu": 0.32618133837885355,
+    "mt_chrf": 0.4952644559037655,
     "cls_acc": 0.5666666666666667,
-    "mlm_chrf": 97.12318847922649,
+    "mlm_chrf": 0.9639910578331403,
     "asr_wer": 0.2610754929736961,
-    "asr_chrf": 87.75590287945104,
-    "t2t_score": 0.6986181702823268,
-    "s2t_score": 44.00848918621237
+    "asr_chrf": 0.8775590287945104,
+    "t2t_score": 0.6753073934678575,
+    "s2t_score": 0.5693172608841033
   },
   {
     "language_name": "Bangla",
@@ -799,18 +799,18 @@
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.2874920154082786,
-        "mt_chrf": 51.49279116112809,
-        "cls_acc": 0.4,
-        "mlm_chrf": 90.6067262108039,
-        "t2t_score": 0.6069983912397733
+        "mt_bleu": 0.23230854865261916,
+        "mt_chrf": 0.42063939652271853,
+        "cls_acc": 0.36666666666666664,
+        "mlm_chrf": 0.8995877938471141,
+        "t2t_score": 0.5622979523454997
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
-        "asr_wer": 0.26686188207927336,
-        "asr_chrf": 85.49430743996201,
-        "s2t_score": 42.88058466102064
+        "asr_wer": 0.3066054718228631,
+        "asr_chrf": 0.8006938100379883,
+        "s2t_score": 0.5536496409304257
       }
     ],
     "commonvoice_hours": 49.0,
@@ -823,14 +823,14 @@
       "NP": 28508
     },
     "language_family": "Indo-European",
-    "mt_bleu": 0.2874920154082786,
-    "mt_chrf": 51.49279116112809,
-    "cls_acc": 0.4,
-    "mlm_chrf": 90.6067262108039,
-    "asr_wer": 0.26686188207927336,
-    "asr_chrf": 85.49430743996201,
-    "t2t_score": 0.6069983912397733,
-    "s2t_score": 42.88058466102064
+    "mt_bleu": 0.23230854865261916,
+    "mt_chrf": 0.42063939652271853,
+    "cls_acc": 0.36666666666666664,
+    "mlm_chrf": 0.8995877938471141,
+    "asr_wer": 0.3066054718228631,
+    "asr_chrf": 0.8006938100379883,
+    "t2t_score": 0.5622979523454997,
+    "s2t_score": 0.5536496409304257
   },
   {
     "language_name": "Portuguese",
@@ -840,18 +840,18 @@
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.33491649454450034,
-        "mt_chrf": 54.60211868234021,
+        "mt_bleu": 0.2806919135940658,
+        "mt_chrf": 0.4531472771818437,
         "cls_acc": 0.5666666666666667,
-        "mlm_chrf": 96.52676764996336,
-        "t2t_score": 0.6926518433299008
+        "mlm_chrf": 0.9630716853128435,
+        "t2t_score": 0.6609618763871179
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
-        "asr_wer": 0.22967756370402836,
-        "asr_chrf": 89.03888828875101,
-        "s2t_score": 44.63428292622752
+        "asr_wer": 0.22800492332171055,
+        "asr_chrf": 0.8922038015648965,
+        "s2t_score": 0.5601043624433035
       }
     ],
     "commonvoice_hours": 177.0,
@@ -875,14 +875,14 @@
       "TL": 816395
     },
     "language_family": "Indo-European",
-    "mt_bleu": 0.33491649454450034,
-    "mt_chrf": 54.60211868234021,
+    "mt_bleu": 0.2806919135940658,
+    "mt_chrf": 0.4531472771818437,
     "cls_acc": 0.5666666666666667,
-    "mlm_chrf": 96.52676764996336,
-    "asr_wer": 0.22967756370402836,
-    "asr_chrf": 89.03888828875101,
-    "t2t_score": 0.6926518433299008,
-    "s2t_score": 44.63428292622752
+    "mlm_chrf": 0.9630716853128435,
+    "asr_wer": 0.22800492332171055,
+    "asr_chrf": 0.8922038015648965,
+    "t2t_score": 0.6609618763871179,
+    "s2t_score": 0.5601043624433035
   },
   {
     "language_name": "Punjabi",
@@ -892,18 +892,18 @@
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "model_type": "text-to-text",
-        "mt_bleu": 0.3078917767345886,
-        "mt_chrf": 50.505686987696365,
-        "cls_acc": 0.5333333333333333,
-        "mlm_chrf": 90.10119297923285,
-        "t2t_score": 0.6464673776675418
+        "mt_bleu": 0.3260979917168239,
+        "mt_chrf": 0.48620285493698817,
+        "cls_acc": 0.4,
+        "mlm_chrf": 0.8966325892385384,
+        "t2t_score": 0.5942784813918421
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
-        "asr_wer": 0.20953788908863977,
-        "asr_chrf": 84.56957135963033,
-        "s2t_score": 42.389554624359484
+        "asr_wer": 0.2622994225519276,
+        "asr_chrf": 0.7896064299629604,
+        "s2t_score": 0.525952926257444
       }
     ],
     "commonvoice_hours": 2.3,
@@ -917,14 +917,14 @@
       "SG": 9314
     },
     "language_family": "Indo-European",
-    "mt_bleu": 0.3078917767345886,
-    "mt_chrf": 50.505686987696365,
-    "cls_acc": 0.5333333333333333,
-    "mlm_chrf": 90.10119297923285,
-    "asr_wer": 0.20953788908863977,
-    "asr_chrf": 84.56957135963033,
-    "t2t_score": 0.6464673776675418,
-    "s2t_score": 42.389554624359484
+    "mt_bleu": 0.3260979917168239,
+    "mt_chrf": 0.48620285493698817,
+    "cls_acc": 0.4,
+    "mlm_chrf": 0.8966325892385384,
+    "asr_wer": 0.2622994225519276,
+    "asr_chrf": 0.7896064299629604,
+    "t2t_score": 0.5942784813918421,
+    "s2t_score": 0.525952926257444
   },
   {
     "language_name": "Russian",

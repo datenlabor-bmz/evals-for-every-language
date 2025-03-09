@@ -36,7 +36,7 @@ models = [
     "google/gemini-2.0-flash-001",  # 0.4$/M tokens
     # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
     # "deepseek/deepseek-chat",  # 0.9$/M tokens
-    "microsoft/phi-4",  # 0.07$/M tokens
+    "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
 ]
 model_fast = "meta-llama/llama-3.3-70b-instruct"
 transcription_models = [
