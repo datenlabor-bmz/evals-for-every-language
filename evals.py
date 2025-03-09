@@ -522,7 +522,7 @@ async def main():
             mt_chrf = mean([s["mt_chrf"] for s in scores_mt])
             cls_acc = mean([s["true"] == s["pred"] for s in scores_cls])
             mlm_chrf = mean([s["mlm_chrf"] for s in scores_mlm])
-            overall_score = (mt_chrf / 100 + cls_acc + mlm_chrf / 100) / 3
+            t2t_score = (mt_chrf / 100 + cls_acc + mlm_chrf / 100) / 3
             results.append(
                 {
                     "model": model,
@@ -531,7 +531,7 @@ async def main():
                     "mt_chrf": mt_chrf,
                     "cls_acc": cls_acc,
                     "mlm_chrf": mlm_chrf,
-                    "overall_score": overall_score,
+                    "t2t_score": t2t_score,
                 }
             )
         for model in transcription_models:
@@ -550,7 +550,7 @@ async def main():
                     "model_type": "speech-to-text",
                     "asr_wer": asr_wer,
                     "asr_chrf": asr_chrf,
-                    "overall_score": (asr_wer + asr_chrf) / 2,
+                    "s2t_score": (asr_wer + asr_chrf) / 2,
                 }
             )
         language_results = {
@@ -574,7 +574,8 @@ async def main():
             "mlm_chrf",
             "asr_wer",
             "asr_chrf",
-            "overall_score",
+            "t2t_score",
+            "s2t_score",
         ]:
             language_results[score] = mean(
                 [s[score] for s in results if score in s]

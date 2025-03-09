@@ -11,7 +11,7 @@
         "mt_chrf": 65.25187717981981,
         "cls_acc": 0.5666666666666667,
         "mlm_chrf": 97.84704595784264,
-        "overall_score": 0.7325519660144305
+        "t2t_score": 0.7325519660144305
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
@@ -20,7 +20,7 @@
         "mt_chrf": 63.24229348441665,
         "cls_acc": 0.6,
         "mlm_chrf": 93.62602669879945,
-        "overall_score": 0.7228944006107203
+        "t2t_score": 0.7228944006107203
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
@@ -29,7 +29,7 @@
         "mt_chrf": 63.8187259254881,
         "cls_acc": 0.5333333333333333,
         "mlm_chrf": 79.91140615317198,
-        "overall_score": 0.656878218039978
+        "t2t_score": 0.656878218039978
       },
       {
         "model": "google/gemini-2.0-flash-001",
@@ -38,7 +38,7 @@
         "mt_chrf": 71.2288943066563,
         "cls_acc": 0.8666666666666667,
         "mlm_chrf": 98.79868693366329,
-        "overall_score": 0.8556474930232877
+        "t2t_score": 0.8556474930232877
       },
       {
         "model": "microsoft/phi-4",
@@ -47,21 +47,21 @@
         "mt_chrf": 66.05410510011644,
         "cls_acc": 0.7,
         "mlm_chrf": 97.2290729316734,
-        "overall_score": 0.7776105934392995
+        "t2t_score": 0.7776105934392995
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.34916319968417603,
         "asr_chrf": 78.55986690446153,
-        "overall_score": 39.45451505207285
+        "s2t_score": 39.45451505207285
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.25418986127300397,
         "asr_chrf": 86.52016887049808,
-        "overall_score": 43.387179365885544
+        "s2t_score": 43.387179365885544
       }
     ],
     "commonvoice_hours": 2651.0,
@@ -230,7 +230,8 @@
     "mlm_chrf": 93.48244773503015,
     "asr_wer": 0.30167653047859,
     "asr_chrf": 82.5400178874798,
-    "overall_score": 12.369611012726589
+    "t2t_score": 0.7491165342255433,
+    "s2t_score": 41.4208472089792
   },
   {
     "language_name": "Chinese",
@@ -244,7 +245,7 @@
         "mt_chrf": 70.23584222732792,
         "cls_acc": 0.43333333333333335,
         "mlm_chrf": 91.54177259254774,
-        "overall_score": 0.6837031605106967
+        "t2t_score": 0.6837031605106967
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
@@ -253,7 +254,7 @@
         "mt_chrf": 61.11151378837755,
         "cls_acc": 0.5666666666666667,
         "mlm_chrf": 94.55849047452216,
-        "overall_score": 0.7077889030985546
+        "t2t_score": 0.7077889030985546
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
@@ -262,7 +263,7 @@
         "mt_chrf": 71.48446350451079,
         "cls_acc": 0.7666666666666667,
         "mlm_chrf": 91.82889304045095,
-        "overall_score": 0.799933410705428
+        "t2t_score": 0.799933410705428
       },
       {
         "model": "google/gemini-2.0-flash-001",
@@ -271,7 +272,7 @@
         "mt_chrf": 58.52460212908651,
         "cls_acc": 0.8666666666666667,
         "mlm_chrf": 94.26439448464122,
-        "overall_score": 0.7981855442679814
+        "t2t_score": 0.7981855442679814
       },
       {
         "model": "microsoft/phi-4",
@@ -280,21 +281,21 @@
         "mt_chrf": 69.23023880157619,
         "cls_acc": 0.7,
         "mlm_chrf": 93.53779735205161,
-        "overall_score": 0.7758934538454261
+        "t2t_score": 0.7758934538454261
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 1.0,
         "asr_chrf": 70.77419107011707,
-        "overall_score": 35.887095535058535
+        "s2t_score": 35.887095535058535
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 1.0,
         "asr_chrf": 77.48220275963784,
-        "overall_score": 39.24110137981892
+        "s2t_score": 39.24110137981892
       }
     ],
     "commonvoice_hours": 422.0,
@@ -328,7 +329,8 @@
     "mlm_chrf": 93.14626958884273,
     "asr_wer": 1.0,
     "asr_chrf": 74.12819691487746,
-    "overall_score": 11.270528769615078
+    "t2t_score": 0.7531008944856173,
+    "s2t_score": 37.56409845743873
   },
   {
     "language_name": "Hindi",
@@ -342,7 +344,7 @@
         "mt_chrf": 55.294100726869324,
         "cls_acc": 0.5,
         "mlm_chrf": 93.01665261992896,
-        "overall_score": 0.6610358444893277
+        "t2t_score": 0.6610358444893277
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
@@ -351,7 +353,7 @@
         "mt_chrf": 53.54085104449268,
         "cls_acc": 0.5,
         "mlm_chrf": 96.17240172798218,
-        "overall_score": 0.6657108425749162
+        "t2t_score": 0.6657108425749162
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
@@ -360,7 +362,7 @@
         "mt_chrf": 52.59738987149503,
         "cls_acc": 0.5,
         "mlm_chrf": 90.59820426203353,
-        "overall_score": 0.6439853137784286
+        "t2t_score": 0.6439853137784286
       },
       {
         "model": "google/gemini-2.0-flash-001",
@@ -369,7 +371,7 @@
         "mt_chrf": 61.68241787594198,
         "cls_acc": 0.8666666666666667,
         "mlm_chrf": 96.5534261573122,
-        "overall_score": 0.8163417023330695
+        "t2t_score": 0.8163417023330695
       },
       {
         "model": "microsoft/phi-4",
@@ -378,21 +380,21 @@
         "mt_chrf": 56.13147190849697,
         "cls_acc": 0.8,
         "mlm_chrf": 94.47772196307584,
-        "overall_score": 0.7686973129052427
+        "t2t_score": 0.7686973129052427
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2338948365728121,
         "asr_chrf": 83.13389660250954,
-        "overall_score": 41.68389571954118
+        "s2t_score": 41.68389571954118
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.43522263872986894,
         "asr_chrf": 63.049286642268754,
-        "overall_score": 31.74225464049931
+        "s2t_score": 31.74225464049931
       }
     ],
     "commonvoice_hours": 16.0,
@@ -412,7 +414,8 @@
     "mlm_chrf": 94.16368134606655,
     "asr_wer": 0.33455873765134053,
     "asr_chrf": 73.09159162238915,
-    "overall_score": 10.997417339445926
+    "t2t_score": 0.7111542032161969,
+    "s2t_score": 36.71307518002024
   },
   {
     "language_name": "Spanish",
@@ -426,7 +429,7 @@
         "mt_chrf": 52.582336167000754,
         "cls_acc": 0.6,
         "mlm_chrf": 96.34068599793908,
-        "overall_score": 0.6964100738831327
+        "t2t_score": 0.6964100738831327
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
@@ -435,7 +438,7 @@
         "mt_chrf": 52.142851262301726,
         "cls_acc": 0.5,
         "mlm_chrf": 96.92768852306384,
-        "overall_score": 0.6635684659512185
+        "t2t_score": 0.6635684659512185
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
@@ -444,7 +447,7 @@
         "mt_chrf": 50.14036662376262,
         "cls_acc": 0.6333333333333333,
         "mlm_chrf": 93.9463761308063,
-        "overall_score": 0.6914002536263407
+        "t2t_score": 0.6914002536263407
       },
       {
         "model": "google/gemini-2.0-flash-001",
@@ -453,7 +456,7 @@
         "mt_chrf": 53.80973313056067,
         "cls_acc": 0.8666666666666667,
         "mlm_chrf": 96.46210398041012,
-        "overall_score": 0.7897950125921249
+        "t2t_score": 0.7897950125921249
       },
       {
         "model": "microsoft/phi-4",
@@ -462,21 +465,21 @@
         "mt_chrf": 49.858821063770044,
         "cls_acc": 0.7666666666666667,
         "mlm_chrf": 96.28984542933327,
-        "overall_score": 0.7427177771992333
+        "t2t_score": 0.7427177771992333
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.19653905528613333,
         "asr_chrf": 89.3473231669277,
-        "overall_score": 44.771931111106916
+        "s2t_score": 44.771931111106916
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.17561491933862197,
         "asr_chrf": 91.85915393819565,
-        "overall_score": 46.01738442876714
+        "s2t_score": 46.01738442876714
       }
     ],
     "commonvoice_hours": 446.0,
@@ -529,7 +532,8 @@
     "mlm_chrf": 95.99334001231053,
     "asr_wer": 0.18607698731237765,
     "asr_chrf": 90.60323855256166,
-    "overall_score": 13.481886731875155
+    "t2t_score": 0.71677831665041,
+    "s2t_score": 45.39465776993703
   },
   {
     "language_name": "Arabic",
@@ -543,7 +547,7 @@
         "mt_chrf": 51.50028782321851,
         "cls_acc": 0.6,
         "mlm_chrf": 96.57677413527875,
-        "overall_score": 0.6935902065283241
+        "t2t_score": 0.6935902065283241
       },
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
@@ -552,7 +556,7 @@
         "mt_chrf": 57.51652731936118,
         "cls_acc": 0.4666666666666667,
         "mlm_chrf": 94.97026443937914,
-        "overall_score": 0.6638448614180232
+        "t2t_score": 0.6638448614180232
       },
       {
         "model": "mistralai/mistral-small-24b-instruct-2501",
@@ -561,7 +565,7 @@
         "mt_chrf": 46.07654794208784,
         "cls_acc": 0.7,
         "mlm_chrf": 90.92876728332028,
-        "overall_score": 0.690017717418027
+        "t2t_score": 0.690017717418027
       },
       {
         "model": "google/gemini-2.0-flash-001",
@@ -570,7 +574,7 @@
         "mt_chrf": 57.47507639595937,
         "cls_acc": 0.9,
         "mlm_chrf": 96.82551362297947,
-        "overall_score": 0.8143353000631294
+        "t2t_score": 0.8143353000631294
       },
       {
         "model": "microsoft/phi-4",
@@ -579,21 +583,21 @@
         "mt_chrf": 45.896533062231306,
         "cls_acc": 0.7,
         "mlm_chrf": 93.60903960225609,
-        "overall_score": 0.6983519088816247
+        "t2t_score": 0.6983519088816247
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2685436379713873,
         "asr_chrf": 83.61712973768607,
-        "overall_score": 41.94283668782873
+        "s2t_score": 41.94283668782873
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.17370718156523782,
         "asr_chrf": 88.68973505122798,
-        "overall_score": 44.43172111639661
+        "s2t_score": 44.43172111639661
       }
     ],
     "commonvoice_hours": 91.0,
@@ -645,7 +649,8 @@
     "mlm_chrf": 94.58207181664275,
     "asr_wer": 0.22112540976831258,
     "asr_chrf": 86.15343239445703,
-    "overall_score": 12.84781397121921
+    "t2t_score": 0.7120279988618257,
+    "s2t_score": 43.187278902112666
   },
   {
     "language_name": "Urdu",
@@ -659,14 +664,14 @@
         "mt_chrf": 47.37157150967947,
         "cls_acc": 0.43333333333333335,
         "mlm_chrf": 94.38802161979918,
-        "overall_score": 0.6169764215427066
+        "t2t_score": 0.6169764215427066
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2982973325975355,
         "asr_chrf": 78.04754030614318,
-        "overall_score": 39.17291881937036
+        "s2t_score": 39.17291881937036
       }
     ],
     "commonvoice_hours": 77.0,
@@ -685,7 +690,8 @@
     "mlm_chrf": 94.38802161979918,
     "asr_wer": 0.2982973325975355,
     "asr_chrf": 78.04754030614318,
-    "overall_score": 19.894947620456534
+    "t2t_score": 0.6169764215427066,
+    "s2t_score": 39.17291881937036
   },
   {
     "language_name": "French",
@@ -699,14 +705,14 @@
         "mt_chrf": 55.795595938804894,
         "cls_acc": 0.5666666666666667,
         "mlm_chrf": 97.12318847922649,
-        "overall_score": 0.6986181702823268
+        "t2t_score": 0.6986181702823268
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2610754929736961,
         "asr_chrf": 87.75590287945104,
-        "overall_score": 44.00848918621237
+        "s2t_score": 44.00848918621237
       }
     ],
     "commonvoice_hours": 1052.0,
@@ -782,7 +788,8 @@
     "mlm_chrf": 97.12318847922649,
     "asr_wer": 0.2610754929736961,
     "asr_chrf": 87.75590287945104,
-    "overall_score": 22.35355367824735
+    "t2t_score": 0.6986181702823268,
+    "s2t_score": 44.00848918621237
   },
   {
     "language_name": "Bangla",
@@ -796,14 +803,14 @@
         "mt_chrf": 51.49279116112809,
         "cls_acc": 0.4,
         "mlm_chrf": 90.6067262108039,
-        "overall_score": 0.6069983912397733
+        "t2t_score": 0.6069983912397733
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.26686188207927336,
         "asr_chrf": 85.49430743996201,
-        "overall_score": 42.88058466102064
+        "s2t_score": 42.88058466102064
       }
     ],
     "commonvoice_hours": 49.0,
@@ -822,7 +829,8 @@
     "mlm_chrf": 90.6067262108039,
     "asr_wer": 0.26686188207927336,
     "asr_chrf": 85.49430743996201,
-    "overall_score": 21.743791526130206
+    "t2t_score": 0.6069983912397733,
+    "s2t_score": 42.88058466102064
   },
   {
     "language_name": "Portuguese",
@@ -836,14 +844,14 @@
         "mt_chrf": 54.60211868234021,
         "cls_acc": 0.5666666666666667,
         "mlm_chrf": 96.52676764996336,
-        "overall_score": 0.6926518433299008
+        "t2t_score": 0.6926518433299008
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.22967756370402836,
         "asr_chrf": 89.03888828875101,
-        "overall_score": 44.63428292622752
+        "s2t_score": 44.63428292622752
       }
     ],
     "commonvoice_hours": 177.0,
@@ -873,7 +881,8 @@
     "mlm_chrf": 96.52676764996336,
     "asr_wer": 0.22967756370402836,
     "asr_chrf": 89.03888828875101,
-    "overall_score": 22.66346738477871
+    "t2t_score": 0.6926518433299008,
+    "s2t_score": 44.63428292622752
   },
   {
     "language_name": "Punjabi",
@@ -887,14 +896,14 @@
         "mt_chrf": 50.505686987696365,
         "cls_acc": 0.5333333333333333,
         "mlm_chrf": 90.10119297923285,
-        "overall_score": 0.6464673776675418
+        "t2t_score": 0.6464673776675418
       },
       {
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.20953788908863977,
         "asr_chrf": 84.56957135963033,
-        "overall_score": 42.389554624359484
+        "s2t_score": 42.389554624359484
       }
     ],
     "commonvoice_hours": 2.3,
@@ -914,7 +923,8 @@
     "mlm_chrf": 90.10119297923285,
     "asr_wer": 0.20953788908863977,
     "asr_chrf": 84.56957135963033,
-    "overall_score": 21.518011001013512
+    "t2t_score": 0.6464673776675418,
+    "s2t_score": 42.389554624359484
   },
   {
     "language_name": "Russian",
@@ -955,7 +965,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Swahili",
@@ -982,7 +993,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Indonesian",
@@ -1002,7 +1014,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "German",
@@ -1047,7 +1060,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Japanese",
@@ -1068,7 +1082,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Telugu",
@@ -1087,7 +1102,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Panjabi",
@@ -1107,7 +1123,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Marathi",
@@ -1126,7 +1143,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Javanese",
@@ -1146,7 +1164,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Vietnamese",
@@ -1168,7 +1187,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tamil",
@@ -1194,7 +1214,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Persian",
@@ -1221,7 +1242,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Wu Chinese",
@@ -1240,7 +1262,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Turkish",
@@ -1270,7 +1293,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Cantonese",
@@ -1291,7 +1315,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Korean",
@@ -1316,7 +1341,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Italian",
@@ -1349,7 +1375,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Filipino",
@@ -1370,7 +1397,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Egyptian Arabic",
@@ -1389,7 +1417,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gujarati",
@@ -1411,7 +1440,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Thai",
@@ -1430,7 +1460,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pashto",
@@ -1452,7 +1483,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kannada",
@@ -1471,7 +1503,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nigerian Pidgin",
@@ -1490,7 +1523,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Malayalam",
@@ -1515,7 +1549,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Odia",
@@ -1534,7 +1569,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Polish",
@@ -1561,7 +1597,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Xiang Chinese",
@@ -1580,7 +1617,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hausa",
@@ -1603,7 +1641,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sindhi",
@@ -1623,7 +1662,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "North Levantine Arabic",
@@ -1647,7 +1687,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Malay",
@@ -1670,7 +1711,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Burmese",
@@ -1690,7 +1732,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Amharic",
@@ -1710,7 +1753,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Algerian Arabic",
@@ -1729,7 +1773,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Oromo",
@@ -1750,7 +1795,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bhojpuri",
@@ -1771,7 +1817,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Uzbek",
@@ -1794,7 +1841,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Azerbaijani",
@@ -1818,7 +1866,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hakka Chinese",
@@ -1837,7 +1886,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sundanese",
@@ -1856,7 +1906,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dutch",
@@ -1884,7 +1935,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Moroccan Arabic",
@@ -1903,7 +1955,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ukrainian",
@@ -1927,7 +1980,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Yoruba",
@@ -1947,7 +2001,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Saraiki",
@@ -1966,7 +2021,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Igbo",
@@ -1985,7 +2041,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Min Nan Chinese",
@@ -2004,7 +2061,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Cebuano",
@@ -2023,7 +2081,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Awadhi",
@@ -2043,7 +2102,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Malagasy",
@@ -2062,7 +2122,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gan Chinese",
@@ -2081,7 +2142,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Romanian",
@@ -2106,7 +2168,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bavarian",
@@ -2126,7 +2189,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nepali",
@@ -2147,7 +2211,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Maithili",
@@ -2167,7 +2232,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Assamese",
@@ -2186,7 +2252,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nyanja",
@@ -2208,7 +2275,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Somali",
@@ -2232,7 +2300,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Madurese",
@@ -2251,7 +2320,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northeastern Thai",
@@ -2270,7 +2340,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rangpuri",
@@ -2290,7 +2361,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Magahi",
@@ -2309,7 +2381,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Haryanvi",
@@ -2328,7 +2401,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Marwari",
@@ -2347,7 +2421,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Serbian",
@@ -2373,7 +2448,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sinhala",
@@ -2392,7 +2468,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Khmer",
@@ -2411,7 +2488,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chhattisgarhi",
@@ -2430,7 +2508,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nigerian Fulfulde",
@@ -2449,7 +2528,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Zulu",
@@ -2472,7 +2552,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kazakh",
@@ -2496,7 +2577,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Deccan",
@@ -2515,7 +2597,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Czech",
@@ -2535,7 +2618,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Swedish",
@@ -2557,7 +2641,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hungarian",
@@ -2584,7 +2669,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Greek",
@@ -2612,7 +2698,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Shona",
@@ -2631,7 +2718,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Low German",
@@ -2651,7 +2739,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Akan",
@@ -2670,7 +2759,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Quechua",
@@ -2691,7 +2781,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Central Kurdish",
@@ -2711,7 +2802,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kinyarwanda",
@@ -2732,7 +2824,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Wolof",
@@ -2752,7 +2845,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tunisian Arabic",
@@ -2771,7 +2865,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Iloko",
@@ -2790,7 +2885,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Xhosa",
@@ -2810,7 +2906,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tigrinya",
@@ -2831,7 +2928,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Belarusian",
@@ -2852,7 +2950,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Luba-Lulua",
@@ -2871,7 +2970,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tajik",
@@ -2891,7 +2991,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Umbundu",
@@ -2910,7 +3011,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bambara",
@@ -2929,7 +3031,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Afrikaans",
@@ -2950,7 +3053,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hiligaynon",
@@ -2969,7 +3073,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kikuyu",
@@ -2988,7 +3093,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Haitian Creole",
@@ -3007,7 +3113,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Catalan",
@@ -3029,7 +3136,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hebrew",
@@ -3048,7 +3156,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sichuan Yi",
@@ -3067,7 +3176,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mossi",
@@ -3086,7 +3196,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Baluchi",
@@ -3108,7 +3219,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sylheti",
@@ -3127,7 +3239,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kimbundu",
@@ -3146,7 +3259,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Uyghur",
@@ -3168,7 +3282,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Minangkabau",
@@ -3187,7 +3302,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Swiss German",
@@ -3209,7 +3325,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bulgarian",
@@ -3233,7 +3350,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Standard Moroccan Tamazight",
@@ -3252,7 +3370,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Fula",
@@ -3282,7 +3401,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bosnian",
@@ -3301,7 +3421,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rundi",
@@ -3320,7 +3441,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kanauji",
@@ -3339,7 +3461,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Santali",
@@ -3358,7 +3481,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Danish",
@@ -3380,7 +3504,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Turkmen",
@@ -3401,7 +3526,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kurdish",
@@ -3427,7 +3553,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Croatian",
@@ -3454,7 +3581,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Albanian",
@@ -3479,7 +3607,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Slovak",
@@ -3501,7 +3630,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dyula",
@@ -3520,7 +3650,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northern Thai",
@@ -3539,7 +3670,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mongolian",
@@ -3560,7 +3692,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Southern Sotho",
@@ -3580,7 +3713,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Krio",
@@ -3599,7 +3733,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tachelhit",
@@ -3618,7 +3753,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tswana",
@@ -3640,7 +3776,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mewati",
@@ -3659,7 +3796,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Luyia",
@@ -3678,7 +3816,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Guarani",
@@ -3699,7 +3838,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Finnish",
@@ -3721,7 +3861,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ganda",
@@ -3740,7 +3881,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Betawi",
@@ -3759,7 +3901,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kashmiri",
@@ -3779,7 +3922,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Southern Thai",
@@ -3798,7 +3942,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Norwegian Bokmål",
@@ -3818,7 +3963,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Norwegian",
@@ -3837,7 +3983,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bemba",
@@ -3856,7 +4003,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Armenian",
@@ -3882,7 +4030,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northern Sotho",
@@ -3901,7 +4050,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Luo (Kenya and Tanzania)",
@@ -3920,7 +4070,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tok Pisin",
@@ -3939,7 +4090,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lao",
@@ -3958,7 +4110,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sukuma",
@@ -3977,7 +4130,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Konkani",
@@ -3996,7 +4150,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tsonga",
@@ -4017,7 +4172,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Main-Franconian",
@@ -4036,7 +4192,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Balinese",
@@ -4055,7 +4212,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ewe",
@@ -4075,7 +4233,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Zhuang",
@@ -4094,7 +4253,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Buginese",
@@ -4114,7 +4274,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mazanderani",
@@ -4133,7 +4294,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Goan Konkani",
@@ -4152,7 +4314,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kamba",
@@ -4171,7 +4334,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kalenjin",
@@ -4190,7 +4354,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Banjar",
@@ -4210,7 +4375,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northern Hindko",
@@ -4229,7 +4395,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Makhuwa",
@@ -4248,7 +4415,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gilaki",
@@ -4267,7 +4435,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lombard",
@@ -4287,7 +4456,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Zarma",
@@ -4306,7 +4476,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ndau",
@@ -4326,7 +4497,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sidamo",
@@ -4345,7 +4517,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Achinese",
@@ -4364,7 +4537,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Shekhawati",
@@ -4383,7 +4557,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Riffian",
@@ -4403,7 +4578,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Shan",
@@ -4423,7 +4599,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lambadi",
@@ -4442,7 +4619,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Garhwali",
@@ -4461,7 +4639,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Georgian",
@@ -4482,7 +4661,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Galician",
@@ -4502,7 +4682,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lingala",
@@ -4524,7 +4705,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mandingo",
@@ -4544,7 +4726,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Central Atlas Tamazight",
@@ -4563,7 +4746,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pattani Malay",
@@ -4582,7 +4766,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tiv",
@@ -4601,7 +4786,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kabyle",
@@ -4620,7 +4806,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kyrgyz",
@@ -4641,7 +4828,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bikol",
@@ -4660,7 +4848,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Fon",
@@ -4679,7 +4868,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gondi",
@@ -4698,7 +4888,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Waray",
@@ -4718,7 +4909,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Southern Kurdish",
@@ -4737,7 +4929,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Brahui",
@@ -4756,7 +4949,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Baoulé",
@@ -4775,7 +4969,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tibetan",
@@ -4796,7 +4991,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ibibio",
@@ -4815,7 +5011,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Efik",
@@ -4834,7 +5031,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sango",
@@ -4853,7 +5051,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kumaoni",
@@ -4872,7 +5071,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Aymara",
@@ -4892,7 +5092,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nyankole",
@@ -4911,7 +5112,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Jamaican Creole English",
@@ -4930,7 +5132,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dogri",
@@ -4949,7 +5152,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gusii",
@@ -4968,7 +5172,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sasak",
@@ -4987,7 +5192,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kurukh",
@@ -5006,7 +5212,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pampanga",
@@ -5025,7 +5232,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "West Albay Bikol",
@@ -5044,7 +5252,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lithuanian",
@@ -5065,7 +5274,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Beja",
@@ -5084,7 +5294,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Batak Toba",
@@ -5103,7 +5314,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sadri",
@@ -5122,7 +5334,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Waddar",
@@ -5141,7 +5354,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Luba-Katanga",
@@ -5160,7 +5374,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chiga",
@@ -5179,7 +5394,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Soga",
@@ -5198,7 +5414,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Swati",
@@ -5219,7 +5436,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hazaragi",
@@ -5238,7 +5456,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Meru",
@@ -5257,7 +5476,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kangri",
@@ -5276,7 +5496,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Afar",
@@ -5297,7 +5518,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Teso",
@@ -5317,7 +5539,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lomwe",
@@ -5336,7 +5559,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Occitan",
@@ -5356,7 +5580,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Balochi",
@@ -5377,7 +5602,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northern Luri",
@@ -5397,7 +5623,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Wagdi",
@@ -5416,7 +5643,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tulu",
@@ -5435,7 +5663,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Khandesi",
@@ -5454,7 +5683,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tatar",
@@ -5473,7 +5703,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Slovenian",
@@ -5495,7 +5726,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Makasar",
@@ -5514,7 +5746,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Wolaytta",
@@ -5533,7 +5766,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nyamwezi",
@@ -5552,7 +5786,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bodo",
@@ -5571,7 +5806,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lampung Api",
@@ -5590,7 +5826,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chuvash",
@@ -5609,7 +5846,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bashkir",
@@ -5628,7 +5866,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rohingya",
@@ -5648,7 +5887,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mende",
@@ -5668,7 +5908,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tumbuka",
@@ -5687,7 +5928,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tamashek",
@@ -5707,7 +5949,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "North Ndebele",
@@ -5726,7 +5969,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Masai",
@@ -5746,7 +5990,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Serer",
@@ -5765,7 +6010,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nimadi",
@@ -5784,7 +6030,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Timne",
@@ -5803,7 +6050,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Scots",
@@ -5822,7 +6070,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lango (Uganda)",
@@ -5841,7 +6090,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Domari",
@@ -5860,7 +6110,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Macedonian",
@@ -5881,7 +6132,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Acoli",
@@ -5900,7 +6152,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Central-Eastern Niger Fulfulde",
@@ -5919,7 +6172,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bhili",
@@ -5938,7 +6192,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pangasinan",
@@ -5957,7 +6212,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kongo",
@@ -5976,7 +6232,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bini",
@@ -5995,7 +6252,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Maasina Fulfulde",
@@ -6014,7 +6272,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Manipuri",
@@ -6034,7 +6293,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Abron",
@@ -6053,7 +6313,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Makonde",
@@ -6072,7 +6333,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gheg Albanian",
@@ -6091,7 +6353,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Venda",
@@ -6111,7 +6374,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sena",
@@ -6130,7 +6394,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Venetian",
@@ -6153,7 +6418,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Susu",
@@ -6172,7 +6438,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Norwegian Nynorsk",
@@ -6191,7 +6458,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Makhuwa-Meetto",
@@ -6210,7 +6478,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rajasthani",
@@ -6229,7 +6498,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ho",
@@ -6248,7 +6518,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Maguindanaon",
@@ -6267,7 +6538,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mewari",
@@ -6286,7 +6558,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bulu",
@@ -6305,7 +6578,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Masaaba",
@@ -6324,7 +6598,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mundari",
@@ -6344,7 +6619,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Morisyen",
@@ -6363,7 +6639,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Irish",
@@ -6383,7 +6660,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Fur",
@@ -6402,7 +6680,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rejang",
@@ -6421,7 +6700,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bhilali",
@@ -6440,7 +6720,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tausug",
@@ -6459,7 +6740,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kʼicheʼ",
@@ -6478,7 +6760,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bakhtiari",
@@ -6497,7 +6780,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kpelle",
@@ -6517,7 +6801,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Cebaara Senoufo",
@@ -6536,7 +6821,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northern Khmer",
@@ -6555,7 +6841,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "West Flemish",
@@ -6574,7 +6861,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Soninke",
@@ -6593,7 +6881,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Zaza",
@@ -6612,7 +6901,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Latvian",
@@ -6631,7 +6921,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dan",
@@ -6650,7 +6941,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gorontalo",
@@ -6669,7 +6961,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tigre",
@@ -6688,7 +6981,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Basque",
@@ -6708,7 +7002,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hadothi",
@@ -6727,7 +7022,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kabardian",
@@ -6747,7 +7043,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Khasi",
@@ -6766,7 +7063,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sardinian",
@@ -6785,7 +7083,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lozi",
@@ -6804,7 +7103,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Frafra",
@@ -6823,7 +7123,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Najdi Arabic",
@@ -6842,7 +7143,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ronga",
@@ -6861,7 +7163,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Southern Luri",
@@ -6880,7 +7183,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Newari",
@@ -6899,7 +7203,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Talysh",
@@ -6918,7 +7223,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Yiddish",
@@ -6940,7 +7246,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bena",
@@ -6959,7 +7266,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Shambala",
@@ -6978,7 +7286,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kachhi",
@@ -6997,7 +7306,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ngaju",
@@ -7016,7 +7326,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kita Maninkakan",
@@ -7035,7 +7346,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Jumli",
@@ -7054,7 +7366,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Central Okinawan",
@@ -7073,7 +7386,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mon",
@@ -7093,7 +7407,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chimborazo Highland Quichua",
@@ -7112,7 +7427,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kachin",
@@ -7131,7 +7447,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Southern Hindko",
@@ -7150,7 +7467,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Limburgish",
@@ -7169,7 +7487,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Manyika",
@@ -7188,7 +7507,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chechen",
@@ -7207,7 +7527,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kuanyama",
@@ -7226,7 +7547,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "South Ndebele",
@@ -7245,7 +7567,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Welsh",
@@ -7265,7 +7588,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Adangme",
@@ -7284,7 +7608,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Estonian",
@@ -7304,7 +7629,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Parsi-Dari",
@@ -7324,7 +7650,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Yucateco",
@@ -7343,7 +7670,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ewondo",
@@ -7362,7 +7690,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Komering",
@@ -7381,7 +7710,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tooro",
@@ -7400,7 +7730,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Garo",
@@ -7420,7 +7751,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ga",
@@ -7439,7 +7771,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mbunga",
@@ -7458,7 +7791,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tetum",
@@ -7477,7 +7811,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Iban",
@@ -7496,7 +7831,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Embu",
@@ -7515,7 +7851,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Swabian",
@@ -7534,7 +7871,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hmong Njua",
@@ -7562,7 +7900,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kalanga",
@@ -7581,7 +7920,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dotyali",
@@ -7600,7 +7940,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Picard",
@@ -7619,7 +7960,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Frisian",
@@ -7638,7 +7980,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chakma",
@@ -7658,7 +8001,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Yao",
@@ -7677,7 +8021,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Uab Meto",
@@ -7696,7 +8041,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Capiznon",
@@ -7715,7 +8061,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Asu",
@@ -7734,7 +8081,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tai Dam",
@@ -7753,7 +8101,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Walloon",
@@ -7772,7 +8121,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Koyraboro Senni",
@@ -7791,7 +8141,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bagheli",
@@ -7811,7 +8162,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Asturian",
@@ -7830,7 +8182,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Laki",
@@ -7849,7 +8202,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Munda",
@@ -7868,7 +8222,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lisu",
@@ -7887,7 +8242,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "N’Ko",
@@ -7906,7 +8262,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gronings",
@@ -7925,7 +8282,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mongo",
@@ -7944,7 +8302,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dangaura Tharu",
@@ -7963,7 +8322,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Neapolitan",
@@ -7982,7 +8342,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nuer",
@@ -8001,7 +8362,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Breton",
@@ -8020,7 +8382,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pijin",
@@ -8039,7 +8402,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Réunion Creole French",
@@ -8058,7 +8422,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Avaric",
@@ -8077,7 +8442,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ndonga",
@@ -8096,7 +8462,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ossetic",
@@ -8116,7 +8483,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Udmurt",
@@ -8135,7 +8503,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ligurian",
@@ -8154,7 +8523,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kabuverdianu",
@@ -8173,7 +8543,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rusyn",
@@ -8192,7 +8563,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mari",
@@ -8211,7 +8583,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sicilian",
@@ -8230,7 +8603,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Langi",
@@ -8249,7 +8623,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Balti",
@@ -8269,7 +8644,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Eastern Huasteca Nahuatl",
@@ -8288,7 +8664,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Huasteca Nahuatl",
@@ -8307,7 +8684,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Silesian",
@@ -8326,7 +8704,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kara-Kalpak",
@@ -8345,7 +8724,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gujari",
@@ -8364,7 +8744,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sirmauri",
@@ -8383,7 +8764,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Maltese",
@@ -8402,7 +8784,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bantawa",
@@ -8421,7 +8804,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Yakut",
@@ -8440,7 +8824,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Masalit",
@@ -8459,7 +8844,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Jju",
@@ -8478,7 +8864,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Adyghe",
@@ -8498,7 +8885,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Yemba",
@@ -8517,7 +8905,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mingrelian",
@@ -8536,7 +8925,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Erzya",
@@ -8555,7 +8945,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Taita",
@@ -8574,7 +8965,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Central Mazahua",
@@ -8593,7 +8985,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Vunjo",
@@ -8612,7 +9005,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rombo",
@@ -8631,7 +9025,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Machame",
@@ -8650,7 +9045,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Khmu",
@@ -8669,7 +9065,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Fang",
@@ -8688,7 +9085,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kinaray-a",
@@ -8707,7 +9105,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kuy",
@@ -8728,7 +9127,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Luxembourgish",
@@ -8747,7 +9147,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sranan Tongo",
@@ -8766,7 +9167,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Jola-Fonyi",
@@ -8785,7 +9187,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Tamang",
@@ -8804,7 +9207,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pontic",
@@ -8823,7 +9227,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Negeri Sembilan Malay",
@@ -8842,7 +9247,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ngiemboon",
@@ -8861,7 +9267,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ghomala",
@@ -8880,7 +9287,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Divehi",
@@ -8900,7 +9308,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Saurashtra",
@@ -8919,7 +9328,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Fiji Hindi",
@@ -8938,7 +9348,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nobiin",
@@ -8957,7 +9368,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Balkan Gagauz Turkish",
@@ -8976,7 +9388,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kerinci",
@@ -8995,7 +9408,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Parkari Koli",
@@ -9014,7 +9428,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dzongkha",
@@ -9034,7 +9449,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pökoot",
@@ -9053,7 +9469,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dargwa",
@@ -9072,7 +9489,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Limbu",
@@ -9092,7 +9510,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Fijian",
@@ -9111,7 +9530,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rana Tharu",
@@ -9130,7 +9550,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kom",
@@ -9149,7 +9570,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Icelandic",
@@ -9168,7 +9590,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Khowar",
@@ -9187,7 +9610,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tolaki",
@@ -9206,7 +9630,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Naxi",
@@ -9225,7 +9650,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Eastern Magar",
@@ -9244,7 +9670,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bamun",
@@ -9263,7 +9690,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Basaa",
@@ -9282,7 +9710,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Koyra Chiini",
@@ -9301,7 +9730,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Indus Kohistani",
@@ -9320,7 +9750,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gayo",
@@ -9339,7 +9770,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ngazidja Comorian",
@@ -9358,7 +9790,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Buriat",
@@ -9377,7 +9810,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rinconada Bikol",
@@ -9396,7 +9830,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Medumba",
@@ -9415,7 +9850,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ao Naga",
@@ -9434,7 +9870,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Badaga",
@@ -9453,7 +9890,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kochila Tharu",
@@ -9472,7 +9910,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Moksha",
@@ -9491,7 +9930,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tae'",
@@ -9510,7 +9950,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nzima",
@@ -9529,7 +9970,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nama",
@@ -9548,7 +9990,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ndzwani Comorian",
@@ -9567,7 +10010,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kumyk",
@@ -9586,7 +10030,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mundang",
@@ -9605,7 +10050,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mapuche",
@@ -9624,7 +10070,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Cham",
@@ -9643,7 +10090,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bislama",
@@ -9662,7 +10110,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lü",
@@ -9681,7 +10130,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tai Nüa",
@@ -9700,7 +10150,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Wadiyara Koli",
@@ -9719,7 +10170,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kachi Koli",
@@ -9738,7 +10190,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lezghian",
@@ -9757,7 +10210,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Komi",
@@ -9776,7 +10230,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Samoan",
@@ -9796,7 +10251,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Magar",
@@ -9815,7 +10271,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Samburu",
@@ -9834,7 +10291,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Crimean Tatar",
@@ -9853,7 +10311,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mandar",
@@ -9872,7 +10331,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sangir",
@@ -9891,7 +10351,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Extremaduran",
@@ -9910,7 +10371,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Central Huasteca Nahuatl",
@@ -9929,7 +10391,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Zeelandic",
@@ -9948,7 +10411,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Karachay-Balkar",
@@ -9967,7 +10431,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Colognian",
@@ -9986,7 +10451,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Herero",
@@ -10005,7 +10471,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Saafi-Saafi",
@@ -10024,7 +10491,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Zaghawa",
@@ -10043,7 +10511,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ingush",
@@ -10062,7 +10531,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Saho",
@@ -10081,7 +10551,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tomo Kan Dogon",
@@ -10100,7 +10571,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Papiamento",
@@ -10121,7 +10593,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Syriac",
@@ -10141,7 +10614,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nyasa Tonga",
@@ -10160,7 +10634,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mafa",
@@ -10179,7 +10654,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Punu",
@@ -10198,7 +10674,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tyap",
@@ -10217,7 +10694,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Xaasongaxango",
@@ -10236,7 +10714,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tuvinian",
@@ -10255,7 +10734,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Central Dusun",
@@ -10274,7 +10754,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Riang (India)",
@@ -10293,7 +10774,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Comorian",
@@ -10312,7 +10794,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bomu",
@@ -10331,7 +10814,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Latgalian",
@@ -10350,7 +10834,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Navajo",
@@ -10369,7 +10854,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Jenaama Bozo",
@@ -10388,7 +10874,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Corsican",
@@ -10407,7 +10894,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bafut",
@@ -10426,7 +10914,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sherpa",
@@ -10445,7 +10934,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kirmanjki",
@@ -10464,7 +10954,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hiri Motu",
@@ -10483,7 +10974,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kako",
@@ -10502,7 +10994,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Akoose",
@@ -10521,7 +11014,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Selayar",
@@ -10540,7 +11034,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Māori",
@@ -10559,7 +11054,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rajbanshi",
@@ -10578,7 +11074,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Duala",
@@ -10597,7 +11094,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Wayuu",
@@ -10616,7 +11114,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Vai",
@@ -10635,7 +11134,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Eastern Tamang",
@@ -10654,7 +11154,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Metaʼ",
@@ -10673,7 +11174,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pennsylvania German",
@@ -10692,7 +11194,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rwa",
@@ -10711,7 +11214,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Torwali",
@@ -10730,7 +11234,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mandjak",
@@ -10749,7 +11254,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tshangla",
@@ -10768,7 +11274,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sangu",
@@ -10787,7 +11294,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Karelian",
@@ -10806,7 +11314,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ladino",
@@ -10825,7 +11334,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ifè",
@@ -10844,7 +11354,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gagauz",
@@ -10863,7 +11374,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lak",
@@ -10882,7 +11394,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sassarese Sardinian",
@@ -10901,7 +11414,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tongan",
@@ -10920,7 +11434,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Balanta-Ganja",
@@ -10939,7 +11454,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ngomba",
@@ -10958,7 +11474,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Seselwa Creole French",
@@ -10977,7 +11494,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Abkhazian",
@@ -10997,7 +11515,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tahitian",
@@ -11016,7 +11535,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Inuktitut",
@@ -11035,7 +11555,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Plautdietsch",
@@ -11054,7 +11575,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bishnupriya",
@@ -11073,7 +11595,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bafia",
@@ -11092,7 +11615,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gurung",
@@ -11111,7 +11635,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Eastern Cham",
@@ -11130,7 +11655,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Lawa",
@@ -11150,7 +11676,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mankanya",
@@ -11170,7 +11697,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lepcha",
@@ -11191,7 +11719,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Blin",
@@ -11210,7 +11739,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bateri",
@@ -11230,7 +11760,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kathoriya Tharu",
@@ -11249,7 +11780,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Scottish Gaelic",
@@ -11268,7 +11800,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Faroese",
@@ -11288,7 +11821,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Võro",
@@ -11307,7 +11841,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kenyang",
@@ -11326,7 +11861,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gilbertese",
@@ -11345,7 +11881,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bube",
@@ -11364,7 +11901,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mentawai",
@@ -11383,7 +11921,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Arpitan",
@@ -11402,7 +11941,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Komi-Permyak",
@@ -11421,7 +11961,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Koro",
@@ -11440,7 +11981,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Marshallese",
@@ -11459,7 +12001,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tornedalen Finnish",
@@ -11478,7 +12021,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kalaallisut",
@@ -11498,7 +12042,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Braj",
@@ -11517,7 +12062,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Guianese Creole French",
@@ -11536,7 +12082,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northern Sami",
@@ -11557,7 +12104,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Anii",
@@ -11577,7 +12125,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kaingang",
@@ -11596,7 +12145,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kashubian",
@@ -11615,7 +12165,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Koro Wachi",
@@ -11634,7 +12185,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chamorro",
@@ -11654,7 +12206,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Atsam",
@@ -11673,7 +12226,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bushi",
@@ -11692,7 +12246,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Romansh",
@@ -11711,7 +12266,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Aghem",
@@ -11730,7 +12286,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kuvi",
@@ -11749,7 +12306,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Noon",
@@ -11768,7 +12326,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Friulian",
@@ -11787,7 +12346,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Thulung",
@@ -11806,7 +12366,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Emilian",
@@ -11825,7 +12386,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chuukese",
@@ -11844,7 +12406,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Western Mari",
@@ -11863,7 +12426,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hawaiian",
@@ -11882,7 +12446,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mru",
@@ -11901,7 +12466,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Cajun French",
@@ -11920,7 +12486,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nheengatu",
@@ -11941,7 +12508,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Aragonese",
@@ -11960,7 +12528,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Cherokee",
@@ -11979,7 +12548,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sinte Romani",
@@ -11998,7 +12568,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ojibwa",
@@ -12017,7 +12588,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Pohnpeian",
@@ -12036,7 +12608,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Laz",
@@ -12055,7 +12628,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Muslim Tat",
@@ -12074,7 +12648,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Central Yupik",
@@ -12093,7 +12668,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dakota",
@@ -12113,7 +12689,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Southern Altai",
@@ -12132,7 +12709,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Amo",
@@ -12151,7 +12729,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Guajajára",
@@ -12170,7 +12749,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hanunoo",
@@ -12189,7 +12769,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tsakhur",
@@ -12208,7 +12789,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Palauan",
@@ -12227,7 +12809,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Sanskrit",
@@ -12246,7 +12829,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Bassari",
@@ -12265,7 +12849,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Oji-Cree",
@@ -12284,7 +12869,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Khamti",
@@ -12304,7 +12890,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Upper Sorbian",
@@ -12323,7 +12910,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chipewyan",
@@ -12342,7 +12930,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Innu-aimun",
@@ -12361,7 +12950,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lower Silesian",
@@ -12380,7 +12970,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Walser",
@@ -12400,7 +12991,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Choctaw",
@@ -12419,7 +13011,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tagbanwa",
@@ -12438,7 +13031,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Xavánte",
@@ -12457,7 +13051,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tuvalu",
@@ -12476,7 +13071,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northern Frisian",
@@ -12495,7 +13091,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Roviana",
@@ -12514,7 +13111,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Wallisian",
@@ -12533,7 +13131,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tavringer Romani",
@@ -12552,7 +13151,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Cree",
@@ -12571,7 +13171,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kwasio",
@@ -12590,7 +13191,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lakota",
@@ -12609,7 +13211,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kosraean",
@@ -12628,7 +13231,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Inupiaq",
@@ -12647,7 +13251,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Zoroastrian Dari",
@@ -12666,7 +13271,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tasawaq",
@@ -12685,7 +13291,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Buhid",
@@ -12704,7 +13311,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mi'kmaw",
@@ -12723,7 +13331,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Hassaniyya",
@@ -12742,7 +13351,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lower Sorbian",
@@ -12761,7 +13371,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Nauru",
@@ -12780,7 +13391,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Eastern Lawa",
@@ -12799,7 +13411,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Yapese",
@@ -12818,7 +13431,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Atikamekw",
@@ -12837,7 +13451,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Piedmontese",
@@ -12856,7 +13471,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kalo Finnish Romani",
@@ -12875,7 +13491,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Siksiká",
@@ -12894,7 +13511,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "East Futuna",
@@ -12913,7 +13531,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Taroko",
@@ -12932,7 +13551,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Plains Cree",
@@ -12951,7 +13571,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Safaliba",
@@ -12970,7 +13591,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Muscogee",
@@ -12989,7 +13611,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Veps",
@@ -13008,7 +13631,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ménik",
@@ -13027,7 +13651,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Virgin Islands Creole English",
@@ -13046,7 +13671,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Turoyo",
@@ -13065,7 +13691,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ulithian",
@@ -13084,7 +13711,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Rotuman",
@@ -13103,7 +13731,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Warlpiri",
@@ -13122,7 +13751,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Yangben",
@@ -13141,7 +13771,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Slave",
@@ -13160,7 +13791,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Dogrib",
@@ -13179,7 +13811,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Eastern Frisian",
@@ -13198,7 +13831,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Cornish",
@@ -13217,7 +13851,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Swampy Cree",
@@ -13236,7 +13871,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Mohawk",
@@ -13255,7 +13891,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Manx",
@@ -13274,7 +13911,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lule Sami",
@@ -13293,7 +13931,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Naskapi",
@@ -13312,7 +13951,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tokelau",
@@ -13331,7 +13971,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Niuean",
@@ -13350,7 +13991,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Saterland Frisian",
@@ -13369,7 +14011,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Seri",
@@ -13388,7 +14031,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chilcotin",
@@ -13407,7 +14051,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Latin",
@@ -13426,7 +14071,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Halkomelem",
@@ -13445,7 +14091,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Michif",
@@ -13464,7 +14111,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Skolt Sami",
@@ -13483,7 +14131,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Inari Sami",
@@ -13502,7 +14151,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lillooet",
@@ -13521,7 +14171,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Okanagan",
@@ -13540,7 +14191,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Maliseet-Passamaquoddy",
@@ -13559,7 +14211,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Kwakʼwala",
@@ -13578,7 +14231,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Northern East Cree",
@@ -13597,7 +14251,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Gwichʼin",
@@ -13616,7 +14271,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Esperanto",
@@ -13635,7 +14291,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Southern Sami",
@@ -13654,7 +14311,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Tsakonian",
@@ -13673,7 +14331,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ingrian",
@@ -13692,7 +14351,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Interlingua",
@@ -13712,7 +14372,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Araona",
@@ -13731,7 +14392,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Prussian",
@@ -13750,7 +14412,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Interlingue",
@@ -13769,7 +14432,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Literary Chinese",
@@ -13788,7 +14452,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Ido",
@@ -13807,7 +14472,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Lojban",
@@ -13826,7 +14492,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Jutish",
@@ -13845,7 +14512,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Votic",
@@ -13864,7 +14532,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Geez",
@@ -13883,7 +14552,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Osage",
@@ -13902,7 +14572,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Romagnol",
@@ -13921,7 +14592,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Church Slavic",
@@ -13940,7 +14612,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Samogitian",
@@ -13959,7 +14632,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Obolo",
@@ -13978,7 +14652,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Chickasaw",
@@ -13997,7 +14672,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Caddo",
@@ -14016,7 +14692,8 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   },
   {
     "language_name": "Palatine German",
@@ -14035,6 +14712,7 @@
     "mlm_chrf": null,
     "asr_wer": null,
     "asr_chrf": null,
-    "overall_score": null
+    "t2t_score": null,
+    "s2t_score": null
   }
 ]

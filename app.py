@@ -8,20 +8,24 @@ import plotly.graph_objects as go
 import pycountry
 
 with open("results.json") as f:
-    results = json.load(f)
+    languages = json.load(f)
+
+languages_with_scores = [
+    lang for lang in languages if lang["t2t_score"] is not None
+]
 
 # Global constants for metric mappings
-METRICS = {
-    "overall_performance": {
-        "display_name": "Overall Performance",
-        "field_name": "overall_score",
-        "label": "Overall Performance Score",
+METRICS = [
+    {
+        "display_name": "Overall Text-to-Text Performance",
+        "field_name": "t2t_score",
+        "label": "Overall Score",
         "explanation": """
-    **Overall Performance**: A weighted combination of all metrics, providing a holistic view of model performance across different language tasks. 
+    **Overall Score for Text-to-Text Performance**: A weighted combination of all metrics, providing a holistic view of model performance across different language tasks. 
     Higher scores indicate better overall language capabilities.
     """,
     },
-    "translation_bleu": {
+    {
         "display_name": "Translation (BLEU)",
         "field_name": "mt_bleu",
         "label": "BLEU Score",
@@ -30,7 +34,7 @@ METRICS = {
     It calculates n-gram precision and applies a brevity penalty. Scores range from 0 to 1, with higher values indicating better translation quality.
     """,
     },
-    "translation_chrf": {
+    {
         "display_name": "Translation (ChrF)",
         "field_name": "mt_chrf",
         "label": "ChrF Score",
@@ -40,7 +44,7 @@ METRICS = {
     Higher scores (0-1) indicate better translations.
     """,
     },
-    "classification_accuracy": {
+    {
         "display_name": "Classification (Accuracy)",
         "field_name": "cls_acc",
         "label": "Classification Accuracy",
@@ -50,7 +54,7 @@ METRICS = {
     Reported as a percentage where higher values indicate better classification performance.
     """,
     },
-    "mlm_chrf": {
+    {
         "display_name": "Masked Language Modeling (ChrF)",
         "field_name": "mlm_chrf",
         "label": "MLM ChrF Score",
@@ -60,7 +64,16 @@ METRICS = {
     between predicted and actual text. Higher scores indicate better language understanding.
     """,
     },
-    "asr_wer": {
+    {
+        "display_name": "Overall Speech-to-Text Performance",
+        "field_name": "s2t_score",
+        "label": "Overall Score",
+        "explanation": """
+    **Overall Score for Speech-to-Text Performance**: A weighted combination of all metrics, providing a holistic view of model performance across different language tasks. 
+    Higher scores indicate better overall language capabilities.
+    """,
+    },
+    {
         "display_name": "Automatic Speech Recognition (WER)",
         "field_name": "asr_wer",
         "label": "WER",
@@ -71,7 +84,7 @@ METRICS = {
     Lower scores indicate better performance, with 0 being perfect transcription.
     """,
     },
-    "asr_chrf": {
+    {
         "display_name": "Automatic Speech Recognition ChrF",
         "field_name": "asr_chrf",
         "label": "ChrF",
@@ -80,8 +93,8 @@ METRICS = {
     This metric is particularly valuable for morphologically rich languages and can better capture partial word matches.
     Higher scores (0-1) indicate better translations.
     """,
-    },  
-}
+    },
+]
 
 
 def mean(lst):
@@ -91,7 +104,7 @@ def mean(lst):
 def create_leaderboard_df(metric):
     # Sort languages by average BLEU to determine resource categories
     langs_with_score = [
-        lang for lang in results if lang[metric["field_name"]] is not None
+        lang for lang in languages_with_scores if lang[metric["field_name"]] is not None
     ]
     sorted_langs = sorted(
         langs_with_score, key=lambda x: x[metric["field_name"]], reverse=True
@@ -106,7 +119,7 @@ def create_leaderboard_df(metric):
 
     # Get all model scores with categorization
     model_scores = {}
-    for lang in results:
+    for lang in languages_with_scores:
         category = (
             "High-Resource"
             if lang["language_name"] in high_resource
@@ -205,7 +218,7 @@ def create_leaderboard_df(metric):
 
 
 def create_model_comparison_plot(metric):
-    top_languages = sorted(results, key=lambda x: x["speakers"], reverse=True)[:10]
+    top_languages = sorted(languages_with_scores, key=lambda x: x["speakers"], reverse=True)[:10]
 
     # Create appropriate title and y-axis label based on metric
     title = f"{metric['display_name']} by Model and Language"
@@ -251,14 +264,14 @@ def create_language_stats_df(metric):
     # Create a list to store flattened data
     flat_data = []
 
-    for lang in results:
+    for lang in languages:
         # Find the best model and its BLEU score
         best_model = max(
-            lang["scores"] or [{"overall_score": None, "model": None}],
-            key=lambda x: x["overall_score"],
-        )
+            lang["scores"] or [{"t2t_score": None, "model": None}],
+            key=lambda x: x.get("t2t_score", 0),
+        ) if lang["t2t_score"] is not None else None
 
-        model = best_model["model"]
+        model = best_model["model"] if best_model else None
         model_name = model.split("/")[-1] if model else "N/A"
         model_link = (
             f"<a href='https://openrouter.ai/{model}' style='text-decoration: none; color: inherit;'>{model_name}</a>"
@@ -274,9 +287,9 @@ def create_language_stats_df(metric):
             "Language": f"**{lang['language_name']}**",
             "Speakers (M)": round(lang["speakers"] / 1_000_000, 1),
             # "Models Tested": len(lang["scores"]),
-            "Overall": round(lang["overall_score"], 3)
-            if lang["overall_score"] is not None
-            else "N/A",
+            # "Overall": round(lang["overall_score"], 3)
+            # if lang["overall_score"] is not None
+            # else "N/A",
             "Translation": round(lang["mt_bleu"], 3)
             if lang["mt_bleu"] is not None
             else "N/A",
@@ -286,9 +299,7 @@ def create_language_stats_df(metric):
             "MLM": round(lang["mlm_chrf"], 3)
             if lang["mlm_chrf"] is not None
             else "N/A",
-            "ASR": round(lang["asr_wer"], 3)
-            if lang["asr_wer"] is not None
-            else "N/A",
+            "ASR": round(lang["asr_wer"], 3) if lang["asr_wer"] is not None else "N/A",
             "Best Model": model_link,
             "CommonVoice Hours": commonvoice_link,
         }
@@ -296,9 +307,22 @@ def create_language_stats_df(metric):
 
     df = pd.DataFrame(flat_data)
     return gr.DataFrame(
-        value=df, 
+        value=df,
         label="Language Results",
         show_search="search",
+        pinned_columns=1,
+        column_widths=[
+            "100px",
+            "100px",
+            "100px",
+            "100px",
+            "100px",
+            "100px",
+            "100px",
+            "100px",
+            "100px",
+            "100px",
+        ],
         datatype=[
             "markdown",  # Language
             "number",  # Speakers
@@ -316,7 +340,7 @@ def create_language_stats_df(metric):
 
 def create_scatter_plot(metric):
     # Filter results to include only languages with sufficient speakers
-    filtered_results = [lang for lang in results if lang["speakers"] >= 10_000]
+    filtered_results = [lang for lang in languages_with_scores if lang["speakers"] >= 10_000]
 
     # Create a list to store data for the scatter plot
     scatter_data = []
@@ -434,7 +458,7 @@ def create_world_map(metric):
     # Collect all country data
     population_data = get_population_data()
     country_data = {}
-    for lang in results:
+    for lang in languages:
         # Skip languages without the required data
         if "population" not in lang or lang[metric["field_name"]] is None:
             continue
@@ -585,10 +609,10 @@ def create_metric_explanation(metric):
 with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
     gr.Markdown("# AI Language Proficiency Benchmark")
     gr.Markdown("Comparing language proficiency across different models and languages.")
-    start_metric = METRICS["overall_performance"]
+    start_metric = METRICS[0]
 
     metric = gr.Dropdown(
-        choices=[metric_info["display_name"] for metric_info in METRICS.values()],
+        choices=[metric_info["display_name"] for metric_info in METRICS],
         value=start_metric["display_name"],
         label="Select Metric",
         interactive=True,
@@ -596,7 +620,7 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
     metric_explanation = create_metric_explanation(start_metric)
 
     gr.Markdown("## Model Comparison")
-    create_leaderboard_df(start_metric)
+    # create_leaderboard_df(start_metric)
     model_comparison_plot = gr.Plot(
         value=create_model_comparison_plot(start_metric),
         label="Model Comparison",
@@ -652,9 +676,8 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
     )
 
     def update_component(fn, metric_choice):
-        metric = [m for m in METRICS.values() if m["display_name"] == metric_choice][0]
+        metric = [m for m in METRICS if m["display_name"] == metric_choice][0]
         return fn(metric)
-
 
     metric.change(
         fn=partial(update_component, create_metric_explanation),
