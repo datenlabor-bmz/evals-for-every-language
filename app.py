@@ -64,13 +64,23 @@ METRICS = {
         "display_name": "Automatic Speech Recognition (WER)",
         "field_name": "asr_wer",
         "label": "WER",
-        "explanation": """
+        "explanation": """ 
     **Automatic Speech Recognition Word Error Rate**: Measures the accuracy of speech-to-text transcription.
     It calculates the minimum number of word edits (insertions, deletions, substitutions) needed to transform the 
     transcription into the reference text, divided by the number of words in the reference.
     Lower scores indicate better performance, with 0 being perfect transcription.
     """,
     },
+    "asr_chrf": {
+        "display_name": "Automatic Speech Recognition ChrF",
+        "field_name": "asr_chrf",
+        "label": "ChrF",
+        "explanation": """
+    **Automatic Speech Recognition ChrF**: Character n-gram F-score evaluates translations at the character level rather than word level.
+    This metric is particularly valuable for morphologically rich languages and can better capture partial word matches.
+    Higher scores (0-1) indicate better translations.
+    """,
+    },  
 }
 
 

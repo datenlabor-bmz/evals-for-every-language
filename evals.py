@@ -421,11 +421,13 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
     item = fleurs.iloc[nr]
     path = f"data/fleurs/{language.fleurs_tag}/audio/dev/{item.fname}"
     pred = await transcribe(path, model=model)
-    score = wer.compute(predictions=[pred], references=[item.transcription])
+    wer_score = wer.compute(predictions=[pred], references=[item.transcription])
+    chrf_score = chrf.compute(predictions=[pred], references=[item.transcription])
     return {
         "model": model,
         "bcp_47": language["bcp_47"],
-        "asr_wer": score,
+        "asr_wer": wer_score,
+        "asr_chrf": chrf_score["score"],
         "sentence_nr": nr,
     }
 
@@ -532,12 +534,14 @@ async def main():
             if not scores_asr:
                 continue
             asr_wer = mean([s["asr_wer"] for s in scores_asr])
+            asr_chrf = mean([s["asr_chrf"] for s in scores_asr])
             results.append(
                 {
                     "model": model,
                     "model_type": "speech-to-text",
                     "asr_wer": asr_wer,
-                    "overall_score": asr_wer,
+                    "asr_chrf": asr_chrf,
+                    "overall_score": (asr_wer + asr_chrf) / 2,
                 }
             )
         if results:
@@ -561,6 +565,7 @@ async def main():
                 "cls_acc",
                 "mlm_chrf",
                 "asr_wer",
+                "asr_chrf",
                 "overall_score",
             ]:
                 language_results[score] = mean(

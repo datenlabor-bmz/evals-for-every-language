@@ -53,13 +53,15 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.34916319968417603,
-        "overall_score": 0.34916319968417603
+        "asr_chrf": 78.55986690446153,
+        "overall_score": 39.45451505207285
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.25418986127300397,
-        "overall_score": 0.25418986127300397
+        "asr_chrf": 86.52016887049808,
+        "overall_score": 43.387179365885544
       }
     ],
     "commonvoice_hours": 2651.0,
@@ -227,7 +229,8 @@
     "cls_acc": 0.6533333333333333,
     "mlm_chrf": 93.48244773503015,
     "asr_wer": 0.30167653047859,
-    "overall_score": 0.6212765331549852
+    "asr_chrf": 82.5400178874798,
+    "overall_score": 12.369611012726589
   },
   {
     "language_name": "Chinese",
@@ -283,13 +286,15 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 1.0,
-        "overall_score": 1.0
+        "asr_chrf": 70.77419107011707,
+        "overall_score": 35.887095535058535
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 1.0,
-        "overall_score": 1.0
+        "asr_chrf": 77.48220275963784,
+        "overall_score": 39.24110137981892
       }
     ],
     "commonvoice_hours": 422.0,
@@ -322,7 +327,8 @@
     "cls_acc": 0.6666666666666666,
     "mlm_chrf": 93.14626958884273,
     "asr_wer": 1.0,
-    "overall_score": 0.8236434960611553
+    "asr_chrf": 74.12819691487746,
+    "overall_score": 11.270528769615078
   },
   {
     "language_name": "Hindi",
@@ -378,13 +384,15 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2338948365728121,
-        "overall_score": 0.2338948365728121
+        "asr_chrf": 83.13389660250954,
+        "overall_score": 41.68389571954118
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.43522263872986894,
-        "overall_score": 0.43522263872986894
+        "asr_chrf": 63.049286642268754,
+        "overall_score": 31.74225464049931
       }
     ],
     "commonvoice_hours": 16.0,
@@ -403,7 +411,8 @@
     "cls_acc": 0.6333333333333334,
     "mlm_chrf": 94.16368134606655,
     "asr_wer": 0.33455873765134053,
-    "overall_score": 0.6035554987690951
+    "asr_chrf": 73.09159162238915,
+    "overall_score": 10.997417339445926
   },
   {
     "language_name": "Spanish",
@@ -459,13 +468,15 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.19653905528613333,
-        "overall_score": 0.19653905528613333
+        "asr_chrf": 89.3473231669277,
+        "overall_score": 44.771931111106916
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.17561491933862197,
-        "overall_score": 0.17561491933862197
+        "asr_chrf": 91.85915393819565,
+        "overall_score": 46.01738442876714
       }
     ],
     "commonvoice_hours": 446.0,
@@ -517,7 +528,8 @@
     "cls_acc": 0.6733333333333333,
     "mlm_chrf": 95.99334001231053,
     "asr_wer": 0.18607698731237765,
-    "overall_score": 0.5651493654109723
+    "asr_chrf": 90.60323855256166,
+    "overall_score": 13.481886731875155
   },
   {
     "language_name": "Arabic",
@@ -573,13 +585,15 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2685436379713873,
-        "overall_score": 0.2685436379713873
+        "asr_chrf": 83.61712973768607,
+        "overall_score": 41.94283668782873
       },
       {
         "model": "openai/whisper-large-v3",
         "model_type": "speech-to-text",
         "asr_wer": 0.17370718156523782,
-        "overall_score": 0.17370718156523782
+        "asr_chrf": 88.68973505122798,
+        "overall_score": 44.43172111639661
       }
     ],
     "commonvoice_hours": 91.0,
@@ -630,7 +644,8 @@
     "cls_acc": 0.6733333333333332,
     "mlm_chrf": 94.58207181664275,
     "asr_wer": 0.22112540976831258,
-    "overall_score": 0.5717701162636791
+    "asr_chrf": 86.15343239445703,
+    "overall_score": 12.84781397121921
   },
   {
     "language_name": "Urdu",
@@ -650,7 +665,8 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2982973325975355,
-        "overall_score": 0.2982973325975355
+        "asr_chrf": 78.04754030614318,
+        "overall_score": 39.17291881937036
       }
     ],
     "commonvoice_hours": 77.0,
@@ -668,7 +684,8 @@
     "cls_acc": 0.43333333333333335,
     "mlm_chrf": 94.38802161979918,
     "asr_wer": 0.2982973325975355,
-    "overall_score": 0.457636877070121
+    "asr_chrf": 78.04754030614318,
+    "overall_score": 19.894947620456534
   },
   {
     "language_name": "French",
@@ -688,7 +705,8 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.2610754929736961,
-        "overall_score": 0.2610754929736961
+        "asr_chrf": 87.75590287945104,
+        "overall_score": 44.00848918621237
       }
     ],
     "commonvoice_hours": 1052.0,
@@ -763,7 +781,8 @@
     "cls_acc": 0.5666666666666667,
     "mlm_chrf": 97.12318847922649,
     "asr_wer": 0.2610754929736961,
-    "overall_score": 0.47984683162801145
+    "asr_chrf": 87.75590287945104,
+    "overall_score": 22.35355367824735
   },
   {
     "language_name": "Bangla",
@@ -783,7 +802,8 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.26686188207927336,
-        "overall_score": 0.26686188207927336
+        "asr_chrf": 85.49430743996201,
+        "overall_score": 42.88058466102064
       }
     ],
     "commonvoice_hours": 49.0,
@@ -801,7 +821,8 @@
     "cls_acc": 0.4,
     "mlm_chrf": 90.6067262108039,
     "asr_wer": 0.26686188207927336,
-    "overall_score": 0.4369301366595233
+    "asr_chrf": 85.49430743996201,
+    "overall_score": 21.743791526130206
   },
   {
     "language_name": "Portuguese",
@@ -821,7 +842,8 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.22967756370402836,
-        "overall_score": 0.22967756370402836
+        "asr_chrf": 89.03888828875101,
+        "overall_score": 44.63428292622752
       }
     ],
     "commonvoice_hours": 177.0,
@@ -850,7 +872,8 @@
     "cls_acc": 0.5666666666666667,
     "mlm_chrf": 96.52676764996336,
     "asr_wer": 0.22967756370402836,
-    "overall_score": 0.4611647035169646
+    "asr_chrf": 89.03888828875101,
+    "overall_score": 22.66346738477871
   },
   {
     "language_name": "Punjabi",
@@ -870,7 +893,8 @@
         "model": "elevenlabs/scribe_v1",
         "model_type": "speech-to-text",
         "asr_wer": 0.20953788908863977,
-        "overall_score": 0.20953788908863977
+        "asr_chrf": 84.56957135963033,
+        "overall_score": 42.389554624359484
       }
     ],
     "commonvoice_hours": 2.3,
@@ -889,6 +913,7 @@
     "cls_acc": 0.5333333333333333,
     "mlm_chrf": 90.10119297923285,
     "asr_wer": 0.20953788908863977,
-    "overall_score": 0.4280026333780908
+    "asr_chrf": 84.56957135963033,
+    "overall_score": 21.518011001013512
   }
 ]
