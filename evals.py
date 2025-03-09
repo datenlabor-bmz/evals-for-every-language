@@ -19,7 +19,6 @@ from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
 from openai import AsyncOpenAI
-from pyglottolog import Glottolog
 from requests import get
 from rich import print
 from tqdm.asyncio import tqdm_asyncio
@@ -48,6 +47,8 @@ transcription_models = [
 ]
 transcription_model_fast = "elevenlabs/scribe_v1"
 n_sentences = 30
+n_languages = 10
+n_detailed_languages = 5
 
 # ===== setup =====
 
@@ -92,15 +93,18 @@ def population(bcp_47):
     }
     return items
 
-
-glottolog = Glottolog("data/glottolog-5.1")
-
+glottolog = pd.read_csv("data/glottolog_languoid.csv/languoid.csv", na_values=[""], keep_default_na=False) # Min _Nan_ Chinese is not N/A!
+glottolog["bcp_47"] = glottolog["iso639P3code"].apply(
+    lambda x: standardize_tag(x, macro=True) if not pd.isna(x) else None
+)
 
 @cache
-def language_family(iso_639_3):
-    languoid = glottolog.languoid(iso_639_3)
-    return languoid.family.name if languoid else None
-
+def language_family(bcp_47):
+    languoid = glottolog[glottolog["bcp_47"] == bcp_47].iloc[0]
+    if pd.isna(languoid["family_id"]):
+        return None
+    family = glottolog[glottolog["id"] == languoid["family_id"]].iloc[0]
+    return family["name"]
 
 def script_name(iso15924):
     return scripts[scripts["iso15924"] == iso15924]["script_name"].values[0]
@@ -144,31 +148,6 @@ fleurs["bcp_47"] = fleurs["fleurs_tag"].apply(
 )
 
 
-def download_file(url, path):
-    response = requests.get(url)
-    with open(path, "wb") as f:
-        f.write(response.content)
-
-
-def download_fleurs():
-    # the huggingface loader does not allow loading only the dev set, so do it manually
-    for language in languages[languages["in_benchmark"]].itertuples():
-        tar_url = f"https://huggingface.co/datasets/google/fleurs/resolve/main/data/{language.fleurs_tag}/audio/dev.tar.gz"
-        tar_path = Path(f"data/fleurs/{language.fleurs_tag}/audio/dev.tar.gz")
-        if not tar_path.exists():
-            print(f"Downloading {tar_url} to {tar_path}")
-            tar_path.parent.mkdir(parents=True, exist_ok=True)
-            download_file(tar_url, tar_path)
-        with tarfile.open(tar_path, "r:gz") as tar:
-            tar.extractall(path=f"data/fleurs/{language.fleurs_tag}/audio")
-        tsv_url = f"https://huggingface.co/datasets/google/fleurs/resolve/main/data/{language.fleurs_tag}/dev.tsv"
-        tsv_path = Path(f"data/fleurs/{language.fleurs_tag}/dev.tsv")
-        if not tsv_path.exists():
-            print(f"Downloading {tsv_url} to {tsv_path}")
-            tsv_path.parent.mkdir(parents=True, exist_ok=True)
-            download_file(tsv_url, tsv_path)
-
-
 # load CommonVoice stats
 @cache  # cache for 1 day
 def get_commonvoice_stats(date: date):
@@ -203,14 +182,40 @@ languages = pd.merge(
 )  # "left" because keep it simple for now
 languages["in_benchmark"] = languages["bcp_47"].isin(benchmark_languages["bcp_47"])
 
-languages = languages.sort_values(by="speakers", ascending=False).iloc[:10]
+languages = languages.sort_values(by="speakers", ascending=False)
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
     n=n_sentences, weights="speakers", replace=True, random_state=42
 )
-# sample languages to analyze with all models
-detailed_languages = languages[languages["in_benchmark"]].iloc[:5]
+langs_eval = languages.iloc[:n_languages]
+langs_eval_detailed = languages.iloc[:n_detailed_languages]
+
+
+def download_file(url, path):
+    response = requests.get(url)
+    with open(path, "wb") as f:
+        f.write(response.content)
+
+
+def download_fleurs():
+    # the huggingface loader does not allow loading only the dev set, so do it manually
+    for language in langs_eval.itertuples():
+        tar_url = f"https://huggingface.co/datasets/google/fleurs/resolve/main/data/{language.fleurs_tag}/audio/dev.tar.gz"
+        tar_path = Path(f"data/fleurs/{language.fleurs_tag}/audio/dev.tar.gz")
+        audio_path = Path(f"data/fleurs/{language.fleurs_tag}/audio")
+        if not audio_path.exists():
+            print(f"Downloading {tar_url} to {tar_path}")
+            tar_path.parent.mkdir(parents=True, exist_ok=True)
+            download_file(tar_url, tar_path)
+            with tarfile.open(tar_path, "r:gz") as tar:
+                tar.extractall(path=audio_path)
+        tsv_url = f"https://huggingface.co/datasets/google/fleurs/resolve/main/data/{language.fleurs_tag}/dev.tsv"
+        tsv_path = Path(f"data/fleurs/{language.fleurs_tag}/dev.tsv")
+        if not tsv_path.exists():
+            print(f"Downloading {tsv_url} to {tsv_path}")
+            tsv_path.parent.mkdir(parents=True, exist_ok=True)
+            download_file(tsv_url, tsv_path)
 
 
 # ===== define tasks and metrics =====
@@ -444,12 +449,12 @@ async def main():
     translation_scores = [
         translate_and_evaluate(model, original_language.bcp_47, i)
         for i in range(n_sentences)
-        for original_language in languages.itertuples()
+        for original_language in langs_eval.itertuples()
         for model in models
         if original_language.in_benchmark
         and (
             model == model_fast
-            or original_language.bcp_47 in detailed_languages.bcp_47.values
+            or original_language.bcp_47 in langs_eval_detailed.bcp_47.values
         )
     ]
     translation_scores = await tqdm_asyncio.gather(*translation_scores, miniters=1)
@@ -457,10 +462,12 @@ async def main():
     classification_scores = [
         classify_and_evaluate(model, language.bcp_47, i)
         for i in range(n_sentences)
-        for language in languages.itertuples()
+        for language in langs_eval.itertuples()
         for model in models
         if language.in_benchmark
-        and (model == model_fast or language.bcp_47 in detailed_languages.bcp_47.values)
+        and (
+            model == model_fast or language.bcp_47 in langs_eval_detailed.bcp_47.values
+        )
     ]
     classification_scores = await tqdm_asyncio.gather(
         *classification_scores, miniters=1
@@ -469,22 +476,24 @@ async def main():
     mlm_scores = [
         mlm_and_evaluate(model, language.bcp_47, i)
         for i in range(n_sentences)
-        for language in languages.itertuples()
+        for language in langs_eval.itertuples()
         for model in models
         if language.in_benchmark
-        and (model == model_fast or language.bcp_47 in detailed_languages.bcp_47.values)
+        and (
+            model == model_fast or language.bcp_47 in langs_eval_detailed.bcp_47.values
+        )
     ]
     mlm_scores = await tqdm_asyncio.gather(*mlm_scores, miniters=1)
     print("evaluate transcription")
     transcription_scores = [
         transcribe_and_evaluate(model, language.bcp_47, i)
         for i in range(n_sentences)
-        for language in languages.itertuples()
+        for language in langs_eval.itertuples()
         for model in transcription_models
         if language.in_benchmark
         and (
             model == transcription_model_fast
-            or language.bcp_47 in detailed_languages.bcp_47.values
+            or language.bcp_47 in langs_eval_detailed.bcp_47.values
         )
     ]
     transcription_scores = await tqdm_asyncio.gather(*transcription_scores, miniters=1)
@@ -544,34 +553,33 @@ async def main():
                     "overall_score": (asr_wer + asr_chrf) / 2,
                 }
             )
-        if results:
-            language_results = {
-                "language_name": language.language_name,
-                "bcp_47": language.bcp_47,
-                "speakers": language.speakers,
-                "scores": results,
-                "commonvoice_hours": language.commonvoice_hours
-                if not pd.isna(language.commonvoice_hours)
-                else None,
-                "commonvoice_locale": language.commonvoice_locale
-                if not pd.isna(language.commonvoice_locale)
-                else None,
-                "population": population(language.bcp_47),
-                "language_family": language_family(language.flores_path.split("_")[0]),
-            }
-            for score in [
-                "mt_bleu",
-                "mt_chrf",
-                "cls_acc",
-                "mlm_chrf",
-                "asr_wer",
-                "asr_chrf",
-                "overall_score",
-            ]:
-                language_results[score] = mean(
-                    [s[score] for s in results if score in s]
-                )
-            all_results.append(language_results)
+        language_results = {
+            "language_name": language.language_name,
+            "bcp_47": language.bcp_47,
+            "speakers": language.speakers,
+            "scores": results,
+            "commonvoice_hours": language.commonvoice_hours
+            if not pd.isna(language.commonvoice_hours)
+            else None,
+            "commonvoice_locale": language.commonvoice_locale
+            if not pd.isna(language.commonvoice_locale)
+            else None,
+            "population": population(language.bcp_47),
+            "language_family": language_family(language.bcp_47),
+        }
+        for score in [
+            "mt_bleu",
+            "mt_chrf",
+            "cls_acc",
+            "mlm_chrf",
+            "asr_wer",
+            "asr_chrf",
+            "overall_score",
+        ]:
+            language_results[score] = mean(
+                [s[score] for s in results if score in s]
+            )
+        all_results.append(language_results)
     with open("results.json", "w") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 

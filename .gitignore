@@ -1,8 +1,5 @@
 floresp-*
-glottolog-*
 fleurs
-LanguageCodes.tab
-ScriptCodes.csv
 .cache
 .env
 
