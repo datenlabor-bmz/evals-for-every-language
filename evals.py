@@ -93,10 +93,14 @@ def population(bcp_47):
     }
     return items
 
-glottolog = pd.read_csv("data/glottolog_languoid.csv/languoid.csv", na_values=[""], keep_default_na=False) # Min _Nan_ Chinese is not N/A!
+
+glottolog = pd.read_csv(
+    "data/glottolog_languoid.csv/languoid.csv", na_values=[""], keep_default_na=False
+)  # Min _Nan_ Chinese is not N/A!
 glottolog["bcp_47"] = glottolog["iso639P3code"].apply(
     lambda x: standardize_tag(x, macro=True) if not pd.isna(x) else None
 )
+
 
 @cache
 def language_family(bcp_47):
@@ -105,6 +109,7 @@ def language_family(bcp_47):
         return None
     family = glottolog[glottolog["id"] == languoid["family_id"]].iloc[0]
     return family["name"]
+
 
 def script_name(iso15924):
     return scripts[scripts["iso15924"] == iso15924]["script_name"].values[0]
@@ -255,17 +260,20 @@ async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
         max_tokens=1024,
     )
     prediction = reply.choices[0].message.content.strip()
-    bleu_score = bleu.compute(
-        predictions=[prediction],
-        references=[target_sentence],
-        tokenizer=tokenizer.tokenize,
-    )
+    if prediction.strip():
+        bleu_score = bleu.compute(
+            predictions=[prediction],
+            references=[target_sentence],
+            tokenizer=tokenizer.tokenize,
+        )
+    else:
+        bleu_score = {"bleu": 0}
     chrf_score = chrf.compute(predictions=[prediction], references=[target_sentence])
     return {
         "model": model,
         "bcp_47": original_language["bcp_47"],
         "mt_bleu": bleu_score["bleu"],
-        "mt_chrf": chrf_score["score"],
+        "mt_chrf": chrf_score["score"] / 100,
         "sentence_nr": sentence_nr,
     }
 
@@ -371,7 +379,7 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
     return {
         "model": model,
         "bcp_47": language["bcp_47"],
-        "mlm_chrf": chrf_score["score"],
+        "mlm_chrf": chrf_score["score"] / 100,
         "sentence_nr": nr,
     }
 
@@ -432,7 +440,7 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
         "model": model,
         "bcp_47": language["bcp_47"],
         "asr_wer": wer_score,
-        "asr_chrf": chrf_score["score"],
+        "asr_chrf": chrf_score["score"] / 100,
         "sentence_nr": nr,
     }
 
@@ -522,7 +530,7 @@ async def main():
             mt_chrf = mean([s["mt_chrf"] for s in scores_mt])
             cls_acc = mean([s["true"] == s["pred"] for s in scores_cls])
             mlm_chrf = mean([s["mlm_chrf"] for s in scores_mlm])
-            t2t_score = (mt_chrf / 100 + cls_acc + mlm_chrf / 100) / 3
+            t2t_score = (mt_chrf + cls_acc + mlm_chrf) / 3
             results.append(
                 {
                     "model": model,
@@ -577,9 +585,7 @@ async def main():
             "t2t_score",
             "s2t_score",
         ]:
-            language_results[score] = mean(
-                [s[score] for s in results if score in s]
-            )
+            language_results[score] = mean([s[score] for s in results if score in s])
         all_results.append(language_results)
     with open("results.json", "w") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)

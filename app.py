@@ -87,7 +87,7 @@ METRICS = {
     """,
         },
         {
-            "display_name": "Automatic Speech Recognition ChrF",
+            "display_name": "Automatic Speech Recognition (ChrF)",
             "field_name": "asr_chrf",
             "label": "ChrF",
             "explanation": """
@@ -104,123 +104,50 @@ def mean(lst):
     return sum(lst) / len(lst)
 
 
-def create_leaderboard_df(metric):
-    # Sort languages by average BLEU to determine resource categories
-    langs_with_score = [
-        lang for lang in languages_with_scores if lang[metric["field_name"]] is not None
+def create_leaderboard_df(model_type, metric=None):
+    metric = metric or METRICS[model_type][0]
+    _model_type = {"t2t": "text-to-text", "s2t": "speech-to-text"}[model_type]
+    models = {
+        score["model"]
+        for lang in languages_with_scores
+        for score in lang["scores"]
+        if score["model_type"] == _model_type
+    }
+    model_scores = [
+        {"model": score["model"], metric["field_name"]: score[metric["field_name"]]}
+        for lang in languages_with_scores
+        for score in lang["scores"]
+        for model in models
+        if score["model"] == model
     ]
-    sorted_langs = sorted(
-        langs_with_score, key=lambda x: x[metric["field_name"]], reverse=True
+    df = (
+        pd.DataFrame(model_scores)
+        .groupby("model")
+        .agg({metric["field_name"]: ["mean", "count"]})
+        .reset_index()
     )
-    n_langs = len(sorted_langs)
-    high_cutoff = n_langs // 4  # top 25%
-    low_cutoff = n_langs - n_langs // 4  # bottom 25%
-
-    # Create sets of languages for each category
-    high_resource = {lang["language_name"] for lang in sorted_langs[:high_cutoff]}
-    low_resource = {lang["language_name"] for lang in sorted_langs[low_cutoff:]}
-
-    # Get all model scores with categorization
-    model_scores = {}
-    for lang in languages_with_scores:
-        category = (
-            "High-Resource"
-            if lang["language_name"] in high_resource
-            else "Low-Resource"
-            if lang["language_name"] in low_resource
-            else "Mid-Resource"
-        )
-
-        for score in lang["scores"]:
-            model = score["model"]
-            if model not in model_scores:
-                model_scores[model] = {
-                    "High-Resource": [],
-                    "Mid-Resource": [],
-                    "Low-Resource": [],
-                }
-            # Check if the metric field exists in the score dictionary before accessing it
-            if metric["field_name"] in score:
-                model_scores[model][category].append(score[metric["field_name"]])
-            # If the metric is missing, we'll skip this score
-
-    # Calculate average scores and create DataFrame
-    leaderboard_data = []
-    for model, categories in model_scores.items():
-        # Calculate averages for each category
-        high_avg = (
-            round(mean(categories["High-Resource"]), 3)
-            if categories["High-Resource"]
-            else 0
-        )
-        mid_avg = (
-            round(mean(categories["Mid-Resource"]), 3)
-            if categories["Mid-Resource"]
-            else 0
-        )
-        low_avg = (
-            round(mean(categories["Low-Resource"]), 3)
-            if categories["Low-Resource"]
-            else 0
-        )
-
-        # Calculate overall average
-        all_scores = (
-            categories["High-Resource"]
-            + categories["Mid-Resource"]
-            + categories["Low-Resource"]
-        )
-        # Check if all_scores is empty to avoid division by zero
-        overall_avg = round(sum(all_scores) / len(all_scores), 3) if all_scores else 0
-
-        model_name = model.split("/")[-1]
-        leaderboard_data.append(
-            {
-                "Model": f"[{model_name}](https://openrouter.ai/{model})",
-                "Overall Score": overall_avg,
-                "High-Resource Score": high_avg,
-                "Mid-Resource Score": mid_avg,
-                "Low-Resource Score": low_avg,
-                "Languages Tested": len(all_scores),
-            }
-        )
-
-    # Sort by overall BLEU
-    df = pd.DataFrame(leaderboard_data)
-    df = df.sort_values("Overall Score", ascending=False)
-
-    # Add rank and medals
+    # Flatten the multi-level column names
+    df.columns = df.columns.map(
+        lambda x: f"{x[0]}_{x[1]}" if isinstance(x, tuple) else x
+    )
+    df = df.rename(
+        columns={
+            f"{metric['field_name']}_mean": metric["label"],
+            f"{metric['field_name']}_count": "Languages Tested",
+            "model_": "Model",
+        }
+    )
+    df = df.sort_values(metric["label"], ascending=False)
     df["Rank"] = range(1, len(df) + 1)
     df["Rank"] = df["Rank"].apply(
         lambda x: "🥇" if x == 1 else "🥈" if x == 2 else "🥉" if x == 3 else str(x)
     )
-
-    # Reorder columns
-    df = df[
-        [
-            "Rank",
-            "Model",
-            "Overall Score",
-            "High-Resource Score",
-            "Mid-Resource Score",
-            "Low-Resource Score",
-            "Languages Tested",
-        ]
-    ]
-
+    df = df[["Rank", "Model", metric["label"], "Languages Tested"]]
     return gr.DataFrame(
         value=df,
         label="Model Leaderboard",
         show_search=False,
-        datatype=[
-            "number",
-            "markdown",
-            "number",
-            "number",
-            "number",
-            "number",
-            "number",
-        ],
+        datatype=["number", "markdown", "number", "number"],
     )
 
 
@@ -292,7 +219,7 @@ def create_language_stats_df(metric):
             else "N/A"
         )
         commonvoice_link = (
-            f"<!--{lang['commonvoice_hours']:07} (for sorting)--> <a href='https://commonvoice.mozilla.org/{lang['commonvoice_locale']}/speak' style='text-decoration: none; color: inherit;'>🎙️ {lang['commonvoice_hours']}</a>"
+            f"<!--{lang['commonvoice_hours']:07} (for sorting)--> <a href='https://commonvoice.mozilla.org/{lang['commonvoice_locale']}/speak' style='text-decoration: none; color: inherit;'>🎙️ {round(lang['commonvoice_hours'])}h</a>"
             if lang["commonvoice_hours"]
             else "N/A"
         )
@@ -303,18 +230,18 @@ def create_language_stats_df(metric):
             # "Overall": round(lang["overall_score"], 3)
             # if lang["overall_score"] is not None
             # else "N/A",
-            "Translation": round(lang["mt_bleu"], 3)
-            if lang["mt_bleu"] is not None
+            "Best Model": model_link,
+            "MT": round(lang["mt_chrf"], 3)
+            if lang["mt_chrf"] is not None
             else "N/A",
-            "Classification": round(lang["cls_acc"], 3)
+            "CLS": round(lang["cls_acc"], 3)
             if lang["cls_acc"] is not None
             else "N/A",
             "MLM": round(lang["mlm_chrf"], 3)
             if lang["mlm_chrf"] is not None
             else "N/A",
-            "ASR": round(lang["asr_wer"], 3) if lang["asr_wer"] is not None else "N/A",
-            "Best Model": model_link,
-            "CommonVoice Hours": commonvoice_link,
+            "ASR": round(lang["asr_chrf"], 3) if lang["asr_wer"] is not None else "N/A",
+            "Common Voice": commonvoice_link,
         }
         flat_data.append(row)
 
@@ -327,40 +254,36 @@ def create_language_stats_df(metric):
         column_widths=[
             "100px",
             "100px",
-            "100px",
-            "100px",
-            "100px",
-            "100px",
-            "100px",
-            "100px",
-            "100px",
-            "100px",
+            # "100px",
+            # "100px",
+            "200px",  # Best Model
+            "100px",  # MT
+            "100px",  # CLS
+            "100px",  # MLM
+            "100px",  # ASR
+            "100px",  # Common Voice
         ],
         datatype=[
             "markdown",  # Language
             "number",  # Speakers
             # "number", # Models Tested
-            "number",  # Overall
+            # "number",  # Overall
+            "markdown",  # Best Model
             "number",  # Translation
             "number",  # Classification
             "number",  # MLM
             "number",  # ASR
-            "markdown",  # Best Model
             "markdown",  # CommonVoice Hours
         ],
     )
 
 
 def create_scatter_plot(metric):
-    # Filter results to include only languages with sufficient speakers
-    filtered_results = [
-        lang for lang in languages_with_scores if lang["speakers"] >= 10_000
-    ]
-
     # Create a list to store data for the scatter plot
     scatter_data = []
-
-    for lang in filtered_results:
+    for lang in languages_with_scores:
+        if lang["speakers"] < 10_000:
+            continue
         # Calculate average score for this metric across all models
         scores = [
             score[metric["field_name"]]
@@ -374,32 +297,44 @@ def create_scatter_plot(metric):
                     "language": lang["language_name"],
                     "speakers": lang["speakers"],
                     "score": avg_score,
+                    "family": lang["language_family"],
                 }
             )
 
     fig = go.Figure()
-
-    # Convert speakers to millions for display
-    x_vals = [
-        data["speakers"] / 1_000_000 for data in scatter_data
-    ]  # Convert to millions
+    x_vals = [data["speakers"] / 1_000_000 for data in scatter_data]
     y_vals = [data["score"] for data in scatter_data]
+    s_vals = [data["speakers"] / 20_000_000 for data in scatter_data]
+    color_pallette = [
+        "LightSkyBlue",
+        "LightGreen",
+        "LightCoral",
+        "LightPink",
+        "LightGoldenRodYellow",
+        "LightGray",
+        "LightSalmon",
+        "LightSeaGreen",
+    ]
+    color_mapping = {
+        family: color
+        for family, color in zip(
+            sorted(set(data["family"] for data in scatter_data)), color_pallette
+        )
+    }
+    c_vals = [color_mapping[data["family"]] for data in scatter_data]
     labels = [data["language"] for data in scatter_data]
-
-    # Create hover template
     hover_template = f"<b>%{{text}}</b><br>Speakers: %{{x:.1f}}M<br>{metric['label']}: %{{y:.3f}}<extra></extra>"
-
     fig.add_trace(
         go.Scatter(
             x=x_vals,
             y=y_vals,
+            marker=dict(size=s_vals, color=c_vals),
             mode="markers+text",
             text=labels,
             textposition="top center",
             hovertemplate=hover_template,
         )
     )
-
     fig.update_layout(
         title=None,
         xaxis_title="Number of Speakers (Millions)",
@@ -407,10 +342,7 @@ def create_scatter_plot(metric):
         height=500,
         showlegend=False,
     )
-
-    # Use log scale for x-axis since speaker numbers vary widely
     fig.update_xaxes(type="log")
-
     return fig
 
 
@@ -569,7 +501,6 @@ def create_world_map(metric):
         scores.append(weighted_avg)
         hover_texts.append(hover_text)
 
-    # Create the choropleth map
     fig = go.Figure(
         data=go.Choropleth(
             locations=countries,
@@ -616,9 +547,19 @@ def create_world_map(metric):
     return fig
 
 
+def create_metric_selector(model_type):
+    match model_type:
+        case "t2t":
+            choices = [m["display_name"] for m in METRICS["t2t"]]
+        case "s2t":
+            choices = [m["display_name"] for m in METRICS["s2t"]]
+    return gr.Dropdown(
+        choices=choices, value=choices[0], label="Select Metric", interactive=True
+    )
+
+
 def create_metric_explanation(metric):
     return gr.Markdown(metric["explanation"], container=True)
-
 
 
 # Create the visualization components
@@ -639,12 +580,6 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
     with gr.Row():
         with gr.Column():
             with gr.Accordion("Model Filters", open=False):
-                model_type = gr.Radio(
-                    choices=["Text-to-Text", "Speech-to-Text"],
-                    value="Text-to-Text",
-                    label="Select Model Type",
-                    interactive=True,
-                )
                 model_licenses = gr.CheckboxGroup(
                     choices=["open source", "commercial"],
                     value=["open source", "commercial"],
@@ -665,26 +600,6 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
                     choices=["Languages", "Language Families", "Regions"],
                     value="Languages",
                     label="Select Unit of Analysis",
-                    interactive=True,
-                )
-                region_filter = gr.CheckboxGroup(
-                    choices=[
-                        "Africa",
-                        "Asia",
-                        "Europe",
-                        "North America",
-                        "South America",
-                        "Oceania",
-                    ],
-                    value=[
-                        "Africa",
-                        "Asia",
-                        "Europe",
-                        "North America",
-                        "South America",
-                        "Oceania",
-                    ],
-                    label="Filter by Region",
                     interactive=True,
                 )
                 family_filter = gr.CheckboxGroup(
@@ -717,19 +632,27 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
                     interactive=True,
                 )
     with gr.Row():
-        start_metric = METRICS["t2t"][0]
-        metric = gr.Dropdown(
-            choices=[metric["display_name"] for metric in METRICS["t2t"]],
-            value=start_metric["display_name"],
-            label="Main metric to display in figures and map",
-            interactive=True,
-        )
+        with gr.Column():
+            start_model_type = "Text-to-Text"
+            model_type = gr.Radio(
+                choices=["Text-to-Text", "Speech-to-Text"],
+                value=start_model_type,
+                label="Select Model Type",
+                interactive=True,
+            )
+            start_metric = METRICS["t2t"][0]
+            metric = gr.Dropdown(
+                choices=[metric["display_name"] for metric in METRICS["t2t"]],
+                value=start_metric["display_name"],
+                label="Main task and metric to display in figures and map",
+                interactive=True,
+            )
 
         metric_explanation = create_metric_explanation(start_metric)
 
     gr.Markdown("## Model Comparison")
-    create_leaderboard_df(start_metric)
-    
+    leaderboard_df = create_leaderboard_df("t2t", start_metric)
+
     model_comparison_plot = gr.Plot(
         value=create_model_comparison_plot(start_metric),
         label="Model Comparison",
@@ -748,34 +671,47 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
         elem_classes="fullwidth-plot",
     )
 
-    def update_component(fn, metric_choice):
-        metric = [m for m in METRICS if m["display_name"] == metric_choice][0]
+    def update_model_type(model_type_choice):
+        model_type = {"Text-to-Text": "t2t", "Speech-to-Text": "s2t"}[model_type_choice]
+        return create_metric_selector(model_type), create_leaderboard_df(model_type)
+
+    model_type.change(
+        fn=update_model_type,
+        inputs=model_type,
+        outputs=[metric, leaderboard_df],
+    )
+
+    def update_component(fn, model_type_choice, metric_choice):
+        model_type = {"Text-to-Text": "t2t", "Speech-to-Text": "s2t"}[model_type_choice]
+        metric = [m for m in METRICS[model_type] if m["display_name"] == metric_choice][
+            0
+        ]
         return fn(metric)
 
-    # metric.change(
-    #     fn=partial(update_component, create_metric_explanation),
-    #     inputs=metric,
-    #     outputs=metric_explanation,
-    # )
-    # metric.change(
-    #     fn=partial(update_component, create_model_comparison_plot),
-    #     inputs=metric,
-    #     outputs=model_comparison_plot,
-    # )
-    # metric.change(
-    #     fn=partial(update_component, create_scatter_plot),
-    #     inputs=metric,
-    #     outputs=scatter_plot,
-    # )
-    # metric.change(
-    #     fn=partial(update_component, create_world_map), inputs=metric, outputs=world_map
-    # )
+    metric.change(
+        fn=partial(update_component, create_metric_explanation),
+        inputs=[model_type, metric],
+        outputs=metric_explanation,
+    )
+    metric.change(
+        fn=partial(update_component, create_model_comparison_plot),
+        inputs=[model_type, metric],
+        outputs=model_comparison_plot,
+    )
+    metric.change(
+        fn=partial(update_component, create_scatter_plot),
+        inputs=[model_type, metric],
+        outputs=scatter_plot,
+    )
+    metric.change(
+        fn=partial(update_component, create_world_map),
+        inputs=[model_type, metric],
+        outputs=world_map,
+    )
 
     with gr.Accordion("Methodology", open=False):
         gr.Markdown(
             """
-            ## Methodology
-
             ### Benchmark Data
             We use the [FLORES+](https://huggingface.co/datasets/openlanguagedata/flores_plus) dataset for evaluation, which contains parallel text in over 200 languages, as well as topic labels for each sentence. Where FLORES+ includes multiple scripts for one language, we use only the most common one.
 
@@ -804,8 +740,7 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
             - Evaluate predictions using ChrF score against the original text
 
             The overall performance score combines metrics from all tasks to provide a holistic assessment of model capabilities across languages.
-        """,
-            container=True,
+        """
         )
 
 demo.launch()
