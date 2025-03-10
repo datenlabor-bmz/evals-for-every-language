@@ -33,9 +33,13 @@ fsspec==2025.2.0
     #   gradio-client
     #   huggingface-hub
 gradio==5.16.2
-    # via languagebench (pyproject.toml)
+    # via
+    #   languagebench (pyproject.toml)
+    #   gradio-rangeslider
 gradio-client==1.7.1
     # via gradio
+gradio-rangeslider==0.0.8
+    # via languagebench (pyproject.toml)
 h11==0.14.0
     # via
     #   httpcore
