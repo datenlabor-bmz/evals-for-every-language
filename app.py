@@ -9,7 +9,7 @@ import pycountry
 from gradio_rangeslider import RangeSlider
 
 with open("results.json") as f:
-    languages = json.load(f)
+    languages = json.load(f) 
 
 languages_with_scores = [lang for lang in languages if lang["t2t_score"] is not None]
 
