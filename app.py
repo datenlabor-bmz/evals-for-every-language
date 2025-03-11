@@ -580,6 +580,10 @@ if (lang) {
     console.log("redirecting to " + lang);
     window.location.href = "/" + lang;
 }
+window.parent.postMessage({
+    "?test",
+    "#hash",
+}, "https://huggingface.co");
 </script>
 """
 
@@ -757,7 +761,7 @@ with gr.Blocks(title="AI Language Proficiency Benchmark", css=css, head=shortcut
         )
 
 
-for lang in tqdm(languages[:5], desc="Generating pages"):
+for lang in tqdm(languages[:10], desc="Generating pages"):
     with demo.route(lang['language_name'], f"/{lang['bcp_47']}"):
         gr.Markdown(f"## {lang['language_name']}")
 
