@@ -562,9 +562,15 @@ def create_metric_selector(model_type):
 def create_metric_explanation(metric):
     return gr.Markdown(metric["explanation"], container=True)
 
+css="""
+.radio-group .wrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+}
+"""
 
 # Create the visualization components
-with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
+with gr.Blocks(title="AI Language Proficiency Benchmark", css=css) as demo:
     gr.Markdown("# AI Language Proficiency Benchmark")
     gr.Markdown("Comparing language proficiency across different models and languages.")
 
@@ -578,6 +584,22 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
         label="Search for Language or Model",
         interactive=True,
     )
+    with gr.Row():
+        start_model_type = "Text-to-Text"
+        model_type = gr.Radio(
+            choices=["Text-to-Text", "Speech-to-Text"],
+            value=start_model_type,
+            label="Select Model Type",
+            interactive=True,
+            elem_classes="radio-group",
+        )
+        start_metric = METRICS["t2t"][0]
+        metric = gr.Dropdown(
+            choices=[metric["display_name"] for metric in METRICS["t2t"]],
+            value=start_metric["display_name"],
+            label="Main task and metric to display in figures and map",
+            interactive=True,
+        )
     with gr.Row():
         with gr.Column():
             with gr.Accordion("Model Filters", open=False):
@@ -594,7 +616,6 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
                     label="Filter by Model Size (in Billion Parameters)",
                     interactive=True,
                 )
-
         with gr.Column():
             with gr.Accordion("Language Filters", open=False):
                 unit_of_analysis = gr.Radio(
@@ -632,24 +653,6 @@ with gr.Blocks(title="AI Language Proficiency Benchmark") as demo:
                     label="Filter by Number of Speakers",
                     interactive=True,
                 )
-    with gr.Row():
-        with gr.Column():
-            start_model_type = "Text-to-Text"
-            model_type = gr.Radio(
-                choices=["Text-to-Text", "Speech-to-Text"],
-                value=start_model_type,
-                label="Select Model Type",
-                interactive=True,
-            )
-            start_metric = METRICS["t2t"][0]
-            metric = gr.Dropdown(
-                choices=[metric["display_name"] for metric in METRICS["t2t"]],
-                value=start_metric["display_name"],
-                label="Main task and metric to display in figures and map",
-                interactive=True,
-            )
-
-        metric_explanation = create_metric_explanation(start_metric)
 
     gr.Markdown("## Model Comparison")
     leaderboard_df = create_leaderboard_df("t2t", start_metric)
