@@ -798,6 +798,7 @@ with gr.Blocks(title="AI Language Proficiency Benchmark", css=css, head=shortcut
 
 for lang in tqdm(languages[:20], desc="Generating pages"):
     with demo.route(lang['language_name'], f"/{lang['bcp_47']}"):
+        gr.Button("← Back to Main Dashboard", link="/")
         url = f"hf.co/spaces/datenlaborbmz/ai-language-monitor?lang={lang['bcp_47']}"
         gr.Markdown(
             f'''
@@ -808,6 +809,167 @@ for lang in tqdm(languages[:20], desc="Generating pages"):
             ''', 
             sanitize_html=False
         )
+        
+        # Language overview section
+        with gr.Row():
+            with gr.Column(scale=2):
+                gr.Markdown(f"""
+                ## Language Overview
+                - **Native name**: {lang.get('native_name', 'N/A')}
+                - **Language family**: {lang.get('language_family', 'N/A')}
+                - **BCP-47 code**: `{lang['bcp_47']}`
+                - **ISO 639-3 code**: `{lang.get('iso_639_3', 'N/A')}`
+                - **Number of speakers**: {format_number(lang['speakers'])} 
+                - **Script**: {lang.get('script', 'N/A')}
+                - **CommonVoice hours**: {round(lang.get('commonvoice_hours', 0) or 0)}
+                """)
+                
+                # Resource links
+                resource_links = []
+                if lang.get('commonvoice_locale'):
+                    resource_links.append(f"[CommonVoice Dataset](https://commonvoice.mozilla.org/{lang['commonvoice_locale']})")
+                if lang.get('wikipedia_code'):
+                    resource_links.append(f"[Wikipedia](https://{lang['wikipedia_code']}.wikipedia.org)")
+                if lang.get('bcp_47'):
+                    resource_links.append(f"[FLORES+ Dataset](https://huggingface.co/datasets/openlanguagedata/flores_plus/viewer/all/{lang['bcp_47']})")
+                
+                if resource_links:
+                    gr.Markdown("### Resources\n" + "\n".join(resource_links))
+            
+            with gr.Column(scale=3):
+                # Create a mini-map showing where the language is spoken
+                country_data = {}
+                if "population" in lang:
+                    for country_code, speakers in lang["population"].items():
+                        try:
+                            country = pycountry.countries.get(alpha_2=country_code)
+                            if country:
+                                country_data[country.alpha_3] = speakers / lang["speakers"]
+                        except (KeyError, AttributeError):
+                            continue
+                
+                locations = list(country_data.keys())
+                values = list(country_data.values())
+                
+                if locations:
+                    fig = go.Figure(data=go.Choropleth(
+                        locations=locations,
+                        z=values,
+                        locationmode="ISO-3",
+                        colorscale="Blues",
+                        marker_line_color='white',
+                        marker_line_width=0.5,
+                        colorbar_title="Speaker %"
+                    ))
+                    
+                    fig.update_layout(
+                        title_text=f"Distribution of {lang['language_name']} Speakers",
+                        geo=dict(
+                            showframe=False,
+                            showcoastlines=True,
+                            projection_type='natural earth'
+                        ),
+                        height=300,
+                        margin={"r":0,"t":30,"l":0,"b":0}
+                    )
+                    
+                    gr.Plot(value=fig)
+                else:
+                    gr.Markdown("*Geographic data not available*")
+        
+        # Performance metrics section
+        gr.Markdown("## AI Model Performance")
+        
+        with gr.Row():
+            with gr.Column():
+                # Create metrics dashboard for this language
+                metrics_data = []
+                for metric_key, display_name in [
+                    ("t2t_score", "Overall Text Performance"), 
+                    ("mt_bleu", "Translation (BLEU)"),
+                    ("mt_chrf", "Translation (ChrF)"),
+                    ("cls_acc", "Classification"),
+                    ("mlm_chrf", "Masked Language Modeling"),
+                    ("s2t_score", "Overall Speech Performance"),
+                    ("asr_wer", "Speech Recognition (WER)"),
+                    ("asr_chrf", "Speech Recognition (ChrF)")
+                ]:
+                    if metric_key in lang and lang[metric_key] is not None:
+                        value = lang[metric_key]
+                        color = "green" if value > 0.5 else "orange" if value > 0.25 else "red"
+                        
+                        # For WER, lower is better, so invert the color logic
+                        if metric_key == "asr_wer":
+                            color = "green" if value < 0.3 else "orange" if value < 0.6 else "red"
+                        
+                        metrics_data.append({
+                            "Metric": display_name,
+                            "Value": round(value, 3),
+                            "Visual": make_colored_bar(value if metric_key != "asr_wer" else 1 - value)
+                        })
+                
+                if metrics_data:
+                    gr.DataFrame(
+                        pd.DataFrame(metrics_data),
+                        label=f"Performance Metrics for {lang['language_name']}",
+                        show_search=False
+                    )
+                else:
+                    gr.Markdown("*No performance metrics available*")
+        
+        # Model comparison table
+        gr.Markdown("## Model Comparison")
+        
+        with gr.Row():
+            models_data = []
+            for score in lang["scores"]:
+                if score.get("t2t_score") is not None:
+                    model_name = score["model"].split("/")[-1]
+                    models_data.append({
+                        "Model": model_name,
+                        "Overall": round(score.get("t2t_score", 0), 3),
+                        "Translation": round(score.get("mt_chrf", 0), 3),
+                        "Classification": round(score.get("cls_acc", 0), 3),
+                        "Lang Model": round(score.get("mlm_chrf", 0), 3),
+                        "Speech": round(score.get("asr_chrf", 0), 3) if "asr_chrf" in score else "N/A"
+                    })
+            
+            if models_data:
+                df = pd.DataFrame(models_data).sort_values("Overall", ascending=False)
+                gr.DataFrame(
+                    df,
+                    label=f"Model Performance on {lang['language_name']}",
+                    show_search=False
+                )
+            else:
+                gr.Markdown("*No model comparison data available*")
+        
+        # Performance comparison with similar languages
+        if lang.get("language_family"):
+            gr.Markdown("## Comparison with Related Languages")
+            
+            # Find related languages
+            related_langs = [l for l in languages if l.get("language_family") == lang["language_family"] and l["t2t_score"] is not None]
+            related_langs = sorted(related_langs, key=lambda x: x["t2t_score"], reverse=True)[:10]
+            
+            if len(related_langs) > 1:
+                lang_names = [l["language_name"] for l in related_langs]
+                t2t_scores = [l["t2t_score"] for l in related_langs]
+                
+                fig = px.bar(
+                    x=lang_names, 
+                    y=t2t_scores,
+                    labels={"x": "Language", "y": "Text-to-Text Score"},
+                    title=f"Performance Across {lang['language_family']} Languages"
+                )
+                
+                # Highlight the current language
+                for i, name in enumerate(lang_names):
+                    if name == lang["language_name"]:
+                        fig.data[0].marker.color = ["lightblue"] * i + ["orange"] + ["lightblue"] * (len(lang_names) - i - 1)
+                
+                fig.update_layout(height=400)
+                gr.Plot(value=fig)
 
 
 demo.launch()
