@@ -570,8 +570,22 @@ css="""
 }
 """
 
+
+shortcut_js = """
+<script>
+const params = new URLSearchParams(window.location.search);
+const lang = params.get("lang");
+console.log(lang);
+if (lang) {
+    console.log("redirecting to " + lang);
+    window.location.href = "/" + lang;
+}
+</script>
+"""
+
+
 # Create the visualization components
-with gr.Blocks(title="AI Language Proficiency Benchmark", css=css) as demo:
+with gr.Blocks(title="AI Language Proficiency Benchmark", css=css, head=shortcut_js) as demo:
     gr.Markdown("# AI Language Proficiency Benchmark")
     gr.Markdown("Comparing language proficiency across different models and languages.")
 
@@ -743,7 +757,7 @@ with gr.Blocks(title="AI Language Proficiency Benchmark", css=css) as demo:
         )
 
 
-for lang in tqdm(languages[:20], desc="Generating pages"):
+for lang in tqdm(languages[:5], desc="Generating pages"):
     with demo.route(lang['language_name'], f"/{lang['bcp_47']}"):
         gr.Markdown(f"## {lang['language_name']}")
 
