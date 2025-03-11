@@ -568,6 +568,41 @@ css="""
     display: grid !important;
     grid-template-columns: 1fr 1fr;
 }
+
+.nav-holder {display: none;}
+
+.share-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-family: monospace;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+
+.share-link:hover {
+    background-color: #e0e0e0;
+}
+
+.share-link .icon {
+    margin-left: 8px;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.title-row h2 {
+    margin: 0;
+}
 """
 
 
@@ -580,10 +615,10 @@ if (lang) {
     console.log("redirecting to " + lang);
     window.location.href = "/" + lang;
 }
-window.parent.postMessage({
-    "?test",
-    "#hash",
-}, "https://huggingface.co");
+const copyLinkToClipboard = (link) => {
+    navigator.clipboard.writeText(link);
+    console.log("Copied link to clipboard: " + link);
+}
 </script>
 """
 
@@ -761,9 +796,18 @@ with gr.Blocks(title="AI Language Proficiency Benchmark", css=css, head=shortcut
         )
 
 
-for lang in tqdm(languages[:10], desc="Generating pages"):
+for lang in tqdm(languages[:20], desc="Generating pages"):
     with demo.route(lang['language_name'], f"/{lang['bcp_47']}"):
-        gr.Markdown(f"## {lang['language_name']}")
+        url = f"hf.co/spaces/datenlaborbmz/ai-language-monitor?lang={lang['bcp_47']}"
+        gr.Markdown(
+            f'''
+            <div class="title-row">
+                <h2>{lang['language_name']}</h2>
+                <div class="share-link" onclick="copyLinkToClipboard('{url}')">{url}<span class="icon">📋</span></div>
+            </div>
+            ''', 
+            sanitize_html=False
+        )
 
 
 demo.launch()
