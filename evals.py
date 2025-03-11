@@ -36,9 +36,13 @@ models = [
     "google/gemini-2.0-flash-001",  # 0.4$/M tokens
     # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
     # "deepseek/deepseek-chat",  # 0.9$/M tokens
-    "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
+    # "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
 ]
 model_fast = "meta-llama/llama-3.3-70b-instruct"
+n_languages = 50
+n_detailed_languages = 10
+n_sentences = 30
+
 transcription_models = [
     "elevenlabs/scribe_v1",
     "openai/whisper-large-v3",
@@ -46,9 +50,8 @@ transcription_models = [
     # "facebook/seamless-m4t-v2-large",
 ]
 transcription_model_fast = "elevenlabs/scribe_v1"
-n_sentences = 30
-n_languages = 10
-n_detailed_languages = 5
+transcription_n_languages = 10
+transcription_n_detailed_languages = 5
 
 # ===== setup =====
 
@@ -195,6 +198,8 @@ target_languages = languages[languages["in_benchmark"]].sample(
 )
 langs_eval = languages.iloc[:n_languages]
 langs_eval_detailed = languages.iloc[:n_detailed_languages]
+transcription_langs_eval = languages.iloc[:transcription_n_languages]
+transcription_langs_eval_detailed = languages.iloc[:transcription_n_detailed_languages]
 
 
 def download_file(url, path):
@@ -205,7 +210,7 @@ def download_file(url, path):
 
 def download_fleurs():
     # the huggingface loader does not allow loading only the dev set, so do it manually
-    for language in langs_eval.itertuples():
+    for language in transcription_langs_eval.itertuples():
         tar_url = f"https://huggingface.co/datasets/google/fleurs/resolve/main/data/{language.fleurs_tag}/audio/dev.tar.gz"
         tar_path = Path(f"data/fleurs/{language.fleurs_tag}/audio/dev.tar.gz")
         audio_path = Path(f"data/fleurs/{language.fleurs_tag}/audio")
@@ -496,12 +501,12 @@ async def main():
     transcription_scores = [
         transcribe_and_evaluate(model, language.bcp_47, i)
         for i in range(n_sentences)
-        for language in langs_eval.itertuples()
+        for language in transcription_langs_eval.itertuples()
         for model in transcription_models
         if language.in_benchmark
         and (
             model == transcription_model_fast
-            or language.bcp_47 in langs_eval_detailed.bcp_47.values
+            or language.bcp_47 in transcription_langs_eval_detailed.bcp_47.values
         )
     ]
     transcription_scores = await tqdm_asyncio.gather(*transcription_scores, miniters=1)

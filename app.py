@@ -137,17 +137,18 @@ def create_leaderboard_df(model_type, metric=None):
             "model_": "Model",
         }
     )
+    df[metric["label"]] = df[metric["label"]].round(3)
     df = df.sort_values(metric["label"], ascending=False)
     df["Rank"] = range(1, len(df) + 1)
     df["Rank"] = df["Rank"].apply(
         lambda x: "🥇" if x == 1 else "🥈" if x == 2 else "🥉" if x == 3 else str(x)
     )
-    df = df[["Rank", "Model", metric["label"], "Languages Tested"]]
+    df = df[["Rank", "Model", metric["label"]]]
     return gr.DataFrame(
         value=df,
         label="Model Leaderboard",
         show_search=False,
-        datatype=["number", "markdown", "number", "number"],
+        datatype=["number", "markdown", "number"],
     )
 
 
@@ -321,7 +322,7 @@ def create_scatter_plot(metric):
             sorted(set(data["family"] for data in scatter_data)), color_pallette
         )
     }
-    c_vals = [color_mapping[data["family"]] for data in scatter_data]
+    c_vals = [color_mapping.get(data["family"], "LightGray") for data in scatter_data]
     labels = [data["language"] for data in scatter_data]
     hover_template = f"<b>%{{text}}</b><br>Speakers: %{{x:.1f}}M<br>{metric['label']}: %{{y:.3f}}<extra></extra>"
     fig.add_trace(
@@ -447,7 +448,7 @@ def create_world_map(metric):
     hover_texts = []
 
     for country_code, data in country_data.items():
-        weighted_avg = data["weighted_score_sum"] / data["total_speakers"]
+        weighted_avg = data["weighted_score_sum"] / data["total_speakers"] if data["total_speakers"] > 0 else None
 
         try:
             country_name = pycountry.countries.get(alpha_3=country_code).name
