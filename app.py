@@ -7,6 +7,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pycountry
 from gradio_rangeslider import RangeSlider
+from tqdm import tqdm
 
 with open("results.json") as f:
     languages = json.load(f) 
@@ -740,5 +741,11 @@ with gr.Blocks(title="AI Language Proficiency Benchmark", css=css) as demo:
             The overall performance score combines metrics from all tasks to provide a holistic assessment of model capabilities across languages.
         """
         )
+
+
+for lang in tqdm(languages[:20], desc="Generating pages"):
+    with demo.route(lang['language_name'], f"/{lang['bcp_47']}"):
+        gr.Markdown(f"## {lang['language_name']}")
+
 
 demo.launch()
