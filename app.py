@@ -232,17 +232,17 @@ def create_language_stats_df(metric):
             # if lang["overall_score"] is not None
             # else "N/A",
             "Best Model": model_link,
-            "MT": round(lang["mt_chrf"], 3)
+            "Trans­la­ti­on": round(lang["mt_chrf"], 3)
             if lang["mt_chrf"] is not None
             else "N/A",
-            "CLS": round(lang["cls_acc"], 3)
+            "Classi­fi­ca­ti­on": round(lang["cls_acc"], 3)
             if lang["cls_acc"] is not None
             else "N/A",
-            "MLM": round(lang["mlm_chrf"], 3)
+            "Masked Language Modeling": round(lang["mlm_chrf"], 3)
             if lang["mlm_chrf"] is not None
             else "N/A",
-            "ASR": round(lang["asr_chrf"], 3) if lang["asr_wer"] is not None else "N/A",
-            "Common Voice": commonvoice_link,
+            "Speech Reco­gni­ti­on": round(lang["asr_chrf"], 3) if lang["asr_wer"] is not None else "N/A",
+            "Common­Voice": commonvoice_link,
         }
         flat_data.append(row)
 
@@ -283,7 +283,7 @@ def create_scatter_plot(metric):
     # Create a list to store data for the scatter plot
     scatter_data = []
     for lang in languages_with_scores:
-        if lang["speakers"] < 10_000:
+        if lang["speakers"] < 100_000:
             continue
         # Calculate average score for this metric across all models
         scores = [
