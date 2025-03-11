@@ -610,16 +610,29 @@ css="""
 
 shortcut_js = """
 <script>
+// Handle URL parameters for direct language access
 const params = new URLSearchParams(window.location.search);
 const lang = params.get("lang");
-console.log(lang);
+
 if (lang) {
-    console.log("redirecting to " + lang);
     window.location.href = "/" + lang;
 }
+
+// Function to copy link to clipboard
 const copyLinkToClipboard = (link) => {
     navigator.clipboard.writeText(link);
     console.log("Copied link to clipboard: " + link);
+}
+
+const redirect_to_lang = lang_descriptor => {
+    lang_code = lang_descriptor.split("(")[1].split(")")[0];
+    console.log("redirecting to /" + lang_code);
+    window.location.href = "/" + lang_code;
+}
+
+const empty_search = () => {
+    console.log("empty search");
+    document.getElementById("search-dropdown").value = "";
 }
 </script>
 """
@@ -627,19 +640,22 @@ const copyLinkToClipboard = (link) => {
 
 # Create the visualization components
 with gr.Blocks(title="AI Language Proficiency Benchmark", css=css, head=shortcut_js) as demo:
-    gr.Markdown("# AI Language Proficiency Benchmark")
-    gr.Markdown("Comparing language proficiency across different models and languages.")
-
     language_choices = [
         f"{lang['language_name']} ({lang['bcp_47']})" for lang in languages
     ]
     models = {score["model"] for lang in languages for score in lang["scores"]}
     search = gr.Dropdown(
-        choices=list(models) + language_choices,
-        value=None,
-        label="Search for Language or Model",
+        choices=language_choices, # + list(models),
+        value="Search for Language or Model",
+        allow_custom_value=True,
         interactive=True,
+        container=False,
+        elem_id="search-dropdown"
     )
+    search.focus(fn=lambda x: None, inputs=search, outputs=None, js="(x) => {empty_search()}")
+    search.change(fn=lambda x: None, inputs=search, outputs=None, js="(x) => {redirect_to_lang(x)}")
+    gr.Markdown("# AI Language Proficiency Benchmark")
+    gr.Markdown("Comparing language proficiency across different models and languages.")
     with gr.Row():
         start_model_type = "Text-to-Text"
         model_type = gr.Radio(
