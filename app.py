@@ -225,8 +225,10 @@ def create_language_stats_df(metric):
             if lang["commonvoice_hours"]
             else "N/A"
         )
+        language_link = f"<a href='/{lang['bcp_47']}' style='text-decoration: none; font-weight: bold;'>{lang['language_name']}</a>"
+        
         row = {
-            "Language": f"**{lang['language_name']}**",
+            "Language": language_link,
             "Speakers (M)": round(lang["speakers"] / 1_000_000, 1),
             # "Models Tested": len(lang["scores"]),
             # "Overall": round(lang["overall_score"], 3)
