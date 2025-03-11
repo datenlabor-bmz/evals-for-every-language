@@ -691,12 +691,6 @@ with gr.Blocks(title="AI Language Proficiency Benchmark", css=css) as demo:
             0
         ]
         return fn(metric)
-
-    metric.change(
-        fn=partial(update_component, create_metric_explanation),
-        inputs=[model_type, metric],
-        outputs=metric_explanation,
-    )
     metric.change(
         fn=partial(update_component, create_model_comparison_plot),
         inputs=[model_type, metric],
