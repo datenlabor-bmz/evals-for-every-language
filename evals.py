@@ -9,13 +9,13 @@ from os import getenv
 from pathlib import Path
 
 import evaluate
+import numpy as np
 import pandas as pd
 import requests
 from aiolimiter import AsyncLimiter
-from datasets import Dataset
 from dotenv import load_dotenv
 from elevenlabs import AsyncElevenLabs
-from huggingface_hub import AsyncInferenceClient, HfApi
+from huggingface_hub import AsyncInferenceClient
 from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
@@ -516,12 +516,14 @@ async def main():
         .agg({"score": "mean", "bcp_47": "nunique", "model": "nunique"})
         .reset_index()
     )
-    HF_REPO = "datenlabor-bmz/global-language-ai-evals"
-    HF_TOKEN = getenv("HUGGINGFACE_ACCESS_TOKEN")
-    Dataset.from_pandas(results).push_to_hub(HF_REPO, "scores", token=HF_TOKEN)
-    Dataset.from_pandas(lang_results).push_to_hub(HF_REPO, "languages", token=HF_TOKEN)
-    Dataset.from_pandas(model_results).push_to_hub(HF_REPO, "models", token=HF_TOKEN)
-    Dataset.from_pandas(task_results).push_to_hub(HF_REPO, "tasks", token=HF_TOKEN)
+    all_results = {
+        "tasks": task_results.replace({np.nan:None}).to_dict(orient="records"),
+        "models": model_results.replace({np.nan:None}).to_dict(orient="records"),
+        "languages": lang_results.replace({np.nan:None}).to_dict(orient="records"),
+        "scores": results.replace({np.nan:None}).to_dict(orient="records"),
+    }
+    with open("frontend/public/results.json", "w") as f:
+        json.dump(all_results, f, indent=2, ensure_ascii=False)
 
 
 if __name__ == "__main__":
