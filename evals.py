@@ -12,9 +12,10 @@ import evaluate
 import pandas as pd
 import requests
 from aiolimiter import AsyncLimiter
+from datasets import Dataset
 from dotenv import load_dotenv
 from elevenlabs import AsyncElevenLabs
-from huggingface_hub import AsyncInferenceClient
+from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
@@ -274,13 +275,19 @@ async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
     else:
         bleu_score = {"bleu": 0}
     chrf_score = chrf.compute(predictions=[prediction], references=[target_sentence])
-    return {
-        "model": model,
-        "bcp_47": original_language["bcp_47"],
-        "mt_bleu": bleu_score["bleu"],
-        "mt_chrf": chrf_score["score"] / 100,
-        "sentence_nr": sentence_nr,
-    }
+    return [
+        {
+            "model": model,
+            "bcp_47": original_language["bcp_47"],
+            "task": "translation",
+            "metric": metric,
+            "score": score,
+            "sentence_nr": sentence_nr,
+        }
+        for metric, score in zip(
+            ["bleu", "chrf"], [bleu_score["bleu"], chrf_score["score"] / 100]
+        )
+    ]
 
 
 metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
@@ -331,16 +338,20 @@ async def classify_and_evaluate(model, language_bcp_47, nr):
         max_tokens=5,
     )
     try:
-        prediction = int(reply.choices[0].message.content.strip())
+        pred = int(reply.choices[0].message.content.strip())
     except ValueError:
-        prediction = -1
-    return {
-        "model": model,
-        "bcp_47": language["bcp_47"],
-        "true": topic_to_number(test_paragraph.topic),
-        "pred": prediction,
-        "sentence_nr": nr,
-    }
+        pred = -1
+    true = topic_to_number(test_paragraph.topic)
+    return [
+        {
+            "model": model,
+            "bcp_47": language["bcp_47"],
+            "task": "classification",
+            "metric": "accuracy",
+            "score": int(pred == true),
+            "sentence_nr": nr,
+        }
+    ]
 
 
 def corrupt_sentence(sentence):
@@ -381,12 +392,16 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
     )
     prediction = reply.choices[0].message.content.strip()
     chrf_score = chrf.compute(predictions=[prediction], references=[test_sentence.text])
-    return {
-        "model": model,
-        "bcp_47": language["bcp_47"],
-        "mlm_chrf": chrf_score["score"] / 100,
-        "sentence_nr": nr,
-    }
+    return [
+        {
+            "model": model,
+            "bcp_47": language["bcp_47"],
+            "task": "language_modeling",
+            "metric": "chrf",
+            "score": chrf_score["score"] / 100,
+            "sentence_nr": nr,
+        }
+    ]
 
 
 @cache
@@ -440,15 +455,24 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
     path = f"data/fleurs/{language.fleurs_tag}/audio/dev/{item.fname}"
     pred = await transcribe(path, model=model)
     wer_score = wer.compute(predictions=[pred], references=[item.transcription])
-    chrf_score = chrf.compute(predictions=[pred], references=[item.transcription])
-    return {
-        "model": model,
-        "bcp_47": language["bcp_47"],
-        "asr_wer": wer_score,
-        "asr_chrf": chrf_score["score"] / 100,
-        "sentence_nr": nr,
-    }
+    return [
+        {
+            "model": model,
+            "bcp_47": language["bcp_47"],
+            "task": "asr",
+            "metric": "wer",
+            "score": wer_score,
+            "sentence_nr": nr,
+        }
+    ]
 
+
+tasks = [
+    translate_and_evaluate,
+    classify_and_evaluate,
+    mlm_and_evaluate,
+    # transcribe_and_evaluate,
+]
 
 # ===== run evaluation and aggregate results =====
 
@@ -458,9 +482,10 @@ def mean(lst):
 
 
 async def main():
-    print("evaluate translation")
-    translation_scores = [
-        translate_and_evaluate(model, original_language.bcp_47, i)
+    print("running evaluations")
+    results = [
+        task(model, original_language.bcp_47, i)
+        for task in tasks
         for i in range(n_sentences)
         for original_language in langs_eval.itertuples()
         for model in models
@@ -470,130 +495,33 @@ async def main():
             or original_language.bcp_47 in langs_eval_detailed.bcp_47.values
         )
     ]
-    translation_scores = await tqdm_asyncio.gather(*translation_scores, miniters=1)
-    print("evaluate classification")
-    classification_scores = [
-        classify_and_evaluate(model, language.bcp_47, i)
-        for i in range(n_sentences)
-        for language in langs_eval.itertuples()
-        for model in models
-        if language.in_benchmark
-        and (
-            model == model_fast or language.bcp_47 in langs_eval_detailed.bcp_47.values
-        )
-    ]
-    classification_scores = await tqdm_asyncio.gather(
-        *classification_scores, miniters=1
+    results = await tqdm_asyncio.gather(*results, miniters=1)
+    results = pd.DataFrame([r for rs in results for r in rs])
+    results = (
+        results.groupby(["model", "bcp_47", "task", "metric"]).mean().reset_index()
     )
-    print("evaluate masked language modeling")
-    mlm_scores = [
-        mlm_and_evaluate(model, language.bcp_47, i)
-        for i in range(n_sentences)
-        for language in langs_eval.itertuples()
-        for model in models
-        if language.in_benchmark
-        and (
-            model == model_fast or language.bcp_47 in langs_eval_detailed.bcp_47.values
-        )
-    ]
-    mlm_scores = await tqdm_asyncio.gather(*mlm_scores, miniters=1)
-    print("evaluate transcription")
-    transcription_scores = [
-        transcribe_and_evaluate(model, language.bcp_47, i)
-        for i in range(n_sentences)
-        for language in transcription_langs_eval.itertuples()
-        for model in transcription_models
-        if language.in_benchmark
-        and (
-            model == transcription_model_fast
-            or language.bcp_47 in transcription_langs_eval_detailed.bcp_47.values
-        )
-    ]
-    transcription_scores = await tqdm_asyncio.gather(*transcription_scores, miniters=1)
-    all_results = []
-    for language in languages.itertuples():
-        results = []
-        for model in models:
-            scores_mt = [
-                score
-                for score in translation_scores
-                if score["bcp_47"] == language.bcp_47 and score["model"] == model
-            ]
-            scores_cls = [
-                score
-                for score in classification_scores
-                if score["bcp_47"] == language.bcp_47 and score["model"] == model
-            ]
-            scores_mlm = [
-                score
-                for score in mlm_scores
-                if score["bcp_47"] == language.bcp_47 and score["model"] == model
-            ]
-            if not scores_mt:
-                continue
-            mt_bleu = mean([s["mt_bleu"] for s in scores_mt])
-            mt_chrf = mean([s["mt_chrf"] for s in scores_mt])
-            cls_acc = mean([s["true"] == s["pred"] for s in scores_cls])
-            mlm_chrf = mean([s["mlm_chrf"] for s in scores_mlm])
-            t2t_score = (mt_chrf + cls_acc + mlm_chrf) / 3
-            results.append(
-                {
-                    "model": model,
-                    "model_type": "text-to-text",
-                    "mt_bleu": mt_bleu,
-                    "mt_chrf": mt_chrf,
-                    "cls_acc": cls_acc,
-                    "mlm_chrf": mlm_chrf,
-                    "t2t_score": t2t_score,
-                }
-            )
-        for model in transcription_models:
-            scores_asr = [
-                score
-                for score in transcription_scores
-                if score["bcp_47"] == language.bcp_47 and score["model"] == model
-            ]
-            if not scores_asr:
-                continue
-            asr_wer = mean([s["asr_wer"] for s in scores_asr])
-            asr_chrf = mean([s["asr_chrf"] for s in scores_asr])
-            results.append(
-                {
-                    "model": model,
-                    "model_type": "speech-to-text",
-                    "asr_wer": asr_wer,
-                    "asr_chrf": asr_chrf,
-                    "s2t_score": (asr_wer + asr_chrf) / 2,
-                }
-            )
-        language_results = {
-            "language_name": language.language_name,
-            "bcp_47": language.bcp_47,
-            "speakers": language.speakers,
-            "scores": results,
-            "commonvoice_hours": language.commonvoice_hours
-            if not pd.isna(language.commonvoice_hours)
-            else None,
-            "commonvoice_locale": language.commonvoice_locale
-            if not pd.isna(language.commonvoice_locale)
-            else None,
-            "population": population(language.bcp_47),
-            "language_family": language_family(language.bcp_47),
-        }
-        for score in [
-            "mt_bleu",
-            "mt_chrf",
-            "cls_acc",
-            "mlm_chrf",
-            "asr_wer",
-            "asr_chrf",
-            "t2t_score",
-            "s2t_score",
-        ]:
-            language_results[score] = mean([s[score] for s in results if score in s])
-        all_results.append(language_results)
-    with open("results.json", "w") as f:
-        json.dump(all_results, f, indent=2, ensure_ascii=False)
+    lang_results = (
+        results.groupby(["bcp_47", "task", "metric"])
+        .agg({"score": "mean", "model": "nunique"})
+        .reset_index()
+    )
+    lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
+    model_results = (
+        results.groupby(["model", "task", "metric"])
+        .agg({"score": "mean", "bcp_47": "nunique"})
+        .reset_index()
+    )
+    task_results = (
+        results.groupby(["task", "metric"])
+        .agg({"score": "mean", "bcp_47": "nunique", "model": "nunique"})
+        .reset_index()
+    )
+    HF_REPO = "datenlabor-bmz/global-language-ai-evals"
+    HF_TOKEN = getenv("HUGGINGFACE_ACCESS_TOKEN")
+    Dataset.from_pandas(results).push_to_hub(HF_REPO, "scores", token=HF_TOKEN)
+    Dataset.from_pandas(lang_results).push_to_hub(HF_REPO, "languages", token=HF_TOKEN)
+    Dataset.from_pandas(model_results).push_to_hub(HF_REPO, "models", token=HF_TOKEN)
+    Dataset.from_pandas(task_results).push_to_hub(HF_REPO, "tasks", token=HF_TOKEN)
 
 
 if __name__ == "__main__":
