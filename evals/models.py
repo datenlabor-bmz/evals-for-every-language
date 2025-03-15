@@ -1,11 +1,13 @@
 from os import getenv
 
+import pandas as pd
 from aiolimiter import AsyncLimiter
 from dotenv import load_dotenv
 from elevenlabs import AsyncElevenLabs
-from huggingface_hub import AsyncInferenceClient
+from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
 from openai import AsyncOpenAI
+from requests import HTTPError
 
 # for development purposes, all languages will be evaluated on the fast models
 # and only a sample of languages will be evaluated on all models
@@ -80,3 +82,35 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
             return await transcribe_huggingface(path, model)
         case _:
             raise ValueError(f"Model {model} not supported")
+
+
+models = pd.DataFrame(models, columns=["id"])
+
+api = HfApi()
+
+def get_metadata(id):
+    try:
+        info = api.model_info(id)
+        license = info.card_data.license.replace("_", " ").replace("mit", "MIT").title()
+        return {
+            "hf_id": info.id,
+            "creation_date": info.created_at,
+            "size": info.safetensors.total,
+            "type": "Open",
+            "license": license,
+        }
+    except HTTPError:
+        return {
+            "hf_id": None,
+            "creation_date": None,
+            "size": None,
+            "type": "Commercial",
+            "license": None,
+        }
+
+models["hf_id"] = models["id"].apply(get_metadata).str["hf_id"]
+models["creation_date"] = models["id"].apply(get_metadata).str["creation_date"]
+models["creation_date"] = pd.to_datetime(models["creation_date"])
+models["size"] = models["id"].apply(get_metadata).str["size"]
+models["type"] = models["id"].apply(get_metadata).str["type"]
+models["license"] = models["id"].apply(get_metadata).str["license"]

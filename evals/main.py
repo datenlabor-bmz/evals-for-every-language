@@ -19,6 +19,7 @@ transcription_langs_eval_detailed = languages.iloc[:5]
 
 # ===== run evaluation and aggregate results =====
 
+
 async def evaluate():
     print("running evaluations")
     results = [
@@ -26,7 +27,7 @@ async def evaluate():
         for task in tasks
         for i in range(n_sentences)
         for original_language in langs_eval.itertuples()
-        for model in models
+        for model in models["id"]
         if original_language.in_benchmark
         and (
             model == model_fast
@@ -34,6 +35,7 @@ async def evaluate():
         )
     ]
     return await tqdm_asyncio.gather(*results, miniters=1)
+
 
 def aggregate(results):
     results = pd.DataFrame([r for rs in results for r in rs])
@@ -58,32 +60,39 @@ def aggregate(results):
     )
     return results, lang_results, model_results, task_results
 
+
 def mean(lst):
     return sum(lst) / len(lst) if lst else None
 
 
 def fmt_name(s):
-    return " ".join(w.capitalize() for w in s.split("-")).replace("Gpt", "GPT").replace("ai", "AI")
+    return (
+        " ".join(w.capitalize() for w in s.split("-"))
+        .replace("Gpt", "GPT")
+        .replace("ai", "AI")
+    )
+
 
 def serialize(df):
     return df.replace({np.nan: None}).to_dict(orient="records")
 
-def make_model_table(model_results):
-    model_results["task_metric"] = model_results["task"] + "_" + model_results["metric"]
-    model_results = model_results.drop(columns=["task", "metric"])
-    model_table = model_results.pivot(
-        index="model", columns="task_metric", values="score"
-    ).fillna(0)
-    model_table["average"] = model_table.mean(axis=1)
-    model_table = model_table.sort_values(by="average", ascending=False)
-    model_table = model_table.round(2).reset_index()
-    model_table["provider"] = model_table["model"].str.split("/").str[0].apply(fmt_name)
-    model_table["model"] = model_table["model"].str.split("/").str[1].apply(fmt_name)
-    model_table["rank"] = model_table.index + 1
-    model_table = model_table[
-        ["rank", "provider", "model", "average", *model_table.columns[1:-3]]
-    ]
-    return model_table
+
+def make_model_table(df):
+    df["task_metric"] = df["task"] + "_" + df["metric"]
+    df = df.drop(columns=["task", "metric"])
+    task_metrics = df["task_metric"].unique()
+    df = df.pivot(index="model", columns="task_metric", values="score").fillna(0)
+    df["average"] = df[task_metrics].mean(axis=1)
+    df = df.sort_values(by="average", ascending=False).reset_index()
+    for row in [*task_metrics, "average"]:
+        df[row] = df[row].round(2)
+    df = pd.merge(df, models, left_on="model", right_on="id", how="left")
+    df["creation_date"] = df["creation_date"].dt.strftime("%Y-%m-%d")
+    df["provider"] = df["model"].str.split("/").str[0].apply(fmt_name)
+    df["model"] = df["model"].str.split("/").str[1].apply(fmt_name)
+    df["rank"] = df.index + 1
+    df = df[["rank", "provider", "model", "hf_id", "creation_date", "size", "type", "license", "average", *task_metrics]]
+    return df
 
 
 async def main():
@@ -97,7 +106,7 @@ async def main():
     }
     with open("results.json", "w") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
-    
+
     model_table = make_model_table(model_results)
     all_tables = {
         "model_table": serialize(model_table),
