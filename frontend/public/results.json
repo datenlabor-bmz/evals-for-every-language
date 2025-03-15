@@ -1,0 +1,44 @@
+{
+  "model_table": [
+    {
+      "rank": 1,
+      "provider": "Google",
+      "model": "Gemini 2.0 Flash 001",
+      "average": 0.68,
+      "classification_accuracy": 0.87,
+      "language_modeling_chrf": 0.96,
+      "translation_bleu": 0.36,
+      "translation_chrf": 0.53
+    },
+    {
+      "rank": 2,
+      "provider": "OpenAI",
+      "model": "GPT 4o Mini",
+      "average": 0.56,
+      "classification_accuracy": 0.51,
+      "language_modeling_chrf": 0.95,
+      "translation_bleu": 0.31,
+      "translation_chrf": 0.47
+    },
+    {
+      "rank": 3,
+      "provider": "MistralAI",
+      "model": "Mistral Small 24b Instruct 2501",
+      "average": 0.54,
+      "classification_accuracy": 0.57,
+      "language_modeling_chrf": 0.9,
+      "translation_bleu": 0.26,
+      "translation_chrf": 0.42
+    },
+    {
+      "rank": 4,
+      "provider": "Meta Llama",
+      "model": "Llama 3.3 70b Instruct",
+      "average": 0.53,
+      "classification_accuracy": 0.51,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.25,
+      "translation_chrf": 0.43
+    }
+  ]
+}

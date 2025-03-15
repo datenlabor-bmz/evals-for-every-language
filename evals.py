@@ -481,6 +481,10 @@ def mean(lst):
     return sum(lst) / len(lst) if lst else None
 
 
+def fmt_name(s):
+    return " ".join(w.capitalize() for w in s.split("-")).replace("Gpt", "GPT").replace("ai", "AI")
+
+
 async def main():
     print("running evaluations")
     results = [
@@ -517,13 +521,32 @@ async def main():
         .reset_index()
     )
     all_results = {
-        "tasks": task_results.replace({np.nan:None}).to_dict(orient="records"),
-        "models": model_results.replace({np.nan:None}).to_dict(orient="records"),
-        "languages": lang_results.replace({np.nan:None}).to_dict(orient="records"),
-        "scores": results.replace({np.nan:None}).to_dict(orient="records"),
+        "tasks": task_results.replace({np.nan: None}).to_dict(orient="records"),
+        "models": model_results.replace({np.nan: None}).to_dict(orient="records"),
+        "languages": lang_results.replace({np.nan: None}).to_dict(orient="records"),
+        "scores": results.replace({np.nan: None}).to_dict(orient="records"),
+    }
+    with open("results.json", "w") as f:
+        json.dump(all_results, f, indent=2, ensure_ascii=False)
+    model_results["task_metric"] = model_results["task"] + "_" + model_results["metric"]
+    model_results = model_results.drop(columns=["task", "metric"])
+    model_table = model_results.pivot(
+        index="model", columns="task_metric", values="score"
+    ).fillna(0)
+    model_table["average"] = model_table.mean(axis=1)
+    model_table = model_table.sort_values(by="average", ascending=False)
+    model_table = model_table.round(2).reset_index()
+    model_table["provider"] = model_table["model"].str.split("/").str[0].apply(fmt_name)
+    model_table["model"] = model_table["model"].str.split("/").str[1].apply(fmt_name)
+    model_table["rank"] = model_table.index + 1
+    model_table = model_table[
+        ["rank", "provider", "model", "average", *model_table.columns[1:-3]]
+    ]
+    all_tables = {
+        "model_table": model_table.to_dict(orient="records"),
     }
     with open("frontend/public/results.json", "w") as f:
-        json.dump(all_results, f, indent=2, ensure_ascii=False)
+        json.dump(all_tables, f, indent=2, ensure_ascii=False)
 
 
 if __name__ == "__main__":
