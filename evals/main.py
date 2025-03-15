@@ -95,6 +95,20 @@ def make_model_table(df):
     return df
 
 
+def make_language_table(df):
+    df["task_metric"] = df["task"] + "_" + df["metric"]
+    df = df.drop(columns=["task", "metric"])
+    task_metrics = df["task_metric"].unique()
+    df = df.pivot(index="bcp_47", columns="task_metric", values="score").fillna(0).reset_index()
+    df["average"] = df[task_metrics].mean(axis=1)
+    for row in [*task_metrics, "average"]:
+        df[row] = df[row].round(2)
+    df = pd.merge(languages, df, on="bcp_47", how="outer")
+    df = df.sort_values(by="average", ascending=False)
+    df = df[["language_name", "speakers", "family", "average", "in_benchmark", *task_metrics]]
+    return df
+
+
 async def main():
     results = await evaluate()
     results, lang_results, model_results, task_results = aggregate(results)
@@ -107,9 +121,9 @@ async def main():
     with open("results.json", "w") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 
-    model_table = make_model_table(model_results)
     all_tables = {
-        "model_table": serialize(model_table),
+        "model_table": serialize(make_model_table(model_results)),
+        "language_table": serialize(make_language_table(lang_results)),
     }
     with open("frontend/public/results.json", "w") as f:
         json.dump(all_tables, f, indent=2, ensure_ascii=False)

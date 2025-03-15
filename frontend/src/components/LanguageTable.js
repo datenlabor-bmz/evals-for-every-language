@@ -3,73 +3,52 @@ import { Column } from 'primereact/column'
 import { FilterMatchMode } from 'primereact/api'
 import { MultiSelect } from 'primereact/multiselect'
 import { useState, useEffect } from 'react'
-import Medal from './Medal'
 import { Slider } from 'primereact/slider'
 import ScoreField from './ScoreField'
 
-const ModelTable = ({ data }) => {
+const LanguageTable = ({ data }) => {
   const [filters, setFilters] = useState({
-    provider: { value: null, matchMode: FilterMatchMode.IN },
-    model: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    type: { value: null, matchMode: FilterMatchMode.IN },
-    size: { value: null, matchMode: FilterMatchMode.BETWEEN }
+    language_name: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    family: { value: null, matchMode: FilterMatchMode.IN },
+    speakers: { value: null, matchMode: FilterMatchMode.BETWEEN },
   })
-  const table = data.model_table
-  const rankBodyTemplate = rowData => {
-    return <Medal rank={rowData.rank} />
-  }
+  const table = data.language_table
 
-  const providers = [...new Set(table.map(item => item.provider))]
-  const providerRowFilterTemplate = options => {
+  const families = [...new Set(table.map(item => item.family))]
+  const familyRowFilterTemplate = options => {
     return (
       <MultiSelect
         value={options.value}
-        options={providers}
+        options={families}
         onChange={e => {
           options.filterApplyCallback(e.value)
           setFilters(prevFilters => ({
             ...prevFilters,
-            provider: { value: e.value, matchMode: FilterMatchMode.IN }
+            family: { value: e.value, matchMode: FilterMatchMode.IN }
           }))
         }}
-        placeholder='All providers'
-      />
-    )
-  }
-  const typeRowFilterTemplate = options => {
-    return (
-      <MultiSelect
-        value={options.value}
-        options={['Open', 'Commercial']}
-        onChange={e => {
-          options.filterApplyCallback(e.value)
-          setFilters(prevFilters => ({
-            ...prevFilters,
-            type: { value: e.value, matchMode: FilterMatchMode.IN }
-          }))
-        }}
-        placeholder='All types'
+        placeholder='All families'
       />
     )
   }
 
-  const formatSize = size => {
-    if (size === null) {
+  const formatPopulation = population => {
+    if (population === null) {
       return ''
-    } else if (size < 1000) {
-      return size.toFixed(0) + ''
-    } else if (size < 1000 * 1000) {
-      return (size / 1000).toFixed(0) + 'K'
-    } else if (size < 1000 * 1000 * 1000) {
-      return (size / 1000 / 1000).toFixed(0) + 'M'
+    } else if (population < 1000) {
+      return population.toFixed(0) + ''
+    } else if (population < 1000 * 1000) {
+      return (population / 1000).toFixed(1) + 'K'
+    } else if (population < 1000 * 1000 * 1000) {
+      return (population / 1000 / 1000).toFixed(1) + 'M'
     } else {
-      return (size / 1000 / 1000 / 1000).toFixed(0) + 'B'
+      return (population / 1000 / 1000 / 1000).toFixed(1) + 'B'
     }
   }
 
   const SliderWithLabel = ({ value, onChange }) => {
     const p = 10
-    const min = 8
+    const min = 2
     const max = 12
     const start = value === null ? min : Math.log(value[0]) / Math.log(p)
     const stop = value === null ? max : Math.log(value[1]) / Math.log(p)
@@ -87,8 +66,8 @@ const ModelTable = ({ data }) => {
     }, [_value, onChange])
     return (
       <div style={{ minWidth: '20rem' }}>
-        <div>{formatSize(p ** _value[0])}</div>
-        <div>{formatSize(p ** _value[1])}</div>
+        <div>{formatPopulation(p ** _value[0])}</div>
+        <div>{formatPopulation(p ** _value[1])}</div>
         <Slider
           value={_value}
           onChange={e => _setValue(e.value)}
@@ -103,7 +82,7 @@ const ModelTable = ({ data }) => {
     )
   }
 
-  const sizeFilterTemplate = options => {
+  const speakerFilterTemplate = options => {
     return (
       <SliderWithLabel
         value={options.value}
@@ -111,20 +90,20 @@ const ModelTable = ({ data }) => {
           options.filterApplyCallback(e.value)
           setFilters(prevFilters => ({
             ...prevFilters,
-            size: { value: e.value, matchMode: FilterMatchMode.BETWEEN }
+            speakers: { value: e.value, matchMode: FilterMatchMode.BETWEEN }
           }))
         }}
       />
     )
   }
 
-  const sizeBodyTemplate = rowData => {
-    const sizeStr = formatSize(rowData.size)
-    return <div>{sizeStr}</div>
+  const speakerBodyTemplate = rowData => {
+    const populationStr = formatPopulation(rowData.speakers)
+    return <div>{populationStr}</div>
   }
 
-  const modelBodyTemplate = rowData => {
-    return <div style={{ fontWeight: 'bold', height: '100%' }}>{rowData.model}</div>
+  const languageBodyTemplate = rowData => {
+    return <div style={{ fontWeight: 'bold' }}>{rowData.language_name}</div>
   }
 
   const scoreBodyTemplate = (field, options = {}) => {
@@ -139,8 +118,8 @@ const ModelTable = ({ data }) => {
   return (
     <DataTable
       value={table}
-      header={<>AI Models</>}
-      sortField='average'
+      header={<>Languages</>}
+      sortField='speakers'
       removableSort
       filters={filters}
       filterDisplay='menu'
@@ -148,47 +127,37 @@ const ModelTable = ({ data }) => {
       scrollHeight='500px'
       style={{ minWidth: '200px' }}
     >
-      <Column field='rank' body={rankBodyTemplate} />
       <Column
-        field='provider'
-        header='Provider'
+        field='language_name'
+        header='Language'
+        body={languageBodyTemplate}
         filter
-        filterElement={providerRowFilterTemplate}
         showFilterMatchModes={false}
         style={{ minWidth: '5rem' }}
-      />
-      <Column
-        field='model'
-        header='Model'
-        filter
-        showFilterMatchModes={false}
-        style={{ minWidth: '10rem' }}
-        body={modelBodyTemplate}
         frozen
       />
       <Column
-        field='type'
-        header='Type'
+        field='speakers'
+        header='Speakers'
+        body={speakerBodyTemplate}
         filter
-        filterElement={typeRowFilterTemplate}
+        filterElement={speakerFilterTemplate}
         showFilterMatchModes={false}
-        style={{ minWidth: '10rem' }}
+        style={{ minWidth: '5rem' }}
       />
       <Column
-        field='size'
-        header='Size'
+        field='family'
+        header='Family'
         filter
-        filterElement={sizeFilterTemplate}
         showFilterMatchModes={false}
-        sortable
-        body={sizeBodyTemplate}
-        style={{ minWidth: '5rem' }}
+        filterElement={familyRowFilterTemplate}
+        style={{ minWidth: '10rem' }}
       />
       <Column
         field='average'
         header='Average'
         sortable
-        body={scoreBodyTemplate('average', { minScore: 0.3, maxScore: 0.6 })}
+        body={scoreBodyTemplate('average', { minScore: 0.4, maxScore: 0.8 })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
       <Column
@@ -196,7 +165,7 @@ const ModelTable = ({ data }) => {
         header='Translation'
         sortable
         body={scoreBodyTemplate('translation_chrf', {
-          minScore: 0.3,
+          minScore: 0.4,
           maxScore: 0.7
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
@@ -206,8 +175,8 @@ const ModelTable = ({ data }) => {
         header='Classification'
         sortable
         body={scoreBodyTemplate('classification_accuracy', {
-          minScore: 0.3,
-          maxScore: 0.8
+          minScore: 0.4,
+          maxScore: 1
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
@@ -225,4 +194,4 @@ const ModelTable = ({ data }) => {
   )
 }
 
-export default ModelTable
+export default LanguageTable
