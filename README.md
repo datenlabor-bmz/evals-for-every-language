@@ -38,3 +38,7 @@ For tag meaning, see https://huggingface.co/spaces/leaderboards/LeaderboardsExpl
 # AI Language Monitor 🌍
 
 Benchmarking all big AI models on all benchmarkable languages.
+
+```bash
+uv run evals/main.py
+```
