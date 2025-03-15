@@ -16,6 +16,7 @@ models:
 - deepseek-ai/DeepSeek-V3
 - microsoft/phi-4
 - openai/whisper-large-v3
+- google/gemma-3-27b-it
 tags:
 - leaderboard
 - submission:manual
