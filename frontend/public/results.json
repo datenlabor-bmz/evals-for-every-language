@@ -18,6 +18,21 @@
     {
       "rank": 2,
       "provider": "Google",
+      "model": "Gemini 2.0 Flash Lite 001",
+      "hf_id": null,
+      "creation_date": null,
+      "size": null,
+      "type": "Commercial",
+      "license": null,
+      "average": 0.66,
+      "classification_accuracy": 0.73,
+      "language_modeling_chrf": 0.97,
+      "translation_bleu": 0.4,
+      "translation_chrf": 0.54
+    },
+    {
+      "rank": 3,
+      "provider": "Google",
       "model": "Gemma 3 27b It",
       "hf_id": "google/gemma-3-27b-it",
       "creation_date": "2025-03-01",
@@ -31,7 +46,52 @@
       "translation_chrf": 0.54
     },
     {
-      "rank": 3,
+      "rank": 4,
+      "provider": "Meta Llama",
+      "model": "Llama 3.1 70b Instruct",
+      "hf_id": "meta-llama/Llama-3.1-70B-Instruct",
+      "creation_date": "2024-07-16",
+      "size": 70553706496.0,
+      "type": "Open",
+      "license": "Llama3.1",
+      "average": 0.62,
+      "classification_accuracy": 0.57,
+      "language_modeling_chrf": 0.92,
+      "translation_bleu": 0.43,
+      "translation_chrf": 0.57
+    },
+    {
+      "rank": 5,
+      "provider": "Amazon",
+      "model": "Nova Micro V1",
+      "hf_id": null,
+      "creation_date": null,
+      "size": null,
+      "type": "Commercial",
+      "license": null,
+      "average": 0.61,
+      "classification_accuracy": 0.52,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.4,
+      "translation_chrf": 0.56
+    },
+    {
+      "rank": 6,
+      "provider": "Meta Llama",
+      "model": "Llama 3 70b Instruct",
+      "hf_id": null,
+      "creation_date": null,
+      "size": null,
+      "type": "Commercial",
+      "license": null,
+      "average": 0.61,
+      "classification_accuracy": 0.8,
+      "language_modeling_chrf": 0.95,
+      "translation_bleu": 0.25,
+      "translation_chrf": 0.43
+    },
+    {
+      "rank": 7,
       "provider": "OpenAI",
       "model": "GPT 4o Mini",
       "hf_id": null,
@@ -46,7 +106,7 @@
       "translation_chrf": 0.55
     },
     {
-      "rank": 4,
+      "rank": 8,
       "provider": "MistralAI",
       "model": "Mistral Small 24b Instruct 2501",
       "hf_id": "mistralai/Mistral-Small-24B-Instruct-2501",
@@ -61,7 +121,7 @@
       "translation_chrf": 0.52
     },
     {
-      "rank": 5,
+      "rank": 9,
       "provider": "Meta Llama",
       "model": "Llama 3.3 70b Instruct",
       "hf_id": "meta-llama/Llama-3.3-70B-Instruct",
@@ -74,6 +134,51 @@
       "language_modeling_chrf": 0.94,
       "translation_bleu": 0.31,
       "translation_chrf": 0.48
+    },
+    {
+      "rank": 10,
+      "provider": "MistralAI",
+      "model": "Mistral Nemo",
+      "hf_id": null,
+      "creation_date": null,
+      "size": null,
+      "type": "Commercial",
+      "license": null,
+      "average": 0.55,
+      "classification_accuracy": 0.5,
+      "language_modeling_chrf": 0.88,
+      "translation_bleu": 0.32,
+      "translation_chrf": 0.49
+    },
+    {
+      "rank": 11,
+      "provider": "Microsoft",
+      "model": "Phi 4 Multimodal Instruct",
+      "hf_id": "microsoft/Phi-4-multimodal-instruct",
+      "creation_date": "2025-02-24",
+      "size": 5574460384.0,
+      "type": "Open",
+      "license": "Mit",
+      "average": 0.52,
+      "classification_accuracy": 0.42,
+      "language_modeling_chrf": 0.87,
+      "translation_bleu": 0.32,
+      "translation_chrf": 0.46
+    },
+    {
+      "rank": 12,
+      "provider": "Qwen",
+      "model": "Qwq 32b",
+      "hf_id": "Qwen/QwQ-32B",
+      "creation_date": "2025-03-05",
+      "size": 32763876352.0,
+      "type": "Open",
+      "license": "Apache 2.0",
+      "average": 0.25,
+      "classification_accuracy": 0.0,
+      "language_modeling_chrf": 0.48,
+      "translation_bleu": 0.21,
+      "translation_chrf": 0.3
     }
   ],
   "language_table": [
@@ -81,25 +186,13 @@
       "language_name": "English",
       "speakers": 1636485840,
       "family": "Indo-European",
-      "average": 0.51,
+      "average": 0.47,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.65,
-      "language_modeling_chrf": 0.94,
-      "translation_bleu": 0.43,
-      "translation_chrf": 0.55
-    },
-    {
-      "language_name": "Chinese",
-      "speakers": 1304678914,
-      "family": "Sino-Tibetan",
-      "average": 0.5,
-      "in_benchmark": true,
-      "NaN": 0.0,
-      "classification_accuracy": 0.65,
-      "language_modeling_chrf": 0.93,
-      "translation_bleu": 0.38,
-      "translation_chrf": 0.55
+      "classification_accuracy": 0.58,
+      "language_modeling_chrf": 0.92,
+      "translation_bleu": 0.37,
+      "translation_chrf": 0.49
     },
     {
       "language_name": "French",
@@ -112,6 +205,18 @@
       "language_modeling_chrf": 0.98,
       "translation_bleu": 0.32,
       "translation_chrf": 0.49
+    },
+    {
+      "language_name": "Chinese",
+      "speakers": 1304678914,
+      "family": "Sino-Tibetan",
+      "average": 0.46,
+      "in_benchmark": true,
+      "NaN": 0.0,
+      "classification_accuracy": 0.55,
+      "language_modeling_chrf": 0.86,
+      "translation_bleu": 0.35,
+      "translation_chrf": 0.53
     },
     {
       "language_name": "Hindi",

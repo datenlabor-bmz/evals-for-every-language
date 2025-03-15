@@ -15,12 +15,19 @@ models = [
     "openai/gpt-4o-mini",  # 0.6$/M tokens
     # "anthropic/claude-3.5-haiku", # 4$/M tokens -> too expensive for dev
     "meta-llama/llama-3.3-70b-instruct",  # 0.3$/M tokens
+    "meta-llama/llama-3.1-70b-instruct",  # 0.3$/M tokens
+    "meta-llama/llama-3-70b-instruct", # 0.4$/M tokens
     "mistralai/mistral-small-24b-instruct-2501",  # 0.14$/M tokens
+    "mistralai/mistral-nemo",
     "google/gemini-2.0-flash-001",  # 0.4$/M tokens
-    # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
-    # "deepseek/deepseek-chat",  # 0.9$/M tokens
-    # "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
+    "google/gemini-2.0-flash-lite-001",  # 0.3$/M tokens
     "google/gemma-3-27b-it",  # 0.2$/M tokens
+    # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
+    "qwen/qwq-32b",
+    # "deepseek/deepseek-chat",  # 1.3$/M tokens
+    # "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
+    "microsoft/phi-4-multimodal-instruct",
+    "amazon/nova-micro-v1",  # 0.09$/M tokens
 ]
 model_fast = "meta-llama/llama-3.3-70b-instruct"
 
