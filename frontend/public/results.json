@@ -4,41 +4,51 @@
       "rank": 1,
       "provider": "Google",
       "model": "Gemini 2.0 Flash 001",
-      "average": 0.68,
+      "average": 0.72,
       "classification_accuracy": 0.87,
       "language_modeling_chrf": 0.96,
-      "translation_bleu": 0.36,
-      "translation_chrf": 0.53
+      "translation_bleu": 0.45,
+      "translation_chrf": 0.58
     },
     {
       "rank": 2,
-      "provider": "OpenAI",
-      "model": "GPT 4o Mini",
-      "average": 0.56,
-      "classification_accuracy": 0.51,
-      "language_modeling_chrf": 0.95,
-      "translation_bleu": 0.31,
-      "translation_chrf": 0.47
+      "provider": "Google",
+      "model": "Gemma 3 27b It",
+      "average": 0.65,
+      "classification_accuracy": 0.72,
+      "language_modeling_chrf": 0.96,
+      "translation_bleu": 0.37,
+      "translation_chrf": 0.54
     },
     {
       "rank": 3,
-      "provider": "MistralAI",
-      "model": "Mistral Small 24b Instruct 2501",
-      "average": 0.54,
-      "classification_accuracy": 0.57,
-      "language_modeling_chrf": 0.9,
-      "translation_bleu": 0.26,
-      "translation_chrf": 0.42
+      "provider": "OpenAI",
+      "model": "GPT 4o Mini",
+      "average": 0.6,
+      "classification_accuracy": 0.52,
+      "language_modeling_chrf": 0.95,
+      "translation_bleu": 0.39,
+      "translation_chrf": 0.55
     },
     {
       "rank": 4,
+      "provider": "MistralAI",
+      "model": "Mistral Small 24b Instruct 2501",
+      "average": 0.58,
+      "classification_accuracy": 0.55,
+      "language_modeling_chrf": 0.86,
+      "translation_bleu": 0.38,
+      "translation_chrf": 0.52
+    },
+    {
+      "rank": 5,
       "provider": "Meta Llama",
       "model": "Llama 3.3 70b Instruct",
-      "average": 0.53,
-      "classification_accuracy": 0.51,
+      "average": 0.56,
+      "classification_accuracy": 0.5,
       "language_modeling_chrf": 0.94,
-      "translation_bleu": 0.25,
-      "translation_chrf": 0.43
+      "translation_bleu": 0.31,
+      "translation_chrf": 0.48
     }
   ]
 }
