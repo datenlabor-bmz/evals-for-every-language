@@ -35,7 +35,7 @@ function App() {
         <div className="emoji-container">
           <span role="img" aria-label="Hugging Face Emoji" className="header-emoji">🌍</span>
         </div>
-        <h1>Language AI Monitor</h1>
+        <h1>Global AI Language Monitor</h1>
         <p>Tracking language proficiency of AI models for every language</p>
         
         <div className="data-container">
