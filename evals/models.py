@@ -91,7 +91,7 @@ api = HfApi()
 def get_metadata(id):
     try:
         info = api.model_info(id)
-        license = info.card_data.license.replace("_", " ").replace("mit", "MIT").title()
+        license = info.card_data.license.replace("-", " ").replace("mit", "MIT").title()
         return {
             "hf_id": info.id,
             "creation_date": info.created_at,

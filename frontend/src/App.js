@@ -38,7 +38,7 @@ function App() {
         <h1>Global AI Language Monitor</h1>
         <p>Tracking language proficiency of AI models for every language</p>
         
-        <div className="data-container">
+        <div className="data-container" style={{ width: '100%' }}>
           <PrimeReactProvider>
             {loading && <p>...</p>}
             {error && <p>Error: {error}</p>}

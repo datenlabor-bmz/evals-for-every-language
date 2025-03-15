@@ -53,7 +53,7 @@
       "creation_date": "2025-01-28",
       "size": 23572403200.0,
       "type": "Open",
-      "license": "Apache-2.0",
+      "license": "Apache 2.0",
       "average": 0.58,
       "classification_accuracy": 0.55,
       "language_modeling_chrf": 0.86,
