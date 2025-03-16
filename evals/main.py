@@ -108,7 +108,6 @@ def make_language_table(df):
     df = df[["language_name", "speakers", "family", "average", "in_benchmark", *task_metrics]]
     return df
 
-
 async def main():
     results = await evaluate()
     results, lang_results, model_results, task_results = aggregate(results)
@@ -121,9 +120,11 @@ async def main():
     with open("results.json", "w") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 
+    datasets_df = pd.read_json("data/datasets.json")
     all_tables = {
         "model_table": serialize(make_model_table(model_results)),
         "language_table": serialize(make_language_table(lang_results)),
+        "dataset_table": serialize(datasets_df),
     }
     with open("frontend/public/results.json", "w") as f:
         json.dump(all_tables, f, indent=2, ensure_ascii=False)

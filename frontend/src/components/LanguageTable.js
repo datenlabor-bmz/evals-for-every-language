@@ -157,7 +157,7 @@ const LanguageTable = ({ data }) => {
         field='average'
         header='Average'
         sortable
-        body={scoreBodyTemplate('average', { minScore: 0.4, maxScore: 0.8 })}
+        body={scoreBodyTemplate('average', { minScore: 0.2, maxScore: 0.5 })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
       <Column
@@ -165,8 +165,8 @@ const LanguageTable = ({ data }) => {
         header='Translation'
         sortable
         body={scoreBodyTemplate('translation_chrf', {
-          minScore: 0.4,
-          maxScore: 0.7
+          minScore: 0.3,
+          maxScore: 0.6
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
@@ -175,8 +175,8 @@ const LanguageTable = ({ data }) => {
         header='Classification'
         sortable
         body={scoreBodyTemplate('classification_accuracy', {
-          minScore: 0.4,
-          maxScore: 1
+          minScore: 0.3,
+          maxScore: 0.7
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />

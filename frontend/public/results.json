@@ -8318,5 +8318,445 @@
       "translation_bleu": 0.0,
       "translation_chrf": 0.0
     }
+  ],
+  "dataset_table": [
+    {
+      "name": "FLORES+",
+      "author": "Meta",
+      "url": "https://huggingface.co/datasets/openlanguagedata/flores_plus",
+      "n_languages": 200.0,
+      "tasks": [
+        "translation",
+        "classification",
+        "language_modeling"
+      ],
+      "parallel": 1.0,
+      "base": "FLORES",
+      "implemented": 1.0
+    },
+    {
+      "name": "FLEURS",
+      "author": "Meta",
+      "url": "https://huggingface.co/datasets/google/fleurs",
+      "n_languages": 102.0,
+      "tasks": [
+        "speech_recognition"
+      ],
+      "parallel": 1.0,
+      "base": "FLORES",
+      "implemented": 1.0
+    },
+    {
+      "name": "CommonVoice",
+      "author": "Mozilla",
+      "url": "https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0",
+      "n_languages": 124.0,
+      "tasks": [
+        "speech_recognition"
+      ],
+      "parallel": null,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "MMMLU",
+      "author": "OpenAI",
+      "url": "https://huggingface.co/datasets/openai/MMMLU",
+      "n_languages": 14.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "MMLU",
+      "implemented": null
+    },
+    {
+      "name": "AfriMMLU",
+      "author": "Masakhane",
+      "url": "https://huggingface.co/datasets/masakhane/afrimmlu",
+      "n_languages": 17.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "MMLU",
+      "implemented": null
+    },
+    {
+      "name": "Okapi MMLU",
+      "author": "Okapi",
+      "url": "https://huggingface.co/datasets/jon-tow/okapi_mmlu",
+      "n_languages": 16.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "MMLU",
+      "implemented": null
+    },
+    {
+      "name": "Global MMLU",
+      "author": "Cohere",
+      "url": "https://huggingface.co/datasets/CohereForAI/Global-MMLU",
+      "n_languages": 42.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "MMLU",
+      "implemented": null
+    },
+    {
+      "name": "MGSM",
+      "author": "Google",
+      "url": "https://huggingface.co/datasets/juletxara/mgsm",
+      "n_languages": 10.0,
+      "tasks": [
+        "math"
+      ],
+      "parallel": 1.0,
+      "base": "MGSM",
+      "implemented": null
+    },
+    {
+      "name": "AfriMGSM",
+      "author": "Masakhane",
+      "url": "https://huggingface.co/datasets/masakhane/afrimgsm",
+      "n_languages": 18.0,
+      "tasks": [
+        "math"
+      ],
+      "parallel": 1.0,
+      "base": "MGSM",
+      "implemented": null
+    },
+    {
+      "name": "Okapi ARC Challenge",
+      "author": "Okapi",
+      "url": "https://huggingface.co/datasets/jon-tow/okapi_arc_challenge",
+      "n_languages": 31.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "AI2 ARC",
+      "implemented": null
+    },
+    {
+      "name": "Uhuru ARC Easy",
+      "author": "Masakhane",
+      "url": "https://huggingface.co/datasets/masakhane/uhura-arc-easy",
+      "n_languages": 6.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "AI2 ARC",
+      "implemented": null
+    },
+    {
+      "name": "Okapi TruthfulQA",
+      "author": "Okapi",
+      "url": "https://huggingface.co/datasets/jon-tow/okapi_truthfulqa/tree/main/data",
+      "n_languages": 31.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "TruthfulQA",
+      "implemented": null
+    },
+    {
+      "name": "Uhura TruthfulQA",
+      "author": "Masakhane",
+      "url": "https://huggingface.co/datasets/masakhane/uhura-truthfulqa",
+      "n_languages": 6.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "TruthfulQA",
+      "implemented": null
+    },
+    {
+      "name": "XNLI",
+      "author": "Meta",
+      "url": "https://huggingface.co/datasets/facebook/xnli",
+      "n_languages": 14.0,
+      "tasks": [
+        "classification"
+      ],
+      "parallel": 1.0,
+      "base": "XNLI",
+      "implemented": null
+    },
+    {
+      "name": "AfriXNLI",
+      "author": "Masakhane",
+      "url": "https://huggingface.co/datasets/masakhane/afrixnli",
+      "n_languages": 18.0,
+      "tasks": [
+        "classification"
+      ],
+      "parallel": 1.0,
+      "base": "XNLI",
+      "implemented": null
+    },
+    {
+      "name": "Okapi HellaSwag",
+      "author": "Okapi",
+      "url": "https://huggingface.co/datasets/jon-tow/okapi_hellaswag",
+      "n_languages": 31.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "HellaSwag",
+      "implemented": null
+    },
+    {
+      "name": "WikiANN / PAN-X",
+      "author": "Academic",
+      "url": "https://huggingface.co/datasets/unimelb-nlp/wikiann",
+      "n_languages": 176.0,
+      "tasks": [
+        "ner"
+      ],
+      "parallel": 0.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "MSVAMP",
+      "author": "Microsoft",
+      "url": "https://huggingface.co/datasets/Mathoctopus/MSVAMP",
+      "n_languages": 10.0,
+      "tasks": [
+        "math"
+      ],
+      "parallel": 1.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "XLSUM",
+      "author": "Academic",
+      "url": "https://huggingface.co/datasets/csebuetnlp/xlsum",
+      "n_languages": 45.0,
+      "tasks": [
+        "summarization"
+      ],
+      "parallel": 1.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "SEA-IFEVAL",
+      "author": "AI Singapore",
+      "url": "https://huggingface.co/datasets/aisingapore/instruction_following-ifeval",
+      "n_languages": 7.0,
+      "tasks": [
+        "instruction_following"
+      ],
+      "parallel": 1.0,
+      "base": "IFEVAL",
+      "implemented": null
+    },
+    {
+      "name": "XTREME",
+      "author": "Google",
+      "url": "https://huggingface.co/datasets/google/xtreme",
+      "n_languages": 40.0,
+      "tasks": [
+        "translation",
+        "classification",
+        "question_answering",
+        "ner"
+      ],
+      "parallel": null,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "XGLUE",
+      "author": "Microsoft",
+      "url": "https://huggingface.co/datasets/microsoft/xglue",
+      "n_languages": 18.0,
+      "tasks": [
+        "pos"
+      ],
+      "parallel": null,
+      "base": "GLUE",
+      "implemented": null
+    },
+    {
+      "name": "IndicGLUE",
+      "author": "AI4Bharat",
+      "url": "https://huggingface.co/datasets/ai4bharat/indic_glue",
+      "n_languages": 11.0,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": null,
+      "base": "GLUE",
+      "implemented": null
+    },
+    {
+      "name": "Opus Gnome",
+      "author": "Helsinki NLP",
+      "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_gnome",
+      "n_languages": 187.0,
+      "tasks": [
+        "translation"
+      ],
+      "parallel": 1.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "Opus Paracrawl",
+      "author": "Helsinki NLP",
+      "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_paracrawl",
+      "n_languages": 43.0,
+      "tasks": [
+        "translation"
+      ],
+      "parallel": 0.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "CCAligned",
+      "author": "Meta",
+      "url": "https://huggingface.co/datasets/ahelk/ccaligned_multilingual",
+      "n_languages": 137.0,
+      "tasks": [
+        "translation"
+      ],
+      "parallel": 0.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "OPUS Collection",
+      "author": "Helsinki NLP",
+      "url": "https://opus.nlpl.eu/",
+      "n_languages": 747.0,
+      "tasks": [
+        "translation"
+      ],
+      "parallel": 0.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "MasakhaNER",
+      "author": "Masakhane",
+      "url": "https://huggingface.co/datasets/masakhane/masakhaner",
+      "n_languages": 10.0,
+      "tasks": [
+        "ner"
+      ],
+      "parallel": null,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "Multilingual Sentiments",
+      "author": null,
+      "url": "https://huggingface.co/datasets/tyqiangz/multilingual-sentiments",
+      "n_languages": 12.0,
+      "tasks": [
+        "sentiment_analysis"
+      ],
+      "parallel": null,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "CulturaX",
+      "author": "Academic",
+      "url": "https://huggingface.co/datasets/uonlp/CulturaX",
+      "n_languages": 167.0,
+      "tasks": [
+        "language_modeling"
+      ],
+      "parallel": 0.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "Tülu 3 SFT Mixture",
+      "author": "AllenAI",
+      "url": "https://huggingface.co/datasets/allenai/tulu-3-sft-mixture",
+      "n_languages": 70.0,
+      "tasks": [
+        "instruction_following"
+      ],
+      "parallel": 0.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "xP3",
+      "author": "BigScience",
+      "url": "https://huggingface.co/datasets/bigscience/xP3",
+      "n_languages": 46.0,
+      "tasks": [
+        "instruction_following"
+      ],
+      "parallel": 0.0,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "Aya",
+      "author": "Cohere",
+      "url": "https://huggingface.co/datasets/CohereForAI/aya_dataset",
+      "n_languages": 65.0,
+      "tasks": [
+        "instruction_following"
+      ],
+      "parallel": null,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "Lanfrica",
+      "author": "Lanfrica",
+      "url": "https://lanfrica.com/records?language=yor&task=machine%20translation",
+      "n_languages": 2200.0,
+      "tasks": [
+        "datasets"
+      ],
+      "parallel": null,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "HuggingFace Languages",
+      "author": "HuggingFace",
+      "url": "https://huggingface.co/languages",
+      "n_languages": 4680.0,
+      "tasks": [
+        "datasets",
+        "models"
+      ],
+      "parallel": null,
+      "base": null,
+      "implemented": null
+    },
+    {
+      "name": "HuggingFace Multilingual Datasets",
+      "author": "HuggingFace",
+      "url": "https://huggingface.co/datasets?other=multilinguality:multilingual",
+      "n_languages": null,
+      "tasks": [
+        "datasets"
+      ],
+      "parallel": 0.0,
+      "base": null,
+      "implemented": null
+    }
   ]
 }

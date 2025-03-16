@@ -4,7 +4,7 @@ import { PrimeReactProvider } from 'primereact/api'
 import 'primereact/resources/themes/lara-light-cyan/theme.css'
 import ModelTable from './components/ModelTable'
 import LanguageTable from './components/LanguageTable'
-
+import DatasetTable from './components/DatasetTable'
 function App () {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -48,9 +48,12 @@ function App () {
             {loading && <p>...</p>}
             {error && <p>Error: {error}</p>}
             {data && (
-              <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
-                <ModelTable data={data} />
-                <LanguageTable data={data} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', width: '100%' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
+                  <ModelTable data={data} />
+                  <LanguageTable data={data} />
+                </div>
+                <DatasetTable data={data} />
               </div>
             )}
           </PrimeReactProvider>
