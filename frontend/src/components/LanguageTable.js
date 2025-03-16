@@ -108,7 +108,10 @@ const LanguageTable = ({ data }) => {
   }
 
   const languageBodyTemplate = rowData => {
-    return <div style={{ fontWeight: 'bold' }}>{rowData.language_name}</div>
+    return <div>
+      <div style={{ fontWeight: 'bold' }}>{rowData.autonym}</div>
+      <div style={{ fontSize: '0.8rem', color: 'gray' }}>{rowData.language_name}</div>
+    </div>
   }
 
   const scoreBodyTemplate = (field, options = {}) => {

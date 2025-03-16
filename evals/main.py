@@ -105,7 +105,7 @@ def make_language_table(df):
         df[row] = df[row].round(2)
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
-    df = df[["language_name", "speakers", "family", "average", "in_benchmark", *task_metrics]]
+    df = df[["language_name", "autonym", "speakers", "family", "average", "in_benchmark", *task_metrics]]
     return df
 
 async def main():

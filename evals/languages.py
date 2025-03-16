@@ -20,6 +20,9 @@ languages = pd.DataFrame(list(languages.items()), columns=["bcp_47", "speakers"]
 languages["language_name"] = languages["bcp_47"].apply(
     lambda x: Language.get(x).display_name()
 )
+languages["autonym"] = languages["bcp_47"].apply(
+    lambda x: Language.get(x).autonym().title()
+)
 
 glottolog = pd.read_csv(
     "data/glottolog_languoid.csv/languoid.csv", na_values=[""], keep_default_na=False

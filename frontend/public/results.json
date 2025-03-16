@@ -184,6 +184,7 @@
   "language_table": [
     {
       "language_name": "English",
+      "autonym": "English",
       "speakers": 1636485840,
       "family": "Indo-European",
       "average": 0.47,
@@ -196,6 +197,7 @@
     },
     {
       "language_name": "Chinese",
+      "autonym": "中文",
       "speakers": 1304678914,
       "family": "Sino-Tibetan",
       "average": 0.46,
@@ -208,6 +210,7 @@
     },
     {
       "language_name": "Hindi",
+      "autonym": "हिन्दी",
       "speakers": 546882144,
       "family": "Indo-European",
       "average": 0.46,
@@ -220,6 +223,7 @@
     },
     {
       "language_name": "Spanish",
+      "autonym": "Español",
       "speakers": 493528077,
       "family": "Indo-European",
       "average": 0.45,
@@ -232,6 +236,7 @@
     },
     {
       "language_name": "Arabic",
+      "autonym": "العربية",
       "speakers": 351664197,
       "family": "Afro-Asiatic",
       "average": 0.42,
@@ -244,6 +249,7 @@
     },
     {
       "language_name": "Urdu",
+      "autonym": "اردو",
       "speakers": 290790290,
       "family": "Indo-European",
       "average": 0.42,
@@ -256,6 +262,7 @@
     },
     {
       "language_name": "French",
+      "autonym": "Français",
       "speakers": 278611507,
       "family": "Indo-European",
       "average": 0.46,
@@ -268,6 +275,7 @@
     },
     {
       "language_name": "Bangla",
+      "autonym": "বাংলা",
       "speakers": 267193288,
       "family": "Indo-European",
       "average": 0.38,
@@ -280,6 +288,7 @@
     },
     {
       "language_name": "Portuguese",
+      "autonym": "Português",
       "speakers": 237496885,
       "family": "Indo-European",
       "average": 0.46,
@@ -292,6 +301,7 @@
     },
     {
       "language_name": "Punjabi",
+      "autonym": "ਪੰਜਾਬੀ",
       "speakers": 203571210,
       "family": "Indo-European",
       "average": 0.42,
@@ -304,6 +314,7 @@
     },
     {
       "language_name": "Russian",
+      "autonym": "Русский",
       "speakers": 195841151,
       "family": "Indo-European",
       "average": 0.0,
@@ -316,6 +327,7 @@
     },
     {
       "language_name": "Swahili",
+      "autonym": "Kiswahili",
       "speakers": 171610296,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -328,6 +340,7 @@
     },
     {
       "language_name": "Indonesian",
+      "autonym": "Bahasa Indonesia",
       "speakers": 171207687,
       "family": "Austronesian",
       "average": 0.0,
@@ -340,6 +353,7 @@
     },
     {
       "language_name": "German",
+      "autonym": "Deutsch",
       "speakers": 136350226,
       "family": "Indo-European",
       "average": 0.0,
@@ -352,6 +366,7 @@
     },
     {
       "language_name": "Japanese",
+      "autonym": "日本語",
       "speakers": 119729026,
       "family": "Japonic",
       "average": 0.0,
@@ -364,6 +379,7 @@
     },
     {
       "language_name": "Telugu",
+      "autonym": "తెలుగు",
       "speakers": 95478480,
       "family": "Dravidian",
       "average": 0.0,
@@ -376,6 +392,7 @@
     },
     {
       "language_name": "Western Panjabi",
+      "autonym": "لہندا پنجابی",
       "speakers": 93433552,
       "family": "Indo-European",
       "average": 0.0,
@@ -388,6 +405,7 @@
     },
     {
       "language_name": "Marathi",
+      "autonym": "मराठी",
       "speakers": 92826300,
       "family": "Indo-European",
       "average": 0.0,
@@ -400,6 +418,7 @@
     },
     {
       "language_name": "Javanese",
+      "autonym": "Jawa",
       "speakers": 91180665,
       "family": "Austronesian",
       "average": 0.0,
@@ -412,6 +431,7 @@
     },
     {
       "language_name": "Vietnamese",
+      "autonym": "Tiếng Việt",
       "speakers": 86222962,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -424,6 +444,7 @@
     },
     {
       "language_name": "Tamil",
+      "autonym": "தமிழ்",
       "speakers": 85616159,
       "family": "Dravidian",
       "average": 0.0,
@@ -436,6 +457,7 @@
     },
     {
       "language_name": "Persian",
+      "autonym": "فارسی",
       "speakers": 84710459,
       "family": "Indo-European",
       "average": 0.0,
@@ -448,6 +470,7 @@
     },
     {
       "language_name": "Wu Chinese",
+      "autonym": "Wu Chinese",
       "speakers": 83641200,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -460,6 +483,7 @@
     },
     {
       "language_name": "Turkish",
+      "autonym": "Türkçe",
       "speakers": 80360704,
       "family": "Turkic",
       "average": 0.0,
@@ -472,6 +496,7 @@
     },
     {
       "language_name": "Cantonese",
+      "autonym": "粵語",
       "speakers": 79654759,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -484,6 +509,7 @@
     },
     {
       "language_name": "Korean",
+      "autonym": "한국어",
       "speakers": 78357046,
       "family": "Koreanic",
       "average": 0.0,
@@ -496,6 +522,7 @@
     },
     {
       "language_name": "Italian",
+      "autonym": "Italiano",
       "speakers": 70247060,
       "family": "Indo-European",
       "average": 0.0,
@@ -508,6 +535,7 @@
     },
     {
       "language_name": "Filipino",
+      "autonym": "Filipino",
       "speakers": 67471096,
       "family": "Austronesian",
       "average": 0.0,
@@ -520,6 +548,7 @@
     },
     {
       "language_name": "Egyptian Arabic",
+      "autonym": "Egyptian Arabic",
       "speakers": 66639360,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -532,6 +561,7 @@
     },
     {
       "language_name": "Gujarati",
+      "autonym": "ગુજરાતી",
       "speakers": 61721799,
       "family": "Indo-European",
       "average": 0.0,
@@ -544,6 +574,7 @@
     },
     {
       "language_name": "Thai",
+      "autonym": "ไทย",
       "speakers": 55181920,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -556,6 +587,7 @@
     },
     {
       "language_name": "Pashto",
+      "autonym": "پښتو",
       "speakers": 53542641,
       "family": "Indo-European",
       "average": 0.0,
@@ -568,6 +600,7 @@
     },
     {
       "language_name": "Kannada",
+      "autonym": "ಕನ್ನಡ",
       "speakers": 49065330,
       "family": "Dravidian",
       "average": 0.0,
@@ -580,6 +613,7 @@
     },
     {
       "language_name": "Nigerian Pidgin",
+      "autonym": "Naijíriá Píjin",
       "speakers": 44945880,
       "family": "Indo-European",
       "average": 0.0,
@@ -592,6 +626,7 @@
     },
     {
       "language_name": "Malayalam",
+      "autonym": "മലയാളം",
       "speakers": 43257484,
       "family": "Dravidian",
       "average": 0.0,
@@ -604,6 +639,7 @@
     },
     {
       "language_name": "Odia",
+      "autonym": "ଓଡ଼ିଆ",
       "speakers": 42434880,
       "family": "Indo-European",
       "average": 0.0,
@@ -616,6 +652,7 @@
     },
     {
       "language_name": "Polish",
+      "autonym": "Polski",
       "speakers": 41077399,
       "family": "Indo-European",
       "average": 0.0,
@@ -628,6 +665,7 @@
     },
     {
       "language_name": "Xiang Chinese",
+      "autonym": "Xiang Chinese",
       "speakers": 40426580,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -640,6 +678,7 @@
     },
     {
       "language_name": "Hausa",
+      "autonym": "Hausa",
       "speakers": 40411882,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -652,6 +691,7 @@
     },
     {
       "language_name": "Sindhi",
+      "autonym": "سنڌي",
       "speakers": 40329510,
       "family": "Indo-European",
       "average": 0.0,
@@ -664,6 +704,7 @@
     },
     {
       "language_name": "North Levantine Arabic",
+      "autonym": "العامية",
       "speakers": 39031474,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -676,6 +717,7 @@
     },
     {
       "language_name": "Malay",
+      "autonym": "Bahasa Malaysia",
       "speakers": 38097307,
       "family": "Austronesian",
       "average": 0.0,
@@ -688,6 +730,7 @@
     },
     {
       "language_name": "Burmese",
+      "autonym": "မြန်မာ",
       "speakers": 36559231,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -700,6 +743,7 @@
     },
     {
       "language_name": "Amharic",
+      "autonym": "አማርኛ",
       "speakers": 35728475,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -712,6 +756,7 @@
     },
     {
       "language_name": "Algerian Arabic",
+      "autonym": "Algerian Arabic",
       "speakers": 35667507,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -724,6 +769,7 @@
     },
     {
       "language_name": "Oromo",
+      "autonym": "Oromoo",
       "speakers": 34897121,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -736,6 +782,7 @@
     },
     {
       "language_name": "Bhojpuri",
+      "autonym": "भोजपुरी",
       "speakers": 32934797,
       "family": "Indo-European",
       "average": 0.0,
@@ -748,6 +795,7 @@
     },
     {
       "language_name": "Uzbek",
+      "autonym": "O‘Zbek",
       "speakers": 32792780,
       "family": "Turkic",
       "average": 0.0,
@@ -760,6 +808,7 @@
     },
     {
       "language_name": "Azerbaijani",
+      "autonym": "Azərbaycan",
       "speakers": 32446682,
       "family": "Turkic",
       "average": 0.0,
@@ -772,6 +821,7 @@
     },
     {
       "language_name": "Hakka Chinese",
+      "autonym": "Hakka Chinese",
       "speakers": 32062460,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -784,6 +834,7 @@
     },
     {
       "language_name": "Sundanese",
+      "autonym": "Basa Sunda",
       "speakers": 32043120,
       "family": "Austronesian",
       "average": 0.0,
@@ -796,6 +847,7 @@
     },
     {
       "language_name": "Dutch",
+      "autonym": "Nederlands",
       "speakers": 31765645,
       "family": "Indo-European",
       "average": 0.0,
@@ -808,6 +860,7 @@
     },
     {
       "language_name": "Moroccan Arabic",
+      "autonym": "Moroccan Arabic",
       "speakers": 30938679,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -820,6 +873,7 @@
     },
     {
       "language_name": "Ukrainian",
+      "autonym": "Українська",
       "speakers": 29348975,
       "family": "Indo-European",
       "average": 0.0,
@@ -832,6 +886,7 @@
     },
     {
       "language_name": "Yoruba",
+      "autonym": "Èdè Yorùbá",
       "speakers": 28685568,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -844,6 +899,7 @@
     },
     {
       "language_name": "Saraiki",
+      "autonym": "سرائیکی",
       "speakers": 28020120,
       "family": "Indo-European",
       "average": 0.0,
@@ -856,6 +912,7 @@
     },
     {
       "language_name": "Igbo",
+      "autonym": "Igbo",
       "speakers": 27823640,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -868,6 +925,7 @@
     },
     {
       "language_name": "Min Nan Chinese",
+      "autonym": "Min Nan Chinese",
       "speakers": 26486380,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -880,6 +938,7 @@
     },
     {
       "language_name": "Cebuano",
+      "autonym": "Cebuano",
       "speakers": 26203440,
       "family": "Austronesian",
       "average": 0.0,
@@ -892,6 +951,7 @@
     },
     {
       "language_name": "Awadhi",
+      "autonym": "Awadhi",
       "speakers": 25862924,
       "family": "Indo-European",
       "average": 0.0,
@@ -904,6 +964,7 @@
     },
     {
       "language_name": "Malagasy",
+      "autonym": "Malagasy",
       "speakers": 24260130,
       "family": "Austronesian",
       "average": 0.0,
@@ -916,6 +977,7 @@
     },
     {
       "language_name": "Gan Chinese",
+      "autonym": "Gan Chinese",
       "speakers": 23698340,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -928,6 +990,7 @@
     },
     {
       "language_name": "Romanian",
+      "autonym": "Română",
       "speakers": 22187408,
       "family": "Indo-European",
       "average": 0.0,
@@ -940,6 +1003,7 @@
     },
     {
       "language_name": "Bavarian",
+      "autonym": "Bavarian",
       "speakers": 22043627,
       "family": "Indo-European",
       "average": 0.0,
@@ -952,6 +1016,7 @@
     },
     {
       "language_name": "Nepali",
+      "autonym": "नेपाली",
       "speakers": 20903374,
       "family": "Indo-European",
       "average": 0.0,
@@ -964,6 +1029,7 @@
     },
     {
       "language_name": "Maithili",
+      "autonym": "मैथिली",
       "speakers": 19249149,
       "family": "Indo-European",
       "average": 0.0,
@@ -976,6 +1042,7 @@
     },
     {
       "language_name": "Assamese",
+      "autonym": "অসমীয়া",
       "speakers": 17239170,
       "family": "Indo-European",
       "average": 0.0,
@@ -988,6 +1055,7 @@
     },
     {
       "language_name": "Nyanja",
+      "autonym": "Nyanja",
       "speakers": 17026781,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1000,6 +1068,7 @@
     },
     {
       "language_name": "Somali",
+      "autonym": "Soomaali",
       "speakers": 16911645,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -1012,6 +1081,7 @@
     },
     {
       "language_name": "Madurese",
+      "autonym": "Madurese",
       "speakers": 16822638,
       "family": "Austronesian",
       "average": 0.0,
@@ -1024,6 +1094,7 @@
     },
     {
       "language_name": "Northeastern Thai",
+      "autonym": "Northeastern Thai",
       "speakers": 16554576,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -1036,6 +1107,7 @@
     },
     {
       "language_name": "Rangpuri",
+      "autonym": "Rangpuri",
       "speakers": 16274502,
       "family": "Indo-European",
       "average": 0.0,
@@ -1048,6 +1120,7 @@
     },
     {
       "language_name": "Magahi",
+      "autonym": "Magahi",
       "speakers": 15913080,
       "family": "Indo-European",
       "average": 0.0,
@@ -1060,6 +1133,7 @@
     },
     {
       "language_name": "Haryanvi",
+      "autonym": "हरियाणवी",
       "speakers": 15913080,
       "family": "Indo-European",
       "average": 0.0,
@@ -1072,6 +1146,7 @@
     },
     {
       "language_name": "Marwari",
+      "autonym": "Marwari",
       "speakers": 15913080,
       "family": "Indo-European",
       "average": 0.0,
@@ -1084,6 +1159,7 @@
     },
     {
       "language_name": "Serbian",
+      "autonym": "Српски",
       "speakers": 15602410,
       "family": "Indo-European",
       "average": 0.0,
@@ -1096,6 +1172,7 @@
     },
     {
       "language_name": "Sinhala",
+      "autonym": "සිංහල",
       "speakers": 15564656,
       "family": "Indo-European",
       "average": 0.0,
@@ -1108,6 +1185,7 @@
     },
     {
       "language_name": "Khmer",
+      "autonym": "ខ្មែរ",
       "speakers": 15065030,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -1120,6 +1198,7 @@
     },
     {
       "language_name": "Chhattisgarhi",
+      "autonym": "Chhattisgarhi",
       "speakers": 14586990,
       "family": "Indo-European",
       "average": 0.0,
@@ -1132,6 +1211,7 @@
     },
     {
       "language_name": "Nigerian Fulfulde",
+      "autonym": "Nigerian Fulfulde",
       "speakers": 14339876,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1144,6 +1224,7 @@
     },
     {
       "language_name": "Zulu",
+      "autonym": "Isizulu",
       "speakers": 13973830,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1156,6 +1237,7 @@
     },
     {
       "language_name": "Kazakh",
+      "autonym": "Қазақ Тілі",
       "speakers": 13637392,
       "family": "Turkic",
       "average": 0.0,
@@ -1168,6 +1250,7 @@
     },
     {
       "language_name": "Deccan",
+      "autonym": "Deccan",
       "speakers": 13128291,
       "family": "Indo-European",
       "average": 0.0,
@@ -1180,6 +1263,7 @@
     },
     {
       "language_name": "Czech",
+      "autonym": "Čeština",
       "speakers": 13045532,
       "family": "Indo-European",
       "average": 0.0,
@@ -1192,6 +1276,7 @@
     },
     {
       "language_name": "Swedish",
+      "autonym": "Svenska",
       "speakers": 12932871,
       "family": "Indo-European",
       "average": 0.0,
@@ -1204,6 +1289,7 @@
     },
     {
       "language_name": "Hungarian",
+      "autonym": "Magyar",
       "speakers": 12443430,
       "family": "Uralic",
       "average": 0.0,
@@ -1216,6 +1302,7 @@
     },
     {
       "language_name": "Greek",
+      "autonym": "Ελληνικά",
       "speakers": 12292242,
       "family": "Indo-European",
       "average": 0.0,
@@ -1228,6 +1315,7 @@
     },
     {
       "language_name": "Shona",
+      "autonym": "Chishona",
       "speakers": 11782503,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1240,6 +1328,7 @@
     },
     {
       "language_name": "Low German",
+      "autonym": "Neddersass’Sch",
       "speakers": 11520008,
       "family": "Indo-European",
       "average": 0.0,
@@ -1252,6 +1341,7 @@
     },
     {
       "language_name": "Akan",
+      "autonym": "Akan",
       "speakers": 11442678,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1264,6 +1354,7 @@
     },
     {
       "language_name": "Quechua",
+      "autonym": "Runasimi",
       "speakers": 11385851,
       "family": "Quechuan",
       "average": 0.0,
@@ -1276,6 +1367,7 @@
     },
     {
       "language_name": "Central Kurdish",
+      "autonym": "کوردیی ناوەندی",
       "speakers": 11086549,
       "family": "Indo-European",
       "average": 0.0,
@@ -1288,6 +1380,7 @@
     },
     {
       "language_name": "Kinyarwanda",
+      "autonym": "Kinyarwanda",
       "speakers": 11083625,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1300,6 +1393,7 @@
     },
     {
       "language_name": "Wolof",
+      "autonym": "Wolof",
       "speakers": 11025494,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1312,6 +1406,7 @@
     },
     {
       "language_name": "Tunisian Arabic",
+      "autonym": "Tunisian Arabic",
       "speakers": 10549080,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -1324,6 +1419,7 @@
     },
     {
       "language_name": "Iloko",
+      "autonym": "Ilokano",
       "speakers": 10481376,
       "family": "Austronesian",
       "average": 0.0,
@@ -1336,6 +1432,7 @@
     },
     {
       "language_name": "Xhosa",
+      "autonym": "Isixhosa",
       "speakers": 10182944,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1348,6 +1445,7 @@
     },
     {
       "language_name": "Tigrinya",
+      "autonym": "ትግርኛ",
       "speakers": 10145911,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -1360,6 +1458,7 @@
     },
     {
       "language_name": "Belarusian",
+      "autonym": "Беларуская",
       "speakers": 10064517,
       "family": "Indo-European",
       "average": 0.0,
@@ -1372,6 +1471,7 @@
     },
     {
       "language_name": "Luba-Lulua",
+      "autonym": "Luba-Lulua",
       "speakers": 9770880,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1384,6 +1484,7 @@
     },
     {
       "language_name": "Tajik",
+      "autonym": "Тоҷикӣ",
       "speakers": 9644223,
       "family": "Indo-European",
       "average": 0.0,
@@ -1396,6 +1497,7 @@
     },
     {
       "language_name": "Umbundu",
+      "autonym": "Umbundu",
       "speakers": 9431467,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1408,6 +1510,7 @@
     },
     {
       "language_name": "Bambara",
+      "autonym": "Bamanakan",
       "speakers": 9385632,
       "family": "Mande",
       "average": 0.0,
@@ -1420,6 +1523,7 @@
     },
     {
       "language_name": "Afrikaans",
+      "autonym": "Afrikaans",
       "speakers": 9318845,
       "family": "Indo-European",
       "average": 0.0,
@@ -1432,6 +1536,7 @@
     },
     {
       "language_name": "Hiligaynon",
+      "autonym": "Ilonggo",
       "speakers": 9171204,
       "family": "Austronesian",
       "average": 0.0,
@@ -1444,6 +1549,7 @@
     },
     {
       "language_name": "Kikuyu",
+      "autonym": "Gikuyu",
       "speakers": 9099743,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1456,6 +1562,7 @@
     },
     {
       "language_name": "Haitian Creole",
+      "autonym": "Haitian Creole",
       "speakers": 8964918,
       "family": "Indo-European",
       "average": 0.0,
@@ -1468,6 +1575,7 @@
     },
     {
       "language_name": "Catalan",
+      "autonym": "Català",
       "speakers": 8679139,
       "family": "Indo-European",
       "average": 0.0,
@@ -1480,6 +1588,7 @@
     },
     {
       "language_name": "Hebrew",
+      "autonym": "עברית",
       "speakers": 8675480,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -1492,6 +1601,7 @@
     },
     {
       "language_name": "Sichuan Yi",
+      "autonym": "ꆈꌠꉙ",
       "speakers": 8364120,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -1504,6 +1614,7 @@
     },
     {
       "language_name": "Mossi",
+      "autonym": "Mossi",
       "speakers": 8334160,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1516,6 +1627,7 @@
     },
     {
       "language_name": "Baluchi",
+      "autonym": "بلۆچی",
       "speakers": 8227887,
       "family": "Indo-European",
       "average": 0.0,
@@ -1528,6 +1640,7 @@
     },
     {
       "language_name": "Sylheti",
+      "autonym": "Sylheti",
       "speakers": 8132550,
       "family": "Indo-European",
       "average": 0.0,
@@ -1540,6 +1653,7 @@
     },
     {
       "language_name": "Kimbundu",
+      "autonym": "Kimbundu",
       "speakers": 8130575,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1552,6 +1666,7 @@
     },
     {
       "language_name": "Uyghur",
+      "autonym": "ئۇيغۇرچە",
       "speakers": 8052967,
       "family": "Turkic",
       "average": 0.0,
@@ -1564,6 +1679,7 @@
     },
     {
       "language_name": "Minangkabau",
+      "autonym": "Minangkabau",
       "speakers": 8010780,
       "family": "Austronesian",
       "average": 0.0,
@@ -1576,6 +1692,7 @@
     },
     {
       "language_name": "Swiss German",
+      "autonym": "Schwiizertüütsch",
       "speakers": 7956952,
       "family": "Indo-European",
       "average": 0.0,
@@ -1588,6 +1705,7 @@
     },
     {
       "language_name": "Bulgarian",
+      "autonym": "Български",
       "speakers": 7878315,
       "family": "Indo-European",
       "average": 0.0,
@@ -1600,6 +1718,7 @@
     },
     {
       "language_name": "Standard Moroccan Tamazight",
+      "autonym": "ⵜⴰⵎⴰⵣⵉⵖⵜ",
       "speakers": 7823574,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -1612,6 +1731,7 @@
     },
     {
       "language_name": "Fula",
+      "autonym": "Pulaar",
       "speakers": 7788904,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1624,6 +1744,7 @@
     },
     {
       "language_name": "Bosnian",
+      "autonym": "Bosanski",
       "speakers": 7594468,
       "family": "Indo-European",
       "average": 0.0,
@@ -1636,6 +1757,7 @@
     },
     {
       "language_name": "Rundi",
+      "autonym": "Ikirundi",
       "speakers": 7475454,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1648,6 +1770,7 @@
     },
     {
       "language_name": "Kanauji",
+      "autonym": "Kanauji",
       "speakers": 7426104,
       "family": "Indo-European",
       "average": 0.0,
@@ -1660,6 +1783,7 @@
     },
     {
       "language_name": "Santali",
+      "autonym": "ᱥᱟᱱᱛᱟᱲᱤ",
       "speakers": 7293495,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -1672,6 +1796,7 @@
     },
     {
       "language_name": "Danish",
+      "autonym": "Dansk",
       "speakers": 7072056,
       "family": "Indo-European",
       "average": 0.0,
@@ -1684,6 +1809,7 @@
     },
     {
       "language_name": "Turkmen",
+      "autonym": "Türkmen Dili",
       "speakers": 6870838,
       "family": "Turkic",
       "average": 0.0,
@@ -1696,6 +1822,7 @@
     },
     {
       "language_name": "Kurdish",
+      "autonym": "Kurdî (Kurmancî)",
       "speakers": 6866757,
       "family": "Indo-European",
       "average": 0.0,
@@ -1708,6 +1835,7 @@
     },
     {
       "language_name": "Croatian",
+      "autonym": "Hrvatski",
       "speakers": 6813164,
       "family": "Indo-European",
       "average": 0.0,
@@ -1720,6 +1848,7 @@
     },
     {
       "language_name": "Albanian",
+      "autonym": "Shqip",
       "speakers": 6791906,
       "family": "Indo-European",
       "average": 0.0,
@@ -1732,6 +1861,7 @@
     },
     {
       "language_name": "Slovak",
+      "autonym": "Slovenčina",
       "speakers": 6680269,
       "family": "Indo-European",
       "average": 0.0,
@@ -1744,6 +1874,7 @@
     },
     {
       "language_name": "Dyula",
+      "autonym": "Dyula",
       "speakers": 6667328,
       "family": "Mande",
       "average": 0.0,
@@ -1756,6 +1887,7 @@
     },
     {
       "language_name": "Northern Thai",
+      "autonym": "Northern Thai",
       "speakers": 6621830,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -1768,6 +1900,7 @@
     },
     {
       "language_name": "Mongolian",
+      "autonym": "Монгол",
       "speakers": 6572846,
       "family": "Mongolic-Khitan",
       "average": 0.0,
@@ -1780,6 +1913,7 @@
     },
     {
       "language_name": "Southern Sotho",
+      "autonym": "Sesotho",
       "speakers": 6390567,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1792,6 +1926,7 @@
     },
     {
       "language_name": "Krio",
+      "autonym": "Krio",
       "speakers": 6293684,
       "family": "Indo-European",
       "average": 0.0,
@@ -1804,6 +1939,7 @@
     },
     {
       "language_name": "Tachelhit",
+      "autonym": "ⵜⴰⵛⵍⵃⵉⵜ",
       "speakers": 6187736,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -1816,6 +1952,7 @@
     },
     {
       "language_name": "Tswana",
+      "autonym": "Tswana",
       "speakers": 6113428,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1828,6 +1965,7 @@
     },
     {
       "language_name": "Mewati",
+      "autonym": "Mewati",
       "speakers": 6100014,
       "family": "Indo-European",
       "average": 0.0,
@@ -1840,6 +1978,7 @@
     },
     {
       "language_name": "Luyia",
+      "autonym": "Luluhia",
       "speakers": 5888069,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1852,6 +1991,7 @@
     },
     {
       "language_name": "Guarani",
+      "autonym": "Avañe’Ẽ",
       "speakers": 5827107,
       "family": "Tupian",
       "average": 0.0,
@@ -1864,6 +2004,7 @@
     },
     {
       "language_name": "Finnish",
+      "autonym": "Suomi",
       "speakers": 5736842,
       "family": "Uralic",
       "average": 0.0,
@@ -1876,6 +2017,7 @@
     },
     {
       "language_name": "Ganda",
+      "autonym": "Luganda",
       "speakers": 5622890,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1888,6 +2030,7 @@
     },
     {
       "language_name": "Betawi",
+      "autonym": "Betawi",
       "speakers": 5607546,
       "family": "Austronesian",
       "average": 0.0,
@@ -1900,6 +2043,7 @@
     },
     {
       "language_name": "Kashmiri",
+      "autonym": "کٲشُر",
       "speakers": 5598085,
       "family": "Indo-European",
       "average": 0.0,
@@ -1912,6 +2056,7 @@
     },
     {
       "language_name": "Southern Thai",
+      "autonym": "Southern Thai",
       "speakers": 5518192,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -1924,6 +2069,7 @@
     },
     {
       "language_name": "Norwegian Bokmål",
+      "autonym": "Norsk Bokmål",
       "speakers": 5468932,
       "family": "Indo-European",
       "average": 0.0,
@@ -1936,6 +2082,7 @@
     },
     {
       "language_name": "Norwegian",
+      "autonym": "Norsk",
       "speakers": 5467440,
       "family": "Indo-European",
       "average": 0.0,
@@ -1948,6 +2095,7 @@
     },
     {
       "language_name": "Bemba",
+      "autonym": "Ichibemba",
       "speakers": 5402246,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1960,6 +2108,7 @@
     },
     {
       "language_name": "Armenian",
+      "autonym": "Հայերեն",
       "speakers": 5317273,
       "family": "Indo-European",
       "average": 0.0,
@@ -1972,6 +2121,7 @@
     },
     {
       "language_name": "Northern Sotho",
+      "autonym": "Northern Sotho",
       "speakers": 5307578,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -1984,6 +2134,7 @@
     },
     {
       "language_name": "Luo (Kenya and Tanzania)",
+      "autonym": "Dholuo",
       "speakers": 5245734,
       "family": "Nilotic",
       "average": 0.0,
@@ -1996,6 +2147,7 @@
     },
     {
       "language_name": "Tok Pisin",
+      "autonym": "Tok Pisin",
       "speakers": 5154217,
       "family": "Indo-European",
       "average": 0.0,
@@ -2008,6 +2160,7 @@
     },
     {
       "language_name": "Lao",
+      "autonym": "ລາວ",
       "speakers": 5138706,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -2020,6 +2173,7 @@
     },
     {
       "language_name": "Sukuma",
+      "autonym": "Sukuma",
       "speakers": 5094094,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2032,6 +2186,7 @@
     },
     {
       "language_name": "Konkani",
+      "autonym": "कोंकणी",
       "speakers": 4906533,
       "family": "Indo-European",
       "average": 0.0,
@@ -2044,6 +2199,7 @@
     },
     {
       "language_name": "Tsonga",
+      "autonym": "Tsonga",
       "speakers": 4880932,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2056,6 +2212,7 @@
     },
     {
       "language_name": "Main-Franconian",
+      "autonym": "Main-Franconian",
       "speakers": 4809582,
       "family": "Indo-European",
       "average": 0.0,
@@ -2068,6 +2225,7 @@
     },
     {
       "language_name": "Balinese",
+      "autonym": "Balinese",
       "speakers": 4806468,
       "family": "Austronesian",
       "average": 0.0,
@@ -2080,6 +2238,7 @@
     },
     {
       "language_name": "Ewe",
+      "autonym": "Eʋegbe",
       "speakers": 4690857,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2092,6 +2251,7 @@
     },
     {
       "language_name": "Zhuang",
+      "autonym": "Vahcuengh",
       "speakers": 4321462,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -2104,6 +2264,7 @@
     },
     {
       "language_name": "Buginese",
+      "autonym": "Buginese",
       "speakers": 4298211,
       "family": "Austronesian",
       "average": 0.0,
@@ -2116,6 +2277,7 @@
     },
     {
       "language_name": "Mazanderani",
+      "autonym": "مازرونی",
       "speakers": 4246165,
       "family": "Indo-European",
       "average": 0.0,
@@ -2128,6 +2290,7 @@
     },
     {
       "language_name": "Goan Konkani",
+      "autonym": "Goan Konkani",
       "speakers": 4243488,
       "family": "Indo-European",
       "average": 0.0,
@@ -2140,6 +2303,7 @@
     },
     {
       "language_name": "Kamba",
+      "autonym": "Kikamba",
       "speakers": 4068120,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2152,6 +2316,7 @@
     },
     {
       "language_name": "Kalenjin",
+      "autonym": "Kalenjin",
       "speakers": 4068120,
       "family": "Nilotic",
       "average": 0.0,
@@ -2164,6 +2329,7 @@
     },
     {
       "language_name": "Banjar",
+      "autonym": "Banjar",
       "speakers": 4010288,
       "family": "Austronesian",
       "average": 0.0,
@@ -2176,6 +2342,7 @@
     },
     {
       "language_name": "Northern Hindko",
+      "autonym": "Northern Hindko",
       "speakers": 3969517,
       "family": "Indo-European",
       "average": 0.0,
@@ -2188,6 +2355,7 @@
     },
     {
       "language_name": "Makhuwa",
+      "autonym": "Emakhuwa",
       "speakers": 3912766,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2200,6 +2368,7 @@
     },
     {
       "language_name": "Gilaki",
+      "autonym": "Gilaki",
       "speakers": 3906472,
       "family": "Indo-European",
       "average": 0.0,
@@ -2212,6 +2381,7 @@
     },
     {
       "language_name": "Lombard",
+      "autonym": "Lombard",
       "speakers": 3901518,
       "family": "Indo-European",
       "average": 0.0,
@@ -2224,6 +2394,7 @@
     },
     {
       "language_name": "Zarma",
+      "autonym": "Zarmaciine",
       "speakers": 3871308,
       "family": "Songhay",
       "average": 0.0,
@@ -2236,6 +2407,7 @@
     },
     {
       "language_name": "Ndau",
+      "autonym": "Ndau",
       "speakers": 3867046,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2248,6 +2420,7 @@
     },
     {
       "language_name": "Sidamo",
+      "autonym": "Sidamo",
       "speakers": 3783955,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -2260,6 +2433,7 @@
     },
     {
       "language_name": "Achinese",
+      "autonym": "Achinese",
       "speakers": 3738364,
       "family": "Austronesian",
       "average": 0.0,
@@ -2272,6 +2446,7 @@
     },
     {
       "language_name": "Shekhawati",
+      "autonym": "Shekhawati",
       "speakers": 3713052,
       "family": "Indo-European",
       "average": 0.0,
@@ -2284,6 +2459,7 @@
     },
     {
       "language_name": "Riffian",
+      "autonym": "Tarifit",
       "speakers": 3692411,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -2296,6 +2472,7 @@
     },
     {
       "language_name": "Shan",
+      "autonym": "တႆး",
       "speakers": 3687984,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -2308,6 +2485,7 @@
     },
     {
       "language_name": "Lambadi",
+      "autonym": "Lambadi",
       "speakers": 3580443,
       "family": "Indo-European",
       "average": 0.0,
@@ -2320,6 +2498,7 @@
     },
     {
       "language_name": "Garhwali",
+      "autonym": "Garhwali",
       "speakers": 3580443,
       "family": "Indo-European",
       "average": 0.0,
@@ -2332,6 +2511,7 @@
     },
     {
       "language_name": "Georgian",
+      "autonym": "ქართული",
       "speakers": 3543646,
       "family": "Kartvelian",
       "average": 0.0,
@@ -2344,6 +2524,7 @@
     },
     {
       "language_name": "Galician",
+      "autonym": "Galego",
       "speakers": 3515530,
       "family": "Indo-European",
       "average": 0.0,
@@ -2356,6 +2537,7 @@
     },
     {
       "language_name": "Lingala",
+      "autonym": "Lingála",
       "speakers": 3514491,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2368,6 +2550,7 @@
     },
     {
       "language_name": "Mandingo",
+      "autonym": "Mandingo",
       "speakers": 3511762,
       "family": "Mande",
       "average": 0.0,
@@ -2380,6 +2563,7 @@
     },
     {
       "language_name": "Central Atlas Tamazight",
+      "autonym": "Tamaziɣt N Laṭlaṣ",
       "speakers": 3485047,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -2392,6 +2576,7 @@
     },
     {
       "language_name": "Pattani Malay",
+      "autonym": "Pattani Malay",
       "speakers": 3448870,
       "family": "Austronesian",
       "average": 0.0,
@@ -2404,6 +2589,7 @@
     },
     {
       "language_name": "Tiv",
+      "autonym": "Tiv",
       "speakers": 3424448,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2416,6 +2602,7 @@
     },
     {
       "language_name": "Kabyle",
+      "autonym": "Taqbaylit",
       "speakers": 3351886,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -2428,6 +2615,7 @@
     },
     {
       "language_name": "Kyrgyz",
+      "autonym": "Кыргызча",
       "speakers": 3338267,
       "family": "Turkic",
       "average": 0.0,
@@ -2440,6 +2628,7 @@
     },
     {
       "language_name": "Bikol",
+      "autonym": "Bikol",
       "speakers": 3275430,
       "family": "Austronesian",
       "average": 0.0,
@@ -2452,6 +2641,7 @@
     },
     {
       "language_name": "Fon",
+      "autonym": "Fon",
       "speakers": 3216150,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2464,6 +2654,7 @@
     },
     {
       "language_name": "Gondi",
+      "autonym": "Gondi",
       "speakers": 3182616,
       "family": "Dravidian",
       "average": 0.0,
@@ -2476,6 +2667,7 @@
     },
     {
       "language_name": "Waray",
+      "autonym": "Waray",
       "speakers": 3166927,
       "family": "Austronesian",
       "average": 0.0,
@@ -2488,6 +2680,7 @@
     },
     {
       "language_name": "Southern Kurdish",
+      "autonym": "کوردی خوارگ",
       "speakers": 3142162,
       "family": "Indo-European",
       "average": 0.0,
@@ -2500,6 +2693,7 @@
     },
     {
       "language_name": "Brahui",
+      "autonym": "Brahui",
       "speakers": 3035513,
       "family": "Dravidian",
       "average": 0.0,
@@ -2512,6 +2706,7 @@
     },
     {
       "language_name": "Baoulé",
+      "autonym": "Baoulé",
       "speakers": 3022921,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2524,6 +2719,7 @@
     },
     {
       "language_name": "Tibetan",
+      "autonym": "བོད་སྐད་",
       "speakers": 3006697,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -2536,6 +2732,7 @@
     },
     {
       "language_name": "Ibibio",
+      "autonym": "Ibibio",
       "speakers": 2996392,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2548,6 +2745,7 @@
     },
     {
       "language_name": "Efik",
+      "autonym": "Efik",
       "speakers": 2996392,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2560,6 +2758,7 @@
     },
     {
       "language_name": "Sango",
+      "autonym": "Sängö",
       "speakers": 2935521,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2572,6 +2771,7 @@
     },
     {
       "language_name": "Kumaoni",
+      "autonym": "Kumaoni",
       "speakers": 2917398,
       "family": "Indo-European",
       "average": 0.0,
@@ -2584,6 +2784,7 @@
     },
     {
       "language_name": "Aymara",
+      "autonym": "Aymara",
       "speakers": 2838620,
       "family": "Aymaran",
       "average": 0.0,
@@ -2596,6 +2797,7 @@
     },
     {
       "language_name": "Nyankole",
+      "autonym": "Runyankore",
       "speakers": 2724939,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2608,6 +2810,7 @@
     },
     {
       "language_name": "Jamaican Creole English",
+      "autonym": "Jamaican Creole English",
       "speakers": 2668142,
       "family": "Indo-European",
       "average": 0.0,
@@ -2620,6 +2823,7 @@
     },
     {
       "language_name": "Dogri",
+      "autonym": "डोगरी",
       "speakers": 2652180,
       "family": "Indo-European",
       "average": 0.0,
@@ -2632,6 +2836,7 @@
     },
     {
       "language_name": "Gusii",
+      "autonym": "Ekegusii",
       "speakers": 2622867,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2644,6 +2849,7 @@
     },
     {
       "language_name": "Sasak",
+      "autonym": "Sasak",
       "speakers": 2590152,
       "family": "Austronesian",
       "average": 0.0,
@@ -2656,6 +2862,7 @@
     },
     {
       "language_name": "Kurukh",
+      "autonym": "Kurukh",
       "speakers": 2519571,
       "family": "Dravidian",
       "average": 0.0,
@@ -2668,6 +2875,7 @@
     },
     {
       "language_name": "Pampanga",
+      "autonym": "Pampanga",
       "speakers": 2511163,
       "family": "Austronesian",
       "average": 0.0,
@@ -2680,6 +2888,7 @@
     },
     {
       "language_name": "West Albay Bikol",
+      "autonym": "West Albay Bikol",
       "speakers": 2511163,
       "family": "Austronesian",
       "average": 0.0,
@@ -2692,6 +2901,7 @@
     },
     {
       "language_name": "Lithuanian",
+      "autonym": "Lietuvių",
       "speakers": 2488617,
       "family": "Indo-European",
       "average": 0.0,
@@ -2704,6 +2914,7 @@
     },
     {
       "language_name": "Beja",
+      "autonym": "Beja",
       "speakers": 2460326,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -2716,6 +2927,7 @@
     },
     {
       "language_name": "Batak Toba",
+      "autonym": "Batak Toba",
       "speakers": 2456639,
       "family": "Austronesian",
       "average": 0.0,
@@ -2728,6 +2940,7 @@
     },
     {
       "language_name": "Sadri",
+      "autonym": "Sadri",
       "speakers": 2386962,
       "family": "Indo-European",
       "average": 0.0,
@@ -2740,6 +2953,7 @@
     },
     {
       "language_name": "Waddar",
+      "autonym": "Waddar",
       "speakers": 2386962,
       "family": "Dravidian",
       "average": 0.0,
@@ -2752,6 +2966,7 @@
     },
     {
       "language_name": "Luba-Katanga",
+      "autonym": "Tshiluba",
       "speakers": 2340940,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2764,6 +2979,7 @@
     },
     {
       "language_name": "Chiga",
+      "autonym": "Rukiga",
       "speakers": 2335662,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2776,6 +2992,7 @@
     },
     {
       "language_name": "Soga",
+      "autonym": "Olusoga",
       "speakers": 2292409,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2788,6 +3005,7 @@
     },
     {
       "language_name": "Swati",
+      "autonym": "Siswati",
       "speakers": 2212379,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2800,6 +3018,7 @@
     },
     {
       "language_name": "Hazaragi",
+      "autonym": "Hazaragi",
       "speakers": 2161984,
       "family": "Indo-European",
       "average": 0.0,
@@ -2812,6 +3031,7 @@
     },
     {
       "language_name": "Meru",
+      "autonym": "Kĩmĩrũ",
       "speakers": 2141116,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2824,6 +3044,7 @@
     },
     {
       "language_name": "Kangri",
+      "autonym": "कांगड़ी",
       "speakers": 2121744,
       "family": "Indo-European",
       "average": 0.0,
@@ -2836,6 +3057,7 @@
     },
     {
       "language_name": "Afar",
+      "autonym": "Afar",
       "speakers": 2119663,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -2848,6 +3070,7 @@
     },
     {
       "language_name": "Teso",
+      "autonym": "Kiteso",
       "speakers": 2082973,
       "family": "Nilotic",
       "average": 0.0,
@@ -2860,6 +3083,7 @@
     },
     {
       "language_name": "Lomwe",
+      "autonym": "Lomwe",
       "speakers": 2046678,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -2872,6 +3096,7 @@
     },
     {
       "language_name": "Occitan",
+      "autonym": "Occitan",
       "speakers": 2040398,
       "family": "Indo-European",
       "average": 0.0,
@@ -2884,6 +3109,7 @@
     },
     {
       "language_name": "Western Balochi",
+      "autonym": "بلوچی (رخشانی)",
       "speakers": 2037382,
       "family": "Indo-European",
       "average": 0.0,
@@ -2896,6 +3122,7 @@
     },
     {
       "language_name": "Northern Luri",
+      "autonym": "لۊری شومالی",
       "speakers": 2020512,
       "family": "Indo-European",
       "average": 0.0,
@@ -2908,6 +3135,7 @@
     },
     {
       "language_name": "Wagdi",
+      "autonym": "Wagdi",
       "speakers": 1989135,
       "family": "Indo-European",
       "average": 0.0,
@@ -2920,6 +3148,7 @@
     },
     {
       "language_name": "Tulu",
+      "autonym": "Tulu",
       "speakers": 1989135,
       "family": "Dravidian",
       "average": 0.0,
@@ -2932,6 +3161,7 @@
     },
     {
       "language_name": "Khandesi",
+      "autonym": "Khandesi",
       "speakers": 1989135,
       "family": "Indo-European",
       "average": 0.0,
@@ -2944,6 +3174,7 @@
     },
     {
       "language_name": "Tatar",
+      "autonym": "Татар",
       "speakers": 1984108,
       "family": "Turkic",
       "average": 0.0,
@@ -2956,6 +3187,7 @@
     },
     {
       "language_name": "Slovenian",
+      "autonym": "Slovenščina",
       "speakers": 1973181,
       "family": "Indo-European",
       "average": 0.0,
@@ -2968,6 +3200,7 @@
     },
     {
       "language_name": "Makasar",
+      "autonym": "Makasar",
       "speakers": 1949290,
       "family": "Austronesian",
       "average": 0.0,
@@ -2980,6 +3213,7 @@
     },
     {
       "language_name": "Wolaytta",
+      "autonym": "Wolaytta",
       "speakers": 1946034,
       "family": "Ta-Ne-Omotic",
       "average": 0.0,
@@ -2992,6 +3226,7 @@
     },
     {
       "language_name": "Nyamwezi",
+      "autonym": "Nyamwezi",
       "speakers": 1932242,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3004,6 +3239,7 @@
     },
     {
       "language_name": "Bodo",
+      "autonym": "बर’",
       "speakers": 1856526,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -3016,6 +3252,7 @@
     },
     {
       "language_name": "Lampung Api",
+      "autonym": "Lampung Api",
       "speakers": 1842479,
       "family": "Austronesian",
       "average": 0.0,
@@ -3028,6 +3265,7 @@
     },
     {
       "language_name": "Chuvash",
+      "autonym": "Чӑваш",
       "speakers": 1842386,
       "family": "Turkic",
       "average": 0.0,
@@ -3040,6 +3278,7 @@
     },
     {
       "language_name": "Bashkir",
+      "autonym": "Башҡорт Теле",
       "speakers": 1842386,
       "family": "Turkic",
       "average": 0.0,
@@ -3052,6 +3291,7 @@
     },
     {
       "language_name": "Rohingya",
+      "autonym": "𐴌𐴗𐴥𐴝𐴙𐴚𐴒𐴙𐴝",
       "speakers": 1824082,
       "family": "Indo-European",
       "average": 0.0,
@@ -3064,6 +3304,7 @@
     },
     {
       "language_name": "Mende",
+      "autonym": "Mende",
       "speakers": 1813083,
       "family": "Mande",
       "average": 0.0,
@@ -3076,6 +3317,7 @@
     },
     {
       "language_name": "Tumbuka",
+      "autonym": "Tumbuka",
       "speakers": 1780514,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3088,6 +3330,7 @@
     },
     {
       "language_name": "Tamashek",
+      "autonym": "Tamashek",
       "speakers": 1776965,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -3100,6 +3343,7 @@
     },
     {
       "language_name": "North Ndebele",
+      "autonym": "Isindebele",
       "speakers": 1745556,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3112,6 +3356,7 @@
     },
     {
       "language_name": "Masai",
+      "autonym": "Maa",
       "speakers": 1734738,
       "family": "Nilotic",
       "average": 0.0,
@@ -3124,6 +3369,7 @@
     },
     {
       "language_name": "Serer",
+      "autonym": "Serer",
       "speakers": 1731004,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3136,6 +3382,7 @@
     },
     {
       "language_name": "Nimadi",
+      "autonym": "Nimadi",
       "speakers": 1723917,
       "family": "Indo-European",
       "average": 0.0,
@@ -3148,6 +3395,7 @@
     },
     {
       "language_name": "Timne",
+      "autonym": "Timne",
       "speakers": 1722482,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3160,6 +3408,7 @@
     },
     {
       "language_name": "Scots",
+      "autonym": "Scots",
       "speakers": 1644028,
       "family": "Indo-European",
       "average": 0.0,
@@ -3172,6 +3421,7 @@
     },
     {
       "language_name": "Lango (Uganda)",
+      "autonym": "Lango (Uganda)",
       "speakers": 1643614,
       "family": "Nilotic",
       "average": 0.0,
@@ -3184,6 +3434,7 @@
     },
     {
       "language_name": "Domari",
+      "autonym": "Domari",
       "speakers": 1613543,
       "family": "Indo-European",
       "average": 0.0,
@@ -3196,6 +3447,7 @@
     },
     {
       "language_name": "Macedonian",
+      "autonym": "Македонски",
       "speakers": 1608565,
       "family": "Indo-European",
       "average": 0.0,
@@ -3208,6 +3460,7 @@
     },
     {
       "language_name": "Acoli",
+      "autonym": "Acoli",
       "speakers": 1600361,
       "family": "Nilotic",
       "average": 0.0,
@@ -3220,6 +3473,7 @@
     },
     {
       "language_name": "Central-Eastern Niger Fulfulde",
+      "autonym": "Central-Eastern Niger Fulfulde",
       "speakers": 1594068,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3232,6 +3486,7 @@
     },
     {
       "language_name": "Bhili",
+      "autonym": "Bhili",
       "speakers": 1591308,
       "family": "Indo-European",
       "average": 0.0,
@@ -3244,6 +3499,7 @@
     },
     {
       "language_name": "Pangasinan",
+      "autonym": "Pangasinan",
       "speakers": 1528534,
       "family": "Austronesian",
       "average": 0.0,
@@ -3256,6 +3512,7 @@
     },
     {
       "language_name": "Kongo",
+      "autonym": "Kongo",
       "speakers": 1526700,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3268,6 +3525,7 @@
     },
     {
       "language_name": "Bini",
+      "autonym": "Bini",
       "speakers": 1519599,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3280,6 +3538,7 @@
     },
     {
       "language_name": "Maasina Fulfulde",
+      "autonym": "Maasina Fulfulde",
       "speakers": 1505612,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3292,6 +3551,7 @@
     },
     {
       "language_name": "Manipuri",
+      "autonym": "মৈতৈলোন্",
       "speakers": 1476591,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -3304,6 +3564,7 @@
     },
     {
       "language_name": "Abron",
+      "autonym": "Abron",
       "speakers": 1467010,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3316,6 +3577,7 @@
     },
     {
       "language_name": "Makonde",
+      "autonym": "Chimakonde",
       "speakers": 1463820,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3328,6 +3590,7 @@
     },
     {
       "language_name": "Gheg Albanian",
+      "autonym": "Gheg Albanian",
       "speakers": 1430250,
       "family": "Indo-European",
       "average": 0.0,
@@ -3340,6 +3603,7 @@
     },
     {
       "language_name": "Venda",
+      "autonym": "Tshivenḓa",
       "speakers": 1391759,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3352,6 +3616,7 @@
     },
     {
       "language_name": "Sena",
+      "autonym": "Sena",
       "speakers": 1384517,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3364,6 +3629,7 @@
     },
     {
       "language_name": "Venetian",
+      "autonym": "Veneto",
       "speakers": 1380829,
       "family": "Indo-European",
       "average": 0.0,
@@ -3376,6 +3642,7 @@
     },
     {
       "language_name": "Susu",
+      "autonym": "Susu",
       "speakers": 1378014,
       "family": "Mande",
       "average": 0.0,
@@ -3388,6 +3655,7 @@
     },
     {
       "language_name": "Norwegian Nynorsk",
+      "autonym": "Norsk Nynorsk",
       "speakers": 1366860,
       "family": "Indo-European",
       "average": 0.0,
@@ -3400,6 +3668,7 @@
     },
     {
       "language_name": "Makhuwa-Meetto",
+      "autonym": "Makua",
       "speakers": 1354419,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3412,6 +3681,7 @@
     },
     {
       "language_name": "Rajasthani",
+      "autonym": "राजस्थानी",
       "speakers": 1326090,
       "family": "Indo-European",
       "average": 0.0,
@@ -3424,6 +3694,7 @@
     },
     {
       "language_name": "Ho",
+      "autonym": "Ho",
       "speakers": 1312829,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -3436,6 +3707,7 @@
     },
     {
       "language_name": "Maguindanaon",
+      "autonym": "Maguindanaon",
       "speakers": 1310172,
       "family": "Austronesian",
       "average": 0.0,
@@ -3448,6 +3720,7 @@
     },
     {
       "language_name": "Mewari",
+      "autonym": "Mewari",
       "speakers": 1286307,
       "family": "Indo-European",
       "average": 0.0,
@@ -3460,6 +3733,7 @@
     },
     {
       "language_name": "Bulu",
+      "autonym": "Bulu",
       "speakers": 1276270,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3472,6 +3746,7 @@
     },
     {
       "language_name": "Masaaba",
+      "autonym": "Masaaba",
       "speakers": 1254337,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3484,6 +3759,7 @@
     },
     {
       "language_name": "Mundari",
+      "autonym": "Mundari",
       "speakers": 1252287,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -3496,6 +3772,7 @@
     },
     {
       "language_name": "Morisyen",
+      "autonym": "Kreol Morisien",
       "speakers": 1241433,
       "family": "Indo-European",
       "average": 0.0,
@@ -3508,6 +3785,7 @@
     },
     {
       "language_name": "Irish",
+      "autonym": "Gaeilge",
       "speakers": 1237487,
       "family": "Indo-European",
       "average": 0.0,
@@ -3520,6 +3798,7 @@
     },
     {
       "language_name": "Fur",
+      "autonym": "Fur",
       "speakers": 1230163,
       "family": "Furan",
       "average": 0.0,
@@ -3532,6 +3811,7 @@
     },
     {
       "language_name": "Rejang",
+      "autonym": "Rejang",
       "speakers": 1228320,
       "family": "Austronesian",
       "average": 0.0,
@@ -3544,6 +3824,7 @@
     },
     {
       "language_name": "Bhilali",
+      "autonym": "Bhilali",
       "speakers": 1220003,
       "family": "Indo-European",
       "average": 0.0,
@@ -3556,6 +3837,7 @@
     },
     {
       "language_name": "Tausug",
+      "autonym": "Tausug",
       "speakers": 1200991,
       "family": "Austronesian",
       "average": 0.0,
@@ -3568,6 +3850,7 @@
     },
     {
       "language_name": "Kʼicheʼ",
+      "autonym": "KʼIcheʼ",
       "speakers": 1200731,
       "family": "Mayan",
       "average": 0.0,
@@ -3580,6 +3863,7 @@
     },
     {
       "language_name": "Bakhtiari",
+      "autonym": "Bakhtiari",
       "speakers": 1188926,
       "family": "Indo-European",
       "average": 0.0,
@@ -3592,6 +3876,7 @@
     },
     {
       "language_name": "Kpelle",
+      "autonym": "Kpɛlɛɛ",
       "speakers": 1186303,
       "family": "Mande",
       "average": 0.0,
@@ -3604,6 +3889,7 @@
     },
     {
       "language_name": "Cebaara Senoufo",
+      "autonym": "Cebaara Senoufo",
       "speakers": 1181687,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3616,6 +3902,7 @@
     },
     {
       "language_name": "Northern Khmer",
+      "autonym": "Northern Khmer",
       "speakers": 1172616,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -3628,6 +3915,7 @@
     },
     {
       "language_name": "West Flemish",
+      "autonym": "West Flemish",
       "speakers": 1172070,
       "family": "Indo-European",
       "average": 0.0,
@@ -3640,6 +3928,7 @@
     },
     {
       "language_name": "Soninke",
+      "autonym": "Soninke",
       "speakers": 1153651,
       "family": "Mande",
       "average": 0.0,
@@ -3652,6 +3941,7 @@
     },
     {
       "language_name": "Zaza",
+      "autonym": "Zaza",
       "speakers": 1148245,
       "family": "Indo-European",
       "average": 0.0,
@@ -3664,6 +3954,7 @@
     },
     {
       "language_name": "Latvian",
+      "autonym": "Latviešu",
       "speakers": 1147550,
       "family": "Indo-European",
       "average": 0.0,
@@ -3676,6 +3967,7 @@
     },
     {
       "language_name": "Dan",
+      "autonym": "Dan",
       "speakers": 1099244,
       "family": "Mande",
       "average": 0.0,
@@ -3688,6 +3980,7 @@
     },
     {
       "language_name": "Gorontalo",
+      "autonym": "Gorontalo",
       "speakers": 1094807,
       "family": "Austronesian",
       "average": 0.0,
@@ -3700,6 +3993,7 @@
     },
     {
       "language_name": "Tigre",
+      "autonym": "Tigre",
       "speakers": 1094616,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -3712,6 +4006,7 @@
     },
     {
       "language_name": "Basque",
+      "autonym": "Euskara",
       "speakers": 1088519,
       "family": null,
       "average": 0.0,
@@ -3724,6 +4019,7 @@
     },
     {
       "language_name": "Hadothi",
+      "autonym": "Hadothi",
       "speakers": 1087394,
       "family": "Indo-European",
       "average": 0.0,
@@ -3736,6 +4032,7 @@
     },
     {
       "language_name": "Kabardian",
+      "autonym": "Kabardian",
       "speakers": 1070873,
       "family": "Abkhaz-Adyge",
       "average": 0.0,
@@ -3748,6 +4045,7 @@
     },
     {
       "language_name": "Khasi",
+      "autonym": "Khasi",
       "speakers": 1060872,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -3760,6 +4058,7 @@
     },
     {
       "language_name": "Sardinian",
+      "autonym": "Sardu",
       "speakers": 1060846,
       "family": "Indo-European",
       "average": 0.0,
@@ -3772,6 +4071,7 @@
     },
     {
       "language_name": "Lozi",
+      "autonym": "Lozi",
       "speakers": 1045596,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3784,6 +4084,7 @@
     },
     {
       "language_name": "Frafra",
+      "autonym": "Frafra",
       "speakers": 1026907,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3796,6 +4097,7 @@
     },
     {
       "language_name": "Najdi Arabic",
+      "autonym": "Najdi Arabic",
       "speakers": 1025205,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -3808,6 +4110,7 @@
     },
     {
       "language_name": "Ronga",
+      "autonym": "Ronga",
       "speakers": 1023339,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3820,6 +4123,7 @@
     },
     {
       "language_name": "Southern Luri",
+      "autonym": "Southern Luri",
       "speakers": 1019080,
       "family": "Indo-European",
       "average": 0.0,
@@ -3832,6 +4136,7 @@
     },
     {
       "language_name": "Newari",
+      "autonym": "Newari",
       "speakers": 1000821,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -3844,6 +4149,7 @@
     },
     {
       "language_name": "Talysh",
+      "autonym": "Talysh",
       "speakers": 1000168,
       "family": "Indo-European",
       "average": 0.0,
@@ -3856,6 +4162,7 @@
     },
     {
       "language_name": "Yiddish",
+      "autonym": "ייִדיש",
       "speakers": 997214,
       "family": "Indo-European",
       "average": 0.0,
@@ -3868,6 +4175,7 @@
     },
     {
       "language_name": "Bena",
+      "autonym": "Hibena",
       "speakers": 995398,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3880,6 +4188,7 @@
     },
     {
       "language_name": "Shambala",
+      "autonym": "Kishambaa",
       "speakers": 995398,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -3892,6 +4201,7 @@
     },
     {
       "language_name": "Kachhi",
+      "autonym": "Kachhi",
       "speakers": 994568,
       "family": "Indo-European",
       "average": 0.0,
@@ -3904,6 +4214,7 @@
     },
     {
       "language_name": "Ngaju",
+      "autonym": "Ngaju",
       "speakers": 987996,
       "family": "Austronesian",
       "average": 0.0,
@@ -3916,6 +4227,7 @@
     },
     {
       "language_name": "Kita Maninkakan",
+      "autonym": "Kita Maninkakan",
       "speakers": 977670,
       "family": "Mande",
       "average": 0.0,
@@ -3928,6 +4240,7 @@
     },
     {
       "language_name": "Jumli",
+      "autonym": "Jumli",
       "speakers": 970493,
       "family": "Indo-European",
       "average": 0.0,
@@ -3940,6 +4253,7 @@
     },
     {
       "language_name": "Central Okinawan",
+      "autonym": "Central Okinawan",
       "speakers": 966404,
       "family": "Japonic",
       "average": 0.0,
@@ -3952,6 +4266,7 @@
     },
     {
       "language_name": "Mon",
+      "autonym": "Mon",
       "speakers": 966114,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -3964,6 +4279,7 @@
     },
     {
       "language_name": "Chimborazo Highland Quichua",
+      "autonym": "Chimborazo Highland Quichua",
       "speakers": 963579,
       "family": "Quechuan",
       "average": 0.0,
@@ -3976,6 +4292,7 @@
     },
     {
       "language_name": "Kachin",
+      "autonym": "Kachin",
       "speakers": 962032,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -3988,6 +4305,7 @@
     },
     {
       "language_name": "Southern Hindko",
+      "autonym": "Southern Hindko",
       "speakers": 957354,
       "family": "Indo-European",
       "average": 0.0,
@@ -4000,6 +4318,7 @@
     },
     {
       "language_name": "Limburgish",
+      "autonym": "Limburgish",
       "speakers": 950422,
       "family": "Indo-European",
       "average": 0.0,
@@ -4012,6 +4331,7 @@
     },
     {
       "language_name": "Manyika",
+      "autonym": "Manyika",
       "speakers": 945510,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4024,6 +4344,7 @@
     },
     {
       "language_name": "Chechen",
+      "autonym": "Нохчийн",
       "speakers": 935365,
       "family": "Nakh-Daghestanian",
       "average": 0.0,
@@ -4036,6 +4357,7 @@
     },
     {
       "language_name": "Kuanyama",
+      "autonym": "Kuanyama",
       "speakers": 920524,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4048,6 +4370,7 @@
     },
     {
       "language_name": "South Ndebele",
+      "autonym": "South Ndebele",
       "speakers": 903418,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4060,6 +4383,7 @@
     },
     {
       "language_name": "Welsh",
+      "autonym": "Cymraeg",
       "speakers": 884910,
       "family": "Indo-European",
       "average": 0.0,
@@ -4072,6 +4396,7 @@
     },
     {
       "language_name": "Adangme",
+      "autonym": "Adangme",
       "speakers": 880206,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4084,6 +4409,7 @@
     },
     {
       "language_name": "Estonian",
+      "autonym": "Eesti",
       "speakers": 878449,
       "family": "Uralic",
       "average": 0.0,
@@ -4096,6 +4422,7 @@
     },
     {
       "language_name": "Parsi-Dari",
+      "autonym": "Parsi-Dari",
       "speakers": 864342,
       "family": "Bookkeeping",
       "average": 0.0,
@@ -4108,6 +4435,7 @@
     },
     {
       "language_name": "Yucateco",
+      "autonym": "Yucateco",
       "speakers": 861955,
       "family": "Mayan",
       "average": 0.0,
@@ -4120,6 +4448,7 @@
     },
     {
       "language_name": "Ewondo",
+      "autonym": "Ewondo",
       "speakers": 860095,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4132,6 +4461,7 @@
     },
     {
       "language_name": "Komering",
+      "autonym": "Komering",
       "speakers": 854483,
       "family": "Austronesian",
       "average": 0.0,
@@ -4144,6 +4474,7 @@
     },
     {
       "language_name": "Tooro",
+      "autonym": "Tooro",
       "speakers": 821807,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4156,6 +4487,7 @@
     },
     {
       "language_name": "Garo",
+      "autonym": "Garo",
       "speakers": 821563,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -4168,6 +4500,7 @@
     },
     {
       "language_name": "Ga",
+      "autonym": "Gã",
       "speakers": 821526,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4180,6 +4513,7 @@
     },
     {
       "language_name": "Mbunga",
+      "autonym": "Mbunga",
       "speakers": 819739,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4192,6 +4526,7 @@
     },
     {
       "language_name": "Tetum",
+      "autonym": "Tetum",
       "speakers": 816395,
       "family": "Austronesian",
       "average": 0.0,
@@ -4204,6 +4539,7 @@
     },
     {
       "language_name": "Iban",
+      "autonym": "Iban",
       "speakers": 816302,
       "family": "Bookkeeping",
       "average": 0.0,
@@ -4216,6 +4552,7 @@
     },
     {
       "language_name": "Embu",
+      "autonym": "Kĩembu",
       "speakers": 802918,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4228,6 +4565,7 @@
     },
     {
       "language_name": "Swabian",
+      "autonym": "Swabian",
       "speakers": 801597,
       "family": "Indo-European",
       "average": 0.0,
@@ -4240,6 +4578,7 @@
     },
     {
       "language_name": "Hmong Njua",
+      "autonym": "𞄀𞄄𞄰𞄩𞄍𞄜𞄰",
       "speakers": 781687,
       "family": "Hmong-Mien",
       "average": 0.0,
@@ -4252,6 +4591,7 @@
     },
     {
       "language_name": "Kalanga",
+      "autonym": "Kalanga",
       "speakers": 770954,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4264,6 +4604,7 @@
     },
     {
       "language_name": "Dotyali",
+      "autonym": "Dotyali",
       "speakers": 758198,
       "family": "Indo-European",
       "average": 0.0,
@@ -4276,6 +4617,7 @@
     },
     {
       "language_name": "Picard",
+      "autonym": "Picard",
       "speakers": 746330,
       "family": "Indo-European",
       "average": 0.0,
@@ -4288,6 +4630,7 @@
     },
     {
       "language_name": "Western Frisian",
+      "autonym": "Frysk",
       "speakers": 743057,
       "family": "Indo-European",
       "average": 0.0,
@@ -4300,6 +4643,7 @@
     },
     {
       "language_name": "Chakma",
+      "autonym": "𑄌𑄋𑄴𑄟𑄳𑄦",
       "speakers": 729137,
       "family": "Indo-European",
       "average": 0.0,
@@ -4312,6 +4656,7 @@
     },
     {
       "language_name": "Yao",
+      "autonym": "Yao",
       "speakers": 722357,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4324,6 +4669,7 @@
     },
     {
       "language_name": "Uab Meto",
+      "autonym": "Uab Meto",
       "speakers": 720970,
       "family": "Austronesian",
       "average": 0.0,
@@ -4336,6 +4682,7 @@
     },
     {
       "language_name": "Capiznon",
+      "autonym": "Capiznon",
       "speakers": 720595,
       "family": "Austronesian",
       "average": 0.0,
@@ -4348,6 +4695,7 @@
     },
     {
       "language_name": "Asu",
+      "autonym": "Kipare",
       "speakers": 702634,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4360,6 +4708,7 @@
     },
     {
       "language_name": "Tai Dam",
+      "autonym": "ꪼꪕꪒꪾ",
       "speakers": 681177,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -4372,6 +4721,7 @@
     },
     {
       "language_name": "Walloon",
+      "autonym": "Walon",
       "speakers": 679801,
       "family": "Indo-European",
       "average": 0.0,
@@ -4384,6 +4734,7 @@
     },
     {
       "language_name": "Koyraboro Senni",
+      "autonym": "Koyraboro Senni",
       "speakers": 664816,
       "family": "Songhay",
       "average": 0.0,
@@ -4396,6 +4747,7 @@
     },
     {
       "language_name": "Bagheli",
+      "autonym": "Bagheli",
       "speakers": 654424,
       "family": "Indo-European",
       "average": 0.0,
@@ -4408,6 +4760,7 @@
     },
     {
       "language_name": "Asturian",
+      "autonym": "Asturianu",
       "speakers": 650205,
       "family": "Indo-European",
       "average": 0.0,
@@ -4420,6 +4773,7 @@
     },
     {
       "language_name": "Laki",
+      "autonym": "Laki",
       "speakers": 645417,
       "family": "Indo-European",
       "average": 0.0,
@@ -4432,6 +4786,7 @@
     },
     {
       "language_name": "Munda",
+      "autonym": "Munda",
       "speakers": 636523,
       "family": "Bookkeeping",
       "average": 0.0,
@@ -4444,6 +4799,7 @@
     },
     {
       "language_name": "Lisu",
+      "autonym": "Lisu",
       "speakers": 627309,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -4456,6 +4812,7 @@
     },
     {
       "language_name": "N’Ko",
+      "autonym": "ߒߞߏ",
       "speakers": 626370,
       "family": "Artificial Language",
       "average": 0.0,
@@ -4468,6 +4825,7 @@
     },
     {
       "language_name": "Gronings",
+      "autonym": "Gronings",
       "speakers": 622094,
       "family": "Indo-European",
       "average": 0.0,
@@ -4480,6 +4838,7 @@
     },
     {
       "language_name": "Mongo",
+      "autonym": "Mongo",
       "speakers": 620858,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4492,6 +4851,7 @@
     },
     {
       "language_name": "Dangaura Tharu",
+      "autonym": "Dangaura Tharu",
       "speakers": 606558,
       "family": "Indo-European",
       "average": 0.0,
@@ -4504,6 +4864,7 @@
     },
     {
       "language_name": "Neapolitan",
+      "autonym": "Neapolitan",
       "speakers": 605306,
       "family": "Indo-European",
       "average": 0.0,
@@ -4516,6 +4877,7 @@
     },
     {
       "language_name": "Nuer",
+      "autonym": "Thok Nath",
       "speakers": 591427,
       "family": "Nilotic",
       "average": 0.0,
@@ -4528,6 +4890,7 @@
     },
     {
       "language_name": "Breton",
+      "autonym": "Brezhoneg",
       "speakers": 563140,
       "family": "Indo-European",
       "average": 0.0,
@@ -4540,6 +4903,7 @@
     },
     {
       "language_name": "Pijin",
+      "autonym": "Pijin",
       "speakers": 561780,
       "family": "Indo-European",
       "average": 0.0,
@@ -4552,6 +4916,7 @@
     },
     {
       "language_name": "Réunion Creole French",
+      "autonym": "Réunion Creole French",
       "speakers": 559185,
       "family": "Indo-European",
       "average": 0.0,
@@ -4564,6 +4929,7 @@
     },
     {
       "language_name": "Avaric",
+      "autonym": "Avaric",
       "speakers": 552716,
       "family": "Nakh-Daghestanian",
       "average": 0.0,
@@ -4576,6 +4942,7 @@
     },
     {
       "language_name": "Ndonga",
+      "autonym": "Ndonga",
       "speakers": 552315,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4588,6 +4955,7 @@
     },
     {
       "language_name": "Ossetic",
+      "autonym": "Ирон",
       "speakers": 541444,
       "family": "Indo-European",
       "average": 0.0,
@@ -4600,6 +4968,7 @@
     },
     {
       "language_name": "Udmurt",
+      "autonym": "Udmurt",
       "speakers": 538544,
       "family": "Uralic",
       "average": 0.0,
@@ -4612,6 +4981,7 @@
     },
     {
       "language_name": "Ligurian",
+      "autonym": "Ligure",
       "speakers": 536663,
       "family": "Indo-European",
       "average": 0.0,
@@ -4624,6 +4994,7 @@
     },
     {
       "language_name": "Kabuverdianu",
+      "autonym": "Kabuverdianu",
       "speakers": 530762,
       "family": "Indo-European",
       "average": 0.0,
@@ -4636,6 +5007,7 @@
     },
     {
       "language_name": "Rusyn",
+      "autonym": "Rusyn",
       "speakers": 527075,
       "family": "Indo-European",
       "average": 0.0,
@@ -4648,6 +5020,7 @@
     },
     {
       "language_name": "Mari",
+      "autonym": "Mari",
       "speakers": 524371,
       "family": "Uralic",
       "average": 0.0,
@@ -4660,6 +5033,7 @@
     },
     {
       "language_name": "Sicilian",
+      "autonym": "Sicilianu",
       "speakers": 511702,
       "family": "Indo-European",
       "average": 0.0,
@@ -4672,6 +5046,7 @@
     },
     {
       "language_name": "Langi",
+      "autonym": "Kɨlaangi",
       "speakers": 509409,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4684,6 +5059,7 @@
     },
     {
       "language_name": "Balti",
+      "autonym": "Balti",
       "speakers": 502520,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -4696,6 +5072,7 @@
     },
     {
       "language_name": "Eastern Huasteca Nahuatl",
+      "autonym": "Eastern Huasteca Nahuatl",
       "speakers": 501735,
       "family": "Uto-Aztecan",
       "average": 0.0,
@@ -4708,6 +5085,7 @@
     },
     {
       "language_name": "Western Huasteca Nahuatl",
+      "autonym": "Western Huasteca Nahuatl",
       "speakers": 501735,
       "family": "Uto-Aztecan",
       "average": 0.0,
@@ -4720,6 +5098,7 @@
     },
     {
       "language_name": "Silesian",
+      "autonym": "Ślōnski",
       "speakers": 497670,
       "family": "Indo-European",
       "average": 0.0,
@@ -4732,6 +5111,7 @@
     },
     {
       "language_name": "Kara-Kalpak",
+      "autonym": "Kara-Kalpak",
       "speakers": 489046,
       "family": "Turkic",
       "average": 0.0,
@@ -4744,6 +5124,7 @@
     },
     {
       "language_name": "Gujari",
+      "autonym": "Gujari",
       "speakers": 467002,
       "family": "Indo-European",
       "average": 0.0,
@@ -4756,6 +5137,7 @@
     },
     {
       "language_name": "Sirmauri",
+      "autonym": "Sirmauri",
       "speakers": 464132,
       "family": "Indo-European",
       "average": 0.0,
@@ -4768,6 +5150,7 @@
     },
     {
       "language_name": "Maltese",
+      "autonym": "Malti",
       "speakers": 457267,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -4780,6 +5163,7 @@
     },
     {
       "language_name": "Bantawa",
+      "autonym": "Bantawa",
       "speakers": 454918,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -4792,6 +5176,7 @@
     },
     {
       "language_name": "Yakut",
+      "autonym": "Саха Тыла",
       "speakers": 453510,
       "family": "Turkic",
       "average": 0.0,
@@ -4804,6 +5189,7 @@
     },
     {
       "language_name": "Masalit",
+      "autonym": "Masalit",
       "speakers": 451060,
       "family": "Maban",
       "average": 0.0,
@@ -4816,6 +5202,7 @@
     },
     {
       "language_name": "Jju",
+      "autonym": "Kaje",
       "speakers": 449459,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4828,6 +5215,7 @@
     },
     {
       "language_name": "Adyghe",
+      "autonym": "Adyghe",
       "speakers": 444583,
       "family": "Abkhaz-Adyge",
       "average": 0.0,
@@ -4840,6 +5228,7 @@
     },
     {
       "language_name": "Yemba",
+      "autonym": "Yemba",
       "speakers": 443920,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4852,6 +5241,7 @@
     },
     {
       "language_name": "Mingrelian",
+      "autonym": "Mingrelian",
       "speakers": 439670,
       "family": "Kartvelian",
       "average": 0.0,
@@ -4864,6 +5254,7 @@
     },
     {
       "language_name": "Erzya",
+      "autonym": "Эрзянь Кель",
       "speakers": 439338,
       "family": "Uralic",
       "average": 0.0,
@@ -4876,6 +5267,7 @@
     },
     {
       "language_name": "Taita",
+      "autonym": "Kitaita",
       "speakers": 438929,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4888,6 +5280,7 @@
     },
     {
       "language_name": "Central Mazahua",
+      "autonym": "Central Mazahua",
       "speakers": 437410,
       "family": "Otomanguean",
       "average": 0.0,
@@ -4900,6 +5293,7 @@
     },
     {
       "language_name": "Vunjo",
+      "autonym": "Kyivunjo",
       "speakers": 433291,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4912,6 +5306,7 @@
     },
     {
       "language_name": "Rombo",
+      "autonym": "Kihorombo",
       "speakers": 433291,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4924,6 +5319,7 @@
     },
     {
       "language_name": "Machame",
+      "autonym": "Kimachame",
       "speakers": 433291,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4936,6 +5332,7 @@
     },
     {
       "language_name": "Khmu",
+      "autonym": "Khmu",
       "speakers": 431949,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -4948,6 +5345,7 @@
     },
     {
       "language_name": "Fang",
+      "autonym": "Fang",
       "speakers": 426451,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -4960,6 +5358,7 @@
     },
     {
       "language_name": "Kinaray-a",
+      "autonym": "Kinaray-A",
       "speakers": 425806,
       "family": "Austronesian",
       "average": 0.0,
@@ -4972,6 +5371,7 @@
     },
     {
       "language_name": "Kuy",
+      "autonym": "Kuy",
       "speakers": 421207,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -4984,6 +5384,7 @@
     },
     {
       "language_name": "Luxembourgish",
+      "autonym": "Lëtzebuergesch",
       "speakers": 421015,
       "family": "Indo-European",
       "average": 0.0,
@@ -4996,6 +5397,7 @@
     },
     {
       "language_name": "Sranan Tongo",
+      "autonym": "Sranan Tongo",
       "speakers": 414507,
       "family": "Indo-European",
       "average": 0.0,
@@ -5008,6 +5410,7 @@
     },
     {
       "language_name": "Jola-Fonyi",
+      "autonym": "Joola",
       "speakers": 409146,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5020,6 +5423,7 @@
     },
     {
       "language_name": "Western Tamang",
+      "autonym": "Western Tamang",
       "speakers": 394263,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -5032,6 +5436,7 @@
     },
     {
       "language_name": "Pontic",
+      "autonym": "Pontic",
       "speakers": 392463,
       "family": "Indo-European",
       "average": 0.0,
@@ -5044,6 +5449,7 @@
     },
     {
       "language_name": "Negeri Sembilan Malay",
+      "autonym": "Negeri Sembilan Malay",
       "speakers": 391825,
       "family": "Austronesian",
       "average": 0.0,
@@ -5056,6 +5462,7 @@
     },
     {
       "language_name": "Ngiemboon",
+      "autonym": "Shwóŋò Ngiembɔɔn",
       "speakers": 388430,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5068,6 +5475,7 @@
     },
     {
       "language_name": "Ghomala",
+      "autonym": "Ghomala",
       "speakers": 388430,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5080,6 +5488,7 @@
     },
     {
       "language_name": "Divehi",
+      "autonym": "Divehi",
       "speakers": 388044,
       "family": "Indo-European",
       "average": 0.0,
@@ -5092,6 +5501,7 @@
     },
     {
       "language_name": "Saurashtra",
+      "autonym": "Saurashtra",
       "speakers": 384566,
       "family": "Indo-European",
       "average": 0.0,
@@ -5104,6 +5514,7 @@
     },
     {
       "language_name": "Fiji Hindi",
+      "autonym": "Fiji Hindi",
       "speakers": 383749,
       "family": "Indo-European",
       "average": 0.0,
@@ -5116,6 +5527,7 @@
     },
     {
       "language_name": "Nobiin",
+      "autonym": "Nobiin",
       "speakers": 378161,
       "family": "Nubian",
       "average": 0.0,
@@ -5128,6 +5540,7 @@
     },
     {
       "language_name": "Balkan Gagauz Turkish",
+      "autonym": "Balkan Gagauz Turkish",
       "speakers": 377280,
       "family": "Turkic",
       "average": 0.0,
@@ -5140,6 +5553,7 @@
     },
     {
       "language_name": "Kerinci",
+      "autonym": "Kerinci",
       "speakers": 373836,
       "family": "Austronesian",
       "average": 0.0,
@@ -5152,6 +5566,7 @@
     },
     {
       "language_name": "Parkari Koli",
+      "autonym": "Parkari Koli",
       "speakers": 373602,
       "family": "Indo-European",
       "average": 0.0,
@@ -5164,6 +5579,7 @@
     },
     {
       "language_name": "Dzongkha",
+      "autonym": "རྫོང་ཁ",
       "speakers": 370341,
       "family": "Bookkeeping",
       "average": 0.0,
@@ -5176,6 +5592,7 @@
     },
     {
       "language_name": "Pökoot",
+      "autonym": "Pökoot",
       "speakers": 369343,
       "family": "Nilotic",
       "average": 0.0,
@@ -5188,6 +5605,7 @@
     },
     {
       "language_name": "Dargwa",
+      "autonym": "Dargwa",
       "speakers": 368477,
       "family": "Nakh-Daghestanian",
       "average": 0.0,
@@ -5200,6 +5618,7 @@
     },
     {
       "language_name": "Limbu",
+      "autonym": "Limbu",
       "speakers": 368085,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -5212,6 +5631,7 @@
     },
     {
       "language_name": "Fijian",
+      "autonym": "Fijian",
       "speakers": 365030,
       "family": "Austronesian",
       "average": 0.0,
@@ -5224,6 +5644,7 @@
     },
     {
       "language_name": "Rana Tharu",
+      "autonym": "Rana Tharu",
       "speakers": 363935,
       "family": "Indo-European",
       "average": 0.0,
@@ -5236,6 +5657,7 @@
     },
     {
       "language_name": "Kom",
+      "autonym": "Kom",
       "speakers": 360685,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5248,6 +5670,7 @@
     },
     {
       "language_name": "Icelandic",
+      "autonym": "Íslenska",
       "speakers": 350734,
       "family": "Indo-European",
       "average": 0.0,
@@ -5260,6 +5683,7 @@
     },
     {
       "language_name": "Khowar",
+      "autonym": "Khowar",
       "speakers": 350252,
       "family": "Indo-European",
       "average": 0.0,
@@ -5272,6 +5696,7 @@
     },
     {
       "language_name": "Tolaki",
+      "autonym": "Tolaki",
       "speakers": 347134,
       "family": "Austronesian",
       "average": 0.0,
@@ -5284,6 +5709,7 @@
     },
     {
       "language_name": "Naxi",
+      "autonym": "Naxi",
       "speakers": 334565,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -5296,6 +5722,7 @@
     },
     {
       "language_name": "Eastern Magar",
+      "autonym": "Eastern Magar",
       "speakers": 333607,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -5308,6 +5735,7 @@
     },
     {
       "language_name": "Bamun",
+      "autonym": "Bamun",
       "speakers": 332940,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5320,6 +5748,7 @@
     },
     {
       "language_name": "Basaa",
+      "autonym": "Ɓàsàa",
       "speakers": 332940,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5332,6 +5761,7 @@
     },
     {
       "language_name": "Koyra Chiini",
+      "autonym": "Koyra Ciini",
       "speakers": 332408,
       "family": "Songhay",
       "average": 0.0,
@@ -5344,6 +5774,7 @@
     },
     {
       "language_name": "Indus Kohistani",
+      "autonym": "Indus Kohistani",
       "speakers": 326901,
       "family": "Indo-European",
       "average": 0.0,
@@ -5356,6 +5787,7 @@
     },
     {
       "language_name": "Gayo",
+      "autonym": "Gayo",
       "speakers": 320431,
       "family": "Austronesian",
       "average": 0.0,
@@ -5368,6 +5800,7 @@
     },
     {
       "language_name": "Ngazidja Comorian",
+      "autonym": "Ngazidja Comorian",
       "speakers": 313124,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5380,6 +5813,7 @@
     },
     {
       "language_name": "Buriat",
+      "autonym": "Buriat",
       "speakers": 311788,
       "family": "Mongolic-Khitan",
       "average": 0.0,
@@ -5392,6 +5826,7 @@
     },
     {
       "language_name": "Rinconada Bikol",
+      "autonym": "Rinconada Bikol",
       "speakers": 305707,
       "family": "Austronesian",
       "average": 0.0,
@@ -5404,6 +5839,7 @@
     },
     {
       "language_name": "Medumba",
+      "autonym": "Medumba",
       "speakers": 305195,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5416,6 +5852,7 @@
     },
     {
       "language_name": "Ao Naga",
+      "autonym": "Ao Naga",
       "speakers": 305001,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -5428,6 +5865,7 @@
     },
     {
       "language_name": "Badaga",
+      "autonym": "Badaga",
       "speakers": 305001,
       "family": "Dravidian",
       "average": 0.0,
@@ -5440,6 +5878,7 @@
     },
     {
       "language_name": "Kochila Tharu",
+      "autonym": "Kochila Tharu",
       "speakers": 303279,
       "family": "Indo-European",
       "average": 0.0,
@@ -5452,6 +5891,7 @@
     },
     {
       "language_name": "Moksha",
+      "autonym": "Мокшень Кяль",
       "speakers": 297616,
       "family": "Uralic",
       "average": 0.0,
@@ -5464,6 +5904,7 @@
     },
     {
       "language_name": "Tae'",
+      "autonym": "Tae'",
       "speakers": 293729,
       "family": "Austronesian",
       "average": 0.0,
@@ -5476,6 +5917,7 @@
     },
     {
       "language_name": "Nzima",
+      "autonym": "Nzima",
       "speakers": 293402,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5488,6 +5930,7 @@
     },
     {
       "language_name": "Nama",
+      "autonym": "Khoekhoegowab",
       "speakers": 289308,
       "family": "Khoe-Kwadi",
       "average": 0.0,
@@ -5500,6 +5943,7 @@
     },
     {
       "language_name": "Ndzwani Comorian",
+      "autonym": "Ndzwani Comorian",
       "speakers": 287736,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5512,6 +5956,7 @@
     },
     {
       "language_name": "Kumyk",
+      "autonym": "Kumyk",
       "speakers": 283444,
       "family": "Turkic",
       "average": 0.0,
@@ -5524,6 +5969,7 @@
     },
     {
       "language_name": "Mundang",
+      "autonym": "Mundaŋ",
       "speakers": 277450,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5536,6 +5982,7 @@
     },
     {
       "language_name": "Mapuche",
+      "autonym": "Mapudungun",
       "speakers": 272802,
       "family": "Araucanian",
       "average": 0.0,
@@ -5548,6 +5995,7 @@
     },
     {
       "language_name": "Western Cham",
+      "autonym": "Western Cham",
       "speakers": 270832,
       "family": "Austronesian",
       "average": 0.0,
@@ -5560,6 +6008,7 @@
     },
     {
       "language_name": "Bislama",
+      "autonym": "Bislama",
       "speakers": 268500,
       "family": "Indo-European",
       "average": 0.0,
@@ -5572,6 +6021,7 @@
     },
     {
       "language_name": "Lü",
+      "autonym": "Lü",
       "speakers": 264864,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -5584,6 +6034,7 @@
     },
     {
       "language_name": "Tai Nüa",
+      "autonym": "Tai Nüa",
       "speakers": 264864,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -5596,6 +6047,7 @@
     },
     {
       "language_name": "Wadiyara Koli",
+      "autonym": "Wadiyara Koli",
       "speakers": 256851,
       "family": "Indo-European",
       "average": 0.0,
@@ -5608,6 +6060,7 @@
     },
     {
       "language_name": "Kachi Koli",
+      "autonym": "Kachi Koli",
       "speakers": 256851,
       "family": "Indo-European",
       "average": 0.0,
@@ -5620,6 +6073,7 @@
     },
     {
       "language_name": "Lezghian",
+      "autonym": "Lezghian",
       "speakers": 255100,
       "family": "Nakh-Daghestanian",
       "average": 0.0,
@@ -5632,6 +6086,7 @@
     },
     {
       "language_name": "Komi",
+      "autonym": "Komi",
       "speakers": 255100,
       "family": "Uralic",
       "average": 0.0,
@@ -5644,6 +6099,7 @@
     },
     {
       "language_name": "Samoan",
+      "autonym": "Samoan",
       "speakers": 252717,
       "family": "Austronesian",
       "average": 0.0,
@@ -5656,6 +6112,7 @@
     },
     {
       "language_name": "Western Magar",
+      "autonym": "Western Magar",
       "speakers": 251722,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -5668,6 +6125,7 @@
     },
     {
       "language_name": "Samburu",
+      "autonym": "Kisampur",
       "speakers": 246228,
       "family": "Nilotic",
       "average": 0.0,
@@ -5680,6 +6138,7 @@
     },
     {
       "language_name": "Crimean Tatar",
+      "autonym": "Crimean Tatar",
       "speakers": 245968,
       "family": "Turkic",
       "average": 0.0,
@@ -5692,6 +6151,7 @@
     },
     {
       "language_name": "Mandar",
+      "autonym": "Mandar",
       "speakers": 245664,
       "family": "Austronesian",
       "average": 0.0,
@@ -5704,6 +6164,7 @@
     },
     {
       "language_name": "Sangir",
+      "autonym": "Sangir",
       "speakers": 245664,
       "family": "Austronesian",
       "average": 0.0,
@@ -5716,6 +6177,7 @@
     },
     {
       "language_name": "Extremaduran",
+      "autonym": "Extremaduran",
       "speakers": 245077,
       "family": "Indo-European",
       "average": 0.0,
@@ -5728,6 +6190,7 @@
     },
     {
       "language_name": "Central Huasteca Nahuatl",
+      "autonym": "Central Huasteca Nahuatl",
       "speakers": 244435,
       "family": "Uto-Aztecan",
       "average": 0.0,
@@ -5740,6 +6203,7 @@
     },
     {
       "language_name": "Zeelandic",
+      "autonym": "Zeelandic",
       "speakers": 241926,
       "family": "Indo-European",
       "average": 0.0,
@@ -5752,6 +6216,7 @@
     },
     {
       "language_name": "Karachay-Balkar",
+      "autonym": "Karachay-Balkar",
       "speakers": 240927,
       "family": "Turkic",
       "average": 0.0,
@@ -5764,6 +6229,7 @@
     },
     {
       "language_name": "Colognian",
+      "autonym": "Kölsch",
       "speakers": 240479,
       "family": "Indo-European",
       "average": 0.0,
@@ -5776,6 +6242,7 @@
     },
     {
       "language_name": "Herero",
+      "autonym": "Herero",
       "speakers": 239336,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5788,6 +6255,7 @@
     },
     {
       "language_name": "Saafi-Saafi",
+      "autonym": "Saafi-Saafi",
       "speakers": 236046,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5800,6 +6268,7 @@
     },
     {
       "language_name": "Zaghawa",
+      "autonym": "Zaghawa",
       "speakers": 232364,
       "family": "Saharan",
       "average": 0.0,
@@ -5812,6 +6281,7 @@
     },
     {
       "language_name": "Ingush",
+      "autonym": "Ingush",
       "speakers": 226755,
       "family": "Nakh-Daghestanian",
       "average": 0.0,
@@ -5824,6 +6294,7 @@
     },
     {
       "language_name": "Saho",
+      "autonym": "Saho",
       "speakers": 218923,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -5836,6 +6307,7 @@
     },
     {
       "language_name": "Tomo Kan Dogon",
+      "autonym": "Tomo Kan Dogon",
       "speakers": 215087,
       "family": "Dogon",
       "average": 0.0,
@@ -5848,6 +6320,7 @@
     },
     {
       "language_name": "Papiamento",
+      "autonym": "Papiamentu",
       "speakers": 211640,
       "family": "Indo-European",
       "average": 0.0,
@@ -5860,6 +6333,7 @@
     },
     {
       "language_name": "Syriac",
+      "autonym": "ܣܘܪܝܝܐ",
       "speakers": 210659,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -5872,6 +6346,7 @@
     },
     {
       "language_name": "Nyasa Tonga",
+      "autonym": "Nyasa Tonga",
       "speakers": 207727,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5884,6 +6359,7 @@
     },
     {
       "language_name": "Mafa",
+      "autonym": "Mafa",
       "speakers": 205313,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -5896,6 +6372,7 @@
     },
     {
       "language_name": "Punu",
+      "autonym": "Punu",
       "speakers": 200782,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5908,6 +6385,7 @@
     },
     {
       "language_name": "Tyap",
+      "autonym": "Katab",
       "speakers": 199046,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5920,6 +6398,7 @@
     },
     {
       "language_name": "Xaasongaxango",
+      "autonym": "Xaasongaxango",
       "speakers": 195534,
       "family": "Mande",
       "average": 0.0,
@@ -5932,6 +6411,7 @@
     },
     {
       "language_name": "Tuvinian",
+      "autonym": "Tuvinian",
       "speakers": 184239,
       "family": "Turkic",
       "average": 0.0,
@@ -5944,6 +6424,7 @@
     },
     {
       "language_name": "Central Dusun",
+      "autonym": "Central Dusun",
       "speakers": 182852,
       "family": "Austronesian",
       "average": 0.0,
@@ -5956,6 +6437,7 @@
     },
     {
       "language_name": "Riang (India)",
+      "autonym": "Riang (India)",
       "speakers": 172392,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -5968,6 +6450,7 @@
     },
     {
       "language_name": "Comorian",
+      "autonym": "Comorian",
       "speakers": 170720,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5980,6 +6463,7 @@
     },
     {
       "language_name": "Bomu",
+      "autonym": "Bomu",
       "speakers": 168159,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -5992,6 +6476,7 @@
     },
     {
       "language_name": "Latgalian",
+      "autonym": "Latgalian",
       "speakers": 167429,
       "family": "Indo-European",
       "average": 0.0,
@@ -6004,6 +6489,7 @@
     },
     {
       "language_name": "Navajo",
+      "autonym": "Diné Bizaad",
       "speakers": 166320,
       "family": "Athabaskan-Eyak-Tlingit",
       "average": 0.0,
@@ -6016,6 +6502,7 @@
     },
     {
       "language_name": "Jenaama Bozo",
+      "autonym": "Jenaama Bozo",
       "speakers": 166204,
       "family": "Mande",
       "average": 0.0,
@@ -6028,6 +6515,7 @@
     },
     {
       "language_name": "Corsican",
+      "autonym": "Corsu",
       "speakers": 162836,
       "family": "Indo-European",
       "average": 0.0,
@@ -6040,6 +6528,7 @@
     },
     {
       "language_name": "Bafut",
+      "autonym": "Bafut",
       "speakers": 158146,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6052,6 +6541,7 @@
     },
     {
       "language_name": "Sherpa",
+      "autonym": "Sherpa",
       "speakers": 157705,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -6064,6 +6554,7 @@
     },
     {
       "language_name": "Kirmanjki",
+      "autonym": "Kirmanjki",
       "speakers": 155833,
       "family": "Indo-European",
       "average": 0.0,
@@ -6076,6 +6567,7 @@
     },
     {
       "language_name": "Hiri Motu",
+      "autonym": "Hiri Motu",
       "speakers": 152449,
       "family": "Pidgin",
       "average": 0.0,
@@ -6088,6 +6580,7 @@
     },
     {
       "language_name": "Kako",
+      "autonym": "Kakɔ",
       "speakers": 149823,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6100,6 +6593,7 @@
     },
     {
       "language_name": "Akoose",
+      "autonym": "Akoose",
       "speakers": 149823,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6112,6 +6606,7 @@
     },
     {
       "language_name": "Selayar",
+      "autonym": "Selayar",
       "speakers": 144194,
       "family": "Austronesian",
       "average": 0.0,
@@ -6124,6 +6619,7 @@
     },
     {
       "language_name": "Māori",
+      "autonym": "Māori",
       "speakers": 137913,
       "family": "Austronesian",
       "average": 0.0,
@@ -6136,6 +6632,7 @@
     },
     {
       "language_name": "Rajbanshi",
+      "autonym": "Rajbanshi",
       "speakers": 133443,
       "family": "Indo-European",
       "average": 0.0,
@@ -6148,6 +6645,7 @@
     },
     {
       "language_name": "Duala",
+      "autonym": "Duálá",
       "speakers": 133176,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6160,6 +6658,7 @@
     },
     {
       "language_name": "Wayuu",
+      "autonym": "Wayuu",
       "speakers": 132529,
       "family": "Arawakan",
       "average": 0.0,
@@ -6172,6 +6671,7 @@
     },
     {
       "language_name": "Vai",
+      "autonym": "ꕙꔤ",
       "speakers": 131906,
       "family": "Mande",
       "average": 0.0,
@@ -6184,6 +6684,7 @@
     },
     {
       "language_name": "Eastern Tamang",
+      "autonym": "Eastern Tamang",
       "speakers": 130410,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -6196,6 +6697,7 @@
     },
     {
       "language_name": "Metaʼ",
+      "autonym": "Metaʼ",
       "speakers": 130401,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6208,6 +6710,7 @@
     },
     {
       "language_name": "Pennsylvania German",
+      "autonym": "Pennsylvania German",
       "speakers": 129729,
       "family": "Indo-European",
       "average": 0.0,
@@ -6220,6 +6723,7 @@
     },
     {
       "language_name": "Rwa",
+      "autonym": "Kiruwa",
       "speakers": 128816,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6232,6 +6736,7 @@
     },
     {
       "language_name": "Torwali",
+      "autonym": "توروالی",
       "speakers": 123756,
       "family": "Indo-European",
       "average": 0.0,
@@ -6244,6 +6749,7 @@
     },
     {
       "language_name": "Mandjak",
+      "autonym": "Mandjak",
       "speakers": 121170,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6256,6 +6762,7 @@
     },
     {
       "language_name": "Tshangla",
+      "autonym": "Tshangla",
       "speakers": 117348,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -6268,6 +6775,7 @@
     },
     {
       "language_name": "Sangu",
+      "autonym": "Ishisangu",
       "speakers": 117106,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6280,6 +6788,7 @@
     },
     {
       "language_name": "Karelian",
+      "autonym": "Karelian",
       "speakers": 116212,
       "family": "Uralic",
       "average": 0.0,
@@ -6292,6 +6801,7 @@
     },
     {
       "language_name": "Ladino",
+      "autonym": "Ladino",
       "speakers": 112781,
       "family": "Indo-European",
       "average": 0.0,
@@ -6304,6 +6814,7 @@
     },
     {
       "language_name": "Ifè",
+      "autonym": "Ifè",
       "speakers": 111910,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6316,6 +6827,7 @@
     },
     {
       "language_name": "Gagauz",
+      "autonym": "Gagauz",
       "speakers": 111028,
       "family": "Turkic",
       "average": 0.0,
@@ -6328,6 +6840,7 @@
     },
     {
       "language_name": "Lak",
+      "autonym": "Lak",
       "speakers": 110543,
       "family": "Nakh-Daghestanian",
       "average": 0.0,
@@ -6340,6 +6853,7 @@
     },
     {
       "language_name": "Sassarese Sardinian",
+      "autonym": "Sassarese Sardinian",
       "speakers": 106085,
       "family": "Indo-European",
       "average": 0.0,
@@ -6352,6 +6866,7 @@
     },
     {
       "language_name": "Tongan",
+      "autonym": "Lea Fakatonga",
       "speakers": 100790,
       "family": "Austronesian",
       "average": 0.0,
@@ -6364,6 +6879,7 @@
     },
     {
       "language_name": "Balanta-Ganja",
+      "autonym": "Balanta-Ganja",
       "speakers": 95992,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6376,6 +6892,7 @@
     },
     {
       "language_name": "Ngomba",
+      "autonym": "Ndaꞌa",
       "speakers": 94333,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6388,6 +6905,7 @@
     },
     {
       "language_name": "Seselwa Creole French",
+      "autonym": "Seselwa Creole French",
       "speakers": 94061,
       "family": "Indo-European",
       "average": 0.0,
@@ -6400,6 +6918,7 @@
     },
     {
       "language_name": "Abkhazian",
+      "autonym": "Аԥсшәа",
       "speakers": 91953,
       "family": "Abkhaz-Adyge",
       "average": 0.0,
@@ -6412,6 +6931,7 @@
     },
     {
       "language_name": "Tahitian",
+      "autonym": "Tahitian",
       "speakers": 91488,
       "family": "Austronesian",
       "average": 0.0,
@@ -6424,6 +6944,7 @@
     },
     {
       "language_name": "Inuktitut",
+      "autonym": "Inuktitut",
       "speakers": 90466,
       "family": "Eskimo-Aleut",
       "average": 0.0,
@@ -6436,6 +6957,7 @@
     },
     {
       "language_name": "Plautdietsch",
+      "autonym": "Plautdietsch",
       "speakers": 90466,
       "family": "Indo-European",
       "average": 0.0,
@@ -6448,6 +6970,7 @@
     },
     {
       "language_name": "Bishnupriya",
+      "autonym": "Bishnupriya",
       "speakers": 90174,
       "family": "Indo-European",
       "average": 0.0,
@@ -6460,6 +6983,7 @@
     },
     {
       "language_name": "Bafia",
+      "autonym": "Rikpa",
       "speakers": 88784,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6472,6 +6996,7 @@
     },
     {
       "language_name": "Gurung",
+      "autonym": "Gurung",
       "speakers": 87951,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -6484,6 +7009,7 @@
     },
     {
       "language_name": "Eastern Cham",
+      "autonym": "Eastern Cham",
       "speakers": 87862,
       "family": "Austronesian",
       "average": 0.0,
@@ -6496,6 +7022,7 @@
     },
     {
       "language_name": "Western Lawa",
+      "autonym": "Western Lawa",
       "speakers": 87751,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -6508,6 +7035,7 @@
     },
     {
       "language_name": "Mankanya",
+      "autonym": "Mankanya",
       "speakers": 83151,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6520,6 +7048,7 @@
     },
     {
       "language_name": "Lepcha",
+      "autonym": "Lepcha",
       "speakers": 79743,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -6532,6 +7061,7 @@
     },
     {
       "language_name": "Blin",
+      "autonym": "Blin",
       "speakers": 79056,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -6544,6 +7074,7 @@
     },
     {
       "language_name": "Bateri",
+      "autonym": "Bateri",
       "speakers": 78843,
       "family": "Indo-European",
       "average": 0.0,
@@ -6556,6 +7087,7 @@
     },
     {
       "language_name": "Kathoriya Tharu",
+      "autonym": "Kathoriya Tharu",
       "speakers": 72787,
       "family": "Indo-European",
       "average": 0.0,
@@ -6568,6 +7100,7 @@
     },
     {
       "language_name": "Scottish Gaelic",
+      "autonym": "Gàidhlig",
       "speakers": 72337,
       "family": "Indo-European",
       "average": 0.0,
@@ -6580,6 +7113,7 @@
     },
     {
       "language_name": "Faroese",
+      "autonym": "Føroyskt",
       "speakers": 71351,
       "family": "Indo-European",
       "average": 0.0,
@@ -6592,6 +7126,7 @@
     },
     {
       "language_name": "Võro",
+      "autonym": "Võro",
       "speakers": 70031,
       "family": "Uralic",
       "average": 0.0,
@@ -6604,6 +7139,7 @@
     },
     {
       "language_name": "Kenyang",
+      "autonym": "Kɛnyaŋ",
       "speakers": 69362,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6616,6 +7152,7 @@
     },
     {
       "language_name": "Gilbertese",
+      "autonym": "Gilbertese",
       "speakers": 67078,
       "family": "Austronesian",
       "average": 0.0,
@@ -6628,6 +7165,7 @@
     },
     {
       "language_name": "Bube",
+      "autonym": "Bube",
       "speakers": 66058,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6640,6 +7178,7 @@
     },
     {
       "language_name": "Mentawai",
+      "autonym": "Mentawai",
       "speakers": 64086,
       "family": "Austronesian",
       "average": 0.0,
@@ -6652,6 +7191,7 @@
     },
     {
       "language_name": "Arpitan",
+      "autonym": "Arpitan",
       "speakers": 63777,
       "family": "Indo-European",
       "average": 0.0,
@@ -6664,6 +7204,7 @@
     },
     {
       "language_name": "Komi-Permyak",
+      "autonym": "Komi-Permyak",
       "speakers": 63775,
       "family": "Uralic",
       "average": 0.0,
@@ -6676,6 +7217,7 @@
     },
     {
       "language_name": "Koro",
+      "autonym": "Koro",
       "speakers": 63207,
       "family": "Mande",
       "average": 0.0,
@@ -6688,6 +7230,7 @@
     },
     {
       "language_name": "Marshallese",
+      "autonym": "Marshallese",
       "speakers": 56879,
       "family": "Austronesian",
       "average": 0.0,
@@ -6700,6 +7243,7 @@
     },
     {
       "language_name": "Tornedalen Finnish",
+      "autonym": "Tornedalen Finnish",
       "speakers": 56114,
       "family": "Uralic",
       "average": 0.0,
@@ -6712,6 +7256,7 @@
     },
     {
       "language_name": "Kalaallisut",
+      "autonym": "Kalaallisut",
       "speakers": 55440,
       "family": "Eskimo-Aleut",
       "average": 0.0,
@@ -6724,6 +7269,7 @@
     },
     {
       "language_name": "Braj",
+      "autonym": "Braj",
       "speakers": 54370,
       "family": "Indo-European",
       "average": 0.0,
@@ -6736,6 +7282,7 @@
     },
     {
       "language_name": "Guianese Creole French",
+      "autonym": "Guianese Creole French",
       "speakers": 51872,
       "family": "Indo-European",
       "average": 0.0,
@@ -6748,6 +7295,7 @@
     },
     {
       "language_name": "Northern Sami",
+      "autonym": "Davvisámegiella",
       "speakers": 51530,
       "family": "Uralic",
       "average": 0.0,
@@ -6760,6 +7308,7 @@
     },
     {
       "language_name": "Anii",
+      "autonym": "Anii Kagɩja",
       "speakers": 51507,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6772,6 +7321,7 @@
     },
     {
       "language_name": "Kaingang",
+      "autonym": "Kanhgág",
       "speakers": 50812,
       "family": "Nuclear-Macro-Je",
       "average": 0.0,
@@ -6784,6 +7334,7 @@
     },
     {
       "language_name": "Kashubian",
+      "autonym": "Kashubian",
       "speakers": 49767,
       "family": "Indo-European",
       "average": 0.0,
@@ -6796,6 +7347,7 @@
     },
     {
       "language_name": "Koro Wachi",
+      "autonym": "Koro Wachi",
       "speakers": 46718,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6808,6 +7360,7 @@
     },
     {
       "language_name": "Chamorro",
+      "autonym": "Chamorro",
       "speakers": 46325,
       "family": "Austronesian",
       "average": 0.0,
@@ -6820,6 +7373,7 @@
     },
     {
       "language_name": "Atsam",
+      "autonym": "Atsam",
       "speakers": 44946,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6832,6 +7386,7 @@
     },
     {
       "language_name": "Bushi",
+      "autonym": "Bushi",
       "speakers": 44620,
       "family": "Austronesian",
       "average": 0.0,
@@ -6844,6 +7399,7 @@
     },
     {
       "language_name": "Romansh",
+      "autonym": "Rumantsch",
       "speakers": 42020,
       "family": "Indo-European",
       "average": 0.0,
@@ -6856,6 +7412,7 @@
     },
     {
       "language_name": "Aghem",
+      "autonym": "Aghem",
       "speakers": 38843,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6868,6 +7425,7 @@
     },
     {
       "language_name": "Kuvi",
+      "autonym": "Kuvi",
       "speakers": 38457,
       "family": "Dravidian",
       "average": 0.0,
@@ -6880,6 +7438,7 @@
     },
     {
       "language_name": "Noon",
+      "autonym": "Noon",
       "speakers": 37767,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -6892,6 +7451,7 @@
     },
     {
       "language_name": "Friulian",
+      "autonym": "Furlan",
       "speakers": 37442,
       "family": "Indo-European",
       "average": 0.0,
@@ -6904,6 +7464,7 @@
     },
     {
       "language_name": "Thulung",
+      "autonym": "Thulung",
       "speakers": 36393,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -6916,6 +7477,7 @@
     },
     {
       "language_name": "Emilian",
+      "autonym": "Emilian",
       "speakers": 31201,
       "family": "Indo-European",
       "average": 0.0,
@@ -6928,6 +7490,7 @@
     },
     {
       "language_name": "Chuukese",
+      "autonym": "Chuukese",
       "speakers": 30731,
       "family": "Austronesian",
       "average": 0.0,
@@ -6940,6 +7503,7 @@
     },
     {
       "language_name": "Western Mari",
+      "autonym": "Western Mari",
       "speakers": 29762,
       "family": "Uralic",
       "average": 0.0,
@@ -6952,6 +7516,7 @@
     },
     {
       "language_name": "Hawaiian",
+      "autonym": "ʻŌlelo HawaiʻI",
       "speakers": 29605,
       "family": "Austronesian",
       "average": 0.0,
@@ -6964,6 +7529,7 @@
     },
     {
       "language_name": "Mru",
+      "autonym": "Mru",
       "speakers": 29277,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -6976,6 +7542,7 @@
     },
     {
       "language_name": "Cajun French",
+      "autonym": "Cajun French",
       "speakers": 27942,
       "family": "Indo-European",
       "average": 0.0,
@@ -6988,6 +7555,7 @@
     },
     {
       "language_name": "Nheengatu",
+      "autonym": "Nheẽgatu",
       "speakers": 26171,
       "family": "Tupian",
       "average": 0.0,
@@ -7000,6 +7568,7 @@
     },
     {
       "language_name": "Aragonese",
+      "autonym": "Aragonés",
       "speakers": 26008,
       "family": "Indo-European",
       "average": 0.0,
@@ -7012,6 +7581,7 @@
     },
     {
       "language_name": "Cherokee",
+      "autonym": "Ꮳꮃꭹ",
       "speakers": 25613,
       "family": "Iroquoian",
       "average": 0.0,
@@ -7024,6 +7594,7 @@
     },
     {
       "language_name": "Sinte Romani",
+      "autonym": "Sinte Romani",
       "speakers": 24372,
       "family": "Indo-European",
       "average": 0.0,
@@ -7036,6 +7607,7 @@
     },
     {
       "language_name": "Ojibwa",
+      "autonym": "Ojibwa",
       "speakers": 23747,
       "family": "Algic",
       "average": 0.0,
@@ -7048,6 +7620,7 @@
     },
     {
       "language_name": "Pohnpeian",
+      "autonym": "Pohnpeian",
       "speakers": 23560,
       "family": "Austronesian",
       "average": 0.0,
@@ -7060,6 +7633,7 @@
     },
     {
       "language_name": "Laz",
+      "autonym": "Laz",
       "speakers": 22965,
       "family": "Kartvelian",
       "average": 0.0,
@@ -7072,6 +7646,7 @@
     },
     {
       "language_name": "Muslim Tat",
+      "autonym": "Muslim Tat",
       "speakers": 22453,
       "family": "Indo-European",
       "average": 0.0,
@@ -7084,6 +7659,7 @@
     },
     {
       "language_name": "Central Yupik",
+      "autonym": "Central Yupik",
       "speakers": 20956,
       "family": "Eskimo-Aleut",
       "average": 0.0,
@@ -7096,6 +7672,7 @@
     },
     {
       "language_name": "Dakota",
+      "autonym": "Dakota",
       "speakers": 20832,
       "family": "Siouan",
       "average": 0.0,
@@ -7108,6 +7685,7 @@
     },
     {
       "language_name": "Southern Altai",
+      "autonym": "Southern Altai",
       "speakers": 19841,
       "family": "Turkic",
       "average": 0.0,
@@ -7120,6 +7698,7 @@
     },
     {
       "language_name": "Amo",
+      "autonym": "Amo",
       "speakers": 18620,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -7132,6 +7711,7 @@
     },
     {
       "language_name": "Guajajára",
+      "autonym": "Guajajára",
       "speakers": 17784,
       "family": "Tupian",
       "average": 0.0,
@@ -7144,6 +7724,7 @@
     },
     {
       "language_name": "Hanunoo",
+      "autonym": "Hanunoo",
       "speakers": 17469,
       "family": "Austronesian",
       "average": 0.0,
@@ -7156,6 +7737,7 @@
     },
     {
       "language_name": "Tsakhur",
+      "autonym": "Tsakhur",
       "speakers": 16329,
       "family": "Nakh-Daghestanian",
       "average": 0.0,
@@ -7168,6 +7750,7 @@
     },
     {
       "language_name": "Palauan",
+      "autonym": "Palauan",
       "speakers": 16047,
       "family": "Austronesian",
       "average": 0.0,
@@ -7180,6 +7763,7 @@
     },
     {
       "language_name": "Sanskrit",
+      "autonym": "संस्कृत भाषा",
       "speakers": 15913,
       "family": "Indo-European",
       "average": 0.0,
@@ -7192,6 +7776,7 @@
     },
     {
       "language_name": "Bassari",
+      "autonym": "Bassari",
       "speakers": 15264,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -7204,6 +7789,7 @@
     },
     {
       "language_name": "Oji-Cree",
+      "autonym": "Oji-Cree",
       "speakers": 15078,
       "family": "Algic",
       "average": 0.0,
@@ -7216,6 +7802,7 @@
     },
     {
       "language_name": "Khamti",
+      "autonym": "Khamti",
       "speakers": 13527,
       "family": "Tai-Kadai",
       "average": 0.0,
@@ -7228,6 +7815,7 @@
     },
     {
       "language_name": "Upper Sorbian",
+      "autonym": "Hornjoserbšćina",
       "speakers": 12826,
       "family": "Indo-European",
       "average": 0.0,
@@ -7240,6 +7828,7 @@
     },
     {
       "language_name": "Chipewyan",
+      "autonym": "Chipewyan",
       "speakers": 12816,
       "family": "Athabaskan-Eyak-Tlingit",
       "average": 0.0,
@@ -7252,6 +7841,7 @@
     },
     {
       "language_name": "Innu-aimun",
+      "autonym": "Innu-Aimun",
       "speakers": 12062,
       "family": "Algic",
       "average": 0.0,
@@ -7264,6 +7854,7 @@
     },
     {
       "language_name": "Lower Silesian",
+      "autonym": "Lower Silesian",
       "speakers": 11868,
       "family": "Indo-European",
       "average": 0.0,
@@ -7276,6 +7867,7 @@
     },
     {
       "language_name": "Walser",
+      "autonym": "Walser",
       "speakers": 11377,
       "family": "Indo-European",
       "average": 0.0,
@@ -7288,6 +7880,7 @@
     },
     {
       "language_name": "Choctaw",
+      "autonym": "Chahta",
       "speakers": 10977,
       "family": "Muskogean",
       "average": 0.0,
@@ -7300,6 +7893,7 @@
     },
     {
       "language_name": "Tagbanwa",
+      "autonym": "Tagbanwa",
       "speakers": 10045,
       "family": "Austronesian",
       "average": 0.0,
@@ -7312,6 +7906,7 @@
     },
     {
       "language_name": "Xavánte",
+      "autonym": "Xavánte",
       "speakers": 9951,
       "family": "Nuclear-Macro-Je",
       "average": 0.0,
@@ -7324,6 +7919,7 @@
     },
     {
       "language_name": "Tuvalu",
+      "autonym": "Tuvalu",
       "speakers": 9868,
       "family": "Austronesian",
       "average": 0.0,
@@ -7336,6 +7932,7 @@
     },
     {
       "language_name": "Northern Frisian",
+      "autonym": "Nordfriisk",
       "speakers": 9619,
       "family": "Indo-European",
       "average": 0.0,
@@ -7348,6 +7945,7 @@
     },
     {
       "language_name": "Roviana",
+      "autonym": "Roviana",
       "speakers": 9591,
       "family": "Austronesian",
       "average": 0.0,
@@ -7360,6 +7958,7 @@
     },
     {
       "language_name": "Wallisian",
+      "autonym": "Wallisian",
       "speakers": 9512,
       "family": "Austronesian",
       "average": 0.0,
@@ -7372,6 +7971,7 @@
     },
     {
       "language_name": "Tavringer Romani",
+      "autonym": "Tavringer Romani",
       "speakers": 9488,
       "family": "Speech Register",
       "average": 0.0,
@@ -7384,6 +7984,7 @@
     },
     {
       "language_name": "Cree",
+      "autonym": "Cree",
       "speakers": 9047,
       "family": "Algic",
       "average": 0.0,
@@ -7396,6 +7997,7 @@
     },
     {
       "language_name": "Kwasio",
+      "autonym": "Kwasio",
       "speakers": 8878,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -7408,6 +8010,7 @@
     },
     {
       "language_name": "Lakota",
+      "autonym": "LakȟólʼIyapi",
       "speakers": 8316,
       "family": "Siouan",
       "average": 0.0,
@@ -7420,6 +8023,7 @@
     },
     {
       "language_name": "Kosraean",
+      "autonym": "Kosraean",
       "speakers": 7990,
       "family": "Austronesian",
       "average": 0.0,
@@ -7432,6 +8036,7 @@
     },
     {
       "language_name": "Inupiaq",
+      "autonym": "Inupiaq",
       "speakers": 7983,
       "family": "Eskimo-Aleut",
       "average": 0.0,
@@ -7444,6 +8049,7 @@
     },
     {
       "language_name": "Zoroastrian Dari",
+      "autonym": "Zoroastrian Dari",
       "speakers": 7983,
       "family": "Indo-European",
       "average": 0.0,
@@ -7456,6 +8062,7 @@
     },
     {
       "language_name": "Tasawaq",
+      "autonym": "Tasawaq Senni",
       "speakers": 7970,
       "family": "Songhay",
       "average": 0.0,
@@ -7468,6 +8075,7 @@
     },
     {
       "language_name": "Buhid",
+      "autonym": "Buhid",
       "speakers": 7970,
       "family": "Austronesian",
       "average": 0.0,
@@ -7480,6 +8088,7 @@
     },
     {
       "language_name": "Mi'kmaw",
+      "autonym": "LʼNuiʼSuti",
       "speakers": 7916,
       "family": "Algic",
       "average": 0.0,
@@ -7492,6 +8101,7 @@
     },
     {
       "language_name": "Hassaniyya",
+      "autonym": "Hassaniyya",
       "speakers": 7239,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -7504,6 +8114,7 @@
     },
     {
       "language_name": "Lower Sorbian",
+      "autonym": "Dolnoserbšćina",
       "speakers": 6974,
       "family": "Indo-European",
       "average": 0.0,
@@ -7516,6 +8127,7 @@
     },
     {
       "language_name": "Nauru",
+      "autonym": "Nauru",
       "speakers": 6930,
       "family": "Austronesian",
       "average": 0.0,
@@ -7528,6 +8140,7 @@
     },
     {
       "language_name": "Eastern Lawa",
+      "autonym": "Eastern Lawa",
       "speakers": 6898,
       "family": "Austroasiatic",
       "average": 0.0,
@@ -7540,6 +8153,7 @@
     },
     {
       "language_name": "Yapese",
+      "autonym": "Yapese",
       "speakers": 6556,
       "family": "Austronesian",
       "average": 0.0,
@@ -7552,6 +8166,7 @@
     },
     {
       "language_name": "Atikamekw",
+      "autonym": "Atikamekw",
       "speakers": 6408,
       "family": "Algic",
       "average": 0.0,
@@ -7564,6 +8179,7 @@
     },
     {
       "language_name": "Piedmontese",
+      "autonym": "Piedmontese",
       "speakers": 6178,
       "family": "Indo-European",
       "average": 0.0,
@@ -7576,6 +8192,7 @@
     },
     {
       "language_name": "Kalo Finnish Romani",
+      "autonym": "Kalo Finnish Romani",
       "speakers": 5015,
       "family": "Indo-European",
       "average": 0.0,
@@ -7588,6 +8205,7 @@
     },
     {
       "language_name": "Siksiká",
+      "autonym": "Siksiká",
       "speakers": 4900,
       "family": "Algic",
       "average": 0.0,
@@ -7600,6 +8218,7 @@
     },
     {
       "language_name": "East Futuna",
+      "autonym": "East Futuna",
       "speakers": 4756,
       "family": "Austronesian",
       "average": 0.0,
@@ -7612,6 +8231,7 @@
     },
     {
       "language_name": "Taroko",
+      "autonym": "Patas Taroko",
       "speakers": 4721,
       "family": "Austronesian",
       "average": 0.0,
@@ -7624,6 +8244,7 @@
     },
     {
       "language_name": "Plains Cree",
+      "autonym": "Plains Cree",
       "speakers": 4146,
       "family": "Algic",
       "average": 0.0,
@@ -7636,6 +8257,7 @@
     },
     {
       "language_name": "Safaliba",
+      "autonym": "Safaliba",
       "speakers": 4108,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -7648,6 +8270,7 @@
     },
     {
       "language_name": "Muscogee",
+      "autonym": "Mvskoke",
       "speakers": 3992,
       "family": "Muskogean",
       "average": 0.0,
@@ -7660,6 +8283,7 @@
     },
     {
       "language_name": "Veps",
+      "autonym": "Veps",
       "speakers": 3543,
       "family": "Uralic",
       "average": 0.0,
@@ -7672,6 +8296,7 @@
     },
     {
       "language_name": "Ménik",
+      "autonym": "Ménik",
       "speakers": 3305,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -7684,6 +8309,7 @@
     },
     {
       "language_name": "Virgin Islands Creole English",
+      "autonym": "Virgin Islands Creole English",
       "speakers": 3113,
       "family": "Indo-European",
       "average": 0.0,
@@ -7696,6 +8322,7 @@
     },
     {
       "language_name": "Turoyo",
+      "autonym": "Turoyo",
       "speakers": 3035,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -7708,6 +8335,7 @@
     },
     {
       "language_name": "Ulithian",
+      "autonym": "Ulithian",
       "speakers": 2971,
       "family": "Austronesian",
       "average": 0.0,
@@ -7720,6 +8348,7 @@
     },
     {
       "language_name": "Rotuman",
+      "autonym": "Rotuman",
       "speakers": 2527,
       "family": "Austronesian",
       "average": 0.0,
@@ -7732,6 +8361,7 @@
     },
     {
       "language_name": "Warlpiri",
+      "autonym": "Warlpiri",
       "speakers": 2496,
       "family": "Pama-Nyungan",
       "average": 0.0,
@@ -7744,6 +8374,7 @@
     },
     {
       "language_name": "Yangben",
+      "autonym": "Nuasue",
       "speakers": 2303,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -7756,6 +8387,7 @@
     },
     {
       "language_name": "Slave",
+      "autonym": "Slave",
       "speakers": 2299,
       "family": "Athabaskan-Eyak-Tlingit",
       "average": 0.0,
@@ -7768,6 +8400,7 @@
     },
     {
       "language_name": "Dogrib",
+      "autonym": "Dogrib",
       "speakers": 2111,
       "family": "Athabaskan-Eyak-Tlingit",
       "average": 0.0,
@@ -7780,6 +8413,7 @@
     },
     {
       "language_name": "Eastern Frisian",
+      "autonym": "Eastern Frisian",
       "speakers": 2004,
       "family": "Indo-European",
       "average": 0.0,
@@ -7792,6 +8426,7 @@
     },
     {
       "language_name": "Cornish",
+      "autonym": "Kernewek",
       "speakers": 1973,
       "family": "Indo-European",
       "average": 0.0,
@@ -7804,6 +8439,7 @@
     },
     {
       "language_name": "Swampy Cree",
+      "autonym": "ᓀᐦᐃᓇᐍᐏᐣ",
       "speakers": 1809,
       "family": "Algic",
       "average": 0.0,
@@ -7816,6 +8452,7 @@
     },
     {
       "language_name": "Mohawk",
+      "autonym": "KanienʼKéha",
       "speakers": 1772,
       "family": "Iroquoian",
       "average": 0.0,
@@ -7828,6 +8465,7 @@
     },
     {
       "language_name": "Manx",
+      "autonym": "Gaelg",
       "speakers": 1719,
       "family": "Indo-European",
       "average": 0.0,
@@ -7840,6 +8478,7 @@
     },
     {
       "language_name": "Lule Sami",
+      "autonym": "Julevsámegiella",
       "speakers": 1530,
       "family": "Uralic",
       "average": 0.0,
@@ -7852,6 +8491,7 @@
     },
     {
       "language_name": "Naskapi",
+      "autonym": "Naskapi",
       "speakers": 1395,
       "family": "Algic",
       "average": 0.0,
@@ -7864,6 +8504,7 @@
     },
     {
       "language_name": "Tokelau",
+      "autonym": "Tokelau",
       "speakers": 1285,
       "family": "Austronesian",
       "average": 0.0,
@@ -7876,6 +8517,7 @@
     },
     {
       "language_name": "Niuean",
+      "autonym": "Niuean",
       "speakers": 1120,
       "family": "Austronesian",
       "average": 0.0,
@@ -7888,6 +8530,7 @@
     },
     {
       "language_name": "Saterland Frisian",
+      "autonym": "Saterland Frisian",
       "speakers": 962,
       "family": "Indo-European",
       "average": 0.0,
@@ -7900,6 +8543,7 @@
     },
     {
       "language_name": "Seri",
+      "autonym": "Seri",
       "speakers": 901,
       "family": null,
       "average": 0.0,
@@ -7912,6 +8556,7 @@
     },
     {
       "language_name": "Chilcotin",
+      "autonym": "Chilcotin",
       "speakers": 867,
       "family": "Athabaskan-Eyak-Tlingit",
       "average": 0.0,
@@ -7924,6 +8569,7 @@
     },
     {
       "language_name": "Latin",
+      "autonym": "Lingua Latina",
       "speakers": 820,
       "family": "Indo-European",
       "average": 0.0,
@@ -7936,6 +8582,7 @@
     },
     {
       "language_name": "Halkomelem",
+      "autonym": "Halkomelem",
       "speakers": 716,
       "family": "Salishan",
       "average": 0.0,
@@ -7948,6 +8595,7 @@
     },
     {
       "language_name": "Michif",
+      "autonym": "Michif",
       "speakers": 678,
       "family": "Algic",
       "average": 0.0,
@@ -7960,6 +8608,7 @@
     },
     {
       "language_name": "Skolt Sami",
+      "autonym": "SääʹMǩiõll",
       "speakers": 613,
       "family": "Uralic",
       "average": 0.0,
@@ -7972,6 +8621,7 @@
     },
     {
       "language_name": "Inari Sami",
+      "autonym": "Anarâškielâ",
       "speakers": 613,
       "family": "Uralic",
       "average": 0.0,
@@ -7984,6 +8634,7 @@
     },
     {
       "language_name": "Lillooet",
+      "autonym": "Lillooet",
       "speakers": 528,
       "family": "Salishan",
       "average": 0.0,
@@ -7996,6 +8647,7 @@
     },
     {
       "language_name": "Okanagan",
+      "autonym": "Okanagan",
       "speakers": 490,
       "family": "Salishan",
       "average": 0.0,
@@ -8008,6 +8660,7 @@
     },
     {
       "language_name": "Maliseet-Passamaquoddy",
+      "autonym": "Maliseet-Passamaquoddy",
       "speakers": 490,
       "family": "Algic",
       "average": 0.0,
@@ -8020,6 +8673,7 @@
     },
     {
       "language_name": "Kwakʼwala",
+      "autonym": "KwakʼWala",
       "speakers": 377,
       "family": "Wakashan",
       "average": 0.0,
@@ -8032,6 +8686,7 @@
     },
     {
       "language_name": "Northern East Cree",
+      "autonym": "Northern East Cree",
       "speakers": 377,
       "family": "Algic",
       "average": 0.0,
@@ -8044,6 +8699,7 @@
     },
     {
       "language_name": "Gwichʼin",
+      "autonym": "GwichʼIn",
       "speakers": 302,
       "family": "Athabaskan-Eyak-Tlingit",
       "average": 0.0,
@@ -8056,6 +8712,7 @@
     },
     {
       "language_name": "Esperanto",
+      "autonym": "Esperanto",
       "speakers": 301,
       "family": "Artificial Language",
       "average": 0.0,
@@ -8068,6 +8725,7 @@
     },
     {
       "language_name": "Southern Sami",
+      "autonym": "Åarjelsaemien Gïele",
       "speakers": 296,
       "family": "Uralic",
       "average": 0.0,
@@ -8080,6 +8738,7 @@
     },
     {
       "language_name": "Tsakonian",
+      "autonym": "Tsakonian",
       "speakers": 202,
       "family": "Indo-European",
       "average": 0.0,
@@ -8092,6 +8751,7 @@
     },
     {
       "language_name": "Ingrian",
+      "autonym": "Ingrian",
       "speakers": 142,
       "family": "Uralic",
       "average": 0.0,
@@ -8104,6 +8764,7 @@
     },
     {
       "language_name": "Interlingua",
+      "autonym": "Interlingua",
       "speakers": 136,
       "family": "Artificial Language",
       "average": 0.0,
@@ -8116,6 +8777,7 @@
     },
     {
       "language_name": "Araona",
+      "autonym": "Araona",
       "speakers": 105,
       "family": "Pano-Tacanan",
       "average": 0.0,
@@ -8128,6 +8790,7 @@
     },
     {
       "language_name": "Prussian",
+      "autonym": "Prūsiskan",
       "speakers": 38,
       "family": "Indo-European",
       "average": 0.0,
@@ -8140,6 +8803,7 @@
     },
     {
       "language_name": "Interlingue",
+      "autonym": "Interlingue",
       "speakers": 1,
       "family": "Artificial Language",
       "average": 0.0,
@@ -8152,6 +8816,7 @@
     },
     {
       "language_name": "Literary Chinese",
+      "autonym": "Literary Chinese",
       "speakers": 0,
       "family": "Sino-Tibetan",
       "average": 0.0,
@@ -8164,6 +8829,7 @@
     },
     {
       "language_name": "Ido",
+      "autonym": "Ido",
       "speakers": 0,
       "family": "Artificial Language",
       "average": 0.0,
@@ -8176,6 +8842,7 @@
     },
     {
       "language_name": "Lojban",
+      "autonym": "La .Lojban.",
       "speakers": 0,
       "family": "Artificial Language",
       "average": 0.0,
@@ -8188,6 +8855,7 @@
     },
     {
       "language_name": "Jutish",
+      "autonym": "Jutish",
       "speakers": 0,
       "family": "Indo-European",
       "average": 0.0,
@@ -8200,6 +8868,7 @@
     },
     {
       "language_name": "Votic",
+      "autonym": "Votic",
       "speakers": 0,
       "family": "Uralic",
       "average": 0.0,
@@ -8212,6 +8881,7 @@
     },
     {
       "language_name": "Geez",
+      "autonym": "Geez",
       "speakers": 0,
       "family": "Afro-Asiatic",
       "average": 0.0,
@@ -8224,6 +8894,7 @@
     },
     {
       "language_name": "Osage",
+      "autonym": "𐓏𐓘𐓻𐓘𐓻𐓟",
       "speakers": 0,
       "family": "Siouan",
       "average": 0.0,
@@ -8236,6 +8907,7 @@
     },
     {
       "language_name": "Romagnol",
+      "autonym": "Romagnol",
       "speakers": 0,
       "family": "Indo-European",
       "average": 0.0,
@@ -8248,6 +8920,7 @@
     },
     {
       "language_name": "Church Slavic",
+      "autonym": "Church Slavic",
       "speakers": 0,
       "family": "Indo-European",
       "average": 0.0,
@@ -8260,6 +8933,7 @@
     },
     {
       "language_name": "Samogitian",
+      "autonym": "Samogitian",
       "speakers": 0,
       "family": "Indo-European",
       "average": 0.0,
@@ -8272,6 +8946,7 @@
     },
     {
       "language_name": "Obolo",
+      "autonym": "Obolo",
       "speakers": 0,
       "family": "Atlantic-Congo",
       "average": 0.0,
@@ -8284,6 +8959,7 @@
     },
     {
       "language_name": "Chickasaw",
+      "autonym": "Chikashshanompaʼ",
       "speakers": 0,
       "family": "Muskogean",
       "average": 0.0,
@@ -8296,6 +8972,7 @@
     },
     {
       "language_name": "Caddo",
+      "autonym": "Caddo",
       "speakers": 0,
       "family": "Caddoan",
       "average": 0.0,
@@ -8308,6 +8985,7 @@
     },
     {
       "language_name": "Palatine German",
+      "autonym": "Palatine German",
       "speakers": 0,
       "family": "Indo-European",
       "average": 0.0,

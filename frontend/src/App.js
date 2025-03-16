@@ -33,9 +33,9 @@ function App () {
 
   useEffect(() => {
     if (data) {
-      const models = data.model_table.map(item => ({ type: 'Model', value: item.model, searchText: item.provider.toLowerCase() + ' ' + item.model.toLowerCase() }))
-      const languages = data.language_table.map(item => ({ type: 'Language', value: item.language_name, searchText: item.language_name.toLowerCase() }))
-      const datasets = data.dataset_table.map(item => ({ type: 'Dataset', value: item.name, searchText: item.author.toLowerCase() + ' ' + item.name.toLowerCase() + ' ' + item.tasks.map(task => task.toLowerCase()).join(' ') }))
+      const models = data.model_table.map(item => ({ type: 'Model', value: item.model, detail: item.provider, searchText: item.provider.toLowerCase() + ' ' + item.model.toLowerCase() }))
+      const languages = data.language_table.map(item => ({ type: 'Language', value: item.autonym, detail: item.language_name, searchText: item.language_name.toLowerCase() + ' ' + item.autonym.toLowerCase() }))
+      const datasets = data.dataset_table.map(item => ({ type: 'Dataset', value: item.name, detail: item.tasks, searchText: item.author.toLowerCase() + ' ' + item.name.toLowerCase() + ' ' + item.tasks.map(task => task.toLowerCase()).join(' ') }))
       const allSuggestions = [...models, ...languages, ...datasets]
       setAllSuggestions(allSuggestions)
     }

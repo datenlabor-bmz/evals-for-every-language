@@ -13,16 +13,26 @@ const AutoComplete = ({ allSuggestions, onComplete }) => {
   }
 
   const itemTemplate = item => {
+    let detail
+    if (item.type === "Dataset") {
+        detail = <span>
+            {item.detail.map(task => <span key={task} style={{ color: "gray", marginLeft: '1rem', backgroundColor: 'lightgray', padding: '0.2rem', borderRadius: '0.2rem' }}>{task}</span>)}
+        </span>
+    } else if (item.detail) {
+        detail = <span style={{ color: 'gray', marginLeft: '1rem' }}>{item.detail}</span>
+    } else {
+        detail = null
+    }
     return (
       <div
         style={{
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
         }}
       >
-        <div>{item.value}</div>
-        <div style={{ color: 'gray' }}>{item.type}</div>
+        <span>{item.value}{detail}</span>
+        <span style={{ color: 'gray' }}>{item.type}</span>
       </div>
     )
   }
