@@ -99,7 +99,7 @@ const LanguageTable = ({ data }) => {
 
   const speakerBodyTemplate = rowData => {
     const populationStr = formatPopulation(rowData.speakers)
-    return <div>{populationStr}</div>
+    return <div style={{ textAlign: 'right' }}>{populationStr}</div>
   }
 
   const languageBodyTemplate = rowData => {
@@ -131,8 +131,6 @@ const LanguageTable = ({ data }) => {
         field='language_name'
         header='Language'
         body={languageBodyTemplate}
-        filter
-        showFilterMatchModes={false}
         style={{ minWidth: '5rem' }}
         frozen
       />
@@ -143,6 +141,7 @@ const LanguageTable = ({ data }) => {
         filter
         filterElement={speakerFilterTemplate}
         showFilterMatchModes={false}
+        sortable
         style={{ minWidth: '5rem' }}
       />
       <Column

@@ -67,7 +67,8 @@ function App () {
               alignItems: 'center',
               width: '100%',
               height: '100%',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              paddingBottom: '5vh'
             }}
           >
             <div

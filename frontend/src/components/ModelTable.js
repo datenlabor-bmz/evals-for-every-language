@@ -19,23 +19,6 @@ const ModelTable = ({ data }) => {
     return <Medal rank={rowData.rank} />
   }
 
-  const providers = [...new Set(table.map(item => item.provider))]
-  const providerRowFilterTemplate = options => {
-    return (
-      <MultiSelect
-        value={options.value}
-        options={providers}
-        onChange={e => {
-          options.filterApplyCallback(e.value)
-          setFilters(prevFilters => ({
-            ...prevFilters,
-            provider: { value: e.value, matchMode: FilterMatchMode.IN }
-          }))
-        }}
-        placeholder='All providers'
-      />
-    )
-  }
   const typeRowFilterTemplate = options => {
     return (
       <MultiSelect
@@ -120,7 +103,7 @@ const ModelTable = ({ data }) => {
 
   const sizeBodyTemplate = rowData => {
     const sizeStr = formatSize(rowData.size)
-    return <div>{sizeStr}</div>
+    return <div style={{ textAlign: 'right' }}>{sizeStr}</div>
   }
 
   const modelBodyTemplate = rowData => {
@@ -152,16 +135,11 @@ const ModelTable = ({ data }) => {
       <Column
         field='provider'
         header='Provider'
-        filter
-        filterElement={providerRowFilterTemplate}
-        showFilterMatchModes={false}
         style={{ minWidth: '5rem' }}
       />
       <Column
         field='model'
         header='Model'
-        filter
-        showFilterMatchModes={false}
         style={{ minWidth: '10rem' }}
         body={modelBodyTemplate}
         frozen
