@@ -83,7 +83,7 @@ function App () {
               paddingBottom: '5vh'
             }}
           >
-        {loading && <p>...</p>}
+        {loading && <i className='pi pi-spinner pi-spin' style={{ fontSize: '4rem' }} />}
         {error && <p>Error: {error}</p>}
         {data && (
           <>
