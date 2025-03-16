@@ -1,4 +1,3 @@
-import './App.css'
 import { useState, useEffect } from 'react'
 import { PrimeReactProvider } from 'primereact/api'
 import 'primereact/resources/themes/lara-light-cyan/theme.css'
@@ -29,36 +28,75 @@ function App () {
   }, [])
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <div className='emoji-container'>
+    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <header
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '5vh 0'
+        }}
+      >
+        <div>
           <span
             role='img'
-            aria-label='Hugging Face Emoji'
-            className='header-emoji'
+            aria-label='Globe Emoji'
+            style={{ fontSize: '70px' }}
           >
             🌍
           </span>
         </div>
-        <h1>Global AI Language Monitor</h1>
-        <p>Tracking language proficiency of AI models for every language</p>
-
-        <div className='data-container' style={{ width: '100%' }}>
-          <PrimeReactProvider>
-            {loading && <p>...</p>}
-            {error && <p>Error: {error}</p>}
-            {data && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', width: '100%' }}>
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
-                  <ModelTable data={data} />
-                  <LanguageTable data={data} />
-                </div>
-                <DatasetTable data={data} />
-              </div>
-            )}
-          </PrimeReactProvider>
-        </div>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '700' }}>
+          Global AI Language Monitor
+        </h1>
+        <p style={{ fontSize: '1.15rem', color: '#555', marginTop: '0' }}>
+          Tracking language proficiency of AI models for every language
+        </p>
       </header>
+      <PrimeReactProvider>
+        {loading && <p>...</p>}
+        {error && <p>Error: {error}</p>}
+        {data && (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              gap: '2rem',
+              alignItems: 'center',
+              width: '100%',
+              height: '100%',
+              justifyContent: 'center'
+            }}
+          >
+            <div
+              style={{
+                flex: '60vw 100vw 40vw',
+                maxWidth: 'min(100vw, 800px)',
+              }}
+            >
+              <ModelTable data={data} />
+            </div>
+            <div
+              style={{
+                flex: '60vw 100vw 40vw',
+                maxWidth: 'min(100vw, 800px)'
+              }}
+            >
+              <LanguageTable data={data} />
+            </div>
+            <div
+              style={{
+                flex: '60vw 100vw 40vw',
+                maxWidth: 'min(100vw, 800px)'
+              }}
+            >
+              <DatasetTable data={data} />
+            </div>
+          </div>
+        )}
+      </PrimeReactProvider>
     </div>
   )
 }

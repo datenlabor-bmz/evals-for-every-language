@@ -124,8 +124,8 @@ const LanguageTable = ({ data }) => {
       filters={filters}
       filterDisplay='menu'
       scrollable
-      scrollHeight='500px'
-      style={{ minWidth: '200px' }}
+      scrollHeight='600px'
+      id='language-table'
     >
       <Column
         field='language_name'

@@ -5,9 +5,54 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 10pt;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+.p-datatable-wrapper {
+  scrollbar-color: #f0f0f0 rgba(0, 0, 0, 0);
+}
+
+#model-table {
+  border: 3px solid #5151ff;
+  border-radius: 10px;
+}
+
+#model-table .p-datatable-header {
+  border-top-width: 0px;
+  border-radius: 5px 5px 0 0;
+  background: linear-gradient(to bottom, #5151ff, #0000cd);
+  color: white;
+}
+
+#language-table {
+  border: 3px solid #00aa00;
+  border-radius: 10px;
+}
+
+#language-table .p-datatable-header {
+  border-top-width: 0px;
+  border-radius: 5px 5px 0 0;
+  background: linear-gradient(to bottom, #17b417, #008000);
+  color: white;
+}
+
+#dataset-table {
+  border: 3px solid #ffaa00;
+  border-radius: 10px;
+}
+
+#dataset-table .p-datatable-header {
+  border-top-width: 0px;
+  border-radius: 5px 5px 0 0;
+  background: linear-gradient(to bottom, #ffaa00, #ff8000);
+  color: white;
 }

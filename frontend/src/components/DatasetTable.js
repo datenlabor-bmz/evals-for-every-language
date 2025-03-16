@@ -28,8 +28,8 @@ const DatasetTable = ({ data }) => {
       filters={filters}
       filterDisplay='menu'
       scrollable
-      scrollHeight='500px'
-      style={{ minWidth: '200px', width: "50%" }}
+      scrollHeight='600px'
+      id='dataset-table'
     >
       {/* <Column
         field='implemented'
