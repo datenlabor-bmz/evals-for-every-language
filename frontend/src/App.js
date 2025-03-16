@@ -4,10 +4,14 @@ import 'primereact/resources/themes/lara-light-cyan/theme.css'
 import ModelTable from './components/ModelTable'
 import LanguageTable from './components/LanguageTable'
 import DatasetTable from './components/DatasetTable'
+import AutoComplete from './components/AutoComplete'
+
 function App () {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [allSuggestions, setAllSuggestions] = useState([])
+  const [filters, setFilters] = useState([])
 
   useEffect(() => {
     fetch('/results.json')
@@ -27,7 +31,18 @@ function App () {
       })
   }, [])
 
+  useEffect(() => {
+    if (data) {
+      const models = data.model_table.map(item => ({ type: 'Model', value: item.model, searchText: item.provider.toLowerCase() + ' ' + item.model.toLowerCase() }))
+      const languages = data.language_table.map(item => ({ type: 'Language', value: item.language_name, searchText: item.language_name.toLowerCase() }))
+      const datasets = data.dataset_table.map(item => ({ type: 'Dataset', value: item.name, searchText: item.author.toLowerCase() + ' ' + item.name.toLowerCase() + ' ' + item.tasks.map(task => task.toLowerCase()).join(' ') }))
+      const allSuggestions = [...models, ...languages, ...datasets]
+      setAllSuggestions(allSuggestions)
+    }
+  }, [data])
+
   return (
+    <PrimeReactProvider>
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <header
         style={{
@@ -53,12 +68,9 @@ function App () {
         <p style={{ fontSize: '1.15rem', color: '#555', marginTop: '0' }}>
           Tracking language proficiency of AI models for every language
         </p>
+        <AutoComplete allSuggestions={allSuggestions} onComplete={item => setFilters(prevFilters => [item])} />
       </header>
-      <PrimeReactProvider>
-        {loading && <p>...</p>}
-        {error && <p>Error: {error}</p>}
-        {data && (
-          <div
+      <main
             style={{
               display: 'flex',
               flexDirection: 'row',
@@ -71,6 +83,10 @@ function App () {
               paddingBottom: '5vh'
             }}
           >
+        {loading && <p>...</p>}
+        {error && <p>Error: {error}</p>}
+        {data && (
+          <>
             <div
               style={{
                 flex: '60vw 100vw 40vw',
@@ -95,10 +111,11 @@ function App () {
             >
               <DatasetTable data={data} />
             </div>
-          </div>
+            </>
         )}
-      </PrimeReactProvider>
+      </main>
     </div>
+    </PrimeReactProvider>
   )
 }
 

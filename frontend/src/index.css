@@ -57,3 +57,11 @@ html, body, #root {
   background: linear-gradient(to bottom, #ffaa00, #ff8000);
   color: white;
 }
+
+.p-autocomplete-input {
+  width: max(100%, 40vw);
+  margin-top: 2vh;
+  border-radius: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 3px 3px 1px 0px rgba(0, 0, 0, 0.2);;
+}
