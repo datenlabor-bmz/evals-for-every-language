@@ -43,6 +43,12 @@ const DatasetTable = ({ data }) => {
     return <a href={rowData.url} target='_blank' style={{ textDecoration: 'none', color: 'inherit' }}><i className='pi pi-external-link' style={{ fontSize: '0.8rem' }} /></a>
   }
 
+  const nLanguagesBodyTemplate = rowData => {
+    return <div style={{ textAlign: 'center' }}>
+      {rowData.n_languages}
+    </div>
+  }
+
   const tasks = [...new Set(table.flatMap(item => item.tasks))].sort()
   const tasksRowFilterTemplate = options => {
     return (
@@ -61,7 +67,6 @@ const DatasetTable = ({ data }) => {
     )
   }
 
-  console.log(table)
   return (
     <DataTable
       value={table}
@@ -115,6 +120,7 @@ const DatasetTable = ({ data }) => {
         filter
         sortable
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
+        body={nLanguagesBodyTemplate}
       />
     </DataTable>
   )

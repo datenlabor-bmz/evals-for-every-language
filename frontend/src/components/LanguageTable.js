@@ -14,7 +14,8 @@ const LanguageTable = ({ data }) => {
   })
   const table = data.language_table
 
-  const families = [...new Set(table.map(item => item.family))]
+  const families = [...new Set(table.map(item => item.family))].slice(0, 10)
+  families.push("Other")
   const familyRowFilterTemplate = options => {
     return (
       <MultiSelect
@@ -37,10 +38,14 @@ const LanguageTable = ({ data }) => {
       return ''
     } else if (population < 1000) {
       return population.toFixed(0) + ''
-    } else if (population < 1000 * 1000) {
+    } else if (population < 10 * 1000) {
       return (population / 1000).toFixed(1) + 'K'
-    } else if (population < 1000 * 1000 * 1000) {
+    } else if (population < 1000 * 1000) {
+      return (population / 1000).toFixed(0) + 'K'
+    } else if (population < 10 * 1000 * 1000) {
       return (population / 1000 / 1000).toFixed(1) + 'M'
+    }else if (population < 1000 * 1000 * 1000) {
+      return (population / 1000 / 1000).toFixed(0) + 'M'
     } else {
       return (population / 1000 / 1000 / 1000).toFixed(1) + 'B'
     }
@@ -48,8 +53,8 @@ const LanguageTable = ({ data }) => {
 
   const SliderWithLabel = ({ value, onChange }) => {
     const p = 10
-    const min = 2
-    const max = 12
+    const min = 4
+    const max = 9.3
     const start = value === null ? min : Math.log(value[0]) / Math.log(p)
     const stop = value === null ? max : Math.log(value[1]) / Math.log(p)
     const [_value, _setValue] = useState([start, stop])
@@ -99,7 +104,7 @@ const LanguageTable = ({ data }) => {
 
   const speakerBodyTemplate = rowData => {
     const populationStr = formatPopulation(rowData.speakers)
-    return <div style={{ textAlign: 'right' }}>{populationStr}</div>
+    return <div style={{ textAlign: 'center' }}>{populationStr}</div>
   }
 
   const languageBodyTemplate = rowData => {
@@ -136,7 +141,7 @@ const LanguageTable = ({ data }) => {
       />
       <Column
         field='speakers'
-        header='Speakers'
+        header={<i className='pi pi-users' title='Speakers' />}
         body={speakerBodyTemplate}
         filter
         filterElement={speakerFilterTemplate}

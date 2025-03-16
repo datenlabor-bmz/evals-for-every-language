@@ -103,11 +103,21 @@ const ModelTable = ({ data }) => {
 
   const sizeBodyTemplate = rowData => {
     const sizeStr = formatSize(rowData.size)
-    return <div style={{ textAlign: 'right' }}>{sizeStr}</div>
+    return <div style={{ textAlign: 'center' }}>{sizeStr}</div>
   }
 
   const modelBodyTemplate = rowData => {
-    return <div style={{ fontWeight: 'bold', height: '100%' }}>{rowData.model}</div>
+    return (
+      <div style={{ fontWeight: 'bold', height: '100%' }}>{rowData.model}</div>
+    )
+  }
+
+  const typeBodyTemplate = rowData => {
+    return rowData.type === 'Open' ? (
+      <i className='pi pi-lock-open' title='Open weights' />
+    ) : (
+      <i className='pi pi-lock' title='API only' />
+    )
   }
 
   const scoreBodyTemplate = (field, options = {}) => {
@@ -132,11 +142,7 @@ const ModelTable = ({ data }) => {
       id='model-table'
     >
       <Column field='rank' body={rankBodyTemplate} />
-      <Column
-        field='provider'
-        header='Provider'
-        style={{ minWidth: '5rem' }}
-      />
+      <Column field='provider' header='Provider' style={{ minWidth: '5rem' }} />
       <Column
         field='model'
         header='Model'
@@ -146,15 +152,15 @@ const ModelTable = ({ data }) => {
       />
       <Column
         field='type'
-        header='Type'
+        header={<i className='pi pi-unlock' title='Open weights / API only' />}
         filter
         filterElement={typeRowFilterTemplate}
         showFilterMatchModes={false}
-        style={{ minWidth: '10rem' }}
+        body={typeBodyTemplate}
       />
       <Column
         field='size'
-        header='Size'
+        header={null}
         filter
         filterElement={sizeFilterTemplate}
         showFilterMatchModes={false}
