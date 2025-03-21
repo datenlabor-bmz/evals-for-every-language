@@ -3,11 +3,12 @@ import json
 
 import numpy as np
 import pandas as pd
-from rich import print
-from tqdm.asyncio import tqdm_asyncio
+from countries import make_country_table
 from languages import languages
+from models import model_fast, models
+from rich import print
 from tasks import tasks
-from models import models, model_fast
+from tqdm.asyncio import tqdm_asyncio
 
 # ===== config =====
 
@@ -91,7 +92,20 @@ def make_model_table(df):
     df["provider"] = df["model"].str.split("/").str[0].apply(fmt_name)
     df["model"] = df["model"].str.split("/").str[1].apply(fmt_name)
     df["rank"] = df.index + 1
-    df = df[["rank", "provider", "model", "hf_id", "creation_date", "size", "type", "license", "average", *task_metrics]]
+    df = df[
+        [
+            "rank",
+            "provider",
+            "model",
+            "hf_id",
+            "creation_date",
+            "size",
+            "type",
+            "license",
+            "average",
+            *task_metrics,
+        ]
+    ]
     return df
 
 
@@ -99,14 +113,30 @@ def make_language_table(df):
     df["task_metric"] = df["task"] + "_" + df["metric"]
     df = df.drop(columns=["task", "metric"])
     task_metrics = df["task_metric"].unique()
-    df = df.pivot(index="bcp_47", columns="task_metric", values="score").fillna(0).reset_index()
+    df = (
+        df.pivot(index="bcp_47", columns="task_metric", values="score")
+        .fillna(0)
+        .reset_index()
+    )
     df["average"] = df[task_metrics].mean(axis=1)
     for row in [*task_metrics, "average"]:
         df[row] = df[row].round(2)
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
-    df = df[["language_name", "autonym", "speakers", "family", "average", "in_benchmark", *task_metrics]]
+    df = df[
+        [
+            "bcp_47",
+            "language_name",
+            "autonym",
+            "speakers",
+            "family",
+            "average",
+            "in_benchmark",
+            *task_metrics,
+        ]
+    ]
     return df
+
 
 async def main():
     results = await evaluate()
@@ -121,10 +151,12 @@ async def main():
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 
     datasets_df = pd.read_json("data/datasets.json")
+    language_table = make_language_table(lang_results)
     all_tables = {
         "model_table": serialize(make_model_table(model_results)),
-        "language_table": serialize(make_language_table(lang_results)),
+        "language_table": serialize(language_table),
         "dataset_table": serialize(datasets_df),
+        "countries": make_country_table(language_table),
     }
     with open("frontend/public/results.json", "w") as f:
         json.dump(all_tables, f, indent=2, ensure_ascii=False)

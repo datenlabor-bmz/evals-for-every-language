@@ -46,15 +46,6 @@ scripts = pd.read_csv("data/ScriptCodes.csv").rename(
     columns={"Code": "iso15924", "English Name": "script_name"}
 )
 
-
-def population(bcp_47):
-    items = {
-        re.sub(r"^[a-z]+-", "", lang): pop
-        for lang, pop in LANGUAGE_SPEAKING_POPULATION.items()
-        if re.match(rf"^{bcp_47}-[A-Z]{{2}}$", lang)
-    }
-    return items
-
 def script_name(iso15924):
     return scripts[scripts["iso15924"] == iso15924]["script_name"].values[0]
 
