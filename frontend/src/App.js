@@ -4,6 +4,7 @@ import 'primereact/resources/themes/lara-light-cyan/theme.css'
 import ModelTable from './components/ModelTable'
 import LanguageTable from './components/LanguageTable'
 import DatasetTable from './components/DatasetTable'
+import WorldMap from './components/WorldMap'
 import AutoComplete from './components/AutoComplete'
 
 function App () {
@@ -12,7 +13,7 @@ function App () {
   const [error, setError] = useState(null)
   const [allSuggestions, setAllSuggestions] = useState([])
   const [filters, setFilters] = useState([])
-
+  const [topology, setTopology] = useState(null)
   useEffect(() => {
     fetch('/results.json')
       .then(response => {
@@ -31,6 +32,22 @@ function App () {
       })
   }, [])
 
+  useEffect(() => {
+    fetch('/countries.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
+      .then(jsonData => {
+        setTopology(jsonData)
+      })
+      .catch(err => {
+        setError(err.message)
+        setLoading(false)
+      })
+  }, [])
   useEffect(() => {
     if (data) {
       const models = data.model_table.map(item => ({ type: 'Model', value: item.model, detail: item.provider, searchText: item.provider.toLowerCase() + ' ' + item.model.toLowerCase() }))
@@ -87,6 +104,17 @@ function App () {
         {error && <p>Error: {error}</p>}
         {data && (
           <>
+            <div
+              style={{
+                flex: '100vw 100vw 100vw',
+                maxWidth: 'min(100vw, 900px)',
+                marginBottom: '2rem'
+              }}
+            >
+              <div id='figure'>
+                <WorldMap data={data} topology={topology} />
+              </div>
+            </div>
             <div
               style={{
                 flex: '60vw 100vw 40vw',
