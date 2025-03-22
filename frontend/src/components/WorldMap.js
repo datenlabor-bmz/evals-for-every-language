@@ -1,58 +1,45 @@
-import { useRef, useEffect } from 'react';
-import * as d3 from 'd3';
-import { feature } from 'topojson-client';
+import { useRef, useEffect, useState } from 'react'
+import * as topojson from 'topojson-client'
+import * as Plot from '@observablehq/plot'
 
-const WorldMap = ({ data, topology }) => {
-  const svgRef = useRef(null);
+const WorldMap = () => {
+  const containerRef = useRef()
+  const [data, setData] = useState()
 
   useEffect(() => {
-    const createMap = async () => {
-      // Clear any existing SVG content
-      d3.select(svgRef.current).selectAll("*").remove();
-      
-      // Set dimensions
-      const width = 800;
-      const height = 450;
-      
-      // Create SVG
-      const svg = d3.select(svgRef.current)
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "max-width: 100%; height: auto;");
-        
-      // Create a projection
-      const projection = d3.geoNaturalEarth1()
-        .scale(width / 2 / Math.PI)
-        .translate([width / 2, height / 2]);
-        
-      // Create a path generator
-      const path = d3.geoPath()
-        .projection(projection);
-      
-      // Convert TopoJSON to GeoJSON
-      const countries = feature(topology, topology.objects.countries);
-      
-      // Draw the map
-      svg.append("g")
-        .selectAll("path")
-        .data(countries.features)
-        .join("path")
-        .attr("fill", "#ccc")  // Grey background
-        .attr("d", path)
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 0.5);
-    };
-    
-    createMap();
-  }, [data, topology]);
+    fetch('/un.topo.json')
+      .then(res => res.json())
+      .then(setData)
+  }, [])
 
-  return (
-    <div className="world-map-container">
-      <h2>World Language Distribution</h2>
-      <svg ref={svgRef}></svg>
-    </div>
-  );
-};
+  useEffect(() => {
+    if (data === undefined) return
+    // const plot = Plot.plot({
+    //   y: {grid: true},
+    //   color: {scheme: "burd"},
+    //   marks: [
+    //     Plot.ruleY([0]),
+    //     Plot.dot(data, {x: "Date", y: "Anomaly", stroke: "Anomaly"})
+    //   ]
+    // });
+    const countries = topojson.feature(data, data.objects.un)
+    const plot = Plot.plot({
+      width: 750,
+      height: 400,
+      projection: 'equal-earth',
+      marks: [
+        Plot.geo(countries, {
+          // fill: d => console.log(d.properties?.iso2cd),
+          // title: d => d.properties?.iso2cd
+          // tip: true
+        })
+      ]
+    })
+    containerRef.current.append(plot)
+    return () => plot.remove()
+  }, [data])
 
-export default WorldMap; 
+  return <svg ref={containerRef} style={{ width: '100%', height: '100%' }} />
+}
+
+export default WorldMap

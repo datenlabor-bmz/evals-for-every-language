@@ -13,7 +13,6 @@ function App () {
   const [error, setError] = useState(null)
   const [allSuggestions, setAllSuggestions] = useState([])
   const [filters, setFilters] = useState([])
-  const [topology, setTopology] = useState(null)
   useEffect(() => {
     fetch('/results.json')
       .then(response => {
@@ -32,22 +31,6 @@ function App () {
       })
   }, [])
 
-  useEffect(() => {
-    fetch('/countries-110m.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        return response.json()
-      })
-      .then(jsonData => {
-        setTopology(jsonData)
-      })
-      .catch(err => {
-        setError(err.message)
-        setLoading(false)
-      })
-  }, [])
   useEffect(() => {
     if (data) {
       const models = data.model_table.map(item => ({ type: 'Model', value: item.model, detail: item.provider, searchText: item.provider.toLowerCase() + ' ' + item.model.toLowerCase() }))
@@ -105,15 +88,15 @@ function App () {
         {data && (
           <>
             <div
+              id='figure'
               style={{
                 flex: '100vw 100vw 100vw',
-                maxWidth: 'min(100vw, 900px)',
-                marginBottom: '2rem'
+                maxWidth: 'min(100vw, 800px)',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              <div id='figure'>
-                <WorldMap data={data} topology={topology} />
-              </div>
+                <WorldMap data={data} />
             </div>
             <div
               style={{
