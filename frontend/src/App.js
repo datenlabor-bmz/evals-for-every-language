@@ -33,7 +33,7 @@ function App () {
   }, [])
 
   useEffect(() => {
-    fetch('/countries.json')
+    fetch('/countries-110m.json')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok')
