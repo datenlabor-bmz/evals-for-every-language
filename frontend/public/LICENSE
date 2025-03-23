@@ -1,1 +1,1 @@
-un.*.json: https://geoportal.un.org/arcgis/apps/sites/#/geohub/datasets/d7caaff3ef4b4f7c82689b7c4694ad92/about
+world.*.json: official UN country boundaries from https://geoportal.un.org/arcgis/apps/sites/#/geohub/datasets/d7caaff3ef4b4f7c82689b7c4694ad92/about, transformed using https://observablehq.com/@bumbeishvili/rewind-geojson, https://github.com/topojson/topojson-client, and https://github.com/topojson/topojson-simplify
