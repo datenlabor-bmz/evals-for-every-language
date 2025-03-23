@@ -2,6 +2,7 @@ import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 
+import pycountry
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
 from language_data.util import data_filename
 
@@ -31,18 +32,21 @@ def population(bcp_47):
 def make_country_table(language_table):
     countries = defaultdict(list)
     for lang in language_table.itertuples():
-        for country, pop in population(lang.bcp_47).items():
+        for country, speaker_pop in population(lang.bcp_47).items():
             countries[country].append(
                 {
                     "name": lang.language_name,
                     "bcp_47": lang.bcp_47,
-                    "population": pop,
+                    "population": speaker_pop,
                     "score": lang.average,
                 }
             )
     for country, languages in countries.items():
-        pop = sum(entry["population"] for entry in languages)
-        score = sum(entry["score"] * entry["population"] for entry in languages) / pop
+        speaker_pop = sum(entry["population"] for entry in languages)
+        score = (
+            sum(entry["score"] * entry["population"] for entry in languages)
+            / speaker_pop
+        )
         countries[country] = {
             "score": score,
             "languages": languages,
