@@ -74,3 +74,10 @@ html, body, #root {
   border: 1px solid rgba(0, 0, 0, 0.7);
   box-shadow: 3px 3px 1px 0px rgba(0, 0, 0, 0.2);;
 }
+
+.p-carousel-indicators button.p-link {
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #000000;
+}
