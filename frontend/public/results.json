@@ -9757,6 +9757,19 @@
       "implemented": null
     },
     {
+      "name": "MMLU-X",
+      "author": "OpenGPT-X",
+      "author_url": null,
+      "url": "https://huggingface.co/datasets/openGPT-X/mmlux",
+      "n_languages": 20,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "MMLU",
+      "implemented": null
+    },
+    {
       "name": "Global MMLU",
       "author": "Cohere",
       "author_url": "https://cohere.com",
@@ -9796,6 +9809,19 @@
       "implemented": null
     },
     {
+      "name": "GSM8K-X",
+      "author": "OpenGPT-X",
+      "author_url": null,
+      "url": "https://huggingface.co/datasets/openGPT-X/gsm8kx",
+      "n_languages": 20,
+      "tasks": [
+        "math"
+      ],
+      "parallel": 1.0,
+      "base": "MGSM",
+      "implemented": null
+    },
+    {
       "name": "Okapi ARC Challenge",
       "author": "Academic",
       "author_url": null,
@@ -9822,6 +9848,19 @@
       "implemented": null
     },
     {
+      "name": "Arc-X",
+      "author": "OpenGPT-X",
+      "author_url": null,
+      "url": "https://huggingface.co/datasets/openGPT-X/arcx",
+      "n_languages": 20,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "AI2 ARC",
+      "implemented": null
+    },
+    {
       "name": "Okapi TruthfulQA",
       "author": "Academic",
       "author_url": null,
@@ -9840,6 +9879,19 @@
       "author_url": "https://www.masakhane.io",
       "url": "https://huggingface.co/datasets/masakhane/uhura-truthfulqa",
       "n_languages": 6,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "TruthfulQA",
+      "implemented": null
+    },
+    {
+      "name": "TruthfulQA-X",
+      "author": "OpenGPT-X",
+      "author_url": null,
+      "url": "https://huggingface.co/datasets/openGPT-X/truthfulqax",
+      "n_languages": 20,
       "tasks": [
         "question_answering"
       ],
@@ -9887,6 +9939,19 @@
       "implemented": null
     },
     {
+      "name": "HellaSwag-X",
+      "author": "OpenGPT-X",
+      "author_url": null,
+      "url": "https://huggingface.co/datasets/openGPT-X/hellaswagx",
+      "n_languages": 20,
+      "tasks": [
+        "question_answering"
+      ],
+      "parallel": 1.0,
+      "base": "HellaSwag",
+      "implemented": null
+    },
+    {
       "name": "WikiANN / PAN-X",
       "author": "Academic",
       "author_url": null,
@@ -9902,7 +9967,7 @@
     {
       "name": "MSVAMP",
       "author": "Microsoft",
-      "author_url": "https://microsoft.com",
+      "author_url": "https://microsoft.ai",
       "url": "https://huggingface.co/datasets/Mathoctopus/MSVAMP",
       "n_languages": 10,
       "tasks": [
@@ -9957,7 +10022,7 @@
     {
       "name": "XGLUE",
       "author": "Microsoft",
-      "author_url": "https://microsoft.com",
+      "author_url": "https://microsoft.ai",
       "url": "https://huggingface.co/datasets/microsoft/xglue",
       "n_languages": 18,
       "tasks": [

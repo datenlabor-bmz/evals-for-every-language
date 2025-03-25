@@ -28,6 +28,7 @@ models = [
     # "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
     "microsoft/phi-4-multimodal-instruct",
     "amazon/nova-micro-v1",  # 0.09$/M tokens
+    # "openGPT-X/Teuken-7B-instruct-research-v0.4",  # not on OpenRouter
 ]
 model_fast = "meta-llama/llama-3.3-70b-instruct"
 
