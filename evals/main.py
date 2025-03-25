@@ -13,7 +13,7 @@ from tqdm.asyncio import tqdm_asyncio
 # ===== config =====
 
 n_sentences = 30
-langs_eval = languages.iloc[:10]
+langs_eval = languages.iloc[:30]
 langs_eval_detailed = languages.iloc[:2]
 transcription_langs_eval = languages.iloc[:10]
 transcription_langs_eval_detailed = languages.iloc[:5]

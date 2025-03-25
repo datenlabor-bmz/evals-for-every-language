@@ -3,29 +3,29 @@
     {
       "task": "classification",
       "metric": "accuracy",
-      "score": 0.5427083333333333,
-      "bcp_47": 10,
+      "score": 0.5353333333333333,
+      "bcp_47": 28,
       "model": 12
     },
     {
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9024222998985517,
-      "bcp_47": 10,
+      "score": 0.9172787041570468,
+      "bcp_47": 28,
       "model": 12
     },
     {
       "task": "translation",
       "metric": "bleu",
-      "score": 0.34325329881872996,
-      "bcp_47": 10,
+      "score": 0.31440758611811165,
+      "bcp_47": 28,
       "model": 12
     },
     {
       "task": "translation",
       "metric": "chrf",
-      "score": 0.49764810942023735,
-      "bcp_47": 10,
+      "score": 0.4776446463431595,
+      "bcp_47": 28,
       "model": 12
     }
   ],
@@ -41,7 +41,7 @@
       "model": "amazon/nova-micro-v1",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9446198732700857,
+      "score": 0.9358428899682786,
       "bcp_47": 2
     },
     {
@@ -69,7 +69,7 @@
       "model": "google/gemini-2.0-flash-001",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9625160007216136,
+      "score": 0.9585325034195884,
       "bcp_47": 2
     },
     {
@@ -97,7 +97,7 @@
       "model": "google/gemini-2.0-flash-lite-001",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9710194350890375,
+      "score": 0.9574729426945592,
       "bcp_47": 2
     },
     {
@@ -125,7 +125,7 @@
       "model": "google/gemma-3-27b-it",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9567943176484227,
+      "score": 0.9402106879094536,
       "bcp_47": 2
     },
     {
@@ -153,7 +153,7 @@
       "model": "meta-llama/llama-3-70b-instruct",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9452435586756014,
+      "score": 0.9555990324827045,
       "bcp_47": 2
     },
     {
@@ -181,14 +181,14 @@
       "model": "meta-llama/llama-3.1-70b-instruct",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9203465184571391,
+      "score": 0.9458265879125298,
       "bcp_47": 2
     },
     {
       "model": "meta-llama/llama-3.1-70b-instruct",
       "task": "translation",
       "metric": "bleu",
-      "score": 0.43182300663190504,
+      "score": 0.4318584195195329,
       "bcp_47": 2
     },
     {
@@ -202,29 +202,29 @@
       "model": "meta-llama/llama-3.3-70b-instruct",
       "task": "classification",
       "metric": "accuracy",
-      "score": 0.5,
-      "bcp_47": 10
+      "score": 0.5142857142857143,
+      "bcp_47": 28
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9402702238563417,
-      "bcp_47": 10
+      "score": 0.9422717613037961,
+      "bcp_47": 28
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
       "task": "translation",
       "metric": "bleu",
-      "score": 0.3116623954547766,
-      "bcp_47": 10
+      "score": 0.28045810258852616,
+      "bcp_47": 28
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
       "task": "translation",
       "metric": "chrf",
-      "score": 0.4836914110309717,
-      "bcp_47": 10
+      "score": 0.45694310450071773,
+      "bcp_47": 28
     },
     {
       "model": "microsoft/phi-4-multimodal-instruct",
@@ -237,7 +237,7 @@
       "model": "microsoft/phi-4-multimodal-instruct",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8700000415175042,
+      "score": 0.8811352896333067,
       "bcp_47": 2
     },
     {
@@ -265,7 +265,7 @@
       "model": "mistralai/mistral-nemo",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8815544644693022,
+      "score": 0.8612477844203897,
       "bcp_47": 2
     },
     {
@@ -293,7 +293,7 @@
       "model": "mistralai/mistral-small-24b-instruct-2501",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8557257213273853,
+      "score": 0.8782400543225595,
       "bcp_47": 2
     },
     {
@@ -321,7 +321,7 @@
       "model": "openai/gpt-4o-mini",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9482707322595748,
+      "score": 0.9560369064537906,
       "bcp_47": 2
     },
     {
@@ -349,7 +349,7 @@
       "model": "qwen/qwq-32b",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.4813150156594517,
+      "score": 0.47001826645586636,
       "bcp_47": 2
     },
     {
@@ -701,7 +701,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9307208363594199,
+      "score": 0.9392314289764625,
       "model": 1.0
     },
     {
@@ -827,10 +827,58 @@
       "commonvoice_hours": null,
       "commonvoice_locale": null,
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.4,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "arz",
+      "speakers": 66639360,
+      "language_name": "Egyptian Arabic",
+      "autonym": "Egyptian Arabic",
+      "family": "Afro-Asiatic",
+      "flores_path": "arz_Arab",
+      "fleurs_tag": null,
+      "commonvoice_hours": null,
+      "commonvoice_locale": null,
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.930329195667362,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "arz",
+      "speakers": 66639360,
+      "language_name": "Egyptian Arabic",
+      "autonym": "Egyptian Arabic",
+      "family": "Afro-Asiatic",
+      "flores_path": "arz_Arab",
+      "fleurs_tag": null,
+      "commonvoice_hours": null,
+      "commonvoice_locale": null,
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.19793415292805128,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "arz",
+      "speakers": 66639360,
+      "language_name": "Egyptian Arabic",
+      "autonym": "Egyptian Arabic",
+      "family": "Afro-Asiatic",
+      "flores_path": "arz_Arab",
+      "fleurs_tag": null,
+      "commonvoice_hours": null,
+      "commonvoice_locale": null,
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.3881278724939126,
+      "model": 1.0
     },
     {
       "bcp_47": "as",
@@ -1613,7 +1661,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8990036074617607,
+      "score": 0.9097658392566466,
       "model": 1.0
     },
     {
@@ -1992,7 +2040,7 @@
       "family": "Indo-European",
       "flores_path": "cat_Latn",
       "fleurs_tag": "ca_es",
-      "commonvoice_hours": 2844.0,
+      "commonvoice_hours": 2845.0,
       "commonvoice_locale": "ca",
       "in_benchmark": true,
       "task": null,
@@ -2587,10 +2635,58 @@
       "commonvoice_hours": 1360.0,
       "commonvoice_locale": "de",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6666666666666666,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "de",
+      "speakers": 136350226,
+      "language_name": "German",
+      "autonym": "Deutsch",
+      "family": "Indo-European",
+      "flores_path": "deu_Latn",
+      "fleurs_tag": "de_de",
+      "commonvoice_hours": 1360.0,
+      "commonvoice_locale": "de",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9594656177914042,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "de",
+      "speakers": 136350226,
+      "language_name": "German",
+      "autonym": "Deutsch",
+      "family": "Indo-European",
+      "flores_path": "deu_Latn",
+      "fleurs_tag": "de_de",
+      "commonvoice_hours": 1360.0,
+      "commonvoice_locale": "de",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.3207642359472324,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "de",
+      "speakers": 136350226,
+      "language_name": "German",
+      "autonym": "Deutsch",
+      "family": "Indo-European",
+      "flores_path": "deu_Latn",
+      "fleurs_tag": "de_de",
+      "commonvoice_hours": 1360.0,
+      "commonvoice_locale": "de",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.49973270743869647,
+      "model": 1.0
     },
     {
       "bcp_47": "den",
@@ -2925,7 +3021,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9222343234934963,
+      "score": 0.9180269549823046,
       "model": 12.0
     },
     {
@@ -2941,7 +3037,7 @@
       "in_benchmark": true,
       "task": "translation",
       "metric": "bleu",
-      "score": 0.37035746903842287,
+      "score": 0.3703633711863608,
       "model": 12.0
     },
     {
@@ -3005,7 +3101,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9602736376353148,
+      "score": 0.9569342865902168,
       "model": 1.0
     },
     {
@@ -3080,7 +3176,7 @@
       "family": null,
       "flores_path": "eus_Latn",
       "fleurs_tag": null,
-      "commonvoice_hours": 335.0,
+      "commonvoice_hours": 336.0,
       "commonvoice_locale": "eu",
       "in_benchmark": true,
       "task": null,
@@ -3131,10 +3227,58 @@
       "commonvoice_hours": 370.0,
       "commonvoice_locale": "fa",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.4,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "fa",
+      "speakers": 84710459,
+      "language_name": "Persian",
+      "autonym": "فارسی",
+      "family": "Indo-European",
+      "flores_path": "pes_Arab",
+      "fleurs_tag": "fa_ir",
+      "commonvoice_hours": 370.0,
+      "commonvoice_locale": "fa",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9414698824984596,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "fa",
+      "speakers": 84710459,
+      "language_name": "Persian",
+      "autonym": "فارسی",
+      "family": "Indo-European",
+      "flores_path": "pes_Arab",
+      "fleurs_tag": "fa_ir",
+      "commonvoice_hours": 370.0,
+      "commonvoice_locale": "fa",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.26232478733341374,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "fa",
+      "speakers": 84710459,
+      "language_name": "Persian",
+      "autonym": "فارسی",
+      "family": "Indo-European",
+      "flores_path": "pes_Arab",
+      "fleurs_tag": "fa_ir",
+      "commonvoice_hours": 370.0,
+      "commonvoice_locale": "fa",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.44641220608314985,
+      "model": 1.0
     },
     {
       "bcp_47": "fan",
@@ -3243,10 +3387,58 @@
       "commonvoice_hours": 0.0,
       "commonvoice_locale": "tl",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.43333333333333335,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "fil",
+      "speakers": 67471096,
+      "language_name": "Filipino",
+      "autonym": "Filipino",
+      "family": "Austronesian",
+      "flores_path": "fil_Latn",
+      "fleurs_tag": "fil_ph",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "tl",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9402707475255596,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "fil",
+      "speakers": 67471096,
+      "language_name": "Filipino",
+      "autonym": "Filipino",
+      "family": "Austronesian",
+      "flores_path": "fil_Latn",
+      "fleurs_tag": "fil_ph",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "tl",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.29097818784870333,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "fil",
+      "speakers": 67471096,
+      "language_name": "Filipino",
+      "autonym": "Filipino",
+      "family": "Austronesian",
+      "flores_path": "fil_Latn",
+      "fleurs_tag": "fil_ph",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "tl",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.44978114149245985,
+      "model": 1.0
     },
     {
       "bcp_47": "fit",
@@ -3341,7 +3533,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9756346055321089,
+      "score": 0.9815706066541411,
       "model": 1.0
     },
     {
@@ -3544,7 +3736,7 @@
       "family": "Indo-European",
       "flores_path": "gle_Latn",
       "fleurs_tag": "ga_ie",
-      "commonvoice_hours": 5.9,
+      "commonvoice_hours": 6.0,
       "commonvoice_locale": "ga-IE",
       "in_benchmark": true,
       "task": null,
@@ -3899,10 +4091,58 @@
       "commonvoice_hours": 0.0,
       "commonvoice_locale": "gu-IN",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.43333333333333335,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "gu",
+      "speakers": 61721799,
+      "language_name": "Gujarati",
+      "autonym": "ગુજરાતી",
+      "family": "Indo-European",
+      "flores_path": "guj_Gujr",
+      "fleurs_tag": "gu_in",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "gu-IN",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.938086045460355,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "gu",
+      "speakers": 61721799,
+      "language_name": "Gujarati",
+      "autonym": "ગુજરાતી",
+      "family": "Indo-European",
+      "flores_path": "guj_Gujr",
+      "fleurs_tag": "gu_in",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "gu-IN",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.26442484966880464,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "gu",
+      "speakers": 61721799,
+      "language_name": "Gujarati",
+      "autonym": "ગુજરાતી",
+      "family": "Indo-European",
+      "flores_path": "guj_Gujr",
+      "fleurs_tag": "gu_in",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "gu-IN",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.44452182973195975,
+      "model": 1.0
     },
     {
       "bcp_47": "gub",
@@ -4125,7 +4365,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9489245079595486,
+      "score": 0.9428185393832219,
       "model": 1.0
     },
     {
@@ -4507,10 +4747,58 @@
       "commonvoice_hours": 33.0,
       "commonvoice_locale": "id",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6333333333333333,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "id",
+      "speakers": 171207687,
+      "language_name": "Indonesian",
+      "autonym": "Bahasa Indonesia",
+      "family": "Austronesian",
+      "flores_path": "ind_Latn",
+      "fleurs_tag": "id_id",
+      "commonvoice_hours": 33.0,
+      "commonvoice_locale": "id",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9598314474300775,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "id",
+      "speakers": 171207687,
+      "language_name": "Indonesian",
+      "autonym": "Bahasa Indonesia",
+      "family": "Austronesian",
+      "flores_path": "ind_Latn",
+      "fleurs_tag": "id_id",
+      "commonvoice_hours": 33.0,
+      "commonvoice_locale": "id",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.29354203311552335,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "id",
+      "speakers": 171207687,
+      "language_name": "Indonesian",
+      "autonym": "Bahasa Indonesia",
+      "family": "Austronesian",
+      "flores_path": "ind_Latn",
+      "fleurs_tag": "id_id",
+      "commonvoice_hours": 33.0,
+      "commonvoice_locale": "id",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4723493656022861,
+      "model": 1.0
     },
     {
       "bcp_47": "ie",
@@ -4667,10 +4955,58 @@
       "commonvoice_hours": 362.0,
       "commonvoice_locale": "it",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6666666666666666,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "it",
+      "speakers": 70247060,
+      "language_name": "Italian",
+      "autonym": "Italiano",
+      "family": "Indo-European",
+      "flores_path": "ita_Latn",
+      "fleurs_tag": "it_it",
+      "commonvoice_hours": 362.0,
+      "commonvoice_locale": "it",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9439490413212892,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "it",
+      "speakers": 70247060,
+      "language_name": "Italian",
+      "autonym": "Italiano",
+      "family": "Indo-European",
+      "flores_path": "ita_Latn",
+      "fleurs_tag": "it_it",
+      "commonvoice_hours": 362.0,
+      "commonvoice_locale": "it",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.28142583904826096,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "it",
+      "speakers": 70247060,
+      "language_name": "Italian",
+      "autonym": "Italiano",
+      "family": "Indo-European",
+      "flores_path": "ita_Latn",
+      "fleurs_tag": "it_it",
+      "commonvoice_hours": 362.0,
+      "commonvoice_locale": "it",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4707591889357925,
+      "model": 1.0
     },
     {
       "bcp_47": "iu",
@@ -4715,10 +5051,58 @@
       "commonvoice_hours": 222.0,
       "commonvoice_locale": "ja",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6333333333333333,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ja",
+      "speakers": 119729026,
+      "language_name": "Japanese",
+      "autonym": "日本語",
+      "family": "Japonic",
+      "flores_path": "jpn_Jpan",
+      "fleurs_tag": "ja_jp",
+      "commonvoice_hours": 222.0,
+      "commonvoice_locale": "ja",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9371132855221468,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ja",
+      "speakers": 119729026,
+      "language_name": "Japanese",
+      "autonym": "日本語",
+      "family": "Japonic",
+      "flores_path": "jpn_Jpan",
+      "fleurs_tag": "ja_jp",
+      "commonvoice_hours": 222.0,
+      "commonvoice_locale": "ja",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.2723410893967824,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ja",
+      "speakers": 119729026,
+      "language_name": "Japanese",
+      "autonym": "日本語",
+      "family": "Japonic",
+      "flores_path": "jpn_Jpan",
+      "fleurs_tag": "ja_jp",
+      "commonvoice_hours": 222.0,
+      "commonvoice_locale": "ja",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.43929453749366865,
+      "model": 1.0
     },
     {
       "bcp_47": "jam",
@@ -4827,10 +5211,58 @@
       "commonvoice_hours": 0.0,
       "commonvoice_locale": "jv",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.4666666666666667,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "jv",
+      "speakers": 91180665,
+      "language_name": "Javanese",
+      "autonym": "Jawa",
+      "family": "Austronesian",
+      "flores_path": "jav_Latn",
+      "fleurs_tag": "jv_id",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "jv",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9298143194922116,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "jv",
+      "speakers": 91180665,
+      "language_name": "Javanese",
+      "autonym": "Jawa",
+      "family": "Austronesian",
+      "flores_path": "jav_Latn",
+      "fleurs_tag": "jv_id",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "jv",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.23729186537968905,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "jv",
+      "speakers": 91180665,
+      "language_name": "Javanese",
+      "autonym": "Jawa",
+      "family": "Austronesian",
+      "flores_path": "jav_Latn",
+      "fleurs_tag": "jv_id",
+      "commonvoice_hours": 0.0,
+      "commonvoice_locale": "jv",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4198940727847352,
+      "model": 1.0
     },
     {
       "bcp_47": "ka",
@@ -4952,7 +5384,7 @@
       "family": "Abkhaz-Adyge",
       "flores_path": null,
       "fleurs_tag": null,
-      "commonvoice_hours": 18.0,
+      "commonvoice_hours": 19.0,
       "commonvoice_locale": "kbd",
       "in_benchmark": false,
       "task": null,
@@ -5451,10 +5883,58 @@
       "commonvoice_hours": 1.7,
       "commonvoice_locale": "ko",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.5333333333333333,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ko",
+      "speakers": 78357046,
+      "language_name": "Korean",
+      "autonym": "한국어",
+      "family": "Koreanic",
+      "flores_path": "kor_Hang",
+      "fleurs_tag": "ko_kr",
+      "commonvoice_hours": 1.7,
+      "commonvoice_locale": "ko",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9355445912073929,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ko",
+      "speakers": 78357046,
+      "language_name": "Korean",
+      "autonym": "한국어",
+      "family": "Koreanic",
+      "flores_path": "kor_Hang",
+      "fleurs_tag": "ko_kr",
+      "commonvoice_hours": 1.7,
+      "commonvoice_locale": "ko",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.20332074778330964,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ko",
+      "speakers": 78357046,
+      "language_name": "Korean",
+      "autonym": "한국어",
+      "family": "Koreanic",
+      "flores_path": "kor_Hang",
+      "fleurs_tag": "ko_kr",
+      "commonvoice_hours": 1.7,
+      "commonvoice_locale": "ko",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4005255477730261,
+      "model": 1.0
     },
     {
       "bcp_47": "koi",
@@ -5752,7 +6232,7 @@
       "family": "Indo-European",
       "flores_path": null,
       "fleurs_tag": null,
-      "commonvoice_hours": 5.3,
+      "commonvoice_hours": 8.1,
       "commonvoice_locale": "kw",
       "in_benchmark": false,
       "task": null,
@@ -6872,7 +7352,7 @@
       "family": "Indo-European",
       "flores_path": "mkd_Cyrl",
       "fleurs_tag": "mk_mk",
-      "commonvoice_hours": 18.0,
+      "commonvoice_hours": 19.0,
       "commonvoice_locale": "mk",
       "in_benchmark": true,
       "task": null,
@@ -7019,10 +7499,58 @@
       "commonvoice_hours": 20.0,
       "commonvoice_locale": "mr",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6333333333333333,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "mr",
+      "speakers": 92826300,
+      "language_name": "Marathi",
+      "autonym": "मराठी",
+      "family": "Indo-European",
+      "flores_path": "mar_Deva",
+      "fleurs_tag": "mr_in",
+      "commonvoice_hours": 20.0,
+      "commonvoice_locale": "mr",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9440892312053646,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "mr",
+      "speakers": 92826300,
+      "language_name": "Marathi",
+      "autonym": "मराठी",
+      "family": "Indo-European",
+      "flores_path": "mar_Deva",
+      "fleurs_tag": "mr_in",
+      "commonvoice_hours": 20.0,
+      "commonvoice_locale": "mr",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.24903049799655144,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "mr",
+      "speakers": 92826300,
+      "language_name": "Marathi",
+      "autonym": "मराठी",
+      "family": "Indo-European",
+      "flores_path": "mar_Deva",
+      "fleurs_tag": "mr_in",
+      "commonvoice_hours": 20.0,
+      "commonvoice_locale": "mr",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.42489125861884175,
+      "model": 1.0
     },
     {
       "bcp_47": "mrd",
@@ -7976,7 +8504,7 @@
       "family": "Indo-European",
       "flores_path": null,
       "fleurs_tag": null,
-      "commonvoice_hours": 0.7,
+      "commonvoice_hours": 0.8,
       "commonvoice_locale": "os",
       "in_benchmark": false,
       "task": null,
@@ -8029,7 +8557,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8692673671947869,
+      "score": 0.9025298113664532,
       "model": 1.0
     },
     {
@@ -8397,7 +8925,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9723487188655754,
+      "score": 0.9641423549595803,
       "model": 1.0
     },
     {
@@ -8824,13 +9352,61 @@
       "family": "Indo-European",
       "flores_path": "rus_Cyrl",
       "fleurs_tag": "ru_ru",
-      "commonvoice_hours": 242.0,
+      "commonvoice_hours": 243.0,
       "commonvoice_locale": "ru",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.5666666666666667,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ru",
+      "speakers": 195841151,
+      "language_name": "Russian",
+      "autonym": "Русский",
+      "family": "Indo-European",
+      "flores_path": "rus_Cyrl",
+      "fleurs_tag": "ru_ru",
+      "commonvoice_hours": 243.0,
+      "commonvoice_locale": "ru",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9663696817874857,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ru",
+      "speakers": 195841151,
+      "language_name": "Russian",
+      "autonym": "Русский",
+      "family": "Indo-European",
+      "flores_path": "rus_Cyrl",
+      "fleurs_tag": "ru_ru",
+      "commonvoice_hours": 243.0,
+      "commonvoice_locale": "ru",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.26015179309825326,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ru",
+      "speakers": 195841151,
+      "language_name": "Russian",
+      "autonym": "Русский",
+      "family": "Indo-European",
+      "flores_path": "rus_Cyrl",
+      "fleurs_tag": "ru_ru",
+      "commonvoice_hours": 243.0,
+      "commonvoice_locale": "ru",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4525762744858351,
+      "model": 1.0
     },
     {
       "bcp_47": "rue",
@@ -9224,7 +9800,7 @@
       "family": null,
       "flores_path": null,
       "fleurs_tag": null,
-      "commonvoice_hours": 1.8,
+      "commonvoice_hours": 2.5,
       "commonvoice_locale": "sei",
       "in_benchmark": false,
       "task": null,
@@ -9803,10 +10379,58 @@
       "commonvoice_hours": 411.0,
       "commonvoice_locale": "sw",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.5666666666666667,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "sw",
+      "speakers": 171610296,
+      "language_name": "Swahili",
+      "autonym": "Kiswahili",
+      "family": "Atlantic-Congo",
+      "flores_path": "swh_Latn",
+      "fleurs_tag": "sw_ke",
+      "commonvoice_hours": 411.0,
+      "commonvoice_locale": "sw",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9401745263817055,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "sw",
+      "speakers": 171610296,
+      "language_name": "Swahili",
+      "autonym": "Kiswahili",
+      "family": "Atlantic-Congo",
+      "flores_path": "swh_Latn",
+      "fleurs_tag": "sw_ke",
+      "commonvoice_hours": 411.0,
+      "commonvoice_locale": "sw",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.30022614000139736,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "sw",
+      "speakers": 171610296,
+      "language_name": "Swahili",
+      "autonym": "Kiswahili",
+      "family": "Atlantic-Congo",
+      "flores_path": "swh_Latn",
+      "fleurs_tag": "sw_ke",
+      "commonvoice_hours": 411.0,
+      "commonvoice_locale": "sw",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.46620999112028233,
+      "model": 1.0
     },
     {
       "bcp_47": "swb",
@@ -9931,10 +10555,58 @@
       "commonvoice_hours": 234.0,
       "commonvoice_locale": "ta",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.43333333333333335,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ta",
+      "speakers": 85616159,
+      "language_name": "Tamil",
+      "autonym": "தமிழ்",
+      "family": "Dravidian",
+      "flores_path": "tam_Taml",
+      "fleurs_tag": "ta_in",
+      "commonvoice_hours": 234.0,
+      "commonvoice_locale": "ta",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9641464401452432,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ta",
+      "speakers": 85616159,
+      "language_name": "Tamil",
+      "autonym": "தமிழ்",
+      "family": "Dravidian",
+      "flores_path": "tam_Taml",
+      "fleurs_tag": "ta_in",
+      "commonvoice_hours": 234.0,
+      "commonvoice_locale": "ta",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.2528104486727614,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "ta",
+      "speakers": 85616159,
+      "language_name": "Tamil",
+      "autonym": "தமிழ்",
+      "family": "Dravidian",
+      "flores_path": "tam_Taml",
+      "fleurs_tag": "ta_in",
+      "commonvoice_hours": 234.0,
+      "commonvoice_locale": "ta",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.42077045938882934,
+      "model": 1.0
     },
     {
       "bcp_47": "taj",
@@ -10043,10 +10715,58 @@
       "commonvoice_hours": 0.3,
       "commonvoice_locale": "te",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.36666666666666664,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "te",
+      "speakers": 95478480,
+      "language_name": "Telugu",
+      "autonym": "తెలుగు",
+      "family": "Dravidian",
+      "flores_path": "tel_Telu",
+      "fleurs_tag": "te_in",
+      "commonvoice_hours": 0.3,
+      "commonvoice_locale": "te",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9513838296654142,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "te",
+      "speakers": 95478480,
+      "language_name": "Telugu",
+      "autonym": "తెలుగు",
+      "family": "Dravidian",
+      "flores_path": "tel_Telu",
+      "fleurs_tag": "te_in",
+      "commonvoice_hours": 0.3,
+      "commonvoice_locale": "te",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.28338449781147135,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "te",
+      "speakers": 95478480,
+      "language_name": "Telugu",
+      "autonym": "తెలుగు",
+      "family": "Dravidian",
+      "flores_path": "tel_Telu",
+      "fleurs_tag": "te_in",
+      "commonvoice_hours": 0.3,
+      "commonvoice_locale": "te",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.467003606031036,
+      "model": 1.0
     },
     {
       "bcp_47": "tem",
@@ -10411,10 +11131,58 @@
       "commonvoice_hours": 128.0,
       "commonvoice_locale": "tr",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.5333333333333333,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "tr",
+      "speakers": 80360704,
+      "language_name": "Turkish",
+      "autonym": "Türkçe",
+      "family": "Turkic",
+      "flores_path": "tur_Latn",
+      "fleurs_tag": "tr_tr",
+      "commonvoice_hours": 128.0,
+      "commonvoice_locale": "tr",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9446670623712353,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "tr",
+      "speakers": 80360704,
+      "language_name": "Turkish",
+      "autonym": "Türkçe",
+      "family": "Turkic",
+      "flores_path": "tur_Latn",
+      "fleurs_tag": "tr_tr",
+      "commonvoice_hours": 128.0,
+      "commonvoice_locale": "tr",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.2844596261435892,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "tr",
+      "speakers": 80360704,
+      "language_name": "Turkish",
+      "autonym": "Türkçe",
+      "family": "Turkic",
+      "flores_path": "tur_Latn",
+      "fleurs_tag": "tr_tr",
+      "commonvoice_hours": 128.0,
+      "commonvoice_locale": "tr",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4525478264239361,
+      "model": 1.0
     },
     {
       "bcp_47": "tru",
@@ -10829,7 +11597,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9345902038028003,
+      "score": 0.9182703887696211,
       "model": 1.0
     },
     {
@@ -10845,7 +11613,7 @@
       "in_benchmark": true,
       "task": "translation",
       "metric": "bleu",
-      "score": 0.2433585957791825,
+      "score": 0.2434522914619727,
       "model": 1.0
     },
     {
@@ -10955,10 +11723,58 @@
       "commonvoice_hours": 6.0,
       "commonvoice_locale": "vi",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "vi",
+      "speakers": 86222962,
+      "language_name": "Vietnamese",
+      "autonym": "Tiếng Việt",
+      "family": "Austroasiatic",
+      "flores_path": "vie_Latn",
+      "fleurs_tag": "vi_vn",
+      "commonvoice_hours": 6.0,
+      "commonvoice_locale": "vi",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9580044761495575,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "vi",
+      "speakers": 86222962,
+      "language_name": "Vietnamese",
+      "autonym": "Tiếng Việt",
+      "family": "Austroasiatic",
+      "flores_path": "vie_Latn",
+      "fleurs_tag": "vi_vn",
+      "commonvoice_hours": 6.0,
+      "commonvoice_locale": "vi",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.25541664062319624,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "vi",
+      "speakers": 86222962,
+      "language_name": "Vietnamese",
+      "autonym": "Tiếng Việt",
+      "family": "Austroasiatic",
+      "flores_path": "vie_Latn",
+      "fleurs_tag": "vi_vn",
+      "commonvoice_hours": 6.0,
+      "commonvoice_locale": "vi",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.43688984396841446,
+      "model": 1.0
     },
     {
       "bcp_47": "vic",
@@ -11499,10 +12315,58 @@
       "commonvoice_hours": 203.0,
       "commonvoice_locale": "yue",
       "in_benchmark": true,
-      "task": null,
-      "metric": null,
-      "score": null,
-      "model": null
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.43333333333333335,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "yue",
+      "speakers": 79654759,
+      "language_name": "Cantonese",
+      "autonym": "粵語",
+      "family": "Sino-Tibetan",
+      "flores_path": "yue_Hant",
+      "fleurs_tag": "yue_hant_hk",
+      "commonvoice_hours": 203.0,
+      "commonvoice_locale": "yue",
+      "in_benchmark": true,
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9022415223117748,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "yue",
+      "speakers": 79654759,
+      "language_name": "Cantonese",
+      "autonym": "粵語",
+      "family": "Sino-Tibetan",
+      "flores_path": "yue_Hant",
+      "fleurs_tag": "yue_hant_hk",
+      "commonvoice_hours": 203.0,
+      "commonvoice_locale": "yue",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.22628178945118504,
+      "model": 1.0
+    },
+    {
+      "bcp_47": "yue",
+      "speakers": 79654759,
+      "language_name": "Cantonese",
+      "autonym": "粵語",
+      "family": "Sino-Tibetan",
+      "flores_path": "yue_Hant",
+      "fleurs_tag": "yue_hant_hk",
+      "commonvoice_hours": 203.0,
+      "commonvoice_locale": "yue",
+      "in_benchmark": true,
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4052050858435178,
+      "model": 1.0
     },
     {
       "bcp_47": "za",
@@ -11613,7 +12477,7 @@
       "in_benchmark": true,
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8599948525016986,
+      "score": 0.862116462347859,
       "model": 12.0
     },
     {
@@ -11711,7 +12575,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9725001956658679,
+      "score": 0.9596433057062642,
       "sentence_nr": 14.5
     },
     {
@@ -11743,7 +12607,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9167395508743035,
+      "score": 0.9120424742302929,
       "sentence_nr": 14.5
     },
     {
@@ -11775,7 +12639,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9775327885540744,
+      "score": 0.9854618933889567,
       "sentence_nr": 14.5
     },
     {
@@ -11807,7 +12671,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9474992128891527,
+      "score": 0.93160311345022,
       "sentence_nr": 14.5
     },
     {
@@ -11839,7 +12703,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.990925430282282,
+      "score": 0.9840731165453181,
       "sentence_nr": 14.5
     },
     {
@@ -11871,7 +12735,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9511134398957932,
+      "score": 0.9308727688438002,
       "sentence_nr": 14.5
     },
     {
@@ -11903,7 +12767,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9904802851977837,
+      "score": 0.9705999747171945,
       "sentence_nr": 14.5
     },
     {
@@ -11935,7 +12799,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9231083500990617,
+      "score": 0.9098214011017126,
       "sentence_nr": 14.5
     },
     {
@@ -11967,7 +12831,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9674315682816375,
+      "score": 0.9802918604410554,
       "sentence_nr": 14.5
     },
     {
@@ -11999,7 +12863,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9230555490695652,
+      "score": 0.9309062045243536,
       "sentence_nr": 14.5
     },
     {
@@ -12031,7 +12895,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9701295103188484,
+      "score": 0.9683113542489836,
       "sentence_nr": 14.5
     },
     {
@@ -12039,7 +12903,7 @@
       "bcp_47": "en",
       "task": "translation",
       "metric": "bleu",
-      "score": 0.44443705644214526,
+      "score": 0.444507882217401,
       "sentence_nr": 14.5
     },
     {
@@ -12063,7 +12927,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8705635265954298,
+      "score": 0.9233418215760759,
       "sentence_nr": 14.5
     },
     {
@@ -12095,7 +12959,7 @@
       "bcp_47": "ar",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9307208363594199,
+      "score": 0.9392314289764625,
       "sentence_nr": 14.5
     },
     {
@@ -12116,6 +12980,38 @@
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "arz",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.4,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "arz",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.930329195667362,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "arz",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.19793415292805128,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "arz",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.3881278724939126,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
       "bcp_47": "bn",
       "task": "classification",
       "metric": "accuracy",
@@ -12127,7 +13023,7 @@
       "bcp_47": "bn",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8990036074617607,
+      "score": 0.9097658392566466,
       "sentence_nr": 14.5
     },
     {
@@ -12148,6 +13044,38 @@
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "de",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6666666666666666,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "de",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9594656177914042,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "de",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.3207642359472324,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "de",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.49973270743869647,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
       "bcp_47": "en",
       "task": "classification",
       "metric": "accuracy",
@@ -12159,7 +13087,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9708732257334283,
+      "score": 0.9810108607325073,
       "sentence_nr": 14.5
     },
     {
@@ -12191,7 +13119,7 @@
       "bcp_47": "es",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9602736376353148,
+      "score": 0.9569342865902168,
       "sentence_nr": 14.5
     },
     {
@@ -12212,6 +13140,70 @@
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "fa",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.4,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "fa",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9414698824984596,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "fa",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.26232478733341374,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "fa",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.44641220608314985,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "fil",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.43333333333333335,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "fil",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9402707475255596,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "fil",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.29097818784870333,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "fil",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.44978114149245985,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
       "bcp_47": "fr",
       "task": "classification",
       "metric": "accuracy",
@@ -12223,7 +13215,7 @@
       "bcp_47": "fr",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9756346055321089,
+      "score": 0.9815706066541411,
       "sentence_nr": 14.5
     },
     {
@@ -12244,6 +13236,38 @@
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "gu",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.43333333333333335,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "gu",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.938086045460355,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "gu",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.26442484966880464,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "gu",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.44452182973195975,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
       "bcp_47": "hi",
       "task": "classification",
       "metric": "accuracy",
@@ -12255,7 +13279,7 @@
       "bcp_47": "hi",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9489245079595486,
+      "score": 0.9428185393832219,
       "sentence_nr": 14.5
     },
     {
@@ -12276,6 +13300,198 @@
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "id",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6333333333333333,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "id",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9598314474300775,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "id",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.29354203311552335,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "id",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4723493656022861,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "it",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6666666666666666,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "it",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9439490413212892,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "it",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.28142583904826096,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "it",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4707591889357925,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ja",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6333333333333333,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ja",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9371132855221468,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ja",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.2723410893967824,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ja",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.43929453749366865,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "jv",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.4666666666666667,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "jv",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9298143194922116,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "jv",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.23729186537968905,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "jv",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4198940727847352,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ko",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.5333333333333333,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ko",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9355445912073929,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ko",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.20332074778330964,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ko",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4005255477730261,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "mr",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6333333333333333,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "mr",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9440892312053646,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "mr",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.24903049799655144,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "mr",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.42489125861884175,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
       "bcp_47": "pa",
       "task": "classification",
       "metric": "accuracy",
@@ -12287,7 +13503,7 @@
       "bcp_47": "pa",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8692673671947869,
+      "score": 0.9025298113664532,
       "sentence_nr": 14.5
     },
     {
@@ -12319,7 +13535,7 @@
       "bcp_47": "pt",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9723487188655754,
+      "score": 0.9641423549595803,
       "sentence_nr": 14.5
     },
     {
@@ -12340,6 +13556,166 @@
     },
     {
       "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ru",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.5666666666666667,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ru",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9663696817874857,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ru",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.26015179309825326,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ru",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4525762744858351,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "sw",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.5666666666666667,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "sw",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9401745263817055,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "sw",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.30022614000139736,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "sw",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.46620999112028233,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ta",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.43333333333333335,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ta",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9641464401452432,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ta",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.2528104486727614,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "ta",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.42077045938882934,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "te",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.36666666666666664,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "te",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9513838296654142,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "te",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.28338449781147135,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "te",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.467003606031036,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "tr",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.5333333333333333,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "tr",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9446670623712353,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "tr",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.2844596261435892,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "tr",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4525478264239361,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
       "bcp_47": "ur",
       "task": "classification",
       "metric": "accuracy",
@@ -12351,7 +13727,7 @@
       "bcp_47": "ur",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9345902038028003,
+      "score": 0.9182703887696211,
       "sentence_nr": 14.5
     },
     {
@@ -12359,7 +13735,7 @@
       "bcp_47": "ur",
       "task": "translation",
       "metric": "bleu",
-      "score": 0.2433585957791825,
+      "score": 0.2434522914619727,
       "sentence_nr": 14.5
     },
     {
@@ -12368,6 +13744,70 @@
       "task": "translation",
       "metric": "chrf",
       "score": 0.42196914378741973,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "vi",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.6,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "vi",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9580044761495575,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "vi",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.25541664062319624,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "vi",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.43688984396841446,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "yue",
+      "task": "classification",
+      "metric": "accuracy",
+      "score": 0.43333333333333335,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "yue",
+      "task": "language_modeling",
+      "metric": "chrf",
+      "score": 0.9022415223117748,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "yue",
+      "task": "translation",
+      "metric": "bleu",
+      "score": 0.22628178945118504,
+      "sentence_nr": 14.5
+    },
+    {
+      "model": "meta-llama/llama-3.3-70b-instruct",
+      "bcp_47": "yue",
+      "task": "translation",
+      "metric": "chrf",
+      "score": 0.4052050858435178,
       "sentence_nr": 14.5
     },
     {
@@ -12383,7 +13823,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9410655280186742,
+      "score": 0.9003842558834025,
       "sentence_nr": 14.5
     },
     {
@@ -12415,7 +13855,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9268050965065061,
+      "score": 0.9312514772455793,
       "sentence_nr": 14.5
     },
     {
@@ -12447,7 +13887,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8131949865285024,
+      "score": 0.831019102021034,
       "sentence_nr": 14.5
     },
     {
@@ -12479,7 +13919,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9383955895073849,
+      "score": 0.9126664788853867,
       "sentence_nr": 14.5
     },
     {
@@ -12511,7 +13951,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.8247133394312195,
+      "score": 0.8098290899553928,
       "sentence_nr": 14.5
     },
     {
@@ -12543,7 +13983,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.7898342718049297,
+      "score": 0.8397325387031247,
       "sentence_nr": 14.5
     },
     {
@@ -12575,7 +14015,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.921617170849841,
+      "score": 0.9167475699419941,
       "sentence_nr": 14.5
     },
     {
@@ -12607,7 +14047,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.9671581799852296,
+      "score": 0.9807297060840695,
       "sentence_nr": 14.5
     },
     {
@@ -12639,7 +14079,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.92938328453392,
+      "score": 0.9313441068235117,
       "sentence_nr": 14.5
     },
     {
@@ -12671,7 +14111,7 @@
       "bcp_47": "en",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.6047457400839834,
+      "score": 0.5225508930892153,
       "sentence_nr": 14.5
     },
     {
@@ -12703,7 +14143,7 @@
       "bcp_47": "zh",
       "task": "language_modeling",
       "metric": "chrf",
-      "score": 0.35788429123492,
+      "score": 0.4174856398225174,
       "sentence_nr": 14.5
     },
     {

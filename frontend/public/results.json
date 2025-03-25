@@ -26,7 +26,7 @@
       "license": null,
       "average": 0.66,
       "classification_accuracy": 0.73,
-      "language_modeling_chrf": 0.97,
+      "language_modeling_chrf": 0.96,
       "translation_bleu": 0.4,
       "translation_chrf": 0.54
     },
@@ -39,9 +39,9 @@
       "size": 27432406640.0,
       "type": "Open",
       "license": "Gemma",
-      "average": 0.65,
+      "average": 0.64,
       "classification_accuracy": 0.72,
-      "language_modeling_chrf": 0.96,
+      "language_modeling_chrf": 0.94,
       "translation_bleu": 0.37,
       "translation_chrf": 0.54
     },
@@ -54,29 +54,14 @@
       "size": 70553706496.0,
       "type": "Open",
       "license": "Llama3.1",
-      "average": 0.62,
+      "average": 0.63,
       "classification_accuracy": 0.57,
-      "language_modeling_chrf": 0.92,
+      "language_modeling_chrf": 0.95,
       "translation_bleu": 0.43,
       "translation_chrf": 0.57
     },
     {
       "rank": 5,
-      "provider": "Amazon",
-      "model": "Nova Micro V1",
-      "hf_id": null,
-      "creation_date": null,
-      "size": null,
-      "type": "Commercial",
-      "license": null,
-      "average": 0.61,
-      "classification_accuracy": 0.52,
-      "language_modeling_chrf": 0.94,
-      "translation_bleu": 0.4,
-      "translation_chrf": 0.56
-    },
-    {
-      "rank": 6,
       "provider": "Meta Llama",
       "model": "Llama 3 70b Instruct",
       "hf_id": null,
@@ -86,9 +71,24 @@
       "license": null,
       "average": 0.61,
       "classification_accuracy": 0.8,
-      "language_modeling_chrf": 0.95,
+      "language_modeling_chrf": 0.96,
       "translation_bleu": 0.25,
       "translation_chrf": 0.43
+    },
+    {
+      "rank": 6,
+      "provider": "Amazon",
+      "model": "Nova Micro V1",
+      "hf_id": null,
+      "creation_date": null,
+      "size": null,
+      "type": "Commercial",
+      "license": null,
+      "average": 0.6,
+      "classification_accuracy": 0.52,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.4,
+      "translation_chrf": 0.56
     },
     {
       "rank": 7,
@@ -101,7 +101,7 @@
       "license": null,
       "average": 0.6,
       "classification_accuracy": 0.52,
-      "language_modeling_chrf": 0.95,
+      "language_modeling_chrf": 0.96,
       "translation_bleu": 0.39,
       "translation_chrf": 0.55
     },
@@ -116,7 +116,7 @@
       "license": "Apache 2.0",
       "average": 0.58,
       "classification_accuracy": 0.55,
-      "language_modeling_chrf": 0.86,
+      "language_modeling_chrf": 0.88,
       "translation_bleu": 0.38,
       "translation_chrf": 0.52
     },
@@ -129,11 +129,11 @@
       "size": 70553706496.0,
       "type": "Open",
       "license": "Llama3.3",
-      "average": 0.56,
-      "classification_accuracy": 0.5,
+      "average": 0.55,
+      "classification_accuracy": 0.51,
       "language_modeling_chrf": 0.94,
-      "translation_bleu": 0.31,
-      "translation_chrf": 0.48
+      "translation_bleu": 0.28,
+      "translation_chrf": 0.46
     },
     {
       "rank": 10,
@@ -144,9 +144,9 @@
       "size": null,
       "type": "Commercial",
       "license": null,
-      "average": 0.55,
+      "average": 0.54,
       "classification_accuracy": 0.5,
-      "language_modeling_chrf": 0.88,
+      "language_modeling_chrf": 0.86,
       "translation_bleu": 0.32,
       "translation_chrf": 0.49
     },
@@ -161,7 +161,7 @@
       "license": "Mit",
       "average": 0.52,
       "classification_accuracy": 0.42,
-      "language_modeling_chrf": 0.87,
+      "language_modeling_chrf": 0.88,
       "translation_bleu": 0.32,
       "translation_chrf": 0.46
     },
@@ -176,7 +176,7 @@
       "license": "Apache 2.0",
       "average": 0.25,
       "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.48,
+      "language_modeling_chrf": 0.47,
       "translation_bleu": 0.21,
       "translation_chrf": 0.3
     }
@@ -220,7 +220,7 @@
       "in_benchmark": true,
       "NaN": 0.0,
       "classification_accuracy": 0.53,
-      "language_modeling_chrf": 0.95,
+      "language_modeling_chrf": 0.94,
       "translation_bleu": 0.32,
       "translation_chrf": 0.49
     },
@@ -248,7 +248,7 @@
       "in_benchmark": true,
       "NaN": 0.0,
       "classification_accuracy": 0.43,
-      "language_modeling_chrf": 0.93,
+      "language_modeling_chrf": 0.94,
       "translation_bleu": 0.28,
       "translation_chrf": 0.47
     },
@@ -262,7 +262,7 @@
       "in_benchmark": true,
       "NaN": 0.0,
       "classification_accuracy": 0.5,
-      "language_modeling_chrf": 0.93,
+      "language_modeling_chrf": 0.92,
       "translation_bleu": 0.24,
       "translation_chrf": 0.42
     },
@@ -290,7 +290,7 @@
       "in_benchmark": true,
       "NaN": 0.0,
       "classification_accuracy": 0.4,
-      "language_modeling_chrf": 0.9,
+      "language_modeling_chrf": 0.91,
       "translation_bleu": 0.2,
       "translation_chrf": 0.41
     },
@@ -300,11 +300,11 @@
       "autonym": "Português",
       "speakers": 237496885,
       "family": "Indo-European",
-      "average": 0.46,
+      "average": 0.45,
       "in_benchmark": true,
       "NaN": 0.0,
       "classification_accuracy": 0.5,
-      "language_modeling_chrf": 0.97,
+      "language_modeling_chrf": 0.96,
       "translation_bleu": 0.31,
       "translation_chrf": 0.49
     },
@@ -314,11 +314,11 @@
       "autonym": "ਪੰਜਾਬੀ",
       "speakers": 203571210,
       "family": "Indo-European",
-      "average": 0.42,
+      "average": 0.43,
       "in_benchmark": true,
       "NaN": 0.0,
       "classification_accuracy": 0.4,
-      "language_modeling_chrf": 0.87,
+      "language_modeling_chrf": 0.9,
       "translation_bleu": 0.34,
       "translation_chrf": 0.49
     },
@@ -328,13 +328,13 @@
       "autonym": "Русский",
       "speakers": 195841151,
       "family": "Indo-European",
-      "average": 0.0,
+      "average": 0.45,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.57,
+      "language_modeling_chrf": 0.97,
+      "translation_bleu": 0.26,
+      "translation_chrf": 0.45
     },
     {
       "bcp_47": "sw",
@@ -342,13 +342,13 @@
       "autonym": "Kiswahili",
       "speakers": 171610296,
       "family": "Atlantic-Congo",
-      "average": 0.0,
+      "average": 0.45,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.57,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.3,
+      "translation_chrf": 0.47
     },
     {
       "bcp_47": "id",
@@ -356,13 +356,13 @@
       "autonym": "Bahasa Indonesia",
       "speakers": 171207687,
       "family": "Austronesian",
-      "average": 0.0,
+      "average": 0.47,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.63,
+      "language_modeling_chrf": 0.96,
+      "translation_bleu": 0.29,
+      "translation_chrf": 0.47
     },
     {
       "bcp_47": "de",
@@ -370,13 +370,13 @@
       "autonym": "Deutsch",
       "speakers": 136350226,
       "family": "Indo-European",
-      "average": 0.0,
+      "average": 0.49,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.67,
+      "language_modeling_chrf": 0.96,
+      "translation_bleu": 0.32,
+      "translation_chrf": 0.5
     },
     {
       "bcp_47": "ja",
@@ -384,13 +384,13 @@
       "autonym": "日本語",
       "speakers": 119729026,
       "family": "Japonic",
-      "average": 0.0,
+      "average": 0.46,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.63,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.27,
+      "translation_chrf": 0.44
     },
     {
       "bcp_47": "te",
@@ -398,13 +398,13 @@
       "autonym": "తెలుగు",
       "speakers": 95478480,
       "family": "Dravidian",
-      "average": 0.0,
+      "average": 0.41,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.37,
+      "language_modeling_chrf": 0.95,
+      "translation_bleu": 0.28,
+      "translation_chrf": 0.47
     },
     {
       "bcp_47": "lah",
@@ -426,13 +426,13 @@
       "autonym": "मराठी",
       "speakers": 92826300,
       "family": "Indo-European",
-      "average": 0.0,
+      "average": 0.45,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.63,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.25,
+      "translation_chrf": 0.42
     },
     {
       "bcp_47": "jv",
@@ -440,13 +440,13 @@
       "autonym": "Jawa",
       "speakers": 91180665,
       "family": "Austronesian",
-      "average": 0.0,
+      "average": 0.41,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.47,
+      "language_modeling_chrf": 0.93,
+      "translation_bleu": 0.24,
+      "translation_chrf": 0.42
     },
     {
       "bcp_47": "vi",
@@ -454,13 +454,13 @@
       "autonym": "Tiếng Việt",
       "speakers": 86222962,
       "family": "Austroasiatic",
-      "average": 0.0,
+      "average": 0.45,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.6,
+      "language_modeling_chrf": 0.96,
+      "translation_bleu": 0.26,
+      "translation_chrf": 0.44
     },
     {
       "bcp_47": "ta",
@@ -468,13 +468,13 @@
       "autonym": "தமிழ்",
       "speakers": 85616159,
       "family": "Dravidian",
-      "average": 0.0,
+      "average": 0.41,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.43,
+      "language_modeling_chrf": 0.96,
+      "translation_bleu": 0.25,
+      "translation_chrf": 0.42
     },
     {
       "bcp_47": "fa",
@@ -482,13 +482,13 @@
       "autonym": "فارسی",
       "speakers": 84710459,
       "family": "Indo-European",
-      "average": 0.0,
+      "average": 0.41,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.4,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.26,
+      "translation_chrf": 0.45
     },
     {
       "bcp_47": "wuu",
@@ -510,13 +510,13 @@
       "autonym": "Türkçe",
       "speakers": 80360704,
       "family": "Turkic",
-      "average": 0.0,
+      "average": 0.44,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.53,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.28,
+      "translation_chrf": 0.45
     },
     {
       "bcp_47": "yue",
@@ -524,13 +524,13 @@
       "autonym": "粵語",
       "speakers": 79654759,
       "family": "Sino-Tibetan",
-      "average": 0.0,
+      "average": 0.39,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.43,
+      "language_modeling_chrf": 0.9,
+      "translation_bleu": 0.23,
+      "translation_chrf": 0.41
     },
     {
       "bcp_47": "ko",
@@ -538,13 +538,13 @@
       "autonym": "한국어",
       "speakers": 78357046,
       "family": "Koreanic",
-      "average": 0.0,
+      "average": 0.41,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.53,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.2,
+      "translation_chrf": 0.4
     },
     {
       "bcp_47": "it",
@@ -552,13 +552,13 @@
       "autonym": "Italiano",
       "speakers": 70247060,
       "family": "Indo-European",
-      "average": 0.0,
+      "average": 0.47,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.67,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.28,
+      "translation_chrf": 0.47
     },
     {
       "bcp_47": "fil",
@@ -566,13 +566,13 @@
       "autonym": "Filipino",
       "speakers": 67471096,
       "family": "Austronesian",
-      "average": 0.0,
+      "average": 0.42,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.43,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.29,
+      "translation_chrf": 0.45
     },
     {
       "bcp_47": "arz",
@@ -580,13 +580,13 @@
       "autonym": "Egyptian Arabic",
       "speakers": 66639360,
       "family": "Afro-Asiatic",
-      "average": 0.0,
+      "average": 0.38,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.4,
+      "language_modeling_chrf": 0.93,
+      "translation_bleu": 0.2,
+      "translation_chrf": 0.39
     },
     {
       "bcp_47": "gu",
@@ -594,13 +594,13 @@
       "autonym": "ગુજરાતી",
       "speakers": 61721799,
       "family": "Indo-European",
-      "average": 0.0,
+      "average": 0.42,
       "in_benchmark": true,
       "NaN": 0.0,
-      "classification_accuracy": 0.0,
-      "language_modeling_chrf": 0.0,
-      "translation_bleu": 0.0,
-      "translation_chrf": 0.0
+      "classification_accuracy": 0.43,
+      "language_modeling_chrf": 0.94,
+      "translation_bleu": 0.26,
+      "translation_chrf": 0.44
     },
     {
       "bcp_47": "th",
@@ -10164,7 +10164,7 @@
       ]
     },
     "AE": {
-      "score": 0.39591834659201586,
+      "score": 0.40140041521976655,
       "languages": [
         {
           "name": "English",
@@ -10182,7 +10182,7 @@
           "name": "Persian",
           "bcp_47": "fa",
           "population": 189850,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Pashto",
@@ -10205,7 +10205,7 @@
       ]
     },
     "AG": {
-      "score": 0.4698173362013836,
+      "score": 0.4696346724027672,
       "languages": [
         {
           "name": "English",
@@ -10217,7 +10217,7 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 1571,
-          "score": 0.46
+          "score": 0.45
         }
       ]
     },
@@ -10290,7 +10290,7 @@
       ]
     },
     "AT": {
-      "score": 0.13725900574384256,
+      "score": 0.31771431191158667,
       "languages": [
         {
           "name": "English",
@@ -10308,13 +10308,13 @@
           "name": "German",
           "bcp_47": "de",
           "population": 8593666,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 797350,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Bavarian",
@@ -10343,7 +10343,7 @@
       ]
     },
     "AU": {
-      "score": 0.46077520536342514,
+      "score": 0.46970357171432847,
       "languages": [
         {
           "name": "English",
@@ -10361,7 +10361,7 @@
           "name": "Italian",
           "bcp_47": "it",
           "population": 483864,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Hmong Njua",
@@ -10506,7 +10506,7 @@
       ]
     },
     "BE": {
-      "score": 0.23819809898359195,
+      "score": 0.29499472599184506,
       "languages": [
         {
           "name": "English",
@@ -10524,7 +10524,7 @@
           "name": "German",
           "bcp_47": "de",
           "population": 2578554,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Dutch",
@@ -10547,7 +10547,7 @@
       ]
     },
     "BG": {
-      "score": 0.07035928143712575,
+      "score": 0.18479041916167663,
       "languages": [
         {
           "name": "English",
@@ -10559,19 +10559,19 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 1602387,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 557352,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 766359,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Bulgarian",
@@ -10582,7 +10582,7 @@
       ]
     },
     "BI": {
-      "score": 0.22246807623977216,
+      "score": 0.2226670965568091,
       "languages": [
         {
           "name": "English",
@@ -10600,7 +10600,7 @@
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 6408,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Rundi",
@@ -10645,7 +10645,7 @@
       ]
     },
     "BR": {
-      "score": 0.45330626204700775,
+      "score": 0.45070787745315494,
       "languages": [
         {
           "name": "English",
@@ -10663,31 +10663,31 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 192661560,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 1778414,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Japanese",
           "bcp_47": "ja",
           "population": 444604,
-          "score": 0.0
+          "score": 0.46
         },
         {
           "name": "Korean",
           "bcp_47": "ko",
           "population": 44460,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 592805,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Venetian",
@@ -10819,7 +10819,7 @@
       ]
     },
     "CA": {
-      "score": 0.4280483033489603,
+      "score": 0.4538591979207903,
       "languages": [
         {
           "name": "English",
@@ -10873,85 +10873,85 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 229934,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Punjabi",
           "bcp_47": "pa",
           "population": 603106,
-          "score": 0.42
+          "score": 0.43
         },
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 211087,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 294014,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Japanese",
           "bcp_47": "ja",
           "population": 52772,
-          "score": 0.0
+          "score": 0.46
         },
         {
           "name": "Vietnamese",
           "bcp_47": "vi",
           "population": 184701,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Tamil",
           "bcp_47": "ta",
           "population": 184701,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Persian",
           "bcp_47": "fa",
           "population": 245012,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 37694,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Cantonese",
           "bcp_47": "yue",
           "population": 640800,
-          "score": 0.0
+          "score": 0.39
         },
         {
           "name": "Korean",
           "bcp_47": "ko",
           "population": 169623,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 343016,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Filipino",
           "bcp_47": "fil",
           "population": 565412,
-          "score": 0.0
+          "score": 0.42
         },
         {
           "name": "Gujarati",
           "bcp_47": "gu",
           "population": 135699,
-          "score": 0.0
+          "score": 0.42
         },
         {
           "name": "Polish",
@@ -11189,7 +11189,7 @@
       ]
     },
     "CH": {
-      "score": 0.17143224232353874,
+      "score": 0.33368138748580556,
       "languages": [
         {
           "name": "English",
@@ -11207,19 +11207,19 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 285736,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 6134913,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 361372,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Swiss German",
@@ -11455,7 +11455,7 @@
       ]
     },
     "CN": {
-      "score": 0.36863417321148484,
+      "score": 0.38724457341349466,
       "languages": [
         {
           "name": "English",
@@ -11473,13 +11473,13 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 13940,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Vietnamese",
           "bcp_47": "vi",
           "population": 6970,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Wu Chinese",
@@ -11491,13 +11491,13 @@
           "name": "Cantonese",
           "bcp_47": "yue",
           "population": 72489040,
-          "score": 0.0
+          "score": 0.39
         },
         {
           "name": "Korean",
           "bcp_47": "ko",
           "population": 2091030,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Xiang Chinese",
@@ -11649,7 +11649,7 @@
       ]
     },
     "CY": {
-      "score": 0.18945142670615586,
+      "score": 0.2404799926753925,
       "languages": [
         {
           "name": "English",
@@ -11673,7 +11673,7 @@
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 291336,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Greek",
@@ -11690,7 +11690,7 @@
       ]
     },
     "CZ": {
-      "score": 0.08109144475315826,
+      "score": 0.12805930282531847,
       "languages": [
         {
           "name": "English",
@@ -11702,7 +11702,7 @@
           "name": "German",
           "bcp_47": "de",
           "population": 1605375,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Polish",
@@ -11725,7 +11725,7 @@
       ]
     },
     "DE": {
-      "score": 0.16673407486802613,
+      "score": 0.3765932308207555,
       "languages": [
         {
           "name": "English",
@@ -11749,25 +11749,25 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 4809582,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 72945327,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 2003992,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 5611179,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Polish",
@@ -11891,7 +11891,7 @@
       ]
     },
     "DK": {
-      "score": 0.1687682799969866,
+      "score": 0.2649269539952979,
       "languages": [
         {
           "name": "English",
@@ -11903,7 +11903,7 @@
           "name": "German",
           "bcp_47": "de",
           "population": 2758623,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Swedish",
@@ -12001,7 +12001,7 @@
       ]
     },
     "EE": {
-      "score": 0.1153657311566433,
+      "score": 0.23907703243578238,
       "languages": [
         {
           "name": "English",
@@ -12013,7 +12013,7 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 688027,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Finnish",
@@ -12042,7 +12042,7 @@
       ]
     },
     "EG": {
-      "score": 0.28970118200899325,
+      "score": 0.4156717299521135,
       "languages": [
         {
           "name": "English",
@@ -12060,7 +12060,7 @@
           "name": "Egyptian Arabic",
           "bcp_47": "arz",
           "population": 66639360,
-          "score": 0.0
+          "score": 0.38
         },
         {
           "name": "Greek",
@@ -12236,7 +12236,7 @@
       ]
     },
     "FI": {
-      "score": 0.14489049029987158,
+      "score": 0.18533875082776866,
       "languages": [
         {
           "name": "English",
@@ -12248,13 +12248,13 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 45131,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 1002901,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Swedish",
@@ -12388,7 +12388,7 @@
       ]
     },
     "FR": {
-      "score": 0.4241282220594123,
+      "score": 0.4436463938115849,
       "languages": [
         {
           "name": "English",
@@ -12412,19 +12412,19 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 882027,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 3392410,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 1153419,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Dutch",
@@ -12495,7 +12495,7 @@
       ]
     },
     "GB": {
-      "score": 0.3951929468077104,
+      "score": 0.43956766255639257,
       "languages": [
         {
           "name": "English",
@@ -12543,43 +12543,43 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 131522,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Punjabi",
           "bcp_47": "pa",
           "population": 2367400,
-          "score": 0.42
+          "score": 0.43
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 5918499,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Tamil",
           "bcp_47": "ta",
           "population": 2104355,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 131522,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 131522,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Gujarati",
           "bcp_47": "gu",
           "population": 1907072,
-          "score": 0.0
+          "score": 0.42
         },
         {
           "name": "Polish",
@@ -12765,7 +12765,7 @@
       ]
     },
     "GR": {
-      "score": 0.16451496911429414,
+      "score": 0.18194383576443016,
       "languages": [
         {
           "name": "English",
@@ -12783,13 +12783,13 @@
           "name": "German",
           "bcp_47": "de",
           "population": 530355,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 127285,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Greek",
@@ -12869,7 +12869,7 @@
       ]
     },
     "HK": {
-      "score": 0.29033194917916566,
+      "score": 0.4359751035397035,
       "languages": [
         {
           "name": "English",
@@ -12887,7 +12887,7 @@
           "name": "Cantonese",
           "bcp_47": "yue",
           "population": 6524919,
-          "score": 0.0
+          "score": 0.39
         }
       ]
     },
@@ -12920,7 +12920,7 @@
       ]
     },
     "HR": {
-      "score": 0.15322692258543336,
+      "score": 0.15823024946225459,
       "languages": [
         {
           "name": "English",
@@ -12932,7 +12932,7 @@
           "name": "Italian",
           "bcp_47": "it",
           "population": 67644,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Croatian",
@@ -12949,7 +12949,7 @@
       ]
     },
     "HU": {
-      "score": 0.07565921456157332,
+      "score": 0.13756219151316587,
       "languages": [
         {
           "name": "English",
@@ -12967,7 +12967,7 @@
           "name": "German",
           "bcp_47": "de",
           "population": 1758929,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Romanian",
@@ -13025,7 +13025,7 @@
       ]
     },
     "IL": {
-      "score": 0.19791078395296563,
+      "score": 0.21817259544999,
       "languages": [
         {
           "name": "English",
@@ -13043,7 +13043,7 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 954303,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Malayalam",
@@ -13125,7 +13125,7 @@
       ]
     },
     "IN": {
-      "score": 0.26031158182809067,
+      "score": 0.3397907454052606,
       "languages": [
         {
           "name": "English",
@@ -13155,13 +13155,13 @@
           "name": "Punjabi",
           "bcp_47": "pa",
           "population": 37130520,
-          "score": 0.42
+          "score": 0.43
         },
         {
           "name": "Telugu",
           "bcp_47": "te",
           "population": 95478480,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Western Panjabi",
@@ -13173,19 +13173,19 @@
           "name": "Marathi",
           "bcp_47": "mr",
           "population": 92826300,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Tamil",
           "bcp_47": "ta",
           "population": 78239310,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Gujarati",
           "bcp_47": "gu",
           "population": 59674050,
-          "score": 0.0
+          "score": 0.42
         },
         {
           "name": "Kannada",
@@ -13603,7 +13603,7 @@
       ]
     },
     "IQ": {
-      "score": 0.35502445223850776,
+      "score": 0.357837983423388,
       "languages": [
         {
           "name": "English",
@@ -13621,7 +13621,7 @@
           "name": "Persian",
           "bcp_47": "fa",
           "population": 338192,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Azerbaijani",
@@ -13650,7 +13650,7 @@
       ]
     },
     "IT": {
-      "score": 0.12688064203402252,
+      "score": 0.43224641662655555,
       "languages": [
         {
           "name": "English",
@@ -13668,13 +13668,13 @@
           "name": "German",
           "bcp_47": "de",
           "population": 998443,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 59282565,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Greek",
@@ -13820,7 +13820,7 @@
       ]
     },
     "KE": {
-      "score": 0.057955683710036364,
+      "score": 0.2501476621404106,
       "languages": [
         {
           "name": "English",
@@ -13838,19 +13838,19 @@
           "name": "Punjabi",
           "bcp_47": "pa",
           "population": 10170,
-          "score": 0.42
+          "score": 0.43
         },
         {
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 35328414,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Gujarati",
           "bcp_47": "gu",
           "population": 4978,
-          "score": 0.0
+          "score": 0.42
         },
         {
           "name": "Oromo",
@@ -13984,7 +13984,7 @@
       ]
     },
     "KZ": {
-      "score": 0.0442283557549302,
+      "score": 0.2671643693028198,
       "languages": [
         {
           "name": "English",
@@ -13996,13 +13996,13 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 13746168,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 1221882,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Kazakh",
@@ -14071,7 +14071,7 @@
       ]
     },
     "LK": {
-      "score": 0.05053763440860214,
+      "score": 0.11666666666666665,
       "languages": [
         {
           "name": "English",
@@ -14083,7 +14083,7 @@
           "name": "Tamil",
           "bcp_47": "ta",
           "population": 3433380,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Sinhala",
@@ -14164,7 +14164,7 @@
       ]
     },
     "LT": {
-      "score": 0.08192661853903119,
+      "score": 0.2785320836068621,
       "languages": [
         {
           "name": "English",
@@ -14176,13 +14176,13 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 2185168,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 382404,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Lithuanian",
@@ -14199,7 +14199,7 @@
       ]
     },
     "LU": {
-      "score": 0.255017252012643,
+      "score": 0.3612802832567923,
       "languages": [
         {
           "name": "English",
@@ -14217,13 +14217,13 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 100541,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 395880,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Luxembourgish",
@@ -14234,7 +14234,7 @@
       ]
     },
     "LV": {
-      "score": 0.14048091124242368,
+      "score": 0.2515919974081345,
       "languages": [
         {
           "name": "English",
@@ -14246,7 +14246,7 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 714867,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Latvian",
@@ -14362,7 +14362,7 @@
       ]
     },
     "MO": {
-      "score": 0.46020852883372587,
+      "score": 0.4597552187538731,
       "languages": [
         {
           "name": "English",
@@ -14380,7 +14380,7 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 30723,
-          "score": 0.46
+          "score": 0.45
         }
       ]
     },
@@ -14413,7 +14413,7 @@
       ]
     },
     "MT": {
-      "score": 0.18203906242629914,
+      "score": 0.28525492889983195,
       "languages": [
         {
           "name": "English",
@@ -14431,7 +14431,7 @@
           "name": "Italian",
           "bcp_47": "it",
           "population": 256070,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Maltese",
@@ -14442,7 +14442,7 @@
       ]
     },
     "MU": {
-      "score": 0.18730089040118697,
+      "score": 0.19243355389764255,
       "languages": [
         {
           "name": "English",
@@ -14466,7 +14466,7 @@
           "name": "Tamil",
           "bcp_47": "ta",
           "population": 34484,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Bhojpuri",
@@ -14594,7 +14594,7 @@
       ]
     },
     "MY": {
-      "score": 0.1439334800637596,
+      "score": 0.1619475361727729,
       "languages": [
         {
           "name": "English",
@@ -14612,13 +14612,13 @@
           "name": "Javanese",
           "bcp_47": "jv",
           "population": 391825,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Tamil",
           "bcp_47": "ta",
           "population": 1371388,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Malayalam",
@@ -14665,7 +14665,7 @@
       ]
     },
     "NA": {
-      "score": 0.020619217407487452,
+      "score": 0.023383111654627774,
       "languages": [
         {
           "name": "English",
@@ -14677,7 +14677,7 @@
           "name": "German",
           "bcp_47": "de",
           "population": 23671,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Afrikaans",
@@ -14836,7 +14836,7 @@
       ]
     },
     "NL": {
-      "score": 0.17387499999999997,
+      "score": 0.28688749989149553,
       "languages": [
         {
           "name": "English",
@@ -14854,19 +14854,19 @@
           "name": "Indonesian",
           "bcp_47": "id",
           "population": 311047,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 12269084,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 207365,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Dutch",
@@ -15183,7 +15183,7 @@
       ]
     },
     "PH": {
-      "score": 0.2080044997553085,
+      "score": 0.32615211365536473,
       "languages": [
         {
           "name": "English",
@@ -15207,7 +15207,7 @@
           "name": "Filipino",
           "bcp_47": "fil",
           "population": 65508600,
-          "score": 0.0
+          "score": 0.42
         },
         {
           "name": "Cebuano",
@@ -15308,7 +15308,7 @@
       ]
     },
     "PK": {
-      "score": 0.30251563862393366,
+      "score": 0.30567966556461956,
       "languages": [
         {
           "name": "English",
@@ -15326,7 +15326,7 @@
           "name": "Punjabi",
           "bcp_47": "pa",
           "population": 163450700,
-          "score": 0.42
+          "score": 0.43
         },
         {
           "name": "Western Panjabi",
@@ -15338,7 +15338,7 @@
           "name": "Persian",
           "bcp_47": "fa",
           "population": 1541107,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Pashto",
@@ -15457,7 +15457,7 @@
       ]
     },
     "PL": {
-      "score": 0.09207365219510223,
+      "score": 0.19542647519424666,
       "languages": [
         {
           "name": "English",
@@ -15469,13 +15469,13 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 6890814,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 7273637,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Polish",
@@ -15573,7 +15573,7 @@
       ]
     },
     "PT": {
-      "score": 0.4607128325652157,
+      "score": 0.4542324762390237,
       "languages": [
         {
           "name": "English",
@@ -15597,7 +15597,7 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 9890592,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Galician",
@@ -15625,7 +15625,7 @@
       ]
     },
     "RO": {
-      "score": 0.17334519793826225,
+      "score": 0.1743772772485309,
       "languages": [
         {
           "name": "English",
@@ -15649,13 +15649,13 @@
           "name": "German",
           "bcp_47": "de",
           "population": 44736,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 27694,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Polish",
@@ -15883,7 +15883,7 @@
       ]
     },
     "SG": {
-      "score": 0.42483238543445395,
+      "score": 0.4294592881506046,
       "languages": [
         {
           "name": "English",
@@ -15901,13 +15901,13 @@
           "name": "Punjabi",
           "bcp_47": "pa",
           "population": 9314,
-          "score": 0.42
+          "score": 0.43
         },
         {
           "name": "Tamil",
           "bcp_47": "ta",
           "population": 130403,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Malayalam",
@@ -15935,7 +15935,7 @@
       ]
     },
     "SI": {
-      "score": 0.11046483765124727,
+      "score": 0.1928028123892293,
       "languages": [
         {
           "name": "English",
@@ -15947,13 +15947,13 @@
           "name": "German",
           "bcp_47": "de",
           "population": 883126,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 3995,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Hungarian",
@@ -15982,7 +15982,7 @@
       ]
     },
     "SK": {
-      "score": 0.06145953818542007,
+      "score": 0.11567670853229638,
       "languages": [
         {
           "name": "English",
@@ -15994,7 +15994,7 @@
           "name": "German",
           "bcp_47": "de",
           "population": 1196932,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Polish",
@@ -16290,7 +16290,7 @@
       ]
     },
     "TR": {
-      "score": 0.06502802610982708,
+      "score": 0.38853953080443926,
       "languages": [
         {
           "name": "English",
@@ -16308,7 +16308,7 @@
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 76276275,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "North Levantine Arabic",
@@ -16467,7 +16467,7 @@
       ]
     },
     "TZ": {
-      "score": 0.17576282848459832,
+      "score": 0.3952631230768349,
       "languages": [
         {
           "name": "English",
@@ -16479,7 +16479,7 @@
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 52697520,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Sukuma",
@@ -16568,7 +16568,7 @@
       ]
     },
     "UG": {
-      "score": 0.014428243049412084,
+      "score": 0.2797477934487195,
       "languages": [
         {
           "name": "English",
@@ -16586,7 +16586,7 @@
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 32439750,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Kinyarwanda",
@@ -16662,7 +16662,7 @@
       ]
     },
     "US": {
-      "score": 0.45809839699094473,
+      "score": 0.46680423711359387,
       "languages": [
         {
           "name": "English",
@@ -16692,37 +16692,37 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 798334,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "German",
           "bcp_47": "de",
           "population": 1563403,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Vietnamese",
           "bcp_47": "vi",
           "population": 1130973,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Korean",
           "bcp_47": "ko",
           "population": 997917,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 1130973,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Filipino",
           "bcp_47": "fil",
           "population": 1397084,
-          "score": 0.0
+          "score": 0.42
         },
         {
           "name": "Yiddish",
@@ -16925,7 +16925,7 @@
       ]
     },
     "ZA": {
-      "score": 0.12441587427910845,
+      "score": 0.12442237800209865,
       "languages": [
         {
           "name": "English",
@@ -16943,7 +16943,7 @@
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 1016,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Zulu",
@@ -17125,7 +17125,7 @@
       ]
     },
     "ID": {
-      "score": 0.0030419341755196384,
+      "score": 0.3194548673228042,
       "languages": [
         {
           "name": "Chinese",
@@ -17137,13 +17137,13 @@
           "name": "Indonesian",
           "bcp_47": "id",
           "population": 170896640,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Javanese",
           "bcp_47": "jv",
           "population": 90788840,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Malay",
@@ -17304,7 +17304,7 @@
       ]
     },
     "MN": {
-      "score": 0.00632843339485398,
+      "score": 0.006903243016889744,
       "languages": [
         {
           "name": "Chinese",
@@ -17316,7 +17316,7 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 4118,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Kazakh",
@@ -17408,7 +17408,7 @@
       ]
     },
     "VN": {
-      "score": 0.005746798518511479,
+      "score": 0.44527479082463184,
       "languages": [
         {
           "name": "Chinese",
@@ -17420,7 +17420,7 @@
           "name": "Vietnamese",
           "bcp_47": "vi",
           "population": 84900318,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Hmong Njua",
@@ -17603,7 +17603,7 @@
       ]
     },
     "GQ": {
-      "score": 0.2792374044214109,
+      "score": 0.27923739669086073,
       "languages": [
         {
           "name": "Spanish",
@@ -17621,7 +17621,7 @@
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 1,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Fang",
@@ -17700,7 +17700,7 @@
       ]
     },
     "PY": {
-      "score": 0.016724733105137318,
+      "score": 0.03322879759433273,
       "languages": [
         {
           "name": "Spanish",
@@ -17712,7 +17712,7 @@
           "name": "German",
           "bcp_47": "de",
           "population": 208559,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Guarani",
@@ -17819,7 +17819,7 @@
       ]
     },
     "IR": {
-      "score": 0.00636827269940037,
+      "score": 0.23949254115959248,
       "languages": [
         {
           "name": "Arabic",
@@ -17831,7 +17831,7 @@
           "name": "Persian",
           "bcp_47": "fa",
           "population": 63692475,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Pashto",
@@ -18166,7 +18166,7 @@
       ]
     },
     "OM": {
-      "score": 0.3917550122860191,
+      "score": 0.3961930102252659,
       "languages": [
         {
           "name": "Arabic",
@@ -18178,7 +18178,7 @@
           "name": "Persian",
           "bcp_47": "fa",
           "population": 43849,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Baluchi",
@@ -18206,7 +18206,7 @@
       ]
     },
     "QA": {
-      "score": 0.37279344564910033,
+      "score": 0.41777205848450016,
       "languages": [
         {
           "name": "Arabic",
@@ -18218,7 +18218,7 @@
           "name": "Persian",
           "bcp_47": "fa",
           "population": 268859,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Malayalam",
@@ -18246,7 +18246,7 @@
       ]
     },
     "SO": {
-      "score": 0.12480335438670982,
+      "score": 0.1326691120161243,
       "languages": [
         {
           "name": "Arabic",
@@ -18258,7 +18258,7 @@
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 235142,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Oromo",
@@ -18333,7 +18333,7 @@
       ]
     },
     "TJ": {
-      "score": 4.095636386779862e-05,
+      "score": 0.05075244729560809,
       "languages": [
         {
           "name": "Arabic",
@@ -18345,13 +18345,13 @@
           "name": "Russian",
           "bcp_47": "ru",
           "population": 1064840,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Persian",
           "bcp_47": "fa",
           "population": 69215,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Tajik",
@@ -18454,7 +18454,7 @@
       ]
     },
     "CD": {
-      "score": 0.024519567961845984,
+      "score": 0.34013185580025246,
       "languages": [
         {
           "name": "French",
@@ -18466,7 +18466,7 @@
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 50890000,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Kinyarwanda",
@@ -18718,7 +18718,7 @@
       ]
     },
     "RE": {
-      "score": 0.23394276750687273,
+      "score": 0.26908571814147125,
       "languages": [
         {
           "name": "French",
@@ -18730,7 +18730,7 @@
           "name": "Tamil",
           "bcp_47": "ta",
           "population": 118138,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Réunion Creole French",
@@ -18887,7 +18887,7 @@
       ]
     },
     "YT": {
-      "score": 0.15478158205430934,
+      "score": 0.15850059031877214,
       "languages": [
         {
           "name": "French",
@@ -18899,7 +18899,7 @@
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 2716,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Comorian",
@@ -18916,13 +18916,13 @@
       ]
     },
     "AO": {
-      "score": 0.2533081311690543,
+      "score": 0.2478014326653792,
       "languages": [
         {
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 21789941,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Umbundu",
@@ -18945,13 +18945,13 @@
       ]
     },
     "CV": {
-      "score": 0.20934137957939955,
+      "score": 0.20479048002332564,
       "languages": [
         {
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 443274,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Kabuverdianu",
@@ -18962,13 +18962,13 @@
       ]
     },
     "GW": {
-      "score": 0.4483420821976837,
+      "score": 0.43859551519338624,
       "languages": [
         {
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 1927100,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Fula",
@@ -18985,19 +18985,19 @@
       ]
     },
     "MZ": {
-      "score": 0.1512107791359021,
+      "score": 0.1480934184335346,
       "languages": [
         {
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 8126514,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Swahili",
           "bcp_47": "sw",
           "population": 9330,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Nyanja",
@@ -19062,24 +19062,24 @@
       ]
     },
     "ST": {
-      "score": 0.45999999999999996,
+      "score": 0.45,
       "languages": [
         {
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 179454,
-          "score": 0.46
+          "score": 0.45
         }
       ]
     },
     "TL": {
-      "score": 0.23,
+      "score": 0.225,
       "languages": [
         {
           "name": "Portuguese",
           "bcp_47": "pt",
           "population": 816395,
-          "score": 0.46
+          "score": 0.45
         },
         {
           "name": "Tetum",
@@ -19090,13 +19090,13 @@
       ]
     },
     "BY": {
-      "score": 0.0,
+      "score": 0.04821427057437069,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 1137350,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Belarusian",
@@ -19107,13 +19107,13 @@
       ]
     },
     "GE": {
-      "score": 0.0,
+      "score": 0.03423789210395573,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 359730,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Kurdish",
@@ -19154,13 +19154,13 @@
       ]
     },
     "KG": {
-      "score": 0.0,
+      "score": 0.19285714285714287,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 2147364,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Kyrgyz",
@@ -19171,13 +19171,13 @@
       ]
     },
     "MD": {
-      "score": 0.0,
+      "score": 0.014563109130777574,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 100935,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Ukrainian",
@@ -19206,13 +19206,13 @@
       ]
     },
     "RU": {
-      "score": 0.0,
+      "score": 0.4065329789745318,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 133218680,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Azerbaijani",
@@ -19427,13 +19427,13 @@
       ]
     },
     "SJ": {
-      "score": 0.0,
+      "score": 0.20059435364041606,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 1200,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Norwegian Bokmål",
@@ -19444,13 +19444,13 @@
       ]
     },
     "TM": {
-      "score": 0.0,
+      "score": 0.059080984625687366,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 663436,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Uzbek",
@@ -19473,19 +19473,19 @@
       ]
     },
     "UA": {
-      "score": 0.0,
+      "score": 0.17534632621240526,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 20204534,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 184476,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Polish",
@@ -19550,19 +19550,19 @@
       ]
     },
     "UZ": {
-      "score": 0.0,
+      "score": 0.05701615696541229,
       "languages": [
         {
           "name": "Russian",
           "bcp_47": "ru",
           "population": 4279156,
-          "score": 0.0
+          "score": 0.45
         },
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 232297,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Uzbek",
@@ -19579,13 +19579,13 @@
       ]
     },
     "LI": {
-      "score": 0.0,
+      "score": 0.26022294592577516,
       "languages": [
         {
           "name": "German",
           "bcp_47": "de",
           "population": 39137,
-          "score": 0.0
+          "score": 0.49
         },
         {
           "name": "Swiss German",
@@ -19602,19 +19602,19 @@
       ]
     },
     "JP": {
-      "score": 0.0,
+      "score": 0.4560515108353953,
       "languages": [
         {
           "name": "Japanese",
           "bcp_47": "ja",
           "population": 119231650,
-          "score": 0.0
+          "score": 0.46
         },
         {
           "name": "Korean",
           "bcp_47": "ko",
           "population": 652636,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Central Okinawan",
@@ -19625,13 +19625,13 @@
       ]
     },
     "AF": {
-      "score": 0.0,
+      "score": 0.19133182400153392,
       "languages": [
         {
           "name": "Persian",
           "bcp_47": "fa",
           "population": 18321900,
-          "score": 0.0
+          "score": 0.41
         },
         {
           "name": "Pashto",
@@ -19684,13 +19684,13 @@
       ]
     },
     "MK": {
-      "score": 0.0,
+      "score": 0.016125668065966572,
       "languages": [
         {
           "name": "Turkish",
           "bcp_47": "tr",
           "population": 74409,
-          "score": 0.0
+          "score": 0.44
         },
         {
           "name": "Albanian",
@@ -19707,35 +19707,35 @@
       ]
     },
     "KP": {
-      "score": 0.0,
+      "score": 0.41,
       "languages": [
         {
           "name": "Korean",
           "bcp_47": "ko",
           "population": 22566280,
-          "score": 0.0
+          "score": 0.41
         }
       ]
     },
     "KR": {
-      "score": 0.0,
+      "score": 0.41,
       "languages": [
         {
           "name": "Korean",
           "bcp_47": "ko",
           "population": 51835100,
-          "score": 0.0
+          "score": 0.41
         }
       ]
     },
     "SM": {
-      "score": 0.0,
+      "score": 0.4654018916371436,
       "languages": [
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 30466,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Esperanto",
@@ -19746,13 +19746,13 @@
       ]
     },
     "VA": {
-      "score": 0.0,
+      "score": 0.235,
       "languages": [
         {
           "name": "Italian",
           "bcp_47": "it",
           "population": 820,
-          "score": 0.0
+          "score": 0.47
         },
         {
           "name": "Latin",

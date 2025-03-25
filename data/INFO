@@ -2,4 +2,4 @@ fleurs: https://huggingface.co/datasets/google/fleurs via eval.py
 floresp-v2.0-rc.3: https://github.com/openlanguagedata/flores
 glottolog_languoid.csv: https://glottolog.org/meta/downloads
 ScriptCodes.csv: https://www.unicode.org/iso15924/iso15924-codes.html
-spbleu: https://github.com/facebookresearch/flores/tree/main
+spbleu: https://github.com/facebookresearch/flores/tree/main/flores200#spm-and-dictionary

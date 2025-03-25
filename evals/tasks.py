@@ -3,16 +3,16 @@ import random
 import evaluate
 import pandas as pd
 from joblib.memory import Memory
-from transformers import NllbTokenizer
 from languages import languages, script_name
 from datasets_.flores import flores_sentences
 from models import complete, transcribe
+import sentencepiece as spm
+
 cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
 wer = evaluate.load("wer")
-tokenizer = NllbTokenizer.from_pretrained("facebook/nllb-200-distilled-600M")
-
+tokenizer = spm.SentencePieceProcessor(model_file="data/spbleu/flores200_sacrebleu_tokenizer_spm.model")
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
