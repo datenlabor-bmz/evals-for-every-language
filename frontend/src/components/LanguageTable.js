@@ -7,9 +7,7 @@ import { Slider } from 'primereact/slider'
 import ScoreField from './ScoreField'
 
 const LanguageTable = ({ data, filters, setFilters }) => {
-  const table = data.language_table
-
-  const families = [...new Set(table.map(item => item.family))].slice(0, 10)
+  const families = [...new Set(data.map(item => item.family))].slice(0, 10)
   families.push("Other")
   const familyRowFilterTemplate = options => {
     return (
@@ -120,7 +118,7 @@ const LanguageTable = ({ data, filters, setFilters }) => {
 
   return (
     <DataTable
-      value={table}
+      value={data}
       header={<>Languages</>}
       sortField='speakers'
       removableSort

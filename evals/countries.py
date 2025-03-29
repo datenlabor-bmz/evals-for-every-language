@@ -2,7 +2,7 @@ import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 
-import pycountry
+import pandas as pd
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
 from language_data.util import data_filename
 
@@ -38,7 +38,7 @@ def make_country_table(language_table):
                     "name": lang.language_name,
                     "bcp_47": lang.bcp_47,
                     "population": speaker_pop,
-                    "score": lang.average,
+                    "score": lang.average if not pd.isna(lang.average) else 0,
                 }
             )
     for country, languages in countries.items():
@@ -51,4 +51,5 @@ def make_country_table(language_table):
             "score": score,
             "languages": languages,
         }
-    return countries
+    countries = [{"iso2": country, **data} for country, data in countries.items()]
+    return pd.DataFrame(countries)

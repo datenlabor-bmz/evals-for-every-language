@@ -26,7 +26,10 @@ function App () {
     size: { value: null, matchMode: FilterMatchMode.BETWEEN }
   })
   useEffect(() => {
-    fetch('/results.json')
+    fetch('/api/data', {
+      method: 'POST',
+      // body: JSON.stringify({ modelFilters, languageFilters }),
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok')
@@ -41,7 +44,7 @@ function App () {
         setError(err.message)
         setLoading(false)
       })
-  }, [])
+  }, [modelFilters, languageFilters])
 
   useEffect(() => {
     if (data) {
@@ -150,7 +153,7 @@ function App () {
                 }}
               >
                 <ModelTable
-                  data={data}
+                  data={data.model_table}
                   filters={modelFilters}
                   setFilters={setModelFilters}
                 />
@@ -162,7 +165,7 @@ function App () {
                 }}
               >
                 <LanguageTable
-                  data={data}
+                  data={data.language_table}
                   filters={languageFilters}
                   setFilters={setLanguageFilters}
                 />

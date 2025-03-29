@@ -8,7 +8,6 @@ import { Slider } from 'primereact/slider'
 import ScoreField from './ScoreField'
 
 const ModelTable = ({ data, filters, setFilters }) => {
-  const table = data.model_table
   const rankBodyTemplate = rowData => {
     return <Medal rank={rowData.rank} />
   }
@@ -125,7 +124,7 @@ const ModelTable = ({ data, filters, setFilters }) => {
 
   return (
     <DataTable
-      value={table}
+      value={data}
       header={<>AI Models</>}
       sortField='average'
       removableSort
