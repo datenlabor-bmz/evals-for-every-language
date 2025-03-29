@@ -6,12 +6,7 @@ import { useState, useEffect } from 'react'
 import { Slider } from 'primereact/slider'
 import ScoreField from './ScoreField'
 
-const LanguageTable = ({ data }) => {
-  const [filters, setFilters] = useState({
-    language_name: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    family: { value: null, matchMode: FilterMatchMode.IN },
-    speakers: { value: null, matchMode: FilterMatchMode.BETWEEN },
-  })
+const LanguageTable = ({ data, filters, setFilters }) => {
   const table = data.language_table
 
   const families = [...new Set(table.map(item => item.family))].slice(0, 10)

@@ -7,13 +7,7 @@ import Medal from './Medal'
 import { Slider } from 'primereact/slider'
 import ScoreField from './ScoreField'
 
-const ModelTable = ({ data }) => {
-  const [filters, setFilters] = useState({
-    provider: { value: null, matchMode: FilterMatchMode.IN },
-    model: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    type: { value: null, matchMode: FilterMatchMode.IN },
-    size: { value: null, matchMode: FilterMatchMode.BETWEEN }
-  })
+const ModelTable = ({ data, filters, setFilters }) => {
   const table = data.model_table
   const rankBodyTemplate = rowData => {
     return <Medal rank={rowData.rank} />

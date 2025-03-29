@@ -8,13 +8,23 @@ import WorldMap from './components/WorldMap'
 import AutoComplete from './components/AutoComplete'
 import LanguagePlot from './components/LanguagePlot'
 import { Carousel } from 'primereact/carousel'
+import { FilterMatchMode } from 'primereact/api'
 
 function App () {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [allSuggestions, setAllSuggestions] = useState([])
-  const [filters, setFilters] = useState([])
+  const [languageFilters, setLanguageFilters] = useState({
+    language_name: { value: null, matchMode: FilterMatchMode.EQUALS }, // via global search
+    family: { value: null, matchMode: FilterMatchMode.IN },
+    speakers: { value: null, matchMode: FilterMatchMode.BETWEEN }
+  })
+  const [modelFilters, setModelFilters] = useState({
+    model: { value: null, matchMode: FilterMatchMode.ENDS_WITH }, // via global search
+    type: { value: null, matchMode: FilterMatchMode.IN },
+    size: { value: null, matchMode: FilterMatchMode.BETWEEN }
+  })
   useEffect(() => {
     fetch('/results.json')
       .then(response => {
@@ -93,7 +103,25 @@ function App () {
           </p>
           <AutoComplete
             allSuggestions={allSuggestions}
-            onComplete={item => setFilters(prevFilters => [item])}
+            onComplete={item => {
+              const languageValue =
+                item.type === 'Language' ? item.detail : null
+              const modelValue = item.type === 'Model' ? item.value : null
+              setLanguageFilters(prevFilters => ({
+                ...prevFilters,
+                language_name: {
+                  value: languageValue,
+                  matchMode: FilterMatchMode.EQUALS
+                }
+              }))
+              setModelFilters(prevFilters => ({
+                ...prevFilters,
+                model: {
+                  value: modelValue,
+                  matchMode: FilterMatchMode.ENDS_WITH
+                }
+              }))
+            }}
           />
         </header>
         <main
@@ -121,7 +149,11 @@ function App () {
                   maxWidth: 'min(100vw, 800px)'
                 }}
               >
-                <ModelTable data={data} />
+                <ModelTable
+                  data={data}
+                  filters={modelFilters}
+                  setFilters={setModelFilters}
+                />
               </div>
               <div
                 style={{
@@ -129,7 +161,11 @@ function App () {
                   maxWidth: 'min(100vw, 800px)'
                 }}
               >
-                <LanguageTable data={data} />
+                <LanguageTable
+                  data={data}
+                  filters={languageFilters}
+                  setFilters={setLanguageFilters}
+                />
               </div>
               <div
                 style={{

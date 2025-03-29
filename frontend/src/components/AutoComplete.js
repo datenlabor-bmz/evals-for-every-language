@@ -44,7 +44,7 @@ const AutoComplete = ({ allSuggestions, onComplete }) => {
       onChange={e => setAutoComplete(e.value)}
       onSelect={e => {
         setAutoComplete(e.value.value)
-        onComplete(e.value.value)
+        onComplete(e.value)
       }}
       suggestions={suggestions}
       completeMethod={search}
