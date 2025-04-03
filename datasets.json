@@ -168,6 +168,17 @@
     "base": "XNLI"
   },
   {
+    "name": "IndicXNLI",
+    "author": "AI4Bharat",
+    "url": "https://huggingface.co/datasets/Divyanshu/indicxnli",
+    "n_languages": 11,
+    "tasks": [
+      "classification"
+    ],
+    "parallel": true,
+    "base": "XNLI"
+  },
+  {
     "name": "Okapi HellaSwag",
     "author": "Okapi",
     "url": "https://huggingface.co/datasets/jon-tow/okapi_hellaswag",
@@ -177,6 +188,94 @@
     ],
     "parallel": true,
     "base": "HellaSwag"
+  },
+  {
+    "name": "XTREME",
+    "author": "Google",
+    "url": "https://huggingface.co/datasets/google/xtreme",
+    "n_languages": 40,
+    "tasks": [
+      "translation",
+      "classification",
+      "question_answering",
+      "ner"
+    ],
+    "parallel": null
+  },
+  {
+    "name": "IndicXTREME",
+    "author": "AI4Bharat",
+    "url": "https://huggingface.co/collections/ai4bharat/indicxtreme-66c59f576386ba2955650030",
+    "n_languages": 20,
+    "tasks": [
+      "translation",
+      "classification",
+      "question_answering",
+      "ner"
+    ],
+    "parallel": null
+  },
+  {
+    "name": "XGLUE",
+    "author": "Microsoft",
+    "url": "https://huggingface.co/datasets/microsoft/xglue",
+    "n_languages": 18,
+    "tasks": [
+      "pos"
+    ],
+    "parallel": null,
+    "base": "GLUE"
+  },
+  {
+    "name": "IndicGLUE",
+    "author": "AI4Bharat",
+    "url": "https://huggingface.co/datasets/ai4bharat/indic_glue",
+    "n_languages": 11,
+    "tasks": [
+      "question_answering"
+    ],
+    "parallel": null,
+    "base": "GLUE"
+  },
+  {
+    "name": "CCAligned",
+    "author": "Meta",
+    "url": "https://huggingface.co/datasets/ahelk/ccaligned_multilingual",
+    "n_languages": 137,
+    "tasks": [
+      "translation"
+    ],
+    "parallel": false
+  },
+  {
+    "name": "Opus Gnome",
+    "author": "Helsinki NLP",
+    "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_gnome",
+    "n_languages": 187,
+    "tasks": [
+      "translation"
+    ],
+    "parallel": true
+  },
+  {
+    "name": "Opus Paracrawl",
+    "author": "Helsinki NLP",
+    "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_paracrawl",
+    "n_languages": 43,
+    "tasks": [
+      "translation"
+    ],
+    "parallel": false
+  },
+  {
+    "name": "OPUS Collection",
+    "author": "Helsinki NLP",
+    "url": "https://opus.nlpl.eu/",
+    "n_languages": 747,
+    "tasks": [
+      "translation"
+    ],
+    "parallel": false
   },
   {
     "name": "WikiANN / PAN-X",
@@ -218,81 +317,6 @@
     ],
     "parallel": true,
     "base": "IFEVAL"
-  },
-  {
-    "name": "XTREME",
-    "author": "Google",
-    "url": "https://huggingface.co/datasets/google/xtreme",
-    "n_languages": 40,
-    "tasks": [
-      "translation",
-      "classification",
-      "question_answering",
-      "ner"
-    ],
-    "parallel": null
-  },
-  {
-    "name": "XGLUE",
-    "author": "Microsoft",
-    "url": "https://huggingface.co/datasets/microsoft/xglue",
-    "n_languages": 18,
-    "tasks": [
-      "pos"
-    ],
-    "parallel": null,
-    "base": "GLUE"
-  },
-  {
-    "name": "IndicGLUE",
-    "author": "AI4Bharat",
-    "url": "https://huggingface.co/datasets/ai4bharat/indic_glue",
-    "n_languages": 11,
-    "tasks": [
-      "question_answering"
-    ],
-    "parallel": null,
-    "base": "GLUE"
-  },
-  {
-    "name": "Opus Gnome",
-    "author": "Helsinki NLP",
-    "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_gnome",
-    "n_languages": 187,
-    "tasks": [
-      "translation"
-    ],
-    "parallel": true
-  },
-  {
-    "name": "Opus Paracrawl",
-    "author": "Helsinki NLP",
-    "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_paracrawl",
-    "n_languages": 43,
-    "tasks": [
-      "translation"
-    ],
-    "parallel": false
-  },
-  {
-    "name": "CCAligned",
-    "author": "Meta",
-    "url": "https://huggingface.co/datasets/ahelk/ccaligned_multilingual",
-    "n_languages": 137,
-    "tasks": [
-      "translation"
-    ],
-    "parallel": false
-  },
-  {
-    "name": "OPUS Collection",
-    "author": "Helsinki NLP",
-    "url": "https://opus.nlpl.eu/",
-    "n_languages": 747,
-    "tasks": [
-      "translation"
-    ],
-    "parallel": false
   },
   {
     "name": "MasakhaNER",
