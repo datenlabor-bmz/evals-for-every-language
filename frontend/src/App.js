@@ -15,20 +15,11 @@ function App () {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [allSuggestions, setAllSuggestions] = useState([])
-  const [languageFilters, setLanguageFilters] = useState({
-    language_name: { value: null, matchMode: FilterMatchMode.EQUALS }, // via global search
-    family: { value: null, matchMode: FilterMatchMode.IN },
-    speakers: { value: null, matchMode: FilterMatchMode.BETWEEN }
-  })
-  const [modelFilters, setModelFilters] = useState({
-    model: { value: null, matchMode: FilterMatchMode.ENDS_WITH }, // via global search
-    type: { value: null, matchMode: FilterMatchMode.IN },
-    size: { value: null, matchMode: FilterMatchMode.BETWEEN }
-  })
+  const [selectedLanguages, setSelectedLanguages] = useState([])
   useEffect(() => {
     fetch('/api/data', {
       method: 'POST',
-      // body: JSON.stringify({ modelFilters, languageFilters }),
+      body: JSON.stringify({ selectedLanguages })
     })
       .then(response => {
         if (!response.ok) {
@@ -44,7 +35,7 @@ function App () {
         setError(err.message)
         setLoading(false)
       })
-  }, [modelFilters, languageFilters])
+  }, [selectedLanguages])
 
   useEffect(() => {
     if (data) {
@@ -52,14 +43,15 @@ function App () {
         type: 'Model',
         value: item.model,
         detail: item.provider,
-        searchText: item.provider.toLowerCase() + ' ' + item.model.toLowerCase()
+        searchText: item.model.toLowerCase()
       }))
       const languages = data.language_table.map(item => ({
         type: 'Language',
         value: item.autonym,
         detail: item.language_name,
         searchText:
-          item.language_name.toLowerCase() + ' ' + item.autonym.toLowerCase()
+          item.language_name.toLowerCase() + ' ' + item.autonym.toLowerCase(),
+        bcp_47: item.bcp_47
       }))
       const datasets = data.dataset_table.map(item => ({
         type: 'Dataset',
@@ -107,25 +99,10 @@ function App () {
           <AutoComplete
             allSuggestions={allSuggestions}
             onComplete={item => {
-              const languageValue =
-                item.type === 'Language' ? item.detail : null
-              const modelValue = item.type === 'Model' ? item.value : null
-              setLanguageFilters(prevFilters => ({
-                ...prevFilters,
-                language_name: {
-                  value: languageValue,
-                  matchMode: FilterMatchMode.EQUALS
-                }
-              }))
-              setModelFilters(prevFilters => ({
-                ...prevFilters,
-                model: {
-                  value: modelValue,
-                  matchMode: FilterMatchMode.ENDS_WITH
-                }
-              }))
+              if (item.type === 'Language') setSelectedLanguages(() => [item])
             }}
           />
+          <pre>{JSON.stringify(selectedLanguages, null, 2)}</pre>
         </header>
         <main
           style={{
@@ -152,11 +129,7 @@ function App () {
                   maxWidth: 'min(100vw, 800px)'
                 }}
               >
-                <ModelTable
-                  data={data.model_table}
-                  filters={modelFilters}
-                  setFilters={setModelFilters}
-                />
+                <ModelTable data={data.model_table} />
               </div>
               <div
                 style={{
@@ -166,8 +139,8 @@ function App () {
               >
                 <LanguageTable
                   data={data.language_table}
-                  filters={languageFilters}
-                  setFilters={setLanguageFilters}
+                  selectedLanguages={selectedLanguages}
+                  setSelectedLanguages={setSelectedLanguages}
                 />
               </div>
               <div

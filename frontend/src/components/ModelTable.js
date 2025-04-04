@@ -7,7 +7,11 @@ import Medal from './Medal'
 import { Slider } from 'primereact/slider'
 import ScoreField from './ScoreField'
 
-const ModelTable = ({ data, filters, setFilters }) => {
+const ModelTable = ({ data }) => {
+  const [filters, setFilters] = useState({
+    type: { value: null, matchMode: FilterMatchMode.IN },
+    size: { value: null, matchMode: FilterMatchMode.BETWEEN }
+  })
   const rankBodyTemplate = rowData => {
     return <Medal rank={rowData.rank} />
   }
@@ -99,9 +103,17 @@ const ModelTable = ({ data, filters, setFilters }) => {
     return <div style={{ textAlign: 'center' }}>{sizeStr}</div>
   }
 
+  const capitalize = s => String(s).charAt(0).toUpperCase() + String(s).slice(1)
+
+  const providerBodyTemplate = rowData => {
+    const providerName = rowData.model.split('/')[0].split('-').map(capitalize).join(' ')
+    return providerName
+  }
+
   const modelBodyTemplate = rowData => {
+    const modelName = rowData.model.split('/')[1].split('-').map(capitalize).join(' ')
     return (
-      <div style={{ fontWeight: 'bold', height: '100%' }}>{rowData.model}</div>
+      <div style={{ fontWeight: 'bold', height: '100%' }}>{modelName}</div>
     )
   }
 
@@ -135,7 +147,7 @@ const ModelTable = ({ data, filters, setFilters }) => {
       id='model-table'
     >
       <Column field='rank' body={rankBodyTemplate} />
-      <Column field='provider' header='Provider' style={{ minWidth: '5rem' }} />
+      <Column field='provider' header='Provider' style={{ minWidth: '5rem' }} body={providerBodyTemplate} />
       <Column
         field='model'
         header='Model'

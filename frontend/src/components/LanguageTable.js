@@ -6,7 +6,13 @@ import { useState, useEffect } from 'react'
 import { Slider } from 'primereact/slider'
 import ScoreField from './ScoreField'
 
-const LanguageTable = ({ data, filters, setFilters }) => {
+const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
+  const [filters, setFilters] = useState({
+    language_name: { value: null, matchMode: FilterMatchMode.EQUALS }, // via global search
+    family: { value: null, matchMode: FilterMatchMode.IN },
+    speakers: { value: null, matchMode: FilterMatchMode.BETWEEN }
+  })
+
   const families = [...new Set(data.map(item => item.family))].slice(0, 10)
   families.push("Other")
   const familyRowFilterTemplate = options => {
@@ -124,10 +130,15 @@ const LanguageTable = ({ data, filters, setFilters }) => {
       removableSort
       filters={filters}
       filterDisplay='menu'
+      selectionMode='checkbox'
+      selection={selectedLanguages}
+      onSelectionChange={e => setSelectedLanguages(e.value)}
+      frozenValue={selectedLanguages}
       scrollable
       scrollHeight='600px'
       id='language-table'
     >
+      <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} />
       <Column
         field='language_name'
         header='Language'

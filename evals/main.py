@@ -1,10 +1,8 @@
 import asyncio
 import json
 
-import numpy as np
 from languages import languages
 from models import model_fast, models
-from rich import print
 from tasks import tasks
 from tqdm.asyncio import tqdm_asyncio
 
@@ -39,6 +37,7 @@ async def evaluate():
 
 async def main():
     results = await evaluate()
+    results = [r for group in results for r in group]
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 

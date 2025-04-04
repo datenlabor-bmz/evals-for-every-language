@@ -5,7 +5,6 @@ const AutoComplete = ({ allSuggestions, onComplete }) => {
   const [suggestions, setSuggestions] = useState([])
 
   const search = e => {
-    console.log(allSuggestions)
     const matches = allSuggestions.filter(suggestion =>
       suggestion.searchText.includes(e.query.toLowerCase())
     )

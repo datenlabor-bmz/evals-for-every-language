@@ -96,6 +96,7 @@ models = pd.DataFrame(models, columns=["id"])
 
 api = HfApi()
 
+@cache
 def get_metadata(id):
     try:
         info = api.model_info(id)

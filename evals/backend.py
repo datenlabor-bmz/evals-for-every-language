@@ -3,11 +3,12 @@ import json
 import numpy as np
 import pandas as pd
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+
 from languages import languages
 from models import models
 from tables import aggregate, make_country_table, make_language_table, make_model_table
@@ -18,7 +19,7 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"])
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 with open("results.json", "r") as f:
-    results = json.load(f)
+    results = pd.DataFrame(json.load(f))
 
 
 def serialize(df):
@@ -26,8 +27,17 @@ def serialize(df):
 
 
 @app.post("/api/data")
-def data():
-    _, lang_results, model_results, task_results = aggregate(results)
+async def data(request: Request):
+    body = await request.body()
+    data = json.loads(body)
+    selected_languages = data.get("selectedLanguages", {})
+    df = results
+    if selected_languages:
+        df = df[df["bcp_47"].isin(l["bcp_47"] for l in selected_languages)]
+
+    _, lang_results, model_results, task_results = aggregate(df)
+    print(lang_results)
+    # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
     model_table = make_model_table(model_results, models)
     language_table = make_language_table(lang_results, languages)
     datasets_df = pd.read_json("data/datasets.json")
