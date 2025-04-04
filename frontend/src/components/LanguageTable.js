@@ -124,7 +124,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
 
   return (
     <DataTable
-      value={data}
+      value={data.filter(item => !selectedLanguages.some(l => l.bcp_47 === item.bcp_47))}
       header={<>Languages</>}
       sortField='speakers'
       removableSort
@@ -134,9 +134,11 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
       selection={selectedLanguages}
       onSelectionChange={e => setSelectedLanguages(e.value)}
       frozenValue={selectedLanguages}
+      virtualScrollerOptions={{ itemSize: 50 }}
       scrollable
       scrollHeight='600px'
       id='language-table'
+      style={{ width: '800px' }}
     >
       <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} />
       <Column

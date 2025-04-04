@@ -1,12 +1,14 @@
 import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
-
+from joblib.memory import Memory
 import pandas as pd
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
 from language_data.util import data_filename
 
+cache = Memory(location=".cache", verbose=0).cache
 
+@cache
 def get_population_data():
     filename = data_filename("supplementalData.xml")
     root = ET.fromstring(open(filename).read())
@@ -28,7 +30,7 @@ def population(bcp_47):
     }
     return items
 
-
+@cache
 def make_country_table(language_table):
     countries = defaultdict(list)
     for lang in language_table.itertuples():

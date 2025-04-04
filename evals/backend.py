@@ -32,16 +32,15 @@ async def data(request: Request):
     data = json.loads(body)
     selected_languages = data.get("selectedLanguages", {})
     df = results
-    if selected_languages:
-        df = df[df["bcp_47"].isin(l["bcp_47"] for l in selected_languages)]
-
     _, lang_results, model_results, task_results = aggregate(df)
-    print(lang_results)
     # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
-    model_table = make_model_table(model_results, models)
     language_table = make_language_table(lang_results, languages)
     datasets_df = pd.read_json("data/datasets.json")
     countries = make_country_table(language_table)
+    if selected_languages:
+        # the filtering is only applied for the model table
+        df = df[df["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)]
+    model_table = make_model_table(model_results, models)
     all_tables = {
         "model_table": serialize(model_table),
         "language_table": serialize(language_table),
