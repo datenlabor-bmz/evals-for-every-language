@@ -78,6 +78,7 @@ const DatasetTable = ({ data }) => {
       scrollable
       scrollHeight='600px'
       id='dataset-table'
+      style={{ width: '800px', minHeight: '650px' }}
     >
       <Column
         field='implemented'

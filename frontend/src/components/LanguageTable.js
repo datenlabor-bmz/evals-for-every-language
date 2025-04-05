@@ -138,7 +138,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
       scrollable
       scrollHeight='600px'
       id='language-table'
-      style={{ width: '800px' }}
+      style={{ width: '800px', minHeight: '650px' }}
     >
       <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} />
       <Column

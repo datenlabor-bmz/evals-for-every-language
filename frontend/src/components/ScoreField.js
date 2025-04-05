@@ -34,7 +34,8 @@ const ScoreField = (score, minScore, maxScore) => {
           height: '100%',
           width: `${percentage}%`,
           backgroundColor: barColor,
-          zIndex: 0
+          zIndex: 0,
+          transition: 'width 0.3s, background-color 0.3s'
         }}
       />
 

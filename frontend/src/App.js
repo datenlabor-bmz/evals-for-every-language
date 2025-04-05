@@ -8,13 +8,11 @@ import WorldMap from './components/WorldMap'
 import AutoComplete from './components/AutoComplete'
 import LanguagePlot from './components/LanguagePlot'
 import { Carousel } from 'primereact/carousel'
-import { FilterMatchMode } from 'primereact/api'
 
 function App () {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [allSuggestions, setAllSuggestions] = useState([])
   const [selectedLanguages, setSelectedLanguages] = useState([])
   useEffect(() => {
     fetch('/api/data', {
@@ -36,38 +34,6 @@ function App () {
         setLoading(false)
       })
   }, [selectedLanguages])
-
-  useEffect(() => {
-    if (data) {
-      const models = data.model_table.map(item => ({
-        type: 'Model',
-        value: item.model,
-        detail: item.provider,
-        searchText: item.model.toLowerCase()
-      }))
-      const languages = data.language_table.map(item => ({
-        type: 'Language',
-        value: item.autonym,
-        detail: item.language_name,
-        searchText:
-          item.language_name.toLowerCase() + ' ' + item.autonym.toLowerCase(),
-        bcp_47: item.bcp_47
-      }))
-      const datasets = data.dataset_table.map(item => ({
-        type: 'Dataset',
-        value: item.name,
-        detail: item.tasks,
-        searchText:
-          item.author.toLowerCase() +
-          ' ' +
-          item.name.toLowerCase() +
-          ' ' +
-          item.tasks.map(task => task.toLowerCase()).join(' ')
-      }))
-      const allSuggestions = [...models, ...languages, ...datasets]
-      setAllSuggestions(allSuggestions)
-    }
-  }, [data])
 
   return (
     <PrimeReactProvider>
@@ -91,18 +57,15 @@ function App () {
             </span>
           </div>
           <h1 style={{ fontSize: '2.5rem', fontWeight: '700' }}>
-            Global AI Language Monitor
+            Global AI Monitor
           </h1>
           <p style={{ fontSize: '1.15rem', color: '#555', marginTop: '0' }}>
             Tracking language proficiency of AI models for every language
           </p>
           <AutoComplete
-            allSuggestions={allSuggestions}
-            onComplete={item => {
-              if (item.type === 'Language') setSelectedLanguages(() => [item])
-            }}
+            languages={data?.language_table}
+            onComplete={items => setSelectedLanguages(items)}
           />
-          <pre>{JSON.stringify(selectedLanguages, null, 2)}</pre>
         </header>
         <main
           style={{
@@ -169,6 +132,7 @@ function App () {
                   numVisible={1}
                   itemTemplate={item => item}
                   circular
+                  style={{ width: '800px', minHeight: '650px' }}
                 />
               </div>
             </>

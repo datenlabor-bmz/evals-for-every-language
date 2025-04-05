@@ -145,6 +145,7 @@ const ModelTable = ({ data }) => {
       scrollable
       scrollHeight='600px'
       id='model-table'
+      style={{ width: '800px', minHeight: '650px' }}
     >
       <Column field='rank' body={rankBodyTemplate} />
       <Column field='provider' header='Provider' style={{ minWidth: '5rem' }} body={providerBodyTemplate} />
