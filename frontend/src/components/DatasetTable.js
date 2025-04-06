@@ -70,6 +70,11 @@ const DatasetTable = ({ data }) => {
   return (
     <DataTable
       value={table}
+      rowGroupMode='subheader'
+      rowGroupHeaderTemplate={rowData => {
+        return <div style={{ fontWeight: 'bold' }}>{rowData.group}</div>
+      }}
+      groupRowsBy='group'
       header={<>Datasets</>}
       removableSort
       filters={filters}

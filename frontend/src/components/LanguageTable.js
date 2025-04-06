@@ -134,7 +134,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
       selection={selectedLanguages}
       onSelectionChange={e => setSelectedLanguages(e.value)}
       frozenValue={selectedLanguages}
-      virtualScrollerOptions={{ itemSize: 100 }}
+      virtualScrollerOptions={{ itemSize: 60 }}
       scrollable
       scrollHeight='600px'
       id='language-table'
