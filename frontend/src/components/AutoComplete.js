@@ -5,8 +5,8 @@ const AutoComplete = ({ languages, onComplete }) => {
   const [suggestions, setSuggestions] = useState([])
 
   const exampleCodes = ['de', 'fr', 'ar', 'hi', 'sw', 'fa']
-  const exampleLanguages = languages?.filter(item =>
-    exampleCodes.includes(item.bcp_47)
+  const exampleLanguages = exampleCodes.map(code =>
+    languages?.find(item => item.bcp_47 === code)
   )
 
   const search = e => {

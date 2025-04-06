@@ -62,10 +62,12 @@ function App () {
           <p style={{ fontSize: '1.15rem', color: '#555', marginTop: '0' }}>
             Tracking language proficiency of AI models for every language
           </p>
-          <AutoComplete
-            languages={data?.language_table}
-            onComplete={items => setSelectedLanguages(items)}
-          />
+          {data && (
+            <AutoComplete
+              languages={data?.language_table}
+              onComplete={items => setSelectedLanguages(items)}
+            />
+          )}
         </header>
         <main
           style={{

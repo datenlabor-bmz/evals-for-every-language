@@ -1,5 +1,5 @@
 import json
-
+import os
 import numpy as np
 import pandas as pd
 import uvicorn
@@ -9,9 +9,13 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from languages import languages
-from models import models
 from countries import make_country_table
+
+with open("results.json", "r") as f:
+    results = json.load(f)
+scores = pd.DataFrame(results["scores"])
+languages = pd.DataFrame(results["languages"])
+models = pd.DataFrame(results["models"])
 
 def mean(lst):
     return sum(lst) / len(lst) if lst else None
@@ -30,7 +34,6 @@ def make_model_table(df, models):
     df["average"] = df[task_metrics].mean(axis=1)
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
-    df["creation_date"] = df["creation_date"].dt.strftime("%Y-%m-%d")
     df["rank"] = df.index + 1
     df = df[
         [
@@ -85,9 +88,6 @@ app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"])
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
-with open("results.json", "r") as f:
-    results = pd.DataFrame(json.load(f))
-
 
 def serialize(df):
     return df.replace({np.nan: None}).to_dict(orient="records")
@@ -99,11 +99,11 @@ async def data(request: Request):
     data = json.loads(body)
     selected_languages = data.get("selectedLanguages", {})
     df = (
-        results.groupby(["model", "bcp_47", "task", "metric"]).mean().reset_index()
+        scores.groupby(["model", "bcp_47", "task", "metric"]).mean().reset_index()
     )
     # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
     language_table = make_language_table(df, languages)
-    datasets_df = pd.read_json("data/datasets.json")
+    datasets_df = pd.read_json("datasets.json")
     if selected_languages:
         # the filtering is only applied for the model table and the country data
         df = df[df["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)]
@@ -117,7 +117,7 @@ async def data(request: Request):
     }
     return JSONResponse(content=all_tables)
 
-app.mount("/", StaticFiles(directory="frontend/public", html=True), name="frontend")
+app.mount("/", StaticFiles(directory="frontend/build", html=True), name="frontend")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))

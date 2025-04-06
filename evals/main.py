@@ -1,10 +1,13 @@
 import asyncio
 import json
 
+import numpy as np
+import pandas as pd
+from tqdm.asyncio import tqdm_asyncio
+
 from languages import languages
 from models import model_fast, models
 from tasks import tasks
-from tqdm.asyncio import tqdm_asyncio
 
 # ===== config =====
 
@@ -33,11 +36,18 @@ async def evaluate():
     ]
     return await tqdm_asyncio.gather(*results, miniters=1)
 
-
+def serialize(df):
+    return df.replace({np.nan: None, pd.NA: None}).to_dict(orient="records")
 
 async def main():
+    models["creation_date"] = models["creation_date"].apply(lambda x: x.isoformat())
     results = await evaluate()
     results = [r for group in results for r in group]
+    results = {
+        "languages": serialize(languages),
+        "models": serialize(models),
+        "scores": results,
+    }
     with open("results.json", "w") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 

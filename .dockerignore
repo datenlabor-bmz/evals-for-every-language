@@ -1,0 +1,5 @@
+.git
+.cache
+.venv
+.env
+frontend/node_modules

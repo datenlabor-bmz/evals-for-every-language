@@ -1,25 +1,10 @@
 import re
-import xml.etree.ElementTree as ET
 from collections import defaultdict
 from joblib.memory import Memory
 import pandas as pd
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
-from language_data.util import data_filename
 
 cache = Memory(location=".cache", verbose=0).cache
-
-@cache
-def get_population_data():
-    filename = data_filename("supplementalData.xml")
-    root = ET.fromstring(open(filename).read())
-    territories = root.findall("./territoryInfo/territory")
-
-    data = {}
-    for territory in territories:
-        t_code = territory.attrib["type"]
-        t_population = float(territory.attrib["population"])
-        data[t_code] = t_population
-    return data
 
 
 def population(bcp_47):
