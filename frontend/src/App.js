@@ -125,7 +125,7 @@ function App () {
               >
                 <Carousel
                   value={[
-                    <WorldMap data={data} />,
+                    <WorldMap data={data.countries} />,
                     <LanguagePlot data={data} />
                   ]}
                   numScroll={1}

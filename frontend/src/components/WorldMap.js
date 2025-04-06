@@ -8,16 +8,16 @@ const smoothProgressBar = fraction => {
   const filledUnits = Math.round(fraction * totalUnits)
   const fullBlocks = Math.floor(filledUnits / 8)
   const remainder = filledUnits % 8
-  return ('█'.repeat(fullBlocks) + (remainder > 0 ? blocks[remainder - 1] : '')) || '▏'
+  return (
+    '█'.repeat(fullBlocks) + (remainder > 0 ? blocks[remainder - 1] : '') || '▏'
+  )
 }
 
 const makeTitle = data => d => {
-  const languages = data.countries[
-    d.properties?.ISO_A2_EH
-  ]?.languages.toSorted((a, b) => b.population - a.population)
-  const pop = languages
-    ?.map(a => a.population)
-    .reduce((prev, a) => prev + a, 0)
+  const languages = data[d.properties?.ISO_A2_EH]?.languages.toSorted(
+    (a, b) => b.population - a.population
+  )
+  const pop = languages?.map(a => a.population).reduce((prev, a) => prev + a, 0)
   const langstring =
     languages
       ?.slice(0, 10)
@@ -37,16 +37,20 @@ const WorldMap = ({ data }) => {
   }, [])
 
   useEffect(() => {
-    if (mapData === undefined) return
-    const countries = mapData
+    console.log('countries', data)
+    if (mapData === undefined || data === undefined) return
+    const countriesDict = data.reduce((acc, country) => {
+      acc[country.iso2] = country
+      return acc
+    }, {})
     const plot = Plot.plot({
       width: 750,
       height: 500,
       projection: 'equal-earth',
       marks: [
-        Plot.geo(countries, {
-          fill: d => data.countries[d.properties?.ISO_A2_EH]?.score,
-          title: makeTitle(data),
+        Plot.geo(mapData, {
+          fill: d => countriesDict[d.properties?.ISO_A2_EH]?.score,
+          title: makeTitle(countriesDict),
           tip: true
         })
       ],
@@ -55,7 +59,7 @@ const WorldMap = ({ data }) => {
         unknown: 'gray',
         label: 'Score',
         legend: true,
-        domain: [0, 0.5]
+        domain: [0, 0.7]
       },
       style: {
         fontFamily: 'monospace'
@@ -63,7 +67,7 @@ const WorldMap = ({ data }) => {
     })
     containerRef.current.append(plot)
     return () => plot.remove()
-  }, [mapData])
+  }, [mapData, data])
 
   return (
     <div
@@ -73,7 +77,7 @@ const WorldMap = ({ data }) => {
         height: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
       }}
     />
   )

@@ -104,11 +104,11 @@ async def data(request: Request):
     # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
     language_table = make_language_table(df, languages)
     datasets_df = pd.read_json("data/datasets.json")
-    countries = make_country_table(language_table)
     if selected_languages:
-        # the filtering is only applied for the model table
+        # the filtering is only applied for the model table and the country data
         df = df[df["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)]
     model_table = make_model_table(df, models)
+    countries = make_country_table(make_language_table(df, languages))
     all_tables = {
         "model_table": serialize(model_table),
         "language_table": serialize(language_table),
