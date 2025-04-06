@@ -103,18 +103,29 @@ const ModelTable = ({ data }) => {
     return <div style={{ textAlign: 'center' }}>{sizeStr}</div>
   }
 
-  const capitalize = s => String(s).charAt(0).toUpperCase() + String(s).slice(1)
+  const capitalize = s =>
+    (String(s).charAt(0).toUpperCase() + String(s).slice(1))
+      .replace(/gpt/i, 'GPT')
+      .replace(/qwq/i, 'QwQ')
+      .replace(/deepseek/i, 'DeepSeek')
+      .replace(/openai/i, 'OpenAI')
 
   const providerBodyTemplate = rowData => {
-    const providerName = rowData.model.split('/')[0].split('-').map(capitalize).join(' ')
+    const providerName = rowData.model
+      .split('/')[0]
+      .split('-')
+      .map(capitalize)
+      .join(' ')
     return providerName
   }
 
   const modelBodyTemplate = rowData => {
-    const modelName = rowData.model.split('/')[1].split('-').map(capitalize).join(' ')
-    return (
-      <div style={{ fontWeight: 'bold', height: '100%' }}>{modelName}</div>
-    )
+    const modelName = rowData.model
+      .split('/')[1]
+      .split('-')
+      .map(capitalize)
+      .join(' ')
+    return <div style={{ fontWeight: 'bold', height: '100%' }}>{modelName}</div>
   }
 
   const typeBodyTemplate = rowData => {
@@ -148,7 +159,12 @@ const ModelTable = ({ data }) => {
       style={{ width: '800px', minHeight: '650px' }}
     >
       <Column field='rank' body={rankBodyTemplate} />
-      <Column field='provider' header='Provider' style={{ minWidth: '5rem' }} body={providerBodyTemplate} />
+      <Column
+        field='provider'
+        header='Provider'
+        style={{ minWidth: '7rem' }}
+        body={providerBodyTemplate}
+      />
       <Column
         field='model'
         header='Model'
@@ -178,16 +194,16 @@ const ModelTable = ({ data }) => {
         field='average'
         header='Average'
         sortable
-        body={scoreBodyTemplate('average', { minScore: 0.3, maxScore: 0.6 })}
+        body={scoreBodyTemplate('average', { minScore: 0, maxScore: 0.6 })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
       <Column
-        field='translation_chrf'
+        field='translation_bleu'
         header='Translation'
         sortable
-        body={scoreBodyTemplate('translation_chrf', {
-          minScore: 0.3,
-          maxScore: 0.7
+        body={scoreBodyTemplate('translation_bleu', {
+          minScore: 0,
+          maxScore: 0.3
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
@@ -196,12 +212,12 @@ const ModelTable = ({ data }) => {
         header='Classification'
         sortable
         body={scoreBodyTemplate('classification_accuracy', {
-          minScore: 0.3,
-          maxScore: 0.8
+          minScore: 0,
+          maxScore: 0.9
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
-      <Column
+      {/* <Column
         field='language_modeling_chrf'
         header='Language Modeling'
         sortable
@@ -210,7 +226,7 @@ const ModelTable = ({ data }) => {
           maxScore: 1
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
+      /> */}
     </DataTable>
   )
 }

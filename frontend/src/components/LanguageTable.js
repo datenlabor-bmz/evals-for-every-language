@@ -174,12 +174,12 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
       <Column
-        field='translation_chrf'
+        field='translation_bleu'
         header='Translation'
         sortable
-        body={scoreBodyTemplate('translation_chrf', {
-          minScore: 0.3,
-          maxScore: 0.6
+        body={scoreBodyTemplate('translation_bleu', {
+          minScore: 0,
+          maxScore: 0.5
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
@@ -188,12 +188,12 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
         header='Classification'
         sortable
         body={scoreBodyTemplate('classification_accuracy', {
-          minScore: 0.3,
-          maxScore: 0.7
+          minScore: 0,
+          maxScore: 0.5
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
-      <Column
+      {/* <Column
         field='language_modeling_chrf'
         header='Language Modeling'
         sortable
@@ -202,7 +202,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
           maxScore: 1
         })}
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
+      /> */}
     </DataTable>
   )
 }

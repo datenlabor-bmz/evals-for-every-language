@@ -14,23 +14,24 @@ from requests import HTTPError
 models = [
     "openai/gpt-4o-mini",  # 0.6$/M tokens
     # "anthropic/claude-3.5-haiku", # 4$/M tokens -> too expensive for dev
+    "meta-llama/llama-4-maverick", # 0.6$/M tokens
     "meta-llama/llama-3.3-70b-instruct",  # 0.3$/M tokens
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$/M tokens
     "meta-llama/llama-3-70b-instruct", # 0.4$/M tokens
-    "mistralai/mistral-small-24b-instruct-2501",  # 0.14$/M tokens
-    "mistralai/mistral-nemo",
+    "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$/M tokens
+    # "mistralai/mistral-saba", # 0.6$/M tokens
+    # "mistralai/mistral-nemo", # 0.08$/M tokens
     "google/gemini-2.0-flash-001",  # 0.4$/M tokens
-    "google/gemini-2.0-flash-lite-001",  # 0.3$/M tokens
+    # "google/gemini-2.0-flash-lite-001",  # 0.3$/M tokens
     "google/gemma-3-27b-it",  # 0.2$/M tokens
     # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
-    "qwen/qwq-32b",
-    # "deepseek/deepseek-chat",  # 1.3$/M tokens
+    "qwen/qwq-32b", # 0.2$/M tokens
+    "deepseek/deepseek-chat-v3-0324",  # 1.1$/M tokens
     # "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
-    "microsoft/phi-4-multimodal-instruct",
+    "microsoft/phi-4-multimodal-instruct", # 0.1$/M tokens
     "amazon/nova-micro-v1",  # 0.09$/M tokens
     # "openGPT-X/Teuken-7B-instruct-research-v0.4",  # not on OpenRouter
 ]
-model_fast = "meta-llama/llama-3.3-70b-instruct"
 
 transcription_models = [
     "elevenlabs/scribe_v1",
@@ -38,7 +39,6 @@ transcription_models = [
     # "openai/whisper-small",
     # "facebook/seamless-m4t-v2-large",
 ]
-transcription_model_fast = "elevenlabs/scribe_v1"
 
 load_dotenv()
 client = AsyncOpenAI(

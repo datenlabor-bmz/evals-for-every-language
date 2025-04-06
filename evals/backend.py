@@ -20,6 +20,7 @@ models = pd.DataFrame(results["models"])
 def mean(lst):
     return sum(lst) / len(lst) if lst else None
 
+task_metrics = ["translation_bleu", "classification_accuracy"]
 
 def make_model_table(df, models):
     df = (
@@ -29,7 +30,6 @@ def make_model_table(df, models):
     )
     df["task_metric"] = df["task"] + "_" + df["metric"]
     df = df.drop(columns=["task", "metric"])
-    task_metrics = df["task_metric"].unique()
     df = df.pivot(index="model", columns="task_metric", values="score").fillna(0)
     df["average"] = df[task_metrics].mean(axis=1)
     df = df.sort_values(by="average", ascending=False).reset_index()
@@ -59,7 +59,6 @@ def make_language_table(df, languages):
     )
     df["task_metric"] = df["task"] + "_" + df["metric"]
     df = df.drop(columns=["task", "metric"])
-    task_metrics = df["task_metric"].unique()
     df = (
         df.pivot(index="bcp_47", columns="task_metric", values="score")
         .fillna(0)

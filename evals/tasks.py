@@ -212,6 +212,6 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
 tasks = [
     translate_and_evaluate,
     classify_and_evaluate,
-    mlm_and_evaluate,
+    # mlm_and_evaluate,
     # transcribe_and_evaluate,
 ]
