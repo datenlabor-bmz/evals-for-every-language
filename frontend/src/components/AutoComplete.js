@@ -72,7 +72,8 @@ const AutoComplete = ({ languages, onComplete }) => {
           marginTop: '1rem',
           maxWidth: '600px',
           justifyContent: 'center',
-          color: '#555'
+          color: '#555',
+          fontSize: '0.8rem'
         }}
       >
         <span>Examples:</span>
