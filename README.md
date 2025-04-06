@@ -3,7 +3,8 @@ title: AI Language Monitor
 emoji: 🌍
 colorFrom: purple
 colorTo: pink
-sdk: static
+sdk: docker
+app_port: 8000
 license: cc-by-sa-4.0
 short_description: Evaluating LLM performance across all human languages.
 datasets:
