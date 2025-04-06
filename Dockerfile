@@ -8,6 +8,7 @@ RUN npm run build
 
 FROM --platform=linux/amd64 ghcr.io/astral-sh/uv:python3.12-bookworm
 WORKDIR /app
+ENV UV_CACHE_DIR=/app/.cache/uv
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 COPY evals/ evals/
