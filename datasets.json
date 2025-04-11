@@ -83,7 +83,7 @@
     {
         "name": "MMLU-X",
         "author": "OpenGPT-X",
-        "author_url": null,
+        "author_url": "https://opengpt-x.de",
         "url": "https://huggingface.co/datasets/openGPT-X/mmlux",
         "n_languages": 20,
         "tasks": [
@@ -135,7 +135,7 @@
     {
         "name": "Arc-X",
         "author": "OpenGPT-X",
-        "author_url": null,
+        "author_url": "https://opengpt-x.de",
         "url": "https://huggingface.co/datasets/openGPT-X/arcx",
         "n_languages": 20,
         "tasks": [
@@ -174,7 +174,7 @@
     {
         "name": "TruthfulQA-X",
         "author": "OpenGPT-X",
-        "author_url": null,
+        "author_url": "https://opengpt-x.de",
         "url": "https://huggingface.co/datasets/openGPT-X/truthfulqax",
         "n_languages": 20,
         "tasks": [
@@ -254,7 +254,7 @@
     {
         "name": "HellaSwag-X",
         "author": "OpenGPT-X",
-        "author_url": null,
+        "author_url": "https://opengpt-x.de",
         "url": "https://huggingface.co/datasets/openGPT-X/hellaswagx",
         "n_languages": 20,
         "tasks": [
@@ -293,7 +293,7 @@
     {
         "name": "GSM8K-X",
         "author": "OpenGPT-X",
-        "author_url": null,
+        "author_url": "https://opengpt-x.de",
         "url": "https://huggingface.co/datasets/openGPT-X/gsm8kx",
         "n_languages": 20,
         "tasks": [
@@ -328,6 +328,18 @@
         "group": "Named Entity Recognition"
     },
     {
+        "name": "CCAligned",
+        "author": "Meta",
+        "author_url": "https://ai.meta.com",
+        "url": "https://huggingface.co/datasets/ahelk/ccaligned_multilingual",
+        "n_languages": 137,
+        "tasks": [
+            "translation"
+        ],
+        "parallel": false,
+        "group": "Parallel Corpora"
+    },
+    {
         "name": "Opus Gnome",
         "author": "Helsinki NLP",
         "author_url": null,
@@ -345,18 +357,6 @@
         "author_url": null,
         "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_paracrawl",
         "n_languages": 43,
-        "tasks": [
-            "translation"
-        ],
-        "parallel": false,
-        "group": "Parallel Corpora"
-    },
-    {
-        "name": "CCAligned",
-        "author": "Meta",
-        "author_url": "https://ai.meta.com",
-        "url": "https://huggingface.co/datasets/ahelk/ccaligned_multilingual",
-        "n_languages": 137,
         "tasks": [
             "translation"
         ],
