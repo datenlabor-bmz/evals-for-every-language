@@ -10,7 +10,8 @@ import ScoreField from './ScoreField'
 const ModelTable = ({ data }) => {
   const [filters, setFilters] = useState({
     type: { value: null, matchMode: FilterMatchMode.IN },
-    size: { value: null, matchMode: FilterMatchMode.BETWEEN }
+    size: { value: null, matchMode: FilterMatchMode.BETWEEN },
+    cost: { value: null, matchMode: FilterMatchMode.BETWEEN }
   })
   const rankBodyTemplate = rowData => {
     return <Medal rank={rowData.rank} />
@@ -36,6 +37,8 @@ const ModelTable = ({ data }) => {
   const formatSize = size => {
     if (size === null) {
       return ''
+    } else if (size >= 0 && size <= 1) {
+      return size.toFixed(2) + ''
     } else if (size < 1000) {
       return size.toFixed(0) + ''
     } else if (size < 1000 * 1000) {
@@ -47,10 +50,8 @@ const ModelTable = ({ data }) => {
     }
   }
 
-  const SliderWithLabel = ({ value, onChange }) => {
+  const SliderWithLabel = ({ value, onChange, min, max }) => {
     const p = 10
-    const min = 8
-    const max = 12
     const start = value === null ? min : Math.log(value[0]) / Math.log(p)
     const stop = value === null ? max : Math.log(value[1]) / Math.log(p)
     const [_value, _setValue] = useState([start, stop])
@@ -58,13 +59,14 @@ const ModelTable = ({ data }) => {
       const timer = setTimeout(() => {
         onChange({
           value:
+            // set to "no filter" when (almost) the whole range is selected
             _value[0] <= min + 0.1 && _value[1] >= max - 0.1
               ? null
               : [p ** _value[0], p ** _value[1]]
         })
       }, 1000)
       return () => clearTimeout(timer)
-    }, [_value, onChange])
+    }, [_value, onChange, min, max])
     return (
       <div style={{ minWidth: '20rem' }}>
         <div>{formatSize(p ** _value[0])}</div>
@@ -87,6 +89,8 @@ const ModelTable = ({ data }) => {
     return (
       <SliderWithLabel
         value={options.value}
+        min={8}
+        max={12}
         onChange={e => {
           options.filterApplyCallback(e.value)
           setFilters(prevFilters => ({
@@ -98,35 +102,42 @@ const ModelTable = ({ data }) => {
     )
   }
 
+  const costFilterTemplate = options => {
+    return (
+      <SliderWithLabel
+        value={options.value}
+        min={-2}
+        max={2}
+        onChange={e => {
+          options.filterApplyCallback(e.value)
+          setFilters(prevFilters => ({
+            ...prevFilters,
+            cost: { value: e.value, matchMode: FilterMatchMode.BETWEEN }
+          }))
+        }}
+      />
+    )
+  }
+
   const sizeBodyTemplate = rowData => {
     const sizeStr = formatSize(rowData.size)
-    return <div style={{ textAlign: 'center' }}>{sizeStr}</div>
+    return (
+      <div style={{ textAlign: 'center' }}>
+        <a
+          href={`https://huggingface.co/${rowData.hf_id}`}
+          target='_blank'
+          rel='noopener noreferrer'
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+          {sizeStr}
+        </a>
+      </div>
+    )
   }
 
-  const capitalize = s =>
-    (String(s).charAt(0).toUpperCase() + String(s).slice(1))
-      .replace(/gpt/i, 'GPT')
-      .replace(/qwq/i, 'QwQ')
-      .replace(/deepseek/i, 'DeepSeek')
-      .replace(/openai/i, 'OpenAI')
-
-  const providerBodyTemplate = rowData => {
-    const providerName = rowData.model
-      .split('/')[0]
-      .split('-')
-      .map(capitalize)
-      .join(' ')
-    return providerName
-  }
-
-  const modelBodyTemplate = rowData => {
-    const modelName = rowData.model
-      .split('/')[1]
-      .split('-')
-      .map(capitalize)
-      .join(' ')
-    return <div style={{ fontWeight: 'bold', height: '100%' }}>{modelName}</div>
-  }
+  const modelBodyTemplate = rowData => (
+    <div style={{ fontWeight: 'bold', height: '100%' }}>{rowData.name}</div>
+  )
 
   const typeBodyTemplate = rowData => {
     return rowData.type === 'Open' ? (
@@ -134,6 +145,10 @@ const ModelTable = ({ data }) => {
     ) : (
       <i className='pi pi-lock' title='API only' />
     )
+  }
+
+  const costBodyTemplate = rowData => {
+    return <div style={{ textAlign: 'center' }}>${rowData.cost.toFixed(2)}</div>
   }
 
   const scoreBodyTemplate = (field, options = {}) => {
@@ -160,13 +175,12 @@ const ModelTable = ({ data }) => {
     >
       <Column field='rank' body={rankBodyTemplate} />
       <Column
-        field='provider'
+        field='provider_name'
         header='Provider'
         style={{ minWidth: '7rem' }}
-        body={providerBodyTemplate}
       />
       <Column
-        field='model'
+        field='name'
         header='Model'
         style={{ minWidth: '10rem' }}
         body={modelBodyTemplate}
@@ -182,12 +196,24 @@ const ModelTable = ({ data }) => {
       />
       <Column
         field='size'
-        header={null}
+        header='Size'
+        headerTooltip='Number of parameters'
         filter
         filterElement={sizeFilterTemplate}
         showFilterMatchModes={false}
         sortable
         body={sizeBodyTemplate}
+        style={{ minWidth: '5rem' }}
+      />
+      <Column
+        field='cost'
+        header='Cost'
+        headerTooltip='Cost in USD per million completion tokens'
+        filter
+        filterElement={costFilterTemplate}
+        showFilterMatchModes={false}
+        sortable
+        body={costBodyTemplate}
         style={{ minWidth: '5rem' }}
       />
       <Column

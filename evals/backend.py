@@ -1,15 +1,15 @@
 import json
 import os
+
 import numpy as np
 import pandas as pd
 import uvicorn
+from countries import make_country_table
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
-
-from countries import make_country_table
 
 with open("results.json", "r") as f:
     results = json.load(f)
@@ -17,10 +17,13 @@ scores = pd.DataFrame(results["scores"])
 languages = pd.DataFrame(results["languages"])
 models = pd.DataFrame(results["models"])
 
+
 def mean(lst):
     return sum(lst) / len(lst) if lst else None
 
+
 task_metrics = ["translation_bleu", "classification_accuracy"]
+
 
 def make_model_table(df, models):
     df = (
@@ -39,11 +42,14 @@ def make_model_table(df, models):
         [
             "rank",
             "model",
+            "name",
+            "provider_name",
             "hf_id",
             "creation_date",
             "size",
             "type",
             "license",
+            "cost",
             "average",
             *task_metrics,
         ]
@@ -97,9 +103,7 @@ async def data(request: Request):
     body = await request.body()
     data = json.loads(body)
     selected_languages = data.get("selectedLanguages", {})
-    df = (
-        scores.groupby(["model", "bcp_47", "task", "metric"]).mean().reset_index()
-    )
+    df = scores.groupby(["model", "bcp_47", "task", "metric"]).mean().reset_index()
     # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
     language_table = make_language_table(df, languages)
     datasets_df = pd.read_json("datasets.json")
@@ -115,6 +119,7 @@ async def data(request: Request):
         "countries": serialize(countries),
     }
     return JSONResponse(content=all_tables)
+
 
 app.mount("/", StaticFiles(directory="frontend/build", html=True), name="frontend")
 

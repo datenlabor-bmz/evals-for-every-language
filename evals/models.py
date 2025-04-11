@@ -7,17 +7,17 @@ from elevenlabs import AsyncElevenLabs
 from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
 from openai import AsyncOpenAI
-from requests import HTTPError
+from requests import HTTPError, get
 
 # for development purposes, all languages will be evaluated on the fast models
 # and only a sample of languages will be evaluated on all models
 models = [
     "openai/gpt-4o-mini",  # 0.6$/M tokens
     # "anthropic/claude-3.5-haiku", # 4$/M tokens -> too expensive for dev
-    "meta-llama/llama-4-maverick", # 0.6$/M tokens
+    "meta-llama/llama-4-maverick",  # 0.6$/M tokens
     "meta-llama/llama-3.3-70b-instruct",  # 0.3$/M tokens
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$/M tokens
-    "meta-llama/llama-3-70b-instruct", # 0.4$/M tokens
+    "meta-llama/llama-3-70b-instruct",  # 0.4$/M tokens
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$/M tokens
     # "mistralai/mistral-saba", # 0.6$/M tokens
     # "mistralai/mistral-nemo", # 0.08$/M tokens
@@ -25,10 +25,10 @@ models = [
     # "google/gemini-2.0-flash-lite-001",  # 0.3$/M tokens
     "google/gemma-3-27b-it",  # 0.2$/M tokens
     # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
-    "qwen/qwq-32b", # 0.2$/M tokens
+    "qwen/qwq-32b",  # 0.2$/M tokens
     "deepseek/deepseek-chat-v3-0324",  # 1.1$/M tokens
     # "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
-    "microsoft/phi-4-multimodal-instruct", # 0.1$/M tokens
+    "microsoft/phi-4-multimodal-instruct",  # 0.1$/M tokens
     "amazon/nova-micro-v1",  # 0.09$/M tokens
     # "openGPT-X/Teuken-7B-instruct-research-v0.4",  # not on OpenRouter
 ]
@@ -94,10 +94,32 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
 
 models = pd.DataFrame(models, columns=["id"])
 
-api = HfApi()
 
 @cache
-def get_metadata(id):
+def get_or_metadata(id):
+    # get metadata from OpenRouter
+    response = cache(get)("https://openrouter.ai/api/frontend/models/")
+    models = response.json()["data"]
+    metadata = next((m for m in models if m["slug"] == id), None)
+    return metadata
+
+
+api = HfApi()
+
+
+@cache
+def get_hf_metadata(row):
+    # get metadata from the HuggingFace API
+    empty = {
+        "hf_id": None,
+        "creation_date": None,
+        "size": None,
+        "type": "Commercial",
+        "license": None,
+    }
+    id = row["hf_slug"] or row["slug"]
+    if not id:
+        return empty
     try:
         info = api.model_info(id)
         license = info.card_data.license.replace("-", " ").replace("mit", "MIT").title()
@@ -109,17 +131,25 @@ def get_metadata(id):
             "license": license,
         }
     except HTTPError:
-        return {
-            "hf_id": None,
-            "creation_date": None,
-            "size": None,
-            "type": "Commercial",
-            "license": None,
-        }
+        return empty
 
-models["hf_id"] = models["id"].apply(get_metadata).str["hf_id"]
-models["creation_date"] = models["id"].apply(get_metadata).str["creation_date"]
-models["creation_date"] = pd.to_datetime(models["creation_date"])
-models["size"] = models["id"].apply(get_metadata).str["size"]
-models["type"] = models["id"].apply(get_metadata).str["type"]
-models["license"] = models["id"].apply(get_metadata).str["license"]
+
+or_metadata = models["id"].apply(get_or_metadata)
+hf_metadata = or_metadata.apply(get_hf_metadata)
+
+
+def get_cost(row):
+    cost = float(row["endpoint"]["pricing"]["completion"])
+    return round(cost * 1_000_000, 2)
+
+
+models = models.assign(
+    name=or_metadata.str["short_name"],
+    provider_name=or_metadata.str["name"].str.split(": ").str[0],
+    cost=or_metadata.apply(get_cost),
+    hf_id=hf_metadata.str["hf_id"],
+    creation_date=pd.to_datetime(hf_metadata.str["creation_date"]),
+    size=hf_metadata.str["size"],
+    type=hf_metadata.str["type"],
+    license=hf_metadata.str["license"],
+)
