@@ -1,3 +1,7 @@
+import json
+import re
+from collections import defaultdict
+from datetime import date
 from os import getenv
 
 import pandas as pd
@@ -40,13 +44,33 @@ transcription_models = [
     # "facebook/seamless-m4t-v2-large",
 ]
 
+cache = Memory(location=".cache", verbose=0).cache
+
+
+@cache
+def get_popular_models(date: date):
+    raw = get("https://openrouter.ai/rankings").text
+    data = re.search(r'{\\"data\\":(.*),\\"isPercentage\\"', raw).group(1)
+    data = json.loads(data.replace("\\", ""))
+    counts = defaultdict(int)
+    for day in data:
+        for model, count in day["ys"].items():
+            if model.startswith("openrouter") or model == "Others":
+                continue
+            counts[model.split(":")[0]] += count
+    counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+    return [model for model, _ in counts]
+
+
+pop_models = get_popular_models(date.today())
+models += [m for m in pop_models if m not in models][:1]
+
 load_dotenv()
 client = AsyncOpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=getenv("OPENROUTER_API_KEY"),
 )
 
-cache = Memory(location=".cache", verbose=0).cache
 openrouter_rate_limit = AsyncLimiter(max_rate=20, time_period=1)
 elevenlabs_rate_limit = AsyncLimiter(max_rate=2, time_period=1)
 huggingface_rate_limit = AsyncLimiter(max_rate=5, time_period=1)
@@ -117,7 +141,10 @@ def get_hf_metadata(row):
         "type": "Commercial",
         "license": None,
     }
-    id = row["hf_slug"] or row["slug"]
+    if not row:
+        return empty
+    id = row["hf_slug"] or row["slug"].split(":")[0]
+    print(id)
     if not id:
         return empty
     try:
@@ -126,7 +153,7 @@ def get_hf_metadata(row):
         return {
             "hf_id": info.id,
             "creation_date": info.created_at,
-            "size": info.safetensors.total,
+            "size": info.safetensors.total if info.safetensors else None,
             "type": "Open",
             "license": license,
         }
@@ -143,13 +170,24 @@ def get_cost(row):
     return round(cost * 1_000_000, 2)
 
 
+exists = or_metadata.apply(lambda x: x is not None)
+models, or_metadata, hf_metadata = (
+    models[exists],
+    or_metadata[exists],
+    hf_metadata[exists],
+)
+creation_date_hf = pd.to_datetime(hf_metadata.str["creation_date"]).dt.date
+creation_date_or = pd.to_datetime(
+    or_metadata.str["created_at"].str.split("T").str[0]
+).dt.date
+
 models = models.assign(
     name=or_metadata.str["short_name"],
     provider_name=or_metadata.str["name"].str.split(": ").str[0],
     cost=or_metadata.apply(get_cost),
     hf_id=hf_metadata.str["hf_id"],
-    creation_date=pd.to_datetime(hf_metadata.str["creation_date"]),
     size=hf_metadata.str["size"],
     type=hf_metadata.str["type"],
     license=hf_metadata.str["license"],
+    creation_date=creation_date_hf.combine_first(creation_date_or),
 )
