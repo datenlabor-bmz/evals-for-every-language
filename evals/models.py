@@ -116,7 +116,7 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
             raise ValueError(f"Model {model} not supported")
 
 
-models = pd.DataFrame(models, columns=["id"])
+models = pd.DataFrame(models, columns=["id"]).iloc[:3]
 
 
 @cache
@@ -144,7 +144,6 @@ def get_hf_metadata(row):
     if not row:
         return empty
     id = row["hf_slug"] or row["slug"].split(":")[0]
-    print(id)
     if not id:
         return empty
     try:

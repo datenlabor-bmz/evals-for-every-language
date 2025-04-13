@@ -174,10 +174,22 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
       />
       <Column
-        field='translation_bleu'
-        header='Translation'
+        field='translation_from_bleu'
+        header="Translation (from)"
+        headerTooltip='Translation performance from a language to all other languages (spBLEU score)'
         sortable
-        body={scoreBodyTemplate('translation_bleu', {
+        body={scoreBodyTemplate('translation_from_bleu', {
+          minScore: 0,
+          maxScore: 0.5
+        })}
+        style={{ minWidth: '5rem', maxWidth: '10rem' }}
+      />
+      <Column
+        field='translation_to_bleu'
+        header="Translation (to)"
+        headerTooltip='Translation performance from all other languages to a language (spBLEU score)'
+        sortable
+        body={scoreBodyTemplate('translation_to_bleu', {
           minScore: 0,
           maxScore: 0.5
         })}

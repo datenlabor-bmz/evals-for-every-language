@@ -1,30 +1,37 @@
 import random
+from functools import partial
 
 import evaluate
 import pandas as pd
+import sentencepiece as spm
+from datasets_.flores import flores_sentences
 from joblib.memory import Memory
 from languages import languages, script_name
-from datasets_.flores import flores_sentences
 from models import complete, transcribe
-import sentencepiece as spm
 
 cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
 wer = evaluate.load("wer")
-tokenizer = spm.SentencePieceProcessor(model_file="data/spbleu/flores200_sacrebleu_tokenizer_spm.model")
+tokenizer = spm.SentencePieceProcessor(
+    model_file="data/spbleu/flores200_sacrebleu_tokenizer_spm.model"
+)
 
 # sample languages to translate to
 target_languages = languages[languages["in_benchmark"]].sample(
     frac=1, weights="speakers", replace=True, random_state=42
 )
 
+
 @cache
-async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
-    original_language = languages[languages["bcp_47"] == original_language_bcp_47].iloc[
-        0
-    ]
+async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
+    original_language = languages[languages["bcp_47"] == bcp_47].iloc[0]
     target_language = target_languages.iloc[sentence_nr]
+    match mode:
+        case "from":
+            pass
+        case "to":
+            original_language, target_language = target_language, original_language
     original_sentence = flores_sentences(original_language)[sentence_nr].strip()
     target_sentence = flores_sentences(target_language)[sentence_nr].strip()
     script = script_name(target_language.flores_path.split("_")[1])
@@ -52,14 +59,15 @@ async def translate_and_evaluate(model, original_language_bcp_47, sentence_nr):
     return [
         {
             "model": model,
-            "bcp_47": original_language["bcp_47"],
-            "task": "translation",
+            "bcp_47": bcp_47,
+            "task": f"translation_{mode}",
             "metric": metric,
             "score": score,
             "sentence_nr": sentence_nr,
         }
-        for metric, score in zip(
-            ["bleu", "chrf"], [bleu_score["bleu"], chrf_score["score"] / 100]
+        for metric, score in (
+            ("bleu", bleu_score["bleu"]),
+            ("chrf", chrf_score["score"] / 100),
         )
     ]
 
@@ -68,8 +76,8 @@ metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
 
 
 @cache
-async def classify_and_evaluate(model, language_bcp_47, nr):
-    language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
+async def classify_and_evaluate(model, bcp_47, nr):
+    language = languages[languages["bcp_47"] == bcp_47].iloc[0]
     sentences = pd.DataFrame(flores_sentences(language), columns=["text"])
     sentences = pd.concat([metadata, sentences], axis=1)
     sentences = sentences.dropna(subset=["topic"])
@@ -119,7 +127,7 @@ async def classify_and_evaluate(model, language_bcp_47, nr):
     return [
         {
             "model": model,
-            "bcp_47": language["bcp_47"],
+            "bcp_47": bcp_47,
             "task": "classification",
             "metric": "accuracy",
             "score": int(pred == true),
@@ -177,6 +185,7 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
+
 @cache
 async def transcribe_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
@@ -210,7 +219,8 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
 
 
 tasks = [
-    translate_and_evaluate,
+    partial(translate_and_evaluate, mode="from"),
+    partial(translate_and_evaluate, mode="to"),
     classify_and_evaluate,
     # mlm_and_evaluate,
     # transcribe_and_evaluate,
