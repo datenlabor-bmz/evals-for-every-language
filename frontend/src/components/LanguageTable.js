@@ -4,7 +4,7 @@ import { FilterMatchMode } from 'primereact/api'
 import { MultiSelect } from 'primereact/multiselect'
 import { useState, useEffect } from 'react'
 import { Slider } from 'primereact/slider'
-import ScoreField from './ScoreField'
+import ScoreColumns from './ScoreColumns'
 
 const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
   const [filters, setFilters] = useState({
@@ -14,7 +14,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
   })
 
   const families = [...new Set(data.map(item => item.family))].slice(0, 10)
-  families.push("Other")
+  families.push('Other')
   const familyRowFilterTemplate = options => {
     return (
       <MultiSelect
@@ -43,7 +43,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
       return (population / 1000).toFixed(0) + 'K'
     } else if (population < 10 * 1000 * 1000) {
       return (population / 1000 / 1000).toFixed(1) + 'M'
-    }else if (population < 1000 * 1000 * 1000) {
+    } else if (population < 1000 * 1000 * 1000) {
       return (population / 1000 / 1000).toFixed(0) + 'M'
     } else {
       return (population / 1000 / 1000 / 1000).toFixed(1) + 'B'
@@ -107,24 +107,21 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
   }
 
   const languageBodyTemplate = rowData => {
-    return <div>
-      <div style={{ fontWeight: 'bold' }}>{rowData.autonym}</div>
-      <div style={{ fontSize: '0.8rem', color: 'gray' }}>{rowData.language_name}</div>
-    </div>
-  }
-
-  const scoreBodyTemplate = (field, options = {}) => {
-    const { minScore = 0, maxScore = 1 } = options
-
-    return rowData => {
-      const score = rowData[field]
-      return ScoreField(score, minScore, maxScore)
-    }
+    return (
+      <div>
+        <div style={{ fontWeight: 'bold' }}>{rowData.autonym}</div>
+        <div style={{ fontSize: '0.8rem', color: 'gray' }}>
+          {rowData.language_name}
+        </div>
+      </div>
+    )
   }
 
   return (
     <DataTable
-      value={data.filter(item => !selectedLanguages.some(l => l.bcp_47 === item.bcp_47))}
+      value={data.filter(
+        item => !selectedLanguages.some(l => l.bcp_47 === item.bcp_47)
+      )}
       header={<>Languages</>}
       sortField='speakers'
       removableSort
@@ -140,7 +137,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
       id='language-table'
       style={{ width: '800px', minHeight: '650px' }}
     >
-      <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} />
+      <Column selectionMode='multiple' headerStyle={{ width: '3rem' }} />
       <Column
         field='language_name'
         header='Language'
@@ -151,6 +148,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
       <Column
         field='speakers'
         header={<i className='pi pi-users' title='Speakers' />}
+        headerTooltip='Number of speakers of the language (according to CLDR 2018)'
         body={speakerBodyTemplate}
         filter
         filterElement={speakerFilterTemplate}
@@ -161,60 +159,13 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
       <Column
         field='family'
         header='Family'
+        headerTooltip='Language family'
         filter
         showFilterMatchModes={false}
         filterElement={familyRowFilterTemplate}
         style={{ minWidth: '10rem' }}
       />
-      <Column
-        field='average'
-        header='Average'
-        sortable
-        body={scoreBodyTemplate('average', { minScore: 0.2, maxScore: 0.5 })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
-      <Column
-        field='translation_from_bleu'
-        header="Translation (from)"
-        headerTooltip='Translation performance from a language to all other languages (spBLEU score)'
-        sortable
-        body={scoreBodyTemplate('translation_from_bleu', {
-          minScore: 0,
-          maxScore: 0.5
-        })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
-      <Column
-        field='translation_to_bleu'
-        header="Translation (to)"
-        headerTooltip='Translation performance from all other languages to a language (spBLEU score)'
-        sortable
-        body={scoreBodyTemplate('translation_to_bleu', {
-          minScore: 0,
-          maxScore: 0.5
-        })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
-      <Column
-        field='classification_accuracy'
-        header='Classification'
-        sortable
-        body={scoreBodyTemplate('classification_accuracy', {
-          minScore: 0,
-          maxScore: 0.5
-        })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
-      {/* <Column
-        field='language_modeling_chrf'
-        header='Language Modeling'
-        sortable
-        body={scoreBodyTemplate('language_modeling_chrf', {
-          minScore: 0.8,
-          maxScore: 1
-        })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      /> */}
+      {ScoreColumns}
     </DataTable>
   )
 }

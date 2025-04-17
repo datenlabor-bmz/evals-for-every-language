@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import Medal from './Medal'
 import { Slider } from 'primereact/slider'
 import ScoreField from './ScoreField'
-
+import ScoreColumns from './ScoreColumns'
 const ModelTable = ({ data }) => {
   const [filters, setFilters] = useState({
     type: { value: null, matchMode: FilterMatchMode.IN },
@@ -173,7 +173,7 @@ const ModelTable = ({ data }) => {
       id='model-table'
       style={{ width: '800px', minHeight: '650px' }}
     >
-      <Column field='rank' body={rankBodyTemplate} />
+      <Column field='rank' body={rankBodyTemplate} headerTooltip='Rank' />
       <Column
         field='provider_name'
         header='Provider'
@@ -189,6 +189,7 @@ const ModelTable = ({ data }) => {
       <Column
         field='type'
         header={<i className='pi pi-unlock' title='Open weights / API only' />}
+        headerTooltip='Open weights / API only'
         filter
         filterElement={typeRowFilterTemplate}
         showFilterMatchModes={false}
@@ -216,55 +217,7 @@ const ModelTable = ({ data }) => {
         body={costBodyTemplate}
         style={{ minWidth: '5rem' }}
       />
-      <Column
-        field='average'
-        header='Average'
-        sortable
-        body={scoreBodyTemplate('average', { minScore: 0, maxScore: 0.6 })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
-      <Column
-        field='translation_from_bleu'
-        header="Translation (from)"
-        headerTooltip='Translation performance from a language to all other languages (spBLEU score)'
-        sortable
-        body={scoreBodyTemplate('translation_from_bleu', {
-          minScore: 0,
-          maxScore: 0.5
-        })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
-      <Column
-        field='translation_to_bleu'
-        header="Translation (to)"
-        headerTooltip='Translation performance from all other languages to a language (spBLEU score)'
-        sortable
-        body={scoreBodyTemplate('translation_to_bleu', {
-          minScore: 0,
-          maxScore: 0.5
-        })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
-      <Column
-        field='classification_accuracy'
-        header='Classification'
-        sortable
-        body={scoreBodyTemplate('classification_accuracy', {
-          minScore: 0,
-          maxScore: 0.9
-        })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      />
-      {/* <Column
-        field='language_modeling_chrf'
-        header='Language Modeling'
-        sortable
-        body={scoreBodyTemplate('language_modeling_chrf', {
-          minScore: 0.8,
-          maxScore: 1
-        })}
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-      /> */}
+      {ScoreColumns}
     </DataTable>
   )
 }
