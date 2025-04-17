@@ -27,6 +27,7 @@ dev-dependencies = [
     "openai>=1.52.2",
     "protobuf>=5.28.3",
     "python-dotenv>=1.0.1",
+    "rich>=14.0.0",
     "sacrebleu>=2.4.3",
     "sentencepiece>=0.2.0",
     "tiktoken>=0.8.0",
