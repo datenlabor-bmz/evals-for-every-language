@@ -11,6 +11,7 @@ datasets:
 - openlanguagedata/flores_plus
 - google/fleurs
 - mozilla-foundation/common_voice_1_0
+- CohereForAI/Global-MMLU
 models:
 - meta-llama/Llama-3.3-70B-Instruct
 - mistralai/Mistral-Small-24B-Instruct-2501

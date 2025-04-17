@@ -12,6 +12,8 @@ from tasks import tasks
 # ===== config =====
 
 n_sentences = 10
+n_languages = 3
+n_models = 3
 
 # ===== run evaluation and aggregate results =====
 
@@ -22,9 +24,8 @@ async def evaluate():
         task(model, lang.bcp_47, i)
         for task in tasks
         for i in range(n_sentences)
-        for lang in languages.iloc[:100].itertuples()
-        for model in models["id"]
-        if lang.in_benchmark
+        for lang in languages.iloc[:n_languages].itertuples()
+        for model in models["id"].iloc[:n_models]
     ]
     return await tqdm_asyncio.gather(*results, miniters=1)
 

@@ -8,6 +8,7 @@ from datasets_.flores import flores_sentences
 from joblib.memory import Memory
 from languages import languages, script_name
 from models import complete, transcribe
+from datasets import load_dataset
 
 cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
@@ -185,6 +186,45 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
+@cache
+def _load_dataset(dataset, subset):
+    return load_dataset(dataset, subset)
+
+@cache
+async def mmlu_and_evaluate(model, language_bcp_47, nr):
+    data = _load_dataset("CohereForAI/Global-MMLU", language_bcp_47)
+    item = data["test"][nr]
+    def format_item(item):
+        return f"""{item['question']}
+        
+        A: {item['option_a']}
+        B: {item['option_b']}
+        C: {item['option_c']}
+        D: {item['option_d']}
+        
+        A|B|C|D?"""
+    messages = []
+    for example in data["dev"].select(range(5)):
+        messages += [{"role": "user", "content": format_item(example)}, {"role": "assistant", "content": example["answer"]}]
+    messages += [{"role": "user", "content": format_item(item)}]
+    reply = await complete(
+        model=model,
+        messages=messages,
+        temperature=0,
+        max_tokens=1,
+    )
+    print(reply.choices[0].message.content.strip())
+    acc = int(reply.choices[0].message.content.strip() == item["answer"])
+    return [
+        {
+            "model": model,
+            "bcp_47": language_bcp_47,
+            "task": "mmlu",
+            "metric": "accuracy",
+            "score": acc,
+            "sentence_nr": nr,
+        }
+    ]
 
 @cache
 async def transcribe_and_evaluate(model, language_bcp_47, nr):
@@ -217,11 +257,11 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
-
 tasks = [
     partial(translate_and_evaluate, mode="from"),
     partial(translate_and_evaluate, mode="to"),
     classify_and_evaluate,
     # mlm_and_evaluate,
+    mmlu_and_evaluate,
     # transcribe_and_evaluate,
 ]

@@ -116,7 +116,7 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
             raise ValueError(f"Model {model} not supported")
 
 
-models = pd.DataFrame(models, columns=["id"]).iloc[:3]
+models = pd.DataFrame(models, columns=["id"])
 
 
 @cache

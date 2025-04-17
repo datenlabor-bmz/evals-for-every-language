@@ -22,7 +22,7 @@ def mean(lst):
     return sum(lst) / len(lst) if lst else None
 
 
-task_metrics = ["translation_from_bleu", "translation_to_bleu", "classification_accuracy"]
+task_metrics = ["translation_from_bleu", "translation_to_bleu", "classification_accuracy", "mmlu_accuracy"]
 
 
 def make_model_table(df, models):
