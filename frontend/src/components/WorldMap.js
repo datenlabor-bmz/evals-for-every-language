@@ -44,6 +44,7 @@ const WorldMap = ({ data }) => {
       return acc
     }, {})
     const plot = Plot.plot({
+      subtitle: 'Language Proficiency Score by Country',
       width: 750,
       height: 500,
       projection: 'equal-earth',

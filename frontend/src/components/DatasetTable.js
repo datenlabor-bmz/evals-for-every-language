@@ -140,13 +140,13 @@ const DatasetTable = ({ data }) => {
         body={linkBodyTemplate}
       />
       <Column
-        field='tasks'
-        header='Tasks'
+        field='n_languages'
+        header='Languages'
+        headerTooltip='Number of languages in the dataset'
         filter
-        filterElement={tasksRowFilterTemplate}
-        showFilterMatchModes={false}
-        style={{ minWidth: '10rem', maxWidth: '10rem' }}
-        body={tasksBodyTemplate}
+        sortable
+        style={{ minWidth: '5rem', maxWidth: '10rem' }}
+        body={nLanguagesBodyTemplate}
       />
       <Column
         field='translation'
@@ -158,13 +158,13 @@ const DatasetTable = ({ data }) => {
         body={translationBodyTemplate}
       />
       <Column
-        field='n_languages'
-        header='Languages'
-        headerTooltip='Number of languages in the dataset'
+        field='tasks'
+        header='Tasks'
         filter
-        sortable
-        style={{ minWidth: '5rem', maxWidth: '10rem' }}
-        body={nLanguagesBodyTemplate}
+        filterElement={tasksRowFilterTemplate}
+        showFilterMatchModes={false}
+        style={{ minWidth: '10rem', maxWidth: '15rem' }}
+        body={tasksBodyTemplate}
       />
     </DataTable>
   )

@@ -3,32 +3,46 @@ import * as Plot from '@observablehq/plot'
 
 const LanguagePlot = ({ data }) => {
   const containerRef = useRef()
-  const languages = data.language_table.filter (a => a.average > 0)
+  const languages = data.language_table.filter(a => a.average > 0)
   const families = [...new Set(languages.map(a => a.family))]
 
   useEffect(() => {
     const plot = Plot.plot({
       width: 750,
       height: 500,
-      // title: 'Proficiency of Languages by Number of Speakers',
+      subtitle: 'Proficiency scores by language',
       x: {
         label: 'Number of Speakers',
         type: 'log'
       },
       y: {
-        label: 'Language Proficiency Score',
+        label: 'Language Proficiency Score'
       },
       marks: [
         Plot.dot(languages, {
           x: 'speakers',
           y: d => d.average,
-          r: "speakers",
+          r: 'speakers',
           fill: 'family',
-          fillOpacity: 0.5,
-          title: d => d.language_name,
+          title: d =>
+            `${d.language_name}\n${d.speakers.toLocaleString('en-US', {
+              notation: 'compact'
+            })} speakers\nScore: ${d.average.toFixed(2)}`,
           tip: true
         }),
-      ],
+        Plot.text(
+          languages.filter(a => a.speakers > 5e8),
+          {
+            x: 'speakers',
+            y: d => d.average,
+            text: d => d.language_name,
+            fill: 'black',
+            frameAnchor: 'left',
+            dx: 10,
+            marginRight: 100
+          }
+        )
+      ]
     })
     containerRef.current.append(plot)
     return () => plot.remove()
@@ -42,7 +56,7 @@ const LanguagePlot = ({ data }) => {
         height: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
       }}
     />
   )
