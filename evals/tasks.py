@@ -8,7 +8,7 @@ from datasets_.flores import flores_sentences
 from joblib.memory import Memory
 from languages import languages, script_name
 from models import complete, transcribe
-from datasets import load_dataset
+from datasets import load_dataset, get_dataset_config_names
 
 cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
@@ -186,13 +186,10 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
-@cache
-def _load_dataset(dataset, subset):
-    return load_dataset(dataset, subset)
+
 
 @cache
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
-    data = _load_dataset("CohereForAI/Global-MMLU", language_bcp_47)
     item = data["test"][nr]
     def format_item(item):
         return f"""{item['question']}
@@ -220,11 +217,17 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
             "model": model,
             "bcp_47": language_bcp_47,
             "task": "mmlu",
+            "dataset": ds,
             "metric": "accuracy",
             "score": acc,
             "sentence_nr": nr,
         }
     ]
+
+from asyncio import run
+results = run(mmlu_and_evaluate("gpt-4o-mini", "fr", 0))
+print(results)
+exit()
 
 @cache
 async def transcribe_and_evaluate(model, language_bcp_47, nr):

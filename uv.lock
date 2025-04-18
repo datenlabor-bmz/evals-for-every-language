@@ -898,7 +898,7 @@ dev = [
     { name = "openai", specifier = ">=1.52.2" },
     { name = "protobuf", specifier = ">=5.28.3" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
-    { name = "rich" },
+    { name = "rich", specifier = ">=14.0.0" },
     { name = "sacrebleu", specifier = ">=2.4.3" },
     { name = "sentencepiece", specifier = ">=0.2.0" },
     { name = "tiktoken", specifier = ">=0.8.0" },
