@@ -16,25 +16,28 @@ from requests import HTTPError, get
 # for development purposes, all languages will be evaluated on the fast models
 # and only a sample of languages will be evaluated on all models
 models = [
-    "openai/gpt-4o-mini",  # 0.6$/M tokens
-    # "anthropic/claude-3.5-haiku", # 4$/M tokens -> too expensive for dev
-    "meta-llama/llama-4-maverick",  # 0.6$/M tokens
-    "meta-llama/llama-3.3-70b-instruct",  # 0.3$/M tokens
-    "meta-llama/llama-3.1-70b-instruct",  # 0.3$/M tokens
-    "meta-llama/llama-3-70b-instruct",  # 0.4$/M tokens
-    "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$/M tokens
-    # "mistralai/mistral-saba", # 0.6$/M tokens
-    # "mistralai/mistral-nemo", # 0.08$/M tokens
-    "google/gemini-2.0-flash-001",  # 0.4$/M tokens
-    # "google/gemini-2.0-flash-lite-001",  # 0.3$/M tokens
-    "google/gemma-3-27b-it",  # 0.2$/M tokens
-    # "qwen/qwen-turbo", # 0.2$/M tokens; recognizes "inappropriate content"
-    "qwen/qwq-32b",  # 0.2$/M tokens
-    "deepseek/deepseek-chat-v3-0324",  # 1.1$/M tokens
-    # "microsoft/phi-4",  # 0.07$/M tokens; only 16k tokens context
-    "microsoft/phi-4-multimodal-instruct",  # 0.1$/M tokens
-    "amazon/nova-micro-v1",  # 0.09$/M tokens
-    # "openGPT-X/Teuken-7B-instruct-research-v0.4",  # not on OpenRouter
+    "meta-llama/llama-4-maverick",  # 0.6$
+    "meta-llama/llama-3.3-70b-instruct",  # 0.3$
+    "meta-llama/llama-3.1-70b-instruct",  # 0.3$
+    "meta-llama/llama-3-70b-instruct",  # 0.4$
+    # "meta-llama/llama-2-70b-chat", # 0.9$; not enough context
+    "openai/gpt-4.1-nano",  # 0.4$
+    "openai/gpt-4o-mini",  # 0.6$
+    # "openai/gpt-3.5-turbo-0613",  # 2$
+    # "openai/gpt-3.5-turbo",  # 1.5$
+    # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
+    "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
+    # "mistralai/mistral-saba", # 0.6$
+    # "mistralai/mistral-nemo", # 0.08$
+    "google/gemini-2.5-flash-preview",  # 0.6$
+    # "google/gemini-2.0-flash-lite-001",  # 0.3$
+    "google/gemma-3-27b-it",  # 0.2$
+    # "qwen/qwen-turbo", # 0.2$; recognizes "inappropriate content"
+    "qwen/qwq-32b",  # 0.2$
+    "deepseek/deepseek-chat-v3-0324",  # 1.1$
+    # "microsoft/phi-4",  # 0.07$; only 16k tokens context
+    "microsoft/phi-4-multimodal-instruct",  # 0.1$
+    "amazon/nova-micro-v1",  # 0.09$
 ]
 
 transcription_models = [
@@ -63,7 +66,7 @@ def get_popular_models(date: date):
 
 
 pop_models = get_popular_models(date.today())
-models += [m for m in pop_models if m not in models][:1]
+# models += [m for m in pop_models if m not in models][:1]
 
 load_dotenv()
 client = AsyncOpenAI(

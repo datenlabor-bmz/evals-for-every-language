@@ -13,7 +13,7 @@ from tasks import tasks
 
 n_sentences = 10
 n_languages = 10
-n_models = 3
+n_models = 20
 
 # ===== run evaluation and aggregate results =====
 
