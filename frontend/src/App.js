@@ -8,6 +8,7 @@ import WorldMap from './components/WorldMap'
 import AutoComplete from './components/AutoComplete'
 import LanguagePlot from './components/LanguagePlot'
 import SpeakerPlot from './components/SpeakerPlot'
+import HistoryPlot from './components/HistoryPlot'
 import { Carousel } from 'primereact/carousel'
 
 function App () {
@@ -123,20 +124,22 @@ function App () {
                   flex: '100vw 100vw 100vw',
                   maxWidth: 'min(100vw, 800px)',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  width: '100%'
                 }}
               >
                 <Carousel
                   value={[
                     <WorldMap data={data.countries} />,
                     <LanguagePlot data={data} />,
-                    <SpeakerPlot data={data} />
+                    <SpeakerPlot data={data} />,
+                    <HistoryPlot data={data} />,
                   ]}
                   numScroll={1}
                   numVisible={1}
                   itemTemplate={item => item}
                   circular
-                  style={{ width: '800px', minHeight: '650px' }}
+                  style={{ width: '100%', minHeight: '650px' }}
                 />
               </div>
             </>
