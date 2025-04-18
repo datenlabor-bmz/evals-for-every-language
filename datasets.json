@@ -11,6 +11,7 @@
             "language_modeling"
         ],
         "parallel": true,
+        "translation": "human",
         "base": "FLORES",
         "implemented": true,
         "group": "Low-Resource Languages"
@@ -25,8 +26,9 @@
             "speech_recognition"
         ],
         "parallel": true,
+        "translation": "human",
         "base": "FLORES",
-        "implemented": true,
+        "implemented": false,
         "group": "Low-Resource Languages"
     },
     {
@@ -39,150 +41,8 @@
             "speech_recognition"
         ],
         "parallel": null,
+        "translation": "human",
         "group": "Low-Resource Languages"
-    },
-    {
-        "name": "MMMLU",
-        "author": "OpenAI",
-        "author_url": "https://openai.com",
-        "url": "https://huggingface.co/datasets/openai/MMMLU",
-        "n_languages": "14",
-        "languages": [
-            "ar",
-            "bn",
-            "de",
-            "es",
-            "fr",
-            "hi",
-            "id",
-            "it",
-            "ja",
-            "ko",
-            "pt",
-            "sw",
-            "yo",
-            "zh"
-        ],
-        "tasks": [
-            "question_answering"
-        ],
-        "parallel": true,
-        "base": "MMLU",
-        "group": "Multitask Language Understanding"
-    },
-    {
-        "name": "AfriMMLU",
-        "author": "Masakhane",
-        "author_url": "https://www.masakhane.io",
-        "url": "https://huggingface.co/datasets/masakhane/afrimmlu",
-        "n_languages": "17",
-        "languages": [
-            "am",
-            "en",
-            "ee",
-            "fr",
-            "ha",
-            "ig",
-            "rw",
-            "ln",
-            "lg",
-            "om",
-            "sn",
-            "st",
-            "sw",
-            "tw",
-            "wo",
-            "xh",
-            "yo",
-            "zu"
-        ],
-        "tasks": [
-            "question_answering"
-        ],
-        "parallel": true,
-        "base": "MMLU",
-        "group": "Multitask Language Understanding"
-    },
-    {
-        "name": "Okapi MMLU",
-        "author": "Academic",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/jon-tow/okapi_mmlu",
-        "n_languages": 26,
-        "languages": [
-            "ar",
-            "bn",
-            "ca",
-            "da",
-            "de",
-            "es",
-            "eu",
-            "fr",
-            "gu",
-            "hi",
-            "hr",
-            "hu",
-            "hy",
-            "id",
-            "it",
-            "kn",
-            "ml",
-            "mr",
-            "ne",
-            "nl",
-            "pt",
-            "ro",
-            "ru",
-            "sk",
-            "sr",
-            "sv",
-            "ta",
-            "te",
-            "uk",
-            "vi",
-            "zh"
-        ],
-        "tasks": [
-            "question_answering"
-        ],
-        "parallel": true,
-        "base": "MMLU",
-        "group": "Multitask Language Understanding"
-    },
-    {
-        "name": "MMLU-X",
-        "author": "OpenGPT-X",
-        "author_url": "https://opengpt-x.de",
-        "url": "https://huggingface.co/datasets/openGPT-X/mmlux",
-        "n_languages": 20,
-        "languages": [
-            "bg",
-            "cs",
-            "da",
-            "de",
-            "el",
-            "es",
-            "et",
-            "fi",
-            "fr",
-            "hu",
-            "it",
-            "lt",
-            "lv",
-            "nl",
-            "pl",
-            "pt",
-            "ro",
-            "sk",
-            "sl",
-            "sv"
-        ],
-        "tasks": [
-            "question_answering"
-        ],
-        "parallel": true,
-        "base": "MMLU",
-        "group": "Multitask Language Understanding"
     },
     {
         "name": "Global MMLU",
@@ -238,21 +98,161 @@
             "question_answering"
         ],
         "parallel": true,
+        "translation": "mixed",
         "base": "MMLU",
+        "implemented": true,
         "group": "Multitask Language Understanding"
     },
     {
-        "name": "Okapi ARC Challenge",
-        "author": "Academic",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/jon-tow/okapi_arc_challenge",
-        "n_languages": 31,
+        "name": "MMMLU",
+        "author": "OpenAI",
+        "author_url": "https://openai.com",
+        "url": "https://huggingface.co/datasets/openai/MMMLU",
+        "n_languages": "14",
+        "languages": [
+            "ar",
+            "bn",
+            "de",
+            "es",
+            "fr",
+            "hi",
+            "id",
+            "it",
+            "ja",
+            "ko",
+            "pt",
+            "sw",
+            "yo",
+            "zh"
+        ],
         "tasks": [
             "question_answering"
         ],
         "parallel": true,
-        "base": "AI2 ARC",
-        "group": "Abstract Reasoning"
+        "translation": "human",
+        "base": "MMLU",
+        "implemented": true,
+        "group": "Multitask Language Understanding"
+    },
+    {
+        "name": "AfriMMLU",
+        "author": "Masakhane",
+        "author_url": "https://www.masakhane.io",
+        "url": "https://huggingface.co/datasets/masakhane/afrimmlu",
+        "n_languages": "17",
+        "languages": [
+            "am",
+            "en",
+            "ee",
+            "fr",
+            "ha",
+            "ig",
+            "rw",
+            "ln",
+            "lg",
+            "om",
+            "sn",
+            "st",
+            "sw",
+            "tw",
+            "wo",
+            "xh",
+            "yo",
+            "zu"
+        ],
+        "tasks": [
+            "question_answering"
+        ],
+        "parallel": true,
+        "translation": "human",
+        "base": "MMLU",
+        "implemented": true,
+        "group": "Multitask Language Understanding"
+    },
+    {
+        "name": "Okapi MMLU",
+        "author": "Academic",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/jon-tow/okapi_mmlu",
+        "n_languages": 26,
+        "languages": [
+            "ar",
+            "bn",
+            "ca",
+            "da",
+            "de",
+            "es",
+            "eu",
+            "fr",
+            "gu",
+            "hi",
+            "hr",
+            "hu",
+            "hy",
+            "id",
+            "it",
+            "kn",
+            "ml",
+            "mr",
+            "ne",
+            "nl",
+            "pt",
+            "ro",
+            "ru",
+            "sk",
+            "sr",
+            "sv",
+            "ta",
+            "te",
+            "uk",
+            "vi",
+            "zh"
+        ],
+        "tasks": [
+            "question_answering"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "MMLU",
+        "implemented": false,
+        "group": "Multitask Language Understanding"
+    },
+    {
+        "name": "MMLU-X",
+        "author": "OpenGPT-X",
+        "author_url": "https://opengpt-x.de",
+        "url": "https://huggingface.co/datasets/openGPT-X/mmlux",
+        "n_languages": 20,
+        "languages": [
+            "bg",
+            "cs",
+            "da",
+            "de",
+            "el",
+            "es",
+            "et",
+            "fi",
+            "fr",
+            "hu",
+            "it",
+            "lt",
+            "lv",
+            "nl",
+            "pl",
+            "pt",
+            "ro",
+            "sk",
+            "sl",
+            "sv"
+        ],
+        "tasks": [
+            "question_answering"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "MMLU",
+        "implemented": false,
+        "group": "Multitask Language Understanding"
     },
     {
         "name": "Uhuru ARC Easy",
@@ -264,7 +264,24 @@
             "question_answering"
         ],
         "parallel": true,
+        "translation": "human",
         "base": "AI2 ARC",
+        "implemented": false,
+        "group": "Abstract Reasoning"
+    },
+    {
+        "name": "Okapi ARC Challenge",
+        "author": "Academic",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/jon-tow/okapi_arc_challenge",
+        "n_languages": 31,
+        "tasks": [
+            "question_answering"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "AI2 ARC",
+        "implemented": false,
         "group": "Abstract Reasoning"
     },
     {
@@ -277,21 +294,10 @@
             "question_answering"
         ],
         "parallel": true,
+        "translation": "machine",
         "base": "AI2 ARC",
+        "implemented": false,
         "group": "Abstract Reasoning"
-    },
-    {
-        "name": "Okapi TruthfulQA",
-        "author": "Academic",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/jon-tow/okapi_truthfulqa/tree/main/data",
-        "n_languages": 31,
-        "tasks": [
-            "question_answering"
-        ],
-        "parallel": true,
-        "base": "TruthfulQA",
-        "group": "Truthfulness"
     },
     {
         "name": "Uhura TruthfulQA",
@@ -303,7 +309,24 @@
             "question_answering"
         ],
         "parallel": true,
+        "translation": "human",
         "base": "TruthfulQA",
+        "implemented": false,
+        "group": "Truthfulness"
+    },
+    {
+        "name": "Okapi TruthfulQA",
+        "author": "Academic",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/jon-tow/okapi_truthfulqa/tree/main/data",
+        "n_languages": 31,
+        "tasks": [
+            "question_answering"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "TruthfulQA",
+        "implemented": false,
         "group": "Truthfulness"
     },
     {
@@ -316,7 +339,9 @@
             "question_answering"
         ],
         "parallel": true,
+        "translation": "machine",
         "base": "TruthfulQA",
+        "implemented": false,
         "group": "Truthfulness"
     },
     {
@@ -344,7 +369,9 @@
             "logic"
         ],
         "parallel": true,
+        "translation": "human",
         "base": "MNLI",
+        "implemented": false,
         "group": "Natural Language Inference"
     },
     {
@@ -383,7 +410,9 @@
             "question_answering"
         ],
         "parallel": true,
+        "translation": "machine",
         "base": "HellaSwag",
+        "implemented": false,
         "group": "Adversarial Language Modelling"
     },
     {
@@ -396,7 +425,9 @@
             "question_answering"
         ],
         "parallel": true,
+        "translation": "machine",
         "base": "HellaSwag",
+        "implemented": false,
         "group": "Adversarial Language Modelling"
     },
     {
@@ -422,7 +453,9 @@
             "math"
         ],
         "parallel": true,
+        "translation": "human",
         "base": "MGSM",
+        "implemented": false,
         "group": "Grade School Math"
     },
     {
@@ -435,7 +468,9 @@
             "math"
         ],
         "parallel": true,
+        "translation": "machine",
         "base": "MGSM",
+        "implemented": false,
         "group": "Grade School Math"
     },
     {

@@ -7,8 +7,9 @@ import 'primeicons/primeicons.css'
 
 const DatasetTable = ({ data }) => {
   const [filters, setFilters] = useState({
-    n_languages: { value: null, matchMode: FilterMatchMode.BETWEEN },
     tasks: { value: null, matchMode: FilterMatchMode.IN },
+    translation: { value: null, matchMode: FilterMatchMode.IN },
+    n_languages: { value: null, matchMode: FilterMatchMode.BETWEEN },
     parallel: { value: null, matchMode: FilterMatchMode.EQUALS },
     base: { value: null, matchMode: FilterMatchMode.IN },
   })
@@ -43,6 +44,16 @@ const DatasetTable = ({ data }) => {
     return <a href={rowData.url} target='_blank' style={{ textDecoration: 'none', color: 'inherit' }}><i className='pi pi-external-link' style={{ fontSize: '0.8rem' }} /></a>
   }
 
+  const translationBodyTemplate = rowData => {
+    const translationIcons = {
+      human: <i className='pi pi-user' title='Human-translated' />,
+      machine: <i className='pi pi-cog' title='Machine-translated' />,
+      mixed: <><i className='pi pi-user' title='Partially human-translated' /> <i className='pi pi-cog' title='Partially machine-translated' /></>,
+    }
+    const icon = translationIcons[rowData.translation] ?? <></>
+    return <div style={{ textAlign: 'center' }}>{icon}</div>
+  }
+
   const nLanguagesBodyTemplate = rowData => {
     return <div style={{ textAlign: 'center' }}>
       {rowData.n_languages}
@@ -63,6 +74,23 @@ const DatasetTable = ({ data }) => {
           }))
         }}
         placeholder='All tasks'
+      />
+    )
+  }
+
+  const translationRowFilterTemplate = options => {
+    return (
+      <MultiSelect
+        value={options.value}
+        options={['human', 'mixed', 'machine']}
+        onChange={e => {
+          options.filterApplyCallback(e.value)
+          setFilters(prevFilters => ({
+            ...prevFilters,
+            translation: { value: e.value, matchMode: FilterMatchMode.IN }
+          }))
+        }}
+        placeholder='All translation modes'
       />
     )
   }
@@ -88,7 +116,7 @@ const DatasetTable = ({ data }) => {
       <Column
         field='implemented'
         header={null}
-        sortable
+        headerTooltip='Whether the dataset has been integrated into this benchmark'
         style={{ maxWidth: '5rem' }}
         body={implementedBodyTemplate}
       />
@@ -103,7 +131,7 @@ const DatasetTable = ({ data }) => {
         field='name'
         header='Name'
         body={nameBodyTemplate}
-        style={{ minWidth: '5rem' }}
+        style={{ minWidth: '10rem' }}
         frozen
       />
       <Column
@@ -121,8 +149,18 @@ const DatasetTable = ({ data }) => {
         body={tasksBodyTemplate}
       />
       <Column
+        field='translation'
+        header={<i className='pi pi-language' />}
+        headerTooltip='Whether the dataset has been translated by humans or machines'
+        filter
+        filterElement={translationRowFilterTemplate}
+        showFilterMatchModes={false}
+        body={translationBodyTemplate}
+      />
+      <Column
         field='n_languages'
         header='Languages'
+        headerTooltip='Number of languages in the dataset'
         filter
         sortable
         style={{ minWidth: '5rem', maxWidth: '10rem' }}
