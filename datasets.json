@@ -28,30 +28,6 @@
         "group": "Translation"
     },
     {
-        "name": "Opus Gnome",
-        "author": "Helsinki NLP",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_gnome",
-        "n_languages": 187,
-        "tasks": [
-            "translation"
-        ],
-        "parallel": true,
-        "group": "Translation"
-    },
-    {
-        "name": "Opus Paracrawl",
-        "author": "Helsinki NLP",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_paracrawl",
-        "n_languages": 43,
-        "tasks": [
-            "translation"
-        ],
-        "parallel": false,
-        "group": "Translation"
-    },
-    {
         "name": "OPUS Collection",
         "author": "Helsinki NLP",
         "author_url": null,
@@ -62,58 +38,6 @@
         ],
         "parallel": false,
         "group": "Translation"
-    },
-    {
-        "name": "FLEURS",
-        "author": "Meta",
-        "author_url": "https://ai.meta.com",
-        "url": "https://huggingface.co/datasets/google/fleurs",
-        "n_languages": 102,
-        "tasks": [
-            "speech_recognition"
-        ],
-        "parallel": true,
-        "translation": "human",
-        "base": "FLORES",
-        "implemented": false,
-        "group": "Speech Recognition"
-    },
-    {
-        "name": "CommonVoice",
-        "author": "Mozilla",
-        "author_url": "https://blog.mozilla.ai",
-        "url": "https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0",
-        "n_languages": 124,
-        "tasks": [
-            "speech_recognition"
-        ],
-        "parallel": null,
-        "translation": "human",
-        "group": "Speech Recognition"
-    },
-    {
-        "name": "WorldCuisines",
-        "author": "Academic",
-        "author_url": "https://worldcuisines.github.io",
-        "url": "https://huggingface.co/datasets/worldcuisines/vqa",
-        "n_languages": 30,
-        "tasks": [
-            "visual_question_answering"
-        ],
-        "parallel": null,
-        "group": "Visual Question Answering"
-    },
-    {
-        "name": "CVQA",
-        "author": "Academic",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/afaji/cvqa",
-        "n_languages": 39,
-        "tasks": [
-            "visual_question_answering"
-        ],
-        "parallel": null,
-        "group": "Visual Question Answering"
     },
     {
         "name": "Global MMLU",
@@ -324,6 +248,58 @@
         "base": "MMLU",
         "implemented": false,
         "group": "Multitask Language Understanding"
+    },
+    {
+        "name": "FLEURS",
+        "author": "Meta",
+        "author_url": "https://ai.meta.com",
+        "url": "https://huggingface.co/datasets/google/fleurs",
+        "n_languages": 102,
+        "tasks": [
+            "speech_recognition"
+        ],
+        "parallel": true,
+        "translation": "human",
+        "base": "FLORES",
+        "implemented": false,
+        "group": "Speech Recognition"
+    },
+    {
+        "name": "CommonVoice",
+        "author": "Mozilla",
+        "author_url": "https://blog.mozilla.ai",
+        "url": "https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0",
+        "n_languages": 124,
+        "tasks": [
+            "speech_recognition"
+        ],
+        "parallel": null,
+        "translation": "human",
+        "group": "Speech Recognition"
+    },
+    {
+        "name": "WorldCuisines",
+        "author": "Academic",
+        "author_url": "https://worldcuisines.github.io",
+        "url": "https://huggingface.co/datasets/worldcuisines/vqa",
+        "n_languages": 30,
+        "tasks": [
+            "visual_question_answering"
+        ],
+        "parallel": null,
+        "group": "Visual Question Answering"
+    },
+    {
+        "name": "CVQA",
+        "author": "Academic",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/afaji/cvqa",
+        "n_languages": 39,
+        "tasks": [
+            "visual_question_answering"
+        ],
+        "parallel": null,
+        "group": "Visual Question Answering"
     },
     {
         "name": "Uhuru ARC Easy",
