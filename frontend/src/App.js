@@ -7,6 +7,7 @@ import DatasetTable from './components/DatasetTable'
 import WorldMap from './components/WorldMap'
 import AutoComplete from './components/AutoComplete'
 import LanguagePlot from './components/LanguagePlot'
+import SpeakerPlot from './components/SpeakerPlot'
 import { Carousel } from 'primereact/carousel'
 
 function App () {
@@ -128,7 +129,8 @@ function App () {
                 <Carousel
                   value={[
                     <WorldMap data={data.countries} />,
-                    <LanguagePlot data={data} />
+                    <LanguagePlot data={data} />,
+                    <SpeakerPlot data={data} />
                   ]}
                   numScroll={1}
                   numVisible={1}
