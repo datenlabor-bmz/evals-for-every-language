@@ -7,14 +7,61 @@
         "n_languages": 200,
         "tasks": [
             "translation",
-            "classification",
-            "language_modeling"
+            "classification"
         ],
         "parallel": true,
         "translation": "human",
         "base": "FLORES",
         "implemented": true,
-        "group": "Low-Resource Languages"
+        "group": "Translation"
+    },
+    {
+        "name": "CCAligned",
+        "author": "Meta",
+        "author_url": "https://ai.meta.com",
+        "url": "https://huggingface.co/datasets/ahelk/ccaligned_multilingual",
+        "n_languages": 137,
+        "tasks": [
+            "translation"
+        ],
+        "parallel": false,
+        "group": "Translation"
+    },
+    {
+        "name": "Opus Gnome",
+        "author": "Helsinki NLP",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_gnome",
+        "n_languages": 187,
+        "tasks": [
+            "translation"
+        ],
+        "parallel": true,
+        "group": "Translation"
+    },
+    {
+        "name": "Opus Paracrawl",
+        "author": "Helsinki NLP",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_paracrawl",
+        "n_languages": 43,
+        "tasks": [
+            "translation"
+        ],
+        "parallel": false,
+        "group": "Translation"
+    },
+    {
+        "name": "OPUS Collection",
+        "author": "Helsinki NLP",
+        "author_url": null,
+        "url": "https://opus.nlpl.eu",
+        "n_languages": 747,
+        "tasks": [
+            "translation"
+        ],
+        "parallel": false,
+        "group": "Translation"
     },
     {
         "name": "FLEURS",
@@ -29,7 +76,7 @@
         "translation": "human",
         "base": "FLORES",
         "implemented": false,
-        "group": "Low-Resource Languages"
+        "group": "Speech Recognition"
     },
     {
         "name": "CommonVoice",
@@ -42,7 +89,31 @@
         ],
         "parallel": null,
         "translation": "human",
-        "group": "Low-Resource Languages"
+        "group": "Speech Recognition"
+    },
+    {
+        "name": "WorldCuisines",
+        "author": "Academic",
+        "author_url": "https://worldcuisines.github.io",
+        "url": "https://huggingface.co/datasets/worldcuisines/vqa",
+        "n_languages": 30,
+        "tasks": [
+            "visual_question_answering"
+        ],
+        "parallel": null,
+        "group": "Visual Question Answering"
+    },
+    {
+        "name": "CVQA",
+        "author": "Academic",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/afaji/cvqa",
+        "n_languages": 39,
+        "tasks": [
+            "visual_question_answering"
+        ],
+        "parallel": null,
+        "group": "Visual Question Answering"
     },
     {
         "name": "Global MMLU",
@@ -496,54 +567,6 @@
         ],
         "parallel": null,
         "group": "Named Entity Recognition"
-    },
-    {
-        "name": "CCAligned",
-        "author": "Meta",
-        "author_url": "https://ai.meta.com",
-        "url": "https://huggingface.co/datasets/ahelk/ccaligned_multilingual",
-        "n_languages": 137,
-        "tasks": [
-            "translation"
-        ],
-        "parallel": false,
-        "group": "Parallel Corpora"
-    },
-    {
-        "name": "Opus Gnome",
-        "author": "Helsinki NLP",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_gnome",
-        "n_languages": 187,
-        "tasks": [
-            "translation"
-        ],
-        "parallel": true,
-        "group": "Parallel Corpora"
-    },
-    {
-        "name": "Opus Paracrawl",
-        "author": "Helsinki NLP",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/Helsinki-NLP/opus_paracrawl",
-        "n_languages": 43,
-        "tasks": [
-            "translation"
-        ],
-        "parallel": false,
-        "group": "Parallel Corpora"
-    },
-    {
-        "name": "OPUS Collection",
-        "author": "Helsinki NLP",
-        "author_url": null,
-        "url": "https://opus.nlpl.eu",
-        "n_languages": 747,
-        "tasks": [
-            "translation"
-        ],
-        "parallel": false,
-        "group": "Parallel Corpora"
     },
     {
         "name": "Tülu 3 SFT Mixture",
