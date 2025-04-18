@@ -1,5 +1,6 @@
-from collections import Counter, defaultdict
 import random
+from collections import Counter, defaultdict
+
 from datasets import get_dataset_config_names, load_dataset
 from joblib.memory import Memory
 from langcodes import Language, standardize_tag
@@ -119,12 +120,30 @@ def print_datasets_analysis():
 
 # print_datasets_analysis()
 
-def load_mmlu(language_bcp_47, i):
-    categories = sorted(list(set(_load_dataset("masakhane/afrimmlu", "eng")["dev"]["subject"])))
-    category = categories[i % len(categories)]
-    random.seed(i)
-    j = random.randint(0, 100)
-    print(j)
+
+def parse_choices(row):
+    if not isinstance(row["choices"], list):
+        row["choices"] = eval(row["choices"])
+    return row
+
+
+def add_choices(row):
+    row["choices"] = [
+        row["option_a"],
+        row["option_b"],
+        row["option_c"],
+        row["option_d"],
+    ]
+    return row
+
+
+def load_mmlu(language_bcp_47, nr):
+    categories = sorted(
+        list(set(_load_dataset("masakhane/afrimmlu", "eng")["dev"]["subject"]))
+    )
+    category = categories[nr % len(categories)]
+    random.seed(nr)
+    i = random.randint(0, 100)
     tags_afrimmlu = {
         standardize_tag(a, macro=True): a
         for a in _get_dataset_config_names("masakhane/afrimmlu")
@@ -140,21 +159,25 @@ def load_mmlu(language_bcp_47, i):
     )
     if language_bcp_47 in tags_afrimmlu:
         ds = _load_dataset("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47])
-        return ds["test"].filter(lambda x: x["subject"] == category)[j]
+        ds = ds.map(parse_choices)
+        examples = ds["dev"].filter(lambda x: x["subject"] == category)
+        task = ds["test"].filter(lambda x: x["subject"] == category)[i]
+        return "masakhane/afrimmlu", examples, task
     elif language_bcp_47 in tags_global_mmlu:
         ds = _load_dataset("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47])
-        def add_choices(split):
-            split["choices"] = list(zip([split["option_a"], split["option_b"], split["option_c"], split["option_d"]]))
-            return split
         ds = ds.map(add_choices)
-        return ds["test"].filter(lambda x: x["subject"] == category)[j]
+        examples = ds["dev"].filter(lambda x: x["subject"] == category)
+        task = ds["test"].filter(lambda x: x["subject"] == category)[i]
+        return "CohereForAI/Global-MMLU", examples, task
     elif language_bcp_47 in tags_okapi:
         ds = _load_dataset(
             "lighteval/okapi_mmlu", language_bcp_47, trust_remote_code=True
         )
-        return ds["test"].filter(lambda x: x["id"] == f"{category}/test/{j}")[0]
+        examples = ds["dev"].filter(lambda x: x["subject"] == category)
+        task = ds["test"].filter(lambda x: x["id"] == f"{category}/test/{i}")[0]
+        return "lighteval/okapi_mmlu", examples, task
     elif language_bcp_47 in tags_mmlux:
         # loading this is more complicated, todo
-        return None
+        return None, None, None
     else:
-        return None
+        return None, None, None

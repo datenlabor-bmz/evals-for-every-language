@@ -285,7 +285,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "MMLU",
-        "implemented": false,
+        "implemented": true,
         "group": "Multitask Language Understanding"
     },
     {

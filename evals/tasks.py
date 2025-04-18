@@ -5,10 +5,10 @@ import evaluate
 import pandas as pd
 import sentencepiece as spm
 from datasets_.flores import flores_sentences
+from datasets_.mmlu import load_mmlu
 from joblib.memory import Memory
 from languages import languages, script_name
 from models import complete, transcribe
-from datasets import load_dataset, get_dataset_config_names
 
 cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
@@ -187,47 +187,47 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
     ]
 
 
-
 @cache
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
-    item = data["test"][nr]
+    ds_name, examples, task = load_mmlu(language_bcp_47, nr)
+    if not task:
+        return []
+
     def format_item(item):
-        return f"""{item['question']}
+        return f"""{item["question"]}
         
-        A: {item['option_a']}
-        B: {item['option_b']}
-        C: {item['option_c']}
-        D: {item['option_d']}
+        A: {item["choices"][0]}
+        B: {item["choices"][1]}
+        C: {item["choices"][2]}
+        D: {item["choices"][3]}
         
         A|B|C|D?"""
+
     messages = []
-    for example in data["dev"].select(range(5)):
-        messages += [{"role": "user", "content": format_item(example)}, {"role": "assistant", "content": example["answer"]}]
-    messages += [{"role": "user", "content": format_item(item)}]
+    for example in examples:
+        messages += [
+            {"role": "user", "content": format_item(example)},
+            {"role": "assistant", "content": example["answer"]},
+        ]
+    messages += [{"role": "user", "content": format_item(task)}]
     reply = await complete(
         model=model,
         messages=messages,
         temperature=0,
         max_tokens=1,
     )
-    print(reply.choices[0].message.content.strip())
-    acc = int(reply.choices[0].message.content.strip() == item["answer"])
+    acc = int(reply.choices[0].message.content[:1].strip() == task["answer"])
     return [
         {
             "model": model,
             "bcp_47": language_bcp_47,
             "task": "mmlu",
-            "dataset": ds,
             "metric": "accuracy",
             "score": acc,
             "sentence_nr": nr,
         }
     ]
 
-from asyncio import run
-results = run(mmlu_and_evaluate("gpt-4o-mini", "fr", 0))
-print(results)
-exit()
 
 @cache
 async def transcribe_and_evaluate(model, language_bcp_47, nr):
@@ -259,6 +259,7 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
             "sentence_nr": nr,
         }
     ]
+
 
 tasks = [
     partial(translate_and_evaluate, mode="from"),

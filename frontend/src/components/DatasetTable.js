@@ -145,7 +145,7 @@ const DatasetTable = ({ data }) => {
         filter
         filterElement={tasksRowFilterTemplate}
         showFilterMatchModes={false}
-        style={{ minWidth: '10rem', maxWidth: '15rem' }}
+        style={{ minWidth: '10rem', maxWidth: '10rem' }}
         body={tasksBodyTemplate}
       />
       <Column
