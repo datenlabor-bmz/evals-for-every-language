@@ -12,7 +12,7 @@ from tasks import tasks
 # ===== config =====
 
 n_sentences = 10
-n_languages = 10
+n_languages = 15
 n_models = 20
 
 # ===== run evaluation and aggregate results =====
