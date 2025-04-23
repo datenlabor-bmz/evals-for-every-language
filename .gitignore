@@ -14,3 +14,7 @@ wheels/
 
 # Virtual environments
 .venv
+
+# folders and files to be ignored
+.specstory/
+.cursorindexingignore
