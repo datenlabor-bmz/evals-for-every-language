@@ -22,8 +22,6 @@ def aggregate_flores_paths(flores_paths):
     ]
     return flores_paths.values[populations.index(max(populations))]
 
-
-
 flores = pd.DataFrame(
     [f.split(".")[1] for f in os.listdir(flores_dir)],
     columns=["flores_path"],
