@@ -163,6 +163,7 @@ const ModelTable = ({ data }) => {
       scrollHeight='600px'
       id='model-table'
       style={{ width: '800px', minHeight: '650px' }}
+      emptyMessage='No models have been evaluated for the selected languages.'
     >
       <Column field='rank' body={rankBodyTemplate} headerTooltip='Rank' />
       <Column
