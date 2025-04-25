@@ -40,6 +40,9 @@ function App () {
   return (
     <PrimeReactProvider>
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{backgroundColor: '#fff3cd', color: '#856404', padding: '0.75rem 1.25rem', marginBottom: '1rem', border: '1px solid #ffeeba', borderRadius: '0.25rem', textAlign: 'center'}}>
+          <strong>Work in Progress:</strong> This dashboard is currently under active development. Data and features may change.
+        </div>
         <header
           style={{
             display: 'flex',
