@@ -110,8 +110,12 @@ async def data(request: Request):
     if selected_languages:
         # the filtering is only applied for the model table and the country data
         df = df[df["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)]
-    model_table = make_model_table(df, models)
-    countries = make_country_table(make_language_table(df, languages))
+    if len(df) == 0:
+        model_table = pd.DataFrame()
+        countries = pd.DataFrame()
+    else:
+        model_table = make_model_table(df, models)
+        countries = make_country_table(make_language_table(df, languages))
     all_tables = {
         "model_table": serialize(model_table),
         "language_table": serialize(language_table),
