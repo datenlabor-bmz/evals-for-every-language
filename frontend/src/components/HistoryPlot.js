@@ -3,7 +3,7 @@ import * as Plot from '@observablehq/plot'
 
 const HistoryPlot = ({ data }) => {
   const containerRef = useRef()
-  const models = data.model_table
+  const models = [...data.model_table] // sort copy, not in place
     .sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date))
     .reduce((acc, curr) => {
       const last = acc[acc.length - 1]?.maxAverage || 0
