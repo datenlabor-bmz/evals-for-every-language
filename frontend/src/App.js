@@ -59,7 +59,7 @@ function App () {
             </span>
           </div>
           <h1 style={{ fontSize: '2.5rem', fontWeight: '700' }}>
-            Global AI Monitor
+              AI Language Proficiency Monitor
           </h1>
           <p style={{ fontSize: '1.15rem', color: '#555', marginTop: '0' }}>
             Tracking language proficiency of AI models for every language
@@ -70,6 +70,17 @@ function App () {
               onComplete={items => setSelectedLanguages(items)}
             />
           )}
+          <div style={{maxWidth: '600px', textAlign: 'center', marginTop: '2rem'}}>
+            <p>The <i>AI Language Proficiency Monitor</i> presents comprehensive multilingual evaluation results of AI language models.</p>
+            <ul style={{textAlign: 'left'}}>
+              <li><b>Developers and researchers</b> can identify the best-performing model for any given language or region.</li>
+              <li><b>Policymakers and funders</b> can identify languages that are neglected by current AI systems and prioritize investment accordingly.</li>
+              <li><b>Model developers</b> gain a global metric of multilinguality that incentivizes broad language coverage.</li>
+            </ul>
+            <p>We also want to celebrate the community's effort towards multilingual datasets and models. We invite you to integrate additional benchmark datasets, and to add your custom language models to the monitor.</p>
+            <p>Benchmark results automatically refresh every night for the most popular AI models, as well as community-listed models. For a more detailed methodlogy, see <a href="#">our non-existing paper</a>.</p>
+            <p>The language monitor is a collaboration between BMZ's <a href="https://www.bmz-digital.global/en/overview-of-initiatives/the-bmz-data-lab/" target="_blank" rel="noopener noreferrer">Data Lab</a>, GIZ's <a href="https://www.giz.de/expertise/html/61982.html" target="_blank" rel="noopener noreferrer">FairForward</a> initiative, and the <a href="https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team" target="_blank" rel="noopener noreferrer">E&E group</a> of DFKI's Multilinguality and Language Technology Lab.</p>
+          </div>
         </header>
         <main
           style={{
