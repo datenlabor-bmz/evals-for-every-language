@@ -151,15 +151,6 @@ const ModelTable = ({ data }) => {
     return <div style={{ textAlign: 'center' }}>${rowData.cost.toFixed(2)}</div>
   }
 
-  const scoreBodyTemplate = (field, options = {}) => {
-    const { minScore = 0, maxScore = 1 } = options
-
-    return rowData => {
-      const score = rowData[field]
-      return ScoreField(score, minScore, maxScore)
-    }
-  }
-
   return (
     <DataTable
       value={data}
