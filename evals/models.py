@@ -121,12 +121,13 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
 
 models = pd.DataFrame(models, columns=["id"])
 
-
 @cache
+def get_models(date):
+    return get("https://openrouter.ai/api/frontend/models/").json()["data"]
+
 def get_or_metadata(id):
     # get metadata from OpenRouter
-    response = cache(get)("https://openrouter.ai/api/frontend/models/")
-    models = response.json()["data"]
+    models = get_models(date.today())
     metadata = next((m for m in models if m["slug"] == id), None)
     return metadata
 
@@ -163,21 +164,13 @@ def get_hf_metadata(row):
         return empty
 
 
-or_metadata = models["id"].apply(get_or_metadata)
-hf_metadata = or_metadata.apply(get_hf_metadata)
-
-
 def get_cost(row):
     cost = float(row["endpoint"]["pricing"]["completion"])
     return round(cost * 1_000_000, 2)
 
 
-exists = or_metadata.apply(lambda x: x is not None)
-models, or_metadata, hf_metadata = (
-    models[exists],
-    or_metadata[exists],
-    hf_metadata[exists],
-)
+or_metadata = models["id"].apply(get_or_metadata)
+hf_metadata = or_metadata.apply(get_hf_metadata)
 creation_date_hf = pd.to_datetime(hf_metadata.str["creation_date"]).dt.date
 creation_date_or = pd.to_datetime(
     or_metadata.str["created_at"].str.split("T").str[0]
