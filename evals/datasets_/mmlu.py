@@ -1,24 +1,10 @@
 import random
 from collections import Counter, defaultdict
 
-from datasets import get_dataset_config_names, load_dataset
-from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from rich import print
 
-cache = Memory(location=".cache", verbose=0).cache
-
-
-@cache
-def _get_dataset_config_names(dataset):
-    return get_dataset_config_names(dataset)
-
-
-@cache
-def _load_dataset(dataset, subset, **kwargs):
-    return load_dataset(dataset, subset, **kwargs)
-
-
+from .util import _get_dataset_config_names, _load_dataset
 def print_counts(slug, subjects_dev, subjects_test):
     print(
         f"{slug:<25} {len(list(set(subjects_test))):>3} test categories, {len(subjects_test):>6} samples, {len(list(set(subjects_dev))):>3} dev categories, {len(subjects_dev):>6} dev samples"
