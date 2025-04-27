@@ -31,7 +31,7 @@ const LanguagePlot = ({ data }) => {
           tip: true
         }),
         Plot.text(
-          languages.filter(a => a.speakers > 5e8),
+          languages.filter(a => a.speakers > 1e8),
           {
             x: 'speakers',
             y: d => d.average,
