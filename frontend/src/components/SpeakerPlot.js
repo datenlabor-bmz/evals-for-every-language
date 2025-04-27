@@ -73,9 +73,9 @@ const SpeakerPlot = ({ data }) => {
           textStrokeOpacity: 0,
           textFillOpacity: 0
         }),
-        Plot.tip(['The 41 most spoken languages cover 80% of all speakers.'], {
-          x: 41,
-          y: languages[40].cumSpeakers / 1e6
+        Plot.tip(['The 40 most spoken languages cover 80% of all speakers.'], {
+          x: 40,
+          y: languages[39].cumSpeakers / 1e6
         })
       ]
     })

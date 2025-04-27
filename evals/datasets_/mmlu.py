@@ -156,6 +156,7 @@ def load_mmlu(language_bcp_47, nr):
         task = ds["test"].filter(lambda x: x["subject"] == category)[i]
         return "CohereForAI/Global-MMLU", examples, task
     elif language_bcp_47 in tags_okapi:
+        return None, None, None # FIXME
         ds = _load_dataset(
             "lighteval/okapi_mmlu", language_bcp_47, trust_remote_code=True
         )

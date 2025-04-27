@@ -221,13 +221,19 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
             {"role": "assistant", "content": example["answer"]},
         ]
     messages += [{"role": "user", "content": format_item(task)}]
-    reply = await complete(
-        model=model,
-        messages=messages,
-        temperature=0,
-        max_tokens=1,
-    )
-    acc = int(reply.choices[0].message.content[:1].strip() == task["answer"])
+    try:
+        reply = await complete(
+            model=model,
+            messages=messages,
+            temperature=0,
+            max_tokens=1,
+        )
+        acc = int(reply.choices[0].message.content[:1].strip() == task["answer"])
+    except Exception as e:
+        if "ResponsibleAIPolicyViolation" in str(e):
+            acc = 0
+        else:
+            raise e
     return [
         {
             "model": model,
