@@ -90,48 +90,59 @@ async def classify_and_evaluate(model, bcp_47, nr):
     paragraphs = paragraphs[paragraphs["topic"].isin(top_topics)]
     examples = pd.concat(
         [
-            paragraphs[paragraphs["topic"] == t].sample(n=5, random_state=42)
+            paragraphs[paragraphs["topic"] == t].sample(n=1, random_state=42)
             for t in top_topics
         ]
-    ).sample(frac=1, random_state=42)
+    ).sample(frac=1, random_state=nr)
     test_paragraphs = paragraphs[~paragraphs["URL"].isin(examples["URL"])].sample(
         frac=1, random_state=42
     )
     test_paragraph = test_paragraphs.iloc[nr]
 
-    def topic_to_number(topic):
-        return top_topics.get_loc(topic)
+    def format_prompt(text):
+        return f"{text}\n\nTopic: {'|'.join(top_topics)}?"
 
     messages = []
     for example in examples.itertuples():
         messages += [
-            {"role": "user", "content": example.text},
-            {"role": "assistant", "content": str(topic_to_number(example.topic))},
+            {"role": "user", "content": format_prompt(example.text)},
+            {"role": "assistant", "content": example.topic},
         ]
-    reply = await complete(
-        model=model,
-        messages=[
-            *messages,
-            {
-                "role": "user",
-                "content": test_paragraph.text,
-            },
-        ],
-        temperature=0,
-        max_tokens=5,
-    )
+    # some models have poor tokenization for some languages, and the prompt for this task is relatively long, so it sometimes exceeds the context window
+    # this is not just to blame on the context window but mostly on the model's tokenization, so we assign 0 accuracy in this case
     try:
-        pred = int(reply.choices[0].message.content.strip())
-    except ValueError:
-        pred = -1
-    true = topic_to_number(test_paragraph.topic)
+        reply = await complete(
+            model=model,
+            messages=[
+                *messages,
+                {
+                    "role": "user",
+                    "content": format_prompt(test_paragraph.text),
+                },
+            ],
+            temperature=0,
+            max_tokens=30,
+        )
+        response = reply.choices[0].message.content.strip().lower()
+        true = test_paragraph.topic
+        others = [t for t in top_topics if t != true]
+        acc = int(
+            response.startswith(true)
+            or (true in response and not any(o in response for o in others))
+        )
+    except Exception as e:
+        if "`inputs` tokens + `max_new_tokens` must be <= 4097" in str(e):
+            print(f"Max tokens exceeded for {model} in {bcp_47}")
+            acc = 0
+        else:
+            raise e
     return [
         {
             "model": model,
             "bcp_47": bcp_47,
             "task": "classification",
             "metric": "accuracy",
-            "score": int(pred == true),
+            "score": acc,
             "sentence_nr": nr,
         }
     ]
