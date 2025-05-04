@@ -23,6 +23,7 @@ jobs:
       - name: Upload to Hugging Face
         env:
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
           python -c '
           from huggingface_hub import upload_folder
@@ -34,5 +35,6 @@ jobs:
               repo_id="datenlabor-bmz/ai-language-monitor",
               repo_type="space",
               token=os.environ["HUGGINGFACE_ACCESS_TOKEN"],
+              commit_message="Upload from GitHub Actions: " + os.environ["COMMIT_MESSAGE"],
           )
           '
