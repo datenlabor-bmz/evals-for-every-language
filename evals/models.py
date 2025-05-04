@@ -28,8 +28,8 @@ models = [
     "openai/gpt-3.5-turbo",  # 1.5$
     # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
-    "mistralai/mistral-saba", # 0.6$
-    "mistralai/mistral-nemo", # 0.08$
+    "mistralai/mistral-saba",  # 0.6$
+    "mistralai/mistral-nemo",  # 0.08$
     "google/gemini-2.5-flash-preview",  # 0.6$
     "google/gemini-2.0-flash-lite-001",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
@@ -38,7 +38,7 @@ models = [
     # "qwen/qwen-2.5-72b-instruct",  # 0.39$
     # "qwen/qwen-2-72b-instruct",  # 0.9$
     "deepseek/deepseek-chat-v3-0324",  # 1.1$
-    "deepseek/deepseek-chat", # 0.89$
+    "deepseek/deepseek-chat",  # 0.89$
     "microsoft/phi-4",  # 0.07$
     "microsoft/phi-4-multimodal-instruct",  # 0.1$
     "amazon/nova-micro-v1",  # 0.09$
@@ -55,7 +55,18 @@ cache = Memory(location=".cache", verbose=0).cache
 
 
 @cache
-def get_popular_models(date: date):
+def get_models(date: date):
+    return get("https://openrouter.ai/api/frontend/models").json()["data"]
+
+
+def get_slug(permaslug):
+    models = get_models(date.today())
+    slugs = [m["slug"] for m in models if m["permaslug"] == permaslug]
+    return slugs[0] if len(slugs) == 1 else None
+
+
+@cache
+def get_historical_popular_models(date: date):
     raw = get("https://openrouter.ai/rankings").text
     data = re.search(r'{\\"data\\":(.*),\\"isPercentage\\"', raw).group(1)
     data = json.loads(data.replace("\\", ""))
@@ -66,11 +77,25 @@ def get_popular_models(date: date):
                 continue
             counts[model.split(":")[0]] += count
     counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
-    return [model for model, _ in counts]
+    return [get_slug(model) for model, _ in counts]
 
 
-pop_models = get_popular_models(date.today())
-# models += [m for m in pop_models if m not in models][:1]
+@cache
+def get_current_popular_models(date: date):
+    raw = get("https://openrouter.ai/rankings").text
+    data = re.search(r'{\\"rankMap\\":(.*)\}\]\\n"\]\)</script>', raw).group(1)
+    data = json.loads(data.replace("\\", ""))["day"]
+    data = sorted(data, key=lambda x: x["total_prompt_tokens"], reverse=True)
+    return [get_slug(model["model_permaslug"]) for model in data]
+
+
+models += [
+    m for m in get_historical_popular_models(date.today()) if m and m not in models
+][:5]
+models += [
+    m for m in get_current_popular_models(date.today()) if m and m not in models
+][:5]
+
 
 load_dotenv()
 client = AsyncOpenAI(
@@ -125,9 +150,11 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
 
 models = pd.DataFrame(models, columns=["id"])
 
+
 @cache
 def get_models(date):
     return get("https://openrouter.ai/api/frontend/models/").json()["data"]
+
 
 def get_or_metadata(id):
     # get metadata from OpenRouter
@@ -156,7 +183,12 @@ def get_hf_metadata(row):
         return empty
     try:
         info = api.model_info(id)
-        license = (info.card_data.license or "").replace("-", " ").replace("mit", "MIT").title()
+        license = (
+            (info.card_data.license or "")
+            .replace("-", " ")
+            .replace("mit", "MIT")
+            .title()
+        )
         return {
             "hf_id": info.id,
             "creation_date": info.created_at,
@@ -190,3 +222,4 @@ models = models.assign(
     license=hf_metadata.str["license"],
     creation_date=creation_date_hf.combine_first(creation_date_or),
 )
+models = models[models["cost"] <= 2.0].reset_index(drop=True)
