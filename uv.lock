@@ -849,7 +849,6 @@ dependencies = [
     { name = "language-data" },
     { name = "numpy" },
     { name = "pandas" },
-    { name = "tqdm" },
     { name = "uvicorn" },
 ]
 
@@ -882,7 +881,6 @@ requires-dist = [
     { name = "language-data", specifier = ">=1.3.0" },
     { name = "numpy", specifier = ">=2.1.2" },
     { name = "pandas", specifier = ">=2.2.3" },
-    { name = "tqdm" },
     { name = "uvicorn", specifier = ">=0.34.0" },
 ]
 
