@@ -27,8 +27,8 @@ jobs:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
         run: |
-          uv run download_data.py
-          uv run main.py
+          uv run evals/download_data.py
+          uv run evals/main.py
           
       - name: Commit changes
         run: |
