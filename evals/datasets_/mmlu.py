@@ -4,7 +4,7 @@ from collections import Counter, defaultdict
 from langcodes import Language, standardize_tag
 from rich import print
 
-from .util import _get_dataset_config_names, _load_dataset
+from datasets_.util import _get_dataset_config_names, _load_dataset
 def print_counts(slug, subjects_dev, subjects_test):
     print(
         f"{slug:<25} {len(list(set(subjects_test))):>3} test categories, {len(subjects_test):>6} samples, {len(list(set(subjects_dev))):>3} dev categories, {len(subjects_dev):>6} dev samples"
