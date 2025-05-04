@@ -1,0 +1,38 @@
+name: Upload to Hugging Face
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install huggingface_hub python-dotenv
+          
+      - name: Upload to Hugging Face
+        env:
+          HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+        run: |
+          python -c '
+          from huggingface_hub import upload_folder
+          import os
+          
+          upload_folder(
+              folder_path=".",
+              path_in_repo="/",
+              repo_id="datenlabor-bmz/ai-language-monitor",
+              repo_type="space",
+              token=os.environ["HUGGINGFACE_ACCESS_TOKEN"],
+          )
+          '
