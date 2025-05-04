@@ -5,8 +5,11 @@ import re
 
 flores_dir = "data/floresp-v2.0-rc.3/dev"
 
-def flores_sentences(language):
-    return open(f"{flores_dir}/dev.{language.flores_path}").readlines()
+def flores_sentences(language) -> list[str] | None:
+    try:
+        return open(f"{flores_dir}/dev.{language.flores_path}").readlines()
+    except FileNotFoundError:
+        return None
 
 def aggregate_flores_paths(flores_paths):
     # takes a list of paths from the same language but different scripts

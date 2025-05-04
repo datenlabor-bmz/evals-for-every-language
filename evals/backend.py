@@ -11,11 +11,9 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-with open("results.json", "r") as f:
-    results = json.load(f)
-scores = pd.DataFrame(results["scores"])
-languages = pd.DataFrame(results["languages"])
-models = pd.DataFrame(results["models"])
+scores = pd.read_json("results.json")
+languages = pd.read_json("languages.json")
+models = pd.read_json("models.json")
 
 
 def mean(lst):

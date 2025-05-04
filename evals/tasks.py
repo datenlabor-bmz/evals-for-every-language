@@ -33,6 +33,8 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             pass
         case "to":
             original_language, target_language = target_language, original_language
+    if not flores_sentences(original_language) or not flores_sentences(target_language):
+        return []
     original_sentence = flores_sentences(original_language)[sentence_nr].strip()
     target_sentence = flores_sentences(target_language)[sentence_nr].strip()
     script = script_name(target_language.flores_path.split("_")[1])
@@ -79,7 +81,10 @@ metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
 @cache
 async def classify_and_evaluate(model, bcp_47, nr):
     language = languages[languages["bcp_47"] == bcp_47].iloc[0]
-    sentences = pd.DataFrame(flores_sentences(language), columns=["text"])
+    sentences = flores_sentences(language)
+    if not sentences:
+        return []
+    sentences = pd.DataFrame(sentences, columns=["text"])
     sentences = pd.concat([metadata, sentences], axis=1)
     sentences = sentences.dropna(subset=["topic"])
     sentences["topic"] = sentences["topic"].str.lower()
@@ -159,7 +164,10 @@ def corrupt_sentence(sentence):
 @cache
 async def mlm_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
-    sentences = pd.DataFrame(flores_sentences(language), columns=["text"])
+    sentences = flores_sentences(language)
+    if not sentences:
+        return []
+    sentences = pd.DataFrame(sentences, columns=["text"])
     sentences["corrupt_text"] = sentences["text"].apply(corrupt_sentence)
     examples = sentences.sample(n=10, random_state=42)
     test_sentences = sentences[~sentences["text"].isin(examples["text"])].sample(
@@ -278,11 +286,11 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
     ]
 
 
-tasks = [
-    partial(translate_and_evaluate, mode="from"),
-    partial(translate_and_evaluate, mode="to"),
-    classify_and_evaluate,
-    # mlm_and_evaluate,
-    mmlu_and_evaluate,
-    # transcribe_and_evaluate,
-]
+tasks = {
+    "translation_from": partial(translate_and_evaluate, mode="from"),
+    "translation_to": partial(translate_and_evaluate, mode="to"),
+    "classification": classify_and_evaluate,
+    # "mlm": mlm_and_evaluate,
+    "mmlu": mmlu_and_evaluate,
+    # "asr": transcribe_and_evaluate,
+}
