@@ -75,7 +75,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     ]
 
 
-metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
+# metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
 
 
 @cache
@@ -289,7 +289,7 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
 tasks = {
     "translation_from": partial(translate_and_evaluate, mode="from"),
     "translation_to": partial(translate_and_evaluate, mode="to"),
-    "classification": classify_and_evaluate,
+    # "classification": classify_and_evaluate,
     # "mlm": mlm_and_evaluate,
     "mmlu": mmlu_and_evaluate,
     # "asr": transcribe_and_evaluate,
