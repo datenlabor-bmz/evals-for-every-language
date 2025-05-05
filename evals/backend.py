@@ -31,8 +31,8 @@ def make_model_table(df, models):
     )
     df["task_metric"] = df["task"] + "_" + df["metric"]
     df = df.drop(columns=["task", "metric"])
-    df = df.pivot(index="model", columns="task_metric", values="score").fillna(0)
-    df["average"] = df[task_metrics].mean(axis=1)
+    df = df.pivot(index="model", columns="task_metric", values="score")
+    df["average"] = df[task_metrics].mean(axis=1, skipna=False)
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
@@ -65,10 +65,9 @@ def make_language_table(df, languages):
     df = df.drop(columns=["task", "metric"])
     df = (
         df.pivot(index="bcp_47", columns="task_metric", values="score")
-        .fillna(0)
         .reset_index()
     )
-    df["average"] = df[task_metrics].mean(axis=1)
+    df["average"] = df[task_metrics].mean(axis=1, skipna=False)
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
     df = df[
