@@ -5,8 +5,8 @@ cache = Memory(location=".cache", verbose=0).cache
 
 
 @cache
-def _get_dataset_config_names(dataset):
-    return get_dataset_config_names(dataset)
+def _get_dataset_config_names(dataset, **kwargs):
+    return get_dataset_config_names(dataset, **kwargs)
 
 
 @cache
