@@ -34,3 +34,8 @@ dev = [
     "tqdm>=4.66.6",
     "transformers>=4.46.1",
 ]
+
+[dependency-groups]
+dev = [
+    "huggingface-hub>=0.29.1",
+]

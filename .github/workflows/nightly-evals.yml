@@ -26,6 +26,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
         run: |
+          uv run huggingface-cli login --token ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
           uv run evals/download_data.py
           uv run evals/main.py
           
@@ -36,10 +37,6 @@ jobs:
           git add results.json models.json languages.json
           git commit -m "Update evaluation results [skip ci]" || echo "No changes to commit"
           git push
-      
-      - name: Install Hugging Face dependencies
-        run: |
-          uv add huggingface_hub
           
       - name: Upload to Hugging Face
         env:
