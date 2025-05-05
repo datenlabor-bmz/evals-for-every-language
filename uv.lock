@@ -853,10 +853,11 @@ dependencies = [
     { name = "uvicorn" },
 ]
 
-[package.optional-dependencies]
+[package.dev-dependencies]
 dev = [
     { name = "aiolimiter" },
     { name = "bert-score" },
+    { name = "datasets" },
     { name = "elevenlabs" },
     { name = "evaluate" },
     { name = "huggingface-hub" },
@@ -875,42 +876,38 @@ dev = [
     { name = "transformers" },
 ]
 
-[package.dev-dependencies]
-dev = [
-    { name = "huggingface-hub" },
-]
-
 [package.metadata]
 requires-dist = [
-    { name = "aiolimiter", marker = "extra == 'dev'", specifier = ">=1.1.0" },
-    { name = "bert-score", marker = "extra == 'dev'", specifier = ">=0.3.13" },
-    { name = "elevenlabs", marker = "extra == 'dev'", specifier = ">=1.53.0" },
-    { name = "evaluate", marker = "extra == 'dev'", specifier = "==0.4.0" },
     { name = "fastapi", specifier = ">=0.115.8" },
-    { name = "huggingface-hub", marker = "extra == 'dev'", specifier = ">=0.29.1" },
-    { name = "jiwer", marker = "extra == 'dev'", specifier = ">=3.1.0" },
     { name = "joblib", specifier = ">=1.4.2" },
-    { name = "joblib", marker = "extra == 'dev'", specifier = ">=1.4.2" },
-    { name = "langcodes", marker = "extra == 'dev'", specifier = ">=3.5.0" },
     { name = "language-data", specifier = ">=1.3.0" },
-    { name = "language-data", marker = "extra == 'dev'", specifier = ">=1.3.0" },
     { name = "numpy", specifier = ">=2.1.2" },
-    { name = "openai", marker = "extra == 'dev'", specifier = ">=1.52.2" },
     { name = "pandas", specifier = ">=2.2.3" },
-    { name = "protobuf", marker = "extra == 'dev'", specifier = ">=5.28.3" },
-    { name = "python-dotenv", marker = "extra == 'dev'", specifier = ">=1.0.1" },
-    { name = "rich", marker = "extra == 'dev'", specifier = ">=14.0.0" },
-    { name = "sacrebleu", marker = "extra == 'dev'", specifier = ">=2.4.3" },
-    { name = "sentencepiece", marker = "extra == 'dev'", specifier = ">=0.2.0" },
-    { name = "tiktoken", marker = "extra == 'dev'", specifier = ">=0.8.0" },
-    { name = "tqdm", marker = "extra == 'dev'", specifier = ">=4.66.6" },
-    { name = "transformers", marker = "extra == 'dev'", specifier = ">=4.46.1" },
     { name = "uvicorn", specifier = ">=0.34.0" },
 ]
-provides-extras = ["dev"]
 
 [package.metadata.requires-dev]
-dev = [{ name = "huggingface-hub", specifier = ">=0.29.1" }]
+dev = [
+    { name = "aiolimiter", specifier = ">=1.1.0" },
+    { name = "bert-score", specifier = ">=0.3.13" },
+    { name = "datasets", specifier = ">=3.0.2" },
+    { name = "elevenlabs", specifier = ">=1.53.0" },
+    { name = "evaluate", specifier = "==0.4.0" },
+    { name = "huggingface-hub", specifier = ">=0.29.1" },
+    { name = "jiwer", specifier = ">=3.1.0" },
+    { name = "joblib", specifier = ">=1.4.2" },
+    { name = "langcodes", specifier = ">=3.5.0" },
+    { name = "language-data", specifier = ">=1.3.0" },
+    { name = "openai", specifier = ">=1.52.2" },
+    { name = "protobuf", specifier = ">=5.28.3" },
+    { name = "python-dotenv", specifier = ">=1.0.1" },
+    { name = "rich", specifier = ">=14.0.0" },
+    { name = "sacrebleu", specifier = ">=2.4.3" },
+    { name = "sentencepiece", specifier = ">=0.2.0" },
+    { name = "tiktoken", specifier = ">=0.8.0" },
+    { name = "tqdm", specifier = ">=4.66.6" },
+    { name = "transformers", specifier = ">=4.46.1" },
+]
 
 [[package]]
 name = "lxml"
