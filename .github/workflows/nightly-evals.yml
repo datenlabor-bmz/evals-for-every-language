@@ -53,6 +53,7 @@ jobs:
           upload_folder(
               folder_path=".",
               path_in_repo="/",
+              allow_patterns=["results.json", "models.json", "languages.json"],
               repo_id="datenlabor-bmz/ai-language-monitor",
               repo_type="space",
               token=os.environ["HUGGINGFACE_ACCESS_TOKEN"],
