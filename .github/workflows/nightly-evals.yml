@@ -31,12 +31,14 @@ jobs:
           uv run evals/main.py
           
       - name: Commit changes
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add results.json models.json languages.json
           git commit -m "Update evaluation results [skip ci]" || echo "No changes to commit"
-          git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${GITHUB_REF}
+          git push https://x-access-token:${GH_PAT}@github.com/datenlabor-bmz/ai-language-monitor.git HEAD:${GITHUB_REF}
           
       - name: Upload to Hugging Face
         env:
