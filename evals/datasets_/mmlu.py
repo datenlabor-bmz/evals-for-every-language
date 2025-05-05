@@ -141,7 +141,7 @@ def load_mmlu(language_bcp_47, nr):
     tags_okapi = _get_dataset_config_names("lighteval/okapi_mmlu")
     tags_mmlux = set(
         a.rsplit("_", 1)[1].split("-")[0].lower()
-        for a in _get_dataset_config_names("Eurolingua/mmlux")
+        for a in _get_dataset_config_names("Eurolingua/mmlux", trust_remote_code=True)
     )
     if language_bcp_47 in tags_afrimmlu:
         ds = _load_dataset("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47])
