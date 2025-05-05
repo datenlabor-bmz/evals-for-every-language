@@ -36,7 +36,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add results.json models.json languages.json
           git commit -m "Update evaluation results [skip ci]" || echo "No changes to commit"
-          git push
+          git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${GITHUB_REF}
           
       - name: Upload to Hugging Face
         env:
