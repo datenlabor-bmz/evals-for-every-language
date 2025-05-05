@@ -44,6 +44,10 @@ models = [
     "amazon/nova-micro-v1",  # 0.09$
 ]
 
+blocklist = [
+    "google/gemini-2.5-pro-exp-03-25" # rate limit too low
+]
+
 transcription_models = [
     "elevenlabs/scribe_v1",
     "openai/whisper-large-v3",
@@ -57,7 +61,6 @@ cache = Memory(location=".cache", verbose=0).cache
 @cache
 def get_models(date: date):
     return get("https://openrouter.ai/api/frontend/models").json()["data"]
-
 
 def get_slug(permaslug):
     models = get_models(date.today())
@@ -88,12 +91,11 @@ def get_current_popular_models(date: date):
     data = sorted(data, key=lambda x: x["total_prompt_tokens"], reverse=True)
     return [get_slug(model["model_permaslug"]) for model in data]
 
-
 models += [
-    m for m in get_historical_popular_models(date.today()) if m and m not in models
+    m for m in get_historical_popular_models(date.today()) if m and m not in models and m not in blocklist
 ][:5]
 models += [
-    m for m in get_current_popular_models(date.today()) if m and m not in models
+    m for m in get_current_popular_models(date.today()) if m and m not in models and m not in blocklist
 ][:5]
 
 

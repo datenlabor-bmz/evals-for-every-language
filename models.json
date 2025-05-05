@@ -218,5 +218,71 @@
     "type":"Commercial",
     "license":null,
     "creation_date":1733356800000
+  },
+  {
+    "id":"google\/gemini-2.0-flash-001",
+    "name":"Gemini 2.0 Flash",
+    "provider_name":"Google",
+    "cost":0.4,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1738713600000
+  },
+  {
+    "id":"google\/gemini-flash-1.5",
+    "name":"Gemini 1.5 Flash ",
+    "provider_name":"Google",
+    "cost":0.3,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1715644800000
+  },
+  {
+    "id":"google\/gemini-flash-1.5-8b",
+    "name":"Gemini 1.5 Flash 8B",
+    "provider_name":"Google",
+    "cost":0.15,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1727913600000
+  },
+  {
+    "id":"gryphe\/mythomax-l2-13b",
+    "name":"MythoMax 13B",
+    "provider_name":"MythoMax 13B",
+    "cost":0.07,
+    "hf_id":"Gryphe\/MythoMax-L2-13b",
+    "size":null,
+    "type":"Open",
+    "license":"Other",
+    "creation_date":1691625600000
+  },
+  {
+    "id":"microsoft\/wizardlm-2-8x22b",
+    "name":"WizardLM-2 8x22B",
+    "provider_name":"WizardLM-2 8x22B",
+    "cost":0.5,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1713225600000
+  },
+  {
+    "id":"x-ai\/grok-3-mini-beta",
+    "name":"Grok 3 Mini Beta",
+    "provider_name":"xAI",
+    "cost":0.5,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1744156800000
   }
 ]
