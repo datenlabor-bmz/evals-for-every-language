@@ -46,7 +46,7 @@ jobs:
         env:
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
         run: |
-          python -c '
+          uv run python -c '
           from huggingface_hub import upload_folder
           import os
           
