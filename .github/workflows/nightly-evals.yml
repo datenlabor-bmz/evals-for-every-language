@@ -36,10 +36,12 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git config --local --unset-all http.https://github.com/.extraheader
+          git remote set-url origin https://${GH_PAT}@github.com/datenlabor-bmz/ai-language-monitor.git
           git add results.json models.json languages.json
           git commit -m "Update evaluation results [skip ci]" || echo "No changes to commit"
-          git push https://${GH_PAT}@github.com/datenlabor-bmz/ai-language-monitor.git HEAD:main
-          
+          git push origin HEAD:main 
+      
       - name: Upload to Hugging Face
         env:
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
