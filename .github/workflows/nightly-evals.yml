@@ -38,7 +38,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add results.json models.json languages.json
           git commit -m "Update evaluation results [skip ci]" || echo "No changes to commit"
-          git push https://x-access-token:${GH_PAT}@github.com/datenlabor-bmz/ai-language-monitor.git HEAD:${GITHUB_REF}
+          git push https://${GH_PAT}@github.com/datenlabor-bmz/ai-language-monitor.git HEAD:main
           
       - name: Upload to Hugging Face
         env:
