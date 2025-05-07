@@ -32,7 +32,7 @@ jobs:
           upload_folder(
               folder_path=".",
               path_in_repo="/",
-              repo_id="datenlabor-bmz/ai-language-monitor",
+              repo_id="fair-forward/evals-for-every-language",
               repo_type="space",
               token=os.environ["HUGGINGFACE_ACCESS_TOKEN"],
               commit_message="Upload from GitHub Actions: " + os.environ["COMMIT_MESSAGE"],
