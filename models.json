@@ -264,6 +264,17 @@
     "creation_date":1691625600000
   },
   {
+    "id":"qwen\/qwen3-235b-a22b",
+    "name":"Qwen3 235B A22B",
+    "provider_name":"Qwen",
+    "cost":0.6,
+    "hf_id":"Qwen\/Qwen3-235B-A22B",
+    "size":235093634560.0,
+    "type":"Open",
+    "license":"Apache 2.0",
+    "creation_date":1745712000000
+  },
+  {
     "id":"microsoft\/wizardlm-2-8x22b",
     "name":"WizardLM-2 8x22B",
     "provider_name":"WizardLM-2 8x22B",
