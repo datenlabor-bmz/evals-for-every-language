@@ -20,7 +20,7 @@ async def evaluate():
     print("running evaluations")
     old_results = pd.read_json("results.json")
     results = [
-        task(model, lang.bcp_47, i)
+        task(task, model, lang, i)
         for task_name, task in tasks.items()
         for i in range(n_sentences)
         for lang in languages.iloc[:n_languages].itertuples()

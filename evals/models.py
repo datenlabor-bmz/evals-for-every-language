@@ -45,7 +45,7 @@ models = [
 ]
 
 blocklist = [
-    "google/gemini-2.5-pro-exp-03-25" # rate limit too low
+    "google/gemini-2.5-pro-exp-03-25"  # rate limit too low
 ]
 
 transcription_models = [
@@ -62,9 +62,10 @@ cache = Memory(location=".cache", verbose=0).cache
 def get_models(date: date):
     return get("https://openrouter.ai/api/frontend/models").json()["data"]
 
-def get_slug(permaslug):
+
+def get_model(permaslug):
     models = get_models(date.today())
-    slugs = [m["slug"] for m in models if m["permaslug"] == permaslug]
+    slugs = [m for m in models if m["permaslug"] == permaslug]
     return slugs[0] if len(slugs) == 1 else None
 
 
@@ -80,7 +81,7 @@ def get_historical_popular_models(date: date):
                 continue
             counts[model.split(":")[0]] += count
     counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
-    return [get_slug(model) for model, _ in counts]
+    return [get_model(model) for model, _ in counts]
 
 
 @cache
@@ -89,15 +90,21 @@ def get_current_popular_models(date: date):
     data = re.search(r'{\\"rankMap\\":(.*)\}\]\\n"\]\)</script>', raw).group(1)
     data = json.loads(data.replace("\\", ""))["day"]
     data = sorted(data, key=lambda x: x["total_prompt_tokens"], reverse=True)
-    return [get_slug(model["model_permaslug"]) for model in data]
+    return [get_model(model["model_permaslug"]) for model in data]
 
-models += [
-    m for m in get_historical_popular_models(date.today()) if m and m not in models and m not in blocklist
-][:5]
-models += [
-    m for m in get_current_popular_models(date.today()) if m and m not in models and m not in blocklist
-][:5]
 
+popular_models = get_historical_popular_models(
+    date.today()
+) + get_current_popular_models(date.today())
+popular_models = [get_model(m) for m in popular_models if get_model(m)]
+popular_models = [
+    m for m in popular_models if m["endpoint"] and not m["endpoint"]["is_free"]
+]
+popular_models = [m["slug"] for m in popular_models]
+popular_models = [
+    m for m in popular_models if m and m not in models and m not in blocklist
+]
+models += popular_models[:5]
 
 load_dotenv()
 client = AsyncOpenAI(
@@ -151,11 +158,6 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
 
 
 models = pd.DataFrame(models, columns=["id"])
-
-
-@cache
-def get_models(date):
-    return get("https://openrouter.ai/api/frontend/models/").json()["data"]
 
 
 def get_or_metadata(id):
