@@ -6,11 +6,9 @@ import pandas as pd
 import sentencepiece as spm
 from datasets_.flores import flores_sentences
 from datasets_.mmlu import load_mmlu
-from joblib.memory import Memory
 from languages import languages, script_name
 from models import complete, transcribe
 
-cache = Memory(location=".cache", verbose=0).cache
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
 wer = evaluate.load("wer")
@@ -282,10 +280,10 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
 
 
 tasks = {
-    "translation_from": cache(partial(translate_and_evaluate, mode="from")),
-    "translation_to": cache(partial(translate_and_evaluate, mode="to")),
-    # "classification": cache(classify_and_evaluate),
-    # "mlm": cache(mlm_and_evaluate),
-    "mmlu": cache(mmlu_and_evaluate),
-    # "asr": cache(transcribe_and_evaluate),
+    "translation_from": partial(translate_and_evaluate, mode="from"),
+    "translation_to": partial(translate_and_evaluate, mode="to"),
+    # "classification": classify_and_evaluate,
+    # "mlm": mlm_and_evaluate,
+    "mmlu": mmlu_and_evaluate,
+    # "asr": transcribe_and_evaluate,
 }
