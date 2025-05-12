@@ -14,16 +14,22 @@ const smoothProgressBar = fraction => {
 }
 
 const makeTitle = data => d => {
-  const languages = data[d.properties?.ISO_A2_EH]?.languages.toSorted(
+  const cData = data[d.properties?.ISO_A2_EH]
+  const languages = cData?.languages.toSorted(
     (a, b) => b.population - a.population
   )
   const pop = languages?.map(a => a.population).reduce((prev, a) => prev + a, 0)
   const langstring =
     languages
       ?.slice(0, 10)
-      .map(a => `${smoothProgressBar(a.population / pop)} ${a.name}`)
+      .map(
+        a =>
+          `${smoothProgressBar(a.population / pop)} ${
+            a.name
+          } – ${a.score.toFixed(2)}`
+      )
       .join('\n\n') + (languages?.length > 10 ? `\n\n...` : '')
-  return `${d.properties.ADMIN}\n\n${langstring}`
+  return `${d.properties.ADMIN} – ${cData?.score.toFixed(2)}\n\n${langstring}`
 }
 
 const WorldMap = ({ data }) => {

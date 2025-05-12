@@ -11,11 +11,9 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-with open("results.json", "r") as f:
-    results = json.load(f)
-scores = pd.DataFrame(results["scores"])
-languages = pd.DataFrame(results["languages"])
-models = pd.DataFrame(results["models"])
+scores = pd.read_json("results.json")
+languages = pd.read_json("languages.json")
+models = pd.read_json("models.json")
 
 
 def mean(lst):
@@ -33,8 +31,8 @@ def make_model_table(df, models):
     )
     df["task_metric"] = df["task"] + "_" + df["metric"]
     df = df.drop(columns=["task", "metric"])
-    df = df.pivot(index="model", columns="task_metric", values="score").fillna(0)
-    df["average"] = df[task_metrics].mean(axis=1)
+    df = df.pivot(index="model", columns="task_metric", values="score")
+    df["average"] = df[task_metrics].mean(axis=1, skipna=False)
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
@@ -67,10 +65,9 @@ def make_language_table(df, languages):
     df = df.drop(columns=["task", "metric"])
     df = (
         df.pivot(index="bcp_47", columns="task_metric", values="score")
-        .fillna(0)
         .reset_index()
     )
-    df["average"] = df[task_metrics].mean(axis=1)
+    df["average"] = df[task_metrics].mean(axis=1, skipna=False)
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
     df = df[
@@ -110,8 +107,12 @@ async def data(request: Request):
     if selected_languages:
         # the filtering is only applied for the model table and the country data
         df = df[df["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)]
-    model_table = make_model_table(df, models)
-    countries = make_country_table(make_language_table(df, languages))
+    if len(df) == 0:
+        model_table = pd.DataFrame()
+        countries = pd.DataFrame()
+    else:
+        model_table = make_model_table(df, models)
+        countries = make_country_table(make_language_table(df, languages))
     all_tables = {
         "model_table": serialize(model_table),
         "language_table": serialize(language_table),

@@ -1,0 +1,62 @@
+name: Nightly Evaluation Run
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Run at 3am UTC every day
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  run-evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+          
+      - name: Install dependencies
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv sync --frozen --extra dev
+          
+      - name: Run evaluations
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+        run: |
+          uv run huggingface-cli login --token ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+          uv run evals/download_data.py
+          uv run evals/main.py
+          
+      - name: Commit changes
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git config --local --unset-all http.https://github.com/.extraheader
+          git remote set-url origin https://${GH_PAT}@github.com/datenlabor-bmz/ai-language-monitor.git
+          git add results.json models.json languages.json
+          git commit -m "Update evaluation results" || echo "No changes to commit"
+          git push origin HEAD:main 
+      
+      - name: Upload to Hugging Face
+        env:
+          HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+        run: |
+          uv run python -c '
+          from huggingface_hub import upload_folder
+          import os
+          
+          upload_folder(
+              folder_path=".",
+              path_in_repo="/",
+              allow_patterns=["results.json", "models.json", "languages.json"],
+              repo_id="fair-forward/evals-for-every-language",
+              repo_type="space",
+              token=os.environ["HUGGINGFACE_ACCESS_TOKEN"],
+              commit_message="Upload from nightly evaluation run",
+          )
+          ' 

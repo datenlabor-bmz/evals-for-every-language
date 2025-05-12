@@ -3,7 +3,8 @@ import * as Plot from '@observablehq/plot'
 
 const HistoryPlot = ({ data }) => {
   const containerRef = useRef()
-  const models = data.model_table
+  const models = [...data.model_table] // sort copy, not in place
+    .filter(d => d.average !== null)
     .sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date))
     .reduce((acc, curr) => {
       const last = acc[acc.length - 1]?.maxAverage || 0
@@ -28,14 +29,15 @@ const HistoryPlot = ({ data }) => {
       y: {
         label: 'Language Proficiency Score'
       },
-      color: {
+      symbol: {
         legend: true
       },
       marks: [
         Plot.dot(models, {
           x: d => d.creation_date,
           y: d => d.average,
-          fill: d => d.provider_name,
+          symbol: "provider_name",
+          stroke: "provider_name",
           title: d =>
             `${d.provider_name} - ${d.name} (${
               d.size?.toLocaleString('en-US', { notation: 'compact' }) || '?B'
@@ -54,7 +56,7 @@ const HistoryPlot = ({ data }) => {
             x: d => d.creation_date,
             y: d => d.maxAverage,
             curve: 'step-after',
-            strokeOpacity: 0.5
+            strokeOpacity: 0.3
           }
         )
       ]

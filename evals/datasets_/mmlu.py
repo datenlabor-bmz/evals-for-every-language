@@ -1,24 +1,10 @@
 import random
 from collections import Counter, defaultdict
 
-from datasets import get_dataset_config_names, load_dataset
-from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from rich import print
 
-cache = Memory(location=".cache", verbose=0).cache
-
-
-@cache
-def _get_dataset_config_names(dataset):
-    return get_dataset_config_names(dataset)
-
-
-@cache
-def _load_dataset(dataset, subset, **kwargs):
-    return load_dataset(dataset, subset, **kwargs)
-
-
+from datasets_.util import _get_dataset_config_names, _load_dataset
 def print_counts(slug, subjects_dev, subjects_test):
     print(
         f"{slug:<25} {len(list(set(subjects_test))):>3} test categories, {len(subjects_test):>6} samples, {len(list(set(subjects_dev))):>3} dev categories, {len(subjects_dev):>6} dev samples"
@@ -155,21 +141,22 @@ def load_mmlu(language_bcp_47, nr):
     tags_okapi = _get_dataset_config_names("lighteval/okapi_mmlu")
     tags_mmlux = set(
         a.rsplit("_", 1)[1].split("-")[0].lower()
-        for a in _get_dataset_config_names("Eurolingua/mmlux")
+        for a in _get_dataset_config_names("Eurolingua/mmlux", trust_remote_code=True)
     )
-    if language_bcp_47 in tags_afrimmlu:
+    if language_bcp_47 in tags_afrimmlu.keys():
         ds = _load_dataset("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47])
         ds = ds.map(parse_choices)
         examples = ds["dev"].filter(lambda x: x["subject"] == category)
         task = ds["test"].filter(lambda x: x["subject"] == category)[i]
         return "masakhane/afrimmlu", examples, task
-    elif language_bcp_47 in tags_global_mmlu:
+    elif language_bcp_47 in tags_global_mmlu.keys():
         ds = _load_dataset("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47])
         ds = ds.map(add_choices)
         examples = ds["dev"].filter(lambda x: x["subject"] == category)
         task = ds["test"].filter(lambda x: x["subject"] == category)[i]
         return "CohereForAI/Global-MMLU", examples, task
     elif language_bcp_47 in tags_okapi:
+        return None, None, None # FIXME
         ds = _load_dataset(
             "lighteval/okapi_mmlu", language_bcp_47, trust_remote_code=True
         )

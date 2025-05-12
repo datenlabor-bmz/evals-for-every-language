@@ -594,6 +594,18 @@
         "group": "Instruction Following"
     },
     {
+        "name": "Babel-670",
+        "author": "Academic",
+        "author_url": null,
+        "url": "https://github.com/UBC-NLP/Babel-670-Language-Identification",
+        "n_languages": 670,
+        "tasks": [
+            "language_identification"
+        ],
+        "parallel": false,
+        "group": "Other Tasks"
+    },
+    {
         "name": "CulturaX",
         "author": "Academic",
         "author_url": null,

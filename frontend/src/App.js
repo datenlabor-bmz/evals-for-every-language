@@ -40,6 +40,9 @@ function App () {
   return (
     <PrimeReactProvider>
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{backgroundColor: '#fff3cd', color: '#856404', padding: '0.75rem 1.25rem', marginBottom: '1rem', border: '1px solid #ffeeba', borderRadius: '0.25rem', textAlign: 'center'}}>
+          <strong>Work in Progress:</strong> This dashboard is currently under active development. Evaluation results are not yet final.
+        </div>
         <header
           style={{
             display: 'flex',
@@ -59,7 +62,7 @@ function App () {
             </span>
           </div>
           <h1 style={{ fontSize: '2.5rem', fontWeight: '700' }}>
-            Global AI Monitor
+              AI Language Proficiency Monitor
           </h1>
           <p style={{ fontSize: '1.15rem', color: '#555', marginTop: '0' }}>
             Tracking language proficiency of AI models for every language
@@ -70,6 +73,18 @@ function App () {
               onComplete={items => setSelectedLanguages(items)}
             />
           )}
+          <div style={{maxWidth: '600px', textAlign: 'center', marginTop: '2rem'}}>
+            <p>The <i>AI Language Proficiency Monitor</i> presents comprehensive multilingual evaluation results of AI language models.</p>
+            <ul style={{textAlign: 'left'}}>
+              <li><b>Practitioners</b> can pick the best model for a given language.</li>
+              <li><b>Policymakers and funders</b> can identify and prioritize neglected languages.</li>
+              <li><b>Model developers</b> can compete on our <i>AI Language Proficiency</i> metric.</li>
+            </ul>
+            <p>We invite the community to <a href="#">submit</a> their custom finetuned models, and to <a href="#">integrate</a> benchmarks for more languages and tasks.</p>
+            <p>Benchmark results automatically refresh every night and include the most popular models on <a href="https://openrouter.ai" target="_blank" rel="noopener noreferrer">OpenRouter</a>, plus community-listed models.</p>
+            <p>For a detailed methodlogy, see <a href="#">XXX</a>.</p>
+            <p>The AI Language Proficiency Monitor is a collaboration between BMZ's <a href="https://www.bmz-digital.global/en/overview-of-initiatives/the-bmz-data-lab/" target="_blank" rel="noopener noreferrer">Data Lab</a>, GIZ's <a href="https://www.giz.de/expertise/html/61982.html" target="_blank" rel="noopener noreferrer">FairForward</a> initiative, and the <a href="https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team" target="_blank" rel="noopener noreferrer">E&E group</a> of DFKI's Multilinguality and Language Technology Lab.</p>
+          </div>
         </header>
         <main
           style={{

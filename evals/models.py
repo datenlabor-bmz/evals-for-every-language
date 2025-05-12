@@ -20,24 +20,32 @@ models = [
     "meta-llama/llama-3.3-70b-instruct",  # 0.3$
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
-    # "meta-llama/llama-2-70b-chat", # 0.9$; not enough context
+    # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
+    "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
     "openai/gpt-4o-mini",  # 0.6$
-    # "openai/gpt-3.5-turbo-0613",  # 2$
-    # "openai/gpt-3.5-turbo",  # 1.5$
+    "openai/gpt-3.5-turbo-0613",  # 2$
+    "openai/gpt-3.5-turbo",  # 1.5$
     # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
-    # "mistralai/mistral-saba", # 0.6$
-    # "mistralai/mistral-nemo", # 0.08$
+    "mistralai/mistral-saba",  # 0.6$
+    "mistralai/mistral-nemo",  # 0.08$
     "google/gemini-2.5-flash-preview",  # 0.6$
-    # "google/gemini-2.0-flash-lite-001",  # 0.3$
+    "google/gemini-2.0-flash-lite-001",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
     # "qwen/qwen-turbo", # 0.2$; recognizes "inappropriate content"
-    "qwen/qwq-32b",  # 0.2$
+    # "qwen/qwq-32b",  # 0.2$
+    # "qwen/qwen-2.5-72b-instruct",  # 0.39$
+    # "qwen/qwen-2-72b-instruct",  # 0.9$
     "deepseek/deepseek-chat-v3-0324",  # 1.1$
-    # "microsoft/phi-4",  # 0.07$; only 16k tokens context
+    "deepseek/deepseek-chat",  # 0.89$
+    "microsoft/phi-4",  # 0.07$
     "microsoft/phi-4-multimodal-instruct",  # 0.1$
     "amazon/nova-micro-v1",  # 0.09$
+]
+
+blocklist = [
+    "google/gemini-2.5-pro-exp-03-25"  # rate limit too low
 ]
 
 transcription_models = [
@@ -51,7 +59,18 @@ cache = Memory(location=".cache", verbose=0).cache
 
 
 @cache
-def get_popular_models(date: date):
+def get_models(date: date):
+    return get("https://openrouter.ai/api/frontend/models").json()["data"]
+
+
+def get_model(permaslug):
+    models = get_models(date.today())
+    slugs = [m for m in models if m["permaslug"] == permaslug]
+    return slugs[0] if len(slugs) == 1 else None
+
+
+@cache
+def get_historical_popular_models(date: date):
     raw = get("https://openrouter.ai/rankings").text
     data = re.search(r'{\\"data\\":(.*),\\"isPercentage\\"', raw).group(1)
     data = json.loads(data.replace("\\", ""))
@@ -62,11 +81,31 @@ def get_popular_models(date: date):
                 continue
             counts[model.split(":")[0]] += count
     counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
-    return [model for model, _ in counts]
+    return [get_model(model) for model, _ in counts]
 
 
-pop_models = get_popular_models(date.today())
-# models += [m for m in pop_models if m not in models][:1]
+@cache
+def get_current_popular_models(date: date):
+    raw = get("https://openrouter.ai/rankings").text
+    data = re.search(r'{\\"rankMap\\":(.*)\}\]\\n"\]\)</script>', raw).group(1)
+    data = json.loads(data.replace("\\", ""))["day"]
+    data = sorted(data, key=lambda x: x["total_prompt_tokens"], reverse=True)
+    return [get_model(model["model_permaslug"]) for model in data]
+
+
+popular_models = (
+    get_historical_popular_models(date.today())[:5]
+    + get_current_popular_models(date.today())[:5]
+)
+popular_models = [get_model(m) for m in popular_models if get_model(m)]
+popular_models = [
+    m for m in popular_models if m["endpoint"] and not m["endpoint"]["is_free"]
+]
+popular_models = [m["slug"] for m in popular_models]
+popular_models = [
+    m for m in popular_models if m and m not in models and m not in blocklist
+]
+models += popular_models
 
 load_dotenv()
 client = AsyncOpenAI(
@@ -122,11 +161,9 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
 models = pd.DataFrame(models, columns=["id"])
 
 
-@cache
 def get_or_metadata(id):
     # get metadata from OpenRouter
-    response = cache(get)("https://openrouter.ai/api/frontend/models/")
-    models = response.json()["data"]
+    models = get_models(date.today())
     metadata = next((m for m in models if m["slug"] == id), None)
     return metadata
 
@@ -151,7 +188,12 @@ def get_hf_metadata(row):
         return empty
     try:
         info = api.model_info(id)
-        license = info.card_data.license.replace("-", " ").replace("mit", "MIT").title()
+        license = (
+            (info.card_data.license or "")
+            .replace("-", " ")
+            .replace("mit", "MIT")
+            .title()
+        )
         return {
             "hf_id": info.id,
             "creation_date": info.created_at,
@@ -163,21 +205,13 @@ def get_hf_metadata(row):
         return empty
 
 
-or_metadata = models["id"].apply(get_or_metadata)
-hf_metadata = or_metadata.apply(get_hf_metadata)
-
-
 def get_cost(row):
     cost = float(row["endpoint"]["pricing"]["completion"])
     return round(cost * 1_000_000, 2)
 
 
-exists = or_metadata.apply(lambda x: x is not None)
-models, or_metadata, hf_metadata = (
-    models[exists],
-    or_metadata[exists],
-    hf_metadata[exists],
-)
+or_metadata = models["id"].apply(get_or_metadata)
+hf_metadata = or_metadata.apply(get_hf_metadata)
 creation_date_hf = pd.to_datetime(hf_metadata.str["creation_date"]).dt.date
 creation_date_or = pd.to_datetime(
     or_metadata.str["created_at"].str.split("T").str[0]
@@ -193,3 +227,4 @@ models = models.assign(
     license=hf_metadata.str["license"],
     creation_date=creation_date_hf.combine_first(creation_date_or),
 )
+models = models[models["cost"] <= 2.0].reset_index(drop=True)
