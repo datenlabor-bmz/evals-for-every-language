@@ -15,7 +15,7 @@ from datasets_.fleurs import fleurs
 
 
 # Add project root to sys.path (still useful for potential future imports if needed)
-project_root = Path(__file__).resolve().parent.parent
+project_root = Path(__file__).resolve().parent
 if str(project_root) not in sys.path:
     sys.path.append(str(project_root))
 

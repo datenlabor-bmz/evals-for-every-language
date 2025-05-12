@@ -1,9 +1,9 @@
 import re
 
 import pandas as pd
-from datasets_.commonvoice import commonvoice
-from datasets_.fleurs import fleurs
-from datasets_.flores import flores
+from .datasets_.commonvoice import commonvoice
+from .datasets_.fleurs import fleurs
+from .datasets_.flores import flores
 from joblib.memory import Memory
 from langcodes import Language, standardize_tag
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
