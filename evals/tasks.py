@@ -24,7 +24,6 @@ target_languages = languages[languages["in_benchmark"]].sample(
 )
 
 
-@cache
 async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     original_language = languages[languages["bcp_47"] == bcp_47].iloc[0]
     target_language = target_languages.iloc[sentence_nr]
@@ -78,7 +77,6 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
 # metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
 
 
-@cache
 async def classify_and_evaluate(model, bcp_47, nr):
     language = languages[languages["bcp_47"] == bcp_47].iloc[0]
     sentences = flores_sentences(language)
@@ -161,7 +159,6 @@ def corrupt_sentence(sentence):
     return sentence[:start] + "<mask>" + sentence[end:]
 
 
-@cache
 async def mlm_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
     sentences = flores_sentences(language)
@@ -206,7 +203,6 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
     ]
 
 
-@cache
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
     ds_name, examples, task = load_mmlu(language_bcp_47, nr)
     if not task:
@@ -254,7 +250,6 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
     ]
 
 
-@cache
 async def transcribe_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
     fleurs = pd.read_csv(
@@ -287,10 +282,10 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
 
 
 tasks = {
-    "translation_from": partial(translate_and_evaluate, mode="from"),
-    "translation_to": partial(translate_and_evaluate, mode="to"),
-    # "classification": classify_and_evaluate,
-    # "mlm": mlm_and_evaluate,
-    "mmlu": mmlu_and_evaluate,
-    # "asr": transcribe_and_evaluate,
+    "translation_from": cache(partial(translate_and_evaluate, mode="from")),
+    "translation_to": cache(partial(translate_and_evaluate, mode="to")),
+    # "classification": cache(classify_and_evaluate),
+    # "mlm": cache(mlm_and_evaluate),
+    "mmlu": cache(mmlu_and_evaluate),
+    # "asr": cache(transcribe_and_evaluate),
 }

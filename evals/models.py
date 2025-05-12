@@ -93,9 +93,10 @@ def get_current_popular_models(date: date):
     return [get_model(model["model_permaslug"]) for model in data]
 
 
-popular_models = get_historical_popular_models(
-    date.today()
-) + get_current_popular_models(date.today())
+popular_models = (
+    get_historical_popular_models(date.today())[:5]
+    + get_current_popular_models(date.today())[:5]
+)
 popular_models = [get_model(m) for m in popular_models if get_model(m)]
 popular_models = [
     m for m in popular_models if m["endpoint"] and not m["endpoint"]["is_free"]
@@ -104,7 +105,7 @@ popular_models = [m["slug"] for m in popular_models]
 popular_models = [
     m for m in popular_models if m and m not in models and m not in blocklist
 ]
-models += popular_models[:5]
+models += popular_models
 
 load_dotenv()
 client = AsyncOpenAI(
