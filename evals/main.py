@@ -10,7 +10,7 @@ from tqdm.asyncio import tqdm_asyncio
 
 n_sentences = 10
 n_languages = 20
-n_models = 27
+n_models = 30
 
 # ===== run evaluation and aggregate results =====
 

@@ -200,8 +200,8 @@ def get_cost(row):
 @cache
 def load_models(date: date):
     popular_models = (
-        get_historical_popular_models(date.today())[:10]
-        + get_current_popular_models(date.today())[:10]
+        get_historical_popular_models(date.today())[:15]
+        + get_current_popular_models(date.today())[:15]
     )
     popular_models = [m["slug"] for m in popular_models]
     models = set(important_models + popular_models) - set(blocklist)
