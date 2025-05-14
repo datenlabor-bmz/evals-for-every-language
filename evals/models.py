@@ -15,7 +15,7 @@ from requests import HTTPError, get
 
 # for development purposes, all languages will be evaluated on the fast models
 # and only a sample of languages will be evaluated on all models
-models = [
+important_models = [
     "meta-llama/llama-4-maverick",  # 0.6$
     "meta-llama/llama-3.3-70b-instruct",  # 0.3$
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
@@ -24,8 +24,8 @@ models = [
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
     "openai/gpt-4o-mini",  # 0.6$
-    "openai/gpt-3.5-turbo-0613",  # 2$
-    "openai/gpt-3.5-turbo",  # 1.5$
+    # "openai/gpt-3.5-turbo-0613",  # 2$
+    # "openai/gpt-3.5-turbo",  # 1.5$
     # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
     "mistralai/mistral-saba",  # 0.6$
@@ -65,8 +65,10 @@ def get_models(date: date):
 
 def get_model(permaslug):
     models = get_models(date.today())
-    slugs = [m for m in models if m["permaslug"] == permaslug]
-    return slugs[0] if len(slugs) == 1 else None
+    slugs = [m for m in models if m["permaslug"] == permaslug and m["endpoint"] and not m["endpoint"]["is_free"]]
+    if len(slugs) == 0:
+        print(f"no model found for {permaslug}")
+    return slugs[0] if len(slugs) >= 1 else None
 
 
 @cache
@@ -81,7 +83,8 @@ def get_historical_popular_models(date: date):
                 continue
             counts[model.split(":")[0]] += count
     counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
-    return [get_model(model) for model, _ in counts]
+    models = [get_model(model) for model, _ in counts]
+    return [m for m in models if m]
 
 
 @cache
@@ -90,22 +93,9 @@ def get_current_popular_models(date: date):
     data = re.search(r'{\\"rankMap\\":(.*)\}\]\\n"\]\)</script>', raw).group(1)
     data = json.loads(data.replace("\\", ""))["day"]
     data = sorted(data, key=lambda x: x["total_prompt_tokens"], reverse=True)
-    return [get_model(model["model_permaslug"]) for model in data]
+    models = [get_model(model["model_permaslug"]) for model in data]
+    return [m for m in models if m]
 
-
-popular_models = (
-    get_historical_popular_models(date.today())[:5]
-    + get_current_popular_models(date.today())[:5]
-)
-popular_models = [get_model(m) for m in popular_models if get_model(m)]
-popular_models = [
-    m for m in popular_models if m["endpoint"] and not m["endpoint"]["is_free"]
-]
-popular_models = [m["slug"] for m in popular_models]
-popular_models = [
-    m for m in popular_models if m and m not in models and m not in blocklist
-]
-models += popular_models
 
 load_dotenv()
 client = AsyncOpenAI(
@@ -158,9 +148,6 @@ async def transcribe(path, model="elevenlabs/scribe_v1"):
             raise ValueError(f"Model {model} not supported")
 
 
-models = pd.DataFrame(models, columns=["id"])
-
-
 def get_or_metadata(id):
     # get metadata from OpenRouter
     models = get_models(date.today())
@@ -210,21 +197,34 @@ def get_cost(row):
     return round(cost * 1_000_000, 2)
 
 
-or_metadata = models["id"].apply(get_or_metadata)
-hf_metadata = or_metadata.apply(get_hf_metadata)
-creation_date_hf = pd.to_datetime(hf_metadata.str["creation_date"]).dt.date
-creation_date_or = pd.to_datetime(
-    or_metadata.str["created_at"].str.split("T").str[0]
-).dt.date
+@cache
+def load_models(date: date):
+    popular_models = (
+        get_historical_popular_models(date.today())[:10]
+        + get_current_popular_models(date.today())[:10]
+    )
+    popular_models = [m["slug"] for m in popular_models]
+    models = set(important_models + popular_models) - set(blocklist)
+    models = pd.DataFrame(sorted(list(models)), columns=["id"])
+    or_metadata = models["id"].apply(get_or_metadata)
+    hf_metadata = or_metadata.apply(get_hf_metadata)
+    creation_date_hf = pd.to_datetime(hf_metadata.str["creation_date"]).dt.date
+    creation_date_or = pd.to_datetime(
+        or_metadata.str["created_at"].str.split("T").str[0]
+    ).dt.date
 
-models = models.assign(
-    name=or_metadata.str["short_name"],
-    provider_name=or_metadata.str["name"].str.split(": ").str[0],
-    cost=or_metadata.apply(get_cost),
-    hf_id=hf_metadata.str["hf_id"],
-    size=hf_metadata.str["size"],
-    type=hf_metadata.str["type"],
-    license=hf_metadata.str["license"],
-    creation_date=creation_date_hf.combine_first(creation_date_or),
-)
-models = models[models["cost"] <= 2.0].reset_index(drop=True)
+    models = models.assign(
+        name=or_metadata.str["short_name"],
+        provider_name=or_metadata.str["name"].str.split(": ").str[0],
+        cost=or_metadata.apply(get_cost),
+        hf_id=hf_metadata.str["hf_id"],
+        size=hf_metadata.str["size"],
+        type=hf_metadata.str["type"],
+        license=hf_metadata.str["license"],
+        creation_date=creation_date_hf.combine_first(creation_date_or),
+    )
+    models = models[models["cost"] <= 2.0].reset_index(drop=True)
+    return models
+
+
+models = load_models(date.today())
