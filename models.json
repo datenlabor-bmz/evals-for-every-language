@@ -110,6 +110,17 @@
     "creation_date":1740787200000
   },
   {
+    "id":"gryphe\/mythomax-l2-13b",
+    "name":"MythoMax 13B",
+    "provider_name":"MythoMax 13B",
+    "cost":0.07,
+    "hf_id":"Gryphe\/MythoMax-L2-13b",
+    "size":null,
+    "type":"Open",
+    "license":"Other",
+    "creation_date":1691625600000
+  },
+  {
     "id":"meta-llama\/llama-3-70b-instruct",
     "name":"Llama 3 70B Instruct",
     "provider_name":"Meta",
