@@ -7,7 +7,7 @@
     "family":"Indo-European",
     "flores_path":"eng_Latn",
     "fleurs_tag":"en_us",
-    "commonvoice_hours":2662.0,
+    "commonvoice_hours":2663.0,
     "commonvoice_locale":"en",
     "in_benchmark":true
   },
@@ -1195,7 +1195,7 @@
     "family":"Atlantic-Congo",
     "flores_path":"lua_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":1.2,
+    "commonvoice_hours":1.5,
     "commonvoice_locale":"lua",
     "in_benchmark":true
   },
@@ -1291,7 +1291,7 @@
     "family":"Indo-European",
     "flores_path":"cat_Latn",
     "fleurs_tag":"ca_es",
-    "commonvoice_hours":2855.0,
+    "commonvoice_hours":2856.0,
     "commonvoice_locale":"ca",
     "in_benchmark":true
   },
@@ -1375,7 +1375,7 @@
     "family":"Turkic",
     "flores_path":"uig_Arab",
     "fleurs_tag":null,
-    "commonvoice_hours":372.0,
+    "commonvoice_hours":373.0,
     "commonvoice_locale":"ug",
     "in_benchmark":true
   },
@@ -2335,7 +2335,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":9.2,
+    "commonvoice_hours":12.0,
     "commonvoice_locale":"bci",
     "in_benchmark":false
   },
@@ -2371,7 +2371,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":8.0,
+    "commonvoice_hours":8.5,
     "commonvoice_locale":"ibb",
     "in_benchmark":false
   },
@@ -3331,7 +3331,7 @@
     "family":"Indo-European",
     "flores_path":"gle_Latn",
     "fleurs_tag":"ga_ie",
-    "commonvoice_hours":6.2,
+    "commonvoice_hours":6.3,
     "commonvoice_locale":"ga-IE",
     "in_benchmark":true
   },
@@ -3487,7 +3487,7 @@
     "family":"Indo-European",
     "flores_path":"lvs_Latn",
     "fleurs_tag":"lv_lv",
-    "commonvoice_hours":261.0,
+    "commonvoice_hours":262.0,
     "commonvoice_locale":"lv",
     "in_benchmark":true
   },
@@ -3535,7 +3535,7 @@
     "family":null,
     "flores_path":"eus_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":370.0,
+    "commonvoice_hours":373.0,
     "commonvoice_locale":"eu",
     "in_benchmark":true
   },
@@ -4651,7 +4651,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":16.0,
+    "commonvoice_hours":17.0,
     "commonvoice_locale":"ady",
     "in_benchmark":false
   },
@@ -4747,7 +4747,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":0.1,
+    "commonvoice_hours":0.2,
     "commonvoice_locale":"rof",
     "in_benchmark":false
   },
@@ -4771,7 +4771,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":9.4,
+    "commonvoice_hours":12.0,
     "commonvoice_locale":"fan",
     "in_benchmark":false
   },
@@ -6367,7 +6367,7 @@
     "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":1.7,
+    "commonvoice_hours":1.8,
     "commonvoice_locale":"btv",
     "in_benchmark":false
   },
@@ -7567,7 +7567,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":2.4,
+    "commonvoice_hours":2.3,
     "commonvoice_locale":"yav",
     "in_benchmark":false
   },
