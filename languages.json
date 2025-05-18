@@ -7,7 +7,7 @@
     "family":"Indo-European",
     "flores_path":"eng_Latn",
     "fleurs_tag":"en_us",
-    "commonvoice_hours":2663.0,
+    "commonvoice_hours":2666.0,
     "commonvoice_locale":"en",
     "in_benchmark":true
   },
@@ -79,7 +79,7 @@
     "family":"Indo-European",
     "flores_path":"fra_Latn",
     "fleurs_tag":"fr_fr",
-    "commonvoice_hours":1058.0,
+    "commonvoice_hours":1059.0,
     "commonvoice_locale":"fr",
     "in_benchmark":true
   },
@@ -1195,7 +1195,7 @@
     "family":"Atlantic-Congo",
     "flores_path":"lua_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":1.5,
+    "commonvoice_hours":1.6,
     "commonvoice_locale":"lua",
     "in_benchmark":true
   },
@@ -2155,7 +2155,7 @@
     "family":"Kartvelian",
     "flores_path":"kat_Geor",
     "fleurs_tag":"ka_ge",
-    "commonvoice_hours":164.0,
+    "commonvoice_hours":165.0,
     "commonvoice_locale":"ka",
     "in_benchmark":true
   },
@@ -2371,7 +2371,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":8.5,
+    "commonvoice_hours":11.0,
     "commonvoice_locale":"ibb",
     "in_benchmark":false
   },
@@ -3559,7 +3559,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":59.0,
+    "commonvoice_hours":60.0,
     "commonvoice_locale":"kbd",
     "in_benchmark":false
   },
@@ -6367,7 +6367,7 @@
     "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":1.8,
+    "commonvoice_hours":2.2,
     "commonvoice_locale":"btv",
     "in_benchmark":false
   },
