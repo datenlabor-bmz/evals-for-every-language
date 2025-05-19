@@ -251,5 +251,16 @@
     "type":"Commercial",
     "license":null,
     "creation_date":1721260800000
+  },
+  {
+    "id":"qwen\/qwen3-235b-a22b",
+    "name":"Qwen3 235B A22B (free)",
+    "provider_name":"Qwen",
+    "cost":0.0,
+    "hf_id":"Qwen\/Qwen3-235B-A22B",
+    "size":235093634560.0,
+    "type":"Open",
+    "license":"Apache 2.0",
+    "creation_date":1745712000000
   }
 ]
