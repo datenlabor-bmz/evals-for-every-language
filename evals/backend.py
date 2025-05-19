@@ -20,7 +20,12 @@ def mean(lst):
     return sum(lst) / len(lst) if lst else None
 
 
-task_metrics = ["translation_from_bleu", "translation_to_bleu", "classification_accuracy", "mmlu_accuracy"]
+task_metrics = [
+    "translation_from_bleu",
+    "translation_to_bleu",
+    # "classification_accuracy",
+    "mmlu_accuracy",
+]
 
 
 def make_model_table(df, models):
@@ -63,10 +68,7 @@ def make_language_table(df, languages):
     )
     df["task_metric"] = df["task"] + "_" + df["metric"]
     df = df.drop(columns=["task", "metric"])
-    df = (
-        df.pivot(index="bcp_47", columns="task_metric", values="score")
-        .reset_index()
-    )
+    df = df.pivot(index="bcp_47", columns="task_metric", values="score").reset_index()
     df["average"] = df[task_metrics].mean(axis=1, skipna=False)
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)

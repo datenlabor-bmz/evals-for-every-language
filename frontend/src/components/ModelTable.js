@@ -148,7 +148,7 @@ const ModelTable = ({ data }) => {
   }
 
   const costBodyTemplate = rowData => {
-    return <div style={{ textAlign: 'center' }}>${rowData.cost.toFixed(2)}</div>
+    return <div style={{ textAlign: 'center' }}>${rowData.cost?.toFixed(2)}</div>
   }
 
   return (
