@@ -67,7 +67,7 @@
   },
   {
     "id":"google\/gemini-2.5-flash-preview",
-    "name":"Gemini 2.5 Flash Preview",
+    "name":"Gemini 2.5 Flash Preview 04-17",
     "provider_name":"Google",
     "cost":0.6,
     "hf_id":null,
