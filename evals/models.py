@@ -45,6 +45,10 @@ important_models = [
     "amazon/nova-micro-v1",  # 0.09$
 ]
 
+blocklist = [
+    "microsoft/wizardlm-2-8x22b" # temporarily rate-limited
+]
+
 transcription_models = [
     "elevenlabs/scribe_v1",
     "openai/whisper-large-v3",
@@ -200,11 +204,11 @@ def get_cost(row):
 @cache
 def load_models(date: date):
     popular_models = (
-        get_historical_popular_models(date.today())[:30]
+        get_historical_popular_models(date.today())[:20]
         + get_current_popular_models(date.today())[:10]
     )
     popular_models = [m["slug"] for m in popular_models]
-    models = set(important_models + popular_models)
+    models = set(important_models + popular_models) - set(blocklist)
     models = pd.DataFrame(sorted(list(models)), columns=["id"])
     or_metadata = models["id"].apply(get_or_metadata)
     hf_metadata = or_metadata.apply(get_hf_metadata)

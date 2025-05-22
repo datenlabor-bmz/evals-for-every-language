@@ -11,28 +11,6 @@
     "creation_date":1733356800000
   },
   {
-    "id":"anthropic\/claude-3-haiku",
-    "name":"Claude 3 Haiku (self-moderated)",
-    "provider_name":"Anthropic",
-    "cost":1.25,
-    "hf_id":null,
-    "size":null,
-    "type":"Commercial",
-    "license":null,
-    "creation_date":1710288000000
-  },
-  {
-    "id":"cohere\/command-r",
-    "name":"Command R",
-    "provider_name":"Cohere",
-    "cost":1.5,
-    "hf_id":null,
-    "size":null,
-    "type":"Commercial",
-    "license":null,
-    "creation_date":1710374400000
-  },
-  {
     "id":"deepseek\/deepseek-chat",
     "name":"DeepSeek V3",
     "provider_name":"DeepSeek",
@@ -132,17 +110,6 @@
     "creation_date":1727913600000
   },
   {
-    "id":"google\/gemma-2-9b-it",
-    "name":"Gemma 2 9B",
-    "provider_name":"Google",
-    "cost":0.0,
-    "hf_id":"google\/gemma-2-9b-it",
-    "size":9241705984.0,
-    "type":"Open",
-    "license":"Gemma",
-    "creation_date":1719187200000
-  },
-  {
     "id":"google\/gemma-3-27b-it",
     "name":"Gemma 3 27B",
     "provider_name":"Google",
@@ -171,17 +138,6 @@
     "cost":0.4,
     "hf_id":"meta-llama\/Meta-Llama-3-70B-Instruct",
     "size":70553706496.0,
-    "type":"Open",
-    "license":"Llama3",
-    "creation_date":1713312000000
-  },
-  {
-    "id":"meta-llama\/llama-3-8b-instruct",
-    "name":"Llama 3 8B Instruct",
-    "provider_name":"Meta",
-    "cost":0.06,
-    "hf_id":"meta-llama\/Meta-Llama-3-8B-Instruct",
-    "size":8030261248.0,
     "type":"Open",
     "license":"Llama3",
     "creation_date":1713312000000
@@ -264,28 +220,6 @@
     "creation_date":1740355200000
   },
   {
-    "id":"microsoft\/wizardlm-2-8x22b",
-    "name":"WizardLM-2 8x22B",
-    "provider_name":"WizardLM-2 8x22B",
-    "cost":0.5,
-    "hf_id":null,
-    "size":null,
-    "type":"Commercial",
-    "license":null,
-    "creation_date":1713225600000
-  },
-  {
-    "id":"mistralai\/mistral-7b-instruct",
-    "name":"Mistral 7B Instruct",
-    "provider_name":"Mistral",
-    "cost":0.0,
-    "hf_id":"mistralai\/Mistral-7B-Instruct-v0.3",
-    "size":7248023552.0,
-    "type":"Open",
-    "license":"Apache 2.0",
-    "creation_date":1716336000000
-  },
-  {
     "id":"mistralai\/mistral-nemo",
     "name":"Mistral Nemo",
     "provider_name":"Mistral",
@@ -319,28 +253,6 @@
     "creation_date":1741651200000
   },
   {
-    "id":"mistralai\/mistral-tiny",
-    "name":"Mistral Tiny",
-    "provider_name":"Mistral Tiny",
-    "cost":0.25,
-    "hf_id":null,
-    "size":null,
-    "type":"Commercial",
-    "license":null,
-    "creation_date":1704844800000
-  },
-  {
-    "id":"nousresearch\/hermes-3-llama-3.1-405b",
-    "name":"Hermes 3 405B Instruct",
-    "provider_name":"Nous",
-    "cost":0.8,
-    "hf_id":"NousResearch\/Hermes-3-Llama-3.1-405B",
-    "size":405853388800.0,
-    "type":"Open",
-    "license":"Llama3",
-    "creation_date":1723507200000
-  },
-  {
     "id":"openai\/gpt-4.1-mini",
     "name":"GPT-4.1 Mini",
     "provider_name":"OpenAI",
@@ -365,17 +277,6 @@
   {
     "id":"openai\/gpt-4o-mini",
     "name":"GPT-4o-mini",
-    "provider_name":"OpenAI",
-    "cost":0.6,
-    "hf_id":null,
-    "size":null,
-    "type":"Commercial",
-    "license":null,
-    "creation_date":1721260800000
-  },
-  {
-    "id":"openai\/gpt-4o-mini-2024-07-18",
-    "name":"GPT-4o-mini (2024-07-18)",
     "provider_name":"OpenAI",
     "cost":0.6,
     "hf_id":null,
