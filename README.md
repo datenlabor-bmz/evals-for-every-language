@@ -43,6 +43,15 @@ For tag meaning, see https://huggingface.co/spaces/leaderboards/LeaderboardsExpl
 
 _Tracking language proficiency of AI models for every language_
 
+## Evaluate
+
 ```bash
-uv run evals/main.py
+uv run --extra dev evals/main.py
+```
+
+## Explore
+
+```bash
+uv run evals/backend.py
+cd frontend && npm i && npm start
 ```

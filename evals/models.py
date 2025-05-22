@@ -12,6 +12,7 @@ from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
 from openai import AsyncOpenAI
 from requests import HTTPError, get
+from openai import PermissionDeniedError
 
 # for development purposes, all languages will be evaluated on the fast models
 # and only a sample of languages will be evaluated on all models
@@ -111,11 +112,17 @@ huggingface_rate_limit = AsyncLimiter(max_rate=5, time_period=1)
 @cache
 async def complete(**kwargs):
     async with openrouter_rate_limit:
-        response = await client.chat.completions.create(**kwargs)
+        try:
+            response = await client.chat.completions.create(**kwargs)
+        except PermissionDeniedError as e:
+            if e["error"]["metadata"]["reason"] in ["violence", "hate", "sexual", "self-harm", "harassment"]:
+                print(e)
+                return None
+            else:
+                raise e
     if not response.choices:
         raise Exception(response)
-    return response
-
+    return response.choices[0].message.content.strip()
 
 @cache
 async def transcribe_elevenlabs(path, model):
@@ -199,12 +206,13 @@ def get_cost(row):
 
 @cache
 def load_models(date: date):
-    popular_models = (
-        get_historical_popular_models(date.today())[:15]
-        + get_current_popular_models(date.today())[:15]
-    )
-    popular_models = [m["slug"] for m in popular_models]
-    models = set(important_models + popular_models) - set(blocklist)
+    # popular_models = (
+    #     get_historical_popular_models(date.today())[:15]
+    #     + get_current_popular_models(date.today())[:15]
+    # )
+    # popular_models = [m["slug"] for m in popular_models]
+    # models = set(important_models + popular_models) - set(blocklist)
+    models = set(important_models) - set(blocklist)
     models = pd.DataFrame(sorted(list(models)), columns=["id"])
     or_metadata = models["id"].apply(get_or_metadata)
     hf_metadata = or_metadata.apply(get_hf_metadata)

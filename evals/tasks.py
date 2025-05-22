@@ -30,12 +30,12 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             pass
         case "to":
             original_language, target_language = target_language, original_language
-    if not flores_sentences(original_language) or not flores_sentences(target_language):
+    if flores_sentences(original_language) is None or flores_sentences(target_language) is None:
         return []
-    original_sentence = flores_sentences(original_language)[sentence_nr].strip()
-    target_sentence = flores_sentences(target_language)[sentence_nr].strip()
+    original_sentence = flores_sentences(original_language)["text"][sentence_nr].strip()
+    target_sentence = flores_sentences(target_language)["text"][sentence_nr].strip()
     script = script_name(target_language.flores_path.split("_")[1])
-    reply = await complete(
+    prediction = await complete(
         model=model,
         messages=[
             {
@@ -46,8 +46,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
         temperature=0,
         max_tokens=1024,
     )
-    prediction = reply.choices[0].message.content.strip()
-    if prediction.strip():
+    if prediction:
         bleu_score = bleu.compute(
             predictions=[prediction],
             references=[target_sentence],
@@ -71,21 +70,15 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
         )
     ]
 
-
-# metadata = pd.read_csv("data/floresp-v2.0-rc.3/metadata_dev.tsv", sep="\t")
-
-
 async def classify_and_evaluate(model, bcp_47, nr):
     language = languages[languages["bcp_47"] == bcp_47].iloc[0]
     sentences = flores_sentences(language)
-    if not sentences:
+    if sentences is None:
         return []
-    sentences = pd.DataFrame(sentences, columns=["text"])
-    sentences = pd.concat([metadata, sentences], axis=1)
     sentences = sentences.dropna(subset=["topic"])
     sentences["topic"] = sentences["topic"].str.lower()
     paragraphs = (
-        sentences.groupby("URL").agg({"text": " ".join, "topic": "first"}).reset_index()
+        sentences.groupby("url").agg({"text": " ".join, "topic": "first"}).reset_index()
     )
     top_topics = paragraphs.value_counts("topic").head(5).index
     paragraphs = paragraphs[paragraphs["topic"].isin(top_topics)]
@@ -95,7 +88,7 @@ async def classify_and_evaluate(model, bcp_47, nr):
             for t in top_topics
         ]
     ).sample(frac=1, random_state=nr)
-    test_paragraphs = paragraphs[~paragraphs["URL"].isin(examples["URL"])].sample(
+    test_paragraphs = paragraphs[~paragraphs["url"].isin(examples["url"])].sample(
         frac=1, random_state=42
     )
     test_paragraph = test_paragraphs.iloc[nr]
@@ -112,7 +105,7 @@ async def classify_and_evaluate(model, bcp_47, nr):
     # some models have poor tokenization for some languages, and the prompt for this task is relatively long, so it sometimes exceeds the context window
     # this is not just to blame on the context window but mostly on the model's tokenization, so we assign 0 accuracy in this case
     try:
-        reply = await complete(
+        pred = await complete(
             model=model,
             messages=[
                 *messages,
@@ -124,12 +117,11 @@ async def classify_and_evaluate(model, bcp_47, nr):
             temperature=0,
             max_tokens=30,
         )
-        response = reply.choices[0].message.content.strip().lower()
         true = test_paragraph.topic
         others = [t for t in top_topics if t != true]
         acc = int(
-            response.startswith(true)
-            or (true in response and not any(o in response for o in others))
+            pred.startswith(true)
+            or (true in pred and not any(o in pred for o in others))
         )
     except Exception as e:
         if "`inputs` tokens + `max_new_tokens` must be <= 4097" in str(e):
@@ -160,7 +152,7 @@ def corrupt_sentence(sentence):
 async def mlm_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
     sentences = flores_sentences(language)
-    if not sentences:
+    if sentences is None:
         return []
     sentences = pd.DataFrame(sentences, columns=["text"])
     sentences["corrupt_text"] = sentences["text"].apply(corrupt_sentence)
@@ -175,7 +167,7 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
             {"role": "user", "content": example.corrupt_text},
             {"role": "assistant", "content": example.text},
         ]
-    reply = await complete(
+    prediction = await complete(
         model=model,
         messages=[
             *messages,
@@ -187,7 +179,6 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
         temperature=0,
         max_tokens=1024,
     )
-    prediction = reply.choices[0].message.content.strip()
     chrf_score = chrf.compute(predictions=[prediction], references=[test_sentence.text])
     return [
         {
@@ -224,13 +215,13 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
         ]
     messages += [{"role": "user", "content": format_item(task)}]
     try:
-        reply = await complete(
+        response = await complete(
             model=model,
             messages=messages,
             temperature=0,
             max_tokens=1,
         )
-        acc = int(reply.choices[0].message.content[:1].strip() == task["answer"])
+        acc = int(response[:1].strip() == task["answer"])
     except Exception as e:
         if "ResponsibleAIPolicyViolation" in str(e):
             acc = 0
@@ -282,7 +273,7 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
 tasks = {
     "translation_from": partial(translate_and_evaluate, mode="from"),
     "translation_to": partial(translate_and_evaluate, mode="to"),
-    # "classification": classify_and_evaluate,
+    "classification": classify_and_evaluate,
     # "mlm": mlm_and_evaluate,
     "mmlu": mmlu_and_evaluate,
     # "asr": transcribe_and_evaluate,

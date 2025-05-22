@@ -24,9 +24,6 @@ DATA_DIR = project_root / "data"
 FLEURS_BASE_URL = "https://huggingface.co/datasets/google/fleurs/resolve/main/data"
 FLEURS_TARGET_DIR = DATA_DIR / "fleurs"
 
-FLORES_PLUS_HF_ID = "openlanguagedata/flores_plus"
-FLORES_TARGET_DIR = DATA_DIR / "floresp-v2.0-rc.3" / "dev_parquet" # Note: Saving as parquet
-
 GLOTTOLOG_URL = "https://cdstar.shh.mpg.de/bitstreams/EAEA0-B44E-8CEC-EA65-0/glottolog_languoid.zip" # Assumed direct link from https://glottolog.org/meta/downloads
 GLOTTOLOG_TARGET_DIR = DATA_DIR / "glottolog_languoid.csv"
 GLOTTOLOG_CSV_NAME = "languoid.csv"
@@ -142,37 +139,6 @@ def download_fleurs_data():
         else:
              print(f"Found extracted audio: {audio_extracted_marker}")
 
-def download_flores_plus_data():
-    """Downloads Flores+ data using Hugging Face datasets library."""
-    print("\n--- Downloading Flores+ Data (requires HF login & accepted terms) ---")
-    FLORES_TARGET_DIR.mkdir(parents=True, exist_ok=True)
-
-    try:
-        # Check login status first
-        token = huggingface_hub.HfFolder.get_token()
-        if not token:
-            print("Hugging Face token not found. Please log in using `huggingface-cli login`.")
-            print("You also need to accept the terms for 'openlanguagedata/flores_plus' on the HF website.")
-            return
-
-        print(f"Attempting to download '{FLORES_PLUS_HF_ID}' (dev split)...")
-        # Load only the 'dev' split
-        ds = load_dataset(FLORES_PLUS_HF_ID, split='dev', verification_mode='no_checks')
-
-        # Save as parquet files, potentially one per language if needed later
-        # For simplicity now, save the whole dev split as one parquet file
-        target_file = FLORES_TARGET_DIR / "dev_split.parquet"
-        print(f"Saving dev split to {target_file}...")
-        ds.to_parquet(target_file)
-        print("Flores+ dev split downloaded and saved as parquet.")
-
-    except huggingface_hub.utils.GatedRepoError:
-        print(f"Error: Access to '{FLORES_PLUS_HF_ID}' is gated.")
-        print("Please ensure you are logged in (`huggingface-cli login`) and have accepted the terms ")
-        print(f"on the dataset page: https://huggingface.co/datasets/{FLORES_PLUS_HF_ID}")
-    except Exception as e:
-        print(f"An error occurred downloading or saving Flores+: {e}")
-
 
 def download_glottolog_data():
     """Downloads and extracts Glottolog languoid CSV."""
@@ -227,53 +193,6 @@ def download_spbleu_data():
     else:
         print(f"Found: {target_dict_file}")
 
-# --- Conversion Function ---
-
-def convert_flores_parquet_to_text():
-    """Converts the downloaded Flores+ parquet dev split to text files."""
-    print("\n--- Converting Flores+ Parquet to Text Files ---")
-    parquet_file = FLORES_TARGET_DIR / "dev_split.parquet"
-    text_dir = project_root / "data" / "floresp-v2.0-rc.3" / "dev" # Original expected dir
-
-    if not parquet_file.exists():
-        print(f"Parquet file not found: {parquet_file}. Skipping conversion.")
-        return
-
-    try:
-        print(f"Reading parquet file: {parquet_file}")
-        df = pd.read_parquet(parquet_file)
-        print(f"Read {len(df)} rows from parquet.")
-
-        if not all(col in df.columns for col in ['iso_639_3', 'iso_15924', 'text']):
-            print("Error: Parquet file missing required columns (iso_639_3, iso_15924, text).")
-            return
-
-        text_dir.mkdir(parents=True, exist_ok=True)
-        print(f"Target directory for text files: {text_dir}")
-
-        # Group by language and script to create individual files
-        grouped = df.groupby(['iso_639_3', 'iso_15924'])
-        count = 0
-        for (lang, script), group in grouped:
-            target_filename = f"dev.{lang}_{script}"
-            target_path = text_dir / target_filename
-            print(f"Writing {len(group)} sentences to {target_path}...")
-            try:
-                with open(target_path, 'w', encoding='utf-8') as f:
-                    for sentence in group['text']:
-                        f.write(sentence + '\n')
-                count += 1
-            except Exception as e:
-                print(f"Error writing file {target_path}: {e}")
-
-        print(f"Successfully wrote {count} language/script files to {text_dir}.")
-
-    except ImportError:
-        print("Error: pandas or pyarrow might be missing. Cannot read parquet.")
-        print("Please install them: pip install pandas pyarrow")
-    except Exception as e:
-        print(f"An error occurred during parquet conversion: {e}")
-
 
 # --- Main Execution ---
 
@@ -282,8 +201,6 @@ def main():
     print("Starting data download process...")
     DATA_DIR.mkdir(exist_ok=True)
 
-    download_flores_plus_data()
-    convert_flores_parquet_to_text()
     #download_fleurs_data()
     download_glottolog_data()
     download_scriptcodes_data()

@@ -1,15 +1,19 @@
-from langcodes import Language, standardize_tag
-import pandas as pd
-import os
 import re
 
-flores_dir = "data/floresp-v2.0-rc.3/dev"
+import pandas as pd
+from datasets_.util import _get_dataset_config_names, _load_dataset
+from langcodes import Language, standardize_tag
 
-def flores_sentences(language) -> list[str] | None:
-    try:
-        return open(f"{flores_dir}/dev.{language.flores_path}").readlines()
-    except FileNotFoundError:
+slug = "openlanguagedata/flores_plus"
+splits = _get_dataset_config_names(slug)
+splits.remove("default")
+
+
+def flores_sentences(language) -> pd.DataFrame | None:
+    if language.flores_path not in splits:
         return None
+    return _load_dataset(slug, subset=language.flores_path, split="dev").to_pandas()
+
 
 def aggregate_flores_paths(flores_paths):
     # takes a list of paths from the same language but different scripts
@@ -22,20 +26,15 @@ def aggregate_flores_paths(flores_paths):
     ]
     return flores_paths.values[populations.index(max(populations))]
 
-flores = pd.DataFrame(
-    [f.split(".")[1] for f in os.listdir(flores_dir)],
-    columns=["flores_path"],
-)
+
+flores = pd.DataFrame(splits, columns=["flores_path"])
 flores["bcp_47"] = flores["flores_path"].apply(
     lambda x: standardize_tag(x, macro=True),
 )
 # ignore script (language is language)
 flores["bcp_47"] = flores["bcp_47"].apply(
-    lambda x: re.sub(r"-[A-Z][a-z]+$", "", x)
+    lambda x: re.sub(r"-[A-Z][a-z0-9\-]+$", "", x)
 )
 flores = (
-    flores.groupby("bcp_47")
-    .agg({"flores_path": aggregate_flores_paths})
-    .reset_index()
+    flores.groupby("bcp_47").agg({"flores_path": aggregate_flores_paths}).reset_index()
 )
-

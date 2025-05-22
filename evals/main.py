@@ -9,8 +9,8 @@ from tqdm.asyncio import tqdm_asyncio
 # ===== config =====
 
 n_sentences = 10
-n_languages = 20
-n_models = 30
+n_languages = 10
+n_models = 10
 
 # ===== run evaluation and aggregate results =====
 
@@ -31,9 +31,8 @@ async def evaluate():
     ]
     # filter out combinations that have already been evaluated
     combis = pd.DataFrame(combis, columns=["model", "bcp_47", "task"])
-    combis = combis.merge(old_results, on=["model", "bcp_47", "task"], how="left")
-    combis = combis[combis["metric"].isna()][["model", "bcp_47", "task"]]
-    print(combis["model"].unique())
+    # combis = combis.merge(old_results, on=["model", "bcp_47", "task"], how="left")
+    # combis = combis[combis["metric"].isna()][["model", "bcp_47", "task"]]
     # run evaluations
     results = [
         tasks[task_name](model, bcp_47, i)
@@ -51,7 +50,7 @@ async def evaluate():
             .reset_index()
         )
         # save results
-        results = pd.concat([old_results, results])
+        # results = pd.concat([old_results, results])
         results = results.sort_values(by=["model", "bcp_47", "task", "metric"])
         results.to_json("results.json", **args)
 

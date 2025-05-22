@@ -23,7 +23,7 @@ def mean(lst):
 task_metrics = [
     "translation_from_bleu",
     "translation_to_bleu",
-    # "classification_accuracy",
+    "classification_accuracy",
     "mmlu_accuracy",
 ]
 
