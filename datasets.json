@@ -250,6 +250,50 @@
         "group": "Multitask Language Understanding"
     },
     {
+        "name": "MGSM",
+        "author": "Google",
+        "author_url": "https://google.com",
+        "url": "https://huggingface.co/datasets/juletxara/mgsm",
+        "n_languages": 10,
+        "tasks": [
+            "math"
+        ],
+        "parallel": true,
+        "base": "MGSM",
+        "implemented": true,
+        "group": "Grade School Math"
+    },
+    {
+        "name": "AfriMGSM",
+        "author": "Masakhane",
+        "author_url": "https://www.masakhane.io",
+        "url": "https://huggingface.co/datasets/masakhane/afrimgsm",
+        "n_languages": 18,
+        "tasks": [
+            "math"
+        ],
+        "parallel": true,
+        "translation": "human",
+        "base": "MGSM",
+        "implemented": true,
+        "group": "Grade School Math"
+    },
+    {
+        "name": "GSM8K-X",
+        "author": "OpenGPT-X",
+        "author_url": "https://opengpt-x.de",
+        "url": "https://huggingface.co/datasets/openGPT-X/gsm8kx",
+        "n_languages": 20,
+        "tasks": [
+            "math"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "MGSM",
+        "implemented": true,
+        "group": "Grade School Math"
+    },
+    {
         "name": "FLEURS",
         "author": "Meta",
         "author_url": "https://ai.meta.com",
@@ -476,49 +520,6 @@
         "base": "HellaSwag",
         "implemented": false,
         "group": "Adversarial Language Modelling"
-    },
-    {
-        "name": "MGSM",
-        "author": "Google",
-        "author_url": "https://google.com",
-        "url": "https://huggingface.co/datasets/juletxara/mgsm",
-        "n_languages": 10,
-        "tasks": [
-            "math"
-        ],
-        "parallel": true,
-        "base": "MGSM",
-        "group": "Grade School Math"
-    },
-    {
-        "name": "AfriMGSM",
-        "author": "Masakhane",
-        "author_url": "https://www.masakhane.io",
-        "url": "https://huggingface.co/datasets/masakhane/afrimgsm",
-        "n_languages": 18,
-        "tasks": [
-            "math"
-        ],
-        "parallel": true,
-        "translation": "human",
-        "base": "MGSM",
-        "implemented": false,
-        "group": "Grade School Math"
-    },
-    {
-        "name": "GSM8K-X",
-        "author": "OpenGPT-X",
-        "author_url": "https://opengpt-x.de",
-        "url": "https://huggingface.co/datasets/openGPT-X/gsm8kx",
-        "n_languages": 20,
-        "tasks": [
-            "math"
-        ],
-        "parallel": true,
-        "translation": "machine",
-        "base": "MGSM",
-        "implemented": false,
-        "group": "Grade School Math"
     },
     {
         "name": "WikiANN / PAN-X",

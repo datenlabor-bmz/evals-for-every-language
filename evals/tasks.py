@@ -1,10 +1,12 @@
 import random
 from functools import partial
+from textwrap import dedent
 
 import evaluate
 import pandas as pd
 import sentencepiece as spm
 from datasets_.flores import flores_sentences
+from datasets_.mgsm import load_mgsm, parse_number
 from datasets_.mmlu import load_mmlu
 from languages import languages, script_name
 from models import complete, transcribe
@@ -247,6 +249,44 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
     ]
 
 
+async def mgsm_and_evaluate(model, language_bcp_47, nr):
+    system_prompt = """
+    Solve the math problem. Use reasoning, and finally give the answer as a number.
+    Response format: <reasoning> #### <number>
+    """
+    system_prompt = dedent(system_prompt).strip()
+    ds_slug, question = load_mgsm(language_bcp_47, nr)
+    if not question:
+        return []
+    response = await complete(
+        model=model,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": question["question"]},
+        ],
+        temperature=0,
+        max_tokens=1024,
+    )
+    number = response.split("####")
+    if len(number) == 2:
+        accuracy = int(
+            parse_number(number[1].strip()) == parse_number(question["answer_number"])
+        )
+    else:
+        accuracy = 0
+
+    return [
+        {
+            "model": model,
+            "bcp_47": language_bcp_47,
+            "task": "mgsm",
+            "metric": "accuracy",
+            "score": accuracy,
+            "sentence_nr": nr,
+        }
+    ]
+
+
 async def transcribe_and_evaluate(model, language_bcp_47, nr):
     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
     fleurs = pd.read_csv(
@@ -284,5 +324,6 @@ tasks = {
     "classification": classify_and_evaluate,
     # "mlm": mlm_and_evaluate,
     "mmlu": mmlu_and_evaluate,
+    "mgsm": mgsm_and_evaluate,
     # "asr": transcribe_and_evaluate,
 }

@@ -16,12 +16,9 @@ n_models = 35
 
 
 async def evaluate():
-    # save up-to-date info on models and languages
-    args = dict(orient="records", indent=2, force_ascii=False)
-    pd.DataFrame(models).to_json("models.json", **args)
-    pd.DataFrame(languages).to_json("languages.json", **args)
     print("running evaluations")
     old_results = pd.read_json("results.json")
+    old_models = pd.read_json("models.json")
     # get all combinations of model, language and task
     combis = [
         (model, lang.bcp_47, task_name)
@@ -41,6 +38,7 @@ async def evaluate():
     ]
     results = await tqdm_asyncio.gather(*results, miniters=1)
     results = [r for group in results for r in group]
+    args = dict(orient="records", indent=2, force_ascii=False)
     if results:
         # aggregate results
         results = pd.DataFrame(results)
@@ -53,6 +51,11 @@ async def evaluate():
         results = pd.concat([old_results, results])
         results = results.sort_values(by=["model", "bcp_47", "task", "metric"])
         results.to_json("results.json", **args)
+    # save up-to-date info on models and languages
+    all_models = pd.concat([old_models, pd.DataFrame(models)])
+    all_models = all_models.drop_duplicates(subset=["id"]).sort_values(by=["id"])
+    all_models.to_json("models.json", **args)
+    pd.DataFrame(languages).to_json("languages.json", **args)
 
 
 if __name__ == "__main__":

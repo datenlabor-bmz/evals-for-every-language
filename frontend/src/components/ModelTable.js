@@ -5,7 +5,6 @@ import { MultiSelect } from 'primereact/multiselect'
 import { useState, useEffect } from 'react'
 import Medal from './Medal'
 import { Slider } from 'primereact/slider'
-import ScoreField from './ScoreField'
 import ScoreColumns from './ScoreColumns'
 const ModelTable = ({ data }) => {
   const [filters, setFilters] = useState({

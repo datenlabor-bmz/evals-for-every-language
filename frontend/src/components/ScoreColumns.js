@@ -64,7 +64,7 @@ const ScoreColumns = [
   //   />,
   <Column
     field='mmlu_accuracy'
-    header='MMLU'
+    header='Q&A'
     headerTooltip='Question Answering performance (accuracy on a sample of multilingual versions of the MMLU benchmark)'
     sortable
     body={scoreBodyTemplate('mmlu_accuracy', {
@@ -72,7 +72,18 @@ const ScoreColumns = [
       maxScore: 1
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
-  />
+  />,
+  <Column
+    field='mgsm_accuracy'
+    header='Math'
+    headerTooltip='Math Problem Solving performance (accuracy on a sample of the MGMS benchmark)'
+    sortable
+    body={scoreBodyTemplate('mgsm_accuracy', {
+      minScore: 0,
+      maxScore: 1
+    })}
+    style={{ minWidth: '5rem', maxWidth: '10rem' }}
+  />,
 ]
 
 export default ScoreColumns
