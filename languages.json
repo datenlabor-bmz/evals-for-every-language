@@ -319,7 +319,7 @@
     "family":"Indo-European",
     "flores_path":"ita_Latn",
     "fleurs_tag":"it_it",
-    "commonvoice_hours":363.0,
+    "commonvoice_hours":362.0,
     "commonvoice_locale":"it",
     "in_benchmark":true
   },
@@ -864,18 +864,6 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"mag",
-    "speakers":15913080,
-    "language_name":"Magahi",
-    "autonym":"Magahi",
-    "family":"Indo-European",
-    "flores_path":"mag_Deva",
-    "fleurs_tag":null,
-    "commonvoice_hours":null,
-    "commonvoice_locale":null,
-    "in_benchmark":true
-  },
-  {
     "bcp_47":"mwr",
     "speakers":15913080,
     "language_name":"Marwari",
@@ -886,6 +874,18 @@
     "commonvoice_hours":null,
     "commonvoice_locale":null,
     "in_benchmark":false
+  },
+  {
+    "bcp_47":"mag",
+    "speakers":15913080,
+    "language_name":"Magahi",
+    "autonym":"Magahi",
+    "family":"Indo-European",
+    "flores_path":"mag_Deva",
+    "fleurs_tag":null,
+    "commonvoice_hours":null,
+    "commonvoice_locale":null,
+    "in_benchmark":true
   },
   {
     "bcp_47":"bgc",
@@ -1183,7 +1183,7 @@
     "family":"Indo-European",
     "flores_path":"bel_Cyrl",
     "fleurs_tag":"be_by",
-    "commonvoice_hours":1808.0,
+    "commonvoice_hours":1807.0,
     "commonvoice_locale":"be",
     "in_benchmark":true
   },
@@ -1195,7 +1195,7 @@
     "family":"Atlantic-Congo",
     "flores_path":"lua_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":2.8,
+    "commonvoice_hours":2.2,
     "commonvoice_locale":"lua",
     "in_benchmark":true
   },
@@ -1956,18 +1956,6 @@
     "in_benchmark":true
   },
   {
-    "bcp_47":"kln",
-    "speakers":4068120,
-    "language_name":"Kalenjin",
-    "autonym":"Kalenjin",
-    "family":"Nilotic",
-    "flores_path":null,
-    "fleurs_tag":null,
-    "commonvoice_hours":43.0,
-    "commonvoice_locale":"kln",
-    "in_benchmark":false
-  },
-  {
     "bcp_47":"kam",
     "speakers":4068120,
     "language_name":"Kamba",
@@ -1978,6 +1966,18 @@
     "commonvoice_hours":0.0,
     "commonvoice_locale":"kam",
     "in_benchmark":true
+  },
+  {
+    "bcp_47":"kln",
+    "speakers":4068120,
+    "language_name":"Kalenjin",
+    "autonym":"Kalenjin",
+    "family":"Nilotic",
+    "flores_path":null,
+    "fleurs_tag":null,
+    "commonvoice_hours":43.0,
+    "commonvoice_locale":"kln",
+    "in_benchmark":false
   },
   {
     "bcp_47":"bjn",
@@ -2124,10 +2124,10 @@
     "in_benchmark":true
   },
   {
-    "bcp_47":"gbm",
+    "bcp_47":"lmn",
     "speakers":3580443,
-    "language_name":"Garhwali",
-    "autonym":"Garhwali",
+    "language_name":"Lambadi",
+    "autonym":"Lambadi",
     "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
@@ -2136,10 +2136,10 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"lmn",
+    "bcp_47":"gbm",
     "speakers":3580443,
-    "language_name":"Lambadi",
-    "autonym":"Lambadi",
+    "language_name":"Garhwali",
+    "autonym":"Garhwali",
     "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
@@ -2352,18 +2352,6 @@
     "in_benchmark":true
   },
   {
-    "bcp_47":"efi",
-    "speakers":2996392,
-    "language_name":"Efik",
-    "autonym":"Efik",
-    "family":"Atlantic-Congo",
-    "flores_path":null,
-    "fleurs_tag":null,
-    "commonvoice_hours":null,
-    "commonvoice_locale":null,
-    "in_benchmark":false
-  },
-  {
     "bcp_47":"ibb",
     "speakers":2996392,
     "language_name":"Ibibio",
@@ -2373,6 +2361,18 @@
     "fleurs_tag":null,
     "commonvoice_hours":11.0,
     "commonvoice_locale":"ibb",
+    "in_benchmark":false
+  },
+  {
+    "bcp_47":"efi",
+    "speakers":2996392,
+    "language_name":"Efik",
+    "autonym":"Efik",
+    "family":"Atlantic-Congo",
+    "flores_path":null,
+    "fleurs_tag":null,
+    "commonvoice_hours":null,
+    "commonvoice_locale":null,
     "in_benchmark":false
   },
   {
@@ -2484,10 +2484,10 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"pam",
+    "bcp_47":"fbl",
     "speakers":2511163,
-    "language_name":"Pampanga",
-    "autonym":"Pampanga",
+    "language_name":"West Albay Bikol",
+    "autonym":"West Albay Bikol",
     "family":"Austronesian",
     "flores_path":null,
     "fleurs_tag":null,
@@ -2496,10 +2496,10 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"fbl",
+    "bcp_47":"pam",
     "speakers":2511163,
-    "language_name":"West Albay Bikol",
-    "autonym":"West Albay Bikol",
+    "language_name":"Pampanga",
+    "autonym":"Pampanga",
     "family":"Austronesian",
     "flores_path":null,
     "fleurs_tag":null,
@@ -2724,10 +2724,10 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"khn",
+    "bcp_47":"wbr",
     "speakers":1989135,
-    "language_name":"Khandesi",
-    "autonym":"Khandesi",
+    "language_name":"Wagdi",
+    "autonym":"Wagdi",
     "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
@@ -2748,10 +2748,10 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"wbr",
+    "bcp_47":"khn",
     "speakers":1989135,
-    "language_name":"Wagdi",
-    "autonym":"Wagdi",
+    "language_name":"Khandesi",
+    "autonym":"Khandesi",
     "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
@@ -3535,7 +3535,7 @@
     "family":null,
     "flores_path":"eus_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":380.0,
+    "commonvoice_hours":379.0,
     "commonvoice_locale":"eu",
     "in_benchmark":true
   },
@@ -3559,7 +3559,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":63.0,
+    "commonvoice_hours":62.0,
     "commonvoice_locale":"kbd",
     "in_benchmark":false
   },
@@ -4716,18 +4716,6 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"jmc",
-    "speakers":433291,
-    "language_name":"Machame",
-    "autonym":"Kimachame",
-    "family":"Atlantic-Congo",
-    "flores_path":null,
-    "fleurs_tag":null,
-    "commonvoice_hours":null,
-    "commonvoice_locale":null,
-    "in_benchmark":false
-  },
-  {
     "bcp_47":"vun",
     "speakers":433291,
     "language_name":"Vunjo",
@@ -4747,8 +4735,20 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":2.7,
+    "commonvoice_hours":2.5,
     "commonvoice_locale":"rof",
+    "in_benchmark":false
+  },
+  {
+    "bcp_47":"jmc",
+    "speakers":433291,
+    "language_name":"Machame",
+    "autonym":"Kimachame",
+    "family":"Atlantic-Congo",
+    "flores_path":null,
+    "fleurs_tag":null,
+    "commonvoice_hours":null,
+    "commonvoice_locale":null,
     "in_benchmark":false
   },
   {
@@ -5904,10 +5904,10 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"bss",
+    "bcp_47":"kkj",
     "speakers":149823,
-    "language_name":"Akoose",
-    "autonym":"Akoose",
+    "language_name":"Kako",
+    "autonym":"Kakɔ",
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
@@ -5916,10 +5916,10 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"kkj",
+    "bcp_47":"bss",
     "speakers":149823,
-    "language_name":"Kako",
-    "autonym":"Kakɔ",
+    "language_name":"Akoose",
+    "autonym":"Akoose",
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
@@ -6240,11 +6240,11 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"iu",
+    "bcp_47":"pdt",
     "speakers":90466,
-    "language_name":"Inuktitut",
-    "autonym":"Inuktitut",
-    "family":"Eskimo-Aleut",
+    "language_name":"Plautdietsch",
+    "autonym":"Plautdietsch",
+    "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
     "commonvoice_hours":null,
@@ -6252,11 +6252,11 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"pdt",
+    "bcp_47":"iu",
     "speakers":90466,
-    "language_name":"Plautdietsch",
-    "autonym":"Plautdietsch",
-    "family":"Indo-European",
+    "language_name":"Inuktitut",
+    "autonym":"Inuktitut",
+    "family":"Eskimo-Aleut",
     "flores_path":null,
     "fleurs_tag":null,
     "commonvoice_hours":null,
@@ -6367,7 +6367,7 @@
     "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":5.4,
+    "commonvoice_hours":4.6,
     "commonvoice_locale":"btv",
     "in_benchmark":false
   },
@@ -7248,18 +7248,6 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"ik",
-    "speakers":7983,
-    "language_name":"Inupiaq",
-    "autonym":"Inupiaq",
-    "family":"Eskimo-Aleut",
-    "flores_path":null,
-    "fleurs_tag":null,
-    "commonvoice_hours":7.2,
-    "commonvoice_locale":"ipk",
-    "in_benchmark":false
-  },
-  {
     "bcp_47":"gbz",
     "speakers":7983,
     "language_name":"Zoroastrian Dari",
@@ -7272,15 +7260,15 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"bku",
-    "speakers":7970,
-    "language_name":"Buhid",
-    "autonym":"Buhid",
-    "family":"Austronesian",
+    "bcp_47":"ik",
+    "speakers":7983,
+    "language_name":"Inupiaq",
+    "autonym":"Inupiaq",
+    "family":"Eskimo-Aleut",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":null,
-    "commonvoice_locale":null,
+    "commonvoice_hours":7.2,
+    "commonvoice_locale":"ipk",
     "in_benchmark":false
   },
   {
@@ -7289,6 +7277,18 @@
     "language_name":"Tasawaq",
     "autonym":"Tasawaq Senni",
     "family":"Songhay",
+    "flores_path":null,
+    "fleurs_tag":null,
+    "commonvoice_hours":null,
+    "commonvoice_locale":null,
+    "in_benchmark":false
+  },
+  {
+    "bcp_47":"bku",
+    "speakers":7970,
+    "language_name":"Buhid",
+    "autonym":"Buhid",
+    "family":"Austronesian",
     "flores_path":null,
     "fleurs_tag":null,
     "commonvoice_hours":null,
@@ -7567,7 +7567,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":2.4,
+    "commonvoice_hours":2.3,
     "commonvoice_locale":"yav",
     "in_benchmark":false
   },
@@ -7968,6 +7968,18 @@
     "in_benchmark":false
   },
   {
+    "bcp_47":"vot",
+    "speakers":0,
+    "language_name":"Votic",
+    "autonym":"Votic",
+    "family":"Uralic",
+    "flores_path":null,
+    "fleurs_tag":null,
+    "commonvoice_hours":0.1,
+    "commonvoice_locale":"vot",
+    "in_benchmark":false
+  },
+  {
     "bcp_47":"sgs",
     "speakers":0,
     "language_name":"Samogitian",
@@ -7985,18 +7997,6 @@
     "language_name":"Romagnol",
     "autonym":"Romagnol",
     "family":"Indo-European",
-    "flores_path":null,
-    "fleurs_tag":null,
-    "commonvoice_hours":null,
-    "commonvoice_locale":null,
-    "in_benchmark":false
-  },
-  {
-    "bcp_47":"ann",
-    "speakers":0,
-    "language_name":"Obolo",
-    "autonym":"Obolo",
-    "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
     "commonvoice_hours":null,
@@ -8028,11 +8028,11 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"lzh",
+    "bcp_47":"ann",
     "speakers":0,
-    "language_name":"Literary Chinese",
-    "autonym":"Literary Chinese",
-    "family":"Sino-Tibetan",
+    "language_name":"Obolo",
+    "autonym":"Obolo",
+    "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
     "commonvoice_hours":null,
@@ -8052,11 +8052,11 @@
     "in_benchmark":false
   },
   {
-    "bcp_47":"io",
+    "bcp_47":"lzh",
     "speakers":0,
-    "language_name":"Ido",
-    "autonym":"Ido",
-    "family":"Artificial Language",
+    "language_name":"Literary Chinese",
+    "autonym":"Literary Chinese",
+    "family":"Sino-Tibetan",
     "flores_path":null,
     "fleurs_tag":null,
     "commonvoice_hours":null,
@@ -8069,6 +8069,18 @@
     "language_name":"Jutish",
     "autonym":"Jutish",
     "family":"Indo-European",
+    "flores_path":null,
+    "fleurs_tag":null,
+    "commonvoice_hours":null,
+    "commonvoice_locale":null,
+    "in_benchmark":false
+  },
+  {
+    "bcp_47":"io",
+    "speakers":0,
+    "language_name":"Ido",
+    "autonym":"Ido",
+    "family":"Artificial Language",
     "flores_path":null,
     "fleurs_tag":null,
     "commonvoice_hours":null,
@@ -8109,18 +8121,6 @@
     "fleurs_tag":null,
     "commonvoice_hours":null,
     "commonvoice_locale":null,
-    "in_benchmark":false
-  },
-  {
-    "bcp_47":"vot",
-    "speakers":0,
-    "language_name":"Votic",
-    "autonym":"Votic",
-    "family":"Uralic",
-    "flores_path":null,
-    "fleurs_tag":null,
-    "commonvoice_hours":0.1,
-    "commonvoice_locale":"vot",
     "in_benchmark":false
   },
   {
