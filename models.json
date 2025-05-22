@@ -11,8 +11,30 @@
     "creation_date":1733356800000
   },
   {
+    "id":"anthropic\/claude-3-haiku",
+    "name":"Claude 3 Haiku (self-moderated)",
+    "provider_name":"Anthropic",
+    "cost":1.25,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1710288000000
+  },
+  {
+    "id":"cohere\/command-r",
+    "name":"Command R",
+    "provider_name":"Cohere",
+    "cost":1.5,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1710374400000
+  },
+  {
     "id":"deepseek\/deepseek-chat",
-    "name":"DeepSeek V3 (free)",
+    "name":"DeepSeek V3",
     "provider_name":"DeepSeek",
     "cost":0.0,
     "hf_id":"deepseek-ai\/DeepSeek-V3",
@@ -23,7 +45,7 @@
   },
   {
     "id":"deepseek\/deepseek-chat-v3-0324",
-    "name":"DeepSeek V3 0324 (free)",
+    "name":"DeepSeek V3 0324",
     "provider_name":"DeepSeek",
     "cost":0.0,
     "hf_id":"deepseek-ai\/DeepSeek-V3-0324",
@@ -31,6 +53,28 @@
     "type":"Open",
     "license":"Mit",
     "creation_date":1742774400000
+  },
+  {
+    "id":"deepseek\/deepseek-r1",
+    "name":"R1",
+    "provider_name":"DeepSeek",
+    "cost":0.0,
+    "hf_id":"deepseek-ai\/DeepSeek-R1",
+    "size":684531386000.0,
+    "type":"Open",
+    "license":"Mit",
+    "creation_date":1737331200000
+  },
+  {
+    "id":"google\/gemini-2.0-flash-001",
+    "name":"Gemini 2.0 Flash",
+    "provider_name":"Google",
+    "cost":0.4,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1738713600000
   },
   {
     "id":"google\/gemini-2.0-flash-lite-001",
@@ -55,8 +99,52 @@
     "creation_date":1744848000000
   },
   {
+    "id":"google\/gemini-2.5-flash-preview-05-20",
+    "name":"Gemini 2.5 Flash Preview 05-20",
+    "provider_name":"Google",
+    "cost":0.6,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1747699200000
+  },
+  {
+    "id":"google\/gemini-flash-1.5",
+    "name":"Gemini 1.5 Flash ",
+    "provider_name":"Google",
+    "cost":0.3,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1715644800000
+  },
+  {
+    "id":"google\/gemini-flash-1.5-8b",
+    "name":"Gemini 1.5 Flash 8B",
+    "provider_name":"Google",
+    "cost":0.15,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1727913600000
+  },
+  {
+    "id":"google\/gemma-2-9b-it",
+    "name":"Gemma 2 9B",
+    "provider_name":"Google",
+    "cost":0.0,
+    "hf_id":"google\/gemma-2-9b-it",
+    "size":9241705984.0,
+    "type":"Open",
+    "license":"Gemma",
+    "creation_date":1719187200000
+  },
+  {
     "id":"google\/gemma-3-27b-it",
-    "name":"Gemma 3 27B (free)",
+    "name":"Gemma 3 27B",
     "provider_name":"Google",
     "cost":0.0,
     "hf_id":"google\/gemma-3-27b-it",
@@ -66,12 +154,34 @@
     "creation_date":1740787200000
   },
   {
+    "id":"gryphe\/mythomax-l2-13b",
+    "name":"MythoMax 13B",
+    "provider_name":"MythoMax 13B",
+    "cost":0.07,
+    "hf_id":"Gryphe\/MythoMax-L2-13b",
+    "size":null,
+    "type":"Open",
+    "license":"Other",
+    "creation_date":1691625600000
+  },
+  {
     "id":"meta-llama\/llama-3-70b-instruct",
     "name":"Llama 3 70B Instruct",
     "provider_name":"Meta",
     "cost":0.4,
     "hf_id":"meta-llama\/Meta-Llama-3-70B-Instruct",
     "size":70553706496.0,
+    "type":"Open",
+    "license":"Llama3",
+    "creation_date":1713312000000
+  },
+  {
+    "id":"meta-llama\/llama-3-8b-instruct",
+    "name":"Llama 3 8B Instruct",
+    "provider_name":"Meta",
+    "cost":0.06,
+    "hf_id":"meta-llama\/Meta-Llama-3-8B-Instruct",
+    "size":8030261248.0,
     "type":"Open",
     "license":"Llama3",
     "creation_date":1713312000000
@@ -88,8 +198,30 @@
     "creation_date":1721088000000
   },
   {
+    "id":"meta-llama\/llama-3.1-8b-instruct",
+    "name":"Llama 3.1 8B Instruct",
+    "provider_name":"Meta",
+    "cost":0.0,
+    "hf_id":"meta-llama\/Llama-3.1-8B-Instruct",
+    "size":8030261248.0,
+    "type":"Open",
+    "license":"Llama3.1",
+    "creation_date":1721260800000
+  },
+  {
+    "id":"meta-llama\/llama-3.2-1b-instruct",
+    "name":"Llama 3.2 1B Instruct",
+    "provider_name":"Meta",
+    "cost":0.0,
+    "hf_id":"meta-llama\/Llama-3.2-1B-Instruct",
+    "size":1235814400.0,
+    "type":"Open",
+    "license":"Llama3.2",
+    "creation_date":1726617600000
+  },
+  {
     "id":"meta-llama\/llama-3.3-70b-instruct",
-    "name":"Llama 3.3 70B Instruct (free)",
+    "name":"Llama 3.3 70B Instruct",
     "provider_name":"Meta",
     "cost":0.0,
     "hf_id":"meta-llama\/Llama-3.3-70B-Instruct",
@@ -100,7 +232,7 @@
   },
   {
     "id":"meta-llama\/llama-4-maverick",
-    "name":"Llama 4 Maverick (free)",
+    "name":"Llama 4 Maverick",
     "provider_name":"Meta",
     "cost":0.0,
     "hf_id":"meta-llama\/Llama-4-Maverick-17B-128E-Instruct",
@@ -132,8 +264,30 @@
     "creation_date":1740355200000
   },
   {
+    "id":"microsoft\/wizardlm-2-8x22b",
+    "name":"WizardLM-2 8x22B",
+    "provider_name":"WizardLM-2 8x22B",
+    "cost":0.5,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1713225600000
+  },
+  {
+    "id":"mistralai\/mistral-7b-instruct",
+    "name":"Mistral 7B Instruct",
+    "provider_name":"Mistral",
+    "cost":0.0,
+    "hf_id":"mistralai\/Mistral-7B-Instruct-v0.3",
+    "size":7248023552.0,
+    "type":"Open",
+    "license":"Apache 2.0",
+    "creation_date":1716336000000
+  },
+  {
     "id":"mistralai\/mistral-nemo",
-    "name":"Mistral Nemo (free)",
+    "name":"Mistral Nemo",
     "provider_name":"Mistral",
     "cost":0.0,
     "hf_id":"mistralai\/Mistral-Nemo-Instruct-2407",
@@ -155,7 +309,7 @@
   },
   {
     "id":"mistralai\/mistral-small-3.1-24b-instruct",
-    "name":"Mistral Small 3.1 24B (free)",
+    "name":"Mistral Small 3.1 24B",
     "provider_name":"Mistral",
     "cost":0.0,
     "hf_id":"mistralai\/Mistral-Small-3.1-24B-Instruct-2503",
@@ -163,6 +317,28 @@
     "type":"Open",
     "license":"Apache 2.0",
     "creation_date":1741651200000
+  },
+  {
+    "id":"mistralai\/mistral-tiny",
+    "name":"Mistral Tiny",
+    "provider_name":"Mistral Tiny",
+    "cost":0.25,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1704844800000
+  },
+  {
+    "id":"nousresearch\/hermes-3-llama-3.1-405b",
+    "name":"Hermes 3 405B Instruct",
+    "provider_name":"Nous",
+    "cost":0.8,
+    "hf_id":"NousResearch\/Hermes-3-Llama-3.1-405B",
+    "size":405853388800.0,
+    "type":"Open",
+    "license":"Llama3",
+    "creation_date":1723507200000
   },
   {
     "id":"openai\/gpt-4.1-mini",
@@ -189,6 +365,17 @@
   {
     "id":"openai\/gpt-4o-mini",
     "name":"GPT-4o-mini",
+    "provider_name":"OpenAI",
+    "cost":0.6,
+    "hf_id":null,
+    "size":null,
+    "type":"Commercial",
+    "license":null,
+    "creation_date":1721260800000
+  },
+  {
+    "id":"openai\/gpt-4o-mini-2024-07-18",
+    "name":"GPT-4o-mini (2024-07-18)",
     "provider_name":"OpenAI",
     "cost":0.6,
     "hf_id":null,

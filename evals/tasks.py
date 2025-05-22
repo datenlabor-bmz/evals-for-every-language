@@ -30,7 +30,10 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             pass
         case "to":
             original_language, target_language = target_language, original_language
-    if flores_sentences(original_language) is None or flores_sentences(target_language) is None:
+    if (
+        flores_sentences(original_language) is None
+        or flores_sentences(target_language) is None
+    ):
         return []
     original_sentence = flores_sentences(original_language)["text"][sentence_nr].strip()
     target_sentence = flores_sentences(target_language)["text"][sentence_nr].strip()
@@ -69,6 +72,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             ("chrf", chrf_score["score"] / 100),
         )
     ]
+
 
 async def classify_and_evaluate(model, bcp_47, nr):
     language = languages[languages["bcp_47"] == bcp_47].iloc[0]
@@ -119,9 +123,13 @@ async def classify_and_evaluate(model, bcp_47, nr):
         )
         true = test_paragraph.topic
         others = [t for t in top_topics if t != true]
-        acc = int(
-            pred.startswith(true)
-            or (true in pred and not any(o in pred for o in others))
+        acc = (
+            int(
+                pred.startswith(true)
+                or (true in pred and not any(o in pred for o in others))
+            )
+            if pred
+            else 0
         )
     except Exception as e:
         if "`inputs` tokens + `max_new_tokens` must be <= 4097" in str(e):

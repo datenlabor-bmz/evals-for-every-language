@@ -45,10 +45,6 @@ important_models = [
     "amazon/nova-micro-v1",  # 0.09$
 ]
 
-blocklist = [
-    "google/gemini-2.5-pro-exp-03-25"  # rate limit too low
-]
-
 transcription_models = [
     "elevenlabs/scribe_v1",
     "openai/whisper-large-v3",
@@ -68,7 +64,7 @@ def get_model(permaslug):
     models = get_models(date.today())
     slugs = [m for m in models if m["permaslug"] == permaslug and m["endpoint"] and not m["endpoint"]["is_free"]]
     if len(slugs) == 0:
-        print(f"no model found for {permaslug}")
+        print(f"no non-free model found for {permaslug}")
     return slugs[0] if len(slugs) >= 1 else None
 
 
@@ -90,9 +86,9 @@ def get_historical_popular_models(date: date):
 
 @cache
 def get_current_popular_models(date: date):
-    raw = get("https://openrouter.ai/rankings").text
-    data = re.search(r'{\\"rankMap\\":(.*)\}\]\\n"\]\)</script>', raw).group(1)
-    data = json.loads(data.replace("\\", ""))["day"]
+    raw = get("https://openrouter.ai/rankings?view=day").text.replace("\\", "")
+    data = re.search(r'"rankingData":(.*),"rankingType":"day"', raw).group(1)
+    data = json.loads(data)
     data = sorted(data, key=lambda x: x["total_prompt_tokens"], reverse=True)
     models = [get_model(model["model_permaslug"]) for model in data]
     return [m for m in models if m]
@@ -110,16 +106,13 @@ huggingface_rate_limit = AsyncLimiter(max_rate=5, time_period=1)
 
 
 @cache
-async def complete(**kwargs):
+async def complete(**kwargs) -> str | None:
     async with openrouter_rate_limit:
         try:
             response = await client.chat.completions.create(**kwargs)
         except PermissionDeniedError as e:
-            if e["error"]["metadata"]["reason"] in ["violence", "hate", "sexual", "self-harm", "harassment"]:
-                print(e)
-                return None
-            else:
-                raise e
+            print(e)
+            return None
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()
@@ -206,13 +199,12 @@ def get_cost(row):
 
 @cache
 def load_models(date: date):
-    # popular_models = (
-    #     get_historical_popular_models(date.today())[:15]
-    #     + get_current_popular_models(date.today())[:15]
-    # )
-    # popular_models = [m["slug"] for m in popular_models]
-    # models = set(important_models + popular_models) - set(blocklist)
-    models = set(important_models) - set(blocklist)
+    popular_models = (
+        get_historical_popular_models(date.today())[:30]
+        + get_current_popular_models(date.today())[:10]
+    )
+    popular_models = [m["slug"] for m in popular_models]
+    models = set(important_models + popular_models)
     models = pd.DataFrame(sorted(list(models)), columns=["id"])
     or_metadata = models["id"].apply(get_or_metadata)
     hf_metadata = or_metadata.apply(get_hf_metadata)
@@ -222,7 +214,7 @@ def load_models(date: date):
     ).dt.date
 
     models = models.assign(
-        name=or_metadata.str["short_name"],
+        name=or_metadata.str["short_name"].str.replace(" (free)", ""),
         provider_name=or_metadata.str["name"].str.split(": ").str[0],
         cost=or_metadata.apply(get_cost),
         hf_id=hf_metadata.str["hf_id"],
