@@ -79,7 +79,7 @@
     "family":"Indo-European",
     "flores_path":"fra_Latn",
     "fleurs_tag":"fr_fr",
-    "commonvoice_hours":1059.0,
+    "commonvoice_hours":1060.0,
     "commonvoice_locale":"fr",
     "in_benchmark":true
   },
@@ -1195,7 +1195,7 @@
     "family":"Atlantic-Congo",
     "flores_path":"lua_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":4.7,
+    "commonvoice_hours":7.9,
     "commonvoice_locale":"lua",
     "in_benchmark":true
   },
@@ -4735,7 +4735,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":3.2,
+    "commonvoice_hours":3.1,
     "commonvoice_locale":"rof",
     "in_benchmark":false
   },
@@ -6367,7 +6367,7 @@
     "family":"Indo-European",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":9.0,
+    "commonvoice_hours":11.0,
     "commonvoice_locale":"btv",
     "in_benchmark":false
   },
