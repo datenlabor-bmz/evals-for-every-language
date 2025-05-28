@@ -7,7 +7,7 @@
     "family":"Indo-European",
     "flores_path":"eng_Latn",
     "fleurs_tag":"en_us",
-    "commonvoice_hours":2668.0,
+    "commonvoice_hours":2669.0,
     "commonvoice_locale":"en",
     "in_benchmark":true
   },
@@ -1375,7 +1375,7 @@
     "family":"Turkic",
     "flores_path":"uig_Arab",
     "fleurs_tag":null,
-    "commonvoice_hours":375.0,
+    "commonvoice_hours":376.0,
     "commonvoice_locale":"ug",
     "in_benchmark":true
   },
@@ -3535,7 +3535,7 @@
     "family":null,
     "flores_path":"eus_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":384.0,
+    "commonvoice_hours":388.0,
     "commonvoice_locale":"eu",
     "in_benchmark":true
   },
@@ -3559,7 +3559,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":64.0,
+    "commonvoice_hours":65.0,
     "commonvoice_locale":"kbd",
     "in_benchmark":false
   },
@@ -4735,7 +4735,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":3.6,
+    "commonvoice_hours":3.7,
     "commonvoice_locale":"rof",
     "in_benchmark":false
   },
@@ -7567,7 +7567,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":3.0,
+    "commonvoice_hours":3.1,
     "commonvoice_locale":"yav",
     "in_benchmark":false
   },
