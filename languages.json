@@ -979,7 +979,7 @@
     "family":"Turkic",
     "flores_path":"kaz_Cyrl",
     "fleurs_tag":"kk_kz",
-    "commonvoice_hours":2.1,
+    "commonvoice_hours":2.2,
     "commonvoice_locale":"kk",
     "in_benchmark":true
   },
@@ -3535,7 +3535,7 @@
     "family":null,
     "flores_path":"eus_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":388.0,
+    "commonvoice_hours":391.0,
     "commonvoice_locale":"eu",
     "in_benchmark":true
   },
@@ -7567,7 +7567,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":3.1,
+    "commonvoice_hours":7.8,
     "commonvoice_locale":"yav",
     "in_benchmark":false
   },
