@@ -79,7 +79,7 @@
     "family":"Indo-European",
     "flores_path":"fra_Latn",
     "fleurs_tag":"fr_fr",
-    "commonvoice_hours":1060.0,
+    "commonvoice_hours":1061.0,
     "commonvoice_locale":"fr",
     "in_benchmark":true
   },
@@ -103,7 +103,7 @@
     "family":"Indo-European",
     "flores_path":"por_Latn",
     "fleurs_tag":"pt_br",
-    "commonvoice_hours":178.0,
+    "commonvoice_hours":179.0,
     "commonvoice_locale":"pt",
     "in_benchmark":true
   },
@@ -1207,7 +1207,7 @@
     "family":"Indo-European",
     "flores_path":"tgk_Cyrl",
     "fleurs_tag":"tg_tj",
-    "commonvoice_hours":0.0,
+    "commonvoice_hours":0.1,
     "commonvoice_locale":"tg",
     "in_benchmark":true
   },
@@ -1291,7 +1291,7 @@
     "family":"Indo-European",
     "flores_path":"cat_Latn",
     "fleurs_tag":"ca_es",
-    "commonvoice_hours":2856.0,
+    "commonvoice_hours":2857.0,
     "commonvoice_locale":"ca",
     "in_benchmark":true
   },
@@ -3535,7 +3535,7 @@
     "family":null,
     "flores_path":"eus_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":391.0,
+    "commonvoice_hours":394.0,
     "commonvoice_locale":"eu",
     "in_benchmark":true
   },
@@ -3559,7 +3559,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":65.0,
+    "commonvoice_hours":66.0,
     "commonvoice_locale":"kbd",
     "in_benchmark":false
   },
@@ -4651,7 +4651,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":20.0,
+    "commonvoice_hours":21.0,
     "commonvoice_locale":"ady",
     "in_benchmark":false
   },
@@ -4735,7 +4735,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":3.7,
+    "commonvoice_hours":5.4,
     "commonvoice_locale":"rof",
     "in_benchmark":false
   },
@@ -7567,7 +7567,7 @@
     "family":"Atlantic-Congo",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":7.8,
+    "commonvoice_hours":12.0,
     "commonvoice_locale":"yav",
     "in_benchmark":false
   },
