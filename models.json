@@ -44,6 +44,17 @@
     "creation_date":1737331200000
   },
   {
+    "id":"deepseek\/deepseek-r1-0528",
+    "name":"R1 0528",
+    "provider_name":"DeepSeek",
+    "cost":0.0,
+    "hf_id":"deepseek-ai\/DeepSeek-R1-0528",
+    "size":684531386000.0,
+    "type":"Open",
+    "license":"Mit",
+    "creation_date":1748390400000
+  },
+  {
     "id":"google\/gemini-2.0-flash-001",
     "name":"Gemini 2.0 Flash",
     "provider_name":"Google",
