@@ -163,7 +163,7 @@
     "family":"Indo-European",
     "flores_path":"deu_Latn",
     "fleurs_tag":"de_de",
-    "commonvoice_hours":1367.0,
+    "commonvoice_hours":1368.0,
     "commonvoice_locale":"de",
     "in_benchmark":true
   },
@@ -1291,7 +1291,7 @@
     "family":"Indo-European",
     "flores_path":"cat_Latn",
     "fleurs_tag":"ca_es",
-    "commonvoice_hours":2858.0,
+    "commonvoice_hours":2857.0,
     "commonvoice_locale":"ca",
     "in_benchmark":true
   },
@@ -3535,7 +3535,7 @@
     "family":null,
     "flores_path":"eus_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":397.0,
+    "commonvoice_hours":401.0,
     "commonvoice_locale":"eu",
     "in_benchmark":true
   },
