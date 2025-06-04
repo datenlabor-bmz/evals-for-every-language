@@ -3,38 +3,38 @@ import * as Plot from '@observablehq/plot'
 
 const LanguagePlot = ({ data, width = 750, height = 500 }) => {
   const containerRef = useRef()
-  const languages = data.language_table.filter(a => a.translation_from_bleu > 0)
+  const languages = data.language_table.filter(a => a.average > 0)
   const families = [...new Set(languages.map(a => a.family))]
 
   useEffect(() => {
     const plot = Plot.plot({
       width: width,
       height: height,
-      subtitle: 'Translation quality by language',
+      subtitle: 'Proficiency scores by language',
       x: {
         label: 'Number of Speakers',
         type: 'log'
       },
       y: {
-        label: 'Translation quality (spBLEU score for translating from the given language to other languages)'
+        label: 'Language proficiency score'
       },
       marks: [
         Plot.dot(languages, {
           x: 'speakers',
-          y: d => d.translation_from_bleu,
+          y: d => d.average,
           r: 'speakers',
           fill: 'family',
           title: d =>
             `${d.language_name}\n${d.speakers.toLocaleString('en-US', {
               notation: 'compact'
-            })} speakers\nScore: ${d.translation_from_bleu.toFixed(2)}`,
+            })} speakers\nScore: ${d.average.toFixed(2)}`,
           tip: true
         }),
         Plot.text(
           languages.filter(a => a.speakers > 1e8),
           {
             x: 'speakers',
-            y: d => d.translation_from_bleu,
+            y: d => d.average,
             text: d => d.language_name,
             fill: 'black',
             frameAnchor: 'left',

@@ -28,6 +28,8 @@ task_metrics = [
     "mgsm_accuracy",
 ]
 
+task_metrics_basic = ["translation_from_bleu", "translation_to_bleu", "classification_accuracy"]
+
 
 def compute_normalized_average(df, metrics):
     """Compute average of min-max normalized metric columns."""
@@ -52,7 +54,7 @@ def make_model_table(df, models):
     df["task_metric"] = df["task"] + "_" + df["metric"]
     df = df.drop(columns=["task", "metric"])
     df = df.pivot(index="model", columns="task_metric", values="score")
-    df["average"] = compute_normalized_average(df, task_metrics)
+    df["average"] = compute_normalized_average(df, task_metrics_basic)
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
@@ -84,7 +86,7 @@ def make_language_table(df, languages):
     df["task_metric"] = df["task"] + "_" + df["metric"]
     df = df.drop(columns=["task", "metric"])
     df = df.pivot(index="bcp_47", columns="task_metric", values="score").reset_index()
-    df["average"] = compute_normalized_average(df, task_metrics)
+    df["average"] = compute_normalized_average(df, task_metrics_basic)
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
     df = df[
