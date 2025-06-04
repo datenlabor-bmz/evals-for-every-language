@@ -32,7 +32,7 @@ const makeTitle = data => d => {
   return `${d.properties.ADMIN} – ${cData?.score.toFixed(2)}\n\n${langstring}`
 }
 
-const WorldMap = ({ data }) => {
+const WorldMap = ({ data, width = 750, height = 500 }) => {
   const containerRef = useRef()
   const [mapData, setMapData] = useState()
 
@@ -51,8 +51,8 @@ const WorldMap = ({ data }) => {
     }, {})
     const plot = Plot.plot({
       subtitle: 'Language Proficiency Score by Country',
-      width: 750,
-      height: 500,
+      width: width,
+      height: height,
       projection: 'equal-earth',
       marks: [
         Plot.geo(mapData, {

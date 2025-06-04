@@ -10,12 +10,16 @@ import LanguagePlot from './components/LanguagePlot'
 import SpeakerPlot from './components/SpeakerPlot'
 import HistoryPlot from './components/HistoryPlot'
 import { Carousel } from 'primereact/carousel'
+import { Dialog } from 'primereact/dialog'
+import { Button } from 'primereact/button'
 
 function App () {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedLanguages, setSelectedLanguages] = useState([])
+  const [dialogVisible, setDialogVisible] = useState(false)
+
   useEffect(() => {
     fetch('/api/data', {
       method: 'POST',
@@ -36,6 +40,17 @@ function App () {
         setLoading(false)
       })
   }, [selectedLanguages])
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight)
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+      setWindowHeight(window.innerHeight)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return (
     <PrimeReactProvider>
@@ -143,9 +158,23 @@ function App () {
                   maxWidth: 'min(100vw, 800px)',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '100%'
+                  width: '100%',
+                  position: 'relative'
                 }}
               >
+                <Button
+                  icon="pi pi-external-link"
+                  className="p-button-text p-button-plain"
+                  onClick={() => setDialogVisible(true)}
+                  tooltip="Open in larger view"
+                  style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    zIndex: 1,
+                    color: '#666'
+                  }}
+                />
                 <Carousel
                   value={[
                     <WorldMap data={data.countries} />,
@@ -163,6 +192,33 @@ function App () {
             </>
           )}
         </main>
+
+        <Dialog
+          visible={dialogVisible}
+          onHide={() => setDialogVisible(false)}
+          style={{ width: '90vw', height: '90vh' }}
+          maximizable
+          modal
+          header="Charts"
+        >
+          {data && (
+            <div style={{ width: '100%', height: '100%' }}>
+              <Carousel
+                value={[
+                  <WorldMap data={data.countries} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                  <LanguagePlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                  <SpeakerPlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                  <HistoryPlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                ]}
+                numScroll={1}
+                numVisible={1}
+                itemTemplate={item => item}
+                circular
+                style={{ width: '100%', height: 'calc(90vh - 120px)' }}
+              />
+            </div>
+          )}
+        </Dialog>
       </div>
     </PrimeReactProvider>
   )
