@@ -5,10 +5,20 @@
         "author_url": "https://ai.meta.com",
         "url": "https://huggingface.co/datasets/openlanguagedata/flores_plus",
         "n_languages": 200,
-        "tasks": [
-            "translation",
-            "classification"
-        ],
+        "tasks": ["translation"],
+        "parallel": true,
+        "translation": "human",
+        "base": "FLORES",
+        "implemented": true,
+        "group": "Translation"
+    },
+    {
+        "name": "SIB-200",
+        "author": "Academic",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/Davlan/sib200",
+        "n_languages": 200,
+        "tasks": ["classification"],
         "parallel": true,
         "translation": "human",
         "base": "FLORES",

@@ -10,12 +10,16 @@ import LanguagePlot from './components/LanguagePlot'
 import SpeakerPlot from './components/SpeakerPlot'
 import HistoryPlot from './components/HistoryPlot'
 import { Carousel } from 'primereact/carousel'
+import { Dialog } from 'primereact/dialog'
+import { Button } from 'primereact/button'
 
 function App () {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedLanguages, setSelectedLanguages] = useState([])
+  const [dialogVisible, setDialogVisible] = useState(false)
+
   useEffect(() => {
     fetch('/api/data', {
       method: 'POST',
@@ -36,6 +40,17 @@ function App () {
         setLoading(false)
       })
   }, [selectedLanguages])
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight)
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+      setWindowHeight(window.innerHeight)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return (
     <PrimeReactProvider>
@@ -80,11 +95,14 @@ function App () {
               <li><b>Policymakers and funders</b> can identify and prioritize neglected languages.</li>
               <li><b>Model developers</b> can compete on our <i>AI Language Proficiency</i> metric.</li>
             </ul>
-            <p>We invite the community to <a href="#">submit</a> their custom finetuned models, and to <a href="#">integrate</a> benchmarks for more languages and tasks.</p>
+            <p>We invite the community to <a href="https://forms.gle/ckvY9pS7XLcHYnaV8" target="_blank" rel="noopener noreferrer">submit</a> their custom finetuned models, and to <a href="https://github.com/datenlabor-bmz/ai-language-monitor/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">integrate</a> benchmarks for more languages and tasks.</p>
             <p>Benchmark results automatically refresh every night and include the most popular models on <a href="https://openrouter.ai" target="_blank" rel="noopener noreferrer">OpenRouter</a>, plus community-listed models.</p>
-            <p>For a detailed methodlogy, see <a href="#">XXX</a>.</p>
+            {/* <p>For a detailed methodlogy, see <a href="#">XXX</a>.</p> */}
             <p>The AI Language Proficiency Monitor is a collaboration between BMZ's <a href="https://www.bmz-digital.global/en/overview-of-initiatives/the-bmz-data-lab/" target="_blank" rel="noopener noreferrer">Data Lab</a>, GIZ's <a href="https://www.giz.de/expertise/html/61982.html" target="_blank" rel="noopener noreferrer">FairForward</a> initiative, and the <a href="https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team" target="_blank" rel="noopener noreferrer">E&E group</a> of DFKI's Multilinguality and Language Technology Lab.</p>
           </div>
+          <a href="https://github.com/datenlabor-bmz/ai-language-monitor" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit', marginTop: '2rem' }}>
+            <i className="pi pi-github" style={{ fontSize: '1.5rem' }} />
+          </a>
         </header>
         <main
           style={{
@@ -140,9 +158,23 @@ function App () {
                   maxWidth: 'min(100vw, 800px)',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '100%'
+                  width: '100%',
+                  position: 'relative'
                 }}
               >
+                <Button
+                  icon="pi pi-external-link"
+                  className="p-button-text p-button-plain"
+                  onClick={() => setDialogVisible(true)}
+                  tooltip="Open in larger view"
+                  style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    zIndex: 1,
+                    color: '#666'
+                  }}
+                />
                 <Carousel
                   value={[
                     <WorldMap data={data.countries} />,
@@ -160,6 +192,33 @@ function App () {
             </>
           )}
         </main>
+
+        <Dialog
+          visible={dialogVisible}
+          onHide={() => setDialogVisible(false)}
+          style={{ width: '90vw', height: '90vh' }}
+          maximizable
+          modal
+          header="Charts"
+        >
+          {data && (
+            <div style={{ width: '100%', height: '100%' }}>
+              <Carousel
+                value={[
+                  <WorldMap data={data.countries} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                  <LanguagePlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                  <SpeakerPlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                  <HistoryPlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                ]}
+                numScroll={1}
+                numVisible={1}
+                itemTemplate={item => item}
+                circular
+                style={{ width: '100%', height: 'calc(90vh - 120px)' }}
+              />
+            </div>
+          )}
+        </Dialog>
       </div>
     </PrimeReactProvider>
   )

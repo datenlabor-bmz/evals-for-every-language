@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import * as Plot from '@observablehq/plot'
 
-const HistoryPlot = ({ data }) => {
+const HistoryPlot = ({ data, width = 750, height = 500 }) => {
   const containerRef = useRef()
   const models = [...data.model_table] // sort copy, not in place
     .filter(d => d.average !== null)
@@ -18,8 +18,8 @@ const HistoryPlot = ({ data }) => {
   console.log(models)
   useEffect(() => {
     const plot = Plot.plot({
-      width: 750,
-      height: 500,
+      width: width,
+      height: height,
       subtitle: 'Model performance over time',
       x: {
         label: 'Date',

@@ -57,9 +57,10 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             references=[target_sentence],
             tokenizer=tokenizer.tokenize,
         )
+        chrf_score = chrf.compute(predictions=[prediction], references=[target_sentence])
     else:
         bleu_score = {"bleu": 0}
-    chrf_score = chrf.compute(predictions=[prediction], references=[target_sentence])
+        chrf_score = {"score": 0}
     return [
         {
             "model": model,

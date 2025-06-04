@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import * as Plot from '@observablehq/plot'
 
-const SpeakerPlot = ({ data }) => {
+const SpeakerPlot = ({ data, width = 750, height = 500 }) => {
   const containerRef = useRef()
   const allSpeakers = data.language_table.reduce(
     (sum, curr) => sum + curr.speakers,
@@ -25,8 +25,8 @@ const SpeakerPlot = ({ data }) => {
 
   useEffect(() => {
     const plot = Plot.plot({
-      width: 750,
-      height: 500,
+      width: width,
+      height: height,
       subtitle: 'Number of languages vs speakers covered',
       x: {
         label: 'Languages',

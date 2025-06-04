@@ -176,6 +176,17 @@
     "creation_date":1721260800000
   },
   {
+    "id":"meta-llama\/llama-3.2-1b-instruct",
+    "name":"Llama 3.2 1B Instruct",
+    "provider_name":"Meta",
+    "cost":0.0,
+    "hf_id":"meta-llama\/Llama-3.2-1B-Instruct",
+    "size":1235814400.0,
+    "type":"open-source",
+    "license":"Llama3.2",
+    "creation_date":1726617600000
+  },
+  {
     "id":"meta-llama\/llama-3.3-70b-instruct",
     "name":"Llama 3.3 70B Instruct",
     "provider_name":"Meta",

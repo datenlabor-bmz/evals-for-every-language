@@ -13,8 +13,8 @@ const scoreBodyTemplate = (field, options = {}) => {
 const ScoreColumns = [
   <Column
     field='average'
-    header='Average'
-    headerTooltip='Language Proficiency Score (average of all displayed scores)'
+    header='Proficiency'
+    headerTooltip='Language Proficiency Score (average translation and classification scores, after min-max normalization)'
     sortable
     body={scoreBodyTemplate('average', { minScore: 0.2, maxScore: 0.5 })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
