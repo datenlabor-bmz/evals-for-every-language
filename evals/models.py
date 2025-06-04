@@ -169,7 +169,7 @@ def get_hf_metadata(row):
         "hf_id": None,
         "creation_date": None,
         "size": None,
-        "type": "Commercial",
+        "type": "closed-source",
         "license": None,
     }
     if not row:
@@ -189,7 +189,7 @@ def get_hf_metadata(row):
             "hf_id": info.id,
             "creation_date": info.created_at,
             "size": info.safetensors.total if info.safetensors else None,
-            "type": "Open",
+            "type": "open-source",
             "license": license,
         }
     except HTTPError:

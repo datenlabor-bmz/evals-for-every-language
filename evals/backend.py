@@ -125,7 +125,13 @@ async def data(request: Request):
     return JSONResponse(content=all_tables)
 
 
-app.mount("/", StaticFiles(directory="frontend/build", html=True), name="frontend")
+# Only serve static files if build directory exists (production mode)
+if os.path.exists("frontend/build"):
+    app.mount("/", StaticFiles(directory="frontend/build", html=True), name="frontend")
+else:
+    print("🧪 Development mode: frontend/build directory not found")
+    print("🌐 Frontend should be running on http://localhost:3000")
+    print("📡 API available at http://localhost:8000/api/data")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))

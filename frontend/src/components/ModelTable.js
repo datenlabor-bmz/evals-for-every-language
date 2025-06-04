@@ -20,7 +20,7 @@ const ModelTable = ({ data }) => {
     return (
       <MultiSelect
         value={options.value}
-        options={['Open', 'Commercial']}
+        options={['open-source', 'closed-source']}
         onChange={e => {
           options.filterApplyCallback(e.value)
           setFilters(prevFilters => ({
@@ -139,10 +139,10 @@ const ModelTable = ({ data }) => {
   )
 
   const typeBodyTemplate = rowData => {
-    return rowData.type === 'Open' ? (
-      <i className='pi pi-lock-open' title='Open weights' />
+    return rowData.type === 'open-source' ? (
+      <i className='pi pi-lock-open' title='Open-source model' />
     ) : (
-      <i className='pi pi-lock' title='API only' />
+      <i className='pi pi-lock' title='Closed-source model' />
     )
   }
 
@@ -179,8 +179,8 @@ const ModelTable = ({ data }) => {
       />
       <Column
         field='type'
-        header={<i className='pi pi-unlock' title='Open weights / API only' />}
-        headerTooltip='Open weights / API only'
+        header={<i className='pi pi-unlock' title='Open-source / Closed-source' />}
+        headerTooltip='Open-source / Closed-source'
         filter
         filterElement={typeRowFilterTemplate}
         showFilterMatchModes={false}
