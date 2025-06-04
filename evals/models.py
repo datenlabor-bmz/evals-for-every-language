@@ -22,9 +22,11 @@ important_models = [
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
+    # "openai/gpt-4.1",  # 8$
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
     "openai/gpt-4o-mini",  # 0.6$
+    # "openai/gpt-4o-2024-11-20", # 10$
     # "openai/gpt-3.5-turbo-0613",  # 2$
     # "openai/gpt-3.5-turbo",  # 1.5$
     # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
@@ -68,6 +70,7 @@ def get_model(permaslug):
     models = get_models(date.today())
     slugs = [m for m in models if m["permaslug"] == permaslug and m["endpoint"] and not m["endpoint"]["is_free"]]
     if len(slugs) == 0:
+        # the problem is that free models typically have very high rate-limiting
         print(f"no non-free model found for {permaslug}")
     return slugs[0] if len(slugs) >= 1 else None
 

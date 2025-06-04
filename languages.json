@@ -235,7 +235,7 @@
     "family":"Austroasiatic",
     "flores_path":"vie_Latn",
     "fleurs_tag":"vi_vn",
-    "commonvoice_hours":6.2,
+    "commonvoice_hours":6.3,
     "commonvoice_locale":"vi",
     "in_benchmark":true
   },
@@ -655,7 +655,7 @@
     "family":"Atlantic-Congo",
     "flores_path":"yor_Latn",
     "fleurs_tag":"yo_ng",
-    "commonvoice_hours":6.2,
+    "commonvoice_hours":6.3,
     "commonvoice_locale":"yo",
     "in_benchmark":true
   },
@@ -5815,7 +5815,7 @@
     "family":"Indo-European",
     "flores_path":"ltg_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":29.0,
+    "commonvoice_hours":30.0,
     "commonvoice_locale":"ltg",
     "in_benchmark":true
   },

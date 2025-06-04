@@ -9,8 +9,9 @@ from tqdm.asyncio import tqdm_asyncio
 # ===== config =====
 
 n_sentences = 10
-n_languages = 20
+n_languages = 40
 n_models = 35
+
 
 # ===== run evaluation and aggregate results =====
 
