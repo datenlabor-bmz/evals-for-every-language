@@ -7,7 +7,7 @@
     "family":"Indo-European",
     "flores_path":"eng_Latn",
     "fleurs_tag":"en_us",
-    "commonvoice_hours":2669.0,
+    "commonvoice_hours":2670.0,
     "commonvoice_locale":"en",
     "in_benchmark":true
   },
@@ -3331,7 +3331,7 @@
     "family":"Indo-European",
     "flores_path":"gle_Latn",
     "fleurs_tag":"ga_ie",
-    "commonvoice_hours":6.3,
+    "commonvoice_hours":6.7,
     "commonvoice_locale":"ga-IE",
     "in_benchmark":true
   },
@@ -3535,7 +3535,7 @@
     "family":null,
     "flores_path":"eus_Latn",
     "fleurs_tag":null,
-    "commonvoice_hours":405.0,
+    "commonvoice_hours":408.0,
     "commonvoice_locale":"eu",
     "in_benchmark":true
   },
@@ -3559,7 +3559,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":68.0,
+    "commonvoice_hours":69.0,
     "commonvoice_locale":"kbd",
     "in_benchmark":false
   },
@@ -4651,7 +4651,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":22.0,
+    "commonvoice_hours":23.0,
     "commonvoice_locale":"ady",
     "in_benchmark":false
   },
