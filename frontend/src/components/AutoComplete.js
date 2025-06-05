@@ -4,7 +4,8 @@ const AutoComplete = ({ languages, onComplete }) => {
   const [autoComplete, setAutoComplete] = useState('')
   const [suggestions, setSuggestions] = useState([])
 
-  const exampleCodes = ['de', 'fr', 'ar', 'hi', 'sw', 'fa']
+  const exampleCodes = ['sw','ar', 'hi', 'en']
+//  const exampleCodes = ['ar', 'hi', 'sw', 'fa']
   const exampleLanguages = exampleCodes.map(code =>
     languages?.find(item => item.bcp_47 === code)
   )
