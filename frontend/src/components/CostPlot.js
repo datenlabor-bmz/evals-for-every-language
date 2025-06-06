@@ -3,27 +3,32 @@ import * as Plot from '@observablehq/plot'
 
 const HistoryPlot = ({ data, width = 750, height = 500 }) => {
   const containerRef = useRef()
-  const models = [...data.model_table] // sort copy, not in place
-    .filter(d => d.average !== null)
-    .sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date))
-    .reduce((acc, curr) => {
-      const last = acc[acc.length - 1]?.maxAverage || 0
-      acc.push({
-        ...curr,
-        maxAverage: Math.max(last, curr.average),
-        newRecord: curr.average > last
-      })
-      return acc
-    }, [])
   useEffect(() => {
+    const models = [...data.model_table] // sort copy, not in place
+      .filter(d => d.average !== null && d.cost > 0)
+      .sort((a, b) => a.cost - b.cost)
+      .reduce((acc, curr) => {
+        const last = acc[acc.length - 1]?.maxAverage || 0
+        acc.push({
+          ...curr,
+          maxAverage: Math.max(last, curr.average),
+          newRecord: curr.average > last
+        })
+        return acc
+      }, [])
+    let USDollar = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    })
     const plot = Plot.plot({
       width: width,
       height: height,
-      subtitle: 'Model performance over time',
+      subtitle: 'Cost vs Performance',
       x: {
-        label: 'Date',
-        type: 'time',
-        tickFormat: '%Y-%m'
+        label: 'Cost (USD)',
+        type: 'log',
+        // format dollar / ct
+        tickFormat: d => USDollar.format(d)
       },
       y: {
         label: 'Language Proficiency Score'
@@ -33,30 +38,30 @@ const HistoryPlot = ({ data, width = 750, height = 500 }) => {
       },
       marks: [
         Plot.dot(models, {
-          x: d => d.creation_date,
+          x: d => d.cost,
           y: d => d.average,
           symbol: 'provider_name',
           stroke: 'provider_name',
           title: d =>
             `${d.provider_name} - ${d.name} (${
               d.size?.toLocaleString('en-US', { notation: 'compact' }) || '?B'
-            })\nPublished: ${new Date(
-              d.creation_date
-            ).toLocaleDateString()}\nScore: ${d.average.toFixed(2)}`,
+            })\nCost: ${USDollar.format(d.cost)}\nScore: ${d.average.toFixed(
+              2
+            )}`,
           tip: true
         }),
         Plot.line(
           [
             ...models.filter(d => d.newRecord),
             {
-              creation_date: new Date(),
+              cost: models.map(d => d.cost).reduce((a, b) => Math.max(a, b), 0),
               maxAverage: models[models.length - 1].maxAverage
             }
           ],
           {
-            x: d => d.creation_date,
+            x: d => d.cost,
             y: d => d.maxAverage,
-            curve: 'step-after',
+            curve: 'catmull-rom',
             strokeOpacity: 0.3
           }
         )
@@ -64,7 +69,7 @@ const HistoryPlot = ({ data, width = 750, height = 500 }) => {
     })
     containerRef.current.append(plot)
     return () => plot.remove()
-  }, [])
+  }, [data])
 
   return (
     <div

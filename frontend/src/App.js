@@ -9,6 +9,7 @@ import AutoComplete from './components/AutoComplete'
 import LanguagePlot from './components/LanguagePlot'
 import SpeakerPlot from './components/SpeakerPlot'
 import HistoryPlot from './components/HistoryPlot'
+import CostPlot from './components/CostPlot'
 import { Carousel } from 'primereact/carousel'
 import { Dialog } from 'primereact/dialog'
 import { Button } from 'primereact/button'
@@ -211,6 +212,7 @@ function App () {
                     <LanguagePlot data={data} />,
                     <SpeakerPlot data={data} />,
                     <HistoryPlot data={data} />,
+                    <CostPlot data={data} />,
                   ]}
                   numScroll={1}
                   numVisible={1}

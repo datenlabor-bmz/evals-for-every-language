@@ -43,7 +43,6 @@ const WorldMap = ({ data, width = 750, height = 500 }) => {
   }, [])
 
   useEffect(() => {
-    console.log('countries', data)
     if (mapData === undefined || data === undefined) return
     const countriesDict = data.reduce((acc, country) => {
       acc[country.iso2] = country
