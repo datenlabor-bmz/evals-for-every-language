@@ -27,52 +27,87 @@ html, body, #root {
 
 .p-datatable-wrapper {
   scrollbar-color: #f0f0f0 rgba(0, 0, 0, 0);
-  border-radius: 0 0 10px 10px;  
+  border-radius: 0 0 6px 6px;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  transition: background-color 0.2s ease;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background-color: #fafafa !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  font-weight: 500;
+  color: #555;
+  padding: 0.75rem 1rem;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 #model-table {
-  border: 3px solid #5151ff;
-  border-radius: 10px;
+  border: 2px solid #d1d5ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 #model-table .p-datatable-header {
   border-top-width: 0px;
-  border-radius: 5px 5px 0 0;
-  background: linear-gradient(to bottom, #5151ff, #0000cd);
-  color: white;
+  border-radius: 6px 6px 0 0;
+  background: #f0f3ff;
+  color: #333;
+  border-bottom: 2px solid #d1d5ff;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
 }
 
 #language-table {
-  border: 3px solid #00aa00;
-  border-radius: 10px;
+  border: 2px solid #c8f2c8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 #language-table .p-datatable-header {
   border-top-width: 0px;
-  border-radius: 5px 5px 0 0;
-  background: linear-gradient(to bottom, #17b417, #008000);
-  color: white;
+  border-radius: 6px 6px 0 0;
+  background: #f0fff0;
+  color: #333;
+  border-bottom: 2px solid #c8f2c8;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
 }
 
 #dataset-table {
-  border: 3px solid #ffaa00;
-  border-radius: 10px;
+  border: 2px solid #ffe4cc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 #dataset-table .p-datatable-header {
   border-top-width: 0px;
-  border-radius: 5px 5px 0 0;
-  background: linear-gradient(to bottom, #ffaa00, #ff8000);
-  color: white;
+  border-radius: 6px 6px 0 0;
+  background: #fff8f0;
+  color: #333;
+  border-bottom: 2px solid #ffe4cc;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
 }
 
 #figure {
   width: 100%;
   min-width: 600px;
   height: 600px;
-  border: 1px solid #bdbdbd;
-  border-radius: 10px;
-  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fafafa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .p-autocomplete-input {

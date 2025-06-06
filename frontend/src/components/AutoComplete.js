@@ -1,102 +1,255 @@
-import { AutoComplete as PrimeAutoComplete } from 'primereact/autocomplete'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
 const AutoComplete = ({ languages, onComplete }) => {
-  const [autoComplete, setAutoComplete] = useState('')
-  const [suggestions, setSuggestions] = useState([])
+  const [isOpen, setIsOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedLanguage, setSelectedLanguage] = useState(null)
+  const [filteredLanguages, setFilteredLanguages] = useState([])
+  const dropdownRef = useRef(null)
+  const inputRef = useRef(null)
 
-  const exampleCodes = ['sw','ar', 'hi', 'en']
-//  const exampleCodes = ['ar', 'hi', 'sw', 'fa']
-  const exampleLanguages = exampleCodes.map(code =>
-    languages?.find(item => item.bcp_47 === code)
-  )
-
-  const search = e => {
-    const matches = languages.filter(language => {
-      const query = e.query.toLowerCase()
-      return (
+  // Most spoken languages (by number of speakers) - you can adjust this list
+  const mostSpokenCodes = ['en', 'zh', 'hi', 'es', 'ar', 'bn', 'pt', 'ru', 'ja', 'pa', 'de', 'jv', 'ko', 'fr', 'te', 'mr', 'tr', 'ta', 'vi', 'ur']
+  
+  useEffect(() => {
+    if (!languages) return
+    
+    if (searchTerm.trim() === '') {
+      // Show most spoken languages first, then others
+      const mostSpoken = mostSpokenCodes
+        .map(code => languages.find(lang => lang.bcp_47 === code))
+        .filter(Boolean)
+      
+      const others = languages
+        .filter(lang => !mostSpokenCodes.includes(lang.bcp_47))
+        .sort((a, b) => a.language_name.localeCompare(b.language_name))
+      
+      setFilteredLanguages([...mostSpoken, ...others])
+    } else {
+      const query = searchTerm.toLowerCase()
+      const matches = languages.filter(language => 
         language.language_name.toLowerCase().includes(query) ||
         language.autonym.toLowerCase().includes(query) ||
         language.bcp_47.toLowerCase().includes(query)
       )
-    })
-    setSuggestions(matches)
+      setFilteredLanguages(matches)
+    }
+  }, [searchTerm, languages, mostSpokenCodes])
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false)
+        setSearchTerm('')
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const handleSelect = (language) => {
+    setSelectedLanguage(language)
+    setIsOpen(false)
+    setSearchTerm('')
+    onComplete([language])
   }
 
-  const itemTemplate = item => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-      }}
-    >
-      <span>
-        {item.autonym}
-        <span style={{ color: 'gray', marginLeft: '1rem' }}>
-          {item.language_name}
-        </span>
-      </span>
-      <span style={{ color: 'gray' }}>{item.bcp_47}</span>
-    </div>
-  )
+  const handleClear = (e) => {
+    e.stopPropagation()
+    setSelectedLanguage(null)
+    onComplete([])
+  }
+
+  const handleContainerClick = () => {
+    setIsOpen(true)
+    if (!selectedLanguage) {
+      setTimeout(() => inputRef.current?.focus(), 100)
+    }
+  }
+
+  const handleInputChange = (e) => {
+    // If user starts typing while a language is selected, clear the selection to enable search
+    if (selectedLanguage && e.target.value.length > 0) {
+      setSelectedLanguage(null)
+      onComplete([])
+    }
+    setSearchTerm(e.target.value)
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      setIsOpen(false)
+      setSearchTerm('')
+    }
+  }
+
+  const containerStyle = {
+    position: 'relative',
+    display: 'inline-block',
+    minWidth: '400px',
+    maxWidth: '600px'
+  }
+
+  const buttonStyle = {
+    color: selectedLanguage ? '#333' : '#666',
+    border: '1px solid #ddd',
+    padding: '0.75rem 1rem',
+    borderRadius: '4px',
+    fontSize: '0.95rem',
+    backgroundColor: '#fff',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    minHeight: '44px',
+    transition: 'border-color 0.2s ease, box-shadow 0.2s ease'
+  }
+
+  const inputStyle = {
+    border: 'none',
+    outline: 'none',
+    fontSize: '0.95rem',
+    width: '100%',
+    backgroundColor: 'transparent',
+    color: '#333'
+  }
+
+  const dropdownStyle = {
+    position: 'absolute',
+    top: '100%',
+    left: 0,
+    right: 0,
+    backgroundColor: '#fff',
+    border: '1px solid #ddd',
+    borderTop: 'none',
+    borderRadius: '0 0 4px 4px',
+    maxHeight: '300px',
+    overflowY: 'auto',
+    zIndex: 1000,
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+  }
+
+  const itemStyle = {
+    padding: '0.75rem 1rem',
+    cursor: 'pointer',
+    borderBottom: '1px solid #f0f0f0',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    transition: 'background-color 0.2s ease'
+  }
+
+  const clearButtonStyle = {
+    background: 'none',
+    border: 'none',
+    color: '#999',
+    cursor: 'pointer',
+    padding: '0.25rem',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '20px',
+    height: '20px',
+    fontSize: '14px',
+    marginLeft: '0.5rem'
+  }
 
   return (
-    <>
-      <PrimeAutoComplete
-        placeholder='Search for language-specific leaderboards...'
-        value={autoComplete}
-        onChange={e => setAutoComplete(e.value)}
-        onClick={() => {
-          setAutoComplete('')
-          setSuggestions(languages)
+    <div style={containerStyle} ref={dropdownRef}>
+      <div 
+        style={buttonStyle}
+        onClick={handleContainerClick}
+        onMouseEnter={(e) => {
+          if (!selectedLanguage) {
+            e.target.style.borderColor = '#bbb'
+          }
         }}
-        onSelect={e => {
-          setAutoComplete(e.value.language_name)
-          onComplete([e.value])
-        }}
-        suggestions={suggestions}
-        completeMethod={search}
-        virtualScrollerOptions={{ itemSize: 50 }} // smaller values give layout problems
-        delay={500}
-        autoHighlight
-        autoFocus
-        itemTemplate={itemTemplate}
-        field='language_name'
-        minLength={0}
-      />
-      <span
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          rowGap: '0.3rem',
-          marginTop: '1rem',
-          maxWidth: '600px',
-          justifyContent: 'center',
-          color: '#555',
-          fontSize: '0.8rem'
+        onMouseLeave={(e) => {
+          e.target.style.borderColor = '#ddd'
         }}
       >
-        <span>Examples:</span>
-        {exampleLanguages?.map(language => (
-          <a
-            onClick={() => {
-              onComplete([language])
-              setAutoComplete(language.language_name)
-            }}
-            style={{ textDecoration: 'underline', cursor: 'pointer' }}
-          >
-            {language.language_name} Leaderboard
-          </a>
-        ))}
-        {/* <li>African Leaderboard</li>
-              <li>Indic Leaderboard</li>
-              <li>Transcription Leaderboard</li>
-              <li>Dataset Availability for African Languages</li>
-              <li>GPT 4.5 Evaluation</li>
-              <li>MMLU Evaluation of Open Models</li> */}
-      </span>
-    </>
+        {selectedLanguage && !isOpen ? (
+          <>
+            <span style={{ fontWeight: '500' }}>
+              {selectedLanguage.language_name} Leaderboard
+            </span>
+            <button
+              style={clearButtonStyle}
+              onClick={handleClear}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#f0f0f0'
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'transparent'
+              }}
+              title="View overall leaderboard"
+            >
+              ×
+            </button>
+          </>
+        ) : isOpen ? (
+          <input
+            ref={inputRef}
+            style={inputStyle}
+            placeholder={selectedLanguage ? "Type to search other languages..." : "Type to search languages..."}
+            value={searchTerm}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+          />
+        ) : (
+          <span>Search for language-specific leaderboards...</span>
+        )}
+        {(!selectedLanguage || isOpen) && (
+          <span style={{ color: '#999', fontSize: '12px' }}>
+            {isOpen ? '▲' : '▼'}
+          </span>
+        )}
+      </div>
+
+      {isOpen && (
+        <div style={dropdownStyle}>
+          {filteredLanguages.length === 0 ? (
+            <div style={{ ...itemStyle, color: '#999', cursor: 'default' }}>
+              No languages found
+            </div>
+          ) : (
+            filteredLanguages.slice(0, 20).map((language, index) => (
+              <div
+                key={language.bcp_47}
+                style={itemStyle}
+                onClick={() => handleSelect(language)}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#f8f9fa'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = 'transparent'
+                }}
+              >
+                <div>
+                  <div style={{ fontWeight: '500', marginBottom: '2px' }}>
+                    {language.language_name} Leaderboard
+                  </div>
+                  <div style={{ fontSize: '0.85rem', color: '#666' }}>
+                    {language.autonym}
+                  </div>
+                </div>
+                <div style={{ color: '#999', fontSize: '0.8rem' }}>
+                  {language.bcp_47}
+                </div>
+              </div>
+            ))
+          )}
+          {filteredLanguages.length > 20 && (
+            <div style={{ ...itemStyle, color: '#999', cursor: 'default', fontStyle: 'italic' }}>
+              ... and {filteredLanguages.length - 20} more languages
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   )
 }
 

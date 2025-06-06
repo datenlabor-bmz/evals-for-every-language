@@ -94,10 +94,23 @@ function App () {
               🌍
             </span>
           </div>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: '700' }}>
+          <h1 style={{ 
+            fontSize: '2.5rem', 
+            fontWeight: '600',
+            margin: '1rem 0 0.5rem 0',
+            color: '#333',
+            letterSpacing: '-0.01em'
+          }}>
               AI Language Proficiency Monitor
           </h1>
-          <p style={{ fontSize: '1.10rem', color: '#555', marginTop: '0', marginBottom: '2rem' }}>
+          <p style={{ 
+            fontSize: '1.1rem', 
+            color: '#666', 
+            margin: '0 0 2.5rem 0',
+            fontWeight: '400',
+            maxWidth: '700px',
+            lineHeight: '1.5'
+          }}>
             Comprehensive multilingual evaluation results for AI language models
           </p>
           
@@ -155,13 +168,18 @@ function App () {
           {data && (
             <>
               <div style={{ width: '100%' }}>
-                <ModelTable data={data.model_table} />
+                <ModelTable 
+                  data={data.model_table} 
+                  selectedLanguages={selectedLanguages}
+                  allLanguages={data.language_table || []}
+                />
               </div>
               <div style={{ width: '100%' }}>
                 <LanguageTable
                   data={data.language_table}
                   selectedLanguages={selectedLanguages}
                   setSelectedLanguages={setSelectedLanguages}
+                  totalModels={data.model_table?.length || 0}
                 />
               </div>
               <div style={{ width: '100%' }}>
@@ -272,7 +290,7 @@ function App () {
           style={{ width: '90vw', height: '90vh' }}
           maximizable
           modal
-          header="Interactive Visualizations"
+          header={null}
         >
           {data && (
             <div style={{ width: '100%', height: '100%' }}>

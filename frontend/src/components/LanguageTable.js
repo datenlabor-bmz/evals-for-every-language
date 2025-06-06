@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { Slider } from 'primereact/slider'
 import ScoreColumns from './ScoreColumns'
 
-const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
+const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages, totalModels = 0 }) => {
   const [filters, setFilters] = useState({
     language_name: { value: null, matchMode: FilterMatchMode.EQUALS }, // via global search
     family: { value: null, matchMode: FilterMatchMode.IN },
@@ -122,7 +122,14 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages }) => {
       value={data.filter(
         item => !selectedLanguages.some(l => l.bcp_47 === item.bcp_47)
       )}
-      header={<>Languages</>}
+      header={
+        <span>
+          <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>Languages</span>
+          <span style={{ fontSize: '0.85em', marginLeft: '0.5rem' }}>
+            Average performance of {totalModels} evaluated AI models
+          </span>
+        </span>
+      }
       sortField='speakers'
       removableSort
       filters={filters}
