@@ -10,9 +10,8 @@ from dotenv import load_dotenv
 from elevenlabs import AsyncElevenLabs
 from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
-from openai import AsyncOpenAI
+from openai import AsyncOpenAI, PermissionDeniedError
 from requests import HTTPError, get
-from openai import PermissionDeniedError
 
 # for development purposes, all languages will be evaluated on the fast models
 # and only a sample of languages will be evaluated on all models
@@ -48,7 +47,7 @@ important_models = [
 ]
 
 blocklist = [
-    "microsoft/wizardlm-2-8x22b" # temporarily rate-limited
+    "microsoft/wizardlm-2-8x22b"  # temporarily rate-limited
 ]
 
 transcription_models = [
@@ -68,7 +67,13 @@ def get_models(date: date):
 
 def get_model(permaslug):
     models = get_models(date.today())
-    slugs = [m for m in models if m["permaslug"] == permaslug and m["endpoint"] and not m["endpoint"]["is_free"]]
+    slugs = [
+        m
+        for m in models
+        if m["permaslug"] == permaslug
+        and m["endpoint"]
+        and not m["endpoint"]["is_free"]
+    ]
     if len(slugs) == 0:
         # the problem is that free models typically have very high rate-limiting
         print(f"no non-free model found for {permaslug}")
@@ -123,6 +128,7 @@ async def complete(**kwargs) -> str | None:
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()
+
 
 @cache
 async def transcribe_elevenlabs(path, model):
@@ -221,7 +227,9 @@ def load_models(date: date):
     ).dt.date
 
     models = models.assign(
-        name=or_metadata.str["short_name"].str.replace(" (free)", ""),
+        name=or_metadata.str["short_name"]
+        .str.replace(" (free)", "")
+        .str.replace(" (self-moderated)", ""),
         provider_name=or_metadata.str["name"].str.split(": ").str[0],
         cost=or_metadata.apply(get_cost),
         hf_id=hf_metadata.str["hf_id"],
@@ -230,7 +238,7 @@ def load_models(date: date):
         license=hf_metadata.str["license"],
         creation_date=creation_date_hf.combine_first(creation_date_or),
     )
-    models = models[models["cost"] <= 2.0].reset_index(drop=True)
+    # models = models[models["cost"] <= 2.0].reset_index(drop=True)
     return models
 
 

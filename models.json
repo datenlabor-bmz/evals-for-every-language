@@ -11,6 +11,39 @@
     "creation_date":1733356800000
   },
   {
+    "id":"anthropic\/claude-3.5-sonnet",
+    "name":"Claude 3.5 Sonnet",
+    "provider_name":"Anthropic",
+    "cost":15.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1729555200000
+  },
+  {
+    "id":"anthropic\/claude-3.7-sonnet",
+    "name":"Claude 3.7 Sonnet",
+    "provider_name":"Anthropic",
+    "cost":15.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1740355200000
+  },
+  {
+    "id":"anthropic\/claude-sonnet-4",
+    "name":"Claude Sonnet 4",
+    "provider_name":"Anthropic",
+    "cost":15.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1747872000000
+  },
+  {
     "id":"deepseek\/deepseek-chat",
     "name":"DeepSeek V3",
     "provider_name":"DeepSeek",
@@ -97,6 +130,17 @@
     "type":"closed-source",
     "license":null,
     "creation_date":1747699200000
+  },
+  {
+    "id":"google\/gemini-2.5-pro-preview-05-06",
+    "name":"Gemini 2.5 Pro Preview 05-06",
+    "provider_name":"Google",
+    "cost":10.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1746576000000
   },
   {
     "id":"google\/gemini-flash-1.5",
@@ -262,6 +306,17 @@
     "type":"open-source",
     "license":"Apache 2.0",
     "creation_date":1741651200000
+  },
+  {
+    "id":"openai\/gpt-4.1",
+    "name":"GPT-4.1",
+    "provider_name":"OpenAI",
+    "cost":8.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1744588800000
   },
   {
     "id":"openai\/gpt-4.1-mini",
