@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import * as Plot from '@observablehq/plot'
 
-const HistoryPlot = ({ data, width = 750, height = 500 }) => {
+const CostPlot = ({ data, width = 750, height = 500 }) => {
   const containerRef = useRef()
   useEffect(() => {
     const models = [...data.model_table] // sort copy, not in place
@@ -55,12 +55,12 @@ const HistoryPlot = ({ data, width = 750, height = 500 }) => {
             ...models.filter(d => d.newRecord),
             {
               cost: models.map(d => d.cost).reduce((a, b) => Math.max(a, b), 0),
-              maxAverage: models[models.length - 1].maxAverage
+              maxAverage: models[models.length - 1]?.maxAverage || 0
             }
           ],
           {
             x: d => d.cost,
-            y: d => d.maxAverage,
+            y: d => d?.maxAverage || 0,
             curve: 'catmull-rom',
             strokeOpacity: 0.3
           }
@@ -69,7 +69,7 @@ const HistoryPlot = ({ data, width = 750, height = 500 }) => {
     })
     containerRef.current.append(plot)
     return () => plot.remove()
-  }, [data])
+  }, [data, width, height])
 
   return (
     <div
@@ -85,4 +85,4 @@ const HistoryPlot = ({ data, width = 750, height = 500 }) => {
   )
 }
 
-export default HistoryPlot
+export default CostPlot

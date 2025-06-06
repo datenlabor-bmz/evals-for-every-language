@@ -81,7 +81,7 @@ const SpeakerPlot = ({ data, width = 750, height = 500 }) => {
     })
     containerRef.current.append(plot)
     return () => plot.remove()
-  }, [])
+  }, [languages, width, height])
 
   return (
     <div

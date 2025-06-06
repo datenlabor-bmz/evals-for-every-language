@@ -65,7 +65,7 @@ const WorldMap = ({ data, width = 750, height = 500 }) => {
         unknown: 'gray',
         label: 'Score',
         legend: true,
-        domain: [0, 0.7]
+        domain: [0, 1]
       },
       style: {
         fontFamily: 'monospace'
@@ -73,7 +73,7 @@ const WorldMap = ({ data, width = 750, height = 500 }) => {
     })
     containerRef.current.append(plot)
     return () => plot.remove()
-  }, [mapData, data])
+  }, [mapData, data, width, height])
 
   return (
     <div

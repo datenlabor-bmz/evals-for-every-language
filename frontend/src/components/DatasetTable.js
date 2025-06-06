@@ -23,7 +23,7 @@ const DatasetTable = ({ data }) => {
 
   const authorBodyTemplate = rowData => {
     const url = rowData.author_url?.replace('https://', '')
-    const img = url ? <img src={`https://favicone.com/${url}`} style={{borderRadius: '50%'}}/> : <></>
+    const img = url ? <img src={`https://favicone.com/${url}`} style={{borderRadius: '50%'}} alt="Thumbnail of the author's website"/> : <></>
     return <div style={{ display: 'flex', alignItems: 'center' }}>
       <div style={{ width: '16px', height: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{img}</div>
       <div style={{ marginLeft: '0.5rem' }}>{rowData.author}</div>
@@ -41,7 +41,7 @@ const DatasetTable = ({ data }) => {
   }
 
   const linkBodyTemplate = rowData => {
-    return <a href={rowData.url} target='_blank' style={{ textDecoration: 'none', color: 'inherit' }}><i className='pi pi-external-link' style={{ fontSize: '0.8rem' }} /></a>
+    return <a href={rowData.url} target='_blank' rel='noopener noreferrer' style={{ textDecoration: 'none', color: 'inherit' }}><i className='pi pi-external-link' style={{ fontSize: '0.8rem' }} /></a>
   }
 
   const translationBodyTemplate = rowData => {

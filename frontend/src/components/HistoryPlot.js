@@ -64,7 +64,7 @@ const HistoryPlot = ({ data, width = 750, height = 500 }) => {
     })
     containerRef.current.append(plot)
     return () => plot.remove()
-  }, [])
+  }, [models, width, height])
 
   return (
     <div

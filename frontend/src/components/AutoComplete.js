@@ -8,36 +8,58 @@ const AutoComplete = ({ languages, onComplete }) => {
   const dropdownRef = useRef(null)
   const inputRef = useRef(null)
 
-  // Most spoken languages (by number of speakers) - you can adjust this list
-  const mostSpokenCodes = ['en', 'zh', 'hi', 'es', 'ar', 'bn', 'pt', 'ru', 'ja', 'pa', 'de', 'jv', 'ko', 'fr', 'te', 'mr', 'tr', 'ta', 'vi', 'ur']
-  
   useEffect(() => {
     if (!languages) return
-    
+
+    // Most spoken languages (by number of speakers) - you can adjust this list
+    const mostSpokenCodes = [
+      'en',
+      'zh',
+      'hi',
+      'es',
+      'ar',
+      'bn',
+      'pt',
+      'ru',
+      'ja',
+      'pa',
+      'de',
+      'jv',
+      'ko',
+      'fr',
+      'te',
+      'mr',
+      'tr',
+      'ta',
+      'vi',
+      'ur'
+    ]
+
     if (searchTerm.trim() === '') {
       // Show most spoken languages first, then others
       const mostSpoken = mostSpokenCodes
         .map(code => languages.find(lang => lang.bcp_47 === code))
         .filter(Boolean)
-      
+
       const others = languages
         .filter(lang => !mostSpokenCodes.includes(lang.bcp_47))
         .sort((a, b) => a.language_name.localeCompare(b.language_name))
-      
+
       setFilteredLanguages([...mostSpoken, ...others])
     } else {
       const query = searchTerm.toLowerCase()
-      const matches = languages.filter(language => 
-        language.language_name.toLowerCase().includes(query) ||
-        language.autonym.toLowerCase().includes(query) ||
-        language.bcp_47.toLowerCase().includes(query)
+      const matches = languages.filter(
+        language =>
+          language.language_name.toLowerCase().includes(query) ||
+          language.autonym.toLowerCase().includes(query) ||
+          language.bcp_47.toLowerCase().includes(query)
       )
       setFilteredLanguages(matches)
     }
-  }, [searchTerm, languages, mostSpokenCodes])
+  }, [searchTerm, languages])
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = event => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false)
         setSearchTerm('')
@@ -48,14 +70,14 @@ const AutoComplete = ({ languages, onComplete }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const handleSelect = (language) => {
+  const handleSelect = language => {
     setSelectedLanguage(language)
     setIsOpen(false)
     setSearchTerm('')
     onComplete([language])
   }
 
-  const handleClear = (e) => {
+  const handleClear = e => {
     e.stopPropagation()
     setSelectedLanguage(null)
     onComplete([])
@@ -68,7 +90,7 @@ const AutoComplete = ({ languages, onComplete }) => {
     }
   }
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     // If user starts typing while a language is selected, clear the selection to enable search
     if (selectedLanguage && e.target.value.length > 0) {
       setSelectedLanguage(null)
@@ -77,7 +99,7 @@ const AutoComplete = ({ languages, onComplete }) => {
     setSearchTerm(e.target.value)
   }
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = e => {
     if (e.key === 'Escape') {
       setIsOpen(false)
       setSearchTerm('')
@@ -159,15 +181,15 @@ const AutoComplete = ({ languages, onComplete }) => {
 
   return (
     <div style={containerStyle} ref={dropdownRef}>
-      <div 
+      <div
         style={buttonStyle}
         onClick={handleContainerClick}
-        onMouseEnter={(e) => {
+        onMouseEnter={e => {
           if (!selectedLanguage) {
             e.target.style.borderColor = '#bbb'
           }
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={e => {
           e.target.style.borderColor = '#ddd'
         }}
       >
@@ -179,13 +201,13 @@ const AutoComplete = ({ languages, onComplete }) => {
             <button
               style={clearButtonStyle}
               onClick={handleClear}
-              onMouseEnter={(e) => {
+              onMouseEnter={e => {
                 e.target.style.backgroundColor = '#f0f0f0'
               }}
-              onMouseLeave={(e) => {
+              onMouseLeave={e => {
                 e.target.style.backgroundColor = 'transparent'
               }}
-              title="View overall leaderboard"
+              title='View overall leaderboard'
             >
               ×
             </button>
@@ -194,13 +216,17 @@ const AutoComplete = ({ languages, onComplete }) => {
           <input
             ref={inputRef}
             style={inputStyle}
-            placeholder={selectedLanguage ? "Type to search other languages..." : "Type to search languages..."}
+            placeholder={
+              selectedLanguage
+                ? 'Type to search other languages...'
+                : 'Type to search languages...'
+            }
             value={searchTerm}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />
         ) : (
-          <span>Search for language-specific leaderboards...</span>
+          <span>Go to leaderboard for specific language...</span>
         )}
         {(!selectedLanguage || isOpen) && (
           <span style={{ color: '#999', fontSize: '12px' }}>
@@ -221,10 +247,10 @@ const AutoComplete = ({ languages, onComplete }) => {
                 key={language.bcp_47}
                 style={itemStyle}
                 onClick={() => handleSelect(language)}
-                onMouseEnter={(e) => {
+                onMouseEnter={e => {
                   e.target.style.backgroundColor = '#f8f9fa'
                 }}
-                onMouseLeave={(e) => {
+                onMouseLeave={e => {
                   e.target.style.backgroundColor = 'transparent'
                 }}
               >
@@ -243,8 +269,15 @@ const AutoComplete = ({ languages, onComplete }) => {
             ))
           )}
           {filteredLanguages.length > 20 && (
-            <div style={{ ...itemStyle, color: '#999', cursor: 'default', fontStyle: 'italic' }}>
-              ... and {filteredLanguages.length - 20} more languages
+            <div
+              style={{
+                ...itemStyle,
+                color: '#999',
+                cursor: 'default',
+                fontStyle: 'italic'
+              }}
+            >
+              Type to search for more languages...
             </div>
           )}
         </div>

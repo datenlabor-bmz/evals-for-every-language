@@ -302,6 +302,7 @@ function App () {
                   <LanguagePlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
                   <SpeakerPlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
                   <HistoryPlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
+                  <CostPlot data={data} />,
                 ]}
                 numScroll={1}
                 numVisible={1}

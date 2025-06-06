@@ -4,7 +4,6 @@ import * as Plot from '@observablehq/plot'
 const LanguagePlot = ({ data, width = 750, height = 500 }) => {
   const containerRef = useRef()
   const languages = data.language_table.filter(a => a.average > 0)
-  const families = [...new Set(languages.map(a => a.family))]
 
   useEffect(() => {
     const plot = Plot.plot({
@@ -46,7 +45,7 @@ const LanguagePlot = ({ data, width = 750, height = 500 }) => {
     })
     containerRef.current.append(plot)
     return () => plot.remove()
-  }, [])
+  }, [languages, width, height])
 
   return (
     <div
