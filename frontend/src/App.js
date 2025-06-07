@@ -130,9 +130,11 @@ function App () {
             />
             
             <Button 
-              label="🚀 Add your model" 
+              label="🚀 Add your model (soon)" 
               className="p-button-text"
               onClick={() => setContributeVisible(true)}
+              tooltip="This feature is on our roadmap and will be available soon."
+              tooltipOptions={{ position: 'bottom' }}
               style={{
                 color: '#666',
                 border: '1px solid #ddd',
