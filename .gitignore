@@ -3,6 +3,7 @@ fleurs
 spbleu
 .cache
 .env
+*_credentials.json
 
 # Python-generated files
 __pycache__/

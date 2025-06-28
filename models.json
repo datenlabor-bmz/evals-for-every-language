@@ -8,7 +8,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1733356800000
+    "creation_date":1733356800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"anthropic\/claude-3.5-sonnet",
@@ -19,7 +26,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1729555200000
+    "creation_date":1729555200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"anthropic\/claude-3.7-sonnet",
@@ -30,7 +44,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1740355200000
+    "creation_date":1740355200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"anthropic\/claude-sonnet-4",
@@ -41,7 +62,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1747872000000
+    "creation_date":1747872000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"deepseek\/deepseek-chat",
@@ -52,7 +80,14 @@
     "size":684531386000.0,
     "type":"open-source",
     "license":"",
-    "creation_date":1735084800000
+    "creation_date":1735084800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"deepseek\/deepseek-chat-v3-0324",
@@ -63,7 +98,14 @@
     "size":684531386000.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1742774400000
+    "creation_date":1742774400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"deepseek\/deepseek-r1",
@@ -74,7 +116,14 @@
     "size":684531386000.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1737331200000
+    "creation_date":1737331200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"deepseek\/deepseek-r1-0528",
@@ -85,7 +134,8 @@
     "size":684531386000.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1748390400000
+    "creation_date":1748390400000.0,
+    "tasks":null
   },
   {
     "id":"google\/gemini-2.0-flash-001",
@@ -96,7 +146,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1738713600000
+    "creation_date":1738713600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"google\/gemini-2.0-flash-lite-001",
@@ -107,7 +164,50 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1740441600000
+    "creation_date":1740441600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/gemini-2.5-flash",
+    "name":"Gemini 2.5 Flash",
+    "provider_name":"Google",
+    "cost":2.5,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1750118400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/gemini-2.5-flash-lite-preview-06-17",
+    "name":"Gemini 2.5 Flash Lite Preview 06-17",
+    "provider_name":"Google",
+    "cost":0.4,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1750118400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"google\/gemini-2.5-flash-preview",
@@ -118,7 +218,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1744848000000
+    "creation_date":1744848000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"google\/gemini-2.5-flash-preview-05-20",
@@ -129,7 +236,50 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1747699200000
+    "creation_date":1747699200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/gemini-2.5-pro",
+    "name":"Gemini 2.5 Pro",
+    "provider_name":"Google",
+    "cost":10.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1750118400000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/gemini-2.5-pro-preview",
+    "name":"Gemini 2.5 Pro Preview 06-05",
+    "provider_name":"Google",
+    "cost":10.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1749081600000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"google\/gemini-2.5-pro-preview-05-06",
@@ -140,7 +290,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1746576000000
+    "creation_date":1746576000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"google\/gemini-flash-1.5",
@@ -151,7 +308,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1715644800000
+    "creation_date":1715644800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"google\/gemini-flash-1.5-8b",
@@ -162,7 +326,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1727913600000
+    "creation_date":1727913600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"google\/gemma-3-27b-it",
@@ -173,7 +344,29 @@
     "size":27432406640.0,
     "type":"open-source",
     "license":"Gemma",
-    "creation_date":1740787200000
+    "creation_date":1740787200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/translate-v2",
+    "name":"Google Translate",
+    "provider_name":"Google",
+    "cost":20.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":null,
+    "tasks":[
+      "translation_from",
+      "translation_to"
+    ]
   },
   {
     "id":"gryphe\/mythomax-l2-13b",
@@ -184,7 +377,14 @@
     "size":null,
     "type":"open-source",
     "license":"Other",
-    "creation_date":1691625600000
+    "creation_date":1691625600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"meta-llama\/llama-3-70b-instruct",
@@ -195,7 +395,14 @@
     "size":70553706496.0,
     "type":"open-source",
     "license":"Llama3",
-    "creation_date":1713312000000
+    "creation_date":1713312000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"meta-llama\/llama-3.1-70b-instruct",
@@ -206,7 +413,14 @@
     "size":70553706496.0,
     "type":"open-source",
     "license":"Llama3.1",
-    "creation_date":1721088000000
+    "creation_date":1721088000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"meta-llama\/llama-3.1-8b-instruct",
@@ -217,7 +431,8 @@
     "size":8030261248.0,
     "type":"open-source",
     "license":"Llama3.1",
-    "creation_date":1721260800000
+    "creation_date":1721260800000.0,
+    "tasks":null
   },
   {
     "id":"meta-llama\/llama-3.2-1b-instruct",
@@ -228,7 +443,8 @@
     "size":1235814400.0,
     "type":"open-source",
     "license":"Llama3.2",
-    "creation_date":1726617600000
+    "creation_date":1726617600000.0,
+    "tasks":null
   },
   {
     "id":"meta-llama\/llama-3.3-70b-instruct",
@@ -239,7 +455,14 @@
     "size":70553706496.0,
     "type":"open-source",
     "license":"Llama3.3",
-    "creation_date":1732579200000
+    "creation_date":1732579200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"meta-llama\/llama-4-maverick",
@@ -250,7 +473,14 @@
     "size":401583781376.0,
     "type":"open-source",
     "license":"Other",
-    "creation_date":1743465600000
+    "creation_date":1743465600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"microsoft\/phi-4",
@@ -261,7 +491,14 @@
     "size":14659507200.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1733875200000
+    "creation_date":1733875200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"microsoft\/phi-4-multimodal-instruct",
@@ -272,7 +509,14 @@
     "size":5574460384.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1740355200000
+    "creation_date":1740355200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"mistralai\/mistral-nemo",
@@ -283,7 +527,14 @@
     "size":12247782400.0,
     "type":"open-source",
     "license":"Apache 2.0",
-    "creation_date":1721174400000
+    "creation_date":1721174400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"mistralai\/mistral-saba",
@@ -294,7 +545,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1739750400000
+    "creation_date":1739750400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"mistralai\/mistral-small-3.1-24b-instruct",
@@ -305,7 +563,14 @@
     "size":24011361280.0,
     "type":"open-source",
     "license":"Apache 2.0",
-    "creation_date":1741651200000
+    "creation_date":1741651200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"openai\/gpt-4.1",
@@ -316,7 +581,8 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1744588800000
+    "creation_date":1744588800000.0,
+    "tasks":null
   },
   {
     "id":"openai\/gpt-4.1-mini",
@@ -327,7 +593,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1744588800000
+    "creation_date":1744588800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"openai\/gpt-4.1-nano",
@@ -338,7 +611,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1744588800000
+    "creation_date":1744588800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   },
   {
     "id":"openai\/gpt-4o-mini",
@@ -349,6 +629,13 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1721260800000
+    "creation_date":1721260800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "mgsm"
+    ]
   }
 ]

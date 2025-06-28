@@ -1,7 +1,6 @@
 import random
 from functools import partial
 from textwrap import dedent
-
 import evaluate
 import pandas as pd
 import sentencepiece as spm
@@ -9,7 +8,7 @@ from datasets_.flores import flores_sentences
 from datasets_.mgsm import load_mgsm, parse_number
 from datasets_.mmlu import load_mmlu
 from languages import languages, script_name
-from models import complete, transcribe
+from models import complete, transcribe, translate_google
 
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
@@ -40,24 +39,31 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     original_sentence = flores_sentences(original_language)["text"][sentence_nr].strip()
     target_sentence = flores_sentences(target_language)["text"][sentence_nr].strip()
     script = script_name(target_language.flores_path.split("_")[1])
-    prediction = await complete(
-        model=model,
-        messages=[
-            {
-                "role": "user",
-                "content": f"Translate the following text to the {target_language.language_name} language; use the {script} script; reply only with the translation:\n\n{original_sentence}",
-            }
-        ],
-        temperature=0,
-        max_tokens=1024,
-    )
+    if model == "google/translate-v2":
+        prediction = await translate_google(
+            original_sentence, original_language.bcp_47, target_language.bcp_47
+        )
+    else:
+        prediction = await complete(
+            model=model,
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"Translate the following text to the {target_language.language_name} language; use the {script} script; reply only with the translation:\n\n{original_sentence}",
+                }
+            ],
+            temperature=0,
+            max_tokens=1024,
+        )
     if prediction:
         bleu_score = bleu.compute(
             predictions=[prediction],
             references=[target_sentence],
             tokenizer=tokenizer.tokenize,
         )
-        chrf_score = chrf.compute(predictions=[prediction], references=[target_sentence])
+        chrf_score = chrf.compute(
+            predictions=[prediction], references=[target_sentence]
+        )
     else:
         bleu_score = {"bleu": 0}
         chrf_score = {"score": 0}

@@ -8,8 +8,10 @@ import pandas as pd
 from aiolimiter import AsyncLimiter
 from dotenv import load_dotenv
 from elevenlabs import AsyncElevenLabs
+from google.cloud import translate_v2 as translate
 from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
+from langcodes import closest_supported_match
 from openai import AsyncOpenAI, PermissionDeniedError
 from requests import HTTPError, get
 
@@ -47,7 +49,9 @@ important_models = [
 ]
 
 blocklist = [
-    "microsoft/wizardlm-2-8x22b"  # temporarily rate-limited
+    "microsoft/wizardlm-2-8x22b",  # temporarily rate-limited
+    "google/gemini-2.5-pro",  # something wrong FIXME
+    "google/gemini-2.5-pro-preview",  # something wrong FIXME
 ]
 
 transcription_models = [
@@ -106,6 +110,23 @@ def get_current_popular_models(date: date):
     return [m for m in models if m]
 
 
+def get_translation_models():
+    return pd.DataFrame(
+        [
+            {
+                "id": "google/translate-v2",
+                "name": "Google Translate",
+                "provider_name": "Google",
+                "cost": 20.0,
+                "size": None,
+                "type": "closed-source",
+                "license": None,
+                "tasks": ["translation_from", "translation_to"],
+            }
+        ]
+    )
+
+
 load_dotenv()
 client = AsyncOpenAI(
     base_url="https://openrouter.ai/api/v1",
@@ -115,6 +136,7 @@ client = AsyncOpenAI(
 openrouter_rate_limit = AsyncLimiter(max_rate=20, time_period=1)
 elevenlabs_rate_limit = AsyncLimiter(max_rate=2, time_period=1)
 huggingface_rate_limit = AsyncLimiter(max_rate=5, time_period=1)
+google_rate_limit = AsyncLimiter(max_rate=10, time_period=1)
 
 
 @cache
@@ -128,6 +150,25 @@ async def complete(**kwargs) -> str | None:
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()
+
+
+translate_client = translate.Client()
+supported_languages = [l["language"] for l in translate_client.get_languages()]
+
+
+@cache
+async def translate_google(text, source_language, target_language):
+    source_language = closest_supported_match(source_language, supported_languages)
+    target_language = closest_supported_match(target_language, supported_languages)
+    if source_language == target_language:
+        return text
+    if source_language is None or target_language is None:
+        return None
+    async with google_rate_limit:
+        response = translate_client.translate(
+            text, source_language=source_language, target_language=target_language
+        )
+    return response["translatedText"]
 
 
 @cache
@@ -239,6 +280,14 @@ def load_models(date: date):
         creation_date=creation_date_hf.combine_first(creation_date_or),
     )
     # models = models[models["cost"] <= 2.0].reset_index(drop=True)
+    models["tasks"] = [
+        ["translation_from", "translation_to", "classification", "mmlu", "mgsm"]
+    ] * len(models)
+    models = pd.concat([models, get_translation_models()])
+    models = models[ # temporary fix FIXME
+        (models["id"] != "google/gemini-2.5-pro")
+        & (models["id"] != "google/gemini-2.5-pro-preview")
+    ]
     return models
 
 
