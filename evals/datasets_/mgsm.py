@@ -1,5 +1,12 @@
+import asyncio
+import os
+
+from datasets import Dataset, load_dataset
 from datasets_.util import _get_dataset_config_names, _load_dataset
-from langcodes import Language, standardize_tag
+from langcodes import standardize_tag
+from models import google_supported_languages, translate_google
+from tqdm import tqdm
+from tqdm.asyncio import tqdm_asyncio
 
 slug_mgsm = "juletxara/mgsm"
 tags_mgsm = {
@@ -15,6 +22,7 @@ tags_gsm8kx = {
     for a in _get_dataset_config_names(slug_gsm8kx, trust_remote_code=True)
 }
 
+
 def parse_number(i):
     if isinstance(i, int):
         return i
@@ -22,6 +30,7 @@ def parse_number(i):
         return int(i.replace(",", "").replace(".", ""))
     except ValueError:
         return None
+
 
 def load_mgsm(language_bcp_47, nr):
     if language_bcp_47 in tags_mgsm.keys():
@@ -43,3 +52,39 @@ def load_mgsm(language_bcp_47, nr):
         return slug_gsm8kx, row
     else:
         return None, None
+
+
+def translate_mgsm(languages):
+    human_translated = [*tags_mgsm.keys(), *tags_afrimgsm.keys()]
+    untranslated = [
+        lang
+        for lang in languages["bcp_47"].values[:100]
+        if lang not in human_translated and lang in google_supported_languages
+    ]
+    en = _load_dataset(slug_mgsm, subset=tags_mgsm["en"], split="test")
+    slug = "fair-forward/mgsm-autotranslated"
+    for lang in tqdm(untranslated):
+        # check if already exists on hub
+        try:
+            ds_lang = load_dataset(slug, lang, split="test")
+        except ValueError:
+            print(f"Translating {lang}...")
+            questions_tr = [translate_google(q, "en", lang) for q in en["question"]]
+            questions_tr = asyncio.run(tqdm_asyncio.gather(*questions_tr))
+            ds_lang = Dataset.from_dict(
+                {
+                    "question": questions_tr,
+                    "answer": en["answer"],
+                    "answer_number": en["answer_number"],
+                    "equation_solution": en["equation_solution"],
+                }
+            )
+            ds_lang.push_to_hub(
+                slug,
+                split="test",
+                config_name=lang,
+                token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"),
+            )
+            ds_lang.to_json(
+                f"data/mgsm/{lang}.json", lines=False, force_ascii=False, indent=2
+            )

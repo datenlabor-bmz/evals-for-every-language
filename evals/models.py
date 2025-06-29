@@ -153,17 +153,11 @@ async def complete(**kwargs) -> str | None:
 
 
 translate_client = translate.Client()
-supported_languages = [l["language"] for l in translate_client.get_languages()]
+google_supported_languages = [l["language"] for l in translate_client.get_languages()]
 
 
 @cache
 async def translate_google(text, source_language, target_language):
-    source_language = closest_supported_match(source_language, supported_languages)
-    target_language = closest_supported_match(target_language, supported_languages)
-    if source_language == target_language:
-        return text
-    if source_language is None or target_language is None:
-        return None
     async with google_rate_limit:
         response = translate_client.translate(
             text, source_language=source_language, target_language=target_language
@@ -284,7 +278,7 @@ def load_models(date: date):
         ["translation_from", "translation_to", "classification", "mmlu", "mgsm"]
     ] * len(models)
     models = pd.concat([models, get_translation_models()])
-    models = models[ # temporary fix FIXME
+    models = models[  # temporary fix FIXME
         (models["id"] != "google/gemini-2.5-pro")
         & (models["id"] != "google/gemini-2.5-pro-preview")
     ]

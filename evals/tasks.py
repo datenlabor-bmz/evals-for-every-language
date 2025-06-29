@@ -1,12 +1,15 @@
 import random
 from functools import partial
 from textwrap import dedent
+
 import evaluate
 import pandas as pd
 import sentencepiece as spm
 from datasets_.flores import flores_sentences
 from datasets_.mgsm import load_mgsm, parse_number
 from datasets_.mmlu import load_mmlu
+from google.cloud import translate_v2 as translate
+from langcodes import closest_supported_match
 from languages import languages, script_name
 from models import complete, transcribe, translate_google
 
@@ -21,6 +24,9 @@ tokenizer = spm.SentencePieceProcessor(
 target_languages = languages[languages["in_benchmark"]].sample(
     frac=1, weights="speakers", replace=True, random_state=42
 )
+
+translate_client = translate.Client()
+supported_languages = [l["language"] for l in translate_client.get_languages()]
 
 
 async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
@@ -40,9 +46,18 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     target_sentence = flores_sentences(target_language)["text"][sentence_nr].strip()
     script = script_name(target_language.flores_path.split("_")[1])
     if model == "google/translate-v2":
-        prediction = await translate_google(
-            original_sentence, original_language.bcp_47, target_language.bcp_47
+        original_language = closest_supported_match(
+            original_language, supported_languages
         )
+        target_language = closest_supported_match(target_language, supported_languages)
+        if original_language == target_language:
+            prediction = original_sentence
+        elif original_language is None or target_language is None:
+            prediction = None
+        else:
+            prediction = await translate_google(
+                original_sentence, original_language.bcp_47, target_language.bcp_47
+            )
     else:
         prediction = await complete(
             model=model,
