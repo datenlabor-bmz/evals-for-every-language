@@ -1,5 +1,4 @@
 import asyncio
-from time import time
 
 import pandas as pd
 from languages import languages
@@ -16,7 +15,7 @@ n_sentences = 10
 
 async def evaluate():
     # FIXME we should not need this for-loop, but it helps
-    for n_languages in range(100, 101):
+    for n_languages in range(90, 101, 3):
         print(f"running evaluations for {n_languages} languages")
         old_results = pd.read_json("results.json")
         old_models = pd.read_json("models.json")

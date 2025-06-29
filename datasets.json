@@ -300,7 +300,22 @@
         "parallel": true,
         "translation": "machine",
         "base": "MGSM",
-        "implemented": true,
+        "implemented": false,
+        "group": "Grade School Math"
+    },
+    {
+        "name": "GSM Auto-Translated",
+        "author": null,
+        "author_url": null,
+        "url": null,
+        "n_languages": 52,
+        "tasks": [
+            "math"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "MGSM",
+        "implemented": false,
         "group": "Grade School Math"
     },
     {

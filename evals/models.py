@@ -34,7 +34,7 @@ important_models = [
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
     "mistralai/mistral-saba",  # 0.6$
     "mistralai/mistral-nemo",  # 0.08$
-    "google/gemini-2.5-flash-preview",  # 0.6$
+    "google/gemini-2.5-flash",  # 0.6$
     "google/gemini-2.0-flash-lite-001",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
     # "qwen/qwen-turbo", # 0.2$; recognizes "inappropriate content"
@@ -50,8 +50,14 @@ important_models = [
 
 blocklist = [
     "microsoft/wizardlm-2-8x22b",  # temporarily rate-limited
-    "google/gemini-2.5-pro",  # something wrong FIXME
-    "google/gemini-2.5-pro-preview",  # something wrong FIXME
+    "google/gemini-2.5-pro-preview",
+    "google/gemini-2.5-flash-preview",
+    "google/gemini-2.5-flash-lite-preview",
+    "google/gemini-2.5-flash-preview-04-17",
+    "google/gemini-2.5-flash-preview-05-20",
+    "google/gemini-2.5-flash-lite-preview-06-17",
+    "google/gemini-2.5-pro-preview-06-05",
+    "google/gemini-2.5-pro-preview-05-06",
 ]
 
 transcription_models = [

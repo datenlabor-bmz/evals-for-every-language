@@ -21,6 +21,11 @@ tags_gsm8kx = {
     standardize_tag(a, macro=True): a
     for a in _get_dataset_config_names(slug_gsm8kx, trust_remote_code=True)
 }
+slug_gsm_autotranslated = "fair-forward/gsm-autotranslated"
+tags_gsm_autotranslated = {
+    standardize_tag(a, macro=True): a
+    for a in _get_dataset_config_names(slug_gsm_autotranslated)
+}
 
 
 def parse_number(i):
@@ -41,6 +46,11 @@ def load_mgsm(language_bcp_47, nr):
             slug_afrimgsm, subset=tags_afrimgsm[language_bcp_47], split="test"
         )
         return slug_afrimgsm, ds[nr]
+    elif language_bcp_47 in tags_gsm_autotranslated.keys():
+        ds = _load_dataset(
+            slug_gsm_autotranslated, subset=tags_gsm_autotranslated[language_bcp_47], split="test"
+        )
+        return slug_gsm_autotranslated, ds[nr]
     elif language_bcp_47 in tags_gsm8kx.keys():
         row = _load_dataset(
             slug_gsm8kx,
@@ -62,7 +72,7 @@ def translate_mgsm(languages):
         if lang not in human_translated and lang in google_supported_languages
     ]
     en = _load_dataset(slug_mgsm, subset=tags_mgsm["en"], split="test")
-    slug = "fair-forward/mgsm-autotranslated"
+    slug = "fair-forward/gsm-autotranslated"
     for lang in tqdm(untranslated):
         # check if already exists on hub
         try:
