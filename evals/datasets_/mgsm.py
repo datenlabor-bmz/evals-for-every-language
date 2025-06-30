@@ -96,5 +96,5 @@ def translate_mgsm(languages):
                 token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"),
             )
             ds_lang.to_json(
-                f"data/mgsm/{lang}.json", lines=False, force_ascii=False, indent=2
+                f"data/translations/mgsm/{lang}.json", lines=False, force_ascii=False, indent=2
             )
