@@ -1,0 +1,112 @@
+[
+  {
+    "id":"Mercury_SC_409024",
+    "question":"Os animais obtêm energia comendo alimentos que vêm das plantas. As plantas sobrevivem absorvendo substâncias que são liberadas pelos animais. Que substância os animais liberam que as plantas absorvem?",
+    "choices":[
+      "dióxido de carbono",
+      "oxigênio",
+      "sal",
+      "açúcar"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_LBS10817",
+    "question":"Quando uma estrela explode, um objeto intensamente brilhante é formado. Qual é o nome desse objeto?",
+    "choices":[
+      "nova",
+      "gigante vermelha",
+      "supernova",
+      "anã branca"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"OHAT_2011_5_37",
+    "question":"A turma coloca os vasos perto da janela para que as plantas recebam mais luz solar. Como os tomateiros aproveitam a luz solar?",
+    "choices":[
+      "para fazer açúcar nas folhas",
+      "para usar amido dos caules",
+      "para mover água para as flores",
+      "para obter nutrientes através das raízes"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_409574",
+    "question":"Trevor acende uma lâmpada. Quando a lâmpada está acesa, a energia elétrica se transforma em qual outra forma de energia?",
+    "choices":[
+      "químico",
+      "luz",
+      "mecânico",
+      "potencial"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"NYSEDREGENTS_2013_4_29",
+    "question":"Quais itens seriam mais úteis em casa durante uma queda de energia?",
+    "choices":[
+      "lanternas e baterias extras",
+      "chapéus e protetor solar",
+      "capas de chuva e guarda-chuvas",
+      "repelente de insetos e jaquetas"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_400987",
+    "question":"A reciclagem de jornais é boa para o meio ambiente porque",
+    "choices":[
+      "aumenta a necessidade de árvores.",
+      "ajuda a conservar recursos.",
+      "aumenta a necessidade de aterros sanitários.",
+      "ajuda a remover poluentes do ar."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_SC_402031",
+    "question":"Qual dessas ferramentas é melhor para registrar observações ao ar livre?",
+    "choices":[
+      "uma régua",
+      "um gráfico",
+      "um caderno",
+      "uma calculadora"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"AKDE&ED_2008_8_51",
+    "question":"Como o sistema circulatório e o sistema respiratório dependem um do outro?",
+    "choices":[
+      "O oxigênio coletado pelo sistema respiratório é transportado por todo o corpo pelo sistema circulatório.",
+      "Os resíduos sólidos coletados pelo sistema circulatório são transportados por todo o corpo pelo sistema respiratório.",
+      "Os nutrientes coletados pelo sistema respiratório são transportados por todo o corpo pelo sistema circulatório.",
+      "O dióxido de carbono coletado pelo sistema circulatório é transportado por todo o corpo pelo sistema respiratório."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NYSEDREGENTS_2008_4_21",
+    "question":"As folhas de uma árvore mudam de cor no outono. Este é um exemplo de uma árvore",
+    "choices":[
+      "completando seu ciclo de vida",
+      "preparando-se para a migração",
+      "respondendo ao seu ambiente",
+      "começando a hibernação"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_SC_416097",
+    "question":"Qual parte da planta está descrita corretamente?",
+    "choices":[
+      "Os caules produzem sementes.",
+      "As raízes absorvem nutrientes.",
+      "As folhas absorvem água.",
+      "As flores produzem alimentos."
+    ],
+    "answerKey":"B"
+  }
+]

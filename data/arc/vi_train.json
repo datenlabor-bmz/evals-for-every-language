@@ -1,0 +1,145 @@
+[
+  {
+    "id":"Mercury_7283255",
+    "question":"Sự kiện nào sau đây trong quá trình giảm phân đóng góp nhiều nhất vào sự biến dị trong một loài?",
+    "choices":[
+      "sự ghép cặp của nhiễm sắc thể",
+      "tạo ra giao tử đơn bội",
+      "sự phân ly của các alen",
+      "sự tách rời của các nhiễm sắc tử"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_405944",
+    "question":"Động cơ ô tô được chế tạo ngày nay được thiết kế để tiết kiệm xăng. Động cơ tiết kiệm xăng rất có thể ảnh hưởng đến một thành phố bằng cách giảm",
+    "choices":[
+      "ô nhiễm không khí.",
+      "ô nhiễm nhiệt.",
+      "ô nhiễm tiếng ồn.",
+      "ô nhiễm ánh sáng."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2001_8_2",
+    "question":"Câu nào mô tả tốt nhất về công nghệ vận tải?",
+    "choices":[
+      "một hệ thống được sử dụng để di chuyển con người và sản phẩm",
+      "một doanh nghiệp biến đổi nguyên liệu thô thành hàng hóa",
+      "việc xây dựng và hoàn thiện các công trình",
+      "sự chuyển đổi năng lượng cơ học thành năng lượng nhiệt"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2005_8_14",
+    "question":"Nếu 1 kg hợp chất toluen nóng chảy ở -95°C thì 500 g toluen sẽ",
+    "choices":[
+      "nóng chảy ở -47,5°C.",
+      "nóng chảy ở -95°C.",
+      "đun sôi ở 95°C.",
+      "đun sôi ở 47,5°C."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_400056",
+    "question":"Đặc điểm nào của cây được di truyền?",
+    "choices":[
+      "hình dạng của lá của nó",
+      "lượng nước nó nhận được",
+      "số lượng khoáng chất mà nó hấp thụ từ đất",
+      "mức độ ánh sáng mặt trời mà nó được tiếp xúc"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NAEP_2009_4_S11+2",
+    "question":"Roger đổ nước lên một đống cát. Một số cát bị trôi đi. Quá trình này tương tự như quá trình nào sau đây?",
+    "choices":[
+      "Sự phun trào của một ngọn núi lửa",
+      "Sự xói mòn của các bức tường của một hẻm núi",
+      "Sự nâng cao của các dãy núi",
+      "Sự hình thành các cồn cát hoặc gò đất trong sa mạc"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_7136115",
+    "question":"Roger đến thăm ông nội của mình, người sống trong một trang trại. Khi ở đó, anh đã giúp ông nội chuyển cỏ khô ra khỏi chuồng. Khi Roger làm việc trong chuồng, anh bắt đầu hắt hơi. Hệ thống nào của cơ thể có khả năng khiến Roger hắt hơi nhiều nhất?",
+    "choices":[
+      "tuần hoàn",
+      "bài tiết",
+      "tiêu hóa",
+      "miễn dịch"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_416531",
+    "question":"Erin đặt cây cỏ ba lá của mình vào một góc tối. Chẳng mấy chốc cô thấy lá cây nghiêng về phía cửa sổ. Cây cần gì nhất ở cửa sổ?",
+    "choices":[
+      "ánh sáng mặt trời trong ngày",
+      "không khí trong ngày",
+      "bóng tối vào ban đêm",
+      "sự ấm áp vào ban đêm"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_404988",
+    "question":"Câu nào sau đây là đúng khi nói về tài nguyên không tái tạo?",
+    "choices":[
+      "Chúng không đắt.",
+      "Chúng giúp giữ cho không khí trong lành.",
+      "Chúng có thể mất hàng triệu năm để hình thành.",
+      "Chúng được sử dụng vì dễ dàng được lấy ra khỏi mặt đất."
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NYSEDREGENTS_2006_4_27",
+    "question":"Hoạt động nào của con người thường gây ảnh hưởng có hại nhất đến môi trường?",
+    "choices":[
+      "thở",
+      "đang phát triển",
+      "trồng trọt",
+      "gây ô nhiễm"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_409901",
+    "question":"Cây cần nguồn năng lượng để thực hiện quá trình quang hợp. Cây nhận được năng lượng cần thiết để thực hiện quá trình quang hợp từ nguồn nào?",
+    "choices":[
+      "ôxy",
+      "đường",
+      "ánh sáng mặt trời",
+      "Nước"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NAEP_2000_4_S12+2",
+    "question":"Bề mặt của Mặt trời nóng đến mức nào?",
+    "choices":[
+      "Không nóng bằng nước sôi",
+      "Nóng như lửa",
+      "Khoảng 100°F",
+      "Nóng hơn nhiều so với hầu hết mọi thứ trên Trái Đất"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_7001768",
+    "question":"Chức năng chính của insulin trong cơ thể chúng ta là",
+    "choices":[
+      "lưu trữ nhiên liệu để sử dụng sau.",
+      "điều chỉnh lượng glucose trong máu.",
+      "tăng hiệu quả tiêu thụ nhiên liệu.",
+      "ngăn chặn vi khuẩn tiêu hóa tiêu thụ glucose."
+    ],
+    "answerKey":"B"
+  }
+]

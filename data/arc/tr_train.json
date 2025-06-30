@@ -1,0 +1,145 @@
+[
+  {
+    "id":"Mercury_7283255",
+    "question":"Mayoz sırasında gerçekleşen aşağıdaki olaylardan hangisi tür içi çeşitliliğe en fazla katkıda bulunur?",
+    "choices":[
+      "kromozomların eşleşmesi",
+      "haploid gametlerin yaratılması",
+      "alellerin ayrılması",
+      "kromatitlerin ayrılması"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_405944",
+    "question":"Günümüzde üretilen otomobil motorları gaz verimliliği sağlayacak şekilde tasarlanıyor. Gaz verimliliği sağlayan motorlar, bir şehri büyük olasılıkla gaz tüketimini azaltarak etkiliyor.",
+    "choices":[
+      "hava kirliliği.",
+      "ısı kirliliği.",
+      "gürültü kirliliği.",
+      "ışık kirliliği."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2001_8_2",
+    "question":"Ulaşım teknolojisini en iyi hangisi tanımlar?",
+    "choices":[
+      "insanları ve ürünleri taşımak için kullanılan bir sistem",
+      "Ham maddeleri mallara dönüştüren bir işletme",
+      "yapıların inşası ve bitirilmesi",
+      "mekanik enerjinin ısı enerjisine dönüştürülmesi"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2005_8_14",
+    "question":"1 kg toluen bileşiği -95°C&#39;de erirse, 500 g toluen",
+    "choices":[
+      "-47.5°C&#39;de erir.",
+      "-95°C&#39;de erir.",
+      "95°C&#39;de kaynatın.",
+      "47.5°C&#39;de kaynatın."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_400056",
+    "question":"Hangi bitki özelliği kalıtsaldır?",
+    "choices":[
+      "yapraklarının şekli",
+      "aldığı su miktarı",
+      "topraktan emdiği minerallerin sayısı",
+      "Maruz kaldığı güneş ışığı seviyesi"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NAEP_2009_4_S11+2",
+    "question":"Roger bir kum yığınının üzerine su döktü. Kumun bir kısmı akıp gitti. Bu işlem aşağıdakilerden hangisine benzerdir?",
+    "choices":[
+      "Bir yanardağın patlaması",
+      "Bir kanyonun duvarlarının aşınması",
+      "Dağ sıralarının yükselmesi",
+      "Çölde kumulların veya tümseklerin oluşması"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_7136115",
+    "question":"Roger, bir çiftlikte yaşayan büyükbabasını ziyaret etti. Orada bulunduğu süre boyunca büyükbabasının samanı ahırdan çıkarmasına yardım etti. Roger ahırda çalışırken hapşırmaya başladı. Vücudun hangi sistemi büyük ihtimalle Roger&#39;ın hapşırmasına neden oldu?",
+    "choices":[
+      "dolaşımsal",
+      "boşaltımsal",
+      "sindirim",
+      "bağışıklık"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_416531",
+    "question":"Erin yonca bitkisini karanlık bir köşeye koydu. Kısa süre sonra yaprakların penceresine doğru eğildiğini gördü. Bitkinin pencereden en çok neye ihtiyacı vardı?",
+    "choices":[
+      "gün boyunca güneş ışığı",
+      "gündüz havası",
+      "gece karanlığı",
+      "gece sıcaklığı"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_404988",
+    "question":"Yenilenemeyen kaynaklarla ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+    "choices":[
+      "Ucuzdurlar.",
+      "Havanın temiz kalmasına yardımcı olurlar.",
+      "Oluşmaları milyonlarca yıl alabilir.",
+      "Topraktan kolayca çıkarılabildiği için kullanılırlar."
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NYSEDREGENTS_2006_4_27",
+    "question":"Hangi insan faaliyeti çevreye en çok zarar veren etkiyi yaratır?",
+    "choices":[
+      "nefes alma",
+      "büyüyen",
+      "ekme",
+      "kirletici"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_409901",
+    "question":"Bitkiler fotosentez yapabilmek için bir enerji kaynağına ihtiyaç duyarlar. Bitkiler fotosentez yapabilmek için ihtiyaç duydukları enerjiyi hangi kaynaktan alırlar?",
+    "choices":[
+      "oksijen",
+      "şeker",
+      "güneş ışığı",
+      "su"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NAEP_2000_4_S12+2",
+    "question":"Güneş&#39;in yüzeyi ne kadar sıcak?",
+    "choices":[
+      "Kaynar su kadar sıcak değil",
+      "Ateş kadar sıcak",
+      "Yaklaşık 100°F",
+      "Dünyadaki hemen hemen her şeyden çok daha sıcak"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_7001768",
+    "question":"Vücudumuzdaki insülinin birincil işlevi;",
+    "choices":[
+      "Yakıtı daha sonra kullanmak üzere depolamak.",
+      "Kandaki glikoz miktarını düzenler.",
+      "Yakıt tüketim verimliliğini artırmak.",
+      "Sindirim bakterilerinin glikozu tüketmesini önler."
+    ],
+    "answerKey":"B"
+  }
+]

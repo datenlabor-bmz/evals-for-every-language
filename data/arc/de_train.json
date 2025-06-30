@@ -1,0 +1,145 @@
+[
+  {
+    "id":"Mercury_7283255",
+    "question":"Welches der folgenden Ereignisse während der Meiose trägt am meisten zur Variation innerhalb einer Art bei?",
+    "choices":[
+      "Paarung von Chromosomen",
+      "Entstehung haploider Gameten",
+      "Segregation von Allelen",
+      "Trennung von Chromatiden"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_405944",
+    "question":"Heutzutage werden Automotoren auf Benzineffizienz ausgelegt. Benzineffiziente Motoren wirken sich in Städten am wahrscheinlichsten aus, indem sie",
+    "choices":[
+      "Luftverschmutzung.",
+      "Hitzeverschmutzung.",
+      "Lärmbelästigung.",
+      "Lichtverschmutzung."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2001_8_2",
+    "question":"Was beschreibt Transporttechnologie am besten?",
+    "choices":[
+      "ein System, das zum Transport von Personen und Produkten verwendet wird",
+      "ein Unternehmen, das Rohstoffe in Waren umwandelt",
+      "den Bau und die Fertigstellung von Bauwerken",
+      "die Umwandlung von mechanischer Energie in Wärmeenergie"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2005_8_14",
+    "question":"Wenn 1 kg der Verbindung Toluol bei -95°C schmilzt, dann werden 500 g Toluol",
+    "choices":[
+      "schmilzt bei -47,5°C.",
+      "Schmelzen bei -95°C.",
+      "bei 95°C kochen.",
+      "Siedepunkt 47,5 °C."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_400056",
+    "question":"Welche Pflanzeneigenschaft wird vererbt?",
+    "choices":[
+      "die Form seiner Blätter",
+      "die Menge an Wasser, die es erhält",
+      "die Anzahl der Mineralien, die es aus dem Boden aufnimmt",
+      "die Sonneneinstrahlung, der es ausgesetzt ist"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NAEP_2009_4_S11+2",
+    "question":"Roger goss Wasser über einen Sandhaufen. Ein Teil des Sandes wurde weggespült. Welchem der folgenden Vorgänge ähnelt dieser?",
+    "choices":[
+      "Der Ausbruch eines Vulkans",
+      "Die Erosion der Wände eines Canyons",
+      "Die Hebung von Gebirgsketten",
+      "Die Bildung von Dünen oder Hügeln in einer Wüste"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_7136115",
+    "question":"Roger besuchte seinen Großvater, der auf einem Bauernhof lebt. Dort half er ihm, Heu aus der Scheune zu holen. Während Roger in der Scheune arbeitete, musste er niesen. Welches System in seinem Körper hat Rogers Niesen wahrscheinlich ausgelöst?",
+    "choices":[
+      "Kreislauf",
+      "Ausscheidungs",
+      "Verdauungs-",
+      "immun"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_416531",
+    "question":"Erin stellte ihr Kleeblatt in eine dunkle Ecke. Bald bemerkte sie, dass sich die Blätter zum Fenster neigten. Was brauchte die Pflanze am meisten vom Fenster?",
+    "choices":[
+      "Sonnenlicht während des Tages",
+      "Luft tagsüber",
+      "Dunkelheit in der Nacht",
+      "Wärme in der Nacht"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_404988",
+    "question":"Welche dieser Aussagen über nicht erneuerbare Ressourcen ist wahr?",
+    "choices":[
+      "Sie sind preiswert.",
+      "Sie helfen, die Luft sauber zu halten.",
+      "Ihre Entstehung kann Millionen von Jahren dauern.",
+      "Sie werden verwendet, weil sie leicht aus dem Boden entfernt werden können."
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NYSEDREGENTS_2006_4_27",
+    "question":"Welche menschliche Aktivität hat am häufigsten schädliche Auswirkungen auf die Umwelt?",
+    "choices":[
+      "Atmung",
+      "Anbau",
+      "Bepflanzung",
+      "umweltschädlich"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_409901",
+    "question":"Pflanzen benötigen für die Photosynthese eine Energiequelle. Woher beziehen Pflanzen die für die Photosynthese benötigte Energie?",
+    "choices":[
+      "Sauerstoff",
+      "Zucker",
+      "Sonnenlicht",
+      "Wasser"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NAEP_2000_4_S12+2",
+    "question":"Wie heiß ist es auf der Oberfläche der Sonne?",
+    "choices":[
+      "Nicht ganz so heiß wie kochendes Wasser",
+      "Ungefähr so heiß wie Feuer",
+      "Etwa 100°F",
+      "Viel heißer als fast alles auf der Erde"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_7001768",
+    "question":"Die Hauptfunktion von Insulin in unserem Körper besteht darin,",
+    "choices":[
+      "Kraftstoff für die spätere Verwendung lagern.",
+      "regulieren den Glukosegehalt im Blut.",
+      "erhöhen die Effizienz des Kraftstoffverbrauchs.",
+      "verhindern, dass Verdauungsbakterien Glukose verbrauchen."
+    ],
+    "answerKey":"B"
+  }
+]

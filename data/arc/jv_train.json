@@ -1,0 +1,145 @@
+[
+  {
+    "id":"Mercury_7283255",
+    "question":"Kedadeyan apa ing ngisor iki sajrone meiosis sing paling nyumbang kanggo variasi ing spesies?",
+    "choices":[
+      "pasangan kromosom",
+      "penciptaan gamet haploid",
+      "pemisahan alel",
+      "pamisahan kromatid"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_405944",
+    "question":"Mesin mobil sing dibangun saiki dirancang supaya irit gas. Mesin efisien gas paling kamungkinan mengaruhi kutha kanthi ngurangi",
+    "choices":[
+      "polusi udara.",
+      "polusi panas.",
+      "polusi swara.",
+      "polusi cahya."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2001_8_2",
+    "question":"Kang paling nggambarake teknologi transportasi?",
+    "choices":[
+      "sistem sing digunakake kanggo mindhah wong lan produk",
+      "perusahaan sing ngganti bahan mentah dadi barang",
+      "bangunan lan finishing struktur",
+      "konversi energi mekanik dadi energi panas"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2005_8_14",
+    "question":"Yen 1 kg senyawa toluene lebur ing -95°C, banjur 500 g toluene bakal",
+    "choices":[
+      "nyawiji ing -47,5 ° C.",
+      "nyawiji ing -95 ° C.",
+      "godhok ing 95 ° C.",
+      "godhok ing 47,5 ° C."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_400056",
+    "question":"Sifat tanduran apa sing diwarisake?",
+    "choices":[
+      "wujude godhonge",
+      "jumlah banyu sing ditampa",
+      "jumlah mineral sing diserap saka lemah",
+      "tingkat suryo srengenge kang kapapar"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NAEP_2009_4_S11+2",
+    "question":"Roger diwutahake banyu ing tumpukan wedhi. Sawetara wedhi kakumbah. Proses iki padha karo endi ing ngisor iki?",
+    "choices":[
+      "Jeblugan gunung geni",
+      "Erosi tembok ngarai",
+      "Unggah-ungguhing pagunungan",
+      "Pembentukan gumuk utawa gundukan ing ara-ara samun"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_7136115",
+    "question":"Roger marani mbah kakunge sing manggon ing sawah. Nalika ana ing kana, dheweke nulungi mbah kakunge mindhahake jerami saka kandhang. Nalika Roger makarya ing kandhang, dheweke wiwit wahing. Sistem awak endi sing nyebabake Roger bisa wahing?",
+    "choices":[
+      "sirkulasi",
+      "ekskresi",
+      "pencernaan",
+      "kekebalan"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_416531",
+    "question":"Erin nyelehake tanduran shamrock ing pojok peteng. Ora suwe dheweke weruh yen godhong-godhongan wis miring menyang jendela. Apa sing paling dibutuhake tanduran saka jendhela?",
+    "choices":[
+      "srengenge ing wayah awan",
+      "hawa ing wayah awan",
+      "pepeteng ing wayah wengi",
+      "anget ing wayah wengi"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_404988",
+    "question":"Endi saka pratelan kasebut babagan sumber daya sing ora bisa dianyari sing bener?",
+    "choices":[
+      "Padha inexpensive.",
+      "Dheweke mbantu njaga hawa resik.",
+      "Padha bisa njupuk yuta taun kanggo mbentuk.",
+      "Iki digunakake amarga gampang dicopot saka lemah."
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NYSEDREGENTS_2006_4_27",
+    "question":"Apa kegiatan manungsa sing paling kerep duweni efek mbebayani ing lingkungan?",
+    "choices":[
+      "ambegan",
+      "tuwuh",
+      "nandur",
+      "polusi"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_409901",
+    "question":"Tanduran butuh sumber energi kanggo nindakake fotosintesis. Saka sumber endi tanduran nampa energi sing dibutuhake kanggo fotosintesis?",
+    "choices":[
+      "oksigen",
+      "gula",
+      "suryo srengenge",
+      "banyu"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NAEP_2000_4_S12+2",
+    "question":"Carane panas ing lumahing Srengéngé?",
+    "choices":[
+      "Ora panas banget kaya banyu sing nggodhok",
+      "Kira-kira panas kaya geni",
+      "Kira-kira 100 ° F",
+      "Luwih panas tinimbang meh kabeh ing Bumi"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_7001768",
+    "question":"Fungsi utama insulin ing awak kita yaiku",
+    "choices":[
+      "nyimpen bahan bakar kanggo nggunakake mengko.",
+      "ngatur jumlah glukosa ing getih.",
+      "nambah efisiensi konsumsi bahan bakar.",
+      "nyegah bakteri pencernaan saka ngonsumsi glukosa."
+    ],
+    "answerKey":"B"
+  }
+]

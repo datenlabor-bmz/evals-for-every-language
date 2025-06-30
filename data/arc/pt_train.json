@@ -1,0 +1,145 @@
+[
+  {
+    "id":"Mercury_7283255",
+    "question":"Qual dos seguintes eventos durante a meiose contribui mais para a variação dentro de uma espécie?",
+    "choices":[
+      "pareamento de cromossomos",
+      "criação de gametas haploides",
+      "segregação de alelos",
+      "separação de cromátides"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_405944",
+    "question":"Os motores de automóveis fabricados hoje são projetados para serem eficientes em termos de consumo de combustível. Os motores eficientes em termos de consumo de combustível provavelmente afetam uma cidade, reduzindo",
+    "choices":[
+      "poluição do ar.",
+      "poluição térmica.",
+      "poluição sonora.",
+      "poluição luminosa."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2001_8_2",
+    "question":"O que melhor descreve a tecnologia de transporte?",
+    "choices":[
+      "um sistema usado para movimentar pessoas e produtos",
+      "uma empresa que transforma matérias-primas em mercadorias",
+      "a construção e o acabamento de estruturas",
+      "a conversão de energia mecânica em energia térmica"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2005_8_14",
+    "question":"Se 1 kg do composto tolueno funde a -95 °C, então 500 g de tolueno irão",
+    "choices":[
+      "derreter a -47,5°C.",
+      "derreter a -95°C.",
+      "ferver a 95°C.",
+      "ferver a 47,5°C."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_400056",
+    "question":"Qual característica da planta é herdada?",
+    "choices":[
+      "o formato de suas folhas",
+      "a quantidade de água que recebe",
+      "a quantidade de minerais que absorve do solo",
+      "o nível de luz solar ao qual está exposto"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NAEP_2009_4_S11+2",
+    "question":"Roger despejou água sobre um monte de areia. Parte da areia foi levada pela água. Este processo é semelhante a qual dos seguintes?",
+    "choices":[
+      "A erupção de um vulcão",
+      "A erosão das paredes de um cânion",
+      "A elevação das cadeias de montanhas",
+      "A formação de dunas ou montes em um deserto"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_7136115",
+    "question":"Roger visitou seu avô, que mora em uma fazenda. Enquanto estava lá, ajudou-o a tirar o feno do celeiro. Enquanto trabalhava no celeiro, Roger começou a espirrar. Qual sistema do corpo provavelmente causou o espirro de Roger?",
+    "choices":[
+      "circulatório",
+      "excretor",
+      "digestivo",
+      "imune"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_416531",
+    "question":"Erin colocou seu trevo em um canto escuro. Logo ela viu que as folhas estavam inclinadas em direção à janela. O que a planta mais precisava da janela?",
+    "choices":[
+      "luz solar durante o dia",
+      "ar durante o dia",
+      "escuridão da noite",
+      "calor à noite"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_404988",
+    "question":"Qual destas afirmações sobre recursos não renováveis é verdadeira?",
+    "choices":[
+      "Eles são baratos.",
+      "Eles ajudam a manter o ar limpo.",
+      "Elas podem levar milhões de anos para se formar.",
+      "Eles são usados porque são facilmente removidos do solo."
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NYSEDREGENTS_2006_4_27",
+    "question":"Qual atividade humana tem mais frequentemente um efeito prejudicial ao meio ambiente?",
+    "choices":[
+      "respirando",
+      "crescente",
+      "plantio",
+      "poluente"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_409901",
+    "question":"As plantas precisam de uma fonte de energia para realizar a fotossíntese. De qual fonte as plantas obtêm a energia necessária para realizar a fotossíntese?",
+    "choices":[
+      "oxigênio",
+      "açúcar",
+      "luz solar",
+      "água"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NAEP_2000_4_S12+2",
+    "question":"Quão quente é a superfície do Sol?",
+    "choices":[
+      "Não tão quente quanto água fervente",
+      "Tão quente quanto fogo",
+      "Cerca de 100°F",
+      "Muito mais quente do que quase tudo na Terra"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_7001768",
+    "question":"A principal função da insulina em nossos corpos é",
+    "choices":[
+      "armazenar combustível para uso posterior.",
+      "regular a quantidade de glicose no sangue.",
+      "aumentar a eficiência do consumo de combustível.",
+      "impedem que as bactérias digestivas consumam glicose."
+    ],
+    "answerKey":"B"
+  }
+]

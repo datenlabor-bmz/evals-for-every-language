@@ -1,0 +1,145 @@
+[
+  {
+    "id":"Mercury_7283255",
+    "question":"Peristiwa manakah selama meiosis yang paling banyak menyumbang terhadap variasi dalam suatu spesies?",
+    "choices":[
+      "pasangan kromosom",
+      "penciptaan gamet haploid",
+      "pemisahan alel",
+      "pemisahan kromatid"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_405944",
+    "question":"Mesin mobil yang diproduksi saat ini dirancang agar hemat bahan bakar. Mesin hemat bahan bakar kemungkinan besar memengaruhi kota dengan mengurangi emisi karbon dioksida.",
+    "choices":[
+      "polusi udara.",
+      "polusi panas.",
+      "polusi suara.",
+      "polusi cahaya."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2001_8_2",
+    "question":"Mana yang paling menggambarkan teknologi transportasi?",
+    "choices":[
+      "sistem yang digunakan untuk memindahkan orang dan produk",
+      "suatu perusahaan yang mengubah bahan baku menjadi barang",
+      "pembangunan dan penyelesaian struktur",
+      "konversi energi mekanik menjadi energi panas"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2005_8_14",
+    "question":"Jika 1 kg senyawa toluena meleleh pada suhu -95°C, maka 500 g toluena akan meleleh pada suhu -95°C.",
+    "choices":[
+      "mencair pada -47,5°C.",
+      "meleleh pada -95°C.",
+      "mendidih pada suhu 95°C.",
+      "mendidih pada suhu 47,5°C."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_400056",
+    "question":"Sifat tanaman manakah yang diwariskan?",
+    "choices":[
+      "bentuk daunnya",
+      "jumlah air yang diterimanya",
+      "jumlah mineral yang diserap dari tanah",
+      "tingkat cahaya matahari yang diterimanya"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NAEP_2009_4_S11+2",
+    "question":"Roger menuangkan air ke atas tumpukan pasir. Sebagian pasir terhanyut. Proses ini mirip dengan yang mana dari berikut ini?",
+    "choices":[
+      "Letusan gunung berapi",
+      "Erosi dinding ngarai",
+      "Pengangkatan pegunungan",
+      "Terbentuknya bukit pasir atau gundukan di gurun"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_7136115",
+    "question":"Roger mengunjungi kakeknya yang tinggal di sebuah peternakan. Saat berada di sana, ia membantu kakeknya memindahkan jerami dari lumbung. Saat Roger bekerja di lumbung, ia mulai bersin. Sistem tubuh manakah yang paling mungkin menyebabkan Roger bersin?",
+    "choices":[
+      "peredaran darah",
+      "ekskresi",
+      "berkenaan dgn pencernaan",
+      "imun"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_416531",
+    "question":"Erin meletakkan tanaman shamrocknya di sudut yang gelap. Tak lama kemudian, ia melihat daun-daunnya condong ke arah jendela. Apa yang paling dibutuhkan tanaman itu dari jendela?",
+    "choices":[
+      "sinar matahari pada siang hari",
+      "udara pada siang hari",
+      "kegelapan di malam hari",
+      "kehangatan di malam hari"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_404988",
+    "question":"Pernyataan mana yang benar tentang sumber daya tak terbarukan?",
+    "choices":[
+      "Mereka tidak mahal.",
+      "Mereka membantu menjaga udara tetap bersih.",
+      "Mereka membutuhkan waktu jutaan tahun untuk terbentuk.",
+      "Mereka digunakan karena mudah dikeluarkan dari tanah."
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NYSEDREGENTS_2006_4_27",
+    "question":"Aktivitas manusia manakah yang paling sering memberikan dampak buruk terhadap lingkungan?",
+    "choices":[
+      "pernafasan",
+      "pertumbuhan",
+      "penanaman",
+      "mencemari"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_409901",
+    "question":"Tumbuhan membutuhkan sumber energi untuk melakukan fotosintesis. Dari sumber manakah tumbuhan memperoleh energi yang dibutuhkan untuk melakukan fotosintesis?",
+    "choices":[
+      "oksigen",
+      "gula",
+      "sinar matahari",
+      "air"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NAEP_2000_4_S12+2",
+    "question":"Seberapa panas permukaan Matahari?",
+    "choices":[
+      "Tidak sepanas air mendidih",
+      "Hampir sepanas api",
+      "Sekitar 100°F",
+      "Jauh lebih panas daripada hampir semua hal di Bumi"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_7001768",
+    "question":"Fungsi utama insulin dalam tubuh kita adalah untuk",
+    "choices":[
+      "menyimpan bahan bakar untuk penggunaan selanjutnya.",
+      "mengatur jumlah glukosa dalam darah.",
+      "meningkatkan efisiensi konsumsi bahan bakar.",
+      "mencegah bakteri pencernaan mengonsumsi glukosa."
+    ],
+    "answerKey":"B"
+  }
+]

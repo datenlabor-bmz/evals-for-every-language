@@ -1,0 +1,112 @@
+[
+  {
+    "id":"Mercury_SC_409024",
+    "question":"Los animales obtienen energía al comer alimentos provenientes de las plantas. Las plantas sobreviven absorbiendo sustancias que liberan los animales. ¿Qué sustancia liberan los animales y que las plantas absorben?",
+    "choices":[
+      "dióxido de carbono",
+      "oxígeno",
+      "sal",
+      "azúcar"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_LBS10817",
+    "question":"Cuando una estrella explota, se forma un objeto intensamente brillante. ¿Cómo se llama este objeto?",
+    "choices":[
+      "estrella nueva",
+      "gigante roja",
+      "supernova",
+      "enana blanca"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"OHAT_2011_5_37",
+    "question":"La clase coloca las macetas junto a la ventana para que las plantas reciban más luz solar. ¿Cómo aprovechan la luz solar las tomateras?",
+    "choices":[
+      "Para hacer azúcar en las hojas",
+      "utilizar almidón de los tallos",
+      "Para mover agua a las flores",
+      "Para obtener nutrientes a través de las raíces"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_409574",
+    "question":"Trevor enciende una lámpara. Cuando la lámpara está encendida, ¿en qué otra forma de energía se transforma la energía eléctrica?",
+    "choices":[
+      "químico",
+      "luz",
+      "mecánico",
+      "potencial"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"NYSEDREGENTS_2013_4_29",
+    "question":"¿Qué artículos serían más útiles en casa durante un corte de energía?",
+    "choices":[
+      "linternas y pilas extra",
+      "sombreros y protector solar",
+      "impermeables y paraguas",
+      "repelente de insectos y chaquetas"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_400987",
+    "question":"Reciclar periódicos es bueno para el medio ambiente porque",
+    "choices":[
+      "Aumenta la necesidad de árboles.",
+      "Ayuda a conservar los recursos.",
+      "aumenta la necesidad de vertederos.",
+      "Ayuda a eliminar contaminantes del aire."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_SC_402031",
+    "question":"¿Cuál de estas herramientas es mejor para registrar observaciones al aire libre?",
+    "choices":[
+      "una regla",
+      "un gráfico",
+      "un cuaderno",
+      "una calculadora"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"AKDE&ED_2008_8_51",
+    "question":"¿Cómo dependen entre sí el sistema circulatorio y el sistema respiratorio?",
+    "choices":[
+      "El oxígeno recolectado por el sistema respiratorio es transportado por todo el cuerpo a través del sistema circulatorio.",
+      "Los desechos sólidos recogidos por el sistema circulatorio son transportados por todo el cuerpo a través del sistema respiratorio.",
+      "Los nutrientes recolectados por el sistema respiratorio son transportados por todo el cuerpo a través del sistema circulatorio.",
+      "El dióxido de carbono recogido por el sistema circulatorio es transportado por todo el cuerpo a través del sistema respiratorio."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NYSEDREGENTS_2008_4_21",
+    "question":"Las hojas de un árbol cambian de color en otoño. Este es un ejemplo de un árbol.",
+    "choices":[
+      "completando su ciclo de vida",
+      "preparándose para la migración",
+      "respondiendo a su entorno",
+      "comenzando la hibernación"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_SC_416097",
+    "question":"¿Qué parte de la planta está descrita correctamente?",
+    "choices":[
+      "Los tallos producen semillas.",
+      "Las raíces absorben nutrientes.",
+      "Las hojas absorben agua.",
+      "Las flores producen alimento."
+    ],
+    "answerKey":"B"
+  }
+]

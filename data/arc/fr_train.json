@@ -1,0 +1,145 @@
+[
+  {
+    "id":"Mercury_7283255",
+    "question":"Lequel des événements suivants au cours de la méiose contribue le plus à la variation au sein d’une espèce ?",
+    "choices":[
+      "appariement des chromosomes",
+      "création de gamètes haploïdes",
+      "ségrégation des allèles",
+      "séparation des chromatides"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_405944",
+    "question":"Les moteurs automobiles construits aujourd&#39;hui sont conçus pour être économes en carburant. Ces moteurs ont probablement un impact sur une ville en réduisant",
+    "choices":[
+      "pollution de l&#39;air.",
+      "pollution thermique.",
+      "pollution sonore.",
+      "pollution lumineuse."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2001_8_2",
+    "question":"Qu’est-ce qui décrit le mieux la technologie des transports ?",
+    "choices":[
+      "un système utilisé pour déplacer des personnes et des produits",
+      "une entreprise qui transforme des matières premières en biens",
+      "la construction et la finition des structures",
+      "la conversion de l&#39;énergie mécanique en énergie thermique"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2005_8_14",
+    "question":"Si 1 kg du composé toluène fond à -95°C, alors 500 g de toluène fondront",
+    "choices":[
+      "fondre à -47,5°C.",
+      "fondre à -95°C.",
+      "faire bouillir à 95°C.",
+      "faire bouillir à 47,5°C."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_400056",
+    "question":"Quel trait végétal est hérité ?",
+    "choices":[
+      "la forme de ses feuilles",
+      "la quantité d&#39;eau qu&#39;il reçoit",
+      "la quantité de minéraux qu&#39;il absorbe du sol",
+      "le niveau d&#39;ensoleillement auquel il est exposé"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NAEP_2009_4_S11+2",
+    "question":"Roger a versé de l&#39;eau sur un tas de sable. Une partie du sable a été emportée. Ce processus est similaire à lequel des exemples suivants ?",
+    "choices":[
+      "L&#39;éruption d&#39;un volcan",
+      "L&#39;érosion des parois d&#39;un canyon",
+      "L&#39;élévation des chaînes de montagnes",
+      "La formation de dunes ou de monticules dans un désert"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_7136115",
+    "question":"Roger rendait visite à son grand-père qui vivait à la ferme. Pendant son séjour, il l&#39;aida à sortir le foin de la grange. Alors qu&#39;il travaillait dans la grange, Roger se mit à éternuer. Quel système du corps était probablement à l&#39;origine de ces éternuements ?",
+    "choices":[
+      "circulatoire",
+      "excréteur",
+      "digestif",
+      "immunitaire"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_416531",
+    "question":"Erin a placé son trèfle dans un coin sombre. Elle a vite constaté que les feuilles étaient penchées vers sa fenêtre. De quoi la plante avait-elle le plus besoin de la fenêtre ?",
+    "choices":[
+      "la lumière du soleil pendant la journée",
+      "l&#39;air pendant la journée",
+      "l&#39;obscurité la nuit",
+      "chaleur la nuit"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_404988",
+    "question":"Laquelle de ces affirmations concernant les ressources non renouvelables est vraie ?",
+    "choices":[
+      "Ils sont bon marché.",
+      "Ils aident à garder l’air pur.",
+      "Leur formation peut prendre des millions d’années.",
+      "Ils sont utilisés car ils sont facilement retirés du sol."
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NYSEDREGENTS_2006_4_27",
+    "question":"Quelle activité humaine a le plus souvent un effet néfaste sur l’environnement ?",
+    "choices":[
+      "respiration",
+      "croissance",
+      "plantation",
+      "pollué"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_409901",
+    "question":"Les plantes ont besoin d&#39;une source d&#39;énergie pour réaliser la photosynthèse. De quelle source les plantes tirent-elles l&#39;énergie nécessaire à la photosynthèse ?",
+    "choices":[
+      "oxygène",
+      "sucre",
+      "soleil",
+      "eau"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NAEP_2000_4_S12+2",
+    "question":"Quelle est la température à la surface du Soleil ?",
+    "choices":[
+      "Pas aussi chaud que l&#39;eau bouillante",
+      "Aussi chaud que le feu",
+      "Environ 100°F",
+      "Beaucoup plus chaud que presque tout sur Terre"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_7001768",
+    "question":"La fonction principale de l’insuline dans notre corps est de",
+    "choices":[
+      "stocker du carburant pour une utilisation ultérieure.",
+      "réguler la quantité de glucose dans le sang.",
+      "augmenter l&#39;efficacité de la consommation de carburant.",
+      "empêcher les bactéries digestives de consommer du glucose."
+    ],
+    "answerKey":"B"
+  }
+]

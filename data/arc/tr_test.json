@@ -1,0 +1,112 @@
+[
+  {
+    "id":"Mercury_SC_409024",
+    "question":"Hayvanlar bitkilerden gelen yiyecekleri yiyerek enerji elde ederler. Bitkiler hayvanların salgıladığı maddeleri alarak hayatta kalırlar. Hayvanlar bitkilerin aldığı hangi maddeyi salgılar?",
+    "choices":[
+      "karbondioksit",
+      "oksijen",
+      "tuz",
+      "şeker"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_LBS10817",
+    "question":"Bir yıldız patladığında, yoğun parlak bir nesne oluşur. Bu nesnenin adı nedir?",
+    "choices":[
+      "nova",
+      "kırmızı dev",
+      "süpernova",
+      "beyaz cüce"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"OHAT_2011_5_37",
+    "question":"Sınıf, bitkilerin daha fazla güneş ışığı alabilmesi için saksıları pencerenin yanına koyar. Domates bitkileri güneş ışığını nasıl kullanır?",
+    "choices":[
+      "Yapraklarda şeker yapmak",
+      "saplarından nişasta kullanmak",
+      "çiçeklere su taşımak",
+      "kökler aracılığıyla besinleri almak"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_409574",
+    "question":"Trevor bir lambayı yakıyor. Lamba yandığında, elektrik enerjisi hangi diğer enerji biçimine dönüşür?",
+    "choices":[
+      "kimyasal",
+      "ışık",
+      "mekanik",
+      "potansiyel"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"NYSEDREGENTS_2013_4_29",
+    "question":"Elektrik kesintisi sırasında evde en çok işe yarayacak eşyalar hangileridir?",
+    "choices":[
+      "el fenerleri ve yedek piller",
+      "şapkalar ve güneş kremi",
+      "yağmurluklar ve şemsiyeler",
+      "böcek spreyi ve ceketler"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_400987",
+    "question":"Gazeteleri geri dönüştürmek çevre için iyidir çünkü",
+    "choices":[
+      "ağaçlara olan ihtiyacı artırır.",
+      "kaynakların korunmasına yardımcı olur.",
+      "çöplüklere olan ihtiyacı artırır.",
+      "Havadaki kirleticilerin giderilmesine yardımcı olur."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_SC_402031",
+    "question":"Açık havada gözlem kaydı yapmak için aşağıdaki araçlardan hangisi en iyisidir?",
+    "choices":[
+      "bir cetvel",
+      "bir grafik",
+      "bir not defteri",
+      "bir hesap makinesi"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"AKDE&ED_2008_8_51",
+    "question":"Dolaşım sistemi ile solunum sistemi birbirine nasıl bağlıdır?",
+    "choices":[
+      "Solunum sistemiyle toplanan oksijen, dolaşım sistemiyle vücudun her yerine taşınır.",
+      "Dolaşım sistemiyle toplanan katı atıklar solunum sistemiyle vücudun her yerine taşınır.",
+      "Solunum sistemiyle toplanan besinler, dolaşım sistemiyle vücudun her yerine taşınır.",
+      "Dolaşım sistemiyle toplanan karbondioksit, solunum sistemiyle vücudun her tarafına taşınır."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NYSEDREGENTS_2008_4_21",
+    "question":"Bir ağacın yaprakları sonbaharda renk değiştirir. Bu bir ağaç örneğidir",
+    "choices":[
+      "yaşam döngüsünü tamamlıyor",
+      "göçe hazırlanma",
+      "çevresine tepki veren",
+      "başlangıç kış uykusu"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_SC_416097",
+    "question":"Hangi bitki kısmı doğru tanımlanmıştır?",
+    "choices":[
+      "Saplar tohumları oluşturur.",
+      "Kökler besinleri emer.",
+      "Yapraklar su emer.",
+      "Çiçekler yiyecek üretir."
+    ],
+    "answerKey":"B"
+  }
+]

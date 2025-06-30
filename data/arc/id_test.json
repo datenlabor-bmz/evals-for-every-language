@@ -1,0 +1,112 @@
+[
+  {
+    "id":"Mercury_SC_409024",
+    "question":"Hewan memperoleh energi dari memakan makanan yang berasal dari tumbuhan. Tumbuhan bertahan hidup dengan menyerap zat-zat yang dikeluarkan oleh hewan. Zat apa yang dikeluarkan hewan yang diserap oleh tumbuhan?",
+    "choices":[
+      "karbon dioksida",
+      "oksigen",
+      "garam",
+      "gula"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_LBS10817",
+    "question":"Ketika sebuah bintang meledak, terbentuklah sebuah objek yang sangat terang. Apa nama objek ini?",
+    "choices":[
+      "baru",
+      "Raksasa merah",
+      "supernova",
+      "katai putih"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"OHAT_2011_5_37",
+    "question":"Kelas meletakkan pot tanaman di dekat jendela sehingga tanaman bisa mendapatkan lebih banyak sinar matahari. Bagaimana tanaman tomat memanfaatkan sinar matahari?",
+    "choices":[
+      "untuk membuat gula di daun",
+      "untuk menggunakan pati dari batangnya",
+      "untuk memindahkan air ke bunga",
+      "untuk mendapatkan nutrisi melalui akar"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_409574",
+    "question":"Trevor menyalakan lampu. Saat lampu menyala, energi listrik berubah menjadi bentuk energi yang mana?",
+    "choices":[
+      "kimia",
+      "lampu",
+      "mekanis",
+      "potensi"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"NYSEDREGENTS_2013_4_29",
+    "question":"Barang apa saja yang paling berguna di rumah saat listrik padam?",
+    "choices":[
+      "senter dan baterai cadangan",
+      "topi dan tabir surya",
+      "jas hujan dan payung",
+      "semprotan serangga dan jaket"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_400987",
+    "question":"Mendaur ulang koran baik untuk lingkungan karena",
+    "choices":[
+      "meningkatkan kebutuhan terhadap pohon.",
+      "membantu melestarikan sumber daya.",
+      "meningkatkan kebutuhan akan tempat pembuangan sampah.",
+      "membantu menghilangkan polutan dari udara."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_SC_402031",
+    "question":"Alat manakah yang terbaik untuk merekam pengamatan di luar ruangan?",
+    "choices":[
+      "seorang penggaris",
+      "sebuah grafik",
+      "buku catatan",
+      "kalkulator"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"AKDE&ED_2008_8_51",
+    "question":"Bagaimana sistem peredaran darah dan sistem pernapasan saling bergantung?",
+    "choices":[
+      "Oksigen yang dikumpulkan oleh sistem pernapasan dibawa ke seluruh tubuh oleh sistem peredaran darah.",
+      "Sampah padat yang dikumpulkan oleh sistem peredaran darah dibawa ke seluruh tubuh oleh sistem pernapasan.",
+      "Nutrisi yang dikumpulkan oleh sistem pernapasan dibawa ke seluruh tubuh oleh sistem peredaran darah.",
+      "Karbon dioksida yang dikumpulkan oleh sistem peredaran darah dibawa ke seluruh tubuh oleh sistem pernapasan."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NYSEDREGENTS_2008_4_21",
+    "question":"Daun pohon berubah warna di musim gugur. Ini adalah contoh pohon",
+    "choices":[
+      "menyelesaikan siklus hidupnya",
+      "mempersiapkan migrasi",
+      "menanggapi lingkungannya",
+      "memulai hibernasi"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_SC_416097",
+    "question":"Bagian tanaman manakah yang dijelaskan dengan benar?",
+    "choices":[
+      "Batang menghasilkan biji.",
+      "Akar menyerap nutrisi.",
+      "Daun menyerap air.",
+      "Bunga membuat makanan."
+    ],
+    "answerKey":"B"
+  }
+]

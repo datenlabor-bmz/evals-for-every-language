@@ -1,0 +1,112 @@
+[
+  {
+    "id":"Mercury_SC_409024",
+    "question":"Động vật lấy năng lượng từ việc ăn thức ăn có nguồn gốc từ thực vật. Thực vật sống sót bằng cách hấp thụ các chất do động vật tiết ra. Động vật tiết ra chất gì mà thực vật hấp thụ?",
+    "choices":[
+      "khí cacbonic",
+      "ôxy",
+      "muối",
+      "đường"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_LBS10817",
+    "question":"Khi một ngôi sao phát nổ, một vật thể cực sáng được hình thành. Tên của vật thể này là gì?",
+    "choices":[
+      "mới",
+      "sao khổng lồ đỏ",
+      "siêu tân tinh",
+      "sao lùn trắng"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"OHAT_2011_5_37",
+    "question":"Lớp đặt chậu cây bên cửa sổ để cây có thể nhận được nhiều ánh sáng mặt trời hơn. Cây cà chua sử dụng ánh sáng mặt trời như thế nào?",
+    "choices":[
+      "để làm đường trong lá",
+      "sử dụng tinh bột từ thân cây",
+      "để di chuyển nước đến những bông hoa",
+      "để lấy chất dinh dưỡng qua rễ"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_409574",
+    "question":"Trevor bật đèn. Khi đèn bật, năng lượng điện chuyển thành dạng năng lượng nào khác?",
+    "choices":[
+      "hóa chất",
+      "ánh sáng",
+      "cơ khí",
+      "tiềm năng"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"NYSEDREGENTS_2013_4_29",
+    "question":"Những đồ dùng nào sẽ hữu ích nhất trong nhà khi mất điện?",
+    "choices":[
+      "đèn pin và pin dự phòng",
+      "mũ và kem chống nắng",
+      "áo mưa và ô",
+      "thuốc xịt côn trùng và áo khoác"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_400987",
+    "question":"Tái chế báo là tốt cho môi trường vì nó",
+    "choices":[
+      "làm tăng nhu cầu về cây xanh.",
+      "giúp bảo tồn tài nguyên.",
+      "làm tăng nhu cầu về bãi chôn lấp.",
+      "giúp loại bỏ các chất ô nhiễm khỏi không khí."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_SC_402031",
+    "question":"Trong số những công cụ sau, công cụ nào là tốt nhất để ghi lại các quan sát ngoài trời?",
+    "choices":[
+      "một người cai trị",
+      "một đồ thị",
+      "một cuốn sổ tay",
+      "một máy tính"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"AKDE&ED_2008_8_51",
+    "question":"Hệ tuần hoàn và hệ hô hấp phụ thuộc lẫn nhau như thế nào?",
+    "choices":[
+      "Oxy được hệ hô hấp thu thập sẽ được hệ tuần hoàn vận chuyển đi khắp cơ thể.",
+      "Chất thải rắn được hệ tuần hoàn thu thập sẽ được hệ hô hấp vận chuyển đi khắp cơ thể.",
+      "Các chất dinh dưỡng được hệ hô hấp thu thập sẽ được hệ tuần hoàn vận chuyển đi khắp cơ thể.",
+      "Carbon dioxide được hệ tuần hoàn thu thập sẽ được hệ hô hấp vận chuyển đi khắp cơ thể."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NYSEDREGENTS_2008_4_21",
+    "question":"Lá của một cái cây đổi màu vào mùa thu. Đây là một ví dụ về một cái cây",
+    "choices":[
+      "hoàn thành vòng đời của nó",
+      "chuẩn bị di cư",
+      "phản ứng với môi trường của nó",
+      "bắt đầu ngủ đông"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_SC_416097",
+    "question":"Bộ phận nào của cây được mô tả đúng?",
+    "choices":[
+      "Thân cây tạo ra hạt.",
+      "Rễ hấp thụ chất dinh dưỡng.",
+      "Lá hấp thụ nước.",
+      "Hoa làm ra thức ăn."
+    ],
+    "answerKey":"B"
+  }
+]

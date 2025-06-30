@@ -1,0 +1,145 @@
+[
+  {
+    "id":"Mercury_7283255",
+    "question":"¿Cuál de los siguientes eventos durante la meiosis contribuye más a la variación dentro de una especie?",
+    "choices":[
+      "emparejamiento de cromosomas",
+      "creación de gametos haploides",
+      "segregación de alelos",
+      "separación de cromátidas"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_405944",
+    "question":"Los motores de automóviles que se fabrican hoy en día están diseñados para ser eficientes en el consumo de gasolina. Los motores eficientes en el consumo de gasolina probablemente afecten a una ciudad al reducir...",
+    "choices":[
+      "contaminación del aire.",
+      "contaminación térmica.",
+      "contaminación acústica.",
+      "contaminación lumínica."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2001_8_2",
+    "question":"¿Cuál describe mejor la tecnología del transporte?",
+    "choices":[
+      "un sistema que se utiliza para mover personas y productos",
+      "una empresa que transforma materias primas en bienes",
+      "la construcción y acabado de estructuras",
+      "la conversión de energía mecánica en energía térmica"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"MCAS_2005_8_14",
+    "question":"Si 1 kg del compuesto tolueno se funde a -95 °C, entonces 500 g de tolueno se fundirán a -95 °C.",
+    "choices":[
+      "fundirse a -47,5°C.",
+      "fundirse a -95°C.",
+      "hervir a 95°C.",
+      "hervir a 47,5°C."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_400056",
+    "question":"¿Qué rasgo de la planta se hereda?",
+    "choices":[
+      "la forma de sus hojas",
+      "la cantidad de agua que recibe",
+      "la cantidad de minerales que absorbe del suelo",
+      "el nivel de luz solar al que está expuesto"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NAEP_2009_4_S11+2",
+    "question":"Roger vertió agua sobre un montón de arena. Parte de la arena se desprendió. ¿A cuál de los siguientes procesos se parece este?",
+    "choices":[
+      "La erupción de un volcán",
+      "La erosión de las paredes de un cañón",
+      "La elevación de las cordilleras",
+      "La formación de dunas o montículos en un desierto."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_7136115",
+    "question":"Roger visitó a su abuelo, que vive en una granja. Mientras estaba allí, lo ayudó a sacar el heno del granero. Mientras trabajaba en el granero, Roger empezó a estornudar. ¿Qué sistema del cuerpo probablemente causó el estornudo de Roger?",
+    "choices":[
+      "circulatorio",
+      "excretorio",
+      "digestivo",
+      "inmune"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_416531",
+    "question":"Erin colocó su trébol en un rincón oscuro. Pronto vio que las hojas se inclinaban hacia la ventana. ¿Qué necesitaba la planta de la ventana?",
+    "choices":[
+      "luz solar durante el día",
+      "aire durante el día",
+      "oscuridad en la noche",
+      "calor en la noche"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_404988",
+    "question":"¿Cuál de estas afirmaciones sobre los recursos no renovables es verdadera?",
+    "choices":[
+      "Son económicos.",
+      "Ayudan a mantener el aire limpio.",
+      "Pueden tardar millones de años en formarse.",
+      "Se utilizan porque se quitan fácilmente del suelo."
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NYSEDREGENTS_2006_4_27",
+    "question":"¿Qué actividad humana tiene con mayor frecuencia un efecto nocivo sobre el medio ambiente?",
+    "choices":[
+      "respiración",
+      "creciente",
+      "plantación",
+      "contaminador"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_SC_409901",
+    "question":"Las plantas necesitan una fuente de energía para realizar la fotosíntesis. ¿De qué fuente obtienen la energía necesaria para realizarla?",
+    "choices":[
+      "oxígeno",
+      "azúcar",
+      "luz del sol",
+      "agua"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"NAEP_2000_4_S12+2",
+    "question":"¿Qué temperatura hace en la superficie del Sol?",
+    "choices":[
+      "No tan caliente como el agua hirviendo",
+      "Tan caliente como el fuego",
+      "Alrededor de 100°F",
+      "Mucho más caliente que casi cualquier cosa en la Tierra"
+    ],
+    "answerKey":"D"
+  },
+  {
+    "id":"Mercury_7001768",
+    "question":"La función principal de la insulina en nuestro cuerpo es",
+    "choices":[
+      "almacenar combustible para su uso posterior.",
+      "regular la cantidad de glucosa en la sangre.",
+      "Aumentar la eficiencia del consumo de combustible.",
+      "evitar que las bacterias digestivas consuman glucosa."
+    ],
+    "answerKey":"B"
+  }
+]

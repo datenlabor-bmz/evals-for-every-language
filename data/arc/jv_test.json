@@ -1,0 +1,112 @@
+[
+  {
+    "id":"Mercury_SC_409024",
+    "question":"Kewan entuk energi saka mangan panganan sing asale saka tanduran. Tanduran urip kanthi njupuk zat sing dibebasake saka kewan. Zat apa sing dibebasake kewan sing dijupuk tanduran?",
+    "choices":[
+      "karbon dioksida",
+      "oksigen",
+      "uyah",
+      "gula"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_LBS10817",
+    "question":"Nalika lintang njeblug, obyek sing padhang banget dibentuk. Apa jeneng obyek iki?",
+    "choices":[
+      "nova",
+      "raksasa abang",
+      "supernova",
+      "kurcaci putih"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"OHAT_2011_5_37",
+    "question":"Ing kelas sijine tanduran ing jejere jendhela supaya tanduran bisa entuk luwih akeh sinar matahari. Kepiye carane tanduran tomat nggunakake sinar matahari?",
+    "choices":[
+      "kanggo nggawe gula ing godhong",
+      "nggunakake pati saka batang",
+      "kanggo mindhah banyu menyang kembang",
+      "kanggo entuk nutrisi liwat oyod"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_409574",
+    "question":"Trevor nguripake lampu. Nalika lampu urip, energi listrik diganti dadi bentuk energi liyane?",
+    "choices":[
+      "kimia",
+      "cahya",
+      "mekanik",
+      "potensial"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"NYSEDREGENTS_2013_4_29",
+    "question":"Barang apa sing paling migunani ing omah nalika listrik mati?",
+    "choices":[
+      "senter lan baterei ekstra",
+      "topi lan sunscreen",
+      "jas hujan lan payung",
+      "semprotan serangga lan jaket"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_400987",
+    "question":"Daur ulang koran apik kanggo lingkungan amarga",
+    "choices":[
+      "mundhak perlu kanggo wit.",
+      "mbantu ngirit sumber daya.",
+      "mundhak perlu kanggo landfills.",
+      "mbantu mbusak rereged saka udhara."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_SC_402031",
+    "question":"Apa alat iki sing paling apik kanggo ngrekam pengamatan ing njaba?",
+    "choices":[
+      "panguwasa",
+      "grafik",
+      "notebook",
+      "kalkulator"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"AKDE&ED_2008_8_51",
+    "question":"Kepiye sistem sirkulasi lan sistem pernapasan gumantung siji lan sijine?",
+    "choices":[
+      "Oksigen sing diklumpukake dening sistem pernapasan digawa menyang awak kanthi sistem sirkulasi.",
+      "Limbah padat sing diklumpukake dening sistem sirkulasi digawa menyang awak kanthi sistem pernapasan.",
+      "Nutrisi sing diklumpukake dening sistem pernapasan digawa menyang awak kanthi sistem sirkulasi.",
+      "Karbon dioksida sing diklumpukake dening sistem sirkulasi digawa menyang awak dening sistem pernapasan."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NYSEDREGENTS_2008_4_21",
+    "question":"Godhong wit ganti warna ing musim gugur. Iki minangka conto wit",
+    "choices":[
+      "ngrampungake siklus uripe",
+      "nyiapake kanggo migrasi",
+      "nanggapi lingkungane",
+      "miwiti hibernasi"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_SC_416097",
+    "question":"Bagian tanduran endi sing digambarake kanthi bener?",
+    "choices":[
+      "Batang nggawe wiji.",
+      "Oyod nyerep nutrisi.",
+      "Godhong nyerep banyu.",
+      "Kembang nggawe panganan."
+    ],
+    "answerKey":"B"
+  }
+]

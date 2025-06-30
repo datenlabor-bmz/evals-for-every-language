@@ -1,0 +1,112 @@
+[
+  {
+    "id":"Mercury_SC_409024",
+    "question":"Tiere gewinnen Energie aus pflanzlicher Nahrung. Pflanzen überleben, indem sie Stoffe aufnehmen, die von Tieren ausgeschieden werden. Welche Stoffe geben Tiere ab, die Pflanzen aufnehmen?",
+    "choices":[
+      "Kohlendioxid",
+      "Sauerstoff",
+      "Salz",
+      "Zucker"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_LBS10817",
+    "question":"Wenn ein Stern explodiert, entsteht ein intensiv helles Objekt. Wie heißt dieses Objekt?",
+    "choices":[
+      "Nova",
+      "Roter Riese",
+      "Supernova",
+      "Weißer Zwerg"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"OHAT_2011_5_37",
+    "question":"Die Klasse stellt die Pflanzgefäße ans Fenster, damit die Pflanzen mehr Sonnenlicht bekommen. Wie nutzen die Tomatenpflanzen das Sonnenlicht?",
+    "choices":[
+      "um Zucker in den Blättern herzustellen",
+      "Stärke aus den Stielen verwenden",
+      "um Wasser zu den Blumen zu leiten",
+      "um Nährstoffe über die Wurzeln zu bekommen"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_409574",
+    "question":"Trevor schaltet eine Lampe ein. In welche andere Energieform wird elektrische Energie umgewandelt, wenn die Lampe an ist?",
+    "choices":[
+      "chemisch",
+      "Licht",
+      "mechanisch",
+      "Potenzial"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"NYSEDREGENTS_2013_4_29",
+    "question":"Welche Gegenstände wären bei einem Stromausfall zu Hause am nützlichsten?",
+    "choices":[
+      "Taschenlampen und Ersatzbatterien",
+      "Hüte und Sonnencreme",
+      "Regenmäntel und Regenschirme",
+      "Insektenspray und Jacken"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_400987",
+    "question":"Das Recycling von Zeitungen ist gut für die Umwelt, denn es",
+    "choices":[
+      "erhöht den Bedarf an Bäumen.",
+      "hilft, Ressourcen zu schonen.",
+      "erhöht den Bedarf an Mülldeponien.",
+      "hilft, Schadstoffe aus der Luft zu entfernen."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_SC_402031",
+    "question":"Welches dieser Werkzeuge eignet sich am besten zum Aufzeichnen von Beobachtungen im Freien?",
+    "choices":[
+      "ein Lineal",
+      "ein Diagramm",
+      "ein Notizbuch",
+      "ein Taschenrechner"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"AKDE&ED_2008_8_51",
+    "question":"Welche gegenseitige Abhängigkeit besteht zwischen Kreislauf und Atmung?",
+    "choices":[
+      "Der über die Atemwege aufgenommene Sauerstoff wird über das Kreislaufsystem durch den Körper transportiert.",
+      "Feste Abfallstoffe, die vom Kreislaufsystem gesammelt werden, werden über die Atemwege durch den Körper transportiert.",
+      "Die über die Atemwege aufgenommenen Nährstoffe werden über das Blutkreislaufsystem durch den Körper transportiert.",
+      "Das vom Kreislaufsystem aufgenommene Kohlendioxid wird über die Atemwege durch den Körper transportiert."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NYSEDREGENTS_2008_4_21",
+    "question":"Die Blätter eines Baumes verfärben sich im Herbst. Dies ist ein Beispiel für einen Baum",
+    "choices":[
+      "Abschluss seines Lebenszyklus",
+      "Vorbereitung auf die Migration",
+      "auf seine Umgebung reagieren",
+      "Beginn des Winterschlafs"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_SC_416097",
+    "question":"Welcher Pflanzenteil ist richtig beschrieben?",
+    "choices":[
+      "Aus den Stängeln entstehen Samen.",
+      "Wurzeln nehmen Nährstoffe auf.",
+      "Blätter nehmen Wasser auf.",
+      "Blumen machen Nahrung."
+    ],
+    "answerKey":"B"
+  }
+]

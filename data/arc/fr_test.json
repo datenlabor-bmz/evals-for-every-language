@@ -1,0 +1,112 @@
+[
+  {
+    "id":"Mercury_SC_409024",
+    "question":"Les animaux tirent leur énergie de la nourriture provenant des plantes. Les plantes survivent en absorbant des substances libérées par les animaux. Quelles substances les animaux libèrent-ils et que les plantes absorbent ?",
+    "choices":[
+      "dioxyde de carbone",
+      "oxygène",
+      "sel",
+      "sucre"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_LBS10817",
+    "question":"Lorsqu&#39;une étoile explose, un objet extrêmement brillant se forme. Quel est le nom de cet objet ?",
+    "choices":[
+      "nova",
+      "géante rouge",
+      "supernova",
+      "naine blanche"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"OHAT_2011_5_37",
+    "question":"La classe place les jardinières près de la fenêtre pour que les plants bénéficient davantage de la lumière du soleil. Comment les plants de tomates utilisent-ils la lumière du soleil ?",
+    "choices":[
+      "faire du sucre dans les feuilles",
+      "utiliser l&#39;amidon des tiges",
+      "pour acheminer l&#39;eau vers les fleurs",
+      "pour obtenir des nutriments par les racines"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_409574",
+    "question":"Trevor allume une lampe. Quand la lampe est allumée, l&#39;énergie électrique se transforme en quelle autre forme d&#39;énergie ?",
+    "choices":[
+      "chimique",
+      "lumière",
+      "mécanique",
+      "potentiel"
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"NYSEDREGENTS_2013_4_29",
+    "question":"Quels objets seraient les plus utiles à la maison en cas de panne de courant ?",
+    "choices":[
+      "lampes de poche et piles supplémentaires",
+      "chapeaux et crème solaire",
+      "imperméables et parapluies",
+      "insectifuge et vestes"
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"Mercury_SC_400987",
+    "question":"Le recyclage des journaux est bon pour l’environnement car il",
+    "choices":[
+      "augmente le besoin d’arbres.",
+      "contribue à préserver les ressources.",
+      "augmente le besoin de décharges.",
+      "aide à éliminer les polluants de l’air."
+    ],
+    "answerKey":"B"
+  },
+  {
+    "id":"Mercury_SC_402031",
+    "question":"Lequel de ces outils est le meilleur pour enregistrer des observations en extérieur ?",
+    "choices":[
+      "une règle",
+      "un graphique",
+      "un cahier",
+      "une calculatrice"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"AKDE&ED_2008_8_51",
+    "question":"Comment le système circulatoire et le système respiratoire dépendent-ils l’un de l’autre ?",
+    "choices":[
+      "L’oxygène collecté par le système respiratoire est transporté dans tout le corps par le système circulatoire.",
+      "Les déchets solides collectés par le système circulatoire sont transportés dans tout le corps par le système respiratoire.",
+      "Les nutriments collectés par le système respiratoire sont transportés dans tout le corps par le système circulatoire.",
+      "Le dioxyde de carbone collecté par le système circulatoire est transporté dans tout le corps par le système respiratoire."
+    ],
+    "answerKey":"A"
+  },
+  {
+    "id":"NYSEDREGENTS_2008_4_21",
+    "question":"Les feuilles d&#39;un arbre changent de couleur à l&#39;automne. Voici un exemple d&#39;arbre",
+    "choices":[
+      "achever son cycle de vie",
+      "se préparer à la migration",
+      "répondre à son environnement",
+      "début de l&#39;hibernation"
+    ],
+    "answerKey":"C"
+  },
+  {
+    "id":"Mercury_SC_416097",
+    "question":"Quelle partie de la plante est décrite correctement ?",
+    "choices":[
+      "Les tiges produisent des graines.",
+      "Les racines absorbent les nutriments.",
+      "Les feuilles absorbent l&#39;eau.",
+      "Les fleurs font de la nourriture."
+    ],
+    "answerKey":"B"
+  }
+]
