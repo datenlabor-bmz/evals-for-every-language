@@ -319,58 +319,6 @@
         "group": "Grade School Math"
     },
     {
-        "name": "FLEURS",
-        "author": "Meta",
-        "author_url": "https://ai.meta.com",
-        "url": "https://huggingface.co/datasets/google/fleurs",
-        "n_languages": 102,
-        "tasks": [
-            "speech_recognition"
-        ],
-        "parallel": true,
-        "translation": "human",
-        "base": "FLORES",
-        "implemented": false,
-        "group": "Speech Recognition"
-    },
-    {
-        "name": "CommonVoice",
-        "author": "Mozilla",
-        "author_url": "https://blog.mozilla.ai",
-        "url": "https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0",
-        "n_languages": 124,
-        "tasks": [
-            "speech_recognition"
-        ],
-        "parallel": null,
-        "translation": "human",
-        "group": "Speech Recognition"
-    },
-    {
-        "name": "WorldCuisines",
-        "author": "Academic",
-        "author_url": "https://worldcuisines.github.io",
-        "url": "https://huggingface.co/datasets/worldcuisines/vqa",
-        "n_languages": 30,
-        "tasks": [
-            "visual_question_answering"
-        ],
-        "parallel": null,
-        "group": "Visual Question Answering"
-    },
-    {
-        "name": "CVQA",
-        "author": "Academic",
-        "author_url": null,
-        "url": "https://huggingface.co/datasets/afaji/cvqa",
-        "n_languages": 39,
-        "tasks": [
-            "visual_question_answering"
-        ],
-        "parallel": null,
-        "group": "Visual Question Answering"
-    },
-    {
         "name": "Uhuru ARC Easy",
         "author": "Masakhane",
         "author_url": "https://www.masakhane.io",
@@ -382,7 +330,7 @@
         "parallel": true,
         "translation": "human",
         "base": "AI2 ARC",
-        "implemented": false,
+        "implemented": true,
         "group": "Abstract Reasoning"
     },
     {
@@ -459,6 +407,58 @@
         "base": "TruthfulQA",
         "implemented": false,
         "group": "Truthfulness"
+    },
+    {
+        "name": "FLEURS",
+        "author": "Meta",
+        "author_url": "https://ai.meta.com",
+        "url": "https://huggingface.co/datasets/google/fleurs",
+        "n_languages": 102,
+        "tasks": [
+            "speech_recognition"
+        ],
+        "parallel": true,
+        "translation": "human",
+        "base": "FLORES",
+        "implemented": false,
+        "group": "Speech Recognition"
+    },
+    {
+        "name": "CommonVoice",
+        "author": "Mozilla",
+        "author_url": "https://blog.mozilla.ai",
+        "url": "https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0",
+        "n_languages": 124,
+        "tasks": [
+            "speech_recognition"
+        ],
+        "parallel": null,
+        "translation": "human",
+        "group": "Speech Recognition"
+    },
+    {
+        "name": "WorldCuisines",
+        "author": "Academic",
+        "author_url": "https://worldcuisines.github.io",
+        "url": "https://huggingface.co/datasets/worldcuisines/vqa",
+        "n_languages": 30,
+        "tasks": [
+            "visual_question_answering"
+        ],
+        "parallel": null,
+        "group": "Visual Question Answering"
+    },
+    {
+        "name": "CVQA",
+        "author": "Academic",
+        "author_url": null,
+        "url": "https://huggingface.co/datasets/afaji/cvqa",
+        "n_languages": 39,
+        "tasks": [
+            "visual_question_answering"
+        ],
+        "parallel": null,
+        "group": "Visual Question Answering"
     },
     {
         "name": "XNLI",

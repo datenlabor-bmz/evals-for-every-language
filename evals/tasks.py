@@ -8,6 +8,7 @@ import sentencepiece as spm
 from datasets_.flores import flores_sentences
 from datasets_.mgsm import load_mgsm, parse_number
 from datasets_.mmlu import load_mmlu
+from datasets_.arc import load_uhura_arc_easy
 from google.cloud import translate_v2 as translate
 from langcodes import closest_supported_match
 from languages import languages, script_name
@@ -223,29 +224,28 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
+def format_multiple_choice(item):
+    return f"""{item["question"]}
+    
+    A: {item["choices"][0]}
+    B: {item["choices"][1]}
+    C: {item["choices"][2]}
+    D: {item["choices"][3]}
+    
+    A|B|C|D?"""
 
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
     ds_name, examples, task = load_mmlu(language_bcp_47, nr)
     if not task:
         return []
 
-    def format_item(item):
-        return f"""{item["question"]}
-        
-        A: {item["choices"][0]}
-        B: {item["choices"][1]}
-        C: {item["choices"][2]}
-        D: {item["choices"][3]}
-        
-        A|B|C|D?"""
-
     messages = []
     for example in examples:
         messages += [
-            {"role": "user", "content": format_item(example)},
+            {"role": "user", "content": format_multiple_choice(example)},
             {"role": "assistant", "content": example["answer"]},
         ]
-    messages += [{"role": "user", "content": format_item(task)}]
+    messages += [{"role": "user", "content": format_multiple_choice(task)}]
     try:
         response = await complete(
             model=model,
@@ -270,6 +270,42 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
+async def arc_and_evaluate(model, language_bcp_47, nr):
+    ds_name, examples, task = load_uhura_arc_easy(language_bcp_47, nr)
+    if not task:
+        return []
+    
+    messages = []
+    for example in examples:
+        messages += [
+            {"role": "user", "content": format_multiple_choice(example)},
+            {"role": "assistant", "content": example["answer"]},
+        ]
+    messages += [{"role": "user", "content": format_multiple_choice(task)}]
+    try:
+        response = await complete(
+            model=model,
+            messages=messages,
+            temperature=0,
+            max_tokens=1,
+        )
+        acc = int(response[:1].strip() == task["answer"])
+    except Exception as e:
+        if "ResponsibleAIPolicyViolation" in str(e):
+            acc = 0
+        else:
+            raise e
+    return [
+        {
+            "model": model,
+            "bcp_47": language_bcp_47,
+            "task": "arc",
+            "metric": "accuracy",
+            "score": acc,
+            "sentence_nr": nr,
+        }
+    ]
+    
 
 async def mgsm_and_evaluate(model, language_bcp_47, nr):
     system_prompt = """
@@ -346,6 +382,7 @@ tasks = {
     "classification": classify_and_evaluate,
     # "mlm": mlm_and_evaluate,
     "mmlu": mmlu_and_evaluate,
+    "arc": arc_and_evaluate,
     "mgsm": mgsm_and_evaluate,
     # "asr": transcribe_and_evaluate,
 }

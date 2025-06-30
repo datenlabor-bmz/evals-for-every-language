@@ -44,7 +44,7 @@ const ScoreColumns = [
   <Column
     field='classification_accuracy'
     header='Classification'
-    headerTooltip='Classification performance (accuracy on a sample of the FLORES+ benchmark)'
+    headerTooltip='Classification performance (accuracy on a sample of the SIB-200 / FLORES+ classification benchmark)'
     sortable
     body={scoreBodyTemplate('classification_accuracy', {
       minScore: 0,
@@ -74,9 +74,20 @@ const ScoreColumns = [
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,
   <Column
+    field='arc_accuracy'
+    header='Advanced Q&A'
+    headerTooltip='Advanced Question Answering performance (accuracy on a sample of multilingual versions of the ARC-Easy benchmark)'
+    sortable
+    body={scoreBodyTemplate('arc_accuracy', {
+      minScore: 0,
+      maxScore: 1
+    })}
+    style={{ minWidth: '5rem', maxWidth: '10rem' }}
+  />,
+  <Column
     field='mgsm_accuracy'
     header='Math'
-    headerTooltip='Math Problem Solving performance (accuracy on a sample of the MGMS benchmark)'
+    headerTooltip='Math Problem Solving performance (accuracy on a sample of multilingual versions of the GSM8K benchmark)'
     sortable
     body={scoreBodyTemplate('mgsm_accuracy', {
       minScore: 0,

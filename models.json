@@ -14,6 +14,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -32,6 +33,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -50,6 +52,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -68,6 +71,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -86,6 +90,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -104,6 +109,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -122,6 +128,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -134,8 +141,15 @@
     "size":684531386000.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1748390400000.0,
-    "tasks":null
+    "creation_date":1748390400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "mgsm"
+    ]
   },
   {
     "id":"google\/gemini-2.0-flash-001",
@@ -152,6 +166,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -170,6 +185,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -188,6 +204,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -200,7 +217,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1750118400000,
+    "creation_date":1750118400000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -218,7 +235,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1744848000000,
+    "creation_date":1744848000000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -236,7 +253,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1747699200000,
+    "creation_date":1747699200000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -290,7 +307,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1746576000000,
+    "creation_date":1746576000000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -314,6 +331,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -332,6 +350,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -350,6 +369,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -383,6 +403,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -401,6 +422,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -419,6 +441,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -461,6 +484,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -479,6 +503,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -497,6 +522,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -515,6 +541,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -533,6 +560,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -551,6 +579,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -569,6 +598,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -599,6 +629,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -617,6 +648,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   },
@@ -635,6 +667,7 @@
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
       "mgsm"
     ]
   }

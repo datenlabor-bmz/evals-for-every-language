@@ -25,6 +25,7 @@ task_metrics = [
     "translation_to_bleu",
     "classification_accuracy",
     "mmlu_accuracy",
+    "arc_accuracy",
     "mgsm_accuracy",
 ]
 

@@ -1291,7 +1291,7 @@
     "family":"Indo-European",
     "flores_path":"cat_Latn",
     "fleurs_tag":"ca_es",
-    "commonvoice_hours":2862.0,
+    "commonvoice_hours":2863.0,
     "commonvoice_locale":"ca",
     "in_benchmark":true
   },
@@ -3559,7 +3559,7 @@
     "family":"Abkhaz-Adyge",
     "flores_path":null,
     "fleurs_tag":null,
-    "commonvoice_hours":82.0,
+    "commonvoice_hours":83.0,
     "commonvoice_locale":"kbd",
     "in_benchmark":false
   },
