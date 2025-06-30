@@ -1,10 +1,17 @@
+import asyncio
+import os
 import random
 from collections import Counter, defaultdict
 
-from langcodes import Language, standardize_tag
-from rich import print
-
+from datasets import Dataset, load_dataset
 from datasets_.util import _get_dataset_config_names, _load_dataset
+from langcodes import Language, standardize_tag
+from models import google_supported_languages, translate_google
+from rich import print
+from tqdm import tqdm
+from tqdm.asyncio import tqdm_asyncio
+
+
 def print_counts(slug, subjects_dev, subjects_test):
     print(
         f"{slug:<25} {len(list(set(subjects_test))):>3} test categories, {len(subjects_test):>6} samples, {len(list(set(subjects_dev))):>3} dev categories, {len(subjects_dev):>6} dev samples"
@@ -123,48 +130,109 @@ def add_choices(row):
     return row
 
 
-def load_mmlu(language_bcp_47, nr):
-    categories = sorted(
+tags_afrimmlu = {
+    standardize_tag(a, macro=True): a
+    for a in _get_dataset_config_names("masakhane/afrimmlu")
+}
+tags_global_mmlu = {
+    standardize_tag(a, macro=True): a
+    for a in _get_dataset_config_names("CohereForAI/Global-MMLU")
+}
+tags_okapi = _get_dataset_config_names("lighteval/okapi_mmlu")
+tags_mmlux = set(
+    a.rsplit("_", 1)[1].split("-")[0].lower()
+    for a in _get_dataset_config_names("Eurolingua/mmlux", trust_remote_code=True)
+)
+tags_mmlu_autotranslated = _get_dataset_config_names("fair-forward/mmlu-autotranslated")
+
+categories = sorted(
         list(set(_load_dataset("masakhane/afrimmlu", "eng")["dev"]["subject"]))
     )
+
+
+def load_mmlu(language_bcp_47, nr):
     category = categories[nr % len(categories)]
-    random.seed(nr)
-    i = random.randint(0, 100)
-    tags_afrimmlu = {
-        standardize_tag(a, macro=True): a
-        for a in _get_dataset_config_names("masakhane/afrimmlu")
-    }
-    tags_global_mmlu = {
-        standardize_tag(a, macro=True): a
-        for a in _get_dataset_config_names("CohereForAI/Global-MMLU")
-    }
-    tags_okapi = _get_dataset_config_names("lighteval/okapi_mmlu")
-    tags_mmlux = set(
-        a.rsplit("_", 1)[1].split("-")[0].lower()
-        for a in _get_dataset_config_names("Eurolingua/mmlux", trust_remote_code=True)
-    )
     if language_bcp_47 in tags_afrimmlu.keys():
         ds = _load_dataset("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47])
         ds = ds.map(parse_choices)
         examples = ds["dev"].filter(lambda x: x["subject"] == category)
-        task = ds["test"].filter(lambda x: x["subject"] == category)[i]
+        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
         return "masakhane/afrimmlu", examples, task
     elif language_bcp_47 in tags_global_mmlu.keys():
         ds = _load_dataset("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47])
         ds = ds.map(add_choices)
         examples = ds["dev"].filter(lambda x: x["subject"] == category)
-        task = ds["test"].filter(lambda x: x["subject"] == category)[i]
+        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
         return "CohereForAI/Global-MMLU", examples, task
-    elif language_bcp_47 in tags_okapi:
-        return None, None, None # FIXME
-        ds = _load_dataset(
-            "lighteval/okapi_mmlu", language_bcp_47, trust_remote_code=True
-        )
+    elif language_bcp_47 in tags_mmlu_autotranslated:
+        ds = _load_dataset("fair-forward/mmlu-autotranslated", language_bcp_47)
         examples = ds["dev"].filter(lambda x: x["subject"] == category)
-        task = ds["test"].filter(lambda x: x["id"] == f"{category}/test/{i}")[0]
-        return "lighteval/okapi_mmlu", examples, task
-    elif language_bcp_47 in tags_mmlux:
-        # loading this is more complicated, todo
-        return None, None, None
+        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
+        return "fair-forward/mmlu-autotranslated", examples, task
     else:
         return None, None, None
+
+
+def translate_mmlu(languages):
+    human_translated = [*tags_afrimmlu.keys(), *tags_global_mmlu.keys()]
+    untranslated = [
+        lang
+        for lang in languages["bcp_47"].values[:100]
+        if lang not in human_translated and lang in google_supported_languages
+    ]
+    n_samples = 10
+
+    slug = "fair-forward/mmlu-autotranslated"
+    for lang in tqdm(untranslated):
+        # check if already exists on hub
+        try:
+            ds_lang = load_dataset(slug, lang)
+        except (ValueError, Exception):
+            print(f"Translating {lang}...")
+            for split in ["dev", "test"]:
+                ds = _load_dataset("masakhane/afrimmlu", "eng", split=split)
+                samples = []
+                for category in categories:
+                    if split == "dev":
+                        samples.extend(ds.filter(lambda x: x["subject"] == category))
+                    else:
+                        for i in range(n_samples):
+                            task = ds.filter(lambda x: x["subject"] == category)[i]
+                            samples.append(task)
+                questions_tr = [
+                    translate_google(s["question"], "en", lang) for s in samples
+                ]
+                questions_tr = asyncio.run(tqdm_asyncio.gather(*questions_tr))
+                choices_texts_concatenated = []
+                for s in samples:
+                    for choice in eval(s["choices"]):
+                        choices_texts_concatenated.append(choice)
+                choices_tr = [
+                    translate_google(c, "en", lang) for c in choices_texts_concatenated
+                ]
+                choices_tr = asyncio.run(tqdm_asyncio.gather(*choices_tr))
+                # group into chunks of 4
+                choices_tr = [
+                    choices_tr[i : i + 4] for i in range(0, len(choices_tr), 4)
+                ]
+
+                ds_lang = Dataset.from_dict(
+                    {
+                        "subject": [s["subject"] for s in samples],
+                        "question": questions_tr,
+                        "choices": choices_tr,
+                        "answer": [s["answer"] for s in samples],
+                    }
+                )
+                ds_lang.push_to_hub(
+                    slug,
+                    split=split,
+                    config_name=lang,
+                    token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"),
+                )
+                ds_lang.to_json(
+                    f"data/translations/mmlu/{lang}_{split}.json",
+                    lines=False,
+                    force_ascii=False,
+                    indent=2,
+                )
