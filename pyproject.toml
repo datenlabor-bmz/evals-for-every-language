@@ -36,3 +36,9 @@ dev = [
     "tqdm>=4.67.1",
     "transformers>=4.51.3",
 ]
+
+[dependency-groups]
+dev = [
+    "ipython>=9.3.0",
+    "jupyter>=1.1.1",
+]
