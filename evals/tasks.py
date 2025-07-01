@@ -9,6 +9,7 @@ from datasets_.flores import flores_sentences
 from datasets_.mgsm import load_mgsm, parse_number
 from datasets_.mmlu import load_mmlu
 from datasets_.arc import load_uhura_arc_easy
+from datasets_.truthfulqa import load_truthfulqa
 from google.cloud import translate_v2 as translate
 from langcodes import closest_supported_match
 from languages import languages, script_name
@@ -305,7 +306,60 @@ async def arc_and_evaluate(model, language_bcp_47, nr):
             "sentence_nr": nr,
         }
     ]
-    
+
+letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+def shuffle_choices_and_labels(item):
+    indices = list(range(len(item["choices"])))
+    random.shuffle(indices)
+    item["choices"] = [item["choices"][i] for i in indices]
+    item["labels"] = [item["labels"][i] for i in indices]
+    return item
+
+def format_multiple_choice_truthfulqa(item):
+    text = item["question"] + "\n\n"
+    for i, choice in enumerate(item["choices"]):
+        text += f"{letters[i]}: {choice}\n"
+    text += "|".join(letters[:len(item["choices"])]) + "?"
+    return text
+
+async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
+    ds_name, examples, task = load_truthfulqa(language_bcp_47, nr)
+    if not task:
+        return []
+    task = shuffle_choices_and_labels(task)
+    answer = letters[task["labels"].index(1)]
+    messages = []
+    for example in examples:
+        example = shuffle_choices_and_labels(example)
+        messages += [
+            {"role": "user", "content": format_multiple_choice_truthfulqa(example)},
+            {"role": "assistant", "content": letters[example["labels"].index(1)]},
+        ]
+    messages += [{"role": "user", "content": format_multiple_choice_truthfulqa(task)}]
+    try:
+        response = await complete(
+            model=model,
+            messages=messages,
+            temperature=0,
+            max_tokens=1,
+        )
+        acc = int(response[:1].strip() == answer)
+    except Exception as e:
+        if "ResponsibleAIPolicyViolation" in str(e):
+            acc = 0
+        else:
+            raise e
+    return [
+        {
+            "model": model,
+            "bcp_47": language_bcp_47,
+            "task": "truthfulqa",
+            "metric": "accuracy",
+            "score": acc,
+            "sentence_nr": nr,
+        }
+    ]
 
 async def mgsm_and_evaluate(model, language_bcp_47, nr):
     system_prompt = """
@@ -383,6 +437,7 @@ tasks = {
     # "mlm": mlm_and_evaluate,
     "mmlu": mmlu_and_evaluate,
     "arc": arc_and_evaluate,
+    "truthfulqa": truthfulqa_and_evaluate,
     "mgsm": mgsm_and_evaluate,
     # "asr": transcribe_and_evaluate,
 }

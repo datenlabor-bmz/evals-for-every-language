@@ -15,6 +15,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -34,6 +35,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -53,6 +55,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -72,6 +75,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -91,6 +95,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -110,6 +115,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -129,6 +135,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -148,6 +155,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -167,6 +175,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -186,6 +195,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -205,6 +215,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -332,6 +343,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -351,6 +363,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -370,6 +383,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -404,6 +418,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -423,6 +438,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -442,6 +458,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -485,6 +502,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -504,6 +522,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -523,6 +542,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -542,6 +562,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -561,6 +582,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -580,6 +602,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -599,6 +622,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -630,6 +654,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -649,6 +674,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -668,6 +694,7 @@
       "classification",
       "mmlu",
       "arc",
+      "truthfulqa",
       "mgsm"
     ]
   }

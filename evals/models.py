@@ -281,7 +281,7 @@ def load_models(date: date):
     )
     # models = models[models["cost"] <= 2.0].reset_index(drop=True)
     models["tasks"] = [
-        ["translation_from", "translation_to", "classification", "mmlu", "arc", "mgsm"]
+        ["translation_from", "translation_to", "classification", "mmlu", "arc", "truthfulqa", "mgsm"]
     ] * len(models)
     models = pd.concat([models, get_translation_models()])
     models = models[  # temporary fix FIXME
