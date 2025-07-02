@@ -148,7 +148,7 @@
     "size":684531386000.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1748390400000,
+    "creation_date":1748390400000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -282,12 +282,14 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1750118400000.0,
+    "creation_date":1750118400000,
     "tasks":[
       "translation_from",
       "translation_to",
       "classification",
       "mmlu",
+      "arc",
+      "truthfulqa",
       "mgsm"
     ]
   },
@@ -627,6 +629,26 @@
     ]
   },
   {
+    "id":"openai\/gpt-3.5-turbo-0613",
+    "name":"GPT-3.5 Turbo (older v0613)",
+    "provider_name":"OpenAI",
+    "cost":2.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1706140800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"openai\/gpt-4.1",
     "name":"GPT-4.1",
     "provider_name":"OpenAI",
@@ -635,8 +657,16 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1744588800000.0,
-    "tasks":null
+    "creation_date":1744588800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
   },
   {
     "id":"openai\/gpt-4.1-mini",
@@ -688,6 +718,66 @@
     "type":"closed-source",
     "license":null,
     "creation_date":1721260800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"qwen\/qwen3-235b-a22b",
+    "name":"Qwen3 235B A22B",
+    "provider_name":"Qwen",
+    "cost":0.0,
+    "hf_id":"Qwen\/Qwen3-235B-A22B",
+    "size":235093634560.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1745712000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"qwen\/qwen3-30b-a3b",
+    "name":"Qwen3 30B A3B",
+    "provider_name":"Qwen",
+    "cost":0.0,
+    "hf_id":"Qwen\/Qwen3-30B-A3B",
+    "size":30532122624.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1745712000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"qwen\/qwen3-32b",
+    "name":"Qwen3 32B",
+    "provider_name":"Qwen",
+    "cost":0.0,
+    "hf_id":"Qwen\/Qwen3-32B",
+    "size":32762123264.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1745712000000,
     "tasks":[
       "translation_from",
       "translation_to",

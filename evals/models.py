@@ -11,8 +11,7 @@ from elevenlabs import AsyncElevenLabs
 from google.cloud import translate_v2 as translate
 from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
-from langcodes import closest_supported_match
-from openai import AsyncOpenAI, PermissionDeniedError
+from openai import AsyncOpenAI, BadRequestError
 from requests import HTTPError, get
 
 # for development purposes, all languages will be evaluated on the fast models
@@ -23,12 +22,12 @@ important_models = [
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
-    # "openai/gpt-4.1",  # 8$
+    "openai/gpt-4.1",  # 8$
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
     "openai/gpt-4o-mini",  # 0.6$
     # "openai/gpt-4o-2024-11-20", # 10$
-    # "openai/gpt-3.5-turbo-0613",  # 2$
+    "openai/gpt-3.5-turbo-0613",  # 2$
     # "openai/gpt-3.5-turbo",  # 1.5$
     # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
@@ -37,6 +36,9 @@ important_models = [
     "google/gemini-2.5-flash",  # 0.6$
     "google/gemini-2.0-flash-lite-001",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
+    "qwen/qwen3-32b",
+    "qwen/qwen3-235b-a22b",
+    "qwen/qwen3-30b-a3b",  # 0.29$
     # "qwen/qwen-turbo", # 0.2$; recognizes "inappropriate content"
     # "qwen/qwq-32b",  # 0.2$
     # "qwen/qwen-2.5-72b-instruct",  # 0.39$
@@ -49,7 +51,6 @@ important_models = [
 ]
 
 blocklist = [
-    "microsoft/wizardlm-2-8x22b",  # temporarily rate-limited
     "google/gemini-2.5-pro-preview",
     "google/gemini-2.5-flash-preview",
     "google/gemini-2.5-flash-lite-preview",
@@ -150,9 +151,10 @@ async def complete(**kwargs) -> str | None:
     async with openrouter_rate_limit:
         try:
             response = await client.chat.completions.create(**kwargs)
-        except PermissionDeniedError as e:
-            print(e)
-            return None
+        except BadRequestError as e:
+            if "filtered" in e.message:
+                return None
+            raise e
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()
@@ -284,10 +286,6 @@ def load_models(date: date):
         ["translation_from", "translation_to", "classification", "mmlu", "arc", "truthfulqa", "mgsm"]
     ] * len(models)
     models = pd.concat([models, get_translation_models()])
-    models = models[  # temporary fix FIXME
-        (models["id"] != "google/gemini-2.5-pro")
-        & (models["id"] != "google/gemini-2.5-pro-preview")
-    ]
     return models
 
 

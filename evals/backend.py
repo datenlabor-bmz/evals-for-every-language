@@ -30,8 +30,6 @@ task_metrics = [
     "mgsm_accuracy",
 ]
 
-task_metrics_basic = ["translation_from_bleu", "translation_to_bleu", "classification_accuracy"]
-
 
 def compute_normalized_average(df, metrics):
     """Compute average of min-max normalized metric columns."""
@@ -59,7 +57,7 @@ def make_model_table(df, models):
     for metric in task_metrics:
         if metric not in df.columns:
             df[metric] = np.nan
-    df["average"] = compute_normalized_average(df, task_metrics_basic)
+    df["average"] = compute_normalized_average(df, task_metrics)
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
@@ -94,7 +92,7 @@ def make_language_table(df, languages):
     for metric in task_metrics:
         if metric not in df.columns:
             df[metric] = np.nan
-    df["average"] = compute_normalized_average(df, task_metrics_basic)
+    df["average"] = compute_normalized_average(df, task_metrics)
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
     df = df[

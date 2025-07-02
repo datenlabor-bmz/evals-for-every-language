@@ -256,7 +256,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "MMLU",
-        "implemented": false,
+        "implemented": true,
         "group": "Multitask Language Understanding"
     },
     {
@@ -300,7 +300,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "MGSM",
-        "implemented": false,
+        "implemented": true,
         "group": "Grade School Math"
     },
     {
@@ -315,7 +315,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "MGSM",
-        "implemented": false,
+        "implemented": true,
         "group": "Grade School Math"
     },
     {
@@ -345,7 +345,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "AI2 ARC",
-        "implemented": false,
+        "implemented": true,
         "group": "Abstract Reasoning"
     },
     {
@@ -360,7 +360,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "AI2 ARC",
-        "implemented": false,
+        "implemented": true,
         "group": "Abstract Reasoning"
     },
     {
@@ -375,7 +375,7 @@
         "parallel": true,
         "translation": "human",
         "base": "TruthfulQA",
-        "implemented": false,
+        "implemented": true,
         "group": "Truthfulness"
     },
     {
@@ -390,7 +390,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "TruthfulQA",
-        "implemented": false,
+        "implemented": true,
         "group": "Truthfulness"
     },
     {
@@ -405,7 +405,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "TruthfulQA",
-        "implemented": false,
+        "implemented": true,
         "group": "Truthfulness"
     },
     {

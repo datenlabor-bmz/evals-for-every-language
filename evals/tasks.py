@@ -225,6 +225,7 @@ async def mlm_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
+
 def format_multiple_choice(item):
     return f"""{item["question"]}
     
@@ -234,6 +235,7 @@ def format_multiple_choice(item):
     D: {item["choices"][3]}
     
     A|B|C|D?"""
+
 
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
     ds_name, examples, task = load_mmlu(language_bcp_47, nr)
@@ -254,7 +256,10 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
             temperature=0,
             max_tokens=1,
         )
-        acc = int(response[:1].strip() == task["answer"])
+        if response:
+            acc = int(response[:1].strip() == task["answer"])
+        else:
+            acc = 0
     except Exception as e:
         if "ResponsibleAIPolicyViolation" in str(e):
             acc = 0
@@ -271,11 +276,12 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
+
 async def arc_and_evaluate(model, language_bcp_47, nr):
     ds_name, examples, task = load_uhura_arc_easy(language_bcp_47, nr)
     if not task:
         return []
-    
+
     messages = []
     for example in examples:
         messages += [
@@ -290,7 +296,10 @@ async def arc_and_evaluate(model, language_bcp_47, nr):
             temperature=0,
             max_tokens=1,
         )
-        acc = int(response[:1].strip() == task["answer"])
+        if response:
+            acc = int(response[:1].strip() == task["answer"])
+        else:
+            acc = 0
     except Exception as e:
         if "ResponsibleAIPolicyViolation" in str(e):
             acc = 0
@@ -307,7 +316,9 @@ async def arc_and_evaluate(model, language_bcp_47, nr):
         }
     ]
 
+
 letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 
 def shuffle_choices_and_labels(item):
     indices = list(range(len(item["choices"])))
@@ -316,12 +327,14 @@ def shuffle_choices_and_labels(item):
     item["labels"] = [item["labels"][i] for i in indices]
     return item
 
+
 def format_multiple_choice_truthfulqa(item):
     text = item["question"] + "\n\n"
     for i, choice in enumerate(item["choices"]):
         text += f"{letters[i]}: {choice}\n"
-    text += "|".join(letters[:len(item["choices"])]) + "?"
+    text += "|".join(letters[: len(item["choices"])]) + "?"
     return text
+
 
 async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
     ds_name, examples, task = load_truthfulqa(language_bcp_47, nr)
@@ -344,7 +357,10 @@ async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
             temperature=0,
             max_tokens=1,
         )
-        acc = int(response[:1].strip() == answer)
+        if response:
+            acc = int(response[:1].strip() == answer)
+        else:
+            acc = 0
     except Exception as e:
         if "ResponsibleAIPolicyViolation" in str(e):
             acc = 0
@@ -360,6 +376,7 @@ async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
             "sentence_nr": nr,
         }
     ]
+
 
 async def mgsm_and_evaluate(model, language_bcp_47, nr):
     system_prompt = """
@@ -379,11 +396,9 @@ async def mgsm_and_evaluate(model, language_bcp_47, nr):
         temperature=0,
         max_tokens=1024,
     )
-    number = response.split("####")
-    if len(number) == 2:
-        accuracy = int(
-            parse_number(number[1].strip()) == parse_number(question["answer_number"])
-        )
+    if response and len(response.split("####")) == 2:
+        number = response.split("####")[1].strip()
+        accuracy = int(parse_number(number) == parse_number(question["answer_number"]))
     else:
         accuracy = 0
 
