@@ -29,6 +29,18 @@ pivot_df = df.pivot_table(
     aggfunc='mean'
 )
 
+# Sort and filter tasks
+ordered_tasks = [
+    'translation_from',
+    'translation_to',
+    'classification',
+    'mmlu',
+    'arc',
+    'mgsm',
+]
+# Drop 'truthfulqa' if present and reindex columns
+pivot_df = pivot_df[[task for task in ordered_tasks if task in pivot_df.columns]]
+
 # Calculate correlation matrix
 correlation_matrix = pivot_df.corr()
 
@@ -81,7 +93,7 @@ tasks = pivot_df.columns.tolist()
 n_tasks = len(tasks)
 
 fig, axes = plt.subplots(n_tasks, n_tasks, figsize=(15, 12))
-fig.suptitle('Pairwise Task Performance (Highlighted Languages)', fontsize=16, fontweight='bold')
+fig.suptitle('Pairwise Task Performance', fontsize=16, fontweight='bold')
 
 # Create legend elements
 legend_elements = []
@@ -123,7 +135,16 @@ for i, task_y in enumerate(tasks):
             ax.set_yticklabels([])
 
 # Add legend
-fig.legend(handles=legend_elements, loc='upper right', bbox_to_anchor=(1, 1))
+fig.legend(
+    handles=legend_elements,
+    loc='lower center',
+    bbox_to_anchor=(0.5, -0.05),
+    ncol=len(legend_elements),
+    frameon=False,
+    fontsize=10,
+    handletextpad=0.5,
+    columnspacing=1.0
+)
 
 plt.tight_layout()
 plt.savefig('task_scatter_matrix.png', dpi=300, bbox_inches='tight')

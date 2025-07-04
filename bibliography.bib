@@ -97,6 +97,56 @@
   file = {/Users/david/Zotero/storage/YCW6FWWE/Bapna et al. - 2022 - Building Machine Translation Systems for the Next Thousand Languages.pdf;/Users/david/Zotero/storage/EL7PA6YJ/2205.html}
 }
 
+@misc{bayesUhuraBenchmarkEvaluating2024,
+  title = {Uhura: {{A Benchmark}} for {{Evaluating Scientific Question Answering}} and {{Truthfulness}} in {{Low-Resource African Languages}}},
+  shorttitle = {Uhura},
+  author = {Bayes, Edward and Azime, Israel Abebe and Alabi, Jesujoba O. and Kgomo, Jonas and Eloundou, Tyna and Proehl, Elizabeth and Chen, Kai and Khadir, Imaan and Etori, Naome A. and Muhammad, Shamsuddeen Hassan and Mpanza, Choice and Thete, Igneciah Pocia and Klakow, Dietrich and Adelani, David Ifeoluwa},
+  year = {2024},
+  month = dec,
+  number = {arXiv:2412.00948},
+  eprint = {2412.00948},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2412.00948},
+  urldate = {2025-07-02},
+  abstract = {Evaluations of Large Language Models (LLMs) on knowledge-intensive tasks and factual accuracy often focus on high-resource languages primarily because datasets for low-resource languages (LRLs) are scarce. In this paper, we present Uhura -- a new benchmark that focuses on two tasks in six typologically-diverse African languages, created via human translation of existing English benchmarks. The first dataset, Uhura-ARC-Easy, is composed of multiple-choice science questions. The second, Uhura-TruthfulQA, is a safety benchmark testing the truthfulness of models on topics including health, law, finance, and politics. We highlight the challenges creating benchmarks with highly technical content for LRLs and outline mitigation strategies. Our evaluation reveals a significant performance gap between proprietary models such as GPT-4o and o1-preview, and Claude models, and open-source models like Meta's LLaMA and Google's Gemma. Additionally, all models perform better in English than in African languages. These results indicate that LMs struggle with answering scientific questions and are more prone to generating false claims in low-resource African languages. Our findings underscore the necessity for continuous improvement of multilingual LM capabilities in LRL settings to ensure safe and reliable use in real-world contexts. We open-source the Uhura Benchmark and Uhura Platform to foster further research and development in NLP for LRLs.},
+  archiveprefix = {arXiv},
+  file = {/Users/david/Zotero/storage/8A54Z4GM/Bayes et al. - 2024 - Uhura A Benchmark for Evaluating Scientific Question Answering and Truthfulness in Low-Resource Afr.pdf;/Users/david/Zotero/storage/YW8J99J8/2412.html}
+}
+
+@misc{clarkThinkYouHave2018,
+  title = {Think You Have {{Solved Question Answering}}? {{Try ARC}}, the {{AI2 Reasoning Challenge}}},
+  shorttitle = {Think You Have {{Solved Question Answering}}?},
+  author = {Clark, Peter and Cowhey, Isaac and Etzioni, Oren and Khot, Tushar and Sabharwal, Ashish and Schoenick, Carissa and Tafjord, Oyvind},
+  year = {2018},
+  month = mar,
+  number = {arXiv:1803.05457},
+  eprint = {1803.05457},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1803.05457},
+  urldate = {2025-07-02},
+  abstract = {We present a new question set, text corpus, and baselines assembled to encourage AI research in advanced question answering. Together, these constitute the AI2 Reasoning Challenge (ARC), which requires far more powerful knowledge and reasoning than previous challenges such as SQuAD or SNLI. The ARC question set is partitioned into a Challenge Set and an Easy Set, where the Challenge Set contains only questions answered incorrectly by both a retrieval-based algorithm and a word co-occurence algorithm. The dataset contains only natural, grade-school science questions (authored for human tests), and is the largest public-domain set of this kind (7,787 questions). We test several baselines on the Challenge Set, including leading neural models from the SQuAD and SNLI tasks, and find that none are able to significantly outperform a random baseline, reflecting the difficult nature of this task. We are also releasing the ARC Corpus, a corpus of 14M science sentences relevant to the task, and implementations of the three neural baseline models tested. Can your model perform better? We pose ARC as a challenge to the community.},
+  archiveprefix = {arXiv},
+  file = {/Users/david/Zotero/storage/7TRBPFY8/Clark et al. - 2018 - Think you have Solved Question Answering Try ARC, the AI2 Reasoning Challenge.pdf;/Users/david/Zotero/storage/AF9VBTTM/1803.html}
+}
+
+@misc{cobbeTrainingVerifiersSolve2021,
+  title = {Training {{Verifiers}} to {{Solve Math Word Problems}}},
+  author = {Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and Hesse, Christopher and Schulman, John},
+  year = {2021},
+  month = nov,
+  number = {arXiv:2110.14168},
+  eprint = {2110.14168},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2110.14168},
+  urldate = {2025-07-02},
+  abstract = {State-of-the-art language models can match human performance on many tasks, but they still struggle to robustly perform multi-step mathematical reasoning. To diagnose the failures of current models and support research, we introduce GSM8K, a dataset of 8.5K high quality linguistically diverse grade school math word problems. We find that even the largest transformer models fail to achieve high test performance, despite the conceptual simplicity of this problem distribution. To increase performance, we propose training verifiers to judge the correctness of model completions. At test time, we generate many candidate solutions and select the one ranked highest by the verifier. We demonstrate that verification significantly improves performance on GSM8K, and we provide strong empirical evidence that verification scales more effectively with increased data than a finetuning baseline.},
+  archiveprefix = {arXiv},
+  file = {/Users/david/Zotero/storage/2ZKHP7EN/Cobbe et al. - 2021 - Training Verifiers to Solve Math Word Problems.pdf;/Users/david/Zotero/storage/Q2PJES88/2110.html}
+}
+
 @article{costa-jussaScalingNeuralMachine2024a,
   title = {Scaling Neural Machine Translation to 200 Languages},
   author = {{Costa-juss{\`a}}, Marta R. and Cross, James and {\c C}elebi, Onur and Elbayad, Maha and Heafield, Kenneth and Heffernan, Kevin and Kalbassi, Elahe and Lam, Janice and Licht, Daniel and Maillard, Jean and Sun, Anna and Wang, Skyler and Wenzek, Guillaume and Youngblood, Al and Akula, Bapi and Barrault, Loic and Gonzalez, Gabriel Mejia and Hansanti, Prangthip and Hoffman, John and Jarrett, Semarley and Sadagopan, Kaushik Ram and Rowe, Dirk and Spruit, Shannon and Tran, Chau and Andrews, Pierre and Ayan, Necip Fazil and Bhosale, Shruti and Edunov, Sergey and Fan, Angela and Gao, Cynthia and Goswami, Vedanuj and Guzm{\'a}n, Francisco and Koehn, Philipp and Mourachko, Alexandre and Ropers, Christophe and Saleem, Safiyyah and Schwenk, Holger and Wang, Jeff and {NLLB Team}},
@@ -171,6 +221,22 @@
   archiveprefix = {arXiv},
   keywords = {model,n=87},
   file = {/Users/david/Zotero/storage/CGG3Y22P/Gurgurov et al. - 2024 - LowREm A Repository of Word Embeddings for 87 Low-Resource Languages Enhanced with Multilingual Gra.pdf;/Users/david/Zotero/storage/TJLLL6RT/2409.html}
+}
+
+@misc{hendrycksMeasuringMassiveMultitask2021,
+  title = {Measuring {{Massive Multitask Language Understanding}}},
+  author = {Hendrycks, Dan and Burns, Collin and Basart, Steven and Zou, Andy and Mazeika, Mantas and Song, Dawn and Steinhardt, Jacob},
+  year = {2021},
+  month = jan,
+  number = {arXiv:2009.03300},
+  eprint = {2009.03300},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2009.03300},
+  urldate = {2025-07-02},
+  abstract = {We propose a new test to measure a text model's multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more. To attain high accuracy on this test, models must possess extensive world knowledge and problem solving ability. We find that while most recent models have near random-chance accuracy, the very largest GPT-3 model improves over random chance by almost 20 percentage points on average. However, on every one of the 57 tasks, the best models still need substantial improvements before they can reach expert-level accuracy. Models also have lopsided performance and frequently do not know when they are wrong. Worse, they still have near-random accuracy on some socially important subjects such as morality and law. By comprehensively evaluating the breadth and depth of a model's academic and professional understanding, our test can be used to analyze models across many tasks and to identify important shortcomings.},
+  archiveprefix = {arXiv},
+  file = {/Users/david/Zotero/storage/WCSTN7BZ/Hendrycks et al. - 2021 - Measuring Massive Multitask Language Understanding.pdf;/Users/david/Zotero/storage/FY9P39PE/2009.html}
 }
 
 @misc{HPLTDatasetsV2,
