@@ -54,6 +54,7 @@ def load_uhura_arc_easy(language_bcp_47, nr):
         ds = ds.rename_column("answerKey", "answer")
         train_ids = common_ids_train[nr:nr+3]
         examples = ds["train"].filter(lambda x: x["id"] in train_ids)
+        # raise Exception(language_bcp_47)
         task = ds["test"].filter(lambda x: x["id"] == common_ids_test[nr])[0]
         return "fair-forward/arc-easy-autotranslated", examples, task
     else:
