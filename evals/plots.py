@@ -45,7 +45,7 @@ pivot_df = pivot_df[[task for task in ordered_tasks if task in pivot_df.columns]
 correlation_matrix = pivot_df.corr()
 
 # Create the correlation plot
-plt.figure(figsize=(12, 10))
+plt.figure(figsize=(8, 6))
 # Create mask for upper triangle including diagonal to show only lower triangle  
 mask = np.triu(np.ones_like(correlation_matrix, dtype=bool))
 
@@ -53,7 +53,7 @@ mask = np.triu(np.ones_like(correlation_matrix, dtype=bool))
 sns.heatmap(
     correlation_matrix, 
     annot=True, 
-    cmap='coolwarm', 
+    cmap='Blues', 
     center=0,
     square=True,
     mask=mask,
@@ -61,7 +61,6 @@ sns.heatmap(
     fmt='.3f'
 )
 
-plt.title('Task Performance Correlation Matrix', fontsize=16, fontweight='bold')
 plt.xlabel('Tasks', fontsize=12)
 plt.ylabel('Tasks', fontsize=12)
 plt.xticks(rotation=45, ha='right')
