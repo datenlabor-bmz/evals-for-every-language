@@ -57,20 +57,47 @@ function App () {
 
   return (
     <PrimeReactProvider>
-      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100vw' }}>
-        <div style={{backgroundColor: '#fff3cd', color: '#856404', padding: '0.75rem 1.25rem', marginBottom: '1rem', border: '1px solid #ffeeba', borderRadius: '0.25rem', textAlign: 'center'}}>
-          <strong>Work in Progress:</strong> This dashboard is currently under active development. Evaluation results are not yet final.
-          <a href="https://github.com/datenlabor-bmz/ai-language-monitor" target="_blank" rel="noopener noreferrer" style={{ 
-            textDecoration: 'none', 
-            color: '#856404', 
-            float: 'right', 
-            fontSize: '1.2rem',
-            fontWeight: 'bold',
-            padding: '0 0.5rem',
-            borderRadius: '3px',
-            backgroundColor: 'rgba(255,255,255,0.3)'
-          }}>
-            <i className="pi pi-github" title="View on GitHub" style={{ marginRight: '0.3rem' }} />
+      <div
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100vw'
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: '#fff3cd',
+            color: '#856404',
+            padding: '0.75rem 1.25rem',
+            marginBottom: '1rem',
+            border: '1px solid #ffeeba',
+            borderRadius: '0.25rem',
+            textAlign: 'center'
+          }}
+        >
+          <strong>Work in Progress:</strong> This dashboard is currently under
+          active development. Evaluation results are not yet final.
+          <a
+            href='https://github.com/datenlabor-bmz/ai-language-monitor'
+            target='_blank'
+            rel='noopener noreferrer'
+            style={{
+              textDecoration: 'none',
+              color: '#856404',
+              float: 'right',
+              fontSize: '1.2rem',
+              fontWeight: 'bold',
+              padding: '0 0.5rem',
+              borderRadius: '3px',
+              backgroundColor: 'rgba(255,255,255,0.3)'
+            }}
+          >
+            <i
+              className='pi pi-github'
+              title='View on GitHub'
+              style={{ marginRight: '0.3rem' }}
+            />
             GitHub
           </a>
         </div>
@@ -95,30 +122,42 @@ function App () {
               🌍
             </span>
           </div>
-          <h1 style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: '600',
-            margin: '1rem 0 0.5rem 0',
-            color: '#333',
-            letterSpacing: '-0.01em'
-          }}>
-              AI Language Proficiency Monitor
+          <h1
+            style={{
+              fontSize: '2.5rem',
+              fontWeight: '600',
+              margin: '1rem 0 0.5rem 0',
+              color: '#333',
+              letterSpacing: '-0.01em'
+            }}
+          >
+            AI Language Proficiency Monitor
           </h1>
-          <p style={{ 
-            fontSize: '1.1rem', 
-            color: '#666', 
-            margin: '0 0 2.5rem 0',
-            fontWeight: '400',
-            maxWidth: '700px',
-            lineHeight: '1.5'
-          }}>
+          <p
+            style={{
+              fontSize: '1.1rem',
+              color: '#666',
+              margin: '0 0 2.5rem 0',
+              fontWeight: '400',
+              maxWidth: '700px',
+              lineHeight: '1.5'
+            }}
+          >
             Comprehensive multilingual evaluation results for AI language models
           </p>
-          
-          <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Button 
-              label="📚 About this tool" 
-              className="p-button-text"
+
+          <div
+            style={{
+              display: 'flex',
+              gap: '1rem',
+              marginBottom: '1.5rem',
+              flexWrap: 'wrap',
+              justifyContent: 'center'
+            }}
+          >
+            <Button
+              label='📚 About this tool'
+              className='p-button-text'
               onClick={() => setAboutVisible(true)}
               style={{
                 color: '#666',
@@ -128,12 +167,12 @@ function App () {
                 fontSize: '0.9rem'
               }}
             />
-            
-            <Button 
-              label="🚀 Add your model (soon)" 
-              className="p-button-text"
+
+            <Button
+              label='🚀 Add your model (soon)'
+              className='p-button-text'
               onClick={() => setContributeVisible(true)}
-              tooltip="This feature is on our roadmap and will be available soon."
+              tooltip='This feature is on our roadmap and will be available soon.'
               tooltipOptions={{ position: 'bottom' }}
               style={{
                 color: '#666',
@@ -144,7 +183,7 @@ function App () {
               }}
             />
           </div>
-          
+
           {data && (
             <AutoComplete
               languages={data?.language_table}
@@ -164,30 +203,31 @@ function App () {
         >
           {loading && (
             <div style={{ width: '100%', textAlign: 'center' }}>
-              <i className='pi pi-spinner pi-spin' style={{ fontSize: '4rem' }} />
+              <i
+                className='pi pi-spinner pi-spin'
+                style={{ fontSize: '4rem' }}
+              />
             </div>
           )}
-          {error && <div style={{ width: '100%', textAlign: 'center' }}><p>Error: {error}</p></div>}
+          {error && (
+            <div style={{ width: '100%', textAlign: 'center' }}>
+              <p>Error: {error}</p>
+            </div>
+          )}
           {data && (
             <>
-              <div style={{ width: '100%' }}>
-                <ModelTable 
-                  data={data.model_table} 
-                  selectedLanguages={selectedLanguages}
-                  allLanguages={data.language_table || []}
-                />
-              </div>
-              <div style={{ width: '100%' }}>
-                <LanguageTable
-                  data={data.language_table}
-                  selectedLanguages={selectedLanguages}
-                  setSelectedLanguages={setSelectedLanguages}
-                  totalModels={data.model_table?.length || 0}
-                />
-              </div>
-              <div style={{ width: '100%' }}>
-                <DatasetTable data={data} />
-              </div>
+              <ModelTable
+                data={data.model_table}
+                selectedLanguages={selectedLanguages}
+                allLanguages={data.language_table || []}
+              />
+              <LanguageTable
+                data={data.language_table}
+                selectedLanguages={selectedLanguages}
+                setSelectedLanguages={setSelectedLanguages}
+                totalModels={data.model_table?.length || 0}
+              />
+              <DatasetTable data={data} />
               <div
                 id='figure'
                 style={{
@@ -196,10 +236,10 @@ function App () {
                 }}
               >
                 <Button
-                  icon="pi pi-external-link"
-                  className="p-button-text p-button-plain"
+                  icon='pi pi-external-link'
+                  className='p-button-text p-button-plain'
                   onClick={() => setDialogVisible(true)}
-                  tooltip="Open in larger view"
+                  tooltip='Open in larger view'
                   style={{
                     position: 'absolute',
                     top: '10px',
@@ -214,7 +254,7 @@ function App () {
                     <LanguagePlot data={data} />,
                     <SpeakerPlot data={data} />,
                     <HistoryPlot data={data} />,
-                    <CostPlot data={data} />,
+                    <CostPlot data={data} />
                   ]}
                   numScroll={1}
                   numVisible={1}
@@ -233,35 +273,85 @@ function App () {
           onHide={() => setAboutVisible(false)}
           style={{ width: '600px' }}
           modal
-          header="About this tool"
+          header='About this tool'
         >
           <div>
-            <p>The <i>AI Language Proficiency Monitor</i> presents comprehensive multilingual evaluation results of AI language models.</p>
+            <p>
+              The <i>AI Language Proficiency Monitor</i> presents comprehensive
+              multilingual evaluation results of AI language models.
+            </p>
             <h4>Who is this for?</h4>
             <ul>
-              <li><b>Practitioners</b> can pick the best model for a given language.</li>
-              <li><b>Policymakers and funders</b> can identify and prioritize neglected languages.</li>
-              <li><b>Model developers</b> can compete on our <i>AI Language Proficiency</i> metric.</li>
+              <li>
+                <b>Practitioners</b> can pick the best model for a given
+                language.
+              </li>
+              <li>
+                <b>Policymakers and funders</b> can identify and prioritize
+                neglected languages.
+              </li>
+              <li>
+                <b>Model developers</b> can compete on our{' '}
+                <i>AI Language Proficiency</i> metric.
+              </li>
             </ul>
             <h4>⚡ Live Updates</h4>
-            <p>Benchmark results automatically refresh every night and include the most popular models from <a href="https://openrouter.ai" target="_blank" rel="noopener noreferrer">OpenRouter</a>, plus community-submitted models.</p>
+            <p>
+              Benchmark results automatically refresh every night and include
+              the most popular models from{' '}
+              <a
+                href='https://openrouter.ai'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                OpenRouter
+              </a>
+              , plus community-submitted models.
+            </p>
             <h4>Authors</h4>
-            <p>The AI Language Proficiency Monitor is a collaboration between BMZ's <a href="https://www.bmz-digital.global/en/overview-of-initiatives/the-bmz-data-lab/" target="_blank" rel="noopener noreferrer">Data Lab</a>, the BMZ-Initiative <a href="https://www.bmz-digital.global/en/overview-of-initiatives/fair-forward/" target="_blank" rel="noopener noreferrer">Fair Forward</a> (implemented by GIZ), and the <a href="https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team" target="_blank" rel="noopener noreferrer">E&E group</a> of DFKI's Multilinguality and Language Technology Lab.</p>
+            <p>
+              The AI Language Proficiency Monitor is a collaboration between
+              BMZ's{' '}
+              <a
+                href='https://www.bmz-digital.global/en/overview-of-initiatives/the-bmz-data-lab/'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Data Lab
+              </a>
+              , the BMZ-Initiative{' '}
+              <a
+                href='https://www.bmz-digital.global/en/overview-of-initiatives/fair-forward/'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Fair Forward
+              </a>{' '}
+              (implemented by GIZ), and the{' '}
+              <a
+                href='https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                E&E group
+              </a>{' '}
+              of DFKI's Multilinguality and Language Technology Lab.
+            </p>
             <h4>🔗 Links</h4>
             <p>
-              <a 
-                href="https://github.com/datenlabor-bmz/ai-language-monitor" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={{ 
-                  color: '#666', 
+              <a
+                href='https://github.com/datenlabor-bmz/ai-language-monitor'
+                target='_blank'
+                rel='noopener noreferrer'
+                style={{
+                  color: '#666',
                   textDecoration: 'none',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}
               >
-                <i className="pi pi-github" style={{ fontSize: '1.2rem' }} />
+                <i className='pi pi-github' style={{ fontSize: '1.2rem' }} />
                 View source code on GitHub
               </a>
             </p>
@@ -274,16 +364,39 @@ function App () {
           onHide={() => setContributeVisible(false)}
           style={{ width: '600px' }}
           modal
-          header="Add your model & Contribute"
+          header='Add your model & Contribute'
         >
           <div>
             <h4>🚀 Submit Your Model</h4>
-            <p>Have a custom fine-tuned model you'd like to see on the leaderboard?</p>
-            <p><a href="https://forms.gle/ckvY9pS7XLcHYnaV8" target="_blank" rel="noopener noreferrer" style={{ color: '#28a745', fontWeight: 'bold' }}>→ Submit your model here</a></p>
-            
+            <p>
+              Have a custom fine-tuned model you'd like to see on the
+              leaderboard?
+            </p>
+            <p>
+              <a
+                href='https://forms.gle/ckvY9pS7XLcHYnaV8'
+                target='_blank'
+                rel='noopener noreferrer'
+                style={{ color: '#28a745', fontWeight: 'bold' }}
+              >
+                → Submit your model here
+              </a>
+            </p>
+
             <h4>🔧 Contribute to Development</h4>
-            <p>Help us expand language coverage and add new evaluation tasks:</p>
-            <p><a href="https://github.com/datenlabor-bmz/ai-language-monitor/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', fontWeight: 'bold' }}>→ Contribution guidelines</a></p>
+            <p>
+              Help us expand language coverage and add new evaluation tasks:
+            </p>
+            <p>
+              <a
+                href='https://github.com/datenlabor-bmz/ai-language-monitor/blob/main/CONTRIBUTING.md'
+                target='_blank'
+                rel='noopener noreferrer'
+                style={{ color: '#007bff', fontWeight: 'bold' }}
+              >
+                → Contribution guidelines
+              </a>
+            </p>
           </div>
         </Dialog>
 
@@ -300,11 +413,27 @@ function App () {
             <div style={{ width: '100%', height: '100%' }}>
               <Carousel
                 value={[
-                  <WorldMap data={data.countries} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
-                  <LanguagePlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
-                  <SpeakerPlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
-                  <HistoryPlot data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />,
-                  <CostPlot data={data} />,
+                  <WorldMap
+                    data={data.countries}
+                    width={windowWidth * 0.7}
+                    height={windowHeight * 0.6}
+                  />,
+                  <LanguagePlot
+                    data={data}
+                    width={windowWidth * 0.7}
+                    height={windowHeight * 0.6}
+                  />,
+                  <SpeakerPlot
+                    data={data}
+                    width={windowWidth * 0.7}
+                    height={windowHeight * 0.6}
+                  />,
+                  <HistoryPlot
+                    data={data}
+                    width={windowWidth * 0.7}
+                    height={windowHeight * 0.6}
+                  />,
+                  <CostPlot data={data} />
                 ]}
                 numScroll={1}
                 numVisible={1}
