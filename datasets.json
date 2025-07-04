@@ -260,6 +260,21 @@
         "group": "Multitask Language Understanding"
     },
     {
+        "name": "MMLU Auto-Translated",
+        "author": null,
+        "author_url": null,
+        "url": null,
+        "n_languages": null,
+        "tasks": [
+            "question_answering"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "MMLU",
+        "implemented": true,
+        "group": "Multitask Language Understanding"
+    },
+    {
         "name": "MGSM",
         "author": "Google",
         "author_url": "https://google.com",
@@ -331,7 +346,7 @@
         "translation": "human",
         "base": "AI2 ARC",
         "implemented": true,
-        "group": "Abstract Reasoning"
+        "group": "ARC Question Answering"
     },
     {
         "name": "Okapi ARC Challenge",
@@ -346,7 +361,7 @@
         "translation": "machine",
         "base": "AI2 ARC",
         "implemented": true,
-        "group": "Abstract Reasoning"
+        "group": "ARC Question Answering"
     },
     {
         "name": "Arc-X",
@@ -361,7 +376,22 @@
         "translation": "machine",
         "base": "AI2 ARC",
         "implemented": true,
-        "group": "Abstract Reasoning"
+        "group": "ARC Question Answering"
+    },
+    {
+        "name": "ARC-Easy Auto-Translated",
+        "author": null,
+        "author_url": null,
+        "url": null,
+        "n_languages": null,
+        "tasks": [
+            "question_answering"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "AI2 ARC",
+        "implemented": true,
+        "group": "ARC Question Answering"
     },
     {
         "name": "Uhura TruthfulQA",
@@ -399,6 +429,21 @@
         "author_url": "https://opengpt-x.de",
         "url": "https://huggingface.co/datasets/openGPT-X/truthfulqax",
         "n_languages": 20,
+        "tasks": [
+            "question_answering"
+        ],
+        "parallel": true,
+        "translation": "machine",
+        "base": "TruthfulQA",
+        "implemented": true,
+        "group": "Truthfulness"
+    },
+    {
+        "name": "TruthfulQA Auto-Translated",
+        "author": null,
+        "author_url": null,
+        "url": null,
+        "n_languages": null,
         "tasks": [
             "question_answering"
         ],
