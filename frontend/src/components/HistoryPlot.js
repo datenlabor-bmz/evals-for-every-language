@@ -50,12 +50,12 @@ const HistoryPlot = ({ data, width = 750, height = 500 }) => {
             ...models.filter(d => d.newRecord),
             {
               creation_date: new Date(),
-              maxAverage: models[models.length - 1].maxAverage
+              maxAverage: models[models.length - 1]?.maxAverage || 0
             }
           ],
           {
             x: d => d.creation_date,
-            y: d => d.maxAverage,
+            y: d => d.maxAverage || 0,
             curve: 'step-after',
             strokeOpacity: 0.3
           }

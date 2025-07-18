@@ -69,35 +69,50 @@ function App () {
           style={{
             backgroundColor: '#fff3cd',
             color: '#856404',
-            padding: '0.75rem 1.25rem',
+            padding: '1rem 1.5rem',
             marginBottom: '1rem',
             border: '1px solid #ffeeba',
             borderRadius: '0.25rem',
-            textAlign: 'center'
+            textAlign: 'center',
+            lineHeight: '1.5',
+            position: 'relative'
           }}
         >
           <strong>Work in Progress:</strong> This dashboard is currently under
-          active development. Evaluation results are not yet final.
+          active development. Evaluation results are not yet final. Note that the visualised results currently stem from sampling 10 instances per combination of model, task, and language. More extensive evaluation runs will be released later this year.
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            padding: '0 1.5rem',
+            marginBottom: '1rem'
+          }}
+        >
           <a
             href='https://github.com/datenlabor-bmz/ai-language-monitor'
             target='_blank'
             rel='noopener noreferrer'
             style={{
               textDecoration: 'none',
-              color: '#856404',
-              float: 'right',
-              fontSize: '1.2rem',
-              fontWeight: 'bold',
-              padding: '0 0.5rem',
-              borderRadius: '3px',
-              backgroundColor: 'rgba(255,255,255,0.3)'
+              color: '#6c757d',
+              fontSize: '1rem',
+              fontWeight: '500',
+              padding: '0.5rem 1rem',
+              borderRadius: '0.375rem',
+              backgroundColor: '#f8f9fa',
+              border: '1px solid #e9ecef',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              transition: 'all 0.2s ease',
+              ':hover': {
+                backgroundColor: '#e9ecef',
+                color: '#495057'
+              }
             }}
           >
-            <i
-              className='pi pi-github'
-              title='View on GitHub'
-              style={{ marginRight: '0.3rem' }}
-            />
+            <i className='pi pi-github' title='View on GitHub' />
             GitHub
           </a>
         </div>
