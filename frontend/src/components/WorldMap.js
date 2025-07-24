@@ -49,7 +49,7 @@ const WorldMap = ({ data, width = 750, height = 500 }) => {
       return acc
     }, {})
     const plot = Plot.plot({
-      subtitle: 'Language Proficiency Score by Country',
+      subtitle: 'Language Proficiency Score by Country (Coverage: ~65/194 benchmark languages)',
       width: width,
       height: height,
       projection: 'equal-earth',
@@ -61,11 +61,12 @@ const WorldMap = ({ data, width = 750, height = 500 }) => {
         })
       ],
       color: {
-        scheme: 'Greens',
-        unknown: 'gray',
+        scheme: 'RdYlGn',
+        unknown: '#d0d0d0',
         label: 'Score',
         legend: true,
-        domain: [0, 1]
+        domain: [0, 1],
+        pivot: 0.5
       },
       style: {
         fontFamily: 'monospace'
