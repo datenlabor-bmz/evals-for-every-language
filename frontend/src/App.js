@@ -79,7 +79,7 @@ function App () {
           }}
         >
           <strong>Work in Progress:</strong> This dashboard is currently under
-          active development. Evaluation results are not yet final. Note that the visualised results currently stem from sampling 10 instances per combination of model, task, and language. More extensive evaluation runs will be released later this year.
+          active development. Evaluation results are not yet final. Note that the visualised results currently stem from sampling 10 instances per combination of model, task, and language. Only the top 100 languages by speaker count are included. More extensive evaluation runs will be released later this year.
         </div>
         <div
           style={{
