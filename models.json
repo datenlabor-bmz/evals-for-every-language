@@ -28,7 +28,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1729555200000,
+    "creation_date":1729555200000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -48,7 +48,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1740355200000,
+    "creation_date":1740355200000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -68,7 +68,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1747872000000,
+    "creation_date":1747872000000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -83,7 +83,7 @@
     "id":"deepseek\/deepseek-chat",
     "name":"DeepSeek V3",
     "provider_name":"DeepSeek",
-    "cost":0.0,
+    "cost":0.27,
     "hf_id":"deepseek-ai\/DeepSeek-V3",
     "size":684531386000.0,
     "type":"open-source",
@@ -128,7 +128,7 @@
     "size":684531386000.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1737331200000,
+    "creation_date":1737331200000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -168,7 +168,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1738713600000,
+    "creation_date":1738713600000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -282,7 +282,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1750118400000,
+    "creation_date":1750118400000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -338,7 +338,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1715644800000,
+    "creation_date":1715644800000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -358,7 +358,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1727913600000,
+    "creation_date":1727913600000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -413,7 +413,7 @@
     "size":null,
     "type":"open-source",
     "license":"Other",
-    "creation_date":1691625600000,
+    "creation_date":1691625600000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -512,7 +512,7 @@
     "id":"meta-llama\/llama-4-maverick",
     "name":"Llama 4 Maverick",
     "provider_name":"Meta",
-    "cost":0.0,
+    "cost":0.6,
     "hf_id":"meta-llama\/Llama-4-Maverick-17B-128E-Instruct",
     "size":401583781376.0,
     "type":"open-source",
@@ -772,7 +772,7 @@
     "id":"qwen\/qwen3-32b",
     "name":"Qwen3 32B",
     "provider_name":"Qwen",
-    "cost":0.0,
+    "cost":0.03,
     "hf_id":"Qwen\/Qwen3-32B",
     "size":32762123264.0,
     "type":"open-source",
