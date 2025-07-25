@@ -50,10 +50,10 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
   }
 
   const SliderWithLabel = ({ value, onChange, min, max }) => {
-    const p = 10
-    const start = value === null ? min : Math.log(value[0]) / Math.log(p)
-    const stop = value === null ? max : Math.log(value[1]) / Math.log(p)
-    const [_value, _setValue] = useState([start, stop])
+    const p = 10;
+    const start = value === null || value[0] === null ? min : Math.log(value[0]) / Math.log(p);
+    const stop = value === null || value[1] === null ? max : Math.log(value[1]) / Math.log(p);
+    const [_value, _setValue] = useState([start, stop]);
     useEffect(() => {
       const timer = setTimeout(() => {
         onChange({
@@ -61,11 +61,11 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
             // set to "no filter" when (almost) the whole range is selected
             _value[0] <= min + 0.1 && _value[1] >= max - 0.1
               ? null
-              : [p ** _value[0], p ** _value[1]]
-        })
-      }, 1000)
-      return () => clearTimeout(timer)
-    }, [_value, onChange, min, max])
+              : [p ** _value[0], p ** _value[1]],
+        });
+      }, 1000);
+      return () => clearTimeout(timer);
+    }, [_value, onChange, min, max]);
     return (
       <div style={{ minWidth: '20rem' }}>
         <div>{formatSize(p ** _value[0])}</div>
@@ -147,7 +147,11 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
   }
 
   const costBodyTemplate = rowData => {
-    return <div style={{ textAlign: 'center' }}>${rowData.cost?.toFixed(2)}</div>
+    return (
+      <div style={{ textAlign: 'center' }}>
+        {rowData.cost === null ? 'n/a' : `$${rowData.cost.toFixed(2)}`}
+      </div>
+    )
   }
 
   const getHeaderText = () => {
