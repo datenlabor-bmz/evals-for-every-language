@@ -26,10 +26,10 @@ const makeTitle = data => d => {
         a =>
           `${smoothProgressBar(a.population / pop)} ${
             a.name
-          } – ${a.score.toFixed(2)}`
+          } – ${a.score === null || a.score === undefined ? "n/a" : a.score.toFixed(2)}`
       )
       .join('\n\n') + (languages?.length > 10 ? `\n\n...` : '')
-  return `${d.properties.ADMIN} – ${cData?.score.toFixed(2)}\n\n${langstring}`
+  return `${d.properties.ADMIN} – ${cData?.score === null || cData?.score === undefined ? "n/a" : cData.score.toFixed(2)}\n\n${langstring}`
 }
 
 const WorldMap = ({ data, width = 750, height = 500 }) => {
