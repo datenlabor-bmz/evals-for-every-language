@@ -312,8 +312,14 @@ def get_hf_metadata(row):
 
 
 def get_cost(row):
-    cost = float(row["endpoint"]["pricing"]["completion"])
-    return round(cost * 1_000_000, 2)
+    """
+    row: a row from the OpenRouter models dataframe
+    """
+    try:
+        cost = float(row["endpoint"]["pricing"]["completion"])
+        return round(cost * 1_000_000, 2)
+    except (TypeError, KeyError):
+        return None
 
 
 @cache
