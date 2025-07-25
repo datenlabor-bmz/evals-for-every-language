@@ -93,28 +93,91 @@ def get_model(permaslug):
 
 @cache
 def get_historical_popular_models(date: date):
-    raw = get("https://openrouter.ai/rankings").text
-    data = re.search(r'{\\"data\\":(.*),\\"isPercentage\\"', raw).group(1)
-    data = json.loads(data.replace("\\", ""))
-    counts = defaultdict(int)
-    for day in data:
-        for model, count in day["ys"].items():
-            if model.startswith("openrouter") or model == "Others":
-                continue
-            counts[model.split(":")[0]] += count
-    counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
-    models = [get_model(model) for model, _ in counts]
-    return [m for m in models if m]
+    try:
+        raw = get("https://openrouter.ai/rankings").text
+        
+        # Extract model data from rankingData using regex
+        import re
+        import json
+        
+        # Find all count and model_permaslug pairs in the data
+        # Format: "count":number,"model_permaslug":"model/name"
+        pattern = r'\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\"'
+        matches = re.findall(pattern, raw)
+        
+        if matches:
+            # Aggregate model counts
+            model_counts = {}
+            for count_str, model_slug in matches:
+                count = float(count_str)
+                if not model_slug.startswith('openrouter') and model_slug != 'Others':
+                    # Remove variant suffixes for aggregation
+                    base_model = model_slug.split(':')[0]
+                    model_counts[base_model] = model_counts.get(base_model, 0) + count
+            
+            # Sort by popularity and return top models
+            sorted_models = sorted(model_counts.items(), key=lambda x: x[1], reverse=True)
+            result = []
+            for model_slug, count in sorted_models[:20]:  # Top 20
+                result.append({"slug": model_slug, "count": int(count)})
+            
+            print(f"✅ Historical OpenRouter models: {len(result)} models fetched")
+            if result:
+                print(f"   Top 5: {[m['slug'] for m in result[:5]]}")
+                print(f"   Sample counts: {[m['count'] for m in result[:3]]}")
+            return result
+        else:
+            print("⚠️ Could not find model ranking data in OpenRouter response")
+            return []
+        
+    except Exception as e:
+        print(f"⚠️ Error fetching OpenRouter historical rankings: {e}")
+        print("🔄 Falling back to static model list")
+        return []
 
 
-@cache
+@cache  
 def get_current_popular_models(date: date):
-    raw = get("https://openrouter.ai/rankings?view=day").text.replace("\\", "")
-    data = re.search(r'"rankingData":(.*),"rankingType":"day"', raw).group(1)
-    data = json.loads(data)
-    data = sorted(data, key=lambda x: x["total_prompt_tokens"], reverse=True)
-    models = [get_model(model["model_permaslug"]) for model in data]
-    return [m for m in models if m]
+    try:
+        raw = get("https://openrouter.ai/rankings?view=day").text
+        
+        # Extract model data from daily rankings
+        import re
+        import json
+        
+        # Find all count and model_permaslug pairs in the daily data
+        pattern = r'\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\"'
+        matches = re.findall(pattern, raw)
+        
+        if matches:
+            # Aggregate model counts
+            model_counts = {}
+            for count_str, model_slug in matches:
+                count = float(count_str)
+                if not model_slug.startswith('openrouter') and model_slug != 'Others':
+                    # Remove variant suffixes for aggregation
+                    base_model = model_slug.split(':')[0]
+                    model_counts[base_model] = model_counts.get(base_model, 0) + count
+            
+            # Sort by popularity and return top models
+            sorted_models = sorted(model_counts.items(), key=lambda x: x[1], reverse=True)
+            result = []
+            for model_slug, count in sorted_models[:10]:  # Top 10
+                result.append({"slug": model_slug, "count": int(count)})
+            
+            print(f"✅ Current OpenRouter models: {len(result)} models fetched")
+            if result:
+                print(f"   Top 5: {[m['slug'] for m in result[:5]]}")
+                print(f"   Sample counts: {[m['count'] for m in result[:3]]}")
+            return result
+        else:
+            print("⚠️ Could not find daily ranking data in OpenRouter response")
+            return []
+        
+    except Exception as e:
+        print(f"⚠️ Error fetching OpenRouter current rankings: {e}")
+        print("🔄 Falling back to static model list")
+        return []
 
 
 def get_translation_models():
@@ -249,8 +312,14 @@ def get_hf_metadata(row):
 
 
 def get_cost(row):
-    cost = float(row["endpoint"]["pricing"]["completion"])
-    return round(cost * 1_000_000, 2)
+    """
+    row: a row from the OpenRouter models dataframe
+    """
+    try:
+        cost = float(row["endpoint"]["pricing"]["completion"])
+        return round(cost * 1_000_000, 2)
+    except (TypeError, KeyError):
+        return None
 
 
 @cache
