@@ -448,7 +448,8 @@ async def transcribe_and_evaluate(model, language_bcp_47, nr):
 
 
 tasks = {
-    "translation": translate_and_evaluate,
+    "translation_from": partial(translate_and_evaluate, mode="from"),
+    "translation_to": partial(translate_and_evaluate, mode="to"),
     "classification": classify_and_evaluate,
     "mmlu": mmlu_and_evaluate,
     "arc": arc_and_evaluate,
