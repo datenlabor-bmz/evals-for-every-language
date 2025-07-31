@@ -1,5 +1,25 @@
 [
   {
+    "id":"aion-labs\/aion-1.0-mini",
+    "name":"Aion-1.0-Mini",
+    "provider_name":"AionLabs",
+    "cost":1.4,
+    "hf_id":"FuseAI\/FuseO1-DeepSeekR1-QwQ-SkyT1-32B-Preview",
+    "size":32763876352.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1737331200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"amazon\/nova-micro-v1",
     "name":"Nova Micro 1.0",
     "provider_name":"Amazon",
@@ -28,7 +48,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1729555200000.0,
+    "creation_date":1729555200000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -69,6 +89,46 @@
     "type":"closed-source",
     "license":null,
     "creation_date":1747872000000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"cohere\/command",
+    "name":"Command",
+    "provider_name":"Cohere",
+    "cost":2.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1710374400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"cohere\/command-r",
+    "name":"Command R",
+    "provider_name":"Cohere",
+    "cost":1.5,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1710374400000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -282,7 +342,7 @@
     "size":null,
     "type":"closed-source",
     "license":null,
-    "creation_date":1750118400000.0,
+    "creation_date":1750118400000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -370,6 +430,26 @@
     ]
   },
   {
+    "id":"google\/gemini-pro-1.5",
+    "name":"Gemini 1.5 Pro",
+    "provider_name":"Google",
+    "cost":5.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1712620800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"google\/gemma-3-27b-it",
     "name":"Gemma 3 27B",
     "provider_name":"Google",
@@ -431,6 +511,26 @@
     "cost":0.4,
     "hf_id":"meta-llama\/Meta-Llama-3-70B-Instruct",
     "size":70553706496.0,
+    "type":"open-source",
+    "license":"Llama3",
+    "creation_date":1713312000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"meta-llama\/llama-3-8b-instruct",
+    "name":"Llama 3 8B Instruct",
+    "provider_name":"Meta",
+    "cost":0.06,
+    "hf_id":"meta-llama\/Meta-Llama-3-8B-Instruct",
+    "size":8030261248.0,
     "type":"open-source",
     "license":"Llama3",
     "creation_date":1713312000000,
@@ -569,6 +669,106 @@
     ]
   },
   {
+    "id":"mistralai\/codestral-2501",
+    "name":"Codestral 2501",
+    "provider_name":"Mistral",
+    "cost":0.9,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1736812800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/devstral-small-2505",
+    "name":"Devstral Small 2505",
+    "provider_name":"Mistral",
+    "cost":0.0,
+    "hf_id":"mistralai\/Devstral-Small-2505",
+    "size":23572403200.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1747008000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/magistral-small-2506",
+    "name":"Magistral Small 2506",
+    "provider_name":"Mistral",
+    "cost":1.5,
+    "hf_id":"mistralai\/Magistral-Small-2506",
+    "size":23572403200.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1748995200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/ministral-8b",
+    "name":"Ministral 8B",
+    "provider_name":"Mistral",
+    "cost":0.1,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1729123200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/mistral-7b-instruct",
+    "name":"Mistral 7B Instruct",
+    "provider_name":"Mistral",
+    "cost":0.0,
+    "hf_id":"mistralai\/Mistral-7B-Instruct-v0.3",
+    "size":7248023552.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1716336000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"mistralai\/mistral-nemo",
     "name":"Mistral Nemo",
     "provider_name":"Mistral",
@@ -618,6 +818,106 @@
     "type":"open-source",
     "license":"Apache 2.0",
     "creation_date":1741651200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/mistral-tiny",
+    "name":"Mistral Tiny",
+    "provider_name":"Mistral Tiny",
+    "cost":0.25,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1704844800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/mixtral-8x22b-instruct",
+    "name":"Mixtral 8x22B Instruct",
+    "provider_name":"Mistral",
+    "cost":0.9,
+    "hf_id":"mistralai\/Mixtral-8x22B-Instruct-v0.1",
+    "size":140630071296.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1713225600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/pixtral-12b",
+    "name":"Pixtral 12B",
+    "provider_name":"Mistral",
+    "cost":0.1,
+    "hf_id":"mistralai\/Pixtral-12B-2409",
+    "size":null,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1726012800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"moonshotai\/kimi-k2",
+    "name":"Kimi K2",
+    "provider_name":"MoonshotAI",
+    "cost":0.0,
+    "hf_id":"moonshotai\/Kimi-K2-Instruct",
+    "size":null,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1752192000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"morph\/morph-v3-fast",
+    "name":"Morph V3 Fast",
+    "provider_name":"Morph",
+    "cost":2.7,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1751846400000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -729,6 +1029,66 @@
     ]
   },
   {
+    "id":"perplexity\/r1-1776",
+    "name":"R1 1776",
+    "provider_name":"Perplexity",
+    "cost":8.0,
+    "hf_id":"perplexity-ai\/r1-1776",
+    "size":671026419200.0,
+    "type":"open-source",
+    "license":"Mit",
+    "creation_date":1739836800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"qwen\/qwen-2.5-72b-instruct",
+    "name":"Qwen2.5 72B Instruct",
+    "provider_name":"Qwen2.5 72B Instruct (free)",
+    "cost":0.0,
+    "hf_id":"Qwen\/Qwen2.5-72B-Instruct",
+    "size":72706203648.0,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1726444800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"qwen\/qwen-2.5-coder-32b-instruct",
+    "name":"Qwen2.5 Coder 32B Instruct",
+    "provider_name":"Qwen2.5 Coder 32B Instruct (free)",
+    "cost":0.0,
+    "hf_id":"Qwen\/Qwen2.5-Coder-32B-Instruct",
+    "size":32763876352.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1730851200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"qwen\/qwen3-235b-a22b",
     "name":"Qwen3 235B A22B",
     "provider_name":"Qwen",
@@ -778,6 +1138,86 @@
     "type":"open-source",
     "license":"Apache 2.0",
     "creation_date":1745712000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"switchpoint\/router",
+    "name":"Switchpoint Router",
+    "provider_name":"Switchpoint Router",
+    "cost":3.4,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1752192000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"thedrummer\/anubis-pro-105b-v1",
+    "name":"Anubis Pro 105B V1",
+    "provider_name":"TheDrummer",
+    "cost":1.0,
+    "hf_id":"TheDrummer\/Anubis-Pro-105B-v1",
+    "size":104779882496.0,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1738454400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"thedrummer\/skyfall-36b-v2",
+    "name":"Skyfall 36B V2",
+    "provider_name":"TheDrummer",
+    "cost":0.07,
+    "hf_id":"TheDrummer\/Skyfall-36B-v2",
+    "size":36910535680.0,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1738540800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"thedrummer\/unslopnemo-12b",
+    "name":"UnslopNemo 12B",
+    "provider_name":"TheDrummer",
+    "cost":0.4,
+    "hf_id":"TheDrummer\/UnslopNemo-12B-v4.1",
+    "size":12247782400.0,
+    "type":"open-source",
+    "license":"",
+    "creation_date":1729641600000,
     "tasks":[
       "translation_from",
       "translation_to",

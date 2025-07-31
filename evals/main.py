@@ -1,6 +1,7 @@
 import asyncio
 import pandas as pd
 import time
+import os
 from datetime import datetime, timedelta
 from tqdm.asyncio import tqdm_asyncio
 from models import models
@@ -12,16 +13,18 @@ results = pd.DataFrame()
 
 async def evaluate():
     # FIXME we should not need this for-loop, but it helps
-    n_sentences = 10  # Full evaluation
+    n_sentences = 2  # Testing with 2 sentences first
     start_time = time.time()
     print(f"🚀 Starting full evaluation at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"📊 Evaluating {n_sentences} sentences per task")
     
-    # Evaluate top 150 languages by speakers (not benchmark languages)
-    top_languages = languages.head(150)  # Top 150 by population
-    print(f"🌍 Evaluating top {len(top_languages)} languages by speakers")
+    # Evaluate top languages by speakers (configurable via MAX_LANGUAGES env var)
+    max_languages = int(os.environ.get("MAX_LANGUAGES", 5))  # Default 5 for quick testing
+    top_languages = languages.head(max_languages)  # Top N by population
+    print(f"🌍 Evaluating top {len(top_languages)} languages by speakers (max: {max_languages})")
     
-    for n_languages in range(10, min(len(top_languages) + 1, 151), 10):
+    # For testing, just use all available languages up to max_languages
+    for n_languages in [min(max_languages, len(top_languages))]:
         print(f"running evaluations for {n_languages} languages")
         old_results = pd.read_json("results.json")
         old_models = pd.read_json("models.json")
@@ -114,9 +117,10 @@ async def evaluate():
         # Time estimation
         elapsed = time.time() - start_time
         elapsed_str = str(timedelta(seconds=int(elapsed)))
-        if n_languages < 100:
-            remaining_batches = (100 - n_languages) // 10
-            estimated_remaining = elapsed * remaining_batches / (n_languages // 10)
+        if n_languages < max_languages:
+            remaining_batches = (max_languages - n_languages) // 10
+            batch_count = max(1, n_languages // 10)  # Avoid division by zero
+            estimated_remaining = elapsed * remaining_batches / batch_count
             eta = datetime.now() + timedelta(seconds=estimated_remaining)
             print(f"⏱️  Batch completed in {elapsed_str}. ETA for full run: {eta.strftime('%H:%M:%S')}")
         else:
