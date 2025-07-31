@@ -36,11 +36,16 @@ async def evaluate():
         combis = combis.merge(old_results, on=["model", "bcp_47", "task"], how="left")
         combis = combis[combis["metric"].isna()][["model", "bcp_47", "task"]]
         # run evaluations in batches to prevent HTTP pool exhaustion
-        all_tasks = [
-            (tasks[task_name], model, bcp_47, i)
-            for i in range(n_sentences)
-            for model, bcp_47, task_name in combis.itertuples(index=False)
-        ]
+        all_tasks = []
+        for i in range(n_sentences):
+            for model, bcp_47, task_name in combis.itertuples(index=False):
+                if task_name == "translation":
+                    # Translation needs both "from" and "to" modes
+                    all_tasks.append((tasks[task_name], model, bcp_47, i, "from"))
+                    all_tasks.append((tasks[task_name], model, bcp_47, i, "to"))
+                else:
+                    # Other tasks don't need mode parameter
+                    all_tasks.append((tasks[task_name], model, bcp_47, i))
         
         print(f"⏳ Processing {len(all_tasks)} evaluation tasks in batches...")
         
@@ -51,7 +56,14 @@ async def evaluate():
             batch = all_tasks[i:i+batch_size]
             print(f"📦 Processing batch {i//batch_size + 1}/{(len(all_tasks) + batch_size - 1)//batch_size} ({len(batch)} tasks)")
             
-            batch_coroutines = [task_func(model, bcp_47, sentence_nr) for task_func, model, bcp_47, sentence_nr in batch]
+            batch_coroutines = []
+            for task_data in batch:
+                if len(task_data) == 5:  # Translation task with mode
+                    task_func, model, bcp_47, sentence_nr, mode = task_data
+                    batch_coroutines.append(task_func(model, bcp_47, sentence_nr, mode))
+                else:  # Other tasks without mode
+                    task_func, model, bcp_47, sentence_nr = task_data
+                    batch_coroutines.append(task_func(model, bcp_47, sentence_nr))
             batch_results = await asyncio.gather(*batch_coroutines, return_exceptions=True)
             all_results.extend(batch_results)
             
