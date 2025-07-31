@@ -9,7 +9,7 @@ from tqdm.asyncio import tqdm_asyncio
 import os
 
 from datasets import Dataset, load_dataset
-from models import translate_google, google_supported_languages
+from models import translate_google, get_google_supported_languages
 
 from datasets_.util import _get_dataset_config_names, _load_dataset
 
@@ -28,13 +28,14 @@ def add_choices(row):
 
 def load_truthfulqa(language_bcp_47, nr):
     if language_bcp_47 in tags_uhura_truthfulqa.keys():
-        ds = _load_dataset(slug_uhura_truthfulqa, tags_uhura_truthfulqa[language_bcp_47])
+        ds = _load_dataset(
+            slug_uhura_truthfulqa, tags_uhura_truthfulqa[language_bcp_47]
+        )
         ds = ds.map(add_choices)
-        examples = ds["train"]
         task = ds["test"][nr]
-        return "masakhane/uhura-truthfulqa", examples, task
+        return "masakhane/uhura-truthfulqa", task
     else:
-        return None, None, None
+        return None, None
 
 
 
@@ -43,7 +44,7 @@ def translate_truthfulqa(languages):
     untranslated = [
         lang
         for lang in languages["bcp_47"].values[:100]
-        if lang not in human_translated and lang in google_supported_languages
+        if lang not in human_translated and lang in get_google_supported_languages()
     ]
     n_samples = 10
 

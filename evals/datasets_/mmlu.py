@@ -6,7 +6,7 @@ from collections import Counter, defaultdict
 from datasets import Dataset, load_dataset
 from datasets_.util import _get_dataset_config_names, _load_dataset
 from langcodes import Language, standardize_tag
-from models import google_supported_languages, translate_google
+from models import get_google_supported_languages, translate_google
 from rich import print
 from tqdm import tqdm
 from tqdm.asyncio import tqdm_asyncio
@@ -151,26 +151,24 @@ categories = sorted(
 
 
 def load_mmlu(language_bcp_47, nr):
+    print(f"Loading MMLU data for {language_bcp_47}...")
     category = categories[nr % len(categories)]
     if language_bcp_47 in tags_afrimmlu.keys():
         ds = _load_dataset("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47])
         ds = ds.map(parse_choices)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
         task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "masakhane/afrimmlu", examples, task
+        return "masakhane/afrimmlu", task
     elif language_bcp_47 in tags_global_mmlu.keys():
         ds = _load_dataset("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47])
         ds = ds.map(add_choices)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
         task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "CohereForAI/Global-MMLU", examples, task
+        return "CohereForAI/Global-MMLU", task
     elif language_bcp_47 in tags_mmlu_autotranslated:
         ds = _load_dataset("fair-forward/mmlu-autotranslated", language_bcp_47)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
         task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "fair-forward/mmlu-autotranslated", examples, task
+        return "fair-forward/mmlu-autotranslated", task
     else:
-        return None, None, None
+        return None, None
 
 
 def translate_mmlu(languages):
@@ -178,7 +176,7 @@ def translate_mmlu(languages):
     untranslated = [
         lang
         for lang in languages["bcp_47"].values[:100]
-        if lang not in human_translated and lang in google_supported_languages
+        if lang not in human_translated and lang in get_google_supported_languages()
     ]
     n_samples = 10
 

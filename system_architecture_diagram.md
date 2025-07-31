@@ -29,6 +29,13 @@ flowchart TD
     M --> M5["truthfulqa<br/>Accuracy"]
     M --> M6["mgsm<br/>Accuracy"]
     
+    %% On-the-fly Translation
+    subgraph OTF [On-the-fly Dataset Translation]
+        direction LR
+        DS_raw["Raw English Dataset<br/>(e.g., MMLU)"] --> Google_Translate["Google Translate API"]
+        Google_Translate --> DS_translated["Translated Dataset<br/>(e.g., German MMLU)"]
+    end
+    
     %% Evaluation Pipeline
     H --> |"models ID"| N["main.py evaluate"]
     K --> |"languages bcp_47"| N
@@ -84,6 +91,10 @@ flowchart TD
     DS3 --> Q4
     DS4 --> Q5
     DS5 --> Q6
+    
+    DS_translated --> Q3
+    DS_translated --> Q4
+    DS_translated --> Q5
     
     %% Styling
     classDef modelSource fill:#e1f5fe

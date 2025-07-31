@@ -1,10 +1,12 @@
 import asyncio
 import os
+import random
 
 from datasets import Dataset, load_dataset
 from datasets_.util import _get_dataset_config_names, _load_dataset
-from langcodes import standardize_tag
-from models import google_supported_languages, translate_google
+from langcodes import Language, standardize_tag
+from models import get_google_supported_languages, translate_google
+from rich import print
 from tqdm import tqdm
 from tqdm.asyncio import tqdm_asyncio
 
@@ -38,6 +40,7 @@ def parse_number(i):
 
 
 def load_mgsm(language_bcp_47, nr):
+    print(f"Loading MGSM data for {language_bcp_47}...")
     if language_bcp_47 in tags_mgsm.keys():
         ds = _load_dataset(slug_mgsm, subset=tags_mgsm[language_bcp_47], split="test")
         return slug_mgsm, ds[nr]
@@ -48,7 +51,9 @@ def load_mgsm(language_bcp_47, nr):
         return slug_afrimgsm, ds[nr]
     elif language_bcp_47 in tags_gsm_autotranslated.keys():
         ds = _load_dataset(
-            slug_gsm_autotranslated, subset=tags_gsm_autotranslated[language_bcp_47], split="test"
+            slug_gsm_autotranslated,
+            subset=tags_gsm_autotranslated[language_bcp_47],
+            split="test",
         )
         return slug_gsm_autotranslated, ds[nr]
     elif language_bcp_47 in tags_gsm8kx.keys():
@@ -69,7 +74,7 @@ def translate_mgsm(languages):
     untranslated = [
         lang
         for lang in languages["bcp_47"].values[:100]
-        if lang not in human_translated and lang in google_supported_languages
+        if lang not in human_translated and lang in get_google_supported_languages()
     ]
     en = _load_dataset(slug_mgsm, subset=tags_mgsm["en"], split="test")
     slug = "fair-forward/gsm-autotranslated"

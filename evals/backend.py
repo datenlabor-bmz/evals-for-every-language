@@ -26,7 +26,6 @@ task_metrics = [
     "classification_accuracy",
     "mmlu_accuracy",
     "arc_accuracy",
-    # "truthfulqa_accuracy",
     "mgsm_accuracy",
 ]
 
