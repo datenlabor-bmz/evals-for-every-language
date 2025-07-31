@@ -17,9 +17,11 @@ async def evaluate():
     print(f"🚀 Starting full evaluation at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"📊 Evaluating {n_sentences} sentences per task")
     
-    # Evaluate all languages with benchmark data (194 total)
-    benchmark_languages = languages[languages["in_benchmark"]]
-    for n_languages in range(10, min(len(benchmark_languages) + 1, 151), 10):
+    # Evaluate top 150 languages by speakers (not benchmark languages)
+    top_languages = languages.head(150)  # Top 150 by population
+    print(f"🌍 Evaluating top {len(top_languages)} languages by speakers")
+    
+    for n_languages in range(10, min(len(top_languages) + 1, 151), 10):
         print(f"running evaluations for {n_languages} languages")
         old_results = pd.read_json("results.json")
         old_models = pd.read_json("models.json")
@@ -27,7 +29,7 @@ async def evaluate():
         combis = [
             (model, lang.bcp_47, task_name)
             for model in models["id"]
-            for lang in languages.iloc[:n_languages].itertuples()
+            for lang in top_languages.iloc[:n_languages].itertuples()
             for task_name, task in tasks.items()
             if task_name in models[models["id"] == model]["tasks"].iloc[0]
         ]
@@ -90,10 +92,31 @@ async def evaluate():
         if valid_results:
             results = valid_results
             args = dict(orient="records", indent=2, force_ascii=False)
-            pd.DataFrame(results).to_json("results.json", **args)
-            print(f"💾 Saved {len(valid_results)} results to results.json")
+            
+            # Aggregate results like main branch
+            results_df = pd.DataFrame(results)
+            if len(results_df) > 0:
+                results_df = (
+                    results_df.groupby(["model", "bcp_47", "task", "metric"])
+                    .agg({"score": "mean"})
+                    .reset_index()
+                )
+                # Merge with old results
+                old_results = pd.read_json("results.json")
+                results_df = pd.concat([old_results, results_df])
+                results_df = results_df.sort_values(by=["model", "bcp_47", "task", "metric"])
+                results_df.to_json("results.json", **args)
+                print(f"💾 Saved {len(results_df)} aggregated results to results.json")
+            else:
+                print("⚠️  No valid results to aggregate")
         else:
             print("⚠️  No valid results to save - all API calls failed")
+            
+        # Save up-to-date info on models and languages (like main branch)
+        all_models = pd.concat([pd.DataFrame(models), old_models])
+        all_models = all_models.drop_duplicates(subset=["id"]).sort_values(by=["id"])
+        all_models.to_json("models.json", **args)
+        pd.DataFrame(languages).to_json("languages.json", **args)
             
         # Continue with next batch even if this one had errors
         
