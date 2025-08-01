@@ -15,6 +15,9 @@ RUN pip install uv && uv sync --frozen
 # Copy application code
 COPY . .
 
+# Verify dependencies are installed
+RUN .venv/bin/python -c "import pandas, datasets, evaluate, fastapi, uvicorn, google.cloud.storage, dotenv; print('✅ All dependencies verified')"
+
 # Set environment variables with conservative limits
 ENV N_SENTENCES=20
 ENV MAX_LANGUAGES=150
@@ -22,10 +25,16 @@ ENV COST_LIMIT_USD=20
 
 # Create a startup script with cost monitoring and HTTP server
 RUN echo '#!/bin/bash\n\
+\n\
+# Force immediate log flushing for Cloud Run visibility\n\
+export PYTHONUNBUFFERED=1\n\
+export PYTHONIOENCODING=utf-8\n\
+\n\
 echo "🚀 Starting AI Language Evaluation..."\n\
 echo "📊 Configuration: $N_SENTENCES sentences, $MAX_LANGUAGES languages"\n\
 echo "💰 Cost limit: $COST_LIMIT_USD USD"\n\
 echo "🛡️  Cost protection enabled"\n\
+echo "🔧 Logging: Unbuffered Python output enabled"\n\
 \n\
 # Start a simple HTTP server to satisfy Cloud Run requirements\n\
 python -m http.server 8080 &\n\
@@ -46,8 +55,8 @@ HTTP_SERVER_PID=$!\n\
     done\n\
 ) &\n\
 \n\
-# Run the evaluation\n\
-cd /app && uv run python evals/main.py\n\
+# Run the evaluation with forced log flushing\n\
+cd /app && .venv/bin/python -u evals/main.py\n\
 \n\
 # Stop the HTTP server\n\
 kill $HTTP_SERVER_PID\n\

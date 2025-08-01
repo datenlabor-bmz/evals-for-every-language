@@ -20,7 +20,7 @@ gcloud run deploy ai-language-eval \
   --timeout 3600 \
   --concurrency 1 \
   --no-allow-unauthenticated \
-  --set-env-vars="N_SENTENCES=20,MAX_LANGUAGES=150,COST_LIMIT_USD=20" \
+           --set-env-vars="N_SENTENCES=20,MAX_LANGUAGES=150,COST_LIMIT_USD=20,PYTHONUNBUFFERED=1,PYTHONIOENCODING=utf-8" \
   --quiet
 
 echo "✅ Deployment completed!"
