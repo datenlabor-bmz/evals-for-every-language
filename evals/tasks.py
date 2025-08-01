@@ -1,3 +1,4 @@
+import asyncio
 import random
 from functools import partial
 from textwrap import dedent
@@ -89,6 +90,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             "task": f"translation_{mode}",
             "metric": metric,
             "score": score,
+            "origin": "human", # FLORES+ is human-translated
             "sentence_nr": sentence_nr,
         }
         for metric, score in (
@@ -151,6 +153,7 @@ Text:
             "task": "classification",
             "metric": "accuracy",
             "score": acc,
+            "origin": "human", # FLORES+ is human-translated
             "sentence_nr": nr,
         }
     ]
@@ -219,10 +222,10 @@ def format_multiple_choice(item):
 
 
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
-    ds_name, task = load_mmlu(language_bcp_47, nr)
+    ds_name, task, origin = await load_mmlu(language_bcp_47, nr)
     if not task:
         return []
-
+    
     messages = [
         {
             "role": "user",
@@ -252,6 +255,7 @@ Response format: <reasoning> #### <letter>
             acc = 0
         else:
             raise e
+    
     return [
         {
             "model": model,
@@ -259,13 +263,14 @@ Response format: <reasoning> #### <letter>
             "task": "mmlu",
             "metric": "accuracy",
             "score": acc,
+            "origin": origin,  # Add origin tag to results
             "sentence_nr": nr,
         }
     ]
 
 
 async def arc_and_evaluate(model, language_bcp_47, nr):
-    ds_name, task = load_uhura_arc_easy(language_bcp_47, nr)
+    ds_name, task, origin = load_uhura_arc_easy(language_bcp_47, nr)
     if not task:
         return []
 
@@ -305,6 +310,7 @@ Response format: <reasoning> #### <letter>
             "task": "arc",
             "metric": "accuracy",
             "score": acc,
+            "origin": origin,
             "sentence_nr": nr,
         }
     ]
@@ -330,15 +336,22 @@ def format_multiple_choice_truthfulqa(item):
 
 
 async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
-    ds_name, task = load_truthfulqa(language_bcp_47, nr)
+    ds_name, task, origin = await load_truthfulqa(language_bcp_47, nr)
     if not task:
         return []
 
-    answer = letters[task["labels"].index(1)]
+    # Find the correct answer
+    try:
+        correct_choice_index = task["labels"].index(1)
+        answer = letters[correct_choice_index]
+    except (ValueError, IndexError):
+        # Handle cases where there is no correct answer or labels are malformed
+        return []
+
     messages = [
         {
             "role": "user",
-            "content": f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
+            "content": f"""Answer the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
 
 Response format: <reasoning> #### <letter>
 
@@ -352,10 +365,11 @@ Response format: <reasoning> #### <letter>
             model=model,
             messages=messages,
             temperature=0,
-            max_tokens=1,
+            max_tokens=1024, # Increased for reasoning
         )
-        if response:
-            acc = int(response[:1].strip() == answer)
+        if response and "####" in response:
+            pred_answer = response.split("####")[-1].strip()
+            acc = int(pred_answer[:1].upper() == answer)
         else:
             acc = 0
     except Exception as e:
@@ -370,13 +384,14 @@ Response format: <reasoning> #### <letter>
             "task": "truthfulqa",
             "metric": "accuracy",
             "score": acc,
+            "origin": origin,
             "sentence_nr": nr,
         }
     ]
 
 
 async def mgsm_and_evaluate(model, language_bcp_47, nr):
-    ds_slug, question = load_mgsm(language_bcp_47, nr)
+    ds_slug, question, origin = load_mgsm(language_bcp_47, nr)
     if not question:
         return []
 
@@ -411,6 +426,7 @@ Response format: <reasoning> #### <number>
             "task": "mgsm",
             "metric": "accuracy",
             "score": accuracy,
+            "origin": origin,
             "sentence_nr": nr,
         }
     ]

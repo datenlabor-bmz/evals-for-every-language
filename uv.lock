@@ -1404,6 +1404,7 @@ name = "languagebench"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "aiolimiter" },
     { name = "fastapi" },
     { name = "joblib" },
     { name = "langcodes" },
@@ -1447,6 +1448,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "aiolimiter", specifier = ">=1.2.1" },
     { name = "aiolimiter", marker = "extra == 'dev'", specifier = ">=1.2.1" },
     { name = "bert-score", marker = "extra == 'dev'", specifier = ">=0.3.13" },
     { name = "datasets", marker = "extra == 'dev'", specifier = ">=3.6.0" },

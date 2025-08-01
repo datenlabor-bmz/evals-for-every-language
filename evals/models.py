@@ -1,3 +1,4 @@
+import asyncio
 import json
 import re
 from collections import defaultdict
@@ -211,13 +212,30 @@ google_rate_limit = AsyncLimiter(max_rate=10, time_period=1)
 
 @cache
 async def complete(**kwargs) -> str | None:
+    # Add longer timeout for slower, premium, or reasoning-focused models
+    model_id = kwargs.get('model', '')
+    slow_model_keywords = [
+        'claude-3.5', 'claude-3.7', 'claude-4', 'sonnet-4', # Claude
+        'gpt-4', 'o1', 'o3', # OpenAI
+        'gemini-2.5', 'gemini-pro', # Google
+        'llama-4', # Meta
+        'reasoning', 'thinking' # General
+    ]
+    timeout = 120 if any(keyword in model_id for keyword in slow_model_keywords) else 60
+    
     async with openrouter_rate_limit:
         try:
-            response = await client.chat.completions.create(**kwargs)
+            response = await asyncio.wait_for(
+                client.chat.completions.create(**kwargs),
+                timeout=timeout
+            )
         except BadRequestError as e:
             if "filtered" in e.message:
                 return None
             raise e
+        except asyncio.TimeoutError:
+            print(f"⏰ Timeout after {timeout}s for model {model}")
+            return None
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()

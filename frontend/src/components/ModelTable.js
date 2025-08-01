@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import Medal from './Medal'
 import { Slider } from 'primereact/slider'
 import ScoreColumns from './ScoreColumns'
-const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
+const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTranslatedMetrics = [] }) => {
   const [filters, setFilters] = useState({
     type: { value: null, matchMode: FilterMatchMode.IN },
     size: { value: null, matchMode: FilterMatchMode.BETWEEN },
@@ -249,7 +249,7 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
         body={costBodyTemplate}
         style={{ minWidth: '5rem' }}
       />
-      {ScoreColumns}
+      {ScoreColumns(machineTranslatedMetrics)}
     </DataTable>
   )
 }

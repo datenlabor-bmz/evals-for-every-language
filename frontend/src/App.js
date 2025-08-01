@@ -19,6 +19,7 @@ function App () {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedLanguages, setSelectedLanguages] = useState([])
+  const [machineTranslatedMetrics, setMachineTranslatedMetrics] = useState([])
   const [dialogVisible, setDialogVisible] = useState(false)
   const [aboutVisible, setAboutVisible] = useState(false)
   const [contributeVisible, setContributeVisible] = useState(false)
@@ -36,6 +37,7 @@ function App () {
       })
       .then(jsonData => {
         setData(jsonData)
+        setMachineTranslatedMetrics(jsonData.machine_translated_metrics || [])
         setLoading(false)
       })
       .catch(err => {
@@ -235,6 +237,7 @@ function App () {
                 data={data.model_table}
                 selectedLanguages={selectedLanguages}
                 allLanguages={data.language_table || []}
+                machineTranslatedMetrics={machineTranslatedMetrics}
               />
               <LanguageTable
                 data={data.language_table}

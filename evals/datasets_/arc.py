@@ -52,7 +52,7 @@ def load_uhura_arc_easy(language_bcp_47, nr):
         ds = ds.map(add_choices)
         ds = ds.rename_column("answerKey", "answer")
         task = ds["test"].filter(lambda x: x["id"] == common_ids_test[nr])[0]
-        return "masakhane/uhura-arc-easy", task
+        return "masakhane/uhura-arc-easy", task, "human"
     if language_bcp_47 in tags_uhura_arc_easy_translated.keys():
         ds = _load_dataset(
             slug_uhura_arc_easy_translated,
@@ -60,9 +60,10 @@ def load_uhura_arc_easy(language_bcp_47, nr):
         )
         ds = ds.rename_column("answerKey", "answer")
         task = ds["test"].filter(lambda x: x["id"] == common_ids_test[nr])[0]
-        return "fair-forward/arc-easy-autotranslated", task
+        return "fair-forward/arc-easy-autotranslated", task, "machine"
     else:
-        return None, None
+        # ARC does not support on-the-fly translation currently
+        return None, None, None
 
 
 def load_uhura_arc_challenge(language_bcp_47, nr):

@@ -13,13 +13,19 @@ results = pd.DataFrame()
 
 async def evaluate():
     # FIXME we should not need this for-loop, but it helps
-    n_sentences = 2  # Testing with 2 sentences first
+    n_sentences = int(os.environ.get("N_SENTENCES", 1)) # Default 1 for quick testing
+    
+    # Load models and languages
+    models_df = pd.DataFrame(models)
+    languages_df = pd.DataFrame(languages)
+
+    print(f"🚀 Running full evaluation with {len(models_df)} models.")
     start_time = time.time()
     print(f"🚀 Starting full evaluation at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"📊 Evaluating {n_sentences} sentences per task")
     
     # Evaluate top languages by speakers (configurable via MAX_LANGUAGES env var)
-    max_languages = int(os.environ.get("MAX_LANGUAGES", 5))  # Default 5 for quick testing
+    max_languages = int(os.environ.get("MAX_LANGUAGES", 2))  # Default 2 for quick testing
     top_languages = languages.head(max_languages)  # Top N by population
     print(f"🌍 Evaluating top {len(top_languages)} languages by speakers (max: {max_languages})")
     
@@ -27,14 +33,16 @@ async def evaluate():
     for n_languages in [min(max_languages, len(top_languages))]:
         print(f"running evaluations for {n_languages} languages")
         old_results = pd.read_json("results.json")
+        if old_results.empty:
+            old_results = pd.DataFrame(columns=["model", "bcp_47", "task", "metric", "origin", "score"])
         old_models = pd.read_json("models.json")
         # get all combinations of model, language and task
         combis = [
             (model, lang.bcp_47, task_name)
-            for model in models["id"]
+            for model in models_df["id"]
             for lang in top_languages.iloc[:n_languages].itertuples()
             for task_name, task in tasks.items()
-            if task_name in models[models["id"] == model]["tasks"].iloc[0]
+            if task_name in models_df[models_df["id"] == model]["tasks"].iloc[0]
         ]
         # filter out combinations that have already been evaluated
         combis = pd.DataFrame(combis, columns=["model", "bcp_47", "task"])
@@ -55,6 +63,24 @@ async def evaluate():
         for i in range(0, len(all_tasks), batch_size):
             batch = all_tasks[i:i+batch_size]
             print(f"📦 Processing batch {i//batch_size + 1}/{(len(all_tasks) + batch_size - 1)//batch_size} ({len(batch)} tasks)")
+            
+            # Show what's being evaluated in this batch
+            batch_summary = {}
+            for task_data in batch:
+                task_func, model, bcp_47, sentence_nr = task_data
+                # Extract task name from function - handle both partial functions and regular functions
+                if hasattr(task_func, 'func'):
+                    task_name = task_func.func.__name__.replace('_and_evaluate', '')
+                else:
+                    task_name = task_func.__name__.replace('_and_evaluate', '')
+                
+                if task_name not in batch_summary:
+                    batch_summary[task_name] = set()
+                batch_summary[task_name].add(bcp_47)
+            
+            for task_name, languages_set in batch_summary.items():
+                lang_list = ', '.join(sorted(languages_set))
+                print(f"  🔄 {task_name}: {lang_list}")
             
             batch_coroutines = []
             for task_data in batch:
@@ -91,7 +117,7 @@ async def evaluate():
             results_df = pd.DataFrame(results)
             if len(results_df) > 0:
                 results_df = (
-                    results_df.groupby(["model", "bcp_47", "task", "metric"])
+                    results_df.groupby(["model", "bcp_47", "task", "metric", "origin"])
                     .agg({"score": "mean"})
                     .reset_index()
                 )
