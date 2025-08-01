@@ -7,6 +7,51 @@ from tqdm.asyncio import tqdm_asyncio
 from models import models
 from tasks import tasks
 from languages import languages
+import json
+
+# Add Google Cloud Storage import
+try:
+    from google.cloud import storage
+    GCS_AVAILABLE = True
+except ImportError:
+    GCS_AVAILABLE = False
+    print("⚠️  Google Cloud Storage not available - results will be saved locally only")
+
+async def save_results_to_gcs(results, bucket_name="ai-language-eval-results"):
+    """Save results to Google Cloud Storage"""
+    if not GCS_AVAILABLE:
+        print("⚠️  Google Cloud Storage not available")
+        return
+    
+    try:
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(bucket_name)
+        
+        # Create bucket if it doesn't exist
+        if not bucket.exists():
+            bucket = storage_client.create_bucket(bucket_name, location="us-central1")
+            print(f"📦 Created bucket: {bucket_name}")
+        
+        # Save results with timestamp
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        blob_name = f"results_{timestamp}.json"
+        blob = bucket.blob(blob_name)
+        
+        # Convert results to JSON and upload
+        results_json = json.dumps(results, indent=2)
+        blob.upload_from_string(results_json, content_type='application/json')
+        
+        print(f"💾 Results saved to GCS: gs://{bucket_name}/{blob_name}")
+        print(f"📊 Download with: gsutil cp gs://{bucket_name}/{blob_name} ./")
+        
+        # Also save latest results
+        latest_blob = bucket.blob("results_latest.json")
+        latest_blob.upload_from_string(results_json, content_type='application/json')
+        print(f"💾 Latest results: gs://{bucket_name}/results_latest.json")
+        
+    except Exception as e:
+        print(f"❌ Failed to save to GCS: {e}")
+        print("💾 Results saved locally to results.json")
 
 results = pd.DataFrame()
 
@@ -152,6 +197,16 @@ async def evaluate():
         else:
             print(f"✅ Full evaluation completed in {elapsed_str}")
             print(f"🎉 Finished at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+    # Save results locally
+    with open("results.json", "w") as f:
+        json.dump(results, f, indent=2)
+    print(f"💾 Results saved to results.json")
+    
+    # Save to Google Cloud Storage if available
+    await save_results_to_gcs(results)
+            
+    return results
 
 
 if __name__ == "__main__":
