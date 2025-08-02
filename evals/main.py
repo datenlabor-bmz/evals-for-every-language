@@ -13,7 +13,7 @@ results = pd.DataFrame()
 
 async def evaluate():
     # FIXME we should not need this for-loop, but it helps
-    n_sentences = int(os.environ.get("N_SENTENCES", 1)) # Default 1 for quick testing
+    n_sentences = int(os.environ.get("N_SENTENCES", 15)) # Default 1 for quick testing
     
     # Load models and languages
     models_df = pd.DataFrame(models)

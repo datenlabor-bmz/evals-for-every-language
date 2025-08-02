@@ -105,13 +105,13 @@ flowchart TD
     DS_native --> Q4
     DS_native --> Q5
     
-    %% Styling - Dark theme friendly colors
-    classDef modelSource fill:#2d3748,stroke:#4a5568,color:#e2e8f0
-    classDef evaluation fill:#553c9a,stroke:#805ad5,color:#e9d8fd
-    classDef api fill:#c05621,stroke:#ed8936,color:#fed7aa
-    classDef storage fill:#22543d,stroke:#38a169,color:#c6f6d5
-    classDef frontend fill:#702459,stroke:#b83280,color:#fed7e2
-    classDef translation fill:#2c5282,stroke:#3182ce,color:#bee3f8
+    %% Styling - Neutral colors that work in both dark and light modes
+    classDef modelSource fill:#f8f9fa,stroke:#6c757d,color:#212529
+    classDef evaluation fill:#e9ecef,stroke:#495057,color:#212529
+    classDef api fill:#dee2e6,stroke:#6c757d,color:#212529
+    classDef storage fill:#d1ecf1,stroke:#0c5460,color:#0c5460
+    classDef frontend fill:#f8d7da,stroke:#721c24,color:#721c24
+    classDef translation fill:#d4edda,stroke:#155724,color:#155724
     
     class A1,A2,A3,A4 modelSource
     class Q1,Q2,Q3,Q4,Q5,Q6,P evaluation
@@ -123,7 +123,7 @@ flowchart TD
 
 ## Architecture Components
 
-### 🔵 Model Discovery (Dark Blue)
+### 🔵 Model Discovery (Light Gray)
 - **Static Curated Models**: Handpicked important models for comprehensive evaluation
 - **Dynamic Popular Models**: Real-time discovery of trending models via web scraping
 - **Quality Control**: Blocklist for problematic or incompatible models
@@ -131,7 +131,7 @@ flowchart TD
 - **Timeout Protection**: 120s timeout for large/reasoning models, 60s for others
 - **Metadata Enrichment**: Rich model information from OpenRouter and HuggingFace APIs
 
-### 🟣 Evaluation Pipeline (Purple)
+### 🟣 Evaluation Pipeline (Medium Gray)
 - **7 Active Tasks**: Translation (bidirectional), Classification, MMLU, ARC, TruthfulQA, MGSM
 - **Unified English Zero-Shot Prompting**: All tasks use English instructions with target language content
 - **Origin Tagging**: Distinguishes between human-translated ('human') and machine-translated ('machine') data
@@ -140,25 +140,25 @@ flowchart TD
 - **Batch Processing**: 50 tasks per batch with rate limiting and error resilience
 - **Dual Deployment**: `main.py` for local/GitHub, `main_gcs.py` for Google Cloud with GCS storage
 
-### 🟠 API Integration (Orange)
+### 🟠 API Integration (Light Gray)
 - **OpenRouter**: Primary model inference API for all language model tasks
 - **Rate Limiting**: Intelligent batching and delays to prevent API overload
 - **Error Handling**: Graceful handling of timeouts, rate limits, and model unavailability
 - **HuggingFace**: Model metadata and open-source model information
 - **Google Translate**: Specialized translation API for on-the-fly dataset translation
 
-### 🟢 Data Storage (Green)
+### 🟢 Data Storage (Cyan)
 - **results.json**: Aggregated evaluation scores with origin-specific metrics
 - **models.json**: Dynamic model list with metadata and validation status
 - **languages.json**: Language information with population data
 
-### 🟡 Frontend Visualization (Pink)
+### 🟡 Frontend Visualization (Light Red)
 - **WorldMap**: Interactive country-level language proficiency visualization
 - **ModelTable**: Ranked model performance leaderboard with origin-specific columns
 - **LanguageTable**: Language coverage and speaker statistics
 - **DatasetTable**: Task-specific performance breakdowns with human/machine distinction
 
-### 🔵 Translation & Origin Tracking (Blue)
+### 🔵 Translation & Origin Tracking (Light Green)
 - **On-the-fly Translation**: Google Translate API for languages without native benchmarks
 - **Origin Tagging**: Automatic classification of data sources (human vs. machine translated)
 - **Separate Metrics**: Frontend displays distinct scores for human and machine-translated data
