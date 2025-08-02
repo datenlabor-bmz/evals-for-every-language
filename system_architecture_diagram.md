@@ -37,7 +37,7 @@ flowchart TD
     end
     
     %% Evaluation Pipeline
-    H --> |"models ID"| N["main.py evaluate"]
+    H --> |"models ID"| N["main.py / main_gcs.py<br/>evaluate"]
     K --> |"languages bcp_47"| N
     L --> |"tasks.items"| N
     N --> |"Filter by model.tasks"| O["Valid Combinations<br/>Model × Language × Task"]
@@ -123,6 +123,7 @@ flowchart TD
 - **Combinatorial Approach**: Systematic evaluation across Model × Language × Task combinations
 - **Sample-based**: 10 evaluations per combination for statistical reliability
 - **Unified API**: All tasks use OpenRouter's `complete()` function for consistency
+- **Dual Deployment**: `main.py` for local/GitHub, `main_gcs.py` for Google Cloud with GCS storage
 
 ### 🟠 API Integration (Orange)
 - **OpenRouter**: Primary model inference API for all language model tasks

@@ -45,8 +45,14 @@ _Tracking language proficiency of AI models for every language_
 
 ## Evaluate
 
+### Local Development
 ```bash
 uv run --extra dev evals/main.py
+```
+
+### Google Cloud Deployment
+```bash
+uv run --extra dev evals/main_gcs.py
 ```
 
 ## Explore

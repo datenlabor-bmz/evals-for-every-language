@@ -1,25 +1,52 @@
 [project]
-name = "ai-language-monitor"
+name = "languagebench"
 version = "0.1.0"
-description = "AI Language Evaluation Monitor"
-authors = [
-    {name = "Jonas Nothnagel", email = "jonas.nothnagel@gmail.com"},
-]
-dependencies = [
-    "aiolimiter",
-    "evaluate",
-    "sentencepiece",
-    "langcodes",
-    "pandas",
-    "datasets",
-    "rich",
-    "tqdm",
-    "fastapi",
-    "uvicorn",
-    "google-cloud-storage",
-    "python-dotenv",
-]
+description = "Add your description here"
+readme = "README.md"
 requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.12",
+    "joblib>=1.5.0",
+    "language-data>=1.3.0",
+    "numpy>=2.2.5",
+    "pandas>=2.2.3",
+    "uvicorn>=0.34.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "aiolimiter>=1.2.1",
+    "bert-score>=0.3.13",
+    "datasets>=3.6.0",
+    "elevenlabs>=1.58.1",
+    "evaluate>=0.4.3",
+    "google-cloud-translate>=3.21.0",
+    "huggingface-hub>=0.31.1",
+    "jiwer>=3.1.0",
+    "joblib>=1.5.0",
+    "langcodes>=3.5.0",
+    "language-data>=1.3.0",
+    "openai>=1.78.1",
+    "protobuf>=6.30.2",
+    "python-dotenv>=1.1.0",
+    "rich>=14.0.0",
+    "sacrebleu>=2.5.1",
+    "sentencepiece>=0.2.0",
+    "tiktoken>=0.9.0",
+    "tqdm>=4.67.1",
+    "transformers>=4.51.3",
+]
+cloud = [
+    "google-cloud-storage>=3.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "ipython>=9.3.0",
+    "jupyter>=1.1.1",
+    "scipy>=1.16.0",
+    "seaborn>=0.13.2",
+]
 
 [build-system]
 requires = ["hatchling"]

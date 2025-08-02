@@ -1,1442 +1,2621 @@
 [
   {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3627031
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5940408828
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4891111744
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6539818614
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ar",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.312114572
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.552521557
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4028732936
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6133514052
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"bn",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5157250202
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.7038347317
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5745954681
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.8001969096
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"en",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3790915845
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5866933266
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.431261429
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6416949525
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"es",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3495042707
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5657269289
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4388687973
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6301909814
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"fr",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5260022158
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.696180174
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5473752964
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.7166629585
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"hi",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4082799231
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6181726033
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4015575183
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5441901174
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pa",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.347936198
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5651952678
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5104311886
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.7046936323
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"pt",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.3333333333
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3015497955
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5340248038
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3528651465
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5674887402
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"ur",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3505533465
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5332373335
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3794416776
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.4125395462
-  },
-  {
-    "model":"anthropic\/claude-3.5-sonnet",
-    "bcp_47":"zh",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4048762749
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6251383415
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5608898555
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.7322182656
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ar",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3206689802
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5888595654
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.409371677
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6367318451
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"bn",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5555421284
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.7067799334
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.625846675
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.826307727
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"en",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4043918895
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6076489817
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4221916285
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6494217745
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"es",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3100510658
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5521242944
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5274041238
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6967241354
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"fr",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5014773013
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6808777345
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.5467712163
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.695531831
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"hi",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3011874208
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5594668528
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4073788293
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5522541283
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pa",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3582885255
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5812430214
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4421833822
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.6764218934
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"pt",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.6666666667
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.3333333333
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.2922465721
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5441602068
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.4100659965
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5930967012
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"ur",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"arc",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"classification",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"mgsm",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"mmlu",
-    "metric":"accuracy",
-    "origin":"human",
-    "score":1.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"translation_from",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3847555511
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"translation_from",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.5751543742
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"translation_to",
-    "metric":"bleu",
-    "origin":"human",
-    "score":0.3974948575
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"translation_to",
-    "metric":"chrf",
-    "origin":"human",
-    "score":0.4041693622
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "bcp_47":"zh",
-    "task":"truthfulqa",
-    "metric":"accuracy",
-    "origin":"machine",
-    "score":0.0
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.34678708402970165,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.6045930805472208,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.5534980799977631,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.7558905914636,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.15131881012912418,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.23529545933051377,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.2842009478550935,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "aion-labs/aion-rp-llama-3.1-8b",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.5081590588801479,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.6959748829182189,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.540630223761231,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.7754445034076857,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.3737166281251304,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5834484232001548,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.3756083499790981,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.4013114504040027,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "amazon/nova-pro-v1",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.6763009340046712,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.8058817658914967,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.5901199830246592,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.8034768912913427,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.4978124412000414,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.6283204148237294,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.4010727995564905,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.41137901729034765,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "deepseek/deepseek-r1",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.5555421283887478,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.7067799334445587,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.6258466750260426,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.8263077269602868,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.3847555510877679,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5751543742263736,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.39749485753363717,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.40416936218008187,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.6094794411217263,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.7660040336735867,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.6766911721607001,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.8262935942108756,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.37005557185438154,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5627529147834642,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.3552581389652206,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.35519353101362144,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "google/gemini-2.5-flash-lite",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.3911516119226845,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5765064676277555,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.5098771478096032,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.7303185492652267,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.23331623555716274,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.46461076285587344,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.30358632293111737,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.3667047468300606,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "inflection/inflection-3-productivity",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.5787323664750231,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.7639069023455461,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.7451012176967483,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.8502138623787546,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.39482281531996344,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.6173076142651328,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.38440632190398705,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.4204443805129059,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.1-405b-instruct",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.40844733233373276,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.580386869184244,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.5977490039119412,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.771808972128428,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.30985729332449324,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5131513152469154,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.27346409564581553,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.31524583013188073,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-3.2-11b-vision-instruct",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.005605381165919282,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "meta-llama/llama-guard-4-12b",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.27269889119612145,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5149119888397615,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.39890284631391176,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.6565241207843435,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.26965494174990573,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.4957771798058211,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.2712633908350123,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.3138144597415386,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "microsoft/wizardlm-2-8x22b",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.3090328565538372,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5174362851857193,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.39850274303966393,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.6834250118212768,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.14268076369626911,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.40304922262388343,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.27000027552380595,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.31997335013145356,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "mistralai/ministral-8b",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.25268756925281727,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.4681717221986707,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.7287946809956635,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.851782628511728,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.26574707120732044,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.4617600711342482,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.4441034843654331,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.44371949117974124,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "moonshotai/kimi-k2",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4.1-nano",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4.1-nano",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.34217011331232133,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4.1-nano",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.39648483943052215,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.6240044165457783,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.7755176219267911,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.5934447341895612,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.8140335027800838,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.39449531602945326,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.6029984832186642,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.3776615632856352,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.3998698602243291,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "openai/gpt-4o-2024-11-20",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.32213717072228504,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5607017426401717,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.3972354729331201,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.6902082785054476,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.16531575504981388,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.4259793314897854,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.3175742547460045,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.35804677501667403,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "qwen/qwen-2.5-7b-instruct",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.2545856645262578,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.46626015342164406,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.4993335580349454,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.7219156950789557,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.21719765301583158,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.453445418957347,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.22735872230896265,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.2849668833199335,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "sophosympatheia/midnight-rose-70b",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.40206868933889656,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.6037806801471028,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.6122633030418337,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.8102749399962766,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "en",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "bleu",
+    "score": 0.3472253473819194,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "translation_from",
+    "metric": "chrf",
+    "score": 0.5630833769781076,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "bleu",
+    "score": 0.3212663838741827,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "translation_to",
+    "metric": "chrf",
+    "score": 0.3452667592579273,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "classification",
+    "metric": "accuracy",
+    "score": 1,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "mmlu",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "arc",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "truthfulqa",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "machine",
+    "sentence_nr": 0
+  },
+  {
+    "model": "thedrummer/valkyrie-49b-v1",
+    "bcp_47": "zh",
+    "task": "mgsm",
+    "metric": "accuracy",
+    "score": 0,
+    "origin": "human",
+    "sentence_nr": 0
   }
 ]
