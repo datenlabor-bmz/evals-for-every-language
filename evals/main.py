@@ -57,7 +57,7 @@ async def evaluate():
         
         print(f"⏳ Processing {len(all_tasks)} evaluation tasks in batches...")
         
-        batch_size = 50  # Process 50 tasks at a time
+        batch_size = 200  # Process 200 tasks at a time (optimized for GitHub Actions)
         all_results = []
         
         for i in range(0, len(all_tasks), batch_size):
@@ -89,8 +89,8 @@ async def evaluate():
             batch_results = await asyncio.gather(*batch_coroutines, return_exceptions=True)
             all_results.extend(batch_results)
             
-            # Small delay between batches to avoid overwhelming the API
-            await asyncio.sleep(1)
+            # Reduced delay between batches (optimized for GitHub Actions)
+            await asyncio.sleep(0.5)
         
         results = all_results
         # Filter out exceptions and flatten results

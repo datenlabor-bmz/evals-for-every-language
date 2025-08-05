@@ -31,6 +31,7 @@ important_models = [
     "openai/gpt-3.5-turbo-0613",  # 2$
     "openai/gpt-3.5-turbo",  # 1.5$
     # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
+    "anthropic/claude-sonnet-4",
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
     "mistralai/mistral-saba",  # 0.6$
     "mistralai/mistral-nemo",  # 0.08$
