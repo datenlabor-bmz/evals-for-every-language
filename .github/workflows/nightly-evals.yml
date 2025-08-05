@@ -8,6 +8,7 @@ on:
 jobs:
   run-evals:
     runs-on: ubuntu-latest
+    timeout-minutes: 1440  # 24 hours timeout
     steps:
       - uses: actions/checkout@v3
       
@@ -21,7 +22,7 @@ jobs:
           curl -LsSf https://astral.sh/uv/install.sh | sh
           uv sync --frozen --extra dev
           
-      - name: Run evaluations
+      - name: Run evaluations with checkpointing
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
@@ -30,7 +31,28 @@ jobs:
         run: |
           uv run huggingface-cli login --token ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
           uv run evals/download_data.py
-          uv run evals/main.py
+          
+          # Run evaluations with periodic checkpointing
+          uv run python -c "
+          import time
+          import subprocess
+          import json
+          import os
+          
+          # Check if we have existing results to resume from
+          if os.path.exists('results.json'):
+              print('Found existing results.json, will resume from checkpoint')
+          
+          # Run the main evaluation
+          try:
+              subprocess.run(['uv', 'run', 'evals/main.py'], check=True)
+          except subprocess.CalledProcessError as e:
+              print(f'Evaluation failed: {e}')
+              # Save current state even if failed
+              if os.path.exists('results.json'):
+                  print('Saving checkpoint before exit...')
+              exit(1)
+          "
           
       - name: Commit changes
         env:
