@@ -1,10 +1,10 @@
 # Evaluation Framework Documentation
 
-This document outlines the current methodology used for evaluating multilingual language models in this project. We may The framework is designed to be fair, consistent, and robust, providing a standardized way to measure model performance across a diverse set of languages and tasks.
+This document outlines the current methodology used for evaluating multilingual language models in this project. We may update the methodology in the future. The main objective was to have something that is unified and comparable and straightforward to build upon. The framework is designed to be fair, consistent, and robust, providing a standardized way to measure model performance across a diverse set of languages and tasks.
 
-## Core Philosophy: English Zero-Shot Prompting
+## Current Approach: English Zero-Shot Prompting
 
-The core of our evaluation methodology is a **unified English zero-shot prompting strategy**. This means:
+The current working base of our evaluation methodology is a **unified English zero-shot prompting strategy**. This means:
 
 1.  **Instructions are in English**: All models receive their instructions in clear, standardized English. This removes the quality of prompt translation as a variable, ensuring a fair comparison.
 2.  **Content is in the Target Language**: The actual content to be evaluated (e.g., a question for a QA task, a sentence for translation) is always presented in the target language. This directly tests the model's ability to understand instructions in one language and apply them to content in another.

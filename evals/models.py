@@ -27,9 +27,9 @@ important_models = [
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
     "openai/gpt-4o-mini",  # 0.6$
-    # "openai/gpt-4o-2024-11-20", # 10$
+    "openai/gpt-4o-2024-11-20", # 10$
     "openai/gpt-3.5-turbo-0613",  # 2$
-    # "openai/gpt-3.5-turbo",  # 1.5$
+    "openai/gpt-3.5-turbo",  # 1.5$
     # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
     "mistralai/mistral-saba",  # 0.6$
@@ -60,6 +60,7 @@ blocklist = [
     "google/gemini-2.5-flash-lite-preview-06-17",
     "google/gemini-2.5-pro-preview-06-05",
     "google/gemini-2.5-pro-preview-05-06",
+    "perplexity/sonar-deep-research"
 ]
 
 transcription_models = [

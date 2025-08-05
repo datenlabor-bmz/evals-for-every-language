@@ -25,6 +25,8 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+          N_SENTENCES: 20
+          MAX_LANGUAGES: 150
         run: |
           uv run huggingface-cli login --token ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
           uv run evals/download_data.py
