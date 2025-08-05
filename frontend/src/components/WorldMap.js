@@ -32,7 +32,7 @@ const makeTitle = data => d => {
   return `${d.properties.ADMIN} – ${cData?.score === null || cData?.score === undefined ? "n/a" : cData.score.toFixed(2)}\n\n${langstring}`
 }
 
-const WorldMap = ({ data, width = 750, height = 500 }) => {
+const WorldMap = ({ data, width = 750, height = 500, allLanguages = [] }) => {
   const containerRef = useRef()
   const [mapData, setMapData] = useState()
 
@@ -48,8 +48,22 @@ const WorldMap = ({ data, width = 750, height = 500 }) => {
       acc[country.iso2] = country
       return acc
     }, {})
+    // Count languages that have any evaluation data
+    const evaluatedLanguagesCount = allLanguages.filter(lang => {
+      const hasAnyScores = [
+        'translation_from_bleu',
+        'translation_to_bleu', 
+        'classification_accuracy',
+        'mmlu_accuracy',
+        'arc_accuracy',
+        'truthfulqa_accuracy',
+        'mgsm_accuracy'
+      ].some(metric => lang[metric] !== null && lang[metric] !== undefined)
+      return hasAnyScores
+    }).length
+
     const plot = Plot.plot({
-      subtitle: 'Language Proficiency Score by Country (Coverage: ~65/194 benchmark languages)',
+      subtitle: `Language Proficiency Score by Country (Coverage: ~${evaluatedLanguagesCount} languages evaluated)`,
       width: width,
       height: height,
       projection: 'equal-earth',

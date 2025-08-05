@@ -268,7 +268,7 @@ function App () {
                 />
                 <Carousel
                   value={[
-                    <WorldMap data={data.countries} />,
+                    <WorldMap data={data.countries} allLanguages={data.language_table} />,
                     <LanguagePlot data={data} />,
                     <SpeakerPlot data={data} />,
                     <HistoryPlot data={data} />,
@@ -433,6 +433,7 @@ function App () {
                 value={[
                   <WorldMap
                     data={data.countries}
+                    allLanguages={data.language_table}
                     width={windowWidth * 0.7}
                     height={windowHeight * 0.6}
                   />,
