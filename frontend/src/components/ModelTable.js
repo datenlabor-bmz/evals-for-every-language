@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import Medal from './Medal'
 import { Slider } from 'primereact/slider'
 import ScoreColumns from './ScoreColumns'
-const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
+const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTranslatedMetrics = [] }) => {
   const [filters, setFilters] = useState({
     type: { value: null, matchMode: FilterMatchMode.IN },
     size: { value: null, matchMode: FilterMatchMode.BETWEEN },
@@ -155,17 +155,27 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
   }
 
   const getHeaderText = () => {
-    // Count languages that have evaluation data (average score available)
-    const evaluatedLanguagesCount = allLanguages.filter(lang => 
-      lang.average !== null && lang.average !== undefined
-    ).length
+    // Count languages that have any evaluation data (any task scores available)
+    const evaluatedLanguagesCount = allLanguages.filter(lang => {
+      // Check if language has any task scores (not just average)
+      const hasAnyScores = [
+        'translation_from_bleu',
+        'translation_to_bleu', 
+        'classification_accuracy',
+        'mmlu_accuracy',
+        'arc_accuracy',
+        'truthfulqa_accuracy',
+        'mgsm_accuracy'
+      ].some(metric => lang[metric] !== null && lang[metric] !== undefined)
+      return hasAnyScores
+    }).length
 
     if (selectedLanguages.length === 0) {
       return (
         <span>
           <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>AI Models</span>
           <span style={{ fontSize: '0.85em', marginLeft: '0.5rem' }}>
-            Average performance across {evaluatedLanguagesCount} evaluated languages
+            Performance across {evaluatedLanguagesCount} evaluated languages
           </span>
         </span>
       )
@@ -249,7 +259,7 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
         body={costBodyTemplate}
         style={{ minWidth: '5rem' }}
       />
-      {ScoreColumns}
+      {ScoreColumns(machineTranslatedMetrics)}
     </DataTable>
   )
 }

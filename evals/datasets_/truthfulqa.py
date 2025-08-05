@@ -9,7 +9,7 @@ from tqdm.asyncio import tqdm_asyncio
 import os
 
 from datasets import Dataset, load_dataset
-from models import translate_google, google_supported_languages
+from models import translate_google, get_google_supported_languages
 
 from datasets_.util import _get_dataset_config_names, _load_dataset
 
@@ -26,14 +26,51 @@ def add_choices(row):
     return row
 
 
-def load_truthfulqa(language_bcp_47, nr):
+async def load_truthfulqa(language_bcp_47, nr):
     if language_bcp_47 in tags_uhura_truthfulqa.keys():
-        ds = _load_dataset(slug_uhura_truthfulqa, tags_uhura_truthfulqa[language_bcp_47])
+        ds = _load_dataset(
+            slug_uhura_truthfulqa, tags_uhura_truthfulqa[language_bcp_47]
+        )
         ds = ds.map(add_choices)
-        examples = ds["train"]
         task = ds["test"][nr]
-        return "masakhane/uhura-truthfulqa", examples, task
+        return "masakhane/uhura-truthfulqa", task, "human"
     else:
+        # Fallback to on-the-fly translation
+        return await load_truthfulqa_translated(language_bcp_47, nr)
+
+async def load_truthfulqa_translated(language_bcp_47, nr):
+    """
+    Load TruthfulQA data with on-the-fly Google translation.
+    """
+    supported_languages = get_google_supported_languages()
+    if language_bcp_47 not in supported_languages:
+        return None, None, None
+
+    print(f"🔄 Translating TruthfulQA data to {language_bcp_47} on-the-fly...")
+
+    try:
+        # Load English TruthfulQA data
+        ds = _load_dataset(slug_uhura_truthfulqa, tags_uhura_truthfulqa["en"])
+        ds = ds.map(add_choices)
+        task = ds["test"][nr]
+
+        # Translate question and choices
+        question_translated = await translate_google(task["question"], "en", language_bcp_47)
+        choices_translated = []
+        for choice in task["choices"]:
+            choice_translated = await translate_google(choice, "en", language_bcp_47)
+            choices_translated.append(choice_translated)
+
+        translated_task = {
+            "question": question_translated,
+            "choices": choices_translated,
+            "labels": task["labels"], # Keep original labels
+        }
+
+        return f"truthfulqa-translated-{language_bcp_47}", translated_task, "machine"
+
+    except Exception as e:
+        print(f"❌ Translation failed for {language_bcp_47}: {e}")
         return None, None, None
 
 
@@ -43,7 +80,7 @@ def translate_truthfulqa(languages):
     untranslated = [
         lang
         for lang in languages["bcp_47"].values[:100]
-        if lang not in human_translated and lang in google_supported_languages
+        if lang not in human_translated and lang in get_google_supported_languages()
     ]
     n_samples = 10
 

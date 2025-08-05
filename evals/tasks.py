@@ -1,3 +1,4 @@
+import asyncio
 import random
 from functools import partial
 from textwrap import dedent
@@ -13,7 +14,7 @@ from datasets_.truthfulqa import load_truthfulqa
 from google.cloud import translate_v2 as translate
 from langcodes import closest_supported_match
 from languages import languages, script_name
-from models import complete, transcribe, translate_google
+from models import complete, transcribe, translate_google, get_google_supported_languages
 
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
@@ -26,9 +27,6 @@ tokenizer = spm.SentencePieceProcessor(
 target_languages = languages[languages["in_benchmark"]].sample(
     frac=1, weights="speakers", replace=True, random_state=42
 )
-
-translate_client = translate.Client()
-supported_languages = [l["language"] for l in translate_client.get_languages()]
 
 
 async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
@@ -48,6 +46,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     target_sentence = flores_sentences(target_language)["text"][sentence_nr].strip()
     script = script_name(target_language.flores_path.split("_")[1])
     if model == "google/translate-v2":
+        supported_languages = get_google_supported_languages()
         original_language = closest_supported_match(
             original_language, supported_languages
         )
@@ -91,6 +90,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             "task": f"translation_{mode}",
             "metric": metric,
             "score": score,
+            "origin": "human", # FLORES+ is human-translated
             "sentence_nr": sentence_nr,
         }
         for metric, score in (
@@ -112,38 +112,21 @@ async def classify_and_evaluate(model, bcp_47, nr):
     )
     top_topics = paragraphs.value_counts("topic").head(5).index
     paragraphs = paragraphs[paragraphs["topic"].isin(top_topics)]
-    examples = pd.concat(
-        [
-            paragraphs[paragraphs["topic"] == t].sample(n=1, random_state=42)
-            for t in top_topics
-        ]
-    ).sample(frac=1, random_state=nr)
-    test_paragraphs = paragraphs[~paragraphs["url"].isin(examples["url"])].sample(
-        frac=1, random_state=42
-    )
-    test_paragraph = test_paragraphs.iloc[nr]
+    test_paragraph = paragraphs.sample(n=1, random_state=nr).iloc[0]
 
-    def format_prompt(text):
-        return f"{text}\n\nTopic: {'|'.join(top_topics)}?"
+    prompt = f"""Classify the following text into one of these topics: {', '.join(top_topics)}.
+Reply with only the topic name.
 
-    messages = []
-    for example in examples.itertuples():
-        messages += [
-            {"role": "user", "content": format_prompt(example.text)},
-            {"role": "assistant", "content": example.topic},
-        ]
+Text:
+{test_paragraph.text}
+"""
+
     # some models have poor tokenization for some languages, and the prompt for this task is relatively long, so it sometimes exceeds the context window
     # this is not just to blame on the context window but mostly on the model's tokenization, so we assign 0 accuracy in this case
     try:
         pred = await complete(
             model=model,
-            messages=[
-                *messages,
-                {
-                    "role": "user",
-                    "content": format_prompt(test_paragraph.text),
-                },
-            ],
+            messages=[{"role": "user", "content": prompt}],
             temperature=0,
             max_tokens=30,
         )
@@ -170,6 +153,7 @@ async def classify_and_evaluate(model, bcp_47, nr):
             "task": "classification",
             "metric": "accuracy",
             "score": acc,
+            "origin": "human", # FLORES+ is human-translated
             "sentence_nr": nr,
         }
     ]
@@ -234,30 +218,36 @@ def format_multiple_choice(item):
     C: {item["choices"][2]}
     D: {item["choices"][3]}
     
-    A|B|C|D?"""
+    Answer with the letter of the correct answer."""
 
 
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
-    ds_name, examples, task = load_mmlu(language_bcp_47, nr)
+    ds_name, task, origin = await load_mmlu(language_bcp_47, nr)
     if not task:
         return []
+    
+    messages = [
+        {
+            "role": "user",
+            "content": f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
 
-    messages = []
-    for example in examples:
-        messages += [
-            {"role": "user", "content": format_multiple_choice(example)},
-            {"role": "assistant", "content": example["answer"]},
-        ]
-    messages += [{"role": "user", "content": format_multiple_choice(task)}]
+Response format: <reasoning> #### <letter>
+
+---
+
+{format_multiple_choice(task)}""",
+        },
+    ]
     try:
         response = await complete(
             model=model,
             messages=messages,
             temperature=0,
-            max_tokens=1,
+            max_tokens=1024,
         )
-        if response:
-            acc = int(response[:1].strip() == task["answer"])
+        if response and "####" in response:
+            answer = response.split("####")[-1].strip()
+            acc = int(answer[:1] == task["answer"])
         else:
             acc = 0
     except Exception as e:
@@ -265,6 +255,7 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
             acc = 0
         else:
             raise e
+    
     return [
         {
             "model": model,
@@ -272,32 +263,39 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
             "task": "mmlu",
             "metric": "accuracy",
             "score": acc,
+            "origin": origin,  # Add origin tag to results
             "sentence_nr": nr,
         }
     ]
 
 
 async def arc_and_evaluate(model, language_bcp_47, nr):
-    ds_name, examples, task = load_uhura_arc_easy(language_bcp_47, nr)
+    ds_name, task, origin = load_uhura_arc_easy(language_bcp_47, nr)
     if not task:
         return []
 
-    messages = []
-    for example in examples:
-        messages += [
-            {"role": "user", "content": format_multiple_choice(example)},
-            {"role": "assistant", "content": example["answer"]},
-        ]
-    messages += [{"role": "user", "content": format_multiple_choice(task)}]
+    messages = [
+        {
+            "role": "user",
+            "content": f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
+
+Response format: <reasoning> #### <letter>
+
+---
+
+{format_multiple_choice(task)}""",
+        },
+    ]
     try:
         response = await complete(
             model=model,
             messages=messages,
             temperature=0,
-            max_tokens=1,
+            max_tokens=1024,
         )
-        if response:
-            acc = int(response[:1].strip() == task["answer"])
+        if response and "####" in response:
+            answer = response.split("####")[-1].strip()
+            acc = int(answer[:1] == task["answer"])
         else:
             acc = 0
     except Exception as e:
@@ -312,6 +310,7 @@ async def arc_and_evaluate(model, language_bcp_47, nr):
             "task": "arc",
             "metric": "accuracy",
             "score": acc,
+            "origin": origin,
             "sentence_nr": nr,
         }
     ]
@@ -337,28 +336,40 @@ def format_multiple_choice_truthfulqa(item):
 
 
 async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
-    ds_name, examples, task = load_truthfulqa(language_bcp_47, nr)
+    ds_name, task, origin = await load_truthfulqa(language_bcp_47, nr)
     if not task:
         return []
-    task = shuffle_choices_and_labels(task)
-    answer = letters[task["labels"].index(1)]
-    messages = []
-    for example in examples:
-        example = shuffle_choices_and_labels(example)
-        messages += [
-            {"role": "user", "content": format_multiple_choice_truthfulqa(example)},
-            {"role": "assistant", "content": letters[example["labels"].index(1)]},
-        ]
-    messages += [{"role": "user", "content": format_multiple_choice_truthfulqa(task)}]
+
+    # Find the correct answer
+    try:
+        correct_choice_index = task["labels"].index(1)
+        answer = letters[correct_choice_index]
+    except (ValueError, IndexError):
+        # Handle cases where there is no correct answer or labels are malformed
+        return []
+
+    messages = [
+        {
+            "role": "user",
+            "content": f"""Answer the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
+
+Response format: <reasoning> #### <letter>
+
+---
+
+{format_multiple_choice_truthfulqa(task)}""",
+        },
+    ]
     try:
         response = await complete(
             model=model,
             messages=messages,
             temperature=0,
-            max_tokens=1,
+            max_tokens=1024, # Increased for reasoning
         )
-        if response:
-            acc = int(response[:1].strip() == answer)
+        if response and "####" in response:
+            pred_answer = response.split("####")[-1].strip()
+            acc = int(pred_answer[:1].upper() == answer)
         else:
             acc = 0
     except Exception as e:
@@ -373,30 +384,36 @@ async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
             "task": "truthfulqa",
             "metric": "accuracy",
             "score": acc,
+            "origin": origin,
             "sentence_nr": nr,
         }
     ]
 
 
 async def mgsm_and_evaluate(model, language_bcp_47, nr):
-    system_prompt = """
-    Solve the math problem. Use reasoning, and finally give the answer as a number.
-    Response format: <reasoning> #### <number>
-    """
-    system_prompt = dedent(system_prompt).strip()
-    ds_slug, question = load_mgsm(language_bcp_47, nr)
+    ds_slug, question, origin = load_mgsm(language_bcp_47, nr)
     if not question:
         return []
+
+    messages = [
+        {
+            "role": "user",
+            "content": f"""Solve the following math problem. Reason step-by-step and then write the final answer as a number.
+
+Response format: <reasoning> #### <number>
+
+---
+
+{question["question"]}""",
+        },
+    ]
     response = await complete(
         model=model,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": question["question"]},
-        ],
+        messages=messages,
         temperature=0,
         max_tokens=1024,
     )
-    if response and len(response.split("####")) == 2:
+    if response and "####" in response:
         number = response.split("####")[1].strip()
         accuracy = int(parse_number(number) == parse_number(question["answer_number"]))
     else:
@@ -409,6 +426,7 @@ async def mgsm_and_evaluate(model, language_bcp_47, nr):
             "task": "mgsm",
             "metric": "accuracy",
             "score": accuracy,
+            "origin": origin,
             "sentence_nr": nr,
         }
     ]
@@ -449,10 +467,8 @@ tasks = {
     "translation_from": partial(translate_and_evaluate, mode="from"),
     "translation_to": partial(translate_and_evaluate, mode="to"),
     "classification": classify_and_evaluate,
-    # "mlm": mlm_and_evaluate,
     "mmlu": mmlu_and_evaluate,
     "arc": arc_and_evaluate,
     "truthfulqa": truthfulqa_and_evaluate,
     "mgsm": mgsm_and_evaluate,
-    # "asr": transcribe_and_evaluate,
 }

@@ -1,5 +1,45 @@
 [
   {
+    "id":"aion-labs\/aion-1.0-mini",
+    "name":"Aion-1.0-Mini",
+    "provider_name":"AionLabs",
+    "cost":1.4,
+    "hf_id":"FuseAI\/FuseO1-DeepSeekR1-QwQ-SkyT1-32B-Preview",
+    "size":32763876352.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1737331200000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"aion-labs\/aion-rp-llama-3.1-8b",
+    "name":"Aion-RP 1.0 (8B)",
+    "provider_name":"AionLabs",
+    "cost":0.2,
+    "hf_id":"aion-labs\/Aion-RP-Llama-3.1-8B",
+    "size":8030261248.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1731110400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"amazon\/nova-micro-v1",
     "name":"Nova Micro 1.0",
     "provider_name":"Amazon",
@@ -9,6 +49,66 @@
     "type":"closed-source",
     "license":null,
     "creation_date":1733356800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"amazon\/nova-pro-v1",
+    "name":"Nova Pro 1.0",
+    "provider_name":"Amazon",
+    "cost":3.2,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1733356800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"anthracite-org\/magnum-v4-72b",
+    "name":"Magnum v4 72B",
+    "provider_name":"Magnum v4 72B",
+    "cost":3.0,
+    "hf_id":"anthracite-org\/magnum-v4-72b",
+    "size":72706203648.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1726790400000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"anthropic\/claude-3-haiku",
+    "name":"Claude 3 Haiku",
+    "provider_name":"Anthropic",
+    "cost":1.25,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1710288000000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -80,6 +180,106 @@
     ]
   },
   {
+    "id":"arcee-ai\/maestro-reasoning",
+    "name":"Maestro Reasoning",
+    "provider_name":"Arcee AI",
+    "cost":3.3,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1746403200000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"cognitivecomputations\/dolphin3.0-r1-mistral-24b",
+    "name":"Dolphin3.0 R1 Mistral 24B",
+    "provider_name":"Dolphin3.0 R1 Mistral 24B (free)",
+    "cost":0.0,
+    "hf_id":"dphn\/Dolphin3.0-R1-Mistral-24B",
+    "size":23572423680.0,
+    "type":"open-source",
+    "license":"",
+    "creation_date":1738800000000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"cohere\/command",
+    "name":"Command",
+    "provider_name":"Cohere",
+    "cost":2.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1710374400000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"cohere\/command-r",
+    "name":"Command R",
+    "provider_name":"Cohere",
+    "cost":1.5,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1710374400000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"cohere\/command-r7b-12-2024",
+    "name":"Command R7B (12-2024)",
+    "provider_name":"Cohere",
+    "cost":0.15,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1734134400000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"deepseek\/deepseek-chat",
     "name":"DeepSeek V3",
     "provider_name":"DeepSeek",
@@ -128,7 +328,7 @@
     "size":684531386000.0,
     "type":"open-source",
     "license":"Mit",
-    "creation_date":1737331200000.0,
+    "creation_date":1737331200000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -180,6 +380,26 @@
     ]
   },
   {
+    "id":"google\/gemini-2.0-flash-exp",
+    "name":"Gemini 2.0 Flash Experimental",
+    "provider_name":"Google",
+    "cost":0.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1733875200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"google\/gemini-2.0-flash-lite-001",
     "name":"Gemini 2.0 Flash Lite",
     "provider_name":"Google",
@@ -209,6 +429,26 @@
     "type":"closed-source",
     "license":null,
     "creation_date":1750118400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/gemini-2.5-flash-lite",
+    "name":"Gemini 2.5 Flash Lite",
+    "provider_name":"Google",
+    "cost":0.4,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1753142400000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -370,6 +610,46 @@
     ]
   },
   {
+    "id":"google\/gemini-pro-1.5",
+    "name":"Gemini 1.5 Pro",
+    "provider_name":"Google",
+    "cost":5.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1712620800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/gemma-2-9b-it",
+    "name":"Gemma 2 9B",
+    "provider_name":"Google",
+    "cost":0.0,
+    "hf_id":"google\/gemma-2-9b-it",
+    "size":9241705984.0,
+    "type":"open-source",
+    "license":"Gemma",
+    "creation_date":1719187200000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"google\/gemma-3-27b-it",
     "name":"Gemma 3 27B",
     "provider_name":"Google",
@@ -379,6 +659,46 @@
     "type":"open-source",
     "license":"Gemma",
     "creation_date":1740787200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/gemma-3n-e2b-it",
+    "name":"Gemma 3n 2B",
+    "provider_name":"Google",
+    "cost":0.0,
+    "hf_id":"google\/gemma-3n-E2B-it",
+    "size":5439438272.0,
+    "type":"open-source",
+    "license":"Gemma",
+    "creation_date":1749686400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"google\/gemma-3n-e4b-it",
+    "name":"Gemma 3n 4B",
+    "provider_name":"Google",
+    "cost":0.0,
+    "hf_id":"google\/gemma-3n-E4B-it",
+    "size":7849978192.0,
+    "type":"open-source",
+    "license":"Gemma",
+    "creation_date":1748908800000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -408,12 +728,52 @@
     "id":"gryphe\/mythomax-l2-13b",
     "name":"MythoMax 13B",
     "provider_name":"MythoMax 13B",
-    "cost":0.07,
+    "cost":0.06,
     "hf_id":"Gryphe\/MythoMax-L2-13b",
     "size":null,
     "type":"open-source",
     "license":"Other",
-    "creation_date":1691625600000.0,
+    "creation_date":1691625600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"inception\/mercury",
+    "name":"Mercury",
+    "provider_name":"Inception",
+    "cost":1.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1750896000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"inflection\/inflection-3-productivity",
+    "name":"Inflection 3 Productivity",
+    "provider_name":"Inflection",
+    "cost":10.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1728604800000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -434,6 +794,46 @@
     "type":"open-source",
     "license":"Llama3",
     "creation_date":1713312000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"meta-llama\/llama-3-8b-instruct",
+    "name":"Llama 3 8B Instruct",
+    "provider_name":"Meta",
+    "cost":0.06,
+    "hf_id":"meta-llama\/Meta-Llama-3-8B-Instruct",
+    "size":8030261248.0,
+    "type":"open-source",
+    "license":"Llama3",
+    "creation_date":1713312000000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"meta-llama\/llama-3.1-405b-instruct",
+    "name":"Llama 3.1 405B Instruct",
+    "provider_name":"Meta",
+    "cost":0.0,
+    "hf_id":"meta-llama\/Llama-3.1-405B-Instruct",
+    "size":405853388800.0,
+    "type":"open-source",
+    "license":"Llama3.1",
+    "creation_date":1721088000000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -477,6 +877,26 @@
     "tasks":null
   },
   {
+    "id":"meta-llama\/llama-3.2-11b-vision-instruct",
+    "name":"Llama 3.2 11B Vision Instruct",
+    "provider_name":"Meta",
+    "cost":0.0,
+    "hf_id":"meta-llama\/Llama-3.2-11B-Vision-Instruct",
+    "size":10670220835.0,
+    "type":"open-source",
+    "license":"Llama3.2",
+    "creation_date":1726617600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"meta-llama\/llama-3.2-1b-instruct",
     "name":"Llama 3.2 1B Instruct",
     "provider_name":"Meta",
@@ -487,6 +907,26 @@
     "license":"Llama3.2",
     "creation_date":1726617600000.0,
     "tasks":null
+  },
+  {
+    "id":"meta-llama\/llama-3.2-3b-instruct",
+    "name":"Llama 3.2 3B Instruct",
+    "provider_name":"Meta",
+    "cost":0.0,
+    "hf_id":"meta-llama\/Llama-3.2-3B-Instruct",
+    "size":3212749824.0,
+    "type":"open-source",
+    "license":"Llama3.2",
+    "creation_date":1726617600000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
   },
   {
     "id":"meta-llama\/llama-3.3-70b-instruct",
@@ -529,6 +969,46 @@
     ]
   },
   {
+    "id":"meta-llama\/llama-guard-4-12b",
+    "name":"Llama Guard 4 12B",
+    "provider_name":"Meta",
+    "cost":0.05,
+    "hf_id":"meta-llama\/Llama-Guard-4-12B",
+    "size":12001097216.0,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1745366400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"microsoft\/phi-3.5-mini-128k-instruct",
+    "name":"Phi-3.5 Mini 128K Instruct",
+    "provider_name":"Microsoft",
+    "cost":0.1,
+    "hf_id":"microsoft\/Phi-3.5-mini-instruct",
+    "size":3821079552.0,
+    "type":"open-source",
+    "license":"Mit",
+    "creation_date":1723766400000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"microsoft\/phi-4",
     "name":"Phi 4",
     "provider_name":"Microsoft",
@@ -558,6 +1038,146 @@
     "type":"open-source",
     "license":"Mit",
     "creation_date":1740355200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"microsoft\/wizardlm-2-8x22b",
+    "name":"WizardLM-2 8x22B",
+    "provider_name":"WizardLM-2 8x22B",
+    "cost":0.48,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1713225600000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/codestral-2501",
+    "name":"Codestral 2501",
+    "provider_name":"Mistral",
+    "cost":0.9,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1736812800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/devstral-small-2505",
+    "name":"Devstral Small 2505",
+    "provider_name":"Mistral",
+    "cost":0.0,
+    "hf_id":"mistralai\/Devstral-Small-2505",
+    "size":23572403200.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1747008000000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/magistral-small-2506",
+    "name":"Magistral Small 2506",
+    "provider_name":"Mistral",
+    "cost":1.5,
+    "hf_id":"mistralai\/Magistral-Small-2506",
+    "size":23572403200.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1748995200000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/ministral-8b",
+    "name":"Ministral 8B",
+    "provider_name":"Mistral",
+    "cost":0.1,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1729123200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/mistral-7b-instruct",
+    "name":"Mistral 7B Instruct",
+    "provider_name":"Mistral",
+    "cost":0.0,
+    "hf_id":"mistralai\/Mistral-7B-Instruct-v0.3",
+    "size":7248023552.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1716336000000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/mistral-medium-3",
+    "name":"Mistral Medium 3",
+    "provider_name":"Mistral",
+    "cost":2.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1746576000000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -618,6 +1238,106 @@
     "type":"open-source",
     "license":"Apache 2.0",
     "creation_date":1741651200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/mistral-tiny",
+    "name":"Mistral Tiny",
+    "provider_name":"Mistral Tiny",
+    "cost":0.25,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1704844800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/mixtral-8x22b-instruct",
+    "name":"Mixtral 8x22B Instruct",
+    "provider_name":"Mistral",
+    "cost":0.9,
+    "hf_id":"mistralai\/Mixtral-8x22B-Instruct-v0.1",
+    "size":140630071296.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1713225600000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"mistralai\/pixtral-12b",
+    "name":"Pixtral 12B",
+    "provider_name":"Mistral",
+    "cost":0.1,
+    "hf_id":"mistralai\/Pixtral-12B-2409",
+    "size":null,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1726012800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"moonshotai\/kimi-k2",
+    "name":"Kimi K2",
+    "provider_name":"MoonshotAI",
+    "cost":0.0,
+    "hf_id":"moonshotai\/Kimi-K2-Instruct",
+    "size":null,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1752192000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"morph\/morph-v3-fast",
+    "name":"Morph V3 Fast",
+    "provider_name":"Morph",
+    "cost":2.7,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1751846400000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -709,6 +1429,26 @@
     ]
   },
   {
+    "id":"openai\/gpt-4o-2024-11-20",
+    "name":"GPT-4o (2024-11-20)",
+    "provider_name":"OpenAI",
+    "cost":10.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1732060800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"openai\/gpt-4o-mini",
     "name":"GPT-4o-mini",
     "provider_name":"OpenAI",
@@ -718,6 +1458,86 @@
     "type":"closed-source",
     "license":null,
     "creation_date":1721260800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"perplexity\/r1-1776",
+    "name":"R1 1776",
+    "provider_name":"Perplexity",
+    "cost":8.0,
+    "hf_id":"perplexity-ai\/r1-1776",
+    "size":671026419200.0,
+    "type":"open-source",
+    "license":"Mit",
+    "creation_date":1739836800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"qwen\/qwen-2.5-72b-instruct",
+    "name":"Qwen2.5 72B Instruct",
+    "provider_name":"Qwen2.5 72B Instruct (free)",
+    "cost":0.0,
+    "hf_id":"Qwen\/Qwen2.5-72B-Instruct",
+    "size":72706203648.0,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1726444800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"qwen\/qwen-2.5-7b-instruct",
+    "name":"Qwen2.5 7B Instruct",
+    "provider_name":"Qwen2.5 7B Instruct",
+    "cost":0.1,
+    "hf_id":"Qwen\/Qwen2.5-7B-Instruct",
+    "size":7615616512.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1726444800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"qwen\/qwen-2.5-coder-32b-instruct",
+    "name":"Qwen2.5 Coder 32B Instruct",
+    "provider_name":"Qwen2.5 Coder 32B Instruct (free)",
+    "cost":0.0,
+    "hf_id":"Qwen\/Qwen2.5-Coder-32B-Instruct",
+    "size":32763876352.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1730851200000.0,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -778,6 +1598,186 @@
     "type":"open-source",
     "license":"Apache 2.0",
     "creation_date":1745712000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"scb10x\/llama3.1-typhoon2-70b-instruct",
+    "name":"Typhoon2 70B Instruct",
+    "provider_name":"Typhoon2 70B Instruct",
+    "cost":0.88,
+    "hf_id":"scb10x\/llama3.1-typhoon2-70b-instruct",
+    "size":70553706496.0,
+    "type":"open-source",
+    "license":"Llama3.1",
+    "creation_date":1734220800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"sophosympatheia\/midnight-rose-70b",
+    "name":"Midnight Rose 70B",
+    "provider_name":"Midnight Rose 70B",
+    "cost":0.8,
+    "hf_id":"sophosympatheia\/Midnight-Rose-70B-v2.0.3",
+    "size":68976648192.0,
+    "type":"open-source",
+    "license":"Llama2",
+    "creation_date":1707004800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"switchpoint\/router",
+    "name":"Switchpoint Router",
+    "provider_name":"Switchpoint Router",
+    "cost":3.4,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1752192000000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"thedrummer\/anubis-pro-105b-v1",
+    "name":"Anubis Pro 105B V1",
+    "provider_name":"TheDrummer",
+    "cost":1.0,
+    "hf_id":"TheDrummer\/Anubis-Pro-105B-v1",
+    "size":104779882496.0,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1738454400000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"thedrummer\/skyfall-36b-v2",
+    "name":"Skyfall 36B V2",
+    "provider_name":"TheDrummer",
+    "cost":0.07,
+    "hf_id":"TheDrummer\/Skyfall-36B-v2",
+    "size":36910535680.0,
+    "type":"open-source",
+    "license":"Other",
+    "creation_date":1738540800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"thedrummer\/unslopnemo-12b",
+    "name":"UnslopNemo 12B",
+    "provider_name":"TheDrummer",
+    "cost":0.4,
+    "hf_id":"TheDrummer\/UnslopNemo-12B-v4.1",
+    "size":12247782400.0,
+    "type":"open-source",
+    "license":"",
+    "creation_date":1729641600000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"thedrummer\/valkyrie-49b-v1",
+    "name":"Valkyrie 49B V1",
+    "provider_name":"TheDrummer",
+    "cost":1.0,
+    "hf_id":"TheDrummer\/Valkyrie-49B-v1",
+    "size":49867145216.0,
+    "type":"open-source",
+    "license":"",
+    "creation_date":1747440000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"x-ai\/grok-3-beta",
+    "name":"Grok 3 Beta",
+    "provider_name":"xAI",
+    "cost":15.0,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1744156800000.0,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"z-ai\/glm-4.5-air",
+    "name":"GLM 4.5 Air",
+    "provider_name":"Z.AI",
+    "cost":0.0,
+    "hf_id":"zai-org\/GLM-4.5-Air",
+    "size":110468824832.0,
+    "type":"open-source",
+    "license":"Mit",
+    "creation_date":1752969600000.0,
     "tasks":[
       "translation_from",
       "translation_to",

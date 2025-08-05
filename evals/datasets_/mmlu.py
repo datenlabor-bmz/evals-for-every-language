@@ -6,7 +6,7 @@ from collections import Counter, defaultdict
 from datasets import Dataset, load_dataset
 from datasets_.util import _get_dataset_config_names, _load_dataset
 from langcodes import Language, standardize_tag
-from models import google_supported_languages, translate_google
+from models import get_google_supported_languages, translate_google
 from rich import print
 from tqdm import tqdm
 from tqdm.asyncio import tqdm_asyncio
@@ -150,26 +150,66 @@ categories = sorted(
     )
 
 
-def load_mmlu(language_bcp_47, nr):
+async def load_mmlu(language_bcp_47, nr):
+    print(f"Loading MMLU data for {language_bcp_47}...")
     category = categories[nr % len(categories)]
     if language_bcp_47 in tags_afrimmlu.keys():
         ds = _load_dataset("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47])
         ds = ds.map(parse_choices)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
         task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "masakhane/afrimmlu", examples, task
+        return "masakhane/afrimmlu", task, "human"
     elif language_bcp_47 in tags_global_mmlu.keys():
         ds = _load_dataset("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47])
         ds = ds.map(add_choices)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
         task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "CohereForAI/Global-MMLU", examples, task
+        return "CohereForAI/Global-MMLU", task, "human"
     elif language_bcp_47 in tags_mmlu_autotranslated:
         ds = _load_dataset("fair-forward/mmlu-autotranslated", language_bcp_47)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
         task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "fair-forward/mmlu-autotranslated", examples, task
+        return "fair-forward/mmlu-autotranslated", task, "machine"
     else:
+        # Try on-the-fly translation for missing languages
+        return await load_mmlu_translated(language_bcp_47, nr)
+
+
+async def load_mmlu_translated(language_bcp_47, nr):
+    """
+    Load MMLU data with on-the-fly Google translation for languages 
+    without native MMLU translations.
+    """
+    # Check if Google Translate supports this language
+    supported_languages = get_google_supported_languages()
+    if language_bcp_47 not in supported_languages:
+        return None, None, None
+    
+    print(f"🔄 Translating MMLU data to {language_bcp_47} on-the-fly...")
+    
+    try:
+        # Load English MMLU data
+        category = categories[nr % len(categories)]
+        ds = _load_dataset("masakhane/afrimmlu", "eng")
+        ds = ds.map(parse_choices)
+        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
+        
+        # Translate question and choices
+        question_translated = await translate_google(task["question"], "en", language_bcp_47)
+        choices_translated = []
+        for choice in task["choices"]:
+            choice_translated = await translate_google(choice, "en", language_bcp_47)
+            choices_translated.append(choice_translated)
+        
+        # Create translated task
+        translated_task = {
+            "question": question_translated,
+            "choices": choices_translated,
+            "answer": task["answer"],  # Keep original answer index
+            "subject": task["subject"]
+        }
+        
+        return f"mmlu-translated-{language_bcp_47}", translated_task, "machine"
+        
+    except Exception as e:
+        print(f"❌ Translation failed for {language_bcp_47}: {e}")
         return None, None, None
 
 
@@ -178,7 +218,7 @@ def translate_mmlu(languages):
     untranslated = [
         lang
         for lang in languages["bcp_47"].values[:100]
-        if lang not in human_translated and lang in google_supported_languages
+        if lang not in human_translated and lang in get_google_supported_languages()
     ]
     n_samples = 10
 

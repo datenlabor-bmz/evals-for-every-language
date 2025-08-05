@@ -1,3 +1,4 @@
+import asyncio
 import json
 import re
 from collections import defaultdict
@@ -211,26 +212,55 @@ google_rate_limit = AsyncLimiter(max_rate=10, time_period=1)
 
 @cache
 async def complete(**kwargs) -> str | None:
+    # Add longer timeout for slower, premium, or reasoning-focused models
+    model_id = kwargs.get('model', '')
+    slow_model_keywords = [
+        'claude-3.5', 'claude-3.7', 'claude-4', 'sonnet-4', # Claude
+        'gpt-4', 'o1', 'o3', # OpenAI
+        'gemini-2.5', 'gemini-pro', # Google
+        'llama-4', # Meta
+        'reasoning', 'thinking' # General
+    ]
+    timeout = 120 if any(keyword in model_id for keyword in slow_model_keywords) else 60
+    
     async with openrouter_rate_limit:
         try:
-            response = await client.chat.completions.create(**kwargs)
+            response = await asyncio.wait_for(
+                client.chat.completions.create(**kwargs),
+                timeout=timeout
+            )
         except BadRequestError as e:
             if "filtered" in e.message:
                 return None
             raise e
+        except asyncio.TimeoutError:
+            print(f"⏰ Timeout after {timeout}s for model {model}")
+            return None
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()
 
 
-translate_client = translate.Client()
-google_supported_languages = [l["language"] for l in translate_client.get_languages()]
+translate_client = None
+
+
+def get_google_translate_client():
+    global translate_client
+    if translate_client is None:
+        translate_client = translate.Client()
+    return translate_client
+
+
+def get_google_supported_languages():
+    client = get_google_translate_client()
+    return [l["language"] for l in client.get_languages()]
 
 
 @cache
 async def translate_google(text, source_language, target_language):
+    client = get_google_translate_client()
     async with google_rate_limit:
-        response = translate_client.translate(
+        response = client.translate(
             text, source_language=source_language, target_language=target_language
         )
     return response["translatedText"]
@@ -294,12 +324,14 @@ def get_hf_metadata(row):
         return empty
     try:
         info = api.model_info(id)
-        license = (
-            (info.card_data.license or "")
-            .replace("-", " ")
-            .replace("mit", "MIT")
-            .title()
-        )
+        license = ""
+        if info.card_data and hasattr(info.card_data, 'license') and info.card_data.license:
+            license = (
+                info.card_data.license
+                .replace("-", " ")
+                .replace("mit", "MIT")
+                .title()
+            )
         return {
             "hf_id": info.id,
             "creation_date": info.created_at,
@@ -329,8 +361,30 @@ def load_models(date: date):
         + get_current_popular_models(date.today())[:10]
     )
     popular_models = [m["slug"] for m in popular_models]
-    models = set(important_models + popular_models) - set(blocklist)
-    models = pd.DataFrame(sorted(list(models)), columns=["id"])
+    all_model_candidates = set(important_models + popular_models) - set(blocklist)
+    
+    # Validate models exist on OpenRouter before including them
+    print(f"🔍 Validating {len(all_model_candidates)} model candidates...")
+    valid_models = []
+    invalid_models = []
+    
+    for model_id in all_model_candidates:
+        metadata = get_or_metadata(model_id)
+        if metadata is not None:
+            valid_models.append(model_id)
+        else:
+            invalid_models.append(model_id)
+    
+    if invalid_models:
+        print(f"⚠️ Excluded {len(invalid_models)} invalid models:")
+        for model in sorted(invalid_models)[:5]:  # Show first 5
+            print(f"   - {model}")
+        if len(invalid_models) > 5:
+            print(f"   ... and {len(invalid_models) - 5} more")
+    
+    print(f"✅ Using {len(valid_models)} valid models for evaluation")
+    
+    models = pd.DataFrame(sorted(valid_models), columns=["id"])
     or_metadata = models["id"].apply(get_or_metadata)
     hf_metadata = or_metadata.apply(get_hf_metadata)
     creation_date_hf = pd.to_datetime(hf_metadata.str["creation_date"]).dt.date
@@ -350,7 +404,8 @@ def load_models(date: date):
         license=hf_metadata.str["license"],
         creation_date=creation_date_hf.combine_first(creation_date_or),
     )
-    # models = models[models["cost"] <= 2.0].reset_index(drop=True)
+    # Filter out expensive models to keep costs reasonable
+    models = models[models["cost"] <= 20.0].reset_index(drop=True)
     models["tasks"] = [
         ["translation_from", "translation_to", "classification", "mmlu", "arc", "truthfulqa", "mgsm"]
     ] * len(models)

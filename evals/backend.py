@@ -26,7 +26,7 @@ task_metrics = [
     "classification_accuracy",
     "mmlu_accuracy",
     "arc_accuracy",
-    # "truthfulqa_accuracy",
+    "truthfulqa_accuracy",
     "mgsm_accuracy",
 ]
 
@@ -46,65 +46,73 @@ def compute_normalized_average(df, metrics):
 
 
 def make_model_table(df, models):
-    df = (
-        df.groupby(["model", "task", "metric"])
-        .agg({"score": "mean", "bcp_47": "nunique"})
-        .reset_index()
-    )
+    # Create a combined task_metric for origin
+    df["task_metric_origin"] = df["task"] + "_" + df["metric"] + "_" + df["origin"]
+    
+    # Pivot to get scores for each origin-specific metric
+    scores_pivot = df.pivot_table(index="model", columns="task_metric_origin", values="score", aggfunc="mean")
+    
+    # Create the regular task_metric for the main average calculation
     df["task_metric"] = df["task"] + "_" + df["metric"]
-    df = df.drop(columns=["task", "metric"])
-    df = df.pivot(index="model", columns="task_metric", values="score")
+    main_pivot = df.pivot_table(index="model", columns="task_metric", values="score", aggfunc="mean")
+
+    # Merge the two pivots
+    df = pd.merge(main_pivot, scores_pivot, on="model", how="outer")
+    
     for metric in task_metrics:
         if metric not in df.columns:
             df[metric] = np.nan
+            
     df["average"] = compute_normalized_average(df, task_metrics)
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
+    
+    # Dynamically find all metric columns to include
+    final_cols = df.columns
+    metric_cols = [m for m in final_cols if any(tm in m for tm in task_metrics)]
+    
     df = df[
         [
-            "rank",
-            "model",
-            "name",
-            "provider_name",
-            "hf_id",
-            "creation_date",
-            "size",
-            "type",
-            "license",
-            "cost",
-            "average",
-            *task_metrics,
+            "rank", "model", "name", "provider_name", "hf_id", "creation_date",
+            "size", "type", "license", "cost", "average",
+            *sorted(list(set(metric_cols)))
         ]
     ]
     return df
 
 
 def make_language_table(df, languages):
-    df = (
-        df.groupby(["bcp_47", "task", "metric"])
-        .agg({"score": "mean", "model": "nunique"})
-        .reset_index()
-    )
+    # Create a combined task_metric for origin
+    df["task_metric_origin"] = df["task"] + "_" + df["metric"] + "_" + df["origin"]
+    
+    # Pivot to get scores for each origin-specific metric
+    scores_pivot = df.pivot_table(index="bcp_47", columns="task_metric_origin", values="score", aggfunc="mean")
+    
+    # Create the regular task_metric for the main average calculation
     df["task_metric"] = df["task"] + "_" + df["metric"]
-    df = df.drop(columns=["task", "metric"])
-    df = df.pivot(index="bcp_47", columns="task_metric", values="score").reset_index()
+    main_pivot = df.pivot_table(index="bcp_47", columns="task_metric", values="score", aggfunc="mean")
+
+    # Merge the two pivots
+    df = pd.merge(main_pivot, scores_pivot, on="bcp_47", how="outer")
+
     for metric in task_metrics:
         if metric not in df.columns:
             df[metric] = np.nan
+            
     df["average"] = compute_normalized_average(df, task_metrics)
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
+    
+    # Dynamically find all metric columns to include
+    final_cols = df.columns
+    metric_cols = [m for m in final_cols if any(tm in m for tm in task_metrics)]
+    
     df = df[
         [
-            "bcp_47",
-            "language_name",
-            "autonym",
-            "speakers",
-            "family",
-            "average",
-            "in_benchmark",
-            *task_metrics,
+            "bcp_47", "language_name", "autonym", "speakers", "family",
+            "average", "in_benchmark",
+            *sorted(list(set(metric_cols)))
         ]
     ]
     return df
@@ -125,10 +133,18 @@ async def data(request: Request):
     body = await request.body()
     data = json.loads(body)
     selected_languages = data.get("selectedLanguages", {})
-    df = scores.groupby(["model", "bcp_47", "task", "metric"]).mean().reset_index()
+    df = scores.groupby(["model", "bcp_47", "task", "metric", "origin"]).mean().reset_index()
     # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
     language_table = make_language_table(df, languages)
     datasets_df = pd.read_json("datasets.json")
+    
+    # Identify which metrics have machine translations available
+    machine_translated_metrics = set()
+    for _, row in df.iterrows():
+        if row["origin"] == "machine":
+            metric_name = f"{row['task']}_{row['metric']}"
+            machine_translated_metrics.add(metric_name)
+    
     if selected_languages:
         # the filtering is only applied for the model table and the country data
         df = df[df["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)]
@@ -143,6 +159,7 @@ async def data(request: Request):
         "language_table": serialize(language_table),
         "dataset_table": serialize(datasets_df),
         "countries": serialize(countries),
+        "machine_translated_metrics": list(machine_translated_metrics),
     }
     return JSONResponse(content=all_tables)
 
