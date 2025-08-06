@@ -62,7 +62,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local --unset-all http.https://github.com/.extraheader
           git remote set-url origin https://${GH_PAT}@github.com/datenlabor-bmz/ai-language-monitor.git
-          git add results.json models.json languages.json
+          git add results.json models.json languages.json checkpoint.json
           git commit -m "Update evaluation results" || echo "No changes to commit"
           git push origin HEAD:main 
       
