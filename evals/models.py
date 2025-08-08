@@ -23,6 +23,7 @@ important_models = [
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
+    "openai/gpt-5",  # include if/when available
     "openai/gpt-4.1",  # 8$
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
@@ -54,6 +55,7 @@ important_models = [
 
 blocklist = [
     "google/gemini-2.5-pro-preview",
+    "google/gemini-2.5-pro",
     "google/gemini-2.5-flash-preview",
     "google/gemini-2.5-flash-lite-preview",
     "google/gemini-2.5-flash-preview-04-17",
@@ -236,7 +238,7 @@ async def complete(**kwargs) -> str | None:
                 return None
             raise e
         except asyncio.TimeoutError:
-            print(f"⏰ Timeout after {timeout}s for model {model}")
+            print(f"⏰ Timeout after {timeout}s for model {model_id}")
             return None
     if not response.choices:
         raise Exception(response)
@@ -407,7 +409,7 @@ def load_models(date: date):
         creation_date=creation_date_hf.combine_first(creation_date_or),
     )
     # Filter out expensive models to keep costs reasonable
-    models = models[models["cost"] <= 20.0].reset_index(drop=True)
+    models = models[models["cost"] <= 15.0].reset_index(drop=True)
     models["tasks"] = [
         ["translation_from", "translation_to", "classification", "mmlu", "arc", "truthfulqa", "mgsm"]
     ] * len(models)
