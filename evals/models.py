@@ -54,6 +54,7 @@ important_models = [
 
 blocklist = [
     "google/gemini-2.5-pro-preview",
+    "google/gemini-2.5-pro",
     "google/gemini-2.5-flash-preview",
     "google/gemini-2.5-flash-lite-preview",
     "google/gemini-2.5-flash-preview-04-17",
@@ -407,7 +408,7 @@ def load_models(date: date):
         creation_date=creation_date_hf.combine_first(creation_date_or),
     )
     # Filter out expensive models to keep costs reasonable
-    models = models[models["cost"] <= 20.0].reset_index(drop=True)
+    models = models[models["cost"] <= 15.0].reset_index(drop=True)
     models["tasks"] = [
         ["translation_from", "translation_to", "classification", "mmlu", "arc", "truthfulqa", "mgsm"]
     ] * len(models)
