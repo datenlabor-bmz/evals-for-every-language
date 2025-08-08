@@ -23,6 +23,7 @@ important_models = [
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
+    "openai/gpt-5",  # include if/when available
     "openai/gpt-4.1",  # 8$
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
@@ -237,7 +238,7 @@ async def complete(**kwargs) -> str | None:
                 return None
             raise e
         except asyncio.TimeoutError:
-            print(f"⏰ Timeout after {timeout}s for model {model}")
+            print(f"⏰ Timeout after {timeout}s for model {model_id}")
             return None
     if not response.choices:
         raise Exception(response)
