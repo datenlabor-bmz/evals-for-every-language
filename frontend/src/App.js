@@ -23,8 +23,6 @@ function App () {
   const [dialogVisible, setDialogVisible] = useState(false)
   const [aboutVisible, setAboutVisible] = useState(false)
   const [contributeVisible, setContributeVisible] = useState(false)
-  const [carouselActiveIndex, setCarouselActiveIndex] = useState(0)
-  const [dialogCarouselActiveIndex, setDialogCarouselActiveIndex] = useState(0)
 
   useEffect(() => {
     fetch('/api/data', {
@@ -58,20 +56,6 @@ function App () {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  // Reset carousel indices when dialog opens/closes
-  useEffect(() => {
-    if (!dialogVisible) {
-      setDialogCarouselActiveIndex(0)
-    }
-  }, [dialogVisible])
-
-  // Reset main carousel index when data changes
-  useEffect(() => {
-    if (data) {
-      setCarouselActiveIndex(0)
-    }
-  }, [data])
 
   return (
     <PrimeReactProvider>
@@ -283,7 +267,6 @@ function App () {
                   }}
                 />
                 <Carousel
-                  key={`main-carousel-${carouselActiveIndex}`}
                   value={[
                     <WorldMap data={data.countries} allLanguages={data.language_table} />,
                     <LanguagePlot data={data} />,
@@ -295,8 +278,7 @@ function App () {
                   numVisible={1}
                   itemTemplate={item => item}
                   circular
-                  activeIndex={carouselActiveIndex}
-                  onPageChange={(e) => setCarouselActiveIndex(e.page)}
+                  activeIndex={0}
                   style={{ width: '100%', minHeight: '650px' }}
                 />
               </div>
@@ -449,7 +431,6 @@ function App () {
           {data && (
             <div style={{ width: '100%', height: '100%' }}>
               <Carousel
-                key={`dialog-carousel-${dialogCarouselActiveIndex}`}
                 value={[
                   <WorldMap
                     data={data.countries}
@@ -478,8 +459,7 @@ function App () {
                 numVisible={1}
                 itemTemplate={item => item}
                 circular
-                activeIndex={dialogCarouselActiveIndex}
-                onPageChange={(e) => setDialogCarouselActiveIndex(e.page)}
+                activeIndex={0}
                 style={{ width: '100%', height: 'calc(90vh - 120px)' }}
               />
             </div>
