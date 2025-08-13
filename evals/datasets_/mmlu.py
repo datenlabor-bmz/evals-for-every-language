@@ -111,6 +111,7 @@ def print_datasets_analysis():
 # MMLUX is translated using DeepL
 # Therefore, the priority is: AfriMMLU, Global-MMLU, MMLUX, Okapi-MMLU
 
+
 # print_datasets_analysis()
 
 
@@ -195,7 +196,13 @@ async def load_mmlu_translated(language_bcp_47, nr):
         filtered = ds["test"].filter(lambda x: x["subject"] == category)
         if len(filtered) == 0:
             return None, None, None
-        task = filtered[nr % len(filtered)]
+        
+        # Use the same 20 samples that the evaluation pipeline uses (indices 0-19)
+        if nr < 20:
+            task = filtered[nr]  # Direct mapping to same sample
+        else:
+            # Fallback to sequential if nr exceeds our sample count
+            task = filtered[nr % len(filtered)]
 
         # Translate question and choices
         question_translated = await translate_google(task["question"], "en", language_bcp_47)
@@ -226,7 +233,7 @@ def translate_mmlu(languages):
         for lang in languages["bcp_47"].values[:150]
         if lang not in human_translated and lang in get_google_supported_languages()
     ]
-    n_samples = 10
+    n_samples = 20
 
     slug = "fair-forward/mmlu-autotranslated"
     for lang in tqdm(untranslated):
@@ -242,8 +249,10 @@ def translate_mmlu(languages):
                     if split == "dev":
                         samples.extend(ds.filter(lambda x: x["subject"] == category))
                     else:
-                        for i in range(n_samples):
-                            task = ds.filter(lambda x: x["subject"] == category)[i]
+                        # Use the same 20 samples that the evaluation pipeline uses (indices 0-19)
+                        filtered = ds.filter(lambda x: x["subject"] == category)
+                        for i in range(min(n_samples, len(filtered))):
+                            task = filtered[i]
                             samples.append(task)
                 questions_tr = [
                     translate_google(s["question"], "en", lang) for s in samples

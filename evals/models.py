@@ -8,7 +8,11 @@ from os import getenv
 import pandas as pd
 from aiolimiter import AsyncLimiter
 from dotenv import load_dotenv
-from elevenlabs import AsyncElevenLabs
+# Make ElevenLabs optional to avoid hard dependency when not using speech tasks
+try:
+    from elevenlabs import AsyncElevenLabs
+except Exception:  # ImportError or other env-specific issues
+    AsyncElevenLabs = None
 from google.cloud import translate_v2 as translate
 from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
