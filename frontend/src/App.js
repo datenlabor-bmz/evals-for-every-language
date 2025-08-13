@@ -278,6 +278,7 @@ function App () {
                   numVisible={1}
                   itemTemplate={item => item}
                   circular
+                  activeIndex={0}
                   style={{ width: '100%', minHeight: '650px' }}
                 />
               </div>
@@ -458,6 +459,7 @@ function App () {
                 numVisible={1}
                 itemTemplate={item => item}
                 circular
+                activeIndex={0}
                 style={{ width: '100%', height: 'calc(90vh - 120px)' }}
               />
             </div>
