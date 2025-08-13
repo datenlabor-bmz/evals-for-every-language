@@ -453,7 +453,11 @@ function App () {
                     width={windowWidth * 0.7}
                     height={windowHeight * 0.6}
                   />,
-                  <CostPlot data={data} />
+                  <CostPlot 
+                    data={data}
+                    width={windowWidth * 0.7}
+                    height={windowHeight * 0.6}
+                  />
                 ]}
                 numScroll={1}
                 numVisible={1}
