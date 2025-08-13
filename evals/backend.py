@@ -4,12 +4,18 @@ import os
 import numpy as np
 import pandas as pd
 import uvicorn
+
+# Robust import so this file works both as a package module and as a script
 try:
-    # When executed as a package module (uvicorn evals.backend:app)
+    # When executed as a package module (recommended): `python -m uvicorn evals.backend:app`
     from .countries import make_country_table
-except ImportError:
-    # When executed without package context (uvicorn backend:app with cwd at evals/)
-    from countries import make_country_table
+except Exception:
+    try:
+        # When executed from project root with package path available
+        from evals.countries import make_country_table
+    except Exception:
+        # When executed directly from evals/ directory
+        from countries import make_country_table
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
