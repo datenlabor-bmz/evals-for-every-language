@@ -6,7 +6,13 @@ const scoreBodyTemplate = (field, options = {}) => {
 
   return rowData => {
     const score = rowData[field]
-    const isMachineTranslated = machineTranslatedMetrics.includes(field)
+    // Prefer per-row flag if present (backend sets `<metric>_is_machine`),
+    // otherwise fall back to global list
+    const rowFlagKey = `${field}_is_machine`
+    const hasRowFlag = Object.prototype.hasOwnProperty.call(rowData, rowFlagKey)
+    const isMachineTranslated = hasRowFlag
+      ? !!rowData[rowFlagKey]
+      : machineTranslatedMetrics.includes(field)
     return ScoreField(score, minScore, maxScore, isMachineTranslated)
   }
 }

@@ -4,7 +4,7 @@ import os
 import numpy as np
 import pandas as pd
 import uvicorn
-from countries import make_country_table
+from .countries import make_country_table
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
@@ -45,16 +45,25 @@ def compute_normalized_average(df, metrics):
     return normalized_df.mean(axis=1, skipna=False)
 
 
-def make_model_table(df, models):
+def make_model_table(scores_df, models):
     # Create a combined task_metric for origin
-    df["task_metric_origin"] = df["task"] + "_" + df["metric"] + "_" + df["origin"]
-    
+    scores_df["task_metric_origin"] = (
+        scores_df["task"] + "_" + scores_df["metric"] + "_" + scores_df["origin"]
+    )
+
     # Pivot to get scores for each origin-specific metric
-    scores_pivot = df.pivot_table(index="model", columns="task_metric_origin", values="score", aggfunc="mean")
-    
+    scores_pivot = scores_df.pivot_table(
+        index="model",
+        columns="task_metric_origin",
+        values="score",
+        aggfunc="mean",
+    )
+
     # Create the regular task_metric for the main average calculation
-    df["task_metric"] = df["task"] + "_" + df["metric"]
-    main_pivot = df.pivot_table(index="model", columns="task_metric", values="score", aggfunc="mean")
+    scores_df["task_metric"] = scores_df["task"] + "_" + scores_df["metric"]
+    main_pivot = scores_df.pivot_table(
+        index="model", columns="task_metric", values="score", aggfunc="mean"
+    )
 
     # Merge the two pivots
     df = pd.merge(main_pivot, scores_pivot, on="model", how="outer")
@@ -64,6 +73,29 @@ def make_model_table(df, models):
             df[metric] = np.nan
             
     df["average"] = compute_normalized_average(df, task_metrics)
+
+    # Compute origin presence per model+metric
+    origin_presence = (
+        scores_df.groupby(["model", "task_metric", "origin"]).size().unstack(fill_value=0)
+    )
+    # Add boolean flags: show asterisk only if exclusively machine-origin contributed
+    for metric in task_metrics:
+        human_col_name = "human" if "human" in origin_presence.columns else None
+        machine_col_name = "machine" if "machine" in origin_presence.columns else None
+        if human_col_name or machine_col_name:
+            flags = []
+            for model in df.index:
+                try:
+                    counts = origin_presence.loc[(model, metric)]
+                except KeyError:
+                    flags.append(False)
+                    continue
+                human_count = counts.get(human_col_name, 0) if human_col_name else 0
+                machine_count = counts.get(machine_col_name, 0) if machine_col_name else 0
+                flags.append(machine_count > 0 and human_count == 0)
+            df[f"{metric}_is_machine"] = flags
+        else:
+            df[f"{metric}_is_machine"] = False
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
@@ -82,16 +114,25 @@ def make_model_table(df, models):
     return df
 
 
-def make_language_table(df, languages):
+def make_language_table(scores_df, languages):
     # Create a combined task_metric for origin
-    df["task_metric_origin"] = df["task"] + "_" + df["metric"] + "_" + df["origin"]
-    
+    scores_df["task_metric_origin"] = (
+        scores_df["task"] + "_" + scores_df["metric"] + "_" + scores_df["origin"]
+    )
+
     # Pivot to get scores for each origin-specific metric
-    scores_pivot = df.pivot_table(index="bcp_47", columns="task_metric_origin", values="score", aggfunc="mean")
-    
+    scores_pivot = scores_df.pivot_table(
+        index="bcp_47",
+        columns="task_metric_origin",
+        values="score",
+        aggfunc="mean",
+    )
+
     # Create the regular task_metric for the main average calculation
-    df["task_metric"] = df["task"] + "_" + df["metric"]
-    main_pivot = df.pivot_table(index="bcp_47", columns="task_metric", values="score", aggfunc="mean")
+    scores_df["task_metric"] = scores_df["task"] + "_" + scores_df["metric"]
+    main_pivot = scores_df.pivot_table(
+        index="bcp_47", columns="task_metric", values="score", aggfunc="mean"
+    )
 
     # Merge the two pivots
     df = pd.merge(main_pivot, scores_pivot, on="bcp_47", how="outer")
@@ -101,6 +142,36 @@ def make_language_table(df, languages):
             df[metric] = np.nan
             
     df["average"] = compute_normalized_average(df, task_metrics)
+
+    # Compute origin presence per language+metric; show asterisk only if exclusively machine-origin
+    origin_presence = (
+        scores_df.groupby(["bcp_47", "task_metric", "origin"]).size().unstack(fill_value=0)
+    )
+    for metric in task_metrics:
+        human_col_name = "human" if "human" in origin_presence.columns else None
+        machine_col_name = "machine" if "machine" in origin_presence.columns else None
+        if human_col_name or machine_col_name:
+            flags = []
+            for bcp in df.index:
+                try:
+                    counts = origin_presence.loc[(bcp, metric)]
+                except KeyError:
+                    flags.append(False)
+                    continue
+                human_count = counts.get(human_col_name, 0) if human_col_name else 0
+                machine_count = counts.get(machine_col_name, 0) if machine_col_name else 0
+                flags.append(machine_count > 0 and human_count == 0)
+            df[f"{metric}_is_machine"] = flags
+        else:
+            df[f"{metric}_is_machine"] = False
+
+    # Per-row machine-origin flags for each metric (true if any machine-origin score exists for the language)
+    for metric in task_metrics:
+        machine_col = f"{metric}_machine"
+        if machine_col in df.columns:
+            df[f"{metric}_is_machine"] = df[machine_col].notna()
+        else:
+            df[f"{metric}_is_machine"] = False
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
     

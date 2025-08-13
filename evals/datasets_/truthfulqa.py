@@ -35,7 +35,7 @@ async def load_truthfulqa(language_bcp_47, nr):
         task = ds["test"][nr]
         return "masakhane/uhura-truthfulqa", task, "human"
     else:
-        # Fallback to on-the-fly translation
+        # Fallback to on-the-fly translation for missing languages/samples
         return await load_truthfulqa_translated(language_bcp_47, nr)
 
 async def load_truthfulqa_translated(language_bcp_47, nr):
@@ -79,10 +79,10 @@ def translate_truthfulqa(languages):
     human_translated = [*tags_uhura_truthfulqa.keys()]
     untranslated = [
         lang
-        for lang in languages["bcp_47"].values[:100]
+        for lang in languages["bcp_47"].values[:150]
         if lang not in human_translated and lang in get_google_supported_languages()
     ]
-    n_samples = 10
+    n_samples = 20
 
     slug = "fair-forward/truthfulqa-autotranslated"
     for lang in tqdm(untranslated):
@@ -132,7 +132,7 @@ def translate_truthfulqa(languages):
                     token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"),
                 )
                 ds_lang.to_json(
-                    f"data/translations/mmlu/{lang}_{split}.json",
+                    f"data/translations/truthfulqa/{lang}_{split}.json",
                     lines=False,
                     force_ascii=False,
                     indent=2,

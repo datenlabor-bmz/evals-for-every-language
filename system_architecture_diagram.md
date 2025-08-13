@@ -36,9 +36,9 @@ flowchart TD
     %% On-the-fly Translation with Origin Tagging
     subgraph OTF [On-the-fly Dataset Translation]
         direction LR
-        DS_raw["Raw English Dataset<br/>(e.g., MMLU)"] --> Google_Translate["Google Translate API"]
-        Google_Translate --> DS_translated["Translated Dataset<br/>(e.g., German MMLU)<br/>Origin: 'machine'"]
-        DS_native["Native Dataset<br/>(e.g., German MMLU)<br/>Origin: 'human'"]
+        DS_raw["Raw English Dataset<br/>"] --> Google_Translate["Google Translate API"]
+        Google_Translate --> DS_translated["Translated Dataset<br/>(e.g., MGSM/ARC)<br/>Origin: 'machine'"]
+        DS_native["Native Dataset<br/>(e.g., AfriMMLU/Global-MMLU)<br/>Origin: 'human'"]
     end
     
     %% Evaluation Pipeline
@@ -51,9 +51,9 @@ flowchart TD
     %% Task Execution with Origin Tracking
     P --> Q1[translate_and_evaluate<br/>Origin: 'human']
     P --> Q2[classify_and_evaluate<br/>Origin: 'human']
-    P --> Q3[mmlu_and_evaluate<br/>Origin: 'human'/'machine']
+    P --> Q3[mmlu_and_evaluate<br/>Origin: 'human' (no on-the-fly for missing; uses auto-translated dataset if available)]
     P --> Q4[arc_and_evaluate<br/>Origin: 'human'/'machine']
-    P --> Q5[truthfulqa_and_evaluate<br/>Origin: 'human'/'machine']
+    P --> Q5[truthfulqa_and_evaluate<br/>Origin: 'human' (no on-the-fly for missing; relies on available datasets)]
     P --> Q6[mgsm_and_evaluate<br/>Origin: 'human'/'machine']
     
     %% API Calls with Error Handling
@@ -85,7 +85,7 @@ flowchart TD
     %% Data Sources with Origin Information
     subgraph DS ["Data Sources"]
         DS1["Flores-200<br/>Translation Sentences<br/>Origin: 'human'"]
-        DS2["MMLU/AfriMMLU<br/>Knowledge QA<br/>Origin: 'human'"]
+     DS2["MMLU/AfriMMLU/Global-MMLU<br/>Knowledge QA<br/>Origin: 'human' or 'machine' (HF auto-translated only)"]
         DS3["ARC<br/>Science Reasoning<br/>Origin: 'human'"]
         DS4["TruthfulQA<br/>Truthfulness<br/>Origin: 'human'"]
         DS5["MGSM<br/>Math Problems<br/>Origin: 'human'"]
@@ -97,7 +97,7 @@ flowchart TD
     DS4 --> Q5
     DS5 --> Q6
     
-    DS_translated --> Q3
+     %% No on-the-fly DS_translated for MMLU anymore; only HF auto-translated used
     DS_translated --> Q4
     DS_translated --> Q5
     

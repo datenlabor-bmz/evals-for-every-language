@@ -219,7 +219,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "MMLU",
-        "implemented": true,
+        "implemented": false,
         "group": "Multitask Language Understanding"
     },
     {
@@ -256,7 +256,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "MMLU",
-        "implemented": true,
+        "implemented": false,
         "group": "Multitask Language Understanding"
     },
     {
@@ -360,7 +360,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "AI2 ARC",
-        "implemented": true,
+        "implemented": false,
         "group": "ARC Question Answering"
     },
     {
@@ -375,7 +375,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "AI2 ARC",
-        "implemented": true,
+        "implemented": false,
         "group": "ARC Question Answering"
     },
     {
@@ -420,7 +420,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "TruthfulQA",
-        "implemented": true,
+        "implemented": false,
         "group": "Truthfulness"
     },
     {
@@ -435,7 +435,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "TruthfulQA",
-        "implemented": true,
+        "implemented": false,
         "group": "Truthfulness"
     },
     {
