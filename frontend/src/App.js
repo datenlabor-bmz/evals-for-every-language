@@ -23,6 +23,10 @@ function App () {
   const [dialogVisible, setDialogVisible] = useState(false)
   const [aboutVisible, setAboutVisible] = useState(false)
   const [contributeVisible, setContributeVisible] = useState(false)
+  
+  // Add state for carousel items
+  const [carouselItems, setCarouselItems] = useState([])
+  const [fullScreenCarouselItems, setFullScreenCarouselItems] = useState([])
 
   useEffect(() => {
     fetch('/api/data', {
@@ -46,8 +50,22 @@ function App () {
       })
   }, [selectedLanguages])
 
+  // Create carousel items when data is loaded
+  useEffect(() => {
+    if (data) {
+      setCarouselItems([
+        <WorldMap key="0" data={data.countries} allLanguages={data.language_table} width={750} height={500} />,
+        <LanguagePlot key="1" data={data} width={750} height={500} />,
+        <SpeakerPlot key="2" data={data} width={750} height={500} />,
+        <HistoryPlot key="3" data={data} width={750} height={500} />,
+        <CostPlot key="4" data={data} width={750} height={500} />
+      ]);
+    }
+  }, [data])
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [windowHeight, setWindowHeight] = useState(window.innerHeight)
+  
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
@@ -56,6 +74,40 @@ function App () {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  // Create full-screen carousel items when data or window size changes
+  useEffect(() => {
+    if (data) {
+      setFullScreenCarouselItems([
+        <WorldMap
+          key="fs-0"
+          data={data.countries}
+          allLanguages={data.language_table}
+          width={windowWidth * 0.7}
+          height={windowHeight * 0.6}
+        />,
+        <LanguagePlot
+          key="fs-1"
+          data={data}
+          width={windowWidth * 0.7}
+          height={windowHeight * 0.6}
+        />,
+        <SpeakerPlot
+          key="fs-2"
+          data={data}
+          width={windowWidth * 0.7}
+          height={windowHeight * 0.6}
+        />,
+        <HistoryPlot
+          key="fs-3"
+          data={data}
+          width={windowWidth * 0.7}
+          height={windowHeight * 0.6}
+        />,
+        <CostPlot key="fs-4" data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />
+      ]);
+    }
+  }, [data, windowWidth, windowHeight])
 
   return (
     <PrimeReactProvider>
@@ -266,21 +318,18 @@ function App () {
                     color: '#666'
                   }}
                 />
-                <Carousel
-                  value={[
-                    <WorldMap data={data.countries} allLanguages={data.language_table} />,
-                    <LanguagePlot data={data} />,
-                    <SpeakerPlot data={data} />,
-                    <HistoryPlot data={data} />,
-                    <CostPlot data={data} />
-                  ]}
-                  numScroll={1}
-                  numVisible={1}
-                  itemTemplate={item => item}
-                  circular
-                  activeIndex={0}
-                  style={{ width: '100%', minHeight: '650px' }}
-                />
+                {carouselItems.length > 0 && (
+                  <Carousel
+                    key={`carousel-${data ? 'loaded' : 'loading'}`}
+                    value={carouselItems}
+                    numScroll={1}
+                    numVisible={1}
+                    itemTemplate={item => item}
+                    circular
+                    activeIndex={0}
+                    style={{ width: '100%', minHeight: '650px' }}
+                  />
+                )}
               </div>
             </>
           )}
@@ -428,37 +477,11 @@ function App () {
           modal
           header={null}
         >
-          {data && (
+          {fullScreenCarouselItems.length > 0 && (
             <div style={{ width: '100%', height: '100%' }}>
               <Carousel
-                value={[
-                  <WorldMap
-                    data={data.countries}
-                    allLanguages={data.language_table}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />,
-                  <LanguagePlot
-                    data={data}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />,
-                  <SpeakerPlot
-                    data={data}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />,
-                  <HistoryPlot
-                    data={data}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />,
-                  <CostPlot 
-                    data={data}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />
-                ]}
+                key={`fs-carousel-${data ? 'loaded' : 'loading'}`}
+                value={fullScreenCarouselItems}
                 numScroll={1}
                 numVisible={1}
                 itemTemplate={item => item}
