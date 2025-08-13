@@ -383,7 +383,7 @@ function App () {
                     numScroll={1}
                     numVisible={1}
                     itemTemplate={item => item}
-                    circular
+                    circular={false}
                     activeIndex={0}
                     style={{ width: '100%', minHeight: '650px' }}
                   />
@@ -543,7 +543,7 @@ function App () {
                 numScroll={1}
                 numVisible={1}
                 itemTemplate={item => item}
-                circular
+                circular={false}
                 activeIndex={0}
                 style={{ width: '100%', height: 'calc(90vh - 120px)' }}
               />
