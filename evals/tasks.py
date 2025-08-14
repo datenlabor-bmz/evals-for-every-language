@@ -120,32 +120,22 @@ Reply with only the topic name.
 Text:
 {test_paragraph.text}
 """
-
-    # some models have poor tokenization for some languages, and the prompt for this task is relatively long, so it sometimes exceeds the context window
-    # this is not just to blame on the context window but mostly on the model's tokenization, so we assign 0 accuracy in this case
-    try:
-        pred = await complete(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0,
-            max_tokens=30,
+    pred = await complete(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0,
+        max_tokens=30,
+    ).lower().strip()
+    true = test_paragraph.topic.lower().strip()
+    others = [t for t in top_topics if t != true]
+    acc = (
+        int(
+            pred.startswith(true)
+            or (true in pred and not any(o in pred for o in others))
         )
-        true = test_paragraph.topic
-        others = [t for t in top_topics if t != true]
-        acc = (
-            int(
-                pred.startswith(true)
-                or (true in pred and not any(o in pred for o in others))
-            )
-            if pred
-            else 0
-        )
-    except Exception as e:
-        if "`inputs` tokens + `max_new_tokens` must be <= 4097" in str(e):
-            print(f"Max tokens exceeded for {model} in {bcp_47}")
-            acc = 0
-        else:
-            raise e
+        if pred
+        else 0
+    )
     return [
         {
             "model": model,
@@ -331,7 +321,6 @@ def format_multiple_choice_truthfulqa(item):
     text = item["question"] + "\n\n"
     for i, choice in enumerate(item["choices"]):
         text += f"{letters[i]}: {choice}\n"
-    text += "|".join(letters[: len(item["choices"])]) + "?"
     return text
 
 
