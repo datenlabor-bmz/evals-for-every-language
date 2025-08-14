@@ -49,13 +49,6 @@ def load_mgsm(language_bcp_47, nr):
             slug_afrimgsm, subset=tags_afrimgsm[language_bcp_47], split="test"
         )
         return slug_afrimgsm, ds[nr], "human"
-    elif language_bcp_47 in tags_gsm_autotranslated.keys():
-        ds = _load_dataset(
-            slug_gsm_autotranslated,
-            subset=tags_gsm_autotranslated[language_bcp_47],
-            split="test",
-        )
-        return slug_gsm_autotranslated, ds[nr], "machine"
     elif language_bcp_47 in tags_gsm8kx.keys():
         row = _load_dataset(
             slug_gsm8kx,
@@ -64,7 +57,14 @@ def load_mgsm(language_bcp_47, nr):
             trust_remote_code=True,
         )[nr]
         row["answer_number"] = row["answer"].split("####")[1].strip()
-        return slug_gsm8kx, row, "human" # Assuming Eurolingua is human-translated
+        return slug_gsm8kx, row, "machine"
+    elif language_bcp_47 in tags_gsm_autotranslated.keys():
+        ds = _load_dataset(
+            slug_gsm_autotranslated,
+            subset=tags_gsm_autotranslated[language_bcp_47],
+            split="test",
+        )
+        return slug_gsm_autotranslated, ds[nr], "machine"
     else:
         return None, None, None
 
