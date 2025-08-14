@@ -50,6 +50,7 @@ async def load_truthfulqa(language_bcp_47, nr):
         test_split = ds["test"] if "test" in ds else ds
         task = test_split[nr]
         return slug_truthfulqa_autotranslated, task, "machine"
+    # TODO: add Okapi, TruthfulQA-X @Jonas
     else:
         return None, None, None
 

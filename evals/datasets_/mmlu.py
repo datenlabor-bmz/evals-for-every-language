@@ -164,6 +164,7 @@ async def load_mmlu(language_bcp_47, nr):
         ds = ds.map(add_choices)
         task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
         return "CohereForAI/Global-MMLU", task, "human"
+    # TODO: add in Okapi, MMLUX @Jonas
     elif language_bcp_47 in tags_mmlu_autotranslated:
         ds = _load_dataset("fair-forward/mmlu-autotranslated", language_bcp_47)
         filtered = ds["test"].filter(lambda x: x["subject"] == category)
