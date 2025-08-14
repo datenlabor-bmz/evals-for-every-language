@@ -48,57 +48,10 @@ async def load_truthfulqa(language_bcp_47, nr):
         # Load from auto-translated dataset (same samples as translation)
         ds = _load_dataset(slug_truthfulqa_autotranslated, language_bcp_47)
         test_split = ds["test"] if "test" in ds else ds
-        if nr < len(test_split):
-            task = test_split[nr]
-            return slug_truthfulqa_autotranslated, task, "machine"
-        # If requested index exceeds stored sample count, fall back to on-the-fly
-        return await load_truthfulqa_translated(language_bcp_47, nr)
+        task = test_split[nr]
+        return slug_truthfulqa_autotranslated, task, "machine"
     else:
-        # Fallback to on-the-fly translation for missing languages/samples
-        return await load_truthfulqa_translated(language_bcp_47, nr)
-
-async def load_truthfulqa_translated(language_bcp_47, nr):
-    """
-    Load TruthfulQA data with on-the-fly Google translation.
-    """
-    supported_languages = get_google_supported_languages()
-    if language_bcp_47 not in supported_languages:
         return None, None, None
-
-    print(f"🔄 Translating TruthfulQA data to {language_bcp_47} on-the-fly...")
-
-    try:
-        # Load English TruthfulQA data
-        ds = _load_dataset(slug_uhura_truthfulqa, tags_uhura_truthfulqa["en"])
-        ds = ds.map(add_choices)
-        
-        # Use the same 20 samples that the evaluation pipeline uses (indices 0-19)
-        if nr < 20:
-            task = ds["test"][nr]  # Direct mapping to same sample
-        else:
-            # Fallback to sequential if nr exceeds our sample count
-            task = ds["test"][nr % len(ds["test"])]
-
-        # Translate question and choices
-        question_translated = await translate_google(task["question"], "en", language_bcp_47)
-        choices_translated = []
-        for choice in task["choices"]:
-            choice_translated = await translate_google(choice, "en", language_bcp_47)
-            choices_translated.append(choice_translated)
-
-        translated_task = {
-            "question": question_translated,
-            "choices": choices_translated,
-            "labels": task["labels"], # Keep original labels
-        }
-
-        return f"truthfulqa-translated-{language_bcp_47}", translated_task, "machine"
-
-    except Exception as e:
-        print(f"❌ Translation failed for {language_bcp_47}: {e}")
-        return None, None, None
-
-
 
 def translate_truthfulqa(languages):
     human_translated = [*tags_uhura_truthfulqa.keys()]

@@ -1,11 +1,10 @@
 import random
-from collections import Counter, defaultdict
 
-from langcodes import Language, standardize_tag
+from langcodes import standardize_tag
 from rich import print
 from models import translate_google, get_google_supported_languages
 from tqdm import tqdm
-from datasets import load_dataset
+from datasets import load_dataset, Dataset
 import asyncio
 from tqdm.asyncio import tqdm_asyncio
 import os
@@ -62,7 +61,6 @@ def load_uhura_arc_easy(language_bcp_47, nr):
         task = ds["test"].filter(lambda x: x["id"] == common_ids_test[nr])[0]
         return "fair-forward/arc-easy-autotranslated", task, "machine"
     else:
-        # ARC does not support on-the-fly translation currently
         return None, None, None
 
 
