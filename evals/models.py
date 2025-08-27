@@ -33,10 +33,10 @@ important_models = [
     "openai/gpt-4.1-nano",  # 0.4$
     "openai/gpt-4o-mini",  # 0.6$
     "openai/gpt-4o-2024-11-20", # 10$
-    "openai/gpt-3.5-turbo-0613",  # 2$
-    "openai/gpt-3.5-turbo",  # 1.5$
-    # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
-    "anthropic/claude-sonnet-4",
+    "openai/gpt-oss-120b", 
+    "anthropic/claude-3.7-sonnet",  # 15$ - added for full coverage
+    "anthropic/claude-sonnet-4",  # 15$ - added for full coverage
+    "anthropic/claude-opus-4.1",  # 15$ - added for full coverage
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
     "mistralai/mistral-saba",  # 0.6$
     "mistralai/mistral-nemo",  # 0.08$
@@ -55,6 +55,8 @@ important_models = [
     "microsoft/phi-4",  # 0.07$
     "microsoft/phi-4-multimodal-instruct",  # 0.1$
     "amazon/nova-micro-v1",  # 0.09$
+    "moonshotai/kimi-k2",  # 0.6$ - added to prevent missing from models.json
+    "x-ai/grok-4"
 ]
 
 blocklist = [
