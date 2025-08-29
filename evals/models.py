@@ -345,7 +345,7 @@ def get_cost(row):
         return None
 
 
-#@cache
+@cache
 def load_models(date: date):
     popular_models = (
         get_historical_popular_models(date.today())[:20]

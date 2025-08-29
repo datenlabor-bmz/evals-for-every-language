@@ -14,16 +14,21 @@ async def evaluate():
     single_model = os.environ.get("SINGLE_MODEL")            # Optional: run only one specific model
     test_mode = os.environ.get("TEST", "").lower() in ("1", "true", "yes")  # Optional: skip results loading/saving
     
-    models_df = pd.DataFrame(models)
-    languages_df = pd.DataFrame(languages)
+    # Keep original DataFrames for saving metadata
+    original_models_df = pd.DataFrame(models)
+    original_languages_df = pd.DataFrame(languages)
+    
+    # Create working copies for single evaluation runs
+    models_df = original_models_df.copy()
+    languages_df = original_languages_df.copy()
     top_languages = languages.head(max_languages)
     
-    # Filter to single model if specified
+    # Filter to single model if specified (only affects evaluation, not saving)
     if single_model:
         models_df = models_df[models_df["id"] == single_model]
         if len(models_df) == 0:
             print(f"Error: Model '{single_model}' not found. Available models:")
-            for model_id in pd.DataFrame(models)["id"]:
+            for model_id in original_models_df["id"]:
                 print(f"  {model_id}")
             return pd.DataFrame()
 
@@ -110,9 +115,9 @@ async def evaluate():
                 results_df = results_df.sort_values(by=["model", "bcp_47", "task", "metric"])
                 results_df.to_json("results.json", **args)
                 
-                # Save model and language info
-                models_df.to_json("models.json", **args)
-                languages_df.to_json("languages.json", **args)
+                # Save model and language info (always save complete metadata, not filtered)
+                original_models_df.to_json("models.json", **args)
+                original_languages_df.to_json("languages.json", **args)
             else:
                 print("TEST MODE: Skipping results saving")
             
