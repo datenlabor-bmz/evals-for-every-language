@@ -11,10 +11,8 @@ from datasets_.mgsm import load_mgsm, parse_number
 from datasets_.mmlu import load_mmlu
 from datasets_.arc import load_uhura_arc_easy
 from datasets_.truthfulqa import load_truthfulqa
-from google.cloud import translate_v2 as translate
-from langcodes import closest_supported_match
 from languages import languages, script_name
-from models import complete, transcribe, translate_google, get_google_supported_languages
+from models import complete, transcribe
 
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
@@ -45,32 +43,20 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     original_sentence = flores_sentences(original_language)["text"][sentence_nr].strip()
     target_sentence = flores_sentences(target_language)["text"][sentence_nr].strip()
     script = script_name(target_language.flores_path.split("_")[1])
-    if model == "google/translate-v2":
-        supported_languages = get_google_supported_languages()
-        original_language = closest_supported_match(
-            original_language, supported_languages
-        )
-        target_language = closest_supported_match(target_language, supported_languages)
-        if original_language == target_language:
-            prediction = original_sentence
-        elif original_language is None or target_language is None:
-            prediction = None
-        else:
-            prediction = await translate_google(
-                original_sentence, original_language.bcp_47, target_language.bcp_47
-            )
-    else:
-        prediction = await complete(
-            model=model,
-            messages=[
-                {
-                    "role": "user",
-                    "content": f"Translate the following text to the {target_language.language_name} language; use the {script} script; reply only with the translation:\n\n{original_sentence}",
-                }
-            ],
-            temperature=0,
-            max_tokens=1024,
-        )
+    translation_prompt = f"Translate the following text to the {target_language.language_name} language; use the {script} script; reply only with the translation:\n\n{original_sentence}"
+    prediction = await complete(
+        model=model,
+        messages=[
+            {
+                "role": "user",
+                "content": translation_prompt,
+            }
+        ],
+        temperature=0,
+        max_tokens=1024,
+    )
+    
+
     if prediction:
         bleu_score = bleu.compute(
             predictions=[prediction],
@@ -83,6 +69,9 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     else:
         bleu_score = {"bleu": 0}
         chrf_score = {"score": 0}
+    
+
+    
     return [
         {
             "model": model,
@@ -120,12 +109,16 @@ Reply with only the topic name.
 Text:
 {test_paragraph.text}
 """
-    pred = await complete(
+    response = await complete(
         model=model,
         messages=[{"role": "user", "content": prompt}],
         temperature=0,
         max_tokens=30,
-    ).lower().strip()
+    )
+    
+
+    
+    pred = response.lower().strip() if response else ""
     true = test_paragraph.topic.lower().strip()
     others = [t for t in top_topics if t != true]
     acc = (
@@ -136,6 +129,8 @@ Text:
         if pred
         else 0
     )
+    
+
     return [
         {
             "model": model,
@@ -228,23 +223,20 @@ Response format: <reasoning> #### <letter>
 {format_multiple_choice(task)}""",
         },
     ]
-    try:
-        response = await complete(
-            model=model,
-            messages=messages,
-            temperature=0,
-            max_tokens=1024,
-        )
-        if response and "####" in response:
-            answer = response.split("####")[-1].strip()
-            acc = int(answer[:1] == task["answer"])
-        else:
-            acc = 0
-    except Exception as e:
-        if "ResponsibleAIPolicyViolation" in str(e):
-            acc = 0
-        else:
-            raise e
+    response = await complete(
+        model=model,
+        messages=messages,
+        temperature=0,
+        max_tokens=1024,
+    )
+    if response and "####" in response:
+        answer = response.split("####")[-1].strip()
+        acc = int(answer[:1] == task["answer"])
+    else:
+        acc = 0
+        answer = "NO_ANSWER"
+    
+
     
     return [
         {
@@ -276,23 +268,18 @@ Response format: <reasoning> #### <letter>
 {format_multiple_choice(task)}""",
         },
     ]
-    try:
-        response = await complete(
-            model=model,
-            messages=messages,
-            temperature=0,
-            max_tokens=1024,
-        )
-        if response and "####" in response:
-            answer = response.split("####")[-1].strip()
-            acc = int(answer[:1] == task["answer"])
-        else:
-            acc = 0
-    except Exception as e:
-        if "ResponsibleAIPolicyViolation" in str(e):
-            acc = 0
-        else:
-            raise e
+    response = await complete(
+        model=model,
+        messages=messages,
+        temperature=0,
+        max_tokens=1024,
+    )
+    if response and "####" in response:
+        answer = response.split("####")[-1].strip()
+        acc = int(answer[:1] == task["answer"])
+    else:
+        acc = 0
+        answer = "NO_ANSWER"
     return [
         {
             "model": model,
@@ -349,23 +336,20 @@ Response format: <reasoning> #### <letter>
 {format_multiple_choice_truthfulqa(task)}""",
         },
     ]
-    try:
-        response = await complete(
-            model=model,
-            messages=messages,
-            temperature=0,
-            max_tokens=1024, # Increased for reasoning
-        )
-        if response and "####" in response:
-            pred_answer = response.split("####")[-1].strip()
-            acc = int(pred_answer[:1].upper() == answer)
-        else:
-            acc = 0
-    except Exception as e:
-        if "ResponsibleAIPolicyViolation" in str(e):
-            acc = 0
-        else:
-            raise e
+    response = await complete(
+        model=model,
+        messages=messages,
+        temperature=0,
+        max_tokens=1024, # Increased for reasoning
+    )
+    if response and "####" in response:
+        pred_answer = response.split("####")[-1].strip()
+        acc = int(pred_answer[:1].upper() == answer)
+    else:
+        acc = 0
+        pred_answer = "NO_ANSWER"
+    
+
     return [
         {
             "model": model,
@@ -407,6 +391,9 @@ Response format: <reasoning> #### <number>
         accuracy = int(parse_number(number) == parse_number(question["answer_number"]))
     else:
         accuracy = 0
+        number = "NO_ANSWER"
+    
+
 
     return [
         {

@@ -27,7 +27,8 @@ important_models = [
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
-    "openai/gpt-5",  # include if/when available
+    "openai/gpt-5",
+    "openai/gpt-5-nano",  # include if/when available
     "openai/gpt-4.1",  # 8$
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
@@ -96,9 +97,6 @@ def get_model(permaslug):
         and m["endpoint"]
         and not m["endpoint"]["is_free"]
     ]
-    if len(slugs) == 0:
-        # the problem is that free models typically have very high rate-limiting
-        print(f"no non-free model found for {permaslug}")
     return slugs[0] if len(slugs) >= 1 else None
 
 
@@ -132,18 +130,11 @@ def get_historical_popular_models(date: date):
             for model_slug, count in sorted_models[:20]:  # Top 20
                 result.append({"slug": model_slug, "count": int(count)})
             
-            print(f"✅ Historical OpenRouter models: {len(result)} models fetched")
-            if result:
-                print(f"   Top 5: {[m['slug'] for m in result[:5]]}")
-                print(f"   Sample counts: {[m['count'] for m in result[:3]]}")
             return result
         else:
-            print("⚠️ Could not find model ranking data in OpenRouter response")
             return []
         
     except Exception as e:
-        print(f"⚠️ Error fetching OpenRouter historical rankings: {e}")
-        print("🔄 Falling back to static model list")
         return []
 
 
@@ -176,18 +167,11 @@ def get_current_popular_models(date: date):
             for model_slug, count in sorted_models[:10]:  # Top 10
                 result.append({"slug": model_slug, "count": int(count)})
             
-            print(f"✅ Current OpenRouter models: {len(result)} models fetched")
-            if result:
-                print(f"   Top 5: {[m['slug'] for m in result[:5]]}")
-                print(f"   Sample counts: {[m['count'] for m in result[:3]]}")
             return result
         else:
-            print("⚠️ Could not find daily ranking data in OpenRouter response")
             return []
         
     except Exception as e:
-        print(f"⚠️ Error fetching OpenRouter current rankings: {e}")
-        print("🔄 Falling back to static model list")
         return []
 
 
@@ -244,15 +228,12 @@ async def complete(**kwargs) -> str | None:
                 return None
             raise e
         except asyncio.TimeoutError:
-            print(f"⏰ Timeout after {timeout}s for model {model_id}")
             return None
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()
 
-
 translate_client = None
-
 
 def get_google_translate_client():
     global translate_client
@@ -364,7 +345,7 @@ def get_cost(row):
         return None
 
 
-@cache
+#@cache
 def load_models(date: date):
     popular_models = (
         get_historical_popular_models(date.today())[:20]
@@ -374,25 +355,12 @@ def load_models(date: date):
     all_model_candidates = set(important_models + popular_models) - set(blocklist)
     
     # Validate models exist on OpenRouter before including them
-    print(f"🔍 Validating {len(all_model_candidates)} model candidates...")
     valid_models = []
-    invalid_models = []
     
     for model_id in all_model_candidates:
         metadata = get_or_metadata(model_id)
         if metadata is not None:
             valid_models.append(model_id)
-        else:
-            invalid_models.append(model_id)
-    
-    if invalid_models:
-        print(f"⚠️ Excluded {len(invalid_models)} invalid models:")
-        for model in sorted(invalid_models)[:5]:  # Show first 5
-            print(f"   - {model}")
-        if len(invalid_models) > 5:
-            print(f"   ... and {len(invalid_models) - 5} more")
-    
-    print(f"✅ Using {len(valid_models)} valid models for evaluation")
     
     models = pd.DataFrame(sorted(valid_models), columns=["id"])
     or_metadata = models["id"].apply(get_or_metadata)

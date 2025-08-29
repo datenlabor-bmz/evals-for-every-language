@@ -4,7 +4,7 @@ import random
 from collections import Counter, defaultdict
 
 from datasets import Dataset, load_dataset
-from datasets_.util import _get_dataset_config_names, _load_dataset
+from datasets_.util import _get_dataset_config_names, _load_dataset, cache
 from langcodes import Language, standardize_tag
 from models import get_google_supported_languages, translate_google
 from rich import print
@@ -144,32 +144,51 @@ tags_mmlux = set(
     a.rsplit("_", 1)[1].split("-")[0].lower()
     for a in _get_dataset_config_names("Eurolingua/mmlux", trust_remote_code=True)
 )
-tags_mmlu_autotranslated = _get_dataset_config_names("fair-forward/mmlu-autotranslated")
+tags_mmlu_autotranslated = {
+    standardize_tag(a, macro=True): a
+    for a in _get_dataset_config_names("fair-forward/mmlu-autotranslated")
+}
 
 categories = sorted(
         list(set(_load_dataset("masakhane/afrimmlu", "eng")["dev"]["subject"]))
     )
 
 
+@cache
+def _get_processed_mmlu_dataset(dataset_name, subset_tag):
+    """Cache processed datasets to avoid reprocessing"""
+    ds = _load_dataset(dataset_name, subset_tag)
+    if dataset_name == "masakhane/afrimmlu":
+        ds = ds.map(parse_choices)
+    elif dataset_name == "CohereForAI/Global-MMLU":
+        ds = ds.map(add_choices)
+    return ds
+
+
+@cache
+def _get_mmlu_item(dataset_name, subset_tag, category, nr):
+    """Cache individual MMLU items efficiently"""
+    ds = _get_processed_mmlu_dataset(dataset_name, subset_tag)
+    if dataset_name in ["masakhane/afrimmlu", "CohereForAI/Global-MMLU"]:
+        filtered = ds["test"].filter(lambda x: x["subject"] == category)
+        return filtered[nr] if nr < len(filtered) else None
+    else:  # fair-forward/mmlu-autotranslated
+        filtered = ds["test"].filter(lambda x: x["subject"] == category)
+        return filtered[nr] if nr < len(filtered) else None
+
+
 async def load_mmlu(language_bcp_47, nr):
-    print(f"Loading MMLU data for {language_bcp_47}...")
     category = categories[nr % len(categories)]
     if language_bcp_47 in tags_afrimmlu.keys():
-        ds = _load_dataset("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47])
-        ds = ds.map(parse_choices)
-        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "masakhane/afrimmlu", task, "human"
+        task = _get_mmlu_item("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47], category, nr)
+        return "masakhane/afrimmlu", task, "human" if task else (None, None, None)
     elif language_bcp_47 in tags_global_mmlu.keys():
-        ds = _load_dataset("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47])
-        ds = ds.map(add_choices)
-        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "CohereForAI/Global-MMLU", task, "human"
+        task = _get_mmlu_item("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47], category, nr)
+        return "CohereForAI/Global-MMLU", task, "human" if task else (None, None, None)
     # TODO: add in Okapi, MMLUX @Jonas
     elif language_bcp_47 in tags_mmlu_autotranslated:
-        ds = _load_dataset("fair-forward/mmlu-autotranslated", language_bcp_47)
-        filtered = ds["test"].filter(lambda x: x["subject"] == category)
-        task = filtered[nr]
-        return "fair-forward/mmlu-autotranslated", task, "machine"
+        task = _get_mmlu_item("fair-forward/mmlu-autotranslated", language_bcp_47, category, nr)
+        return "fair-forward/mmlu-autotranslated", task, "machine" if task else (None, None, None)
     else:
         return None, None, None
 

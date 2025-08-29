@@ -8,6 +8,7 @@ on:
 jobs:
   run-evals:
     runs-on: ubuntu-latest
+    # checking if this is working in case eval runs take longer than 6h github actions allowance
     timeout-minutes: 1440  # 24 hours timeout
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +23,7 @@ jobs:
           curl -LsSf https://astral.sh/uv/install.sh | sh
           uv sync --frozen --extra dev
           
-      - name: Run evaluations with checkpointing
+      - name: Run evaluations
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
@@ -31,28 +32,7 @@ jobs:
         run: |
           uv run huggingface-cli login --token ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
           uv run evals/download_data.py
-          
-          # Run evaluations with periodic checkpointing
-          uv run python -c "
-          import time
-          import subprocess
-          import json
-          import os
-          
-          # Check if we have existing results to resume from
-          if os.path.exists('results.json'):
-              print('Found existing results.json, will resume from checkpoint')
-          
-          # Run the main evaluation
-          try:
-              subprocess.run(['uv', 'run', 'evals/main.py'], check=True)
-          except subprocess.CalledProcessError as e:
-              print(f'Evaluation failed: {e}')
-              # Save current state even if failed
-              if os.path.exists('results.json'):
-                  print('Saving checkpoint before exit...')
-              exit(1)
-          "
+          uv run evals/main.py
           
       - name: Commit changes
         env:
@@ -62,7 +42,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local --unset-all http.https://github.com/.extraheader
           git remote set-url origin https://${GH_PAT}@github.com/datenlabor-bmz/ai-language-monitor.git
-          git add results.json models.json languages.json checkpoint.json
+          git add results.json models.json languages.json
           git commit -m "Update evaluation results" || echo "No changes to commit"
           git push origin HEAD:main 
       
