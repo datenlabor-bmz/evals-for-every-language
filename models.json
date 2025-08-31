@@ -1,25 +1,5 @@
 [
   {
-    "id":"ai21\/jamba-large-1.7",
-    "name":"Jamba Large 1.7",
-    "provider_name":"AI21",
-    "cost":8.0,
-    "hf_id":"ai21labs\/AI21-Jamba-Large-1.7",
-    "size":398555145696.0,
-    "type":"open-source",
-    "license":"Other",
-    "creation_date":1751414400000,
-    "tasks":[
-      "translation_from",
-      "translation_to",
-      "classification",
-      "mmlu",
-      "arc",
-      "truthfulqa",
-      "mgsm"
-    ]
-  },
-  {
     "id":"amazon\/nova-micro-v1",
     "name":"Nova Micro 1.0",
     "provider_name":"Amazon",
@@ -40,15 +20,15 @@
     ]
   },
   {
-    "id":"anthracite-org\/magnum-v4-72b",
-    "name":"Magnum v4 72B",
-    "provider_name":"Magnum v4 72B",
-    "cost":5.0,
-    "hf_id":"anthracite-org\/magnum-v4-72b",
-    "size":72706203648.0,
-    "type":"open-source",
-    "license":"Apache 2.0",
-    "creation_date":1726790400000,
+    "id":"anthropic\/claude-3-haiku",
+    "name":"Claude 3 Haiku",
+    "provider_name":"Anthropic",
+    "cost":1.25,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1710288000000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -100,26 +80,6 @@
     ]
   },
   {
-    "id":"arcee-ai\/virtuoso-large",
-    "name":"Virtuoso Large",
-    "provider_name":"Arcee AI",
-    "cost":1.2,
-    "hf_id":"arcee-ai\/Virtuoso-Large",
-    "size":72706203648.0,
-    "type":"open-source",
-    "license":"Other",
-    "creation_date":1749427200000,
-    "tasks":[
-      "translation_from",
-      "translation_to",
-      "classification",
-      "mmlu",
-      "arc",
-      "truthfulqa",
-      "mgsm"
-    ]
-  },
-  {
     "id":"arliai\/qwq-32b-arliai-rpr-v1",
     "name":"QwQ 32B RpR v1",
     "provider_name":"ArliAI",
@@ -140,15 +100,15 @@
     ]
   },
   {
-    "id":"baidu\/ernie-4.5-300b-a47b",
-    "name":"ERNIE 4.5 300B A47B ",
-    "provider_name":"Baidu",
-    "cost":1.1,
-    "hf_id":"baidu\/ERNIE-4.5-300B-A47B-PT",
-    "size":300474051776.0,
-    "type":"open-source",
-    "license":"Apache 2.0",
-    "creation_date":1751068800000,
+    "id":"cohere\/command-r-08-2024",
+    "name":"Command R (08-2024)",
+    "provider_name":"Cohere",
+    "cost":0.6,
+    "hf_id":null,
+    "size":null,
+    "type":"closed-source",
+    "license":null,
+    "creation_date":1724976000000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -220,15 +180,35 @@
     ]
   },
   {
-    "id":"eleutherai\/llemma_7b",
-    "name":"Llemma 7b",
-    "provider_name":"EleutherAI",
-    "cost":1.2,
-    "hf_id":"EleutherAI\/llemma_7b",
-    "size":null,
+    "id":"deepseek\/deepseek-r1",
+    "name":"R1",
+    "provider_name":"DeepSeek",
+    "cost":0.0,
+    "hf_id":"deepseek-ai\/DeepSeek-R1",
+    "size":684531386000.0,
     "type":"open-source",
-    "license":"Llama2",
-    "creation_date":1694476800000,
+    "license":"Mit",
+    "creation_date":1737331200000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"deepseek\/deepseek-r1-0528-qwen3-8b",
+    "name":"Deepseek R1 0528 Qwen3 8B",
+    "provider_name":"DeepSeek",
+    "cost":0.0,
+    "hf_id":"deepseek-ai\/DeepSeek-R1-0528-Qwen3-8B",
+    "size":8190735360.0,
+    "type":"open-source",
+    "license":"Mit",
+    "creation_date":1748476800000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -300,26 +280,6 @@
     ]
   },
   {
-    "id":"google\/gemma-2-9b-it",
-    "name":"Gemma 2 9B",
-    "provider_name":"Google",
-    "cost":0.0,
-    "hf_id":"google\/gemma-2-9b-it",
-    "size":9241705984.0,
-    "type":"open-source",
-    "license":"Gemma",
-    "creation_date":1719187200000,
-    "tasks":[
-      "translation_from",
-      "translation_to",
-      "classification",
-      "mmlu",
-      "arc",
-      "truthfulqa",
-      "mgsm"
-    ]
-  },
-  {
     "id":"google\/gemma-3-12b-it",
     "name":"Gemma 3 12B",
     "provider_name":"Google",
@@ -349,46 +309,6 @@
     "type":"open-source",
     "license":"Gemma",
     "creation_date":1740787200000,
-    "tasks":[
-      "translation_from",
-      "translation_to",
-      "classification",
-      "mmlu",
-      "arc",
-      "truthfulqa",
-      "mgsm"
-    ]
-  },
-  {
-    "id":"google\/gemma-3-4b-it",
-    "name":"Gemma 3 4B",
-    "provider_name":"Google",
-    "cost":0.0,
-    "hf_id":"google\/gemma-3-4b-it",
-    "size":4300079472.0,
-    "type":"open-source",
-    "license":"Gemma",
-    "creation_date":1740009600000,
-    "tasks":[
-      "translation_from",
-      "translation_to",
-      "classification",
-      "mmlu",
-      "arc",
-      "truthfulqa",
-      "mgsm"
-    ]
-  },
-  {
-    "id":"liquid\/lfm-7b",
-    "name":"LFM 7B",
-    "provider_name":"Liquid",
-    "cost":0.01,
-    "hf_id":null,
-    "size":null,
-    "type":"closed-source",
-    "license":null,
-    "creation_date":1737763200000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -520,6 +440,26 @@
     ]
   },
   {
+    "id":"mistralai\/mistral-7b-instruct-v0.3",
+    "name":"Mistral 7B Instruct v0.3",
+    "provider_name":"Mistral",
+    "cost":0.05,
+    "hf_id":"mistralai\/Mistral-7B-Instruct-v0.3",
+    "size":7248023552.0,
+    "type":"open-source",
+    "license":"Apache 2.0",
+    "creation_date":1716336000000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"mistralai\/mistral-nemo",
     "name":"Mistral Nemo",
     "provider_name":"Mistral",
@@ -580,26 +520,6 @@
     ]
   },
   {
-    "id":"mistralai\/mixtral-8x7b-instruct",
-    "name":"Mixtral 8x7B Instruct",
-    "provider_name":"Mistral",
-    "cost":0.24,
-    "hf_id":"mistralai\/Mixtral-8x7B-Instruct-v0.1",
-    "size":46702792704.0,
-    "type":"open-source",
-    "license":"Apache 2.0",
-    "creation_date":1702166400000,
-    "tasks":[
-      "translation_from",
-      "translation_to",
-      "classification",
-      "mmlu",
-      "arc",
-      "truthfulqa",
-      "mgsm"
-    ]
-  },
-  {
     "id":"moonshotai\/kimi-k2",
     "name":"Kimi K2",
     "provider_name":"MoonshotAI",
@@ -620,15 +540,35 @@
     ]
   },
   {
-    "id":"nousresearch\/deephermes-3-llama-3-8b-preview",
-    "name":"DeepHermes 3 Llama 3 8B Preview",
-    "provider_name":"Nous",
-    "cost":0.0,
-    "hf_id":"NousResearch\/DeepHermes-3-Llama-3-8B-Preview",
-    "size":8030261248.0,
+    "id":"neversleep\/llama-3-lumimaid-70b",
+    "name":"Llama 3 Lumimaid 70B",
+    "provider_name":"NeverSleep",
+    "cost":6.0,
+    "hf_id":"NeverSleep\/Llama-3-Lumimaid-70B-v0.1",
+    "size":70553706496.0,
     "type":"open-source",
-    "license":"Llama3",
-    "creation_date":1739318400000,
+    "license":"Cc By Nc 4.0",
+    "creation_date":1714262400000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
+    "id":"nvidia\/llama-3.1-nemotron-70b-instruct",
+    "name":"Llama 3.1 Nemotron 70B Instruct",
+    "provider_name":"NVIDIA",
+    "cost":0.3,
+    "hf_id":"nvidia\/Llama-3.1-Nemotron-70B-Instruct-HF",
+    "size":70553706496.0,
+    "type":"open-source",
+    "license":"Llama3.1",
+    "creation_date":1728691200000,
     "tasks":[
       "translation_from",
       "translation_to",
@@ -800,26 +740,6 @@
     ]
   },
   {
-    "id":"qwen\/qwen-2.5-72b-instruct",
-    "name":"Qwen2.5 72B Instruct",
-    "provider_name":"Qwen2.5 72B Instruct (free)",
-    "cost":0.0,
-    "hf_id":"Qwen\/Qwen2.5-72B-Instruct",
-    "size":72706203648.0,
-    "type":"open-source",
-    "license":"Other",
-    "creation_date":1726444800000,
-    "tasks":[
-      "translation_from",
-      "translation_to",
-      "classification",
-      "mmlu",
-      "arc",
-      "truthfulqa",
-      "mgsm"
-    ]
-  },
-  {
     "id":"qwen\/qwen-2.5-coder-32b-instruct",
     "name":"Qwen2.5 Coder 32B Instruct",
     "provider_name":"Qwen2.5 Coder 32B Instruct (free)",
@@ -900,6 +820,26 @@
     ]
   },
   {
+    "id":"scb10x\/llama3.1-typhoon2-70b-instruct",
+    "name":"Typhoon2 70B Instruct",
+    "provider_name":"Typhoon2 70B Instruct",
+    "cost":0.88,
+    "hf_id":"scb10x\/llama3.1-typhoon2-70b-instruct",
+    "size":70553706496.0,
+    "type":"open-source",
+    "license":"Llama3.1",
+    "creation_date":1734220800000,
+    "tasks":[
+      "translation_from",
+      "translation_to",
+      "classification",
+      "mmlu",
+      "arc",
+      "truthfulqa",
+      "mgsm"
+    ]
+  },
+  {
     "id":"tencent\/hunyuan-a13b-instruct",
     "name":"Hunyuan A13B Instruct",
     "provider_name":"Tencent",
@@ -920,15 +860,15 @@
     ]
   },
   {
-    "id":"undi95\/remm-slerp-l2-13b",
-    "name":"ReMM SLERP 13B",
-    "provider_name":"ReMM SLERP 13B",
-    "cost":0.65,
-    "hf_id":"Undi95\/ReMM-SLERP-L2-13B",
-    "size":null,
+    "id":"thedrummer\/anubis-pro-105b-v1",
+    "name":"Anubis Pro 105B V1",
+    "provider_name":"TheDrummer",
+    "cost":1.0,
+    "hf_id":"TheDrummer\/Anubis-Pro-105B-v1",
+    "size":104779882496.0,
     "type":"open-source",
-    "license":"Cc By Nc 4.0",
-    "creation_date":1693785600000,
+    "license":"Other",
+    "creation_date":1738454400000,
     "tasks":[
       "translation_from",
       "translation_to",
