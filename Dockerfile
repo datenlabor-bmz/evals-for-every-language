@@ -14,7 +14,7 @@ ENV HOME=/home/user \
 RUN mkdir -p ${UV_CACHE_DIR} && chown -R user:user ${HOME}
 USER user
 WORKDIR $HOME/app
-COPY --chown=user pyproject.toml uv.lock ./
+COPY --chown=user pyproject.toml uv.lock README.md ./
 RUN uv sync --frozen --no-dev
 COPY --chown=user evals/ evals/
 COPY --chown=user --from=build /frontend/build /home/user/app/frontend/build

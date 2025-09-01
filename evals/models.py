@@ -1,3 +1,4 @@
+import asyncio
 import json
 import re
 from collections import defaultdict
@@ -7,7 +8,11 @@ from os import getenv
 import pandas as pd
 from aiolimiter import AsyncLimiter
 from dotenv import load_dotenv
-from elevenlabs import AsyncElevenLabs
+# Make ElevenLabs optional to avoid hard dependency when not using speech tasks
+try:
+    from elevenlabs import AsyncElevenLabs
+except Exception:  # ImportError or other env-specific issues
+    AsyncElevenLabs = None
 from google.cloud import translate_v2 as translate
 from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
@@ -22,14 +27,17 @@ important_models = [
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
+    "openai/gpt-5",
+    "openai/gpt-5-nano",  # include if/when available
     "openai/gpt-4.1",  # 8$
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
     "openai/gpt-4o-mini",  # 0.6$
-    # "openai/gpt-4o-2024-11-20", # 10$
-    "openai/gpt-3.5-turbo-0613",  # 2$
-    # "openai/gpt-3.5-turbo",  # 1.5$
-    # "anthropic/claude-3.5-haiku", # 4$ -> too expensive for dev
+    "openai/gpt-4o-2024-11-20", # 10$
+    "openai/gpt-oss-120b", 
+    "anthropic/claude-3.7-sonnet",  # 15$ - added for full coverage
+    "anthropic/claude-sonnet-4",  # 15$ - added for full coverage
+    "anthropic/claude-opus-4.1",  # 15$ - added for full coverage
     "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
     "mistralai/mistral-saba",  # 0.6$
     "mistralai/mistral-nemo",  # 0.08$
@@ -48,10 +56,13 @@ important_models = [
     "microsoft/phi-4",  # 0.07$
     "microsoft/phi-4-multimodal-instruct",  # 0.1$
     "amazon/nova-micro-v1",  # 0.09$
+    "moonshotai/kimi-k2",  # 0.6$ - added to prevent missing from models.json
+    "x-ai/grok-4"
 ]
 
 blocklist = [
     "google/gemini-2.5-pro-preview",
+    "google/gemini-2.5-pro",
     "google/gemini-2.5-flash-preview",
     "google/gemini-2.5-flash-lite-preview",
     "google/gemini-2.5-flash-preview-04-17",
@@ -59,6 +70,7 @@ blocklist = [
     "google/gemini-2.5-flash-lite-preview-06-17",
     "google/gemini-2.5-pro-preview-06-05",
     "google/gemini-2.5-pro-preview-05-06",
+    "perplexity/sonar-deep-research"
 ]
 
 transcription_models = [
@@ -85,36 +97,82 @@ def get_model(permaslug):
         and m["endpoint"]
         and not m["endpoint"]["is_free"]
     ]
-    if len(slugs) == 0:
-        # the problem is that free models typically have very high rate-limiting
-        print(f"no non-free model found for {permaslug}")
     return slugs[0] if len(slugs) >= 1 else None
 
 
 @cache
 def get_historical_popular_models(date: date):
-    raw = get("https://openrouter.ai/rankings").text
-    data = re.search(r'{\\"data\\":(.*),\\"isPercentage\\"', raw).group(1)
-    data = json.loads(data.replace("\\", ""))
-    counts = defaultdict(int)
-    for day in data:
-        for model, count in day["ys"].items():
-            if model.startswith("openrouter") or model == "Others":
-                continue
-            counts[model.split(":")[0]] += count
-    counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
-    models = [get_model(model) for model, _ in counts]
-    return [m for m in models if m]
+    try:
+        raw = get("https://openrouter.ai/rankings").text
+        
+        # Extract model data from rankingData using regex
+        import re
+        import json
+        
+        # Find all count and model_permaslug pairs in the data
+        # Format: "count":number,"model_permaslug":"model/name"
+        pattern = r'\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\"'
+        matches = re.findall(pattern, raw)
+        
+        if matches:
+            # Aggregate model counts
+            model_counts = {}
+            for count_str, model_slug in matches:
+                count = float(count_str)
+                if not model_slug.startswith('openrouter') and model_slug != 'Others':
+                    # Remove variant suffixes for aggregation
+                    base_model = model_slug.split(':')[0]
+                    model_counts[base_model] = model_counts.get(base_model, 0) + count
+            
+            # Sort by popularity and return top models
+            sorted_models = sorted(model_counts.items(), key=lambda x: x[1], reverse=True)
+            result = []
+            for model_slug, count in sorted_models[:20]:  # Top 20
+                result.append({"slug": model_slug, "count": int(count)})
+            
+            return result
+        else:
+            return []
+        
+    except Exception as e:
+        return []
 
 
-@cache
+@cache  
 def get_current_popular_models(date: date):
-    raw = get("https://openrouter.ai/rankings?view=day").text.replace("\\", "")
-    data = re.search(r'"rankingData":(.*),"rankingType":"day"', raw).group(1)
-    data = json.loads(data)
-    data = sorted(data, key=lambda x: x["total_prompt_tokens"], reverse=True)
-    models = [get_model(model["model_permaslug"]) for model in data]
-    return [m for m in models if m]
+    try:
+        raw = get("https://openrouter.ai/rankings?view=day").text
+        
+        # Extract model data from daily rankings
+        import re
+        import json
+        
+        # Find all count and model_permaslug pairs in the daily data
+        pattern = r'\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\"'
+        matches = re.findall(pattern, raw)
+        
+        if matches:
+            # Aggregate model counts
+            model_counts = {}
+            for count_str, model_slug in matches:
+                count = float(count_str)
+                if not model_slug.startswith('openrouter') and model_slug != 'Others':
+                    # Remove variant suffixes for aggregation
+                    base_model = model_slug.split(':')[0]
+                    model_counts[base_model] = model_counts.get(base_model, 0) + count
+            
+            # Sort by popularity and return top models
+            sorted_models = sorted(model_counts.items(), key=lambda x: x[1], reverse=True)
+            result = []
+            for model_slug, count in sorted_models[:10]:  # Top 10
+                result.append({"slug": model_slug, "count": int(count)})
+            
+            return result
+        else:
+            return []
+        
+    except Exception as e:
+        return []
 
 
 def get_translation_models():
@@ -148,26 +206,52 @@ google_rate_limit = AsyncLimiter(max_rate=10, time_period=1)
 
 @cache
 async def complete(**kwargs) -> str | None:
+    # Add longer timeout for slower, premium, or reasoning-focused models
+    model_id = kwargs.get('model', '')
+    slow_model_keywords = [
+        'claude-3.5', 'claude-3.7', 'claude-4', 'sonnet-4', # Claude
+        'gpt-4', 'o1', 'o3', # OpenAI
+        'gemini-2.5', 'gemini-pro', # Google
+        'llama-4', # Meta
+        'reasoning', 'thinking' # General
+    ]
+    timeout = 120 if any(keyword in model_id for keyword in slow_model_keywords) else 60
+    
     async with openrouter_rate_limit:
         try:
-            response = await client.chat.completions.create(**kwargs)
+            response = await asyncio.wait_for(
+                client.chat.completions.create(**kwargs),
+                timeout=timeout
+            )
         except BadRequestError as e:
             if "filtered" in e.message:
                 return None
             raise e
+        except asyncio.TimeoutError:
+            return None
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()
 
+translate_client = None
 
-translate_client = translate.Client()
-google_supported_languages = [l["language"] for l in translate_client.get_languages()]
+def get_google_translate_client():
+    global translate_client
+    if translate_client is None:
+        translate_client = translate.Client()
+    return translate_client
+
+
+def get_google_supported_languages():
+    client = get_google_translate_client()
+    return [l["language"] for l in client.get_languages()]
 
 
 @cache
 async def translate_google(text, source_language, target_language):
+    client = get_google_translate_client()
     async with google_rate_limit:
-        response = translate_client.translate(
+        response = client.translate(
             text, source_language=source_language, target_language=target_language
         )
     return response["translatedText"]
@@ -231,12 +315,14 @@ def get_hf_metadata(row):
         return empty
     try:
         info = api.model_info(id)
-        license = (
-            (info.card_data.license or "")
-            .replace("-", " ")
-            .replace("mit", "MIT")
-            .title()
-        )
+        license = ""
+        if info.card_data and hasattr(info.card_data, 'license') and info.card_data.license:
+            license = (
+                info.card_data.license
+                .replace("-", " ")
+                .replace("mit", "MIT")
+                .title()
+            )
         return {
             "hf_id": info.id,
             "creation_date": info.created_at,
@@ -249,8 +335,14 @@ def get_hf_metadata(row):
 
 
 def get_cost(row):
-    cost = float(row["endpoint"]["pricing"]["completion"])
-    return round(cost * 1_000_000, 2)
+    """
+    row: a row from the OpenRouter models dataframe
+    """
+    try:
+        cost = float(row["endpoint"]["pricing"]["completion"])
+        return round(cost * 1_000_000, 2)
+    except (TypeError, KeyError):
+        return None
 
 
 @cache
@@ -260,8 +352,17 @@ def load_models(date: date):
         + get_current_popular_models(date.today())[:10]
     )
     popular_models = [m["slug"] for m in popular_models]
-    models = set(important_models + popular_models) - set(blocklist)
-    models = pd.DataFrame(sorted(list(models)), columns=["id"])
+    all_model_candidates = set(important_models + popular_models) - set(blocklist)
+    
+    # Validate models exist on OpenRouter before including them
+    valid_models = []
+    
+    for model_id in all_model_candidates:
+        metadata = get_or_metadata(model_id)
+        if metadata is not None:
+            valid_models.append(model_id)
+    
+    models = pd.DataFrame(sorted(valid_models), columns=["id"])
     or_metadata = models["id"].apply(get_or_metadata)
     hf_metadata = or_metadata.apply(get_hf_metadata)
     creation_date_hf = pd.to_datetime(hf_metadata.str["creation_date"]).dt.date
@@ -281,7 +382,8 @@ def load_models(date: date):
         license=hf_metadata.str["license"],
         creation_date=creation_date_hf.combine_first(creation_date_or),
     )
-    # models = models[models["cost"] <= 2.0].reset_index(drop=True)
+    # Filter out expensive models to keep costs reasonable
+    models = models[models["cost"] <= 15.0].reset_index(drop=True)
     models["tasks"] = [
         ["translation_from", "translation_to", "classification", "mmlu", "arc", "truthfulqa", "mgsm"]
     ] * len(models)

@@ -1,4 +1,4 @@
-const ScoreField = (score, minScore, maxScore) => {
+const ScoreField = (score, minScore, maxScore, isMachineTranslated = false) => {
   let percentage = 100
   let barColor = "rgba(210, 106, 255, 0.1)" // light violet for missing data
   if (score !== null) {
@@ -50,6 +50,7 @@ const ScoreField = (score, minScore, maxScore) => {
         }}
       >
         {score !== null ? (score * 100).toFixed(1)+"%" : '–'}
+        {isMachineTranslated && score !== null && <span style={{color: '#666', fontSize: '0.8em'}}>*</span>}
       </span>
     </div>
   )

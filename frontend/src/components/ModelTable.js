@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import Medal from './Medal'
 import { Slider } from 'primereact/slider'
 import ScoreColumns from './ScoreColumns'
-const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
+const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTranslatedMetrics = [] }) => {
   const [filters, setFilters] = useState({
     type: { value: null, matchMode: FilterMatchMode.IN },
     size: { value: null, matchMode: FilterMatchMode.BETWEEN },
@@ -50,10 +50,10 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
   }
 
   const SliderWithLabel = ({ value, onChange, min, max }) => {
-    const p = 10
-    const start = value === null ? min : Math.log(value[0]) / Math.log(p)
-    const stop = value === null ? max : Math.log(value[1]) / Math.log(p)
-    const [_value, _setValue] = useState([start, stop])
+    const p = 10;
+    const start = value === null || value[0] === null ? min : Math.log(value[0]) / Math.log(p);
+    const stop = value === null || value[1] === null ? max : Math.log(value[1]) / Math.log(p);
+    const [_value, _setValue] = useState([start, stop]);
     useEffect(() => {
       const timer = setTimeout(() => {
         onChange({
@@ -61,11 +61,11 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
             // set to "no filter" when (almost) the whole range is selected
             _value[0] <= min + 0.1 && _value[1] >= max - 0.1
               ? null
-              : [p ** _value[0], p ** _value[1]]
-        })
-      }, 1000)
-      return () => clearTimeout(timer)
-    }, [_value, onChange, min, max])
+              : [p ** _value[0], p ** _value[1]],
+        });
+      }, 1000);
+      return () => clearTimeout(timer);
+    }, [_value, onChange, min, max]);
     return (
       <div style={{ minWidth: '20rem' }}>
         <div>{formatSize(p ** _value[0])}</div>
@@ -147,21 +147,35 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
   }
 
   const costBodyTemplate = rowData => {
-    return <div style={{ textAlign: 'center' }}>${rowData.cost?.toFixed(2)}</div>
+    return (
+      <div style={{ textAlign: 'center' }}>
+        {rowData.cost === null ? 'n/a' : `$${rowData.cost.toFixed(2)}`}
+      </div>
+    )
   }
 
   const getHeaderText = () => {
-    // Count languages that have evaluation data (average score available)
-    const evaluatedLanguagesCount = allLanguages.filter(lang => 
-      lang.average !== null && lang.average !== undefined
-    ).length
+    // Count languages that have any evaluation data (any task scores available)
+    const evaluatedLanguagesCount = allLanguages.filter(lang => {
+      // Check if language has any task scores (not just average)
+      const hasAnyScores = [
+        'translation_from_bleu',
+        'translation_to_bleu', 
+        'classification_accuracy',
+        'mmlu_accuracy',
+        'arc_accuracy',
+        'truthfulqa_accuracy',
+        'mgsm_accuracy'
+      ].some(metric => lang[metric] !== null && lang[metric] !== undefined)
+      return hasAnyScores
+    }).length
 
     if (selectedLanguages.length === 0) {
       return (
         <span>
           <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>AI Models</span>
           <span style={{ fontSize: '0.85em', marginLeft: '0.5rem' }}>
-            Average performance across {evaluatedLanguagesCount} evaluated languages
+            Performance across {evaluatedLanguagesCount} evaluated languages
           </span>
         </span>
       )
@@ -245,7 +259,7 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [] }) => {
         body={costBodyTemplate}
         style={{ minWidth: '5rem' }}
       />
-      {ScoreColumns}
+      {ScoreColumns(machineTranslatedMetrics)}
     </DataTable>
   )
 }
