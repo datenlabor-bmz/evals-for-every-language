@@ -2,21 +2,28 @@ import { Column } from 'primereact/column'
 import ScoreField from './ScoreField'
 
 const scoreBodyTemplate = (field, options = {}) => {
-  const { minScore = 0, maxScore = 1 } = options
+  const { minScore = 0, maxScore = 1, machineTranslatedMetrics = [] } = options
 
   return rowData => {
     const score = rowData[field]
-    return ScoreField(score, minScore, maxScore)
+    // Prefer per-row flag if present (backend sets `<metric>_is_machine`),
+    // otherwise fall back to global list
+    const rowFlagKey = `${field}_is_machine`
+    const hasRowFlag = Object.prototype.hasOwnProperty.call(rowData, rowFlagKey)
+    const isMachineTranslated = hasRowFlag
+      ? !!rowData[rowFlagKey]
+      : machineTranslatedMetrics.includes(field)
+    return ScoreField(score, minScore, maxScore, isMachineTranslated)
   }
 }
 
-const ScoreColumns = [
+const ScoreColumns = (machineTranslatedMetrics = []) => [
   <Column
     field='average'
     header='Proficiency'
     headerTooltip='Language Proficiency Score (average of the scores for each task, after min-max normalization)'
     sortable
-    body={scoreBodyTemplate('average', { minScore: 0.2, maxScore: 0.5 })}
+    body={scoreBodyTemplate('average', { minScore: 0.2, maxScore: 0.5, machineTranslatedMetrics })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,
   <Column
@@ -26,7 +33,8 @@ const ScoreColumns = [
     sortable
     body={scoreBodyTemplate('translation_from_bleu', {
       minScore: 0,
-      maxScore: 0.5
+      maxScore: 0.5,
+      machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,
@@ -37,7 +45,8 @@ const ScoreColumns = [
     sortable
     body={scoreBodyTemplate('translation_to_bleu', {
       minScore: 0,
-      maxScore: 0.5
+      maxScore: 0.5,
+      machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,
@@ -48,7 +57,8 @@ const ScoreColumns = [
     sortable
     body={scoreBodyTemplate('classification_accuracy', {
       minScore: 0,
-      maxScore: 0.5
+      maxScore: 0.5,
+      machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,
@@ -69,7 +79,8 @@ const ScoreColumns = [
     sortable
     body={scoreBodyTemplate('mmlu_accuracy', {
       minScore: 0,
-      maxScore: 1
+      maxScore: 1,
+      machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,
@@ -80,7 +91,8 @@ const ScoreColumns = [
     sortable
     body={scoreBodyTemplate('arc_accuracy', {
       minScore: 0,
-      maxScore: 1
+      maxScore: 1,
+      machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,
@@ -91,7 +103,8 @@ const ScoreColumns = [
     sortable
     body={scoreBodyTemplate('mgsm_accuracy', {
       minScore: 0,
-      maxScore: 1
+      maxScore: 1,
+      machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,

@@ -20,3 +20,6 @@ wheels/
 # folders and files to be ignored
 .specstory/
 .cursorindexingignore
+
+# Project-specific files
+.dockerignore.eval

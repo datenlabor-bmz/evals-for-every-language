@@ -172,7 +172,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages, totalMod
         filterElement={familyRowFilterTemplate}
         style={{ minWidth: '10rem' }}
       />
-      {ScoreColumns}
+      {ScoreColumns()}
     </DataTable>
   )
 }

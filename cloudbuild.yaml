@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'Dockerfile.eval', '-t', 'gcr.io/$PROJECT_ID/ai-language-eval', '.']
+images:
+  - 'gcr.io/$PROJECT_ID/ai-language-eval' 
