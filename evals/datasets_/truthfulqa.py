@@ -8,7 +8,7 @@ import asyncio
 from tqdm.asyncio import tqdm_asyncio
 import os
 
-from datasets import Dataset, load_dataset
+from datasets import Dataset, load_dataset, DatasetNotFoundError
 from models import translate_google, get_google_supported_languages
 
 from datasets_.util import _get_dataset_config_names, _load_dataset
@@ -26,7 +26,7 @@ try:
     tags_truthfulqa_autotranslated = {
         standardize_tag(a, macro=True): a for a in _get_dataset_config_names(slug_truthfulqa_autotranslated)
     }
-except Exception:
+except DatasetNotFoundError:
     tags_truthfulqa_autotranslated = {}
 
 
@@ -43,12 +43,18 @@ async def load_truthfulqa(language_bcp_47, nr):
         )
         ds = ds.map(add_choices)
         task = ds["test"][nr]
+        # Ensure there is a correct answer before returning the task
+        if 1 not in task["labels"]:
+            return None, None, None
         return "masakhane/uhura-truthfulqa", task, "human"
     elif language_bcp_47 in tags_truthfulqa_autotranslated.keys():
         # Load from auto-translated dataset (same samples as translation)
         ds = _load_dataset(slug_truthfulqa_autotranslated, language_bcp_47)
         test_split = ds["test"] if "test" in ds else ds
         task = test_split[nr]
+        # Ensure there is a correct answer before returning the task
+        if 1 not in task.get("labels", []):
+            return None, None, None
         return slug_truthfulqa_autotranslated, task, "machine"
     # TODO: add Okapi, TruthfulQA-X @Jonas
     else:

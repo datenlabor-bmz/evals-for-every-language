@@ -64,16 +64,6 @@ def load_uhura_arc_easy(language_bcp_47, nr):
         return None, None, None
 
 
-def load_uhura_arc_challenge(language_bcp_47, nr):
-    ds_name = "jlahd/uhura_arc_challenge"
-    if language_bcp_47 in _get_dataset_config_names(ds_name):
-        ds = _load_dataset(ds_name, language_bcp_47)
-        task = ds["test"][nr]
-        return ds_name, task
-    else:
-        return None, None, None
-
-
 def translate_arc(languages):
     human_translated = tags_uhura_arc_easy.keys()
     untranslated = [

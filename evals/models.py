@@ -8,11 +8,6 @@ from os import getenv
 import pandas as pd
 from aiolimiter import AsyncLimiter
 from dotenv import load_dotenv
-# Make ElevenLabs optional to avoid hard dependency when not using speech tasks
-try:
-    from elevenlabs import AsyncElevenLabs
-except Exception:  # ImportError or other env-specific issues
-    AsyncElevenLabs = None
 from google.cloud import translate_v2 as translate
 from huggingface_hub import AsyncInferenceClient, HfApi
 from joblib.memory import Memory
@@ -97,6 +92,9 @@ def get_model(permaslug):
         and m["endpoint"]
         and not m["endpoint"]["is_free"]
     ]
+    if len(slugs) == 0:
+        # the problem is that free models typically have very high rate-limiting
+        print(f"no non-free model found for {permaslug}")
     return slugs[0] if len(slugs) >= 1 else None
 
 
@@ -206,52 +204,29 @@ google_rate_limit = AsyncLimiter(max_rate=10, time_period=1)
 
 @cache
 async def complete(**kwargs) -> str | None:
-    # Add longer timeout for slower, premium, or reasoning-focused models
-    model_id = kwargs.get('model', '')
-    slow_model_keywords = [
-        'claude-3.5', 'claude-3.7', 'claude-4', 'sonnet-4', # Claude
-        'gpt-4', 'o1', 'o3', # OpenAI
-        'gemini-2.5', 'gemini-pro', # Google
-        'llama-4', # Meta
-        'reasoning', 'thinking' # General
-    ]
-    timeout = 120 if any(keyword in model_id for keyword in slow_model_keywords) else 60
-    
     async with openrouter_rate_limit:
         try:
-            response = await asyncio.wait_for(
-                client.chat.completions.create(**kwargs),
-                timeout=timeout
-            )
+            response = await client.chat.completions.create(**kwargs)
         except BadRequestError as e:
             if "filtered" in e.message:
                 return None
             raise e
-        except asyncio.TimeoutError:
-            return None
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()
 
-translate_client = None
 
-def get_google_translate_client():
-    global translate_client
-    if translate_client is None:
-        translate_client = translate.Client()
-    return translate_client
+translate_client = translate.Client()
 
 
 def get_google_supported_languages():
-    client = get_google_translate_client()
-    return [l["language"] for l in client.get_languages()]
+    return [l["language"] for l in translate_client.get_languages()]
 
 
 @cache
 async def translate_google(text, source_language, target_language):
-    client = get_google_translate_client()
     async with google_rate_limit:
-        response = client.translate(
+        response = translate_client.translate(
             text, source_language=source_language, target_language=target_language
         )
     return response["translatedText"]

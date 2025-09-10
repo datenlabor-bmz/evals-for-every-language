@@ -201,9 +201,7 @@ def format_multiple_choice(item):
     A: {item["choices"][0]}
     B: {item["choices"][1]}
     C: {item["choices"][2]}
-    D: {item["choices"][3]}
-    
-    Answer with the letter of the correct answer."""
+    D: {item["choices"][3]}"""
 
 
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
@@ -234,7 +232,6 @@ Response format: <reasoning> #### <letter>
         acc = int(answer[:1] == task["answer"])
     else:
         acc = 0
-        answer = "NO_ANSWER"
     
 
     
@@ -279,7 +276,6 @@ Response format: <reasoning> #### <letter>
         acc = int(answer[:1] == task["answer"])
     else:
         acc = 0
-        answer = "NO_ANSWER"
     return [
         {
             "model": model,
@@ -317,12 +313,8 @@ async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
         return []
 
     # Find the correct answer
-    try:
-        correct_choice_index = task["labels"].index(1)
-        answer = letters[correct_choice_index]
-    except (ValueError, IndexError):
-        # Handle cases where there is no correct answer or labels are malformed
-        return []
+    correct_choice_index = task["labels"].index(1)
+    answer = letters[correct_choice_index]
 
     messages = [
         {
@@ -347,7 +339,6 @@ Response format: <reasoning> #### <letter>
         acc = int(pred_answer[:1].upper() == answer)
     else:
         acc = 0
-        pred_answer = "NO_ANSWER"
     
 
     return [
@@ -391,7 +382,6 @@ Response format: <reasoning> #### <number>
         accuracy = int(parse_number(number) == parse_number(question["answer_number"]))
     else:
         accuracy = 0
-        number = "NO_ANSWER"
     
 
 
