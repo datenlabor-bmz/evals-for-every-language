@@ -41,12 +41,7 @@ async def evaluate():
     if test_mode:
         old_results = pd.DataFrame(columns=["model", "bcp_47", "task", "metric", "origin", "score"])
     else:
-        try:
-            old_results = pd.read_json("results.json")
-            if old_results.empty:
-                old_results = pd.DataFrame(columns=["model", "bcp_47", "task", "metric", "origin", "score"])
-        except FileNotFoundError:
-            old_results = pd.DataFrame(columns=["model", "bcp_47", "task", "metric", "origin", "score"])
+        old_results = pd.read_json("results.json")
     
     # Get all combinations that need evaluation
     combis = [
