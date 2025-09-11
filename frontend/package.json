@@ -6,13 +6,12 @@
     "@observablehq/plot": "^0.6.17",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.2.0",
+    "@testing-library/react": "^15.0.0",
     "@testing-library/user-event": "^13.5.0",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "topojson-simplify": "^3.0.3",
     "web-vitals": "^2.1.4"
   },
@@ -41,5 +40,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:8000",
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }
