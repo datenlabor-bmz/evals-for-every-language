@@ -31,6 +31,7 @@ glottolog["bcp_47"] = glottolog["iso639P3code"].apply(
     lambda x: standardize_tag(x, macro=True) if not pd.isna(x) else None
 )
 
+
 @cache
 def language_family(bcp_47):
     languoid = glottolog[glottolog["bcp_47"] == bcp_47].iloc[0]
@@ -39,12 +40,14 @@ def language_family(bcp_47):
     family = glottolog[glottolog["id"] == languoid["family_id"]].iloc[0]
     return family["name"]
 
+
 languages["family"] = languages["bcp_47"].apply(language_family)
 
 # load script codes and names
 scripts = pd.read_csv("data/ScriptCodes.csv").rename(
     columns={"Code": "iso15924", "English Name": "script_name"}
 )
+
 
 def script_name(iso15924):
     return scripts[scripts["iso15924"] == iso15924]["script_name"].values[0]

@@ -15,6 +15,7 @@ def population(bcp_47):
     }
     return items
 
+
 @cache
 def make_country_table(language_table):
     countries = defaultdict(list)
@@ -30,7 +31,7 @@ def make_country_table(language_table):
             )
     for country, languages in countries.items():
         speaker_pop = sum(entry["population"] for entry in languages)
-        
+
         if speaker_pop < 1000:  # Grey out low-population countries
             score = None  # This will make them appear grey on the map
         else:
@@ -38,7 +39,7 @@ def make_country_table(language_table):
                 sum(entry["score"] * entry["population"] for entry in languages)
                 / speaker_pop
             )
-        
+
         countries[country] = {
             "score": score,
             "languages": languages,

@@ -43,16 +43,21 @@ def parse_number(i):
 def _get_mgsm_item(dataset_slug, subset_tag, nr, trust_remote_code=False):
     """Cache individual MGSM items efficiently"""
     try:
-        ds = _load_dataset(dataset_slug, subset=subset_tag, split="test", trust_remote_code=trust_remote_code)
+        ds = _load_dataset(
+            dataset_slug,
+            subset=subset_tag,
+            split="test",
+            trust_remote_code=trust_remote_code,
+        )
         if nr >= len(ds):
             return None
-        
+
         row = ds[nr]
-        
+
         # Post-process based on dataset type
         if dataset_slug == slug_gsm8kx:
             row["answer_number"] = row["answer"].split("####")[1].strip()
-        
+
         return row
     except Exception:
         # Dataset doesn't exist or doesn't have test split
@@ -67,10 +72,14 @@ def load_mgsm(language_bcp_47, nr):
         item = _get_mgsm_item(slug_afrimgsm, tags_afrimgsm[language_bcp_47], nr)
         return slug_afrimgsm, item, "human" if item else (None, None, None)
     elif language_bcp_47 in tags_gsm8kx.keys():
-        item = _get_mgsm_item(slug_gsm8kx, tags_gsm8kx[language_bcp_47], nr, trust_remote_code=True)
+        item = _get_mgsm_item(
+            slug_gsm8kx, tags_gsm8kx[language_bcp_47], nr, trust_remote_code=True
+        )
         return slug_gsm8kx, item, "machine" if item else (None, None, None)
     elif language_bcp_47 in tags_gsm_autotranslated.keys():
-        item = _get_mgsm_item(slug_gsm_autotranslated, tags_gsm_autotranslated[language_bcp_47], nr)
+        item = _get_mgsm_item(
+            slug_gsm_autotranslated, tags_gsm_autotranslated[language_bcp_47], nr
+        )
         return slug_gsm_autotranslated, item, "machine" if item else (None, None, None)
     else:
         return None, None, None
@@ -108,5 +117,8 @@ def translate_mgsm(languages):
                 token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"),
             )
             ds_lang.to_json(
-                f"data/translations/mgsm/{lang}.json", lines=False, force_ascii=False, indent=2
+                f"data/translations/mgsm/{lang}.json",
+                lines=False,
+                force_ascii=False,
+                indent=2,
             )
