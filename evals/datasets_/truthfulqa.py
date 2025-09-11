@@ -17,14 +17,16 @@ slug_uhura_truthfulqa = "masakhane/uhura-truthfulqa"
 slug_truthfulqa_autotranslated = "fair-forward/truthfulqa-autotranslated"
 
 tags_uhura_truthfulqa = {
-    standardize_tag(a.split("_")[0], macro=True): a for a in _get_dataset_config_names(slug_uhura_truthfulqa)
+    standardize_tag(a.split("_")[0], macro=True): a
+    for a in _get_dataset_config_names(slug_uhura_truthfulqa)
     if a.endswith("multiple_choice")
 }
 
 # Get available auto-translated languages
 try:
     tags_truthfulqa_autotranslated = {
-        standardize_tag(a, macro=True): a for a in _get_dataset_config_names(slug_truthfulqa_autotranslated)
+        standardize_tag(a, macro=True): a
+        for a in _get_dataset_config_names(slug_truthfulqa_autotranslated)
     }
 except DatasetNotFoundError:
     tags_truthfulqa_autotranslated = {}
@@ -60,6 +62,7 @@ async def load_truthfulqa(language_bcp_47, nr):
     else:
         return None, None, None
 
+
 def translate_truthfulqa(languages):
     human_translated = [*tags_uhura_truthfulqa.keys()]
     untranslated = [
@@ -71,7 +74,7 @@ def translate_truthfulqa(languages):
 
     # Set fixed seed for consistent sample selection across all languages
     random.seed(42)
-    
+
     slug = "fair-forward/truthfulqa-autotranslated"
     for lang in tqdm(untranslated):
         # check if already exists on hub
@@ -80,7 +83,9 @@ def translate_truthfulqa(languages):
         except (ValueError, Exception):
             print(f"Translating {lang}...")
             for split in ["train", "test"]:
-                ds = _load_dataset(slug_uhura_truthfulqa, tags_uhura_truthfulqa["en"], split=split)
+                ds = _load_dataset(
+                    slug_uhura_truthfulqa, tags_uhura_truthfulqa["en"], split=split
+                )
                 samples = []
                 if split == "train":
                     samples.extend(ds)
@@ -89,28 +94,28 @@ def translate_truthfulqa(languages):
                     for i in range(min(n_samples, len(ds))):
                         task = ds[i]
                         samples.append(task)
-                
+
                 # Translate questions
                 questions_tr = [
                     translate_google(s["question"], "en", lang) for s in samples
                 ]
                 questions_tr = asyncio.run(tqdm_asyncio.gather(*questions_tr))
-                
+
                 # Translate choices for each sample
                 all_choices_tr = []
                 all_labels = []
-                
+
                 for s in samples:
                     # Get choices from mc1_targets
                     choices = s["mc1_targets"]["choices"]
                     labels = s["mc1_targets"]["labels"]
-                    
+
                     # Translate choices
                     choices_tr = [
                         translate_google(choice, "en", lang) for choice in choices
                     ]
                     choices_tr = asyncio.run(tqdm_asyncio.gather(*choices_tr))
-                    
+
                     all_choices_tr.append(choices_tr)
                     all_labels.append(labels)
 

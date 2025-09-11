@@ -72,14 +72,18 @@ def translate_arc(languages):
         if lang not in human_translated and lang in get_google_supported_languages()
     ]
     n_samples = 10
-    train_ids = common_ids_train[:n_samples+3]
-    en_train = _load_dataset(slug_uhura_arc_easy, subset=tags_uhura_arc_easy["en"], split="train")
+    train_ids = common_ids_train[: n_samples + 3]
+    en_train = _load_dataset(
+        slug_uhura_arc_easy, subset=tags_uhura_arc_easy["en"], split="train"
+    )
     en_train = en_train.filter(lambda x: x["id"] in train_ids)
     test_ids = common_ids_test[:n_samples]
-    en_test = _load_dataset(slug_uhura_arc_easy, subset=tags_uhura_arc_easy["en"], split="test")
+    en_test = _load_dataset(
+        slug_uhura_arc_easy, subset=tags_uhura_arc_easy["en"], split="test"
+    )
     en_test = en_test.filter(lambda x: x["id"] in test_ids)
     data = {"train": en_train, "test": en_test}
-    
+
     slug = "fair-forward/arc-easy-autotranslated"
     for lang in tqdm(untranslated):
         # check if already exists on hub
@@ -88,16 +92,22 @@ def translate_arc(languages):
         except (ValueError, Exception):
             print(f"Translating {lang}...")
             for split, data_en in data.items():
-                questions_tr = [translate_google(q, "en", lang) for q in data_en["question"]]
+                questions_tr = [
+                    translate_google(q, "en", lang) for q in data_en["question"]
+                ]
                 questions_tr = asyncio.run(tqdm_asyncio.gather(*questions_tr))
                 choices_texts_concatenated = []
                 for choice in data_en["choices"]:
                     for option in choice["text"]:
                         choices_texts_concatenated.append(option)
-                choices_tr = [translate_google(c, "en", lang) for c in choices_texts_concatenated]
+                choices_tr = [
+                    translate_google(c, "en", lang) for c in choices_texts_concatenated
+                ]
                 choices_tr = asyncio.run(tqdm_asyncio.gather(*choices_tr))
                 # group into chunks of 4
-                choices_tr = [choices_tr[i:i+4] for i in range(0, len(choices_tr), 4)]
+                choices_tr = [
+                    choices_tr[i : i + 4] for i in range(0, len(choices_tr), 4)
+                ]
 
                 ds_lang = Dataset.from_dict(
                     {
@@ -114,5 +124,8 @@ def translate_arc(languages):
                     token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"),
                 )
                 ds_lang.to_json(
-                    f"data/translations/arc/{lang}_{split}.json", lines=False, force_ascii=False, indent=2
+                    f"data/translations/arc/{lang}_{split}.json",
+                    lines=False,
+                    force_ascii=False,
+                    indent=2,
                 )

@@ -28,8 +28,8 @@ important_models = [
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
     "openai/gpt-4o-mini",  # 0.6$
-    "openai/gpt-4o-2024-11-20", # 10$
-    "openai/gpt-oss-120b", 
+    "openai/gpt-4o-2024-11-20",  # 10$
+    "openai/gpt-oss-120b",
     "anthropic/claude-3.7-sonnet",  # 15$ - added for full coverage
     "anthropic/claude-sonnet-4",  # 15$ - added for full coverage
     "anthropic/claude-opus-4.1",  # 15$ - added for full coverage
@@ -52,7 +52,7 @@ important_models = [
     "microsoft/phi-4-multimodal-instruct",  # 0.1$
     "amazon/nova-micro-v1",  # 0.09$
     "moonshotai/kimi-k2",  # 0.6$ - added to prevent missing from models.json
-    "x-ai/grok-4"
+    "x-ai/grok-4",
 ]
 
 blocklist = [
@@ -65,7 +65,7 @@ blocklist = [
     "google/gemini-2.5-flash-lite-preview-06-17",
     "google/gemini-2.5-pro-preview-06-05",
     "google/gemini-2.5-pro-preview-05-06",
-    "perplexity/sonar-deep-research"
+    "perplexity/sonar-deep-research",
 ]
 
 transcription_models = [
@@ -102,73 +102,77 @@ def get_model(permaslug):
 def get_historical_popular_models(date: date):
     try:
         raw = get("https://openrouter.ai/rankings").text
-        
+
         # Extract model data from rankingData using regex
         import re
         import json
-        
+
         # Find all count and model_permaslug pairs in the data
         # Format: "count":number,"model_permaslug":"model/name"
-        pattern = r'\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\"'
+        pattern = r"\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\""
         matches = re.findall(pattern, raw)
-        
+
         if matches:
             # Aggregate model counts
             model_counts = {}
             for count_str, model_slug in matches:
                 count = float(count_str)
-                if not model_slug.startswith('openrouter') and model_slug != 'Others':
+                if not model_slug.startswith("openrouter") and model_slug != "Others":
                     # Remove variant suffixes for aggregation
-                    base_model = model_slug.split(':')[0]
+                    base_model = model_slug.split(":")[0]
                     model_counts[base_model] = model_counts.get(base_model, 0) + count
-            
+
             # Sort by popularity and return top models
-            sorted_models = sorted(model_counts.items(), key=lambda x: x[1], reverse=True)
+            sorted_models = sorted(
+                model_counts.items(), key=lambda x: x[1], reverse=True
+            )
             result = []
             for model_slug, count in sorted_models[:20]:  # Top 20
                 result.append({"slug": model_slug, "count": int(count)})
-            
+
             return result
         else:
             return []
-        
+
     except Exception as e:
         return []
 
 
-@cache  
+@cache
 def get_current_popular_models(date: date):
     try:
         raw = get("https://openrouter.ai/rankings?view=day").text
-        
+
         # Extract model data from daily rankings
         import re
         import json
-        
+
         # Find all count and model_permaslug pairs in the daily data
-        pattern = r'\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\"'
+        pattern = r"\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\""
         matches = re.findall(pattern, raw)
-        
+
         if matches:
             # Aggregate model counts
             model_counts = {}
             for count_str, model_slug in matches:
                 count = float(count_str)
-                if not model_slug.startswith('openrouter') and model_slug != 'Others':
+                if not model_slug.startswith("openrouter") and model_slug != "Others":
                     # Remove variant suffixes for aggregation
-                    base_model = model_slug.split(':')[0]
+                    base_model = model_slug.split(":")[0]
                     model_counts[base_model] = model_counts.get(base_model, 0) + count
-            
+
             # Sort by popularity and return top models
-            sorted_models = sorted(model_counts.items(), key=lambda x: x[1], reverse=True)
+            sorted_models = sorted(
+                model_counts.items(), key=lambda x: x[1], reverse=True
+            )
             result = []
             for model_slug, count in sorted_models[:10]:  # Top 10
                 result.append({"slug": model_slug, "count": int(count)})
-            
+
             return result
         else:
             return []
-        
+
     except Exception as e:
         return []
 
@@ -291,12 +295,13 @@ def get_hf_metadata(row):
     try:
         info = api.model_info(id)
         license = ""
-        if info.card_data and hasattr(info.card_data, 'license') and info.card_data.license:
+        if (
+            info.card_data
+            and hasattr(info.card_data, "license")
+            and info.card_data.license
+        ):
             license = (
-                info.card_data.license
-                .replace("-", " ")
-                .replace("mit", "MIT")
-                .title()
+                info.card_data.license.replace("-", " ").replace("mit", "MIT").title()
             )
         return {
             "hf_id": info.id,
@@ -328,15 +333,15 @@ def load_models(date: date):
     )
     popular_models = [m["slug"] for m in popular_models]
     all_model_candidates = set(important_models + popular_models) - set(blocklist)
-    
+
     # Validate models exist on OpenRouter before including them
     valid_models = []
-    
+
     for model_id in all_model_candidates:
         metadata = get_or_metadata(model_id)
         if metadata is not None:
             valid_models.append(model_id)
-    
+
     models = pd.DataFrame(sorted(valid_models), columns=["id"])
     or_metadata = models["id"].apply(get_or_metadata)
     hf_metadata = or_metadata.apply(get_hf_metadata)
@@ -360,7 +365,15 @@ def load_models(date: date):
     # Filter out expensive models to keep costs reasonable
     models = models[models["cost"] <= 15.0].reset_index(drop=True)
     models["tasks"] = [
-        ["translation_from", "translation_to", "classification", "mmlu", "arc", "truthfulqa", "mgsm"]
+        [
+            "translation_from",
+            "translation_to",
+            "classification",
+            "mmlu",
+            "arc",
+            "truthfulqa",
+            "mgsm",
+        ]
     ] * len(models)
     models = pd.concat([models, get_translation_models()])
     return models

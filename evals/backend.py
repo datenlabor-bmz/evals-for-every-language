@@ -40,7 +40,9 @@ def compute_normalized_average(df, metrics):
             col_min = normalized_df[col].min()
             col_max = normalized_df[col].max()
             if col_max > col_min:  # Avoid division by zero
-                normalized_df[col] = (normalized_df[col] - col_min) / (col_max - col_min)
+                normalized_df[col] = (normalized_df[col] - col_min) / (
+                    col_max - col_min
+                )
             else:
                 normalized_df[col] = 0  # If all values are the same, set to 0
     return normalized_df.mean(axis=1, skipna=False)
@@ -68,16 +70,18 @@ def make_model_table(scores_df, models):
 
     # Merge the two pivots
     df = pd.merge(main_pivot, scores_pivot, on="model", how="outer")
-    
+
     for metric in task_metrics:
         if metric not in df.columns:
             df[metric] = np.nan
-            
+
     df["average"] = compute_normalized_average(df, task_metrics)
 
     # Compute origin presence per model+metric
     origin_presence = (
-        scores_df.groupby(["model", "task_metric", "origin"]).size().unstack(fill_value=0)
+        scores_df.groupby(["model", "task_metric", "origin"])
+        .size()
+        .unstack(fill_value=0)
     )
     # Add boolean flags: show asterisk only if exclusively machine-origin contributed
     for metric in task_metrics:
@@ -92,7 +96,9 @@ def make_model_table(scores_df, models):
                     flags.append(False)
                     continue
                 human_count = counts.get(human_col_name, 0) if human_col_name else 0
-                machine_count = counts.get(machine_col_name, 0) if machine_col_name else 0
+                machine_count = (
+                    counts.get(machine_col_name, 0) if machine_col_name else 0
+                )
                 flags.append(machine_count > 0 and human_count == 0)
             df[f"{metric}_is_machine"] = flags
         else:
@@ -100,16 +106,25 @@ def make_model_table(scores_df, models):
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
-    
+
     # Dynamically find all metric columns to include
     final_cols = df.columns
     metric_cols = [m for m in final_cols if any(tm in m for tm in task_metrics)]
-    
+
     df = df[
         [
-            "rank", "model", "name", "provider_name", "hf_id", "creation_date",
-            "size", "type", "license", "cost", "average",
-            *sorted(list(set(metric_cols)))
+            "rank",
+            "model",
+            "name",
+            "provider_name",
+            "hf_id",
+            "creation_date",
+            "size",
+            "type",
+            "license",
+            "cost",
+            "average",
+            *sorted(list(set(metric_cols))),
         ]
     ]
     return df
@@ -141,12 +156,14 @@ def make_language_table(scores_df, languages):
     for metric in task_metrics:
         if metric not in df.columns:
             df[metric] = np.nan
-            
+
     df["average"] = compute_normalized_average(df, task_metrics)
 
     # Compute origin presence per language+metric; show asterisk only if exclusively machine-origin
     origin_presence = (
-        scores_df.groupby(["bcp_47", "task_metric", "origin"]).size().unstack(fill_value=0)
+        scores_df.groupby(["bcp_47", "task_metric", "origin"])
+        .size()
+        .unstack(fill_value=0)
     )
     for metric in task_metrics:
         human_col_name = "human" if "human" in origin_presence.columns else None
@@ -160,7 +177,9 @@ def make_language_table(scores_df, languages):
                     flags.append(False)
                     continue
                 human_count = counts.get(human_col_name, 0) if human_col_name else 0
-                machine_count = counts.get(machine_col_name, 0) if machine_col_name else 0
+                machine_count = (
+                    counts.get(machine_col_name, 0) if machine_col_name else 0
+                )
                 flags.append(machine_count > 0 and human_count == 0)
             df[f"{metric}_is_machine"] = flags
         else:
@@ -175,16 +194,21 @@ def make_language_table(scores_df, languages):
             df[f"{metric}_is_machine"] = False
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
-    
+
     # Dynamically find all metric columns to include
     final_cols = df.columns
     metric_cols = [m for m in final_cols if any(tm in m for tm in task_metrics)]
-    
+
     df = df[
         [
-            "bcp_47", "language_name", "autonym", "speakers", "family",
-            "average", "in_benchmark",
-            *sorted(list(set(metric_cols)))
+            "bcp_47",
+            "language_name",
+            "autonym",
+            "speakers",
+            "family",
+            "average",
+            "in_benchmark",
+            *sorted(list(set(metric_cols))),
         ]
     ]
     return df
@@ -205,18 +229,22 @@ async def data(request: Request):
     body = await request.body()
     data = json.loads(body)
     selected_languages = data.get("selectedLanguages", {})
-    df = scores.groupby(["model", "bcp_47", "task", "metric", "origin"]).mean().reset_index()
+    df = (
+        scores.groupby(["model", "bcp_47", "task", "metric", "origin"])
+        .mean()
+        .reset_index()
+    )
     # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
     language_table = make_language_table(df, languages)
     datasets_df = pd.read_json("datasets.json")
-    
+
     # Identify which metrics have machine translations available
     machine_translated_metrics = set()
     for _, row in df.iterrows():
         if row["origin"] == "machine":
             metric_name = f"{row['task']}_{row['metric']}"
             machine_translated_metrics.add(metric_name)
-    
+
     if selected_languages:
         # the filtering is only applied for the model table and the country data
         df = df[df["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)]

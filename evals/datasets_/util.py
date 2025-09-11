@@ -13,8 +13,9 @@ def _get_dataset_config_names(dataset, **kwargs):
 def _load_dataset(dataset, subset, **kwargs):
     return load_dataset(dataset, subset, **kwargs)
 
+
 # Cache individual dataset items to avoid reloading entire datasets
-@cache  
+@cache
 def _get_dataset_item(dataset, subset, split, index, **kwargs):
     """Load a single item from a dataset efficiently"""
     ds = load_dataset(dataset, subset, split=split, **kwargs)

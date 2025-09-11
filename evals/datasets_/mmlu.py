@@ -150,8 +150,8 @@ tags_mmlu_autotranslated = {
 }
 
 categories = sorted(
-        list(set(_load_dataset("masakhane/afrimmlu", "eng")["dev"]["subject"]))
-    )
+    list(set(_load_dataset("masakhane/afrimmlu", "eng")["dev"]["subject"]))
+)
 
 
 @cache
@@ -180,15 +180,25 @@ def _get_mmlu_item(dataset_name, subset_tag, category, nr):
 async def load_mmlu(language_bcp_47, nr):
     category = categories[nr % len(categories)]
     if language_bcp_47 in tags_afrimmlu.keys():
-        task = _get_mmlu_item("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47], category, nr)
+        task = _get_mmlu_item(
+            "masakhane/afrimmlu", tags_afrimmlu[language_bcp_47], category, nr
+        )
         return "masakhane/afrimmlu", task, "human" if task else (None, None, None)
     elif language_bcp_47 in tags_global_mmlu.keys():
-        task = _get_mmlu_item("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47], category, nr)
+        task = _get_mmlu_item(
+            "CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47], category, nr
+        )
         return "CohereForAI/Global-MMLU", task, "human" if task else (None, None, None)
     # TODO: add in Okapi, MMLUX @Jonas
     elif language_bcp_47 in tags_mmlu_autotranslated:
-        task = _get_mmlu_item("fair-forward/mmlu-autotranslated", language_bcp_47, category, nr)
-        return "fair-forward/mmlu-autotranslated", task, "machine" if task else (None, None, None)
+        task = _get_mmlu_item(
+            "fair-forward/mmlu-autotranslated", language_bcp_47, category, nr
+        )
+        return (
+            "fair-forward/mmlu-autotranslated",
+            task,
+            "machine" if task else (None, None, None),
+        )
     else:
         return None, None, None
 
