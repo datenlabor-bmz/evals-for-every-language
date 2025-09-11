@@ -1,5 +1,7 @@
 # AI Language Monitor - System Architecture
 
+\[AI-generated, not 100% up-to-date\]
+
 This diagram shows the complete data flow from model discovery through evaluation to frontend visualization.
 
 ```mermaid
