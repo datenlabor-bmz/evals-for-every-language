@@ -142,7 +142,7 @@ function App () {
           }}
         >
           <strong>Work in Progress:</strong> This dashboard is currently under
-          active development. Evaluation results are not yet final. Note that the visualised results currently stem from sampling 20 instances per combination of model, task, and language. We have evaluated 139 languages across 41 models and 7 tasks, totaling over 300,000 individual evaluations. Only the top 150 languages by speaker count are included in the current evaluation scope. More extensive evaluation runs will be released later this year.
+          active development. Evaluation results are not yet final. More extensive evaluation runs will be released later this year.
         </div>
         <div
           style={{
