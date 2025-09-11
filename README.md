@@ -43,18 +43,6 @@ For tag meaning, see https://huggingface.co/spaces/leaderboards/LeaderboardsExpl
 
 _Tracking language proficiency of AI models for every language_
 
-## System Architecture
-
-The AI Language Monitor evaluates language models across 100+ languages using a comprehensive pipeline that combines model discovery, automated evaluation, and real-time visualization.
-
-> **Detailed Architecture**: See [system_architecture_diagram.md](system_architecture_diagram.md) for the complete system architecture diagram and component descriptions.
-
-**Key Features:**
-- **Model Discovery**: Combines curated models with real-time trending models via web scraping
-- **Multi-Task Evaluation**: 7 tasks across 100+ languages with origin tracking (human vs machine-translated)
-- **Scalable Architecture**: Dual deployment (local/GitHub vs Google Cloud)
-- **Real-time Visualization**: Interactive web interface with country-level insights
-
 ## Evaluate
 
 ### Local Development
@@ -68,3 +56,7 @@ uv run --extra dev evals/main.py
 uv run evals/backend.py
 cd frontend && npm i && npm start
 ```
+
+## System Architecture
+
+See [system_architecture_diagram.md](system_architecture_diagram.md) for the complete system architecture diagram and component descriptions.
