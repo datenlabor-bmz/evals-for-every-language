@@ -16,6 +16,7 @@ import { Button } from 'primereact/button'
 
 function App () {
   const [data, setData] = useState(null)
+  const [baseData, setBaseData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedLanguages, setSelectedLanguages] = useState([])
@@ -42,6 +43,7 @@ function App () {
       .then(jsonData => {
         setData(jsonData)
         setMachineTranslatedMetrics(jsonData.machine_translated_metrics || [])
+        if (!baseData) setBaseData(jsonData)
         setLoading(false)
       })
       .catch(err => {
@@ -56,7 +58,7 @@ function App () {
       // Add a small delay to ensure components are ready
       const timer = setTimeout(() => {
         setCarouselItems([
-          <WorldMap key="worldmap-0" data={data.countries} allLanguages={data.language_table} width={750} height={500} />,
+          <WorldMap key="worldmap-0" data={(baseData || data).countries} allLanguages={(baseData || data).language_table} width={750} height={500} />,
           <LanguagePlot key="langplot-1" data={data} width={750} height={500} />,
           <SpeakerPlot key="speakerplot-2" data={data} width={750} height={500} />,
           <HistoryPlot key="histplot-3" data={data} width={750} height={500} />,
@@ -66,7 +68,7 @@ function App () {
       
       return () => clearTimeout(timer);
     }
-  }, [data])
+  }, [data, baseData])
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [windowHeight, setWindowHeight] = useState(window.innerHeight)
@@ -87,8 +89,8 @@ function App () {
         setFullScreenCarouselItems([
           <WorldMap
             key="fs-worldmap-0"
-            data={data.countries}
-            allLanguages={data.language_table}
+            data={(baseData || data).countries}
+            allLanguages={(baseData || data).language_table}
             width={windowWidth * 0.7}
             height={windowHeight * 0.6}
           />,
@@ -116,7 +118,7 @@ function App () {
       
       return () => clearTimeout(timer);
     }
-  }, [data, windowWidth, windowHeight])
+  }, [data, baseData, windowWidth, windowHeight])
 
   return (
     <PrimeReactProvider>
