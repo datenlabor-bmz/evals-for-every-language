@@ -1,7 +1,5 @@
-import asyncio
 import random
 from functools import partial
-from textwrap import dedent
 
 import evaluate
 import pandas as pd
@@ -65,12 +63,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     else:
         prediction = await complete(
             model=model,
-            messages=[
-                {
-                    "role": "user",
-                    "content": translation_prompt,
-                }
-            ],
+            messages=[{"role": "user", "content": translation_prompt}],
             temperature=0,
             max_tokens=1024,
         )
@@ -86,6 +79,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     else:
         bleu_score = {"bleu": 0}
         chrf_score = {"score": 0}
+
     return [
         {
             "model": model,
@@ -95,6 +89,8 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             "score": score,
             "origin": "human",  # FLORES+ is human-translated
             "sentence_nr": sentence_nr,
+            "prompt": translation_prompt,
+            "response": prediction,
         }
         for metric, score in (
             ("bleu", bleu_score["bleu"]),
@@ -151,6 +147,8 @@ Text:
             "score": acc,
             "origin": "human",  # FLORES+ is human-translated
             "sentence_nr": nr,
+            "prompt": prompt,
+            "response": pred,
         }
     ]
 
@@ -219,22 +217,16 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
     ds_name, task, origin = await load_mmlu(language_bcp_47, nr)
     if not task:
         return []
-
-    messages = [
-        {
-            "role": "user",
-            "content": f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
+    prompt = f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
 
 Response format: <reasoning> #### <letter>
 
 ---
 
-{format_multiple_choice(task)}""",
-        },
-    ]
+{format_multiple_choice(task)}"""
     response = await complete(
         model=model,
-        messages=messages,
+        messages=[{"role": "user", "content": prompt}],
         temperature=0,
         max_tokens=1024,
     )
@@ -253,6 +245,8 @@ Response format: <reasoning> #### <letter>
             "score": acc,
             "origin": origin,  # Add origin tag to results
             "sentence_nr": nr,
+            "prompt": prompt,
+            "response": response,
         }
     ]
 
@@ -262,21 +256,16 @@ async def arc_and_evaluate(model, language_bcp_47, nr):
     if not task:
         return []
 
-    messages = [
-        {
-            "role": "user",
-            "content": f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
+    prompt = f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
 
 Response format: <reasoning> #### <letter>
 
 ---
 
-{format_multiple_choice(task)}""",
-        },
-    ]
+{format_multiple_choice(task)}"""
     response = await complete(
         model=model,
-        messages=messages,
+        messages=[{"role": "user", "content": prompt}],
         temperature=0,
         max_tokens=1024,
     )
@@ -294,6 +283,8 @@ Response format: <reasoning> #### <letter>
             "score": acc,
             "origin": origin,
             "sentence_nr": nr,
+            "prompt": prompt,
+            "response": response,
         }
     ]
 
@@ -325,21 +316,16 @@ async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
     correct_choice_index = task["labels"].index(1)
     answer = letters[correct_choice_index]
 
-    messages = [
-        {
-            "role": "user",
-            "content": f"""Answer the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
+    prompt = f"""Answer the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
 
 Response format: <reasoning> #### <letter>
 
 ---
 
-{format_multiple_choice_truthfulqa(task)}""",
-        },
-    ]
+{format_multiple_choice_truthfulqa(task)}"""
     response = await complete(
         model=model,
-        messages=messages,
+        messages=[{"role": "user", "content": prompt}],
         temperature=0,
         max_tokens=1024,  # Increased for reasoning
     )
@@ -358,6 +344,8 @@ Response format: <reasoning> #### <letter>
             "score": acc,
             "origin": origin,
             "sentence_nr": nr,
+            "prompt": prompt,
+            "response": response,
         }
     ]
 
@@ -367,21 +355,16 @@ async def mgsm_and_evaluate(model, language_bcp_47, nr):
     if not question:
         return []
 
-    messages = [
-        {
-            "role": "user",
-            "content": f"""Solve the following math problem. Reason step-by-step and then write the final answer as a number.
+    prompt = f"""Solve the following math problem. Reason step-by-step and then write the final answer as a number.
 
 Response format: <reasoning> #### <number>
 
 ---
 
-{question["question"]}""",
-        },
-    ]
+{question["question"]}"""
     response = await complete(
         model=model,
-        messages=messages,
+        messages=[{"role": "user", "content": prompt}],
         temperature=0,
         max_tokens=1024,
     )
@@ -400,6 +383,8 @@ Response format: <reasoning> #### <number>
             "score": accuracy,
             "origin": origin,
             "sentence_nr": nr,
+            "prompt": prompt,
+            "response": response,
         }
     ]
 
