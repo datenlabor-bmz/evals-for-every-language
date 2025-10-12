@@ -8,7 +8,7 @@ import asyncio
 from tqdm.asyncio import tqdm_asyncio
 import os
 
-from datasets import Dataset, load_dataset, DatasetNotFoundError
+from datasets import Dataset, load_dataset
 from models import translate_google, get_google_supported_languages
 
 from datasets_.util import _get_dataset_config_names, _load_dataset
@@ -22,14 +22,11 @@ tags_uhura_truthfulqa = {
     if a.endswith("multiple_choice")
 }
 
-# Get available auto-translated languages
-try:
-    tags_truthfulqa_autotranslated = {
-        standardize_tag(a, macro=True): a
-        for a in _get_dataset_config_names(slug_truthfulqa_autotranslated)
-    }
-except DatasetNotFoundError:
-    tags_truthfulqa_autotranslated = {}
+tags_truthfulqa_autotranslated = {
+    standardize_tag(a, macro=True): a
+    for a in _get_dataset_config_names(slug_truthfulqa_autotranslated)
+}
+tags_truthfulqa_autotranslated = {}
 
 
 def add_choices(row):
