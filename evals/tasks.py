@@ -14,7 +14,7 @@ from datasets_.truthfulqa import load_truthfulqa
 from google.cloud import translate_v2 as translate
 from langcodes import closest_supported_match
 from languages import languages, script_name
-from models import complete, transcribe, translate_google
+from models import complete, translate_google
 
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
@@ -404,35 +404,35 @@ Response format: <reasoning> #### <number>
     ]
 
 
-async def transcribe_and_evaluate(model, language_bcp_47, nr):
-    language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
-    fleurs = pd.read_csv(
-        f"data/fleurs/{language.fleurs_tag}/dev.tsv",
-        sep="\t",
-        names=[
-            "id",
-            "fname",
-            "raw_transcription",
-            "transcription",
-            "words",
-            "id2",
-            "gender",
-        ],
-    )
-    item = fleurs.iloc[nr]
-    path = f"data/fleurs/{language.fleurs_tag}/audio/dev/{item.fname}"
-    pred = await transcribe(path, model=model)
-    wer_score = wer.compute(predictions=[pred], references=[item.transcription])
-    return [
-        {
-            "model": model,
-            "bcp_47": language["bcp_47"],
-            "task": "asr",
-            "metric": "wer",
-            "score": wer_score,
-            "sentence_nr": nr,
-        }
-    ]
+# async def transcribe_and_evaluate(model, language_bcp_47, nr):
+#     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
+#     fleurs = pd.read_csv(
+#         f"data/fleurs/{language.fleurs_tag}/dev.tsv",
+#         sep="\t",
+#         names=[
+#             "id",
+#             "fname",
+#             "raw_transcription",
+#             "transcription",
+#             "words",
+#             "id2",
+#             "gender",
+#         ],
+#     )
+#     item = fleurs.iloc[nr]
+#     path = f"data/fleurs/{language.fleurs_tag}/audio/dev/{item.fname}"
+#     pred = await transcribe(path, model=model)
+#     wer_score = wer.compute(predictions=[pred], references=[item.transcription])
+#     return [
+#         {
+#             "model": model,
+#             "bcp_47": language["bcp_47"],
+#             "task": "asr",
+#             "metric": "wer",
+#             "score": wer_score,
+#             "sentence_nr": nr,
+#         }
+#     ]
 
 
 tasks = {

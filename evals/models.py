@@ -1,7 +1,4 @@
-import asyncio
-import json
 import re
-from collections import defaultdict
 from datetime import date
 from os import getenv
 
@@ -104,8 +101,8 @@ def get_historical_popular_models(date: date):
         raw = get("https://openrouter.ai/rankings").text
 
         # Extract model data from rankingData using regex
-        import re
         import json
+        import re
 
         # Find all count and model_permaslug pairs in the data
         # Format: "count":number,"model_permaslug":"model/name"
@@ -144,9 +141,6 @@ def get_current_popular_models(date: date):
         raw = get("https://openrouter.ai/rankings?view=day").text
 
         # Extract model data from daily rankings
-        import re
-        import json
-
         # Find all count and model_permaslug pairs in the daily data
         pattern = r"\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\""
         matches = re.findall(pattern, raw)
@@ -236,35 +230,35 @@ async def translate_google(text, source_language, target_language):
     return response["translatedText"]
 
 
-@cache
-async def transcribe_elevenlabs(path, model):
-    modelname = model.split("/")[-1]
-    client = AsyncElevenLabs(api_key=getenv("ELEVENLABS_API_KEY"))
-    async with elevenlabs_rate_limit:
-        with open(path, "rb") as file:
-            response = await client.speech_to_text.convert(
-                model_id=modelname, file=file
-            )
-    return response.text
+# @cache
+# async def transcribe_elevenlabs(path, model):
+#     modelname = model.split("/")[-1]
+#     client = AsyncElevenLabs(api_key=getenv("ELEVENLABS_API_KEY"))
+#     async with elevenlabs_rate_limit:
+#         with open(path, "rb") as file:
+#             response = await client.speech_to_text.convert(
+#                 model_id=modelname, file=file
+#             )
+#     return response.text
 
 
-@cache
-async def transcribe_huggingface(path, model):
-    client = AsyncInferenceClient(api_key=getenv("HUGGINGFACE_ACCESS_TOKEN"))
-    async with huggingface_rate_limit:
-        output = await client.automatic_speech_recognition(model=model, audio=path)
-    return output.text
+# @cache
+# async def transcribe_huggingface(path, model):
+#     client = AsyncInferenceClient(api_key=getenv("HUGGINGFACE_ACCESS_TOKEN"))
+#     async with huggingface_rate_limit:
+#         output = await client.automatic_speech_recognition(model=model, audio=path)
+#     return output.text
 
 
-async def transcribe(path, model="elevenlabs/scribe_v1"):
-    provider, modelname = model.split("/")
-    match provider:
-        case "elevenlabs":
-            return await transcribe_elevenlabs(path, modelname)
-        case "openai" | "facebook":
-            return await transcribe_huggingface(path, model)
-        case _:
-            raise ValueError(f"Model {model} not supported")
+# async def transcribe(path, model="elevenlabs/scribe_v1"):
+#     provider, modelname = model.split("/")
+#     match provider:
+#         case "elevenlabs":
+#             return await transcribe_elevenlabs(path, modelname)
+#         case "openai" | "facebook":
+#             return await transcribe_huggingface(path, model)
+#         case _:
+#             raise ValueError(f"Model {model} not supported")
 
 
 def get_or_metadata(id):
@@ -326,7 +320,7 @@ def get_cost(row):
 
 
 @cache
-def load_models(date: date):
+def load_models(date: date) -> pd.DataFrame:
     popular_models = (
         get_historical_popular_models(date.today())[:20]
         + get_current_popular_models(date.today())[:10]
