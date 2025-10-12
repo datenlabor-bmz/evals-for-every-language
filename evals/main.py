@@ -56,7 +56,7 @@ async def evaluate():
             columns=["model", "bcp_47", "task", "metric", "origin", "score"]
         )
     else:
-        old_results = pd.read_json("results.json")
+        old_results = pd.read_json("results/results.json")
 
     # Get all combinations that need evaluation
     combis = [
@@ -171,11 +171,11 @@ async def evaluate():
             results_df = results_df.sort_values(
                 by=["model", "bcp_47", "task", "metric"]
             )
-            results_df.to_json("results.json", **args)
+            results_df.to_json("results/results.json", **args)
 
             # Save model and language info (always save complete metadata, not filtered)
-            original_models_df.to_json("models.json", **args)
-            original_languages_df.to_json("languages.json", **args)
+            original_models_df.to_json("results/models.json", **args)
+            original_languages_df.to_json("results/languages.json", **args)
         else:
             print("TEST MODE: Skipping results saving")
 

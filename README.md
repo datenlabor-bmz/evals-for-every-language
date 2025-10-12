@@ -59,4 +59,4 @@ cd frontend && npm i && npm start
 
 ## System Architecture
 
-See [system_architecture_diagram.md](system_architecture_diagram.md) for the complete system architecture diagram and component descriptions.
+See [notes/system-architecture-diagram.md](notes/system-architecture-diagram.md) for the complete system architecture diagram and component descriptions.
