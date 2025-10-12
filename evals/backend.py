@@ -12,9 +12,9 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-scores = pd.read_json("results.json")
-languages = pd.read_json("languages.json")
-models = pd.read_json("models.json")
+scores = pd.read_json("results/results.json")
+languages = pd.read_json("results/languages.json")
+models = pd.read_json("results/models.json")
 
 
 def mean(lst):
@@ -236,7 +236,7 @@ async def data(request: Request):
     )
     # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
     language_table = make_language_table(df, languages)
-    datasets_df = pd.read_json("datasets.json")
+    datasets_df = pd.read_json("results/datasets.json")
 
     # Identify which metrics have machine translations available
     machine_translated_metrics = set()
