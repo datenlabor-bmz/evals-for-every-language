@@ -50,6 +50,7 @@ def compute_normalized_average(df, metrics):
 
 
 def make_model_table(scores_df, models):
+    scores_df = scores_df.copy()
     # Create a combined task_metric for origin
     scores_df["task_metric_origin"] = (
         scores_df["task"] + "_" + scores_df["metric"] + "_" + scores_df["origin"]
@@ -112,6 +113,7 @@ def make_model_table(scores_df, models):
 
 
 def make_language_table(scores_df, languages):
+    scores_df = scores_df.copy()
     scores_df["task_metric"] = scores_df["task"] + "_" + scores_df["metric"]
     
     # Pivot scores

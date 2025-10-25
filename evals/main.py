@@ -13,13 +13,15 @@ from datasets_.util import load, save
 from tqdm import tqdm
 
 n_sentences = int(environ.get("N_SENTENCES", 10))  # 20))
-n_languages = int(environ.get("N_LANGUAGES", 2))  # 150))
-n_models = int(environ.get("N_MODELS", 100))  # -1))
-stop_on_error = bool(environ.get("STOP_ON_ERROR", True))
+n_languages = int(environ.get("N_LANGUAGES", 50))  # 150))
+n_models = int(environ.get("N_MODELS", 25))  # -1))
 
 async def evaluate():
     start_time = time.time()
 
+    # Pre-compute model tasks to avoid O(n²) lookups
+    model_tasks = models.set_index("id")["tasks"].to_dict()
+    
     # get all combinations that need evaluation
     combis = [
         (task_name, model, lang.bcp_47, i)
@@ -27,7 +29,7 @@ async def evaluate():
         for model in models.iloc[:n_models]["id"]
         for lang in languages.head(n_languages).itertuples()
         for task_name, task in tasks.items()
-        if task_name in models[models["id"] == model]["tasks"].iloc[0]
+        if task_name in model_tasks[model]
     ]
     combis = pd.DataFrame(combis, columns=["task", "model", "bcp_47", "sentence_nr"])
 
@@ -40,7 +42,7 @@ async def evaluate():
     print(f"Running {len(combis)} evaluation tasks...")
 
     # batching (asyncio.gather + rate-limiting can in principle run everything at once, but in practice batching is more efficient / necessary)
-    batch_size = 1000
+    batch_size = 2000
     batch_results = [
         await tqdm_asyncio.gather(
             *[tasks[task_name](model, bcp_47, sentence_nr)
@@ -49,7 +51,8 @@ async def evaluate():
         for i in tqdm(range(0, len(combis), batch_size), colour='blue', desc='Batches')
         for batch in [combis[i:i + batch_size]]
     ]
-    results = pd.DataFrame([r for batch in batch_results for result in batch for r in result])
+    results = [r for batch in batch_results for result in batch for r in result]
+    results = pd.DataFrame(results) if results else pd.DataFrame(columns=["task", "model", "bcp_47", "metric", "sentence_nr", "score", "origin"])
     
     # Merge with cached results (immutable log)
     all_results = pd.concat([old_results, results]).drop_duplicates(
@@ -57,8 +60,8 @@ async def evaluate():
     ) if not old_results.empty else results
     
     # Filter to current models × languages and aggregate
-    current_models = set(models["id"])
-    current_languages = set(languages["bcp_47"])
+    current_models = set(models.iloc[:n_models]["id"])
+    current_languages = set(languages.head(n_languages)["bcp_47"])
     results_agg = (
         all_results[all_results["model"].isin(current_models) & all_results["bcp_47"].isin(current_languages)]
         .groupby(["model", "bcp_47", "task", "metric"])

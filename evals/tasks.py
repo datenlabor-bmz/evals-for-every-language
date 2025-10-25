@@ -32,20 +32,24 @@ supported_languages = [l["language"] for l in translate_client.get_languages()]
 
 async def query(model, prompt):
     # this is just for sharing config across tasks
-    response = await complete(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0,
-        max_tokens=1024,
-        extra_body=dict(
-            reasoning=dict(
-                effort="low",  # Can be "high", "medium", or "low" (OpenAI-style)
-                # max_tokens=1024,  # Specific token limit (Anthropic-style)
-                # Optional: Default is false. All models support this.
-                exclude=True,  # Set to true to exclude reasoning tokens from response
-            )
-        ),
-    )
+    try:
+        response = await complete(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0,
+            max_tokens=1024,
+            extra_body=dict(
+                reasoning=dict(
+                    effort="low",  # Can be "high", "medium", or "low" (OpenAI-style)
+                    # max_tokens=1024,  # Specific token limit (Anthropic-style)
+                    # Optional: Default is false. All models support this.
+                    exclude=True,  # Set to true to exclude reasoning tokens from response
+                )
+            ),
+        )
+    except Exception as e:
+        print(f"exception for model {model}: {e}")
+        return None
     # remove <think>...</think> sections (it's probably an OpenRouter bug that they are included)
     response = re.sub(r"<think>.*</think>", "", response).strip()
     # sometimes there's also a lone <think> at the start for some reason
