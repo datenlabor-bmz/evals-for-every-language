@@ -12,9 +12,9 @@ from tqdm.asyncio import tqdm_asyncio
 from datasets_.util import load, save
 from tqdm import tqdm
 
-n_sentences = int(environ.get("N_SENTENCES", 10))  # 20))
-n_languages = int(environ.get("N_LANGUAGES", 50))  # 150))
-n_models = int(environ.get("N_MODELS", 25))  # -1))
+n_sentences = int(environ.get("N_SENTENCES", 10))
+n_languages = int(environ.get("N_LANGUAGES", 50))
+n_models = int(environ.get("N_MODELS", 25))
 
 async def evaluate():
     start_time = time.time()
@@ -26,9 +26,9 @@ async def evaluate():
     combis = [
         (task_name, model, lang.bcp_47, i)
         for i in range(n_sentences)
-        for model in models.iloc[:n_models]["id"]
         for lang in languages.head(n_languages).itertuples()
         for task_name, task in tasks.items()
+        for model in models.iloc[:n_models]["id"]
         if task_name in model_tasks[model]
     ]
     combis = pd.DataFrame(combis, columns=["task", "model", "bcp_47", "sentence_nr"])
