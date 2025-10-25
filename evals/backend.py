@@ -169,48 +169,39 @@ async def data(request: Request):
     body = await request.body()
     data = json.loads(body)
     selected_languages = data.get("selectedLanguages", {})
-    df = (
-        scores.groupby(["model", "bcp_47", "task", "metric", "origin"])
-        .mean()
-        .reset_index()
-    )
-    # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
-    language_table = make_language_table(df, languages)
-    datasets_df = load("datasets")
-
+    
     # Identify which metrics have machine translations available
-    machine_translated_metrics = set()
-    for _, row in df.iterrows():
-        if row["origin"] == "machine":
-            metric_name = f"{row['task']}_{row['metric']}"
-            machine_translated_metrics.add(metric_name)
+    machine_translated_metrics = {
+        f"{row['task']}_{row['metric']}" 
+        for _, row in scores.iterrows() 
+        if row["origin"] == "machine"
+    }
 
-    if selected_languages:
-        # the filtering is only applied for the model table and the country data
-        df = df[df["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)]
+    # Filter by selected languages if provided
+    df = scores[scores["bcp_47"].isin(lang["bcp_47"] for lang in selected_languages)] if selected_languages else scores
+    
     if len(df) == 0:
         model_table = pd.DataFrame()
         countries = pd.DataFrame()
     else:
         model_table = make_model_table(df, models)
         countries = make_country_table(make_language_table(df, languages))
-    all_tables = {
+    
+    language_table = make_language_table(scores, languages)
+    datasets_df = load("datasets")
+    
+    return JSONResponse(content={
         "model_table": serialize(model_table),
         "language_table": serialize(language_table),
         "dataset_table": serialize(datasets_df),
         "countries": serialize(countries),
         "machine_translated_metrics": list(machine_translated_metrics),
-    }
-    return JSONResponse(content=all_tables)
+    })
 
 
-# Only serve static files if build directory exists (production mode)
+# Only serve static files if build directory exists
 if os.path.exists("frontend/build"):
     app.mount("/", StaticFiles(directory="frontend/build", html=True), name="frontend")
-else:
-    print("🧪 Development mode: frontend/build directory not found")
-    print("🌐 Frontend should be running on http://localhost:3000")
-    print("📡 API available at http://localhost:8000/api/data")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))

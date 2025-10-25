@@ -10,10 +10,11 @@ from rich import print
 from tasks import tasks
 from tqdm.asyncio import tqdm_asyncio
 from datasets_.util import load, save
+from tqdm import tqdm
 
-n_sentences = int(environ.get("N_SENTENCES", 1))  # 20))
+n_sentences = int(environ.get("N_SENTENCES", 10))  # 20))
 n_languages = int(environ.get("N_LANGUAGES", 2))  # 150))
-n_models = int(environ.get("N_MODELS", 50))  # -1))
+n_models = int(environ.get("N_MODELS", 100))  # -1))
 stop_on_error = bool(environ.get("STOP_ON_ERROR", True))
 
 async def evaluate():
@@ -30,63 +31,45 @@ async def evaluate():
     ]
     combis = pd.DataFrame(combis, columns=["task", "model", "bcp_47", "sentence_nr"])
 
+    # Load cached results and filter out completed combinations
     old_results = load("results-detailed")
-    old_models = load("models")
-    old_languages = load("languages")
     if not old_results.empty:
-        # Filter out already evaluated combinations
         completed = set(old_results[["task", "model", "bcp_47", "sentence_nr"]].apply(tuple, axis=1))
-        # set + combis is faster than merge (locally it made a difference when loading all data/tasks into memory)
-        mask = ~combis.apply(
-            lambda row: (row["task"], row["model"], row["bcp_47"], row["sentence_nr"]) in completed, axis=1
-        )
-        combis = combis[mask]
+        combis = combis[~combis.apply(lambda row: tuple(row) in completed, axis=1)]
 
     print(f"Running {len(combis)} evaluation tasks...")
 
     # batching (asyncio.gather + rate-limiting can in principle run everything at once, but in practice batching is more efficient / necessary)
     batch_size = 1000
-    results = []
-    for i in range(0, len(combis), batch_size):
-        batch = combis[i : i + batch_size]
-        batch_results = await tqdm_asyncio.gather(
-            *[
-                tasks[task_name](model, bcp_47, sentence_nr)
-                for _, (task_name, model, bcp_47, sentence_nr) in batch.iterrows()
-            ],
-            # return_exceptions=not stop_on_error,
+    batch_results = [
+        await tqdm_asyncio.gather(
+            *[tasks[task_name](model, bcp_47, sentence_nr)
+              for _, (task_name, model, bcp_47, sentence_nr) in batch.iterrows()]
         )
-        results.extend(batch_results)
-    results = [a for l in results for a in l]
-    results = pd.DataFrame(results)
+        for i in tqdm(range(0, len(combis), batch_size), colour='blue', desc='Batches')
+        for batch in [combis[i:i + batch_size]]
+    ]
+    results = pd.DataFrame([r for batch in batch_results for result in batch for r in result])
     
-    # Merge with existing results
-    updated_models = models
-    updated_languages = languages
-    if not old_results.empty:
-        results = pd.concat([old_results, results])
-        results = results.drop_duplicates(
-            subset=["task", "model", "bcp_47", "metric", "sentence_nr"]
-        ).sort_values(by=["model", "task", "bcp_47", "metric"])
-        updated_models = (
-            pd.concat([old_models, models]).drop_duplicates(subset=["id"], keep="last")
-            .sort_values("id", ascending=True)
-        )
-        updated_languages = (
-            pd.concat([old_languages, languages])
-            .drop_duplicates(subset=["bcp_47"], keep="last")
-            .sort_values("speakers", ascending=False)
-        )
-    # Aggregate results (over sentence number)
+    # Merge with cached results (immutable log)
+    all_results = pd.concat([old_results, results]).drop_duplicates(
+        subset=["task", "model", "bcp_47", "metric", "sentence_nr"]
+    ) if not old_results.empty else results
+    
+    # Filter to current models × languages and aggregate
+    current_models = set(models["id"])
+    current_languages = set(languages["bcp_47"])
     results_agg = (
-        results.groupby(["model", "bcp_47", "task", "metric"])
+        all_results[all_results["model"].isin(current_models) & all_results["bcp_47"].isin(current_languages)]
+        .groupby(["model", "bcp_47", "task", "metric"])
         .agg({"score": "mean", "origin": "first"})
         .reset_index()
     )
-    save(results, "results-detailed")
+    
+    save(all_results, "results-detailed")
     save(results_agg, "results")
-    save(updated_models, "models")
-    save(updated_languages, "languages")
+    save(models, "models")
+    save(languages, "languages")
     elapsed = time.time() - start_time
     print(f"Evaluation completed in {str(timedelta(seconds=int(elapsed)))}")
 

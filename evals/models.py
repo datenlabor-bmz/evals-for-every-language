@@ -20,22 +20,33 @@ important_models = [
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
     "openai/gpt-5",
-    "openai/gpt-5-nano",  # include if/when available
+    "openai/gpt-5-mini",
+    "openai/gpt-5-nano",
     "openai/gpt-4.1",  # 8$
     "openai/gpt-4.1-mini",  # 1.6$
     "openai/gpt-4.1-nano",  # 0.4$
+    "openai/gpt-4o",  # 10$
     "openai/gpt-4o-mini",  # 0.6$
-    "openai/gpt-4o-2024-11-20",  # 10$
+    "openai/gpt-3.5-turbo", # $1.50
     "openai/gpt-oss-120b",
-    "anthropic/claude-3.7-sonnet",  # 15$ - added for full coverage
-    "anthropic/claude-sonnet-4",  # 15$ - added for full coverage
-    "anthropic/claude-opus-4.1",  # 15$ - added for full coverage
-    "mistralai/mistral-small-3.1-24b-instruct",  # 0.3$
+    "anthropic/claude-4.5-sonnet",
+    "anthropic/claude-4.5-haiku",
+    "anthropic/claude-opus-4.1",  # 15$
+    "anthropic/claude-4-sonnet",
+    "anthropic/claude-3.7-sonnet",  # 15$
+    "anthropic/claude-3.5-sonnet",
+    "mistralai/mistral-small-3.2-24b-instruct",  # 0.3$
+    "mistralai/mistral-medium-3.1",
     "mistralai/mistral-saba",  # 0.6$
     "mistralai/mistral-nemo",  # 0.08$
+    "google/gemini-2.5-pro", # $10
     "google/gemini-2.5-flash",  # 0.6$
-    "google/gemini-2.0-flash-lite-001",  # 0.3$
+    "google/gemini-2.0-flash-lite",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
+    "x-ai/grok-4", # $15
+    "x-ai/grok-3", # $15
+    "cohere/command-a",
+    "cohere/command-r-plus-08-2024",
     "qwen/qwen3-32b",
     "qwen/qwen3-235b-a22b",
     "qwen/qwen3-30b-a3b",  # 0.29$
@@ -46,15 +57,14 @@ important_models = [
     "deepseek/deepseek-chat-v3-0324",  # 1.1$
     "deepseek/deepseek-chat",  # 0.89$
     "microsoft/phi-4",  # 0.07$
-    "microsoft/phi-4-multimodal-instruct",  # 0.1$
-    "amazon/nova-micro-v1",  # 0.09$
-    "moonshotai/kimi-k2",  # 0.6$ - added to prevent missing from models.json
-    "x-ai/grok-4",
+    "amazon/nova-pro-v1",  # 0.09$
+    "moonshotai/kimi-k2",  # 0.6$
+    "baidu/ernie-4.5-300b-a47b",
 ]
 
 blocklist = [
     "google/gemini-2.5-pro-preview",
-    "google/gemini-2.5-pro",
+    # "google/gemini-2.5-pro",
     "google/gemini-2.5-flash-preview",
     "google/gemini-2.5-flash-lite-preview",
     "google/gemini-2.5-flash-preview-04-17",
@@ -63,6 +73,8 @@ blocklist = [
     "google/gemini-2.5-pro-preview-06-05",
     "google/gemini-2.5-pro-preview-05-06",
     "perplexity/sonar-deep-research",
+    "perplexity/sonar-reasoning",
+    "perplexity/sonar-reasoning-pro",
 ]
 
 transcription_models = [
@@ -128,7 +140,7 @@ def get_historical_popular_models(date: date):
                 model_counts.items(), key=lambda x: x[1], reverse=True
             )
             result = []
-            for model_slug, count in sorted_models[:20]:  # Top 20
+            for model_slug, count in sorted_models:
                 result.append({"slug": model_slug, "count": int(count)})
 
             return result
@@ -165,7 +177,7 @@ def get_current_popular_models(date: date):
                 model_counts.items(), key=lambda x: x[1], reverse=True
             )
             result = []
-            for model_slug, count in sorted_models[:10]:  # Top 10
+            for model_slug, count in sorted_models:
                 result.append({"slug": model_slug, "count": int(count)})
 
             return result
