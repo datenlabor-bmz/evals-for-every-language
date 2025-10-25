@@ -5,16 +5,17 @@ import numpy as np
 import pandas as pd
 import uvicorn
 
-from evals.countries import make_country_table
+from countries import make_country_table
+from datasets_.util import load
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-scores = pd.read_json("results/results.json")
-languages = pd.read_json("results/languages.json")
-models = pd.read_json("results/models.json")
+scores = load("results")
+languages = load("languages")
+models = load("models")
 
 
 def mean(lst):
@@ -77,32 +78,10 @@ def make_model_table(scores_df, models):
 
     df["average"] = compute_normalized_average(df, task_metrics)
 
-    # Compute origin presence per model+metric
-    origin_presence = (
-        scores_df.groupby(["model", "task_metric", "origin"])
-        .size()
-        .unstack(fill_value=0)
-    )
-    # Add boolean flags: show asterisk only if exclusively machine-origin contributed
+    # Add flag if any machine-origin data was used
+    machine_presence = scores_df[scores_df["origin"] == "machine"].groupby(["model", "task_metric"]).size()
     for metric in task_metrics:
-        human_col_name = "human" if "human" in origin_presence.columns else None
-        machine_col_name = "machine" if "machine" in origin_presence.columns else None
-        if human_col_name or machine_col_name:
-            flags = []
-            for model in df.index:
-                try:
-                    counts = origin_presence.loc[(model, metric)]
-                except KeyError:
-                    flags.append(False)
-                    continue
-                human_count = counts.get(human_col_name, 0) if human_col_name else 0
-                machine_count = (
-                    counts.get(machine_col_name, 0) if machine_col_name else 0
-                )
-                flags.append(machine_count > 0 and human_count == 0)
-            df[f"{metric}_is_machine"] = flags
-        else:
-            df[f"{metric}_is_machine"] = False
+        df[f"{metric}_contains_machine"] = df.index.map(lambda m: (m, metric) in machine_presence.index)
     df = df.sort_values(by="average", ascending=False).reset_index()
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
@@ -110,6 +89,8 @@ def make_model_table(scores_df, models):
     # Dynamically find all metric columns to include
     final_cols = df.columns
     metric_cols = [m for m in final_cols if any(tm in m for tm in task_metrics)]
+
+    df["creation_date"] = df["creation_date"].apply(lambda x: x.isoformat() if x else None)
 
     df = df[
         [
@@ -131,67 +112,26 @@ def make_model_table(scores_df, models):
 
 
 def make_language_table(scores_df, languages):
-    # Create a combined task_metric for origin
-    scores_df["task_metric_origin"] = (
-        scores_df["task"] + "_" + scores_df["metric"] + "_" + scores_df["origin"]
-    )
-
-    # Pivot to get scores for each origin-specific metric
-    scores_pivot = scores_df.pivot_table(
-        index="bcp_47",
-        columns="task_metric_origin",
-        values="score",
-        aggfunc="mean",
-    )
-
-    # Create the regular task_metric for the main average calculation
     scores_df["task_metric"] = scores_df["task"] + "_" + scores_df["metric"]
-    main_pivot = scores_df.pivot_table(
+    
+    # Pivot scores
+    score_pivot = scores_df.pivot_table(
         index="bcp_47", columns="task_metric", values="score", aggfunc="mean"
     )
-
-    # Merge the two pivots
-    df = pd.merge(main_pivot, scores_pivot, on="bcp_47", how="outer")
-
+    
+    # Pivot origins (first origin since each task+lang combo has only one)
+    origin_pivot = scores_df.pivot_table(
+        index="bcp_47", columns="task_metric", values="origin", aggfunc="first"
+    )
+    origin_pivot = origin_pivot.add_suffix("_origin")
+    
+    df = pd.merge(score_pivot, origin_pivot, on="bcp_47", how="outer")
+    
     for metric in task_metrics:
         if metric not in df.columns:
             df[metric] = np.nan
 
     df["average"] = compute_normalized_average(df, task_metrics)
-
-    # Compute origin presence per language+metric; show asterisk only if exclusively machine-origin
-    origin_presence = (
-        scores_df.groupby(["bcp_47", "task_metric", "origin"])
-        .size()
-        .unstack(fill_value=0)
-    )
-    for metric in task_metrics:
-        human_col_name = "human" if "human" in origin_presence.columns else None
-        machine_col_name = "machine" if "machine" in origin_presence.columns else None
-        if human_col_name or machine_col_name:
-            flags = []
-            for bcp in df.index:
-                try:
-                    counts = origin_presence.loc[(bcp, metric)]
-                except KeyError:
-                    flags.append(False)
-                    continue
-                human_count = counts.get(human_col_name, 0) if human_col_name else 0
-                machine_count = (
-                    counts.get(machine_col_name, 0) if machine_col_name else 0
-                )
-                flags.append(machine_count > 0 and human_count == 0)
-            df[f"{metric}_is_machine"] = flags
-        else:
-            df[f"{metric}_is_machine"] = False
-
-    # Per-row machine-origin flags for each metric (true if any machine-origin score exists for the language)
-    for metric in task_metrics:
-        machine_col = f"{metric}_machine"
-        if machine_col in df.columns:
-            df[f"{metric}_is_machine"] = df[machine_col].notna()
-        else:
-            df[f"{metric}_is_machine"] = False
     df = pd.merge(languages, df, on="bcp_47", how="outer")
     df = df.sort_values(by="speakers", ascending=False)
 
@@ -236,7 +176,7 @@ async def data(request: Request):
     )
     # lang_results = pd.merge(languages, lang_results, on="bcp_47", how="outer")
     language_table = make_language_table(df, languages)
-    datasets_df = pd.read_json("results/datasets.json")
+    datasets_df = load("datasets")
 
     # Identify which metrics have machine translations available
     machine_translated_metrics = set()

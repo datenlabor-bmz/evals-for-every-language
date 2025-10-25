@@ -76,34 +76,38 @@ cache = Memory(location=".cache", verbose=0).cache
 
 
 @cache
-def get_models(date: date):
+def load_or_metadata(date: date):
     return get("https://openrouter.ai/api/frontend/models").json()["data"]
 
 
-def get_model(permaslug):
-    models = get_models(date.today())
+def get_or_metadata(permaslug):
+    models = load_or_metadata(date.today())
     slugs = [
         m
         for m in models
-        if m["permaslug"] == permaslug
+        if (m["permaslug"] == permaslug or m["slug"] == permaslug)
+        # ensure that a provider endpoint is available
         and m["endpoint"]
+        # exclude free models
+        # the problem is that free models typically have very high rate-limiting
         and not m["endpoint"]["is_free"]
+        # exclude providers that train on user data
+        # this is crucial since we are submitting benchmark data
+        # make sure to additionally configure this in OpenRouter settings to avoid mistakes!
+        and m["endpoint"]["provider_info"]["dataPolicy"]["training"] is False
     ]
     if len(slugs) == 0:
-        # the problem is that free models typically have very high rate-limiting
-        print(f"no non-free model found for {permaslug}")
+        print(f"no appropriate model (not free and no user data training) found for {permaslug}")
     return slugs[0] if len(slugs) >= 1 else None
 
 
 @cache
 def get_historical_popular_models(date: date):
+    # date parameter is used for daily caching
     try:
         raw = get("https://openrouter.ai/rankings").text
 
         # Extract model data from rankingData using regex
-        import json
-        import re
-
         # Find all count and model_permaslug pairs in the data
         # Format: "count":number,"model_permaslug":"model/name"
         pattern = r"\\\"count\\\":([\d.]+).*?\\\"model_permaslug\\\":\\\"([^\\\"]+)\\\""
@@ -137,6 +141,7 @@ def get_historical_popular_models(date: date):
 
 @cache
 def get_current_popular_models(date: date):
+    # date parameter is used for daily caching
     try:
         raw = get("https://openrouter.ai/rankings?view=day").text
 
@@ -179,6 +184,7 @@ def get_translation_models():
                 "name": "Google Translate",
                 "provider_name": "Google",
                 "cost": 20.0,
+                "train_on_prompts": False,  # they don't do it in the API
                 "size": None,
                 "type": "closed-source",
                 "license": None,
@@ -261,13 +267,6 @@ async def translate_google(text, source_language, target_language):
 #             raise ValueError(f"Model {model} not supported")
 
 
-def get_or_metadata(id):
-    # get metadata from OpenRouter
-    models = get_models(date.today())
-    metadata = next((m for m in models if m["slug"] == id), None)
-    return metadata
-
-
 api = HfApi()
 
 
@@ -309,14 +308,17 @@ def get_hf_metadata(row):
 
 
 def get_cost(row):
-    """
-    row: a row from the OpenRouter models dataframe
-    """
     try:
         cost = float(row["endpoint"]["pricing"]["completion"])
         return round(cost * 1_000_000, 2)
     except (TypeError, KeyError):
         return None
+
+
+def get_training_policy(row):
+    # get openrouter info whether the provider may train on prompts
+    # (this needs to be thoroughly avoided for our benchmark prompts!)
+    return row["endpoint"]["provider_info"]["dataPolicy"]["training"]
 
 
 @cache
@@ -337,7 +339,7 @@ def load_models(date: date) -> pd.DataFrame:
             valid_models.append(model_id)
 
     models = pd.DataFrame(sorted(valid_models), columns=["id"])
-    or_metadata = models["id"].apply(get_or_metadata)
+    or_metadata = models["id"].apply(get_or_metadata)  # TODO this is double-doubled
     hf_metadata = or_metadata.apply(get_hf_metadata)
     creation_date_hf = pd.to_datetime(hf_metadata.str["creation_date"]).dt.date
     creation_date_or = pd.to_datetime(
@@ -349,12 +351,17 @@ def load_models(date: date) -> pd.DataFrame:
         .str.replace(" (free)", "")
         .str.replace(" (self-moderated)", ""),
         provider_name=or_metadata.str["name"].str.split(": ").str[0],
+        # openrouter_metadata=or_metadata.astype(str),
         cost=or_metadata.apply(get_cost),
+        train_on_prompts=or_metadata.apply(get_training_policy),
         hf_id=hf_metadata.str["hf_id"],
         size=hf_metadata.str["size"],
         type=hf_metadata.str["type"],
         license=hf_metadata.str["license"],
         creation_date=creation_date_hf.combine_first(creation_date_or),
+    )
+    models.to_json(
+        "models_unfiltered.json", orient="records", indent=2, force_ascii=False
     )
     # Filter out expensive models to keep costs reasonable
     models = models[models["cost"] <= 15.0].reset_index(drop=True)

@@ -1,3 +1,4 @@
+results/
 data/translations/
 floresp-*
 fleurs
@@ -5,6 +6,7 @@ spbleu
 .cache
 .env
 *_credentials.json
+models_unfiltered.json
 
 # Python-generated files
 __pycache__/

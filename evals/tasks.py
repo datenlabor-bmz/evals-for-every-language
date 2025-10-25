@@ -1,8 +1,9 @@
 import random
+import re
 from functools import partial
+from textwrap import dedent
 
 import evaluate
-import pandas as pd
 import sentencepiece as spm
 from datasets_.arc import load_uhura_arc_easy
 from datasets_.flores import flores_sentences
@@ -29,6 +30,54 @@ target_languages = languages[languages["in_benchmark"]].sample(
 translate_client = translate.Client()
 supported_languages = [l["language"] for l in translate_client.get_languages()]
 
+async def query(model, prompt):
+    # this is just for sharing config across tasks
+    response = await complete(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0,
+        max_tokens=1024,
+        extra_body=dict(
+            reasoning=dict(
+                effort="low",  # Can be "high", "medium", or "low" (OpenAI-style)
+                # max_tokens=1024,  # Specific token limit (Anthropic-style)
+                # Optional: Default is false. All models support this.
+                exclude=True,  # Set to true to exclude reasoning tokens from response
+            )
+        ),
+    )
+    # remove <think>...</think> sections (it's probably an OpenRouter bug that they are included)
+    response = re.sub(r"<think>.*</think>", "", response).strip()
+    # sometimes there's also a lone <think> at the start for some reason
+    response = re.sub(r"<think>", "", response).strip()
+    return response
+
+
+reasoning_template = (
+    "Response format:<reasoning>...</reasoning><final_answer>...</final_answer>"
+)
+
+
+def format_multiple_choice(item):
+    return dedent(f"""
+    {reasoning_template}
+
+    ---
+    
+    {item["question"]}
+    
+    A: {item["choices"][0]}
+    B: {item["choices"][1]}
+    C: {item["choices"][2]}
+    D: {item["choices"][3]}""")
+
+
+def extract_mc_response(response):
+    if not response:
+        return None
+    final_answer = re.search(r"\<final_answer\>(.*)\<\/final_answer\>", response)
+    return final_answer[1].strip() if final_answer else None
+
 
 async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     original_language = languages[languages["bcp_47"] == bcp_47].iloc[0]
@@ -49,24 +98,21 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
     translation_prompt = f"Translate the following text to the {target_language.language_name} language; use the {script} script; reply only with the translation:\n\n{original_sentence}"
     if model == "google/translate-v2":
         original_language = closest_supported_match(
-            original_language, supported_languages
+            original_language.bcp_47, supported_languages
         )
-        target_language = closest_supported_match(target_language, supported_languages)
+        target_language = closest_supported_match(
+            target_language.bcp_47, supported_languages
+        )
         if original_language == target_language:
             prediction = original_sentence
         elif original_language is None or target_language is None:
             prediction = None
         else:
             prediction = await translate_google(
-                original_sentence, original_language.bcp_47, target_language.bcp_47
+                original_sentence, original_language, target_language
             )
     else:
-        prediction = await complete(
-            model=model,
-            messages=[{"role": "user", "content": translation_prompt}],
-            temperature=0,
-            max_tokens=1024,
-        )
+        prediction = await query(model, translation_prompt)
     if prediction:
         bleu_score = bleu.compute(
             predictions=[prediction],
@@ -119,13 +165,7 @@ Reply with only the topic name.
 Text:
 {test_paragraph.text}
 """
-    response = await complete(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0,
-        max_tokens=30,
-    )
-
+    response = await query(model, prompt)
     pred = response.lower().strip() if response else ""
     true = test_paragraph.topic.lower().strip()
     others = [t for t in top_topics if t != true]
@@ -153,88 +193,65 @@ Text:
     ]
 
 
-def corrupt_sentence(sentence):
-    # replace 5% of the sentence with <mask>
-    mask_length = round(len(sentence) * 0.05)
-    start = random.randint(0, len(sentence) - mask_length)
-    end = start + mask_length
-    return sentence[:start] + "<mask>" + sentence[end:]
+# def corrupt_sentence(sentence):
+#     # replace 5% of the sentence with <mask>
+#     mask_length = round(len(sentence) * 0.05)
+#     start = random.randint(0, len(sentence) - mask_length)
+#     end = start + mask_length
+#     return sentence[:start] + "<mask>" + sentence[end:]
 
 
-async def mlm_and_evaluate(model, language_bcp_47, nr):
-    language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
-    sentences = flores_sentences(language)
-    if sentences is None:
-        return []
-    sentences = pd.DataFrame(sentences, columns=["text"])
-    sentences["corrupt_text"] = sentences["text"].apply(corrupt_sentence)
-    examples = sentences.sample(n=10, random_state=42)
-    test_sentences = sentences[~sentences["text"].isin(examples["text"])].sample(
-        frac=1, random_state=42
-    )
-    test_sentence = test_sentences.iloc[nr]
-    messages = []
-    for example in examples.itertuples():
-        messages += [
-            {"role": "user", "content": example.corrupt_text},
-            {"role": "assistant", "content": example.text},
-        ]
-    prediction = await complete(
-        model=model,
-        messages=[
-            *messages,
-            {
-                "role": "user",
-                "content": test_sentence.corrupt_text,
-            },
-        ],
-        temperature=0,
-        max_tokens=1024,
-    )
-    chrf_score = chrf.compute(predictions=[prediction], references=[test_sentence.text])
-    return [
-        {
-            "model": model,
-            "bcp_47": language["bcp_47"],
-            "task": "language_modeling",
-            "metric": "chrf",
-            "score": chrf_score["score"] / 100,
-            "sentence_nr": nr,
-        }
-    ]
-
-
-def format_multiple_choice(item):
-    return f"""{item["question"]}
-    
-    A: {item["choices"][0]}
-    B: {item["choices"][1]}
-    C: {item["choices"][2]}
-    D: {item["choices"][3]}"""
+# async def mlm_and_evaluate(model, language_bcp_47, nr):
+#     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
+#     sentences = flores_sentences(language)
+#     if sentences is None:
+#         return []
+#     sentences = pd.DataFrame(sentences, columns=["text"])
+#     sentences["corrupt_text"] = sentences["text"].apply(corrupt_sentence)
+#     examples = sentences.sample(n=10, random_state=42)
+#     test_sentences = sentences[~sentences["text"].isin(examples["text"])].sample(
+#         frac=1, random_state=42
+#     )
+#     test_sentence = test_sentences.iloc[nr]
+#     messages = []
+#     for example in examples.itertuples():
+#         messages += [
+#             {"role": "user", "content": example.corrupt_text},
+#             {"role": "assistant", "content": example.text},
+#         ]
+#     prediction = await complete(
+#         model=model,
+#         messages=[
+#             *messages,
+#             {
+#                 "role": "user",
+#                 "content": test_sentence.corrupt_text,
+#             },
+#         ],
+#         temperature=0,
+#         max_tokens=1024,
+#     )
+#     chrf_score = chrf.compute(predictions=[prediction], references=[test_sentence.text])
+#     return [
+#         {
+#             "model": model,
+#             "bcp_47": language["bcp_47"],
+#             "task": "language_modeling",
+#             "metric": "chrf",
+#             "score": chrf_score["score"] / 100,
+#             "sentence_nr": nr,
+#         }
+#     ]
 
 
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
     ds_name, task, origin = await load_mmlu(language_bcp_47, nr)
     if not task:
         return []
-    prompt = f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
-
-Response format: <reasoning> #### <letter>
-
----
-
-{format_multiple_choice(task)}"""
-    response = await complete(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0,
-        max_tokens=1024,
-    )
-    if response and "####" in response:
-        answer = response.split("####")[-1].strip()
-        acc = int(answer[:1] == task["answer"])
-    else:
-        acc = 0
+    prompt = f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.\n\n{format_multiple_choice(task)}"""
+    response = await query(model, prompt)
+    final_response = extract_mc_response(response)
+    acc = int(final_response == task["answer"]) if final_response else 0
 
     return [
         {
@@ -243,7 +260,7 @@ Response format: <reasoning> #### <letter>
             "task": "mmlu",
             "metric": "accuracy",
             "score": acc,
-            "origin": origin,  # Add origin tag to results
+            "origin": origin,
             "sentence_nr": nr,
             "prompt": prompt,
             "response": response,
@@ -255,25 +272,10 @@ async def arc_and_evaluate(model, language_bcp_47, nr):
     ds_name, task, origin = load_uhura_arc_easy(language_bcp_47, nr)
     if not task:
         return []
-
-    prompt = f"""Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
-
-Response format: <reasoning> #### <letter>
-
----
-
-{format_multiple_choice(task)}"""
-    response = await complete(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0,
-        max_tokens=1024,
-    )
-    if response and "####" in response:
-        answer = response.split("####")[-1].strip()
-        acc = int(answer[:1] == task["answer"])
-    else:
-        acc = 0
+    prompt = f"Solve the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.\n\n{format_multiple_choice(task)}"
+    response = await query(model, prompt)
+    final_response = extract_mc_response(response)
+    acc = int(final_response == task["answer"]) if final_response else 0
     return [
         {
             "model": model,
@@ -311,30 +313,12 @@ async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
     ds_name, task, origin = await load_truthfulqa(language_bcp_47, nr)
     if not task:
         return []
-
-    # Find the correct answer
     correct_choice_index = task["labels"].index(1)
     answer = letters[correct_choice_index]
-
-    prompt = f"""Answer the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.
-
-Response format: <reasoning> #### <letter>
-
----
-
-{format_multiple_choice_truthfulqa(task)}"""
-    response = await complete(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0,
-        max_tokens=1024,  # Increased for reasoning
-    )
-    if response and "####" in response:
-        pred_answer = response.split("####")[-1].strip()
-        acc = int(pred_answer[:1].upper() == answer)
-    else:
-        acc = 0
-
+    prompt = f"""Answer the following multiple choice question. Reason step-by-step and then write the final answer as a single letter.\n\n{format_multiple_choice_truthfulqa(task)}"""
+    response = await query(model, prompt)
+    final_response = extract_mc_response(response)
+    acc = int(final_response.upper() == answer) if final_response else 0
     return [
         {
             "model": model,
@@ -355,32 +339,28 @@ async def mgsm_and_evaluate(model, language_bcp_47, nr):
     if not question:
         return []
 
-    prompt = f"""Solve the following math problem. Reason step-by-step and then write the final answer as a number.
+    prompt = dedent(f"""
+    Solve the following math problem. Reason step-by-step and then write the final answer as a single number.
 
-Response format: <reasoning> #### <number>
+    {reasoning_template}
 
----
+    ---
 
-{question["question"]}"""
-    response = await complete(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0,
-        max_tokens=1024,
+    {question["question"]}""").strip()
+    response = await query(model, prompt)
+    number = extract_mc_response(response)
+    acc = (
+        int(parse_number(number) == parse_number(question["answer_number"]))
+        if number
+        else 0
     )
-    if response and "####" in response:
-        number = response.split("####")[1].strip()
-        accuracy = int(parse_number(number) == parse_number(question["answer_number"]))
-    else:
-        accuracy = 0
-
     return [
         {
             "model": model,
             "bcp_47": language_bcp_47,
             "task": "mgsm",
             "metric": "accuracy",
-            "score": accuracy,
+            "score": acc,
             "origin": origin,
             "sentence_nr": nr,
             "prompt": prompt,
