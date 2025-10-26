@@ -89,7 +89,7 @@ def translate_mgsm(languages):
     human_translated = [*tags_mgsm.keys(), *tags_afrimgsm.keys()]
     untranslated = [
         lang
-        for lang in languages["bcp_47"].values[:100]
+        for lang in languages["bcp_47"].values[:200]
         if lang not in human_translated and lang in get_google_supported_languages()
     ]
     en = _load_dataset(slug_mgsm, subset=tags_mgsm["en"], split="test")

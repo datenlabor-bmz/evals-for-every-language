@@ -207,7 +207,7 @@ def translate_mmlu(languages):
     human_translated = [*tags_afrimmlu.keys(), *tags_global_mmlu.keys()]
     untranslated = [
         lang
-        for lang in languages["bcp_47"].values[:150]
+        for lang in languages["bcp_47"].values[:200]
         if lang not in human_translated and lang in get_google_supported_languages()
     ]
     n_samples = 20
