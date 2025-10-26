@@ -13,8 +13,8 @@ from datasets_.util import load, save
 from tqdm import tqdm
 
 n_sentences = int(environ.get("N_SENTENCES", 10))
-n_languages = int(environ.get("N_LANGUAGES", 50))
-n_models = int(environ.get("N_MODELS", 25))
+n_languages = int(environ.get("N_LANGUAGES", 100))
+n_models = int(environ.get("N_MODELS", 35))
 
 async def evaluate():
     start_time = time.time()

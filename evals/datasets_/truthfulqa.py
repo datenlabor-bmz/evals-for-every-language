@@ -46,15 +46,16 @@ async def load_truthfulqa(language_bcp_47, nr):
         if 1 not in task["labels"]:
             return None, None, None
         return "masakhane/uhura-truthfulqa", task, "human"
-    elif language_bcp_47 in tags_truthfulqa_autotranslated.keys():
-        # Load from auto-translated dataset (same samples as translation)
-        ds = _load_dataset(slug_truthfulqa_autotranslated, language_bcp_47)
-        test_split = ds["test"] if "test" in ds else ds
-        task = test_split[nr]
-        # Ensure there is a correct answer before returning the task
-        if 1 not in task.get("labels", []):
-            return None, None, None
-        return slug_truthfulqa_autotranslated, task, "machine"
+    # TODO check quality/completeness of autotranslated dataset
+    # elif language_bcp_47 in tags_truthfulqa_autotranslated.keys():
+    #     # Load from auto-translated dataset (same samples as translation)
+    #     ds = _load_dataset(slug_truthfulqa_autotranslated, language_bcp_47)
+    #     test_split = ds["test"] if "test" in ds else ds
+    #     task = test_split[nr]
+    #     # Ensure there is a correct answer before returning the task
+    #     if 1 not in task.get("labels", []):
+    #         return None, None, None
+    #     return slug_truthfulqa_autotranslated, task, "machine"
     # TODO: add Okapi, TruthfulQA-X @Jonas
     else:
         return None, None, None
