@@ -190,7 +190,7 @@ async def data(request: Request):
         countries = make_country_table(make_language_table(df, languages))
     
     language_table = make_language_table(scores, languages)
-    datasets_df = load("datasets")
+    datasets_df = pd.read_json("data/datasets.json")
     
     return JSONResponse(content={
         "model_table": serialize(model_table),
