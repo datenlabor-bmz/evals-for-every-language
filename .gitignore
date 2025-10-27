@@ -7,6 +7,7 @@ spbleu
 .env
 *_credentials.json
 models_unfiltered.json
+**/*.DS_Store
 
 # Python-generated files
 __pycache__/
