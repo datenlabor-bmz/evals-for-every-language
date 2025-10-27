@@ -1,10 +1,12 @@
 import asyncio
 import os
+import random
 
 from datasets import Dataset, load_dataset
-from datasets_.util import _get_dataset_config_names, _load_dataset
-from langcodes import standardize_tag
-from models import google_supported_languages, translate_google
+from datasets_.util import _get_dataset_config_names, _load_dataset, cache
+from langcodes import Language, standardize_tag
+from models import get_google_supported_languages, translate_google
+from rich import print
 from tqdm import tqdm
 from tqdm.asyncio import tqdm_asyncio
 
@@ -37,39 +39,58 @@ def parse_number(i):
         return None
 
 
+@cache
+def _get_mgsm_item(dataset_slug, subset_tag, nr, trust_remote_code=False):
+    """Cache individual MGSM items efficiently"""
+    try:
+        ds = _load_dataset(
+            dataset_slug,
+            subset=subset_tag,
+            split="test",
+            trust_remote_code=trust_remote_code,
+        )
+        if nr >= len(ds):
+            return None
+
+        row = ds[nr]
+
+        # Post-process based on dataset type
+        if dataset_slug == slug_gsm8kx:
+            row["answer_number"] = row["answer"].split("####")[1].strip()
+
+        return row
+    except Exception:
+        # Dataset doesn't exist or doesn't have test split
+        return None
+
+
 def load_mgsm(language_bcp_47, nr):
     if language_bcp_47 in tags_mgsm.keys():
-        ds = _load_dataset(slug_mgsm, subset=tags_mgsm[language_bcp_47], split="test")
-        return slug_mgsm, ds[nr]
+        item = _get_mgsm_item(slug_mgsm, tags_mgsm[language_bcp_47], nr)
+        return slug_mgsm, item, "human" if item else (None, None, None)
     elif language_bcp_47 in tags_afrimgsm.keys():
-        ds = _load_dataset(
-            slug_afrimgsm, subset=tags_afrimgsm[language_bcp_47], split="test"
-        )
-        return slug_afrimgsm, ds[nr]
-    elif language_bcp_47 in tags_gsm_autotranslated.keys():
-        ds = _load_dataset(
-            slug_gsm_autotranslated, subset=tags_gsm_autotranslated[language_bcp_47], split="test"
-        )
-        return slug_gsm_autotranslated, ds[nr]
+        item = _get_mgsm_item(slug_afrimgsm, tags_afrimgsm[language_bcp_47], nr)
+        return slug_afrimgsm, item, "human" if item else (None, None, None)
     elif language_bcp_47 in tags_gsm8kx.keys():
-        row = _load_dataset(
-            slug_gsm8kx,
-            subset=tags_gsm8kx[language_bcp_47],
-            split="test",
-            trust_remote_code=True,
-        )[nr]
-        row["answer_number"] = row["answer"].split("####")[1].strip()
-        return slug_gsm8kx, row
+        item = _get_mgsm_item(
+            slug_gsm8kx, tags_gsm8kx[language_bcp_47], nr, trust_remote_code=True
+        )
+        return slug_gsm8kx, item, "machine" if item else (None, None, None)
+    elif language_bcp_47 in tags_gsm_autotranslated.keys():
+        item = _get_mgsm_item(
+            slug_gsm_autotranslated, tags_gsm_autotranslated[language_bcp_47], nr
+        )
+        return slug_gsm_autotranslated, item, "machine" if item else (None, None, None)
     else:
-        return None, None
+        return None, None, None
 
 
 def translate_mgsm(languages):
     human_translated = [*tags_mgsm.keys(), *tags_afrimgsm.keys()]
     untranslated = [
         lang
-        for lang in languages["bcp_47"].values[:100]
-        if lang not in human_translated and lang in google_supported_languages
+        for lang in languages["bcp_47"].values
+        if lang not in human_translated and lang in get_google_supported_languages()
     ]
     en = _load_dataset(slug_mgsm, subset=tags_mgsm["en"], split="test")
     slug = "fair-forward/gsm-autotranslated"
@@ -96,5 +117,8 @@ def translate_mgsm(languages):
                 token=os.getenv("HUGGINGFACE_ACCESS_TOKEN"),
             )
             ds_lang.to_json(
-                f"data/translations/mgsm/{lang}.json", lines=False, force_ascii=False, indent=2
+                f"data/translations/mgsm/{lang}.json",
+                lines=False,
+                force_ascii=False,
+                indent=2,
             )

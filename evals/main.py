@@ -1,62 +1,80 @@
 import asyncio
+import time
+from datetime import timedelta
+from os import environ
 
 import pandas as pd
 from languages import languages
 from models import models
+from rich import print
 from tasks import tasks
 from tqdm.asyncio import tqdm_asyncio
+from datasets_.util import load, save
+from tqdm import tqdm
 
-# ===== config =====
-
-n_sentences = 10
-
-# ===== run evaluation and aggregate results =====
-
+n_sentences = int(environ.get("N_SENTENCES", 10))
+n_languages = int(environ.get("N_LANGUAGES", 300))
+n_models = int(environ.get("N_MODELS", 35))
 
 async def evaluate():
-    # FIXME we should not need this for-loop, but it helps
-    for n_languages in range(10, 101, 10):
-        print(f"running evaluations for {n_languages} languages")
-        old_results = pd.read_json("results.json")
-        old_models = pd.read_json("models.json")
-        # get all combinations of model, language and task
-        combis = [
-            (model, lang.bcp_47, task_name)
-            for model in models["id"]
-            for lang in languages.iloc[:n_languages].itertuples()
-            for task_name, task in tasks.items()
-            if task_name in models[models["id"] == model]["tasks"].iloc[0]
-        ]
-        # filter out combinations that have already been evaluated
-        combis = pd.DataFrame(combis, columns=["model", "bcp_47", "task"])
-        combis = combis.merge(old_results, on=["model", "bcp_47", "task"], how="left")
-        combis = combis[combis["metric"].isna()][["model", "bcp_47", "task"]]
-        # run evaluations
-        results = [
-            tasks[task_name](model, bcp_47, i)
-            for i in range(n_sentences)
-            for model, bcp_47, task_name in combis.itertuples(index=False)
-        ]
-        results = await tqdm_asyncio.gather(*results, miniters=1)
-        results = [r for group in results for r in group]
-        args = dict(orient="records", indent=2, force_ascii=False)
-        if results:
-            # aggregate results
-            results = pd.DataFrame(results)
-            results = (
-                results.groupby(["model", "bcp_47", "task", "metric"])
-                .agg({"score": "mean"})
-                .reset_index()
-            )
-            # save results
-            results = pd.concat([old_results, results])
-            results = results.sort_values(by=["model", "bcp_47", "task", "metric"])
-            results.to_json("results.json", **args)
-        # save up-to-date info on models and languages
-        all_models = pd.concat([pd.DataFrame(models), old_models])
-        all_models = all_models.drop_duplicates(subset=["id"]).sort_values(by=["id"])
-        all_models.to_json("models.json", **args)
-        pd.DataFrame(languages).to_json("languages.json", **args)
+    start_time = time.time()
+
+    # Pre-compute model tasks to avoid O(n²) lookups
+    model_tasks = models.set_index("id")["tasks"].to_dict()
+    
+    # get all combinations that need evaluation
+    combis = [
+        (task_name, model, lang.bcp_47, i)
+        for i in range(n_sentences)
+        for lang in languages.head(n_languages).itertuples()
+        for task_name, task in tasks.items()
+        for model in models.iloc[:n_models]["id"]
+        if task_name in model_tasks[model]
+    ]
+    combis = pd.DataFrame(combis, columns=["task", "model", "bcp_47", "sentence_nr"])
+
+    # Load cached results and filter out completed combinations
+    old_results = load("results-detailed")
+    if not old_results.empty:
+        completed = set(old_results[["task", "model", "bcp_47", "sentence_nr"]].apply(tuple, axis=1))
+        combis = combis[~combis.apply(lambda row: tuple(row) in completed, axis=1)]
+
+    print(f"Running {len(combis)} evaluation tasks...")
+
+    # batching (asyncio.gather + rate-limiting can in principle run everything at once, but in practice batching is more efficient / necessary)
+    batch_size = 2000
+    batch_results = [
+        await tqdm_asyncio.gather(
+            *[tasks[task_name](model, bcp_47, sentence_nr)
+              for _, (task_name, model, bcp_47, sentence_nr) in batch.iterrows()]
+        )
+        for i in tqdm(range(0, len(combis), batch_size), colour='blue', desc='Batches')
+        for batch in [combis[i:i + batch_size]]
+    ]
+    results = [r for batch in batch_results for result in batch for r in result]
+    results = pd.DataFrame(results) if results else pd.DataFrame(columns=["task", "model", "bcp_47", "metric", "sentence_nr", "score", "origin"])
+    
+    # Merge with cached results (immutable log)
+    all_results = pd.concat([old_results, results]).drop_duplicates(
+        subset=["task", "model", "bcp_47", "metric", "sentence_nr"]
+    ) if not old_results.empty else results
+    
+    # Filter to current models × languages and aggregate
+    current_models = set(models.iloc[:n_models]["id"])
+    current_languages = set(languages.head(n_languages)["bcp_47"])
+    results_agg = (
+        all_results[all_results["model"].isin(current_models) & all_results["bcp_47"].isin(current_languages)]
+        .groupby(["model", "bcp_47", "task", "metric"])
+        .agg({"score": "mean", "origin": "first"})
+        .reset_index()
+    )
+    
+    save(all_results, "results-detailed")
+    save(results_agg, "results")
+    save(models, "models")
+    save(languages, "languages")
+    elapsed = time.time() - start_time
+    print(f"Evaluation completed in {str(timedelta(seconds=int(elapsed)))}")
 
 
 if __name__ == "__main__":

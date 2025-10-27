@@ -11,6 +11,7 @@ fleurs["bcp_47"] = fleurs["fleurs_tag"].apply(
     lambda x: standardize_tag(x.rsplit("_")[0], macro=True)
 )
 
+
 def download_file(url, path):
     response = requests.get(url)
     with open(path, "wb") as f:

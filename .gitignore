@@ -1,3 +1,4 @@
+results/
 data/translations/
 floresp-*
 fleurs
@@ -5,6 +6,8 @@ spbleu
 .cache
 .env
 *_credentials.json
+models_unfiltered.json
+**/*.DS_Store
 
 # Python-generated files
 __pycache__/
@@ -20,3 +23,5 @@ wheels/
 # folders and files to be ignored
 .specstory/
 .cursorindexingignore
+
+

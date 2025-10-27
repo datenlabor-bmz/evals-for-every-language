@@ -45,6 +45,7 @@ _Tracking language proficiency of AI models for every language_
 
 ## Evaluate
 
+### Local Development
 ```bash
 uv run --extra dev evals/main.py
 ```
@@ -55,3 +56,7 @@ uv run --extra dev evals/main.py
 uv run evals/backend.py
 cd frontend && npm i && npm start
 ```
+
+## System Architecture
+
+See [notes/system-architecture-diagram.md](notes/system-architecture-diagram.md) for the complete system architecture diagram and component descriptions.

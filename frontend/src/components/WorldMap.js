@@ -26,13 +26,13 @@ const makeTitle = data => d => {
         a =>
           `${smoothProgressBar(a.population / pop)} ${
             a.name
-          } – ${a.score.toFixed(2)}`
+          } – ${a.score === null || a.score === undefined ? "n/a" : a.score.toFixed(2)}`
       )
       .join('\n\n') + (languages?.length > 10 ? `\n\n...` : '')
-  return `${d.properties.ADMIN} – ${cData?.score.toFixed(2)}\n\n${langstring}`
+  return `${d.properties.ADMIN} – ${cData?.score === null || cData?.score === undefined ? "n/a" : cData.score.toFixed(2)}\n\n${langstring}`
 }
 
-const WorldMap = ({ data, width = 750, height = 500 }) => {
+const WorldMap = ({ data, width = 750, height = 500, allLanguages = [] }) => {
   const containerRef = useRef()
   const [mapData, setMapData] = useState()
 
@@ -48,8 +48,22 @@ const WorldMap = ({ data, width = 750, height = 500 }) => {
       acc[country.iso2] = country
       return acc
     }, {})
+    // Count languages that have any evaluation data
+    const evaluatedLanguagesCount = allLanguages.filter(lang => {
+      const hasAnyScores = [
+        'translation_from_bleu',
+        'translation_to_bleu', 
+        'classification_accuracy',
+        'mmlu_accuracy',
+        'arc_accuracy',
+        'truthfulqa_accuracy',
+        'mgsm_accuracy'
+      ].some(metric => lang[metric] !== null && lang[metric] !== undefined)
+      return hasAnyScores
+    }).length
+
     const plot = Plot.plot({
-      subtitle: 'Language Proficiency Score by Country',
+      subtitle: `Language Proficiency Score by Country (Coverage: ~${evaluatedLanguagesCount} languages evaluated)`,
       width: width,
       height: height,
       projection: 'equal-earth',
@@ -61,11 +75,12 @@ const WorldMap = ({ data, width = 750, height = 500 }) => {
         })
       ],
       color: {
-        scheme: 'Greens',
-        unknown: 'gray',
+        scheme: 'RdYlGn',
+        unknown: '#d0d0d0',
         label: 'Score',
         legend: true,
-        domain: [0, 1]
+        domain: [0, 1],
+        pivot: 0.5
       },
       style: {
         fontFamily: 'monospace'

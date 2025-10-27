@@ -4,9 +4,9 @@ import random
 from collections import Counter, defaultdict
 
 from datasets import Dataset, load_dataset
-from datasets_.util import _get_dataset_config_names, _load_dataset
+from datasets_.util import _get_dataset_config_names, _load_dataset, cache
 from langcodes import Language, standardize_tag
-from models import google_supported_languages, translate_google
+from models import get_google_supported_languages, translate_google
 from rich import print
 from tqdm import tqdm
 from tqdm.asyncio import tqdm_asyncio
@@ -111,6 +111,7 @@ def print_datasets_analysis():
 # MMLUX is translated using DeepL
 # Therefore, the priority is: AfriMMLU, Global-MMLU, MMLUX, Okapi-MMLU
 
+
 # print_datasets_analysis()
 
 
@@ -143,32 +144,61 @@ tags_mmlux = set(
     a.rsplit("_", 1)[1].split("-")[0].lower()
     for a in _get_dataset_config_names("Eurolingua/mmlux", trust_remote_code=True)
 )
-tags_mmlu_autotranslated = _get_dataset_config_names("fair-forward/mmlu-autotranslated")
+tags_mmlu_autotranslated = {
+    standardize_tag(a, macro=True): a
+    for a in _get_dataset_config_names("fair-forward/mmlu-autotranslated")
+}
 
 categories = sorted(
-        list(set(_load_dataset("masakhane/afrimmlu", "eng")["dev"]["subject"]))
-    )
+    list(set(_load_dataset("masakhane/afrimmlu", "eng")["dev"]["subject"]))
+)
 
 
-def load_mmlu(language_bcp_47, nr):
+@cache
+def _get_processed_mmlu_dataset(dataset_name, subset_tag):
+    """Cache processed datasets to avoid reprocessing"""
+    ds = _load_dataset(dataset_name, subset_tag)
+    if dataset_name == "masakhane/afrimmlu":
+        ds = ds.map(parse_choices)
+    elif dataset_name == "CohereForAI/Global-MMLU":
+        ds = ds.map(add_choices)
+    return ds
+
+
+@cache
+def _get_mmlu_item(dataset_name, subset_tag, category, nr):
+    """Cache individual MMLU items efficiently"""
+    ds = _get_processed_mmlu_dataset(dataset_name, subset_tag)
+    if dataset_name in ["masakhane/afrimmlu", "CohereForAI/Global-MMLU"]:
+        filtered = ds["test"].filter(lambda x: x["subject"] == category)
+        return filtered[nr] if nr < len(filtered) else None
+    else:  # fair-forward/mmlu-autotranslated
+        filtered = ds["test"].filter(lambda x: x["subject"] == category)
+        return filtered[nr] if nr < len(filtered) else None
+
+
+async def load_mmlu(language_bcp_47, nr):
     category = categories[nr % len(categories)]
     if language_bcp_47 in tags_afrimmlu.keys():
-        ds = _load_dataset("masakhane/afrimmlu", tags_afrimmlu[language_bcp_47])
-        ds = ds.map(parse_choices)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
-        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "masakhane/afrimmlu", examples, task
+        task = _get_mmlu_item(
+            "masakhane/afrimmlu", tags_afrimmlu[language_bcp_47], category, nr
+        )
+        return "masakhane/afrimmlu", task, "human" if task else (None, None, None)
     elif language_bcp_47 in tags_global_mmlu.keys():
-        ds = _load_dataset("CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47])
-        ds = ds.map(add_choices)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
-        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "CohereForAI/Global-MMLU", examples, task
+        task = _get_mmlu_item(
+            "CohereForAI/Global-MMLU", tags_global_mmlu[language_bcp_47], category, nr
+        )
+        return "CohereForAI/Global-MMLU", task, "human" if task else (None, None, None)
+    # TODO: add in Okapi, MMLUX @Jonas
     elif language_bcp_47 in tags_mmlu_autotranslated:
-        ds = _load_dataset("fair-forward/mmlu-autotranslated", language_bcp_47)
-        examples = ds["dev"].filter(lambda x: x["subject"] == category)
-        task = ds["test"].filter(lambda x: x["subject"] == category)[nr]
-        return "fair-forward/mmlu-autotranslated", examples, task
+        task = _get_mmlu_item(
+            "fair-forward/mmlu-autotranslated", language_bcp_47, category, nr
+        )
+        return (
+            "fair-forward/mmlu-autotranslated",
+            task,
+            "machine" if task else (None, None, None),
+        )
     else:
         return None, None, None
 
@@ -177,10 +207,10 @@ def translate_mmlu(languages):
     human_translated = [*tags_afrimmlu.keys(), *tags_global_mmlu.keys()]
     untranslated = [
         lang
-        for lang in languages["bcp_47"].values[:100]
-        if lang not in human_translated and lang in google_supported_languages
+        for lang in languages["bcp_47"].values
+        if lang not in human_translated and lang in get_google_supported_languages()
     ]
-    n_samples = 10
+    n_samples = 20
 
     slug = "fair-forward/mmlu-autotranslated"
     for lang in tqdm(untranslated):
@@ -196,8 +226,10 @@ def translate_mmlu(languages):
                     if split == "dev":
                         samples.extend(ds.filter(lambda x: x["subject"] == category))
                     else:
-                        for i in range(n_samples):
-                            task = ds.filter(lambda x: x["subject"] == category)[i]
+                        # Use the same 20 samples that the evaluation pipeline uses (indices 0-19)
+                        filtered = ds.filter(lambda x: x["subject"] == category)
+                        for i in range(min(n_samples, len(filtered))):
+                            task = filtered[i]
                             samples.append(task)
                 questions_tr = [
                     translate_google(s["question"], "en", lang) for s in samples

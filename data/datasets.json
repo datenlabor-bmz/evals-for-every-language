@@ -5,7 +5,9 @@
         "author_url": "https://ai.meta.com",
         "url": "https://huggingface.co/datasets/openlanguagedata/flores_plus",
         "n_languages": 200,
-        "tasks": ["translation"],
+        "tasks": [
+            "translation"
+        ],
         "parallel": true,
         "translation": "human",
         "base": "FLORES",
@@ -18,7 +20,9 @@
         "author_url": null,
         "url": "https://huggingface.co/datasets/Davlan/sib200",
         "n_languages": 200,
-        "tasks": ["classification"],
+        "tasks": [
+            "classification"
+        ],
         "parallel": true,
         "translation": "human",
         "base": "FLORES",
@@ -219,7 +223,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "MMLU",
-        "implemented": true,
+        "implemented": false,
         "group": "Multitask Language Understanding"
     },
     {
@@ -256,7 +260,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "MMLU",
-        "implemented": true,
+        "implemented": false,
         "group": "Multitask Language Understanding"
     },
     {
@@ -360,7 +364,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "AI2 ARC",
-        "implemented": true,
+        "implemented": false,
         "group": "ARC Question Answering"
     },
     {
@@ -375,7 +379,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "AI2 ARC",
-        "implemented": true,
+        "implemented": false,
         "group": "ARC Question Answering"
     },
     {
@@ -420,7 +424,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "TruthfulQA",
-        "implemented": true,
+        "implemented": false,
         "group": "Truthfulness"
     },
     {
@@ -435,7 +439,7 @@
         "parallel": true,
         "translation": "machine",
         "base": "TruthfulQA",
-        "implemented": true,
+        "implemented": false,
         "group": "Truthfulness"
     },
     {

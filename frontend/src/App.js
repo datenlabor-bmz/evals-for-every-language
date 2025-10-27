@@ -16,12 +16,18 @@ import { Button } from 'primereact/button'
 
 function App () {
   const [data, setData] = useState(null)
+  const [baseData, setBaseData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedLanguages, setSelectedLanguages] = useState([])
+  const [machineTranslatedMetrics, setMachineTranslatedMetrics] = useState([])
   const [dialogVisible, setDialogVisible] = useState(false)
   const [aboutVisible, setAboutVisible] = useState(false)
   const [contributeVisible, setContributeVisible] = useState(false)
+  
+  // Add state for carousel items
+  const [carouselItems, setCarouselItems] = useState([])
+  const [fullScreenCarouselItems, setFullScreenCarouselItems] = useState([])
 
   useEffect(() => {
     fetch('/api/data', {
@@ -36,6 +42,8 @@ function App () {
       })
       .then(jsonData => {
         setData(jsonData)
+        setMachineTranslatedMetrics(jsonData.machine_translated_metrics || [])
+        if (!baseData) setBaseData(jsonData)
         setLoading(false)
       })
       .catch(err => {
@@ -44,8 +52,27 @@ function App () {
       })
   }, [selectedLanguages])
 
+  // Create carousel items when data is loaded
+  useEffect(() => {
+    if (data) {
+      // Add a small delay to ensure components are ready
+      const timer = setTimeout(() => {
+        setCarouselItems([
+          <WorldMap key="worldmap-0" data={(baseData || data).countries} allLanguages={(baseData || data).language_table} width={750} height={500} />,
+          <LanguagePlot key="langplot-1" data={data} width={750} height={500} />,
+          <SpeakerPlot key="speakerplot-2" data={data} width={750} height={500} />,
+          <HistoryPlot key="histplot-3" data={data} width={750} height={500} />,
+          <CostPlot key="costplot-4" data={data} width={750} height={500} />
+        ]);
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [data, baseData])
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [windowHeight, setWindowHeight] = useState(window.innerHeight)
+  
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
@@ -54,6 +81,44 @@ function App () {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  // Create full-screen carousel items when data or window size changes
+  useEffect(() => {
+    if (data) {
+      const timer = setTimeout(() => {
+        setFullScreenCarouselItems([
+          <WorldMap
+            key="fs-worldmap-0"
+            data={(baseData || data).countries}
+            allLanguages={(baseData || data).language_table}
+            width={windowWidth * 0.7}
+            height={windowHeight * 0.6}
+          />,
+          <LanguagePlot
+            key="fs-langplot-1"
+            data={data}
+            width={windowWidth * 0.7}
+            height={windowHeight * 0.6}
+          />,
+          <SpeakerPlot
+            key="fs-speakerplot-2"
+            data={data}
+            width={windowWidth * 0.7}
+            height={windowHeight * 0.6}
+          />,
+          <HistoryPlot
+            key="fs-histplot-3"
+            data={data}
+            width={windowWidth * 0.7}
+            height={windowHeight * 0.6}
+          />,
+          <CostPlot key="fs-costplot-4" data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />
+        ]);
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [data, baseData, windowWidth, windowHeight])
 
   return (
     <PrimeReactProvider>
@@ -69,35 +134,50 @@ function App () {
           style={{
             backgroundColor: '#fff3cd',
             color: '#856404',
-            padding: '0.75rem 1.25rem',
+            padding: '1rem 1.5rem',
             marginBottom: '1rem',
             border: '1px solid #ffeeba',
             borderRadius: '0.25rem',
-            textAlign: 'center'
+            textAlign: 'center',
+            lineHeight: '1.5',
+            position: 'relative'
           }}
         >
           <strong>Work in Progress:</strong> This dashboard is currently under
-          active development. Evaluation results are not yet final.
+          active development. Evaluation results are not yet final. More extensive evaluation runs will be released later this year.
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            padding: '0 1.5rem',
+            marginBottom: '1rem'
+          }}
+        >
           <a
             href='https://github.com/datenlabor-bmz/ai-language-monitor'
             target='_blank'
             rel='noopener noreferrer'
             style={{
               textDecoration: 'none',
-              color: '#856404',
-              float: 'right',
-              fontSize: '1.2rem',
-              fontWeight: 'bold',
-              padding: '0 0.5rem',
-              borderRadius: '3px',
-              backgroundColor: 'rgba(255,255,255,0.3)'
+              color: '#6c757d',
+              fontSize: '1rem',
+              fontWeight: '500',
+              padding: '0.5rem 1rem',
+              borderRadius: '0.375rem',
+              backgroundColor: '#f8f9fa',
+              border: '1px solid #e9ecef',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              transition: 'all 0.2s ease',
+              ':hover': {
+                backgroundColor: '#e9ecef',
+                color: '#495057'
+              }
             }}
           >
-            <i
-              className='pi pi-github'
-              title='View on GitHub'
-              style={{ marginRight: '0.3rem' }}
-            />
+            <i className='pi pi-github' title='View on GitHub' />
             GitHub
           </a>
         </div>
@@ -149,39 +229,88 @@ function App () {
           <div
             style={{
               display: 'flex',
-              gap: '1rem',
-              marginBottom: '1.5rem',
+              gap: '0.75rem',
+              marginBottom: '2rem',
               flexWrap: 'wrap',
               justifyContent: 'center'
             }}
           >
-            <Button
-              label='📚 About this tool'
-              className='p-button-text'
+            <button
               onClick={() => setAboutVisible(true)}
               style={{
-                color: '#666',
-                border: '1px solid #ddd',
-                padding: '0.5rem 1rem',
-                borderRadius: '4px',
-                fontSize: '0.9rem'
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                border: 'none',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '12px',
+                fontSize: '0.95rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                boxShadow: '0 4px 15px rgba(102, 126, 234, 0.25)',
+                transition: 'all 0.3s ease',
+                ':hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 8px 25px rgba(102, 126, 234, 0.35)'
+                }
               }}
-            />
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.35)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.25)';
+              }}
+            >
+              <span style={{ fontSize: '1.1rem' }}>📚</span>
+              About this tool
+            </button>
 
-            <Button
-              label='🚀 Add your model (soon)'
-              className='p-button-text'
+            <button
               onClick={() => setContributeVisible(true)}
-              tooltip='This feature is on our roadmap and will be available soon.'
-              tooltipOptions={{ position: 'bottom' }}
+              title='This feature is on our roadmap and will be available soon.'
               style={{
-                color: '#666',
-                border: '1px solid #ddd',
-                padding: '0.5rem 1rem',
-                borderRadius: '4px',
-                fontSize: '0.9rem'
+                background: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)',
+                color: '#6b46c1',
+                border: 'none',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '12px',
+                fontSize: '0.95rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                boxShadow: '0 4px 15px rgba(255, 154, 158, 0.25)',
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                overflow: 'hidden'
               }}
-            />
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 8px 25px rgba(255, 154, 158, 0.35)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 15px rgba(255, 154, 158, 0.25)';
+              }}
+            >
+              <span style={{ fontSize: '1.1rem' }}>🚀</span>
+              Add your model
+              <span style={{
+                fontSize: '0.75rem',
+                backgroundColor: 'rgba(107, 70, 193, 0.15)',
+                padding: '0.2rem 0.5rem',
+                borderRadius: '6px',
+                marginLeft: '0.5rem',
+                fontWeight: '600'
+              }}>
+                soon
+              </span>
+            </button>
           </div>
 
           {data && (
@@ -220,6 +349,7 @@ function App () {
                 data={data.model_table}
                 selectedLanguages={selectedLanguages}
                 allLanguages={data.language_table || []}
+                machineTranslatedMetrics={machineTranslatedMetrics}
               />
               <LanguageTable
                 data={data.language_table}
@@ -248,20 +378,18 @@ function App () {
                     color: '#666'
                   }}
                 />
-                <Carousel
-                  value={[
-                    <WorldMap data={data.countries} />,
-                    <LanguagePlot data={data} />,
-                    <SpeakerPlot data={data} />,
-                    <HistoryPlot data={data} />,
-                    <CostPlot data={data} />
-                  ]}
-                  numScroll={1}
-                  numVisible={1}
-                  itemTemplate={item => item}
-                  circular
-                  style={{ width: '100%', minHeight: '650px' }}
-                />
+                {carouselItems.length > 0 && (
+                  <Carousel
+                    key={`main-carousel-${carouselItems.length}-${Date.now()}`}
+                    value={carouselItems}
+                    numScroll={1}
+                    numVisible={1}
+                    itemTemplate={item => item}
+                    circular={false}
+                    activeIndex={0}
+                    style={{ width: '100%', minHeight: '650px' }}
+                  />
+                )}
               </div>
             </>
           )}
@@ -409,36 +537,16 @@ function App () {
           modal
           header={null}
         >
-          {data && (
+          {fullScreenCarouselItems.length > 0 && (
             <div style={{ width: '100%', height: '100%' }}>
               <Carousel
-                value={[
-                  <WorldMap
-                    data={data.countries}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />,
-                  <LanguagePlot
-                    data={data}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />,
-                  <SpeakerPlot
-                    data={data}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />,
-                  <HistoryPlot
-                    data={data}
-                    width={windowWidth * 0.7}
-                    height={windowHeight * 0.6}
-                  />,
-                  <CostPlot data={data} />
-                ]}
+                key={`fs-carousel-${fullScreenCarouselItems.length}-${Date.now()}`}
+                value={fullScreenCarouselItems}
                 numScroll={1}
                 numVisible={1}
                 itemTemplate={item => item}
-                circular
+                circular={false}
+                activeIndex={0}
                 style={{ width: '100%', height: 'calc(90vh - 120px)' }}
               />
             </div>
