@@ -40,7 +40,7 @@ important_models = [
     "google/gemini-2.5-flash",  # 0.6$
     "google/gemini-2.5-flash-lite",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
-    "x-ai/grok-4", # $15
+    # "x-ai/grok-4", # $15
     # "x-ai/grok-3", # $15
     "cohere/command-a",
     "qwen/qwen3-32b",
@@ -50,7 +50,7 @@ important_models = [
     # "qwen/qwq-32b",  # 0.2$
     # "qwen/qwen-2.5-72b-instruct",  # 0.39$
     # "qwen/qwen-2-72b-instruct",  # 0.9$
-    # "deepseek/deepseek-v3.2-exp",
+    "deepseek/deepseek-v3.2-exp",
     "microsoft/phi-4",  # 0.07$
     "amazon/nova-pro-v1",  # 0.09$
     "moonshotai/kimi-k2",  # 0.6$

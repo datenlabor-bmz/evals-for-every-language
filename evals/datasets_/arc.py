@@ -68,7 +68,7 @@ def translate_arc(languages):
     human_translated = tags_uhura_arc_easy.keys()
     untranslated = [
         lang
-        for lang in languages["bcp_47"].values[:200]
+        for lang in languages["bcp_47"].values
         if lang not in human_translated and lang in get_google_supported_languages()
     ]
     n_samples = 10
