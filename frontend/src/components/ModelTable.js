@@ -8,12 +8,33 @@ import { Slider } from 'primereact/slider'
 import ScoreColumns from './ScoreColumns'
 const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTranslatedMetrics = [] }) => {
   const [filters, setFilters] = useState({
+    provider_name: { value: null, matchMode: FilterMatchMode.IN },
+    name: { value: null, matchMode: FilterMatchMode.CONTAINS },
     type: { value: null, matchMode: FilterMatchMode.IN },
     size: { value: null, matchMode: FilterMatchMode.BETWEEN },
     cost: { value: null, matchMode: FilterMatchMode.BETWEEN }
   })
   const rankBodyTemplate = rowData => {
     return <Medal rank={rowData.rank} />
+  }
+
+  const providers = [...new Set(data.map(item => item.provider_name))].filter(Boolean).sort()
+  
+  const providerRowFilterTemplate = options => {
+    return (
+      <MultiSelect
+        value={options.value}
+        options={providers}
+        onChange={e => {
+          options.filterApplyCallback(e.value)
+          setFilters(prevFilters => ({
+            ...prevFilters,
+            provider_name: { value: e.value, matchMode: FilterMatchMode.IN }
+          }))
+        }}
+        placeholder='All providers'
+      />
+    )
   }
 
   const typeRowFilterTemplate = options => {
@@ -220,12 +241,17 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTr
         field='provider_name'
         header='Provider'
         style={{ minWidth: '7rem' }}
+        filter
+        filterElement={providerRowFilterTemplate}
+        showFilterMatchModes={false}
       />
       <Column
         field='name'
         header='Model'
         style={{ minWidth: '10rem' }}
         body={modelBodyTemplate}
+        filter
+        showFilterMatchModes={false}
         frozen
       />
       <Column

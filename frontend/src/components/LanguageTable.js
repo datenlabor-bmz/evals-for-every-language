@@ -8,7 +8,7 @@ import ScoreColumns from './ScoreColumns'
 
 const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages, totalModels = 0 }) => {
   const [filters, setFilters] = useState({
-    language_name: { value: null, matchMode: FilterMatchMode.EQUALS }, // via global search
+    language_name: { value: null, matchMode: FilterMatchMode.CONTAINS },
     family: { value: null, matchMode: FilterMatchMode.IN },
     speakers: { value: null, matchMode: FilterMatchMode.BETWEEN }
   })
@@ -150,6 +150,8 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages, totalMod
         header='Language'
         body={languageBodyTemplate}
         style={{ minWidth: '10rem' }}
+        filter
+        showFilterMatchModes={false}
         frozen
       />
       <Column
