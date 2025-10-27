@@ -18,6 +18,6 @@ COPY --chown=user pyproject.toml uv.lock README.md ./
 RUN uv sync --frozen --no-dev
 COPY --chown=user evals/ evals/
 COPY --chown=user --from=build /frontend/build /home/user/app/frontend/build
-COPY --chown=user results.json datasets.json models.json languages.json ./
+COPY --chown=user data/datasets.json data/datasets.json
 EXPOSE 8000
 CMD ["uv", "run", "--no-dev", "evals/backend.py"]
