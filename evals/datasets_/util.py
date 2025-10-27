@@ -6,9 +6,27 @@ from datasets import Dataset, get_dataset_config_names, load_dataset
 from datasets.exceptions import DatasetNotFoundError
 from huggingface_hub.errors import RepositoryNotFoundError
 from joblib.memory import Memory
+from langcodes import standardize_tag
 
 cache = Memory(location=".cache", verbose=0).cache
 TOKEN = os.getenv("HUGGINGFACE_ACCESS_TOKEN")
+
+# Macrolanguage mappings: when standardize_tag returns a macrolanguage,
+# map it to the preferred specific variant for consistency across datasets.
+# This ensures results from different benchmarks use the same language code.
+MACROLANGUAGE_MAPPINGS = {
+    "no": "nb",  # Norwegian -> Norwegian Bokmål (most widely used variant)
+    # Add more mappings here as needed, e.g.:
+    # "ms": "zsm",  # Malay -> Standard Malay
+    # "ar": "arb",  # Arabic -> Standard Arabic
+}
+
+
+def standardize_bcp47(tag: str, macro: bool = True) -> str:
+    """Standardize a BCP-47 tag with consistent macrolanguage handling."""
+    
+    standardized = standardize_tag(tag, macro=macro)
+    return MACROLANGUAGE_MAPPINGS.get(standardized, standardized)
 
 
 @cache

@@ -4,7 +4,7 @@ import random
 from collections import Counter, defaultdict
 
 from datasets import Dataset, load_dataset
-from datasets_.util import _get_dataset_config_names, _load_dataset, cache
+from datasets_.util import _get_dataset_config_names, _load_dataset, cache, standardize_bcp47
 from langcodes import Language, standardize_tag
 from models import get_google_supported_languages, translate_google
 from rich import print
@@ -24,7 +24,7 @@ def print_datasets_analysis():
     ds1 = _load_dataset(slug1, "eng")
     print_counts(slug1, ds1["dev"]["subject"], ds1["test"]["subject"])
     langs1 = _get_dataset_config_names(slug1)
-    langs1 = [standardize_tag(a, macro=True) for a in langs1]
+    langs1 = [standardize_bcp47(a) for a in langs1]
 
     slug2 = "openai/MMMLU"  # does not have dev set! – but: these languages are all also present in Global-MMLU
     ds2 = _load_dataset(slug2, "FR_FR")
@@ -37,7 +37,7 @@ def print_datasets_analysis():
     ds3 = _load_dataset(slug3, "en")
     print_counts(slug3, ds3["dev"]["subject"], ds3["test"]["subject"])
     langs3 = _get_dataset_config_names(slug3)
-    langs3 = [standardize_tag(a, macro=True) for a in langs3]
+    langs3 = [standardize_bcp47(a) for a in langs3]
 
     slug4 = "lighteval/okapi_mmlu"
     ds4 = _load_dataset(slug4, "ar", trust_remote_code=True)
@@ -132,11 +132,11 @@ def add_choices(row):
 
 
 tags_afrimmlu = {
-    standardize_tag(a, macro=True): a
+    standardize_bcp47(a): a
     for a in _get_dataset_config_names("masakhane/afrimmlu")
 }
 tags_global_mmlu = {
-    standardize_tag(a, macro=True): a
+    standardize_bcp47(a): a
     for a in _get_dataset_config_names("CohereForAI/Global-MMLU")
 }
 tags_okapi = _get_dataset_config_names("lighteval/okapi_mmlu")
@@ -145,7 +145,7 @@ tags_mmlux = set(
     for a in _get_dataset_config_names("Eurolingua/mmlux", trust_remote_code=True)
 )
 tags_mmlu_autotranslated = {
-    standardize_tag(a, macro=True): a
+    standardize_bcp47(a): a
     for a in _get_dataset_config_names("fair-forward/mmlu-autotranslated")
 }
 

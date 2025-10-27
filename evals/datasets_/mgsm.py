@@ -3,8 +3,8 @@ import os
 import random
 
 from datasets import Dataset, load_dataset
-from datasets_.util import _get_dataset_config_names, _load_dataset, cache
-from langcodes import Language, standardize_tag
+from datasets_.util import _get_dataset_config_names, _load_dataset, cache, standardize_bcp47
+from langcodes import Language
 from models import get_google_supported_languages, translate_google
 from rich import print
 from tqdm import tqdm
@@ -12,20 +12,20 @@ from tqdm.asyncio import tqdm_asyncio
 
 slug_mgsm = "juletxara/mgsm"
 tags_mgsm = {
-    standardize_tag(a, macro=True): a for a in _get_dataset_config_names(slug_mgsm)
+    standardize_bcp47(a): a for a in _get_dataset_config_names(slug_mgsm)
 }
 slug_afrimgsm = "masakhane/afrimgsm"
 tags_afrimgsm = {
-    standardize_tag(a, macro=True): a for a in _get_dataset_config_names(slug_afrimgsm)
+    standardize_bcp47(a): a for a in _get_dataset_config_names(slug_afrimgsm)
 }
 slug_gsm8kx = "Eurolingua/gsm8kx"
 tags_gsm8kx = {
-    standardize_tag(a, macro=True): a
+    standardize_bcp47(a): a
     for a in _get_dataset_config_names(slug_gsm8kx, trust_remote_code=True)
 }
 slug_gsm_autotranslated = "fair-forward/gsm-autotranslated"
 tags_gsm_autotranslated = {
-    standardize_tag(a, macro=True): a
+    standardize_bcp47(a): a
     for a in _get_dataset_config_names(slug_gsm_autotranslated)
 }
 

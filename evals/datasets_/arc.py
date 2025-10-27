@@ -1,6 +1,5 @@
 import random
 
-from langcodes import standardize_tag
 from rich import print
 from models import translate_google, get_google_supported_languages
 from tqdm import tqdm
@@ -9,11 +8,11 @@ import asyncio
 from tqdm.asyncio import tqdm_asyncio
 import os
 
-from datasets_.util import _get_dataset_config_names, _load_dataset
+from datasets_.util import _get_dataset_config_names, _load_dataset, standardize_bcp47
 
 slug_uhura_arc_easy = "masakhane/uhura-arc-easy"
 tags_uhura_arc_easy = {
-    standardize_tag(a.split("_")[0], macro=True): a
+    standardize_bcp47(a.split("_")[0]): a
     for a in _get_dataset_config_names(slug_uhura_arc_easy)
     if not a.endswith("unmatched")
 }
@@ -35,7 +34,7 @@ random.shuffle(common_ids_test)
 
 slug_uhura_arc_easy_translated = "fair-forward/arc-easy-autotranslated"
 tags_uhura_arc_easy_translated = {
-    standardize_tag(a.split("_")[0], macro=True): a
+    standardize_bcp47(a.split("_")[0]): a
     for a in _get_dataset_config_names(slug_uhura_arc_easy_translated)
 }
 
