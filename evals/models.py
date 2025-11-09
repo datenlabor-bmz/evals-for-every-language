@@ -364,7 +364,8 @@ def load_models(date: date) -> pd.DataFrame:
     models = models.assign(
         name=or_metadata.str["short_name"]
         .str.replace(" (free)", "")
-        .str.replace(" (self-moderated)", ""),
+        .str.replace(" (self-moderated)", "")
+        .str.replace(r"\s*\([^)]*\)\s*$", "", regex=True),
         provider_name=or_metadata.str["name"].str.split(": ").str[0],
         # openrouter_metadata=or_metadata.astype(str),
         cost=or_metadata.apply(get_cost),
