@@ -1,5 +1,5 @@
 import pandas as pd
-from langcodes import standardize_tag
+from datasets_.util import standardize_bcp47
 from pathlib import Path
 import tarfile
 import requests
@@ -8,7 +8,7 @@ fleurs_tags = "af_za,am_et,ar_eg,as_in,ast_es,az_az,be_by,bg_bg,bn_in,bs_ba,ca_e
 
 fleurs = pd.DataFrame(fleurs_tags.split(","), columns=["fleurs_tag"])
 fleurs["bcp_47"] = fleurs["fleurs_tag"].apply(
-    lambda x: standardize_tag(x.rsplit("_")[0], macro=True)
+    lambda x: standardize_bcp47(x.rsplit("_")[0], macro=True)
 )
 
 

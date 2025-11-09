@@ -1,7 +1,7 @@
 import random
 from collections import Counter, defaultdict
 
-from langcodes import Language, standardize_tag
+from langcodes import Language
 from rich import print
 from tqdm import tqdm
 import asyncio
@@ -11,19 +11,19 @@ import os
 from datasets import Dataset, load_dataset
 from models import translate_google, get_google_supported_languages
 
-from datasets_.util import _get_dataset_config_names, _load_dataset
+from datasets_.util import _get_dataset_config_names, _load_dataset, standardize_bcp47
 
 slug_uhura_truthfulqa = "masakhane/uhura-truthfulqa"
 slug_truthfulqa_autotranslated = "fair-forward/truthfulqa-autotranslated"
 
 tags_uhura_truthfulqa = {
-    standardize_tag(a.split("_")[0], macro=True): a
+    standardize_bcp47(a.split("_")[0], macro=True): a
     for a in _get_dataset_config_names(slug_uhura_truthfulqa)
     if a.endswith("multiple_choice")
 }
 
 tags_truthfulqa_autotranslated = {
-    standardize_tag(a, macro=True): a
+    standardize_bcp47(a, macro=True): a
     for a in _get_dataset_config_names(slug_truthfulqa_autotranslated)
 }
 tags_truthfulqa_autotranslated = {}

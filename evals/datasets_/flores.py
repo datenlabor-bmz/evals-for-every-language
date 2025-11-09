@@ -1,8 +1,8 @@
 import re
 
 import pandas as pd
-from datasets_.util import _get_dataset_config_names, _load_dataset
-from langcodes import Language, standardize_tag
+from datasets_.util import _get_dataset_config_names, _load_dataset, standardize_bcp47
+from langcodes import Language
 
 slug = "openlanguagedata/flores_plus"
 splits = _get_dataset_config_names(slug)
@@ -21,7 +21,7 @@ def aggregate_flores_paths(flores_paths):
     if len(flores_paths) == 1:
         return flores_paths.values[0]
     populations = [
-        Language.get(standardize_tag(x, macro=True)).writing_population()
+        Language.get(standardize_bcp47(x, macro=True)).writing_population()
         for x in flores_paths.values
     ]
     return flores_paths.values[populations.index(max(populations))]
@@ -29,7 +29,7 @@ def aggregate_flores_paths(flores_paths):
 
 flores = pd.DataFrame(splits, columns=["flores_path"])
 flores["bcp_47"] = flores["flores_path"].apply(
-    lambda x: standardize_tag(x, macro=True),
+    lambda x: standardize_bcp47(x, macro=True),
 )
 # ignore script (language is language)
 flores["bcp_47"] = flores["bcp_47"].apply(

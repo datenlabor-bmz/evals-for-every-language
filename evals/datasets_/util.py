@@ -16,9 +16,11 @@ TOKEN = os.getenv("HUGGINGFACE_ACCESS_TOKEN")
 # This ensures results from different benchmarks use the same language code.
 MACROLANGUAGE_MAPPINGS = {
     "no": "nb",  # Norwegian -> Norwegian Bokmål (most widely used variant)
-    # Add more mappings here as needed, e.g.:
-    # "ms": "zsm",  # Malay -> Standard Malay
-    # "ar": "arb",  # Arabic -> Standard Arabic
+    # Add more mappings here if they cause duplicate entries in the languages table:
+    # "ms": "zsm",  # Malay -> Standard Malay (if both appear in population data)
+    # "ar": "arb",  # Arabic -> Standard Arabic (if both appear in population data)
+    # "zh": "cmn",  # Chinese -> Mandarin Chinese (if both appear in population data)
+    # Check LANGUAGE_SPEAKING_POPULATION to see which macrolanguages need mapping
 }
 
 

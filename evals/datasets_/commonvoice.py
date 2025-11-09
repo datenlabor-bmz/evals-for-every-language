@@ -2,8 +2,8 @@ import re
 from datetime import date
 
 import pandas as pd
+from datasets_.util import standardize_bcp47
 from joblib.memory import Memory
-from langcodes import standardize_tag
 from requests import get
 
 cache = Memory(location=".cache", verbose=0).cache
@@ -23,8 +23,8 @@ commonvoice["bcp_47"] = commonvoice["commonvoice_locale"].apply(
     lambda x: re.sub(r"-[A-Z]{2}$", "", x)
 )
 commonvoice["bcp_47"] = commonvoice["bcp_47"].apply(
-    lambda x: standardize_tag(x, macro=True)
-)  # this does not really seem to get macrolanguages though, e.g. not for Quechua
+    lambda x: standardize_bcp47(x, macro=True)
+)
 commonvoice = (
     commonvoice.groupby("bcp_47")
     .agg({"commonvoice_hours": "sum", "commonvoice_locale": "first"})

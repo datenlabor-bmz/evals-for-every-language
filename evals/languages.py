@@ -4,8 +4,9 @@ import pandas as pd
 from datasets_.commonvoice import commonvoice
 from datasets_.fleurs import fleurs
 from datasets_.flores import flores
+from datasets_.util import standardize_bcp47
 from joblib.memory import Memory
-from langcodes import Language, standardize_tag
+from langcodes import Language
 from language_data.population_data import LANGUAGE_SPEAKING_POPULATION
 
 cache = Memory(location=".cache", verbose=0).cache
@@ -17,6 +18,10 @@ languages = {
     if not re.match(r".*-[A-Z]{2}$", lang)
 }
 languages = pd.DataFrame(list(languages.items()), columns=["bcp_47", "speakers"])
+# Standardize language codes to avoid duplicates (e.g., "no" and "nb" for Norwegian)
+languages["bcp_47"] = languages["bcp_47"].apply(standardize_bcp47)
+# Merge any duplicates by summing speakers
+languages = languages.groupby("bcp_47", as_index=False).agg({"speakers": "sum"})
 languages["language_name"] = languages["bcp_47"].apply(
     lambda x: Language.get(x).display_name()
 )
@@ -28,7 +33,7 @@ glottolog = pd.read_csv(
     "data/glottolog_languoid.csv/languoid.csv", na_values=[""], keep_default_na=False
 )  # Min _Nan_ Chinese is not N/A!
 glottolog["bcp_47"] = glottolog["iso639P3code"].apply(
-    lambda x: standardize_tag(x, macro=True) if not pd.isna(x) else None
+    lambda x: standardize_bcp47(x, macro=True) if not pd.isna(x) else None
 )
 
 
