@@ -21,9 +21,9 @@ const ScoreColumns = (machineTranslatedMetrics = []) => [
   <Column
     field='average'
     header='Proficiency'
-    headerTooltip='Language Proficiency Score (average of the scores for each task, after min-max normalization)'
+    headerTooltip='Language Proficiency Score (average of the scores for each task)'
     sortable
-    body={scoreBodyTemplate('average', { minScore: 0.2, maxScore: 0.5, machineTranslatedMetrics })}
+    body={scoreBodyTemplate('average', { minScore: 0.3, maxScore: 0.7, machineTranslatedMetrics })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
   />,
   <Column

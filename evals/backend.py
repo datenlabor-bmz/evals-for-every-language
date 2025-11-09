@@ -28,25 +28,12 @@ task_metrics = [
     "classification_accuracy",
     "mmlu_accuracy",
     "arc_accuracy",
-    "truthfulqa_accuracy",
     "mgsm_accuracy",
 ]
 
-
 def compute_normalized_average(df, metrics):
-    """Compute average of min-max normalized metric columns."""
-    normalized_df = df[metrics].copy()
-    for col in metrics:
-        if col in normalized_df.columns:
-            col_min = normalized_df[col].min()
-            col_max = normalized_df[col].max()
-            if col_max > col_min:  # Avoid division by zero
-                normalized_df[col] = (normalized_df[col] - col_min) / (
-                    col_max - col_min
-                )
-            else:
-                normalized_df[col] = 0  # If all values are the same, set to 0
-    return normalized_df.mean(axis=1, skipna=False)
+    """Compute simple average across metric columns without normalization."""
+    return df[metrics].mean(axis=1, skipna=False)
 
 
 def make_model_table(scores_df, models):
