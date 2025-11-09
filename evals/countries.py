@@ -26,7 +26,7 @@ def make_country_table(language_table):
                     "name": lang.language_name,
                     "bcp_47": lang.bcp_47,
                     "population": speaker_pop,
-                    "score": lang.average if not pd.isna(lang.average) else 0,
+                    "score": lang.average if not pd.isna(lang.average) else None,
                 }
             )
     for country, languages in countries.items():
@@ -36,7 +36,7 @@ def make_country_table(language_table):
             score = None  # This will make them appear grey on the map
         else:
             score = (
-                sum(entry["score"] * entry["population"] for entry in languages)
+                sum((entry["score"] or 0) * entry["population"] for entry in languages)
                 / speaker_pop
             )
 
