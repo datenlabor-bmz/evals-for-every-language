@@ -9,13 +9,13 @@ const LanguagePlot = ({ data, width = 750, height = 500 }) => {
     const plot = Plot.plot({
       width: width,
       height: height,
-      subtitle: 'Proficiency scores by language',
+      subtitle: 'Overall scores by language',
       x: {
         label: 'Number of Speakers',
         type: 'log'
       },
       y: {
-        label: 'Language proficiency score'
+        label: 'Overall score'
       },
       marks: [
         Plot.dot(languages, {

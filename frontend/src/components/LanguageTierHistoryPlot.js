@@ -76,7 +76,7 @@ const LanguageTierHistoryPlot = ({ data, width = 750, height = 500 }) => {
         tickFormat: '%Y-%m'
       },
       y: {
-        label: 'Language Tier Proficiency Score'
+        label: 'Overall Score by Language Tier'
       },
       color: {
         legend: true,

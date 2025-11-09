@@ -31,7 +31,7 @@ const CostPlot = ({ data, width = 750, height = 500 }) => {
         tickFormat: d => USDollar.format(d)
       },
       y: {
-        label: 'Language Proficiency Score'
+        label: 'Overall Score'
       },
       symbol: {
         legend: true

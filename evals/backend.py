@@ -267,7 +267,7 @@ def make_language_tier_history(scores_df, languages, models):
     )
     tier_ranges = {"Top 1": (0, 1), "Top 2-20": (1, 20), "Top 20-200": (19, 500)}
 
-    # Calculate model-language proficiency scores
+    # Calculate model-language overall scores
     scores_df = scores_df.copy()
     scores_df["task_metric"] = scores_df["task"] + "_" + scores_df["metric"]
     pivot = scores_df.pivot_table(
@@ -315,7 +315,7 @@ def make_license_history(scores_df, models):
     scores_df = scores_df.copy()
     scores_df["task_metric"] = scores_df["task"] + "_" + scores_df["metric"]
 
-    # Pivot and compute proficiency
+    # Pivot and compute overall score
     pivot = scores_df.pivot_table(
         index="model", columns="task_metric", values="score", aggfunc="mean"
     )

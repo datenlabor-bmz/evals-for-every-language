@@ -1,12 +1,12 @@
 ---
-title: AI Language Monitor
+title: languagebench
 emoji: 🌍
 colorFrom: purple
 colorTo: pink
 sdk: docker
 app_port: 8000
 license: cc-by-sa-4.0
-short_description: Evaluating LLM performance across all human languages.
+short_description: AI model evaluations for every language in the world.
 datasets:
 - openlanguagedata/flores_plus
 - google/fleurs
@@ -39,9 +39,9 @@ For tag meaning, see https://huggingface.co/spaces/leaderboards/LeaderboardsExpl
 
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Space-purple)](https://huggingface.co/spaces/datenlabor-bmz/ai-language-monitor)
 
-# AI Language Monitor 🌍
+# languagebench 🌍
 
-_Tracking language proficiency of AI models for every language_
+_AI model evaluations for every language in the world_
 
 ## Evaluate
 

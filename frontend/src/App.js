@@ -237,7 +237,7 @@ function App () {
               letterSpacing: '-0.01em'
             }}
           >
-            AI Language Proficiency Monitor
+            AI Language Benchmarks
           </h1>
           <p
             style={{
@@ -249,7 +249,7 @@ function App () {
               lineHeight: '1.5'
             }}
           >
-            Comprehensive multilingual evaluation results for AI language models
+            AI model evaluations for every language in the world
           </p>
 
           <div
@@ -449,8 +449,7 @@ function App () {
         >
           <div>
             <p>
-              The <i>AI Language Proficiency Monitor</i> presents comprehensive
-              multilingual evaluation results of AI language models.
+              <i>languagebench</i> provides AI model evaluations for every language in the world.
             </p>
             <h4>Who is this for?</h4>
             <ul>
@@ -463,8 +462,7 @@ function App () {
                 neglected languages.
               </li>
               <li>
-                <b>Model developers</b> can compete on our{' '}
-                <i>AI Language Proficiency</i> metric.
+                <b>Model developers</b> can compete on our benchmarks.
               </li>
             </ul>
             <h4>⚡ Live Updates</h4>
@@ -482,7 +480,7 @@ function App () {
             </p>
             <h4>Authors</h4>
             <p>
-              The AI Language Proficiency Monitor is a collaboration between
+              languagebench is a collaboration between
               BMZ's{' '}
               <a
                 href='https://www.bmz-digital.global/en/overview-of-initiatives/the-bmz-data-lab/'

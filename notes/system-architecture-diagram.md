@@ -1,4 +1,4 @@
-# AI Language Monitor - System Architecture
+# languagebench - System Architecture
 
 \[AI-generated, not 100% up-to-date\]
 
@@ -155,7 +155,7 @@ flowchart TD
 - **languages.json**: Language information with population data
 
 ### 🟡 Frontend Visualization (Light Red)
-- **WorldMap**: Interactive country-level language proficiency visualization
+- **WorldMap**: Interactive country-level visualization
 - **ModelTable**: Ranked model performance leaderboard with origin-specific columns
 - **LanguageTable**: Language coverage and speaker statistics
 - **DatasetTable**: Task-specific performance breakdowns with human/machine distinction

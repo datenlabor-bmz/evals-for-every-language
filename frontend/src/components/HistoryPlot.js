@@ -26,7 +26,7 @@ const HistoryPlot = ({ data, width = 750, height = 500 }) => {
         tickFormat: '%Y-%m'
       },
       y: {
-        label: 'Language Proficiency Score'
+        label: 'Overall Score'
       },
       symbol: {
         legend: true

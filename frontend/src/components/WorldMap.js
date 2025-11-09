@@ -63,7 +63,7 @@ const WorldMap = ({ data, width = 750, height = 500, allLanguages = [] }) => {
     }).length
 
     const plot = Plot.plot({
-      subtitle: `Language Proficiency Score by Country (Coverage: ~${evaluatedLanguagesCount} languages evaluated)`,
+      subtitle: `Overall Score by Country (Coverage: ~${evaluatedLanguagesCount} languages evaluated)`,
       width: width,
       height: height,
       projection: 'equal-earth',

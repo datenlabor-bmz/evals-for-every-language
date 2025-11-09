@@ -59,8 +59,8 @@ const createScoreColumn = (
 const ScoreColumns = (machineTranslatedMetrics = []) => [
   createScoreColumn(
     'average',
-    'Proficiency',
-    'Language Proficiency Score (average of the scores for each task)',
+    'Overall',
+    'Overall Score (average of the scores for each task)',
     0,
     1,
     machineTranslatedMetrics
