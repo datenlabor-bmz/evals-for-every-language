@@ -33,7 +33,7 @@ const ScoreColumns = (machineTranslatedMetrics = []) => [
     sortable
     body={scoreBodyTemplate('translation_from_bleu', {
       minScore: 0,
-      maxScore: 0.5,
+      maxScore: 0.4,
       machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
@@ -45,7 +45,7 @@ const ScoreColumns = (machineTranslatedMetrics = []) => [
     sortable
     body={scoreBodyTemplate('translation_to_bleu', {
       minScore: 0,
-      maxScore: 0.5,
+      maxScore: 0.4,
       machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
@@ -56,8 +56,8 @@ const ScoreColumns = (machineTranslatedMetrics = []) => [
     headerTooltip='Classification performance (accuracy on a sample of the SIB-200 / FLORES+ classification benchmark)'
     sortable
     body={scoreBodyTemplate('classification_accuracy', {
-      minScore: 0,
-      maxScore: 0.5,
+      minScore: 0.4,
+      maxScore: 1,
       machineTranslatedMetrics
     })}
     style={{ minWidth: '5rem', maxWidth: '10rem' }}
