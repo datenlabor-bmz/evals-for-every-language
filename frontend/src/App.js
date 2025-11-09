@@ -20,6 +20,7 @@ function App () {
   const [data, setData] = useState(null)
   const [baseData, setBaseData] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [modelTableLoading, setModelTableLoading] = useState(false)
   const [error, setError] = useState(null)
   const [selectedLanguages, setSelectedLanguages] = useState([])
   const [machineTranslatedMetrics, setMachineTranslatedMetrics] = useState([])
@@ -32,6 +33,13 @@ function App () {
   const [fullScreenCarouselItems, setFullScreenCarouselItems] = useState([])
 
   useEffect(() => {
+    // For initial load, use main loading state; for language changes, use model table loading
+    if (!data) {
+      setLoading(true)
+    } else {
+      setModelTableLoading(true)
+    }
+    
     fetch('/api/data', {
       method: 'POST',
       body: JSON.stringify({ selectedLanguages })
@@ -47,10 +55,12 @@ function App () {
         setMachineTranslatedMetrics(jsonData.machine_translated_metrics || [])
         if (!baseData) setBaseData(jsonData)
         setLoading(false)
+        setModelTableLoading(false)
       })
       .catch(err => {
         setError(err.message)
         setLoading(false)
+        setModelTableLoading(false)
       })
   }, [selectedLanguages])
 
@@ -361,12 +371,30 @@ function App () {
           )}
           {data && (
             <>
-              <ModelTable
-                data={data.model_table}
-                selectedLanguages={selectedLanguages}
-                allLanguages={data.language_table || []}
-                machineTranslatedMetrics={machineTranslatedMetrics}
-              />
+              <div style={{ position: 'relative' }}>
+                {modelTableLoading && (
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1000
+                  }}>
+                    <i className='pi pi-spinner pi-spin' style={{ fontSize: '3rem' }} />
+                  </div>
+                )}
+                <ModelTable
+                  data={data.model_table}
+                  selectedLanguages={selectedLanguages}
+                  allLanguages={data.language_table || []}
+                  machineTranslatedMetrics={machineTranslatedMetrics}
+                />
+              </div>
               <LanguageTable
                 data={data.language_table}
                 selectedLanguages={selectedLanguages}
