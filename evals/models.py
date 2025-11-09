@@ -26,10 +26,10 @@ important_models = [
     "openai/gpt-4o",  # 10$
     "openai/gpt-3.5-turbo", # $1.50
     "openai/gpt-oss-120b",
-    "anthropic/claude-4.5-sonnet",
-    "anthropic/claude-4.5-haiku",
+    "anthropic/claude-sonnet-4.5",
+    "anthropic/claude-haiku-4.5",
     "anthropic/claude-opus-4.1",  # 15$
-    "anthropic/claude-4-sonnet",
+    "anthropic/claude-sonnet-4",
     "anthropic/claude-3.7-sonnet",  # 15$
     "anthropic/claude-3.5-sonnet",
     "mistralai/mistral-small-3.2-24b-instruct",  # 0.3$
@@ -41,6 +41,7 @@ important_models = [
     "google/gemini-2.5-flash-lite",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
     # "x-ai/grok-4", # $15
+    "x-ai/grok-4-fast", 
     # "x-ai/grok-3", # $15
     "cohere/command-a",
     "qwen/qwen3-32b",
@@ -52,9 +53,13 @@ important_models = [
     # "qwen/qwen-2-72b-instruct",  # 0.9$
     "deepseek/deepseek-v3.2-exp",
     "microsoft/phi-4",  # 0.07$
+    "amazon/nova-premier-v1", # 12.5$
     "amazon/nova-pro-v1",  # 0.09$
     "moonshotai/kimi-k2",  # 0.6$
+    # "moonshotai/kimi-k2-thinking", # 2.5$
     "baidu/ernie-4.5-300b-a47b",
+    # "baidu/ernie-4.5-21b-a3b-thinking",
+    "z-ai/glm-4.6", # 1.75$
 ]
 
 blocklist = [
