@@ -9,6 +9,7 @@ import AutoComplete from './components/AutoComplete'
 import LanguagePlot from './components/LanguagePlot'
 import SpeakerPlot from './components/SpeakerPlot'
 import HistoryPlot from './components/HistoryPlot'
+import LanguageTierHistoryPlot from './components/LanguageTierHistoryPlot'
 import CostPlot from './components/CostPlot'
 import { Carousel } from 'primereact/carousel'
 import { Dialog } from 'primereact/dialog'
@@ -62,7 +63,8 @@ function App () {
           <LanguagePlot key="langplot-1" data={data} width={750} height={500} />,
           <SpeakerPlot key="speakerplot-2" data={data} width={750} height={500} />,
           <HistoryPlot key="histplot-3" data={data} width={750} height={500} />,
-          <CostPlot key="costplot-4" data={data} width={750} height={500} />
+          <LanguageTierHistoryPlot key="tierhistplot-4" data={data} width={750} height={500} />,
+          <CostPlot key="costplot-5" data={data} width={750} height={500} />
         ]);
       }, 100);
       
@@ -112,7 +114,13 @@ function App () {
             width={windowWidth * 0.7}
             height={windowHeight * 0.6}
           />,
-          <CostPlot key="fs-costplot-4" data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />
+          <LanguageTierHistoryPlot
+            key="fs-tierhistplot-4"
+            data={data}
+            width={windowWidth * 0.7}
+            height={windowHeight * 0.6}
+          />,
+          <CostPlot key="fs-costplot-5" data={data} width={windowWidth * 0.7} height={windowHeight * 0.6} />
         ]);
       }, 100);
       

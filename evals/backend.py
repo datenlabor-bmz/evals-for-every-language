@@ -156,6 +156,64 @@ def make_language_table(scores_df, languages):
     return df
 
 
+def make_language_tier_history(scores_df, languages, models):
+    # Rank languages by speakers
+    ranked_langs = languages.sort_values(by="speakers", ascending=False).reset_index(drop=True)
+    
+    # Define tiers
+    tier_ranges = {
+        "Top 1": (0, 1),
+        "Top 2-20": (1, 20),
+        "Top 20-200": (19, 500),
+    }
+    
+    # Calculate model-language proficiency scores
+    scores_df = scores_df.copy()
+    scores_df["task_metric"] = scores_df["task"] + "_" + scores_df["metric"]
+    
+    # Pivot to get model-language-metric scores
+    pivot = scores_df.pivot_table(
+        index=["model", "bcp_47"],
+        columns="task_metric",
+        values="score",
+        aggfunc="mean"
+    )
+    
+    # Ensure all task_metrics columns exist
+    for metric in task_metrics:
+        if metric not in pivot.columns:
+            pivot[metric] = np.nan
+    
+    # Calculate proficiency score for each model-language pair
+    pivot["proficiency_score"] = compute_normalized_average(pivot, task_metrics)
+    pivot = pivot.reset_index()
+    
+    # Create all tier-level aggregations (allowing overlapping tiers)
+    all_tier_scores = []
+    for tier_name, (start, end) in tier_ranges.items():
+        tier_langs = ranked_langs.iloc[start:end]["bcp_47"].tolist()
+        tier_data = pivot[pivot["bcp_47"].isin(tier_langs)]
+        tier_scores = tier_data.groupby("model")["proficiency_score"].mean().reset_index()
+        tier_scores["tier"] = tier_name
+        all_tier_scores.append(tier_scores)
+    
+    tier_scores = pd.concat(all_tier_scores, ignore_index=True)
+    
+    # Merge with models data
+    tier_scores = pd.merge(tier_scores, models, left_on="model", right_on="id", how="left")
+    
+    # Select relevant columns
+    tier_scores = tier_scores[
+        ["model", "name", "provider_name", "creation_date", "size", "tier", "proficiency_score"]
+    ]
+    
+    tier_scores["creation_date"] = tier_scores["creation_date"].apply(
+        lambda x: x.isoformat() if x else None
+    )
+    
+    return tier_scores
+
+
 app = FastAPI()
 
 app.add_middleware(CORSMiddleware, allow_origins=["*"])
@@ -190,6 +248,7 @@ async def data(request: Request):
         countries = make_country_table(make_language_table(df, languages))
     
     language_table = make_language_table(scores, languages)
+    language_tier_history = make_language_tier_history(scores, languages, models)
     datasets_df = pd.read_json("data/datasets.json")
     
     return JSONResponse(content={
@@ -198,6 +257,7 @@ async def data(request: Request):
         "dataset_table": serialize(datasets_df),
         "countries": serialize(countries),
         "machine_translated_metrics": list(machine_translated_metrics),
+        "language_tier_history": serialize(language_tier_history),
     })
 
 
