@@ -192,7 +192,7 @@ async def load_mmlu(language_bcp_47, nr):
     # TODO: add in Okapi, MMLUX @Jonas
     elif language_bcp_47 in tags_mmlu_autotranslated:
         task = _get_mmlu_item(
-            "fair-forward/mmlu-autotranslated", language_bcp_47, category, nr
+            "fair-forward/mmlu-autotranslated", tags_mmlu_autotranslated[language_bcp_47], category, nr
         )
         return (
             "fair-forward/mmlu-autotranslated",
