@@ -146,7 +146,7 @@ function App () {
           width: '100vw'
         }}
       >
-        <div
+        {/* <div
           style={{
             backgroundColor: '#fff3cd',
             color: '#856404',
@@ -161,7 +161,7 @@ function App () {
         >
           <strong>Work in Progress:</strong> This dashboard is currently under
           active development. Evaluation results are not yet final. More extensive evaluation runs will be released later this year.
-        </div>
+        </div> */}
         <div
           style={{
             display: 'flex',

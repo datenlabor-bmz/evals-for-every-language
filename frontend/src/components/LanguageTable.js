@@ -122,6 +122,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages, totalMod
       value={data.filter(
         item => !selectedLanguages.some(l => l.bcp_47 === item.bcp_47)
       )}
+      dataKey='bcp_47'
       header={
         <span>
           <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>Languages</span>

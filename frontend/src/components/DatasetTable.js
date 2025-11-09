@@ -98,6 +98,7 @@ const DatasetTable = ({ data }) => {
   return (
     <DataTable
       value={table}
+      dataKey='name'
       rowGroupMode='subheader'
       rowGroupHeaderTemplate={rowData => {
         return <div style={{ fontWeight: 'bold' }}>{rowData.group}</div>

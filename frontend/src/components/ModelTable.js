@@ -225,6 +225,7 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTr
   return (
     <DataTable
       value={data}
+      dataKey='name'
       header={<>{getHeaderText()}</>}
       sortField='average'
       removableSort
