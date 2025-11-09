@@ -214,6 +214,47 @@ def make_language_tier_history(scores_df, languages, models):
     return tier_scores
 
 
+def make_license_history(scores_df, models):
+    scores_df = scores_df.copy()
+    scores_df["task_metric"] = scores_df["task"] + "_" + scores_df["metric"]
+    
+    # Pivot to get model-level scores
+    pivot = scores_df.pivot_table(
+        index="model",
+        columns="task_metric",
+        values="score",
+        aggfunc="mean"
+    )
+    
+    # Ensure all task_metrics columns exist
+    for metric in task_metrics:
+        if metric not in pivot.columns:
+            pivot[metric] = np.nan
+    
+    # Calculate proficiency score for each model
+    pivot["proficiency_score"] = compute_normalized_average(pivot, task_metrics)
+    pivot = pivot.reset_index()
+    
+    # Merge with models data
+    df = pd.merge(pivot, models, left_on="model", right_on="id", how="left")
+    
+    # Classify as commercial or open
+    df["license_type"] = df["type"].apply(
+        lambda x: "Open-source" if x == "open-source" else "Commercial"
+    )
+    
+    # Select relevant columns
+    df = df[
+        ["model", "name", "provider_name", "creation_date", "size", "license_type", "proficiency_score"]
+    ]
+    
+    df["creation_date"] = df["creation_date"].apply(
+        lambda x: x.isoformat() if x else None
+    )
+    
+    return df
+
+
 app = FastAPI()
 
 app.add_middleware(CORSMiddleware, allow_origins=["*"])
@@ -249,6 +290,7 @@ async def data(request: Request):
     
     language_table = make_language_table(scores, languages)
     language_tier_history = make_language_tier_history(scores, languages, models)
+    license_history = make_license_history(scores, models)
     datasets_df = pd.read_json("data/datasets.json")
     
     return JSONResponse(content={
@@ -258,6 +300,7 @@ async def data(request: Request):
         "countries": serialize(countries),
         "machine_translated_metrics": list(machine_translated_metrics),
         "language_tier_history": serialize(language_tier_history),
+        "license_history": serialize(license_history),
     })
 
 
