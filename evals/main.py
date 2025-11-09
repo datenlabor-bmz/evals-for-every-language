@@ -9,12 +9,12 @@ from models import models
 from rich import print
 from tasks import tasks
 from tqdm.asyncio import tqdm_asyncio
-from datasets_.util import load, save
+from datasets_.util import load, save, get_valid_task_languages
 from tqdm import tqdm
 
 n_sentences = int(environ.get("N_SENTENCES", 10))
-n_languages = int(environ.get("N_LANGUAGES", 300))
-n_models = int(environ.get("N_MODELS", 35))
+n_languages = int(environ.get("N_LANGUAGES", 1000))
+n_models = int(environ.get("N_MODELS", 40))
 
 async def evaluate():
     start_time = time.time()
@@ -22,14 +22,17 @@ async def evaluate():
     # Pre-compute model tasks to avoid O(n²) lookups
     model_tasks = models.set_index("id")["tasks"].to_dict()
     
-    # get all combinations that need evaluation
+    # Pre-compute valid languages for each task
+    valid_task_langs = {task_name: get_valid_task_languages(task_name) for task_name in tasks}
+    
+    # get all combinations that need evaluation (filtering invalid lang×task combos)
     combis = [
         (task_name, model, lang.bcp_47, i)
         for i in range(n_sentences)
         for lang in languages.head(n_languages).itertuples()
         for task_name, task in tasks.items()
         for model in models.iloc[:n_models]["id"]
-        if task_name in model_tasks[model]
+        if task_name in model_tasks[model] and lang.bcp_47 in valid_task_langs[task_name]
     ]
     combis = pd.DataFrame(combis, columns=["task", "model", "bcp_47", "sentence_nr"])
 

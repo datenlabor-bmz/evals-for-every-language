@@ -63,3 +63,24 @@ def save(df: pd.DataFrame, fname: str):
     ds.push_to_hub(f"fair-forward/evals-for-every-language-{fname}", token=TOKEN)
     Path("results").mkdir(exist_ok=True)
     df.to_json(f"results/{fname}.json", orient="records", force_ascii=False, indent=2)
+
+
+def get_valid_task_languages(task_name: str) -> set:
+    """Return set of bcp_47 codes that have data available for the given task."""
+    from datasets_.flores import flores, splits
+    from datasets_.mmlu import tags_afrimmlu, tags_global_mmlu, tags_mmlu_autotranslated
+    from datasets_.arc import tags_uhura_arc_easy, tags_uhura_arc_easy_translated
+    from datasets_.truthfulqa import tags_uhura_truthfulqa
+    from datasets_.mgsm import tags_mgsm, tags_afrimgsm, tags_gsm8kx, tags_gsm_autotranslated
+    
+    if task_name in ["translation_from", "translation_to", "classification"]:
+        return set(flores["bcp_47"])
+    elif task_name == "mmlu":
+        return set([*tags_afrimmlu.keys(), *tags_global_mmlu.keys(), *tags_mmlu_autotranslated.keys()])
+    elif task_name == "arc":
+        return set([*tags_uhura_arc_easy.keys(), *tags_uhura_arc_easy_translated.keys()])
+    elif task_name == "truthfulqa":
+        return set(tags_uhura_truthfulqa.keys())
+    elif task_name == "mgsm":
+        return set([*tags_mgsm.keys(), *tags_afrimgsm.keys(), *tags_gsm8kx.keys(), *tags_gsm_autotranslated.keys()])
+    return set()
