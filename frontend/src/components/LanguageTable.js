@@ -149,7 +149,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages, totalMod
         field='language_name'
         header='Language'
         body={languageBodyTemplate}
-        style={{ minWidth: '10rem' }}
+        style={{ minWidth: '10rem', zIndex: 2 }}
         filter
         showFilterMatchModes={false}
         frozen

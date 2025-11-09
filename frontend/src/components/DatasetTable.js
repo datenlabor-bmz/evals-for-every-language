@@ -138,7 +138,7 @@ const DatasetTable = ({ data }) => {
         field='name'
         header='Name'
         body={nameBodyTemplate}
-        style={{ minWidth: '10rem' }}
+        style={{ minWidth: '10rem', zIndex: 2 }}
         frozen
       />
       <Column

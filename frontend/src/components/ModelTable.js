@@ -248,7 +248,7 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTr
       <Column
         field='name'
         header='Model'
-        style={{ minWidth: '10rem' }}
+        style={{ minWidth: '10rem', zIndex: 2 }}
         body={modelBodyTemplate}
         filter
         showFilterMatchModes={false}
