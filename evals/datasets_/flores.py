@@ -27,7 +27,16 @@ def aggregate_flores_paths(flores_paths):
     return flores_paths.values[populations.index(max(populations))]
 
 
+def has_dev_split(flores_path):
+    try:
+        _load_dataset(slug, subset=flores_path, split="dev")
+        return True
+    except (ValueError, FileNotFoundError):
+        return False
+
 flores = pd.DataFrame(splits, columns=["flores_path"])
+# Filter to only languages with 'dev' split
+flores = flores[flores["flores_path"].apply(has_dev_split)]
 flores["bcp_47"] = flores["flores_path"].apply(
     lambda x: standardize_bcp47(x, macro=True),
 )
