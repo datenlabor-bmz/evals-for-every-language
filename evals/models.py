@@ -19,6 +19,7 @@ important_models = [
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
+    "openai/gpt-5.1",
     "openai/gpt-5",
     "openai/gpt-5-mini",
     "openai/gpt-5-nano",
@@ -36,6 +37,7 @@ important_models = [
     "mistralai/mistral-medium-3.1",
     "mistralai/mistral-saba",  # 0.6$
     "mistralai/mistral-nemo",  # 0.08$
+    "google/gemini-3-pro-preview",
     "google/gemini-2.5-pro", # $10
     "google/gemini-2.5-flash",  # 0.6$
     "google/gemini-2.5-flash-lite",  # 0.3$
