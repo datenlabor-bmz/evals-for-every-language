@@ -451,7 +451,7 @@ function App () {
             <p>
               <i>languagebench</i> provides AI model evaluations for every language in the world.
             </p>
-            <h4>Who is this for?</h4>
+            <h4>👥 Who is this for?</h4>
             <ul>
               <li>
                 <b>Practitioners</b> can pick the best model for a given
@@ -478,7 +478,7 @@ function App () {
               </a>
               , plus community-submitted models.
             </p>
-            <h4>Authors</h4>
+            <h4>✍️ Authors</h4>
             <p>
               languagebench is a collaboration between
               BMZ's{' '}
