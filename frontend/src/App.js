@@ -478,6 +478,10 @@ function App () {
               </a>
               , plus community-submitted models.
             </p>
+            <h4>⚠️ Note on interpretation</h4>
+            <p>
+              Results are currently based on a sample of 10 sentences per language and task to keep computation affordable. For this reason, we report confidence intervals and recommend treating small differences between models with caution. In future iterations, we plan to add more benchmark datasets and richer visualisations, with large-scale evaluations across many more prompts and tasks as a longer-term goal.
+            </p>
             <h4>✍️ Authors</h4>
             <p>
               languagebench is a collaboration between
@@ -489,15 +493,15 @@ function App () {
               >
                 Data Lab
               </a>
-              , the BMZ-Initiative{' '}
+              (<a href='mailto:davidpomerenke@mailbox.org'>David Pomerenke</a>), the BMZ-Initiative{' '}
               <a
                 href='https://www.bmz-digital.global/en/overview-of-initiatives/fair-forward/'
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                Fair Forward
+                GIZ Fair Forward
               </a>{' '}
-              (implemented by GIZ), and the{' '}
+              (<a href='mailto:jonas.nothnagel@gmail.com'>Jonas Nothnagel</a>), and the{' '}
               <a
                 href='https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team'
                 target='_blank'
