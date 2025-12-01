@@ -44,7 +44,6 @@ important_models = [
     "google/gemini-2.5-flash-lite",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
     # "x-ai/grok-4", # $15
-    "x-ai/grok-4.1-fast:free", #free for now
     "x-ai/grok-4-fast", 
     # "x-ai/grok-3", # $15
     "cohere/command-a",
