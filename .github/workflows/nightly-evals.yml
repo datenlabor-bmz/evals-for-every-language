@@ -21,7 +21,8 @@ jobs:
       - name: Install dependencies
         run: |
           curl -LsSf https://astral.sh/uv/install.sh | sh
-          uv sync --frozen --extra dev
+          # Use the `dev` dependency group defined in pyproject.toml
+          uv sync --frozen --group dev
           
       - name: Run evaluations
         env:
