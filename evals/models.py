@@ -27,6 +27,7 @@ important_models = [
     "openai/gpt-4o",  # 10$
     "openai/gpt-3.5-turbo", # $1.50
     "openai/gpt-oss-120b",
+    "anthropic/claude-opus-4.5",  # 25$
     "anthropic/claude-sonnet-4.5",
     "anthropic/claude-haiku-4.5",
     "anthropic/claude-opus-4.1",  # 15$
@@ -37,12 +38,13 @@ important_models = [
     "mistralai/mistral-medium-3.1",
     "mistralai/mistral-saba",  # 0.6$
     "mistralai/mistral-nemo",  # 0.08$
-    "google/gemini-3-pro-preview",
+    "google/gemini-3-pro-preview", # 12$
     "google/gemini-2.5-pro", # $10
     "google/gemini-2.5-flash",  # 0.6$
     "google/gemini-2.5-flash-lite",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
     # "x-ai/grok-4", # $15
+    "x-ai/grok-4.1-fast:free", #free for now
     "x-ai/grok-4-fast", 
     # "x-ai/grok-3", # $15
     "cohere/command-a",
@@ -382,7 +384,7 @@ def load_models(date: date) -> pd.DataFrame:
         "models_unfiltered.json", orient="records", indent=2, force_ascii=False
     )
     # Filter out expensive models to keep costs reasonable
-    models = models[models["cost"] <= 15.0].reset_index(drop=True)
+    models = models[models["cost"] <= 25.0].reset_index(drop=True)
     models["tasks"] = [
         [
             "translation_from",
