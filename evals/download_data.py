@@ -14,7 +14,6 @@ from datasets_.fleurs import fleurs
 
 # --- Configuration ---
 
-
 # Add project root to sys.path (still useful for potential future imports if needed)
 project_root = Path(__file__).resolve().parent.parent
 if str(project_root) not in sys.path:
@@ -39,10 +38,6 @@ SPBLEU_DICT_URL = (
     "https://dl.fbaipublicfiles.com/large_objects/nllb/models/spm_200/dictionary.txt"
 )
 SPBLEU_DICT_NAME = "dictionary.txt"
-
-
-# --- Helper Functions ---
-
 
 def download_file(url, path: Path):
     """Downloads a file from a URL to a local path."""
@@ -106,8 +101,6 @@ def extract_zip(zip_content: bytes, extract_path: Path, target_filename: str):
 
 
 # --- Download Functions ---
-
-
 def download_fleurs_data():
     """Downloads Fleurs audio and text data."""
     print("\n--- Downloading Fleurs Data ---")
@@ -206,10 +199,6 @@ def download_spbleu_data():
         download_file(SPBLEU_DICT_URL, target_dict_file)
     else:
         print(f"Found: {target_dict_file}")
-
-
-# --- Main Execution ---
-
 
 def main():
     """Runs all download functions and the conversion step."""
