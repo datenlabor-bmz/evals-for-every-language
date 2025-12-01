@@ -334,7 +334,6 @@ function App () {
                 marginLeft: '0.5rem',
                 fontWeight: '600'
               }}>
-                soon
               </span>
             </button>
           </div>
