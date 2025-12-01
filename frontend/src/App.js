@@ -325,7 +325,7 @@ function App () {
               }}
             >
               <span style={{ fontSize: '1.1rem' }}>🚀</span>
-              Add your model
+              Add your model/benchmark
               <span style={{
                 fontSize: '0.75rem',
                 backgroundColor: 'rgba(107, 70, 193, 0.15)',
