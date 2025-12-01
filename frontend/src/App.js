@@ -534,13 +534,13 @@ function App () {
           onHide={() => setContributeVisible(false)}
           style={{ width: '600px' }}
           modal
-          header='Add your model & Contribute'
+          header='Contribute your Model/Benchmark'
         >
           <div>
             <h4>🚀 Submit Your Model</h4>
             <p>
               Have a custom fine-tuned model you'd like to see on the
-              leaderboard?
+              leaderboard or a new benchmark you think should be added?
             </p>
             <p>
               <a
