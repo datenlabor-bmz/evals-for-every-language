@@ -117,6 +117,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             )
     else:
         prediction = await query(model, translation_prompt)
+    status = "ok" if prediction else "error"
     if prediction:
         bleu_score = bleu.compute(
             predictions=[prediction],
@@ -141,6 +142,7 @@ async def translate_and_evaluate(model, bcp_47, sentence_nr, mode="from"):
             "sentence_nr": sentence_nr,
             "prompt": translation_prompt,
             "response": prediction,
+            "status": status,
         }
         for metric, score in (
             ("bleu", bleu_score["bleu"]),
@@ -171,6 +173,7 @@ Text:
 """
     response = await query(model, prompt)
     pred = response.lower().strip() if response else ""
+    status = "ok" if pred else "error"
     true = test_paragraph.topic.lower().strip()
     others = [t for t in top_topics if t != true]
     acc = (
@@ -193,6 +196,7 @@ Text:
             "sentence_nr": nr,
             "prompt": prompt,
             "response": pred,
+            "status": status,
         }
     ]
 
@@ -256,6 +260,7 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
     response = await query(model, prompt)
     final_response = extract_mc_response(response)
     acc = int(final_response == task["answer"]) if final_response else 0
+    status = "ok" if final_response else "error"
 
     return [
         {
@@ -268,6 +273,7 @@ async def mmlu_and_evaluate(model, language_bcp_47, nr):
             "sentence_nr": nr,
             "prompt": prompt,
             "response": response,
+            "status": status,
         }
     ]
 
@@ -280,6 +286,7 @@ async def arc_and_evaluate(model, language_bcp_47, nr):
     response = await query(model, prompt)
     final_response = extract_mc_response(response)
     acc = int(final_response == task["answer"]) if final_response else 0
+    status = "ok" if final_response else "error"
     return [
         {
             "model": model,
@@ -291,6 +298,7 @@ async def arc_and_evaluate(model, language_bcp_47, nr):
             "sentence_nr": nr,
             "prompt": prompt,
             "response": response,
+            "status": status,
         }
     ]
 
@@ -323,6 +331,7 @@ async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
     response = await query(model, prompt)
     final_response = extract_mc_response(response)
     acc = int(final_response.upper() == answer) if final_response else 0
+    status = "ok" if final_response else "error"
     return [
         {
             "model": model,
@@ -334,6 +343,7 @@ async def truthfulqa_and_evaluate(model, language_bcp_47, nr):
             "sentence_nr": nr,
             "prompt": prompt,
             "response": response,
+            "status": status,
         }
     ]
 
@@ -358,6 +368,7 @@ async def mgsm_and_evaluate(model, language_bcp_47, nr):
         if number
         else 0
     )
+    status = "ok" if number else "error"
     return [
         {
             "model": model,
@@ -369,6 +380,7 @@ async def mgsm_and_evaluate(model, language_bcp_47, nr):
             "sentence_nr": nr,
             "prompt": prompt,
             "response": response,
+            "status": status,
         }
     ]
 
