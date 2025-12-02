@@ -39,7 +39,13 @@ async def evaluate():
     # Load cached results and filter out completed combinations
     old_results = load("results-detailed")
     if not old_results.empty:
-        completed = set(old_results[["task", "model", "bcp_47", "sentence_nr"]].apply(tuple, axis=1))
+        # Only treat status==\"ok\" (or missing status) as completed.
+        if "status" in old_results.columns:
+            ok_mask = old_results["status"].isna() | (old_results["status"] == "ok")
+            completed_df = old_results.loc[ok_mask, ["task", "model", "bcp_47", "sentence_nr"]]
+        else:
+            completed_df = old_results[["task", "model", "bcp_47", "sentence_nr"]]
+        completed = set(completed_df.apply(tuple, axis=1))
         combis = combis[~combis.apply(lambda row: tuple(row) in completed, axis=1)]
 
     print(f"Running {len(combis)} evaluation tasks...")
@@ -57,16 +63,24 @@ async def evaluate():
     results = [r for batch in batch_results for result in batch for r in result]
     results = pd.DataFrame(results) if results else pd.DataFrame(columns=["task", "model", "bcp_47", "metric", "sentence_nr", "score", "origin"])
     
-    # Merge with cached results (immutable log)
+    # Merge with cached results (immutable log, prefer latest results on conflict)
     all_results = pd.concat([old_results, results]).drop_duplicates(
-        subset=["task", "model", "bcp_47", "metric", "sentence_nr"]
+        subset=["task", "model", "bcp_47", "metric", "sentence_nr"],
+        keep="last",
     ) if not old_results.empty else results
     
-    # Filter to current models × languages and aggregate
+    # Filter to current models × languages and aggregate.
+    # Only aggregate over successful evaluations (status == \"ok\" or missing).
     current_models = set(models.iloc[:n_models]["id"])
     current_languages = set(languages.head(n_languages)["bcp_47"])
+    if "status" in all_results.columns:
+        valid_mask = all_results["status"].isna() | (all_results["status"] == "ok")
+        valid_results = all_results[valid_mask]
+    else:
+        valid_results = all_results
+
     results_agg = (
-        all_results[all_results["model"].isin(current_models) & all_results["bcp_47"].isin(current_languages)]
+        valid_results[valid_results["model"].isin(current_models) & valid_results["bcp_47"].isin(current_languages)]
         .groupby(["model", "bcp_47", "task", "metric"])
         .agg({"score": "mean", "origin": "first"})
         .reset_index()

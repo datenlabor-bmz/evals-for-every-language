@@ -47,7 +47,8 @@ _AI model evaluations for every language in the world_
 
 ### Local Development
 ```bash
-uv run --extra dev evals/main.py
+uv sync --group dev
+uv run evals/main.py
 ```
 
 ## Explore
