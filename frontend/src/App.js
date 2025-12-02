@@ -483,7 +483,7 @@ function App () {
               >
                 Data Lab
               </a>
-              (<a href='mailto:davidpomerenke@mailbox.org'>David Pomerenke</a>), the BMZ-Initiative{' '}
+              (<a href='https://www.linkedin.com/in/davidpomerenke/'>David Pomerenke</a>), the BMZ-Initiative{' '}
               <a
                 href='https://www.bmz-digital.global/en/overview-of-initiatives/fair-forward/'
                 target='_blank'
@@ -491,7 +491,7 @@ function App () {
               >
                 GIZ Fair Forward
               </a>{' '}
-              (<a href='mailto:jonas.nothnagel@gmail.com'>Jonas Nothnagel</a>), and the{' '}
+              (<a href='https://www.linkedin.com/in/jonas-nothnagel-bb42b114b/'>Jonas Nothnagel</a>), and the{' '}
               <a
                 href='https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team'
                 target='_blank'
