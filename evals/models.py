@@ -44,26 +44,17 @@ important_models = [
     "google/gemini-2.5-flash-lite",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
     # "x-ai/grok-4", # $15
-    "x-ai/grok-4.1-fast:free", #free for now
     "x-ai/grok-4-fast", 
-    # "x-ai/grok-3", # $15
     "cohere/command-a",
-    "qwen/qwen3-32b",
-    "qwen/qwen3-235b-a22b",
+    # "qwen/qwen3-32b",
+    # "qwen/qwen3-235b-a22b",
     "qwen/qwen3-30b-a3b",  # 0.29$
-    # "qwen/qwen-turbo", # 0.2$; recognizes "inappropriate content"
-    # "qwen/qwq-32b",  # 0.2$
-    # "qwen/qwen-2.5-72b-instruct",  # 0.39$
-    # "qwen/qwen-2-72b-instruct",  # 0.9$
     "deepseek/deepseek-v3.2-exp",
     "microsoft/phi-4",  # 0.07$
     "amazon/nova-premier-v1", # 12.5$
     "amazon/nova-pro-v1",  # 0.09$
     "moonshotai/kimi-k2",  # 0.6$
-    # "moonshotai/kimi-k2-thinking", # 2.5$
     "baidu/ernie-4.5-300b-a47b",
-    # "baidu/ernie-4.5-21b-a3b-thinking",
-    "z-ai/glm-4.6", # 1.75$
 ]
 
 blocklist = [
