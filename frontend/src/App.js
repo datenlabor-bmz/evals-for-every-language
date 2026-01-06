@@ -325,17 +325,7 @@ function App () {
               }}
             >
               <span style={{ fontSize: '1.1rem' }}>🚀</span>
-              Add your model
-              <span style={{
-                fontSize: '0.75rem',
-                backgroundColor: 'rgba(107, 70, 193, 0.15)',
-                padding: '0.2rem 0.5rem',
-                borderRadius: '6px',
-                marginLeft: '0.5rem',
-                fontWeight: '600'
-              }}>
-                soon
-              </span>
+              Add your model/benchmark
             </button>
           </div>
 
@@ -451,7 +441,7 @@ function App () {
             <p>
               <i>languagebench</i> provides AI model evaluations for every language in the world.
             </p>
-            <h4>Who is this for?</h4>
+            <h4>👥 Who is this for?</h4>
             <ul>
               <li>
                 <b>Practitioners</b> can pick the best model for a given
@@ -478,7 +468,11 @@ function App () {
               </a>
               , plus community-submitted models.
             </p>
-            <h4>Authors</h4>
+            <h4>⚠️ Note on interpretation</h4>
+            <p>
+              Results are currently based on a sample of 10 sentences per language and task to keep computation affordable. For this reason, we report confidence intervals and recommend treating small differences between models with caution. In future iterations, we plan to add more benchmark datasets and richer visualisations, with large-scale evaluations across many more prompts and tasks as a longer-term goal.
+            </p>
+            <h4>✍️ Authors</h4>
             <p>
               languagebench is a collaboration between
               BMZ's{' '}
@@ -489,15 +483,27 @@ function App () {
               >
                 Data Lab
               </a>
-              , the BMZ-Initiative{' '}
+              (<a
+                href='https://www.linkedin.com/in/davidpomerenke/'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                David Pomerenke
+              </a>), the BMZ-Initiative{' '}
               <a
                 href='https://www.bmz-digital.global/en/overview-of-initiatives/fair-forward/'
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                Fair Forward
+                GIZ Fair Forward
               </a>{' '}
-              (implemented by GIZ), and the{' '}
+              (<a
+                href='https://www.linkedin.com/in/jonas-nothnagel-bb42b114b/'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Jonas Nothnagel
+              </a>), and the{' '}
               <a
                 href='https://www.dfki.de/en/web/research/research-departments/multilinguality-and-language-technology/ee-team'
                 target='_blank'
@@ -534,13 +540,13 @@ function App () {
           onHide={() => setContributeVisible(false)}
           style={{ width: '600px' }}
           modal
-          header='Add your model & Contribute'
+          header='Contribute your Model/Benchmark'
         >
           <div>
             <h4>🚀 Submit Your Model</h4>
             <p>
               Have a custom fine-tuned model you'd like to see on the
-              leaderboard?
+              leaderboard or a new benchmark you think should be added?
             </p>
             <p>
               <a

@@ -25,5 +25,4 @@ wheels/
 .cursorindexingignore
 
 
-# local notebooks
 notebooks/
