@@ -14,11 +14,13 @@ from requests import HTTPError, get
 # for development purposes, all languages will be evaluated on the fast models
 # and only a sample of languages will be evaluated on all models
 important_models = [
+    "allenai/olmo-3.1-32b-instruct", 
     "meta-llama/llama-4-maverick",  # 0.6$
     "meta-llama/llama-3.3-70b-instruct",  # 0.3$
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
+    "openai/gpt-5.2",
     "openai/gpt-5.1",
     "openai/gpt-5",
     "openai/gpt-5-mini",
@@ -27,6 +29,7 @@ important_models = [
     "openai/gpt-4o",  # 10$
     "openai/gpt-3.5-turbo", # $1.50
     "openai/gpt-oss-120b",
+    "anthropic/claude-opus-4.6",  # 25$
     "anthropic/claude-opus-4.5",  # 25$
     "anthropic/claude-sonnet-4.5",
     "anthropic/claude-haiku-4.5",
