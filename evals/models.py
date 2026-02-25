@@ -47,7 +47,9 @@ important_models = [
     "google/gemini-2.5-flash-lite",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
     # "x-ai/grok-4", # $15
-    "x-ai/grok-4-fast", 
+    "x-ai/grok-4.1-fast", 
+    "minimax/minimax-m2.5",  # 1,1$
+    "moonshotai/kimi-k2.5",  # 2.2$
     "cohere/command-a",
     # "qwen/qwen3-32b",
     # "qwen/qwen3-235b-a22b",
