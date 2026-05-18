@@ -41,5 +41,5 @@ jobs:
         env:
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
         run: |
-          curl -X POST "https://huggingface.co/api/spaces/fair-forward/evals-for-every-language/restart" \
+          curl -X POST "https://huggingface.co/api/spaces/fair-forward/languagebench/restart" \
             -H "Authorization: Bearer $HUGGINGFACE_ACCESS_TOKEN"

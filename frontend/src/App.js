@@ -181,7 +181,7 @@ function App () {
           }}
         >
           <a
-            href='https://github.com/datenlabor-bmz/ai-language-monitor'
+            href='https://github.com/datenlabor-bmz/evals-for-every-language'
             target='_blank'
             rel='noopener noreferrer'
             style={{
@@ -516,7 +516,7 @@ function App () {
             <h4>🔗 Links</h4>
             <p>
               <a
-                href='https://github.com/datenlabor-bmz/ai-language-monitor'
+                href='https://github.com/datenlabor-bmz/evals-for-every-language'
                 target='_blank'
                 rel='noopener noreferrer'
                 style={{
@@ -565,7 +565,7 @@ function App () {
             </p>
             <p>
               <a
-                href='https://github.com/datenlabor-bmz/ai-language-monitor/blob/main/CONTRIBUTING.md'
+                href='https://github.com/datenlabor-bmz/evals-for-every-language/blob/main/CONTRIBUTING.md'
                 target='_blank'
                 rel='noopener noreferrer'
                 style={{ color: '#007bff', fontWeight: 'bold' }}
