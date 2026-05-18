@@ -202,57 +202,6 @@ Text:
     ]
 
 
-# def corrupt_sentence(sentence):
-#     # replace 5% of the sentence with <mask>
-#     mask_length = round(len(sentence) * 0.05)
-#     start = random.randint(0, len(sentence) - mask_length)
-#     end = start + mask_length
-#     return sentence[:start] + "<mask>" + sentence[end:]
-
-
-# async def mlm_and_evaluate(model, language_bcp_47, nr):
-#     language = languages[languages["bcp_47"] == language_bcp_47].iloc[0]
-#     sentences = flores_sentences(language)
-#     if sentences is None:
-#         return []
-#     sentences = pd.DataFrame(sentences, columns=["text"])
-#     sentences["corrupt_text"] = sentences["text"].apply(corrupt_sentence)
-#     examples = sentences.sample(n=10, random_state=42)
-#     test_sentences = sentences[~sentences["text"].isin(examples["text"])].sample(
-#         frac=1, random_state=42
-#     )
-#     test_sentence = test_sentences.iloc[nr]
-#     messages = []
-#     for example in examples.itertuples():
-#         messages += [
-#             {"role": "user", "content": example.corrupt_text},
-#             {"role": "assistant", "content": example.text},
-#         ]
-#     prediction = await complete(
-#         model=model,
-#         messages=[
-#             *messages,
-#             {
-#                 "role": "user",
-#                 "content": test_sentence.corrupt_text,
-#             },
-#         ],
-#         temperature=0,
-#         max_tokens=1024,
-#     )
-#     chrf_score = chrf.compute(predictions=[prediction], references=[test_sentence.text])
-#     return [
-#         {
-#             "model": model,
-#             "bcp_47": language["bcp_47"],
-#             "task": "language_modeling",
-#             "metric": "chrf",
-#             "score": chrf_score["score"] / 100,
-#             "sentence_nr": nr,
-#         }
-#     ]
-
-
 async def mmlu_and_evaluate(model, language_bcp_47, nr):
     ds_name, task, origin = await load_mmlu(language_bcp_47, nr)
     if not task:
