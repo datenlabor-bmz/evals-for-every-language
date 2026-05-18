@@ -35,8 +35,8 @@ task_metrics = [
 ]
 
 
-def compute_normalized_average(df, metrics):
-    """Compute simple average across metric columns without normalization."""
+def compute_average(df, metrics):
+    """Compute mean across metric columns; returns NaN if any metric is missing."""
     return df[metrics].mean(axis=1, skipna=False)
 
 
@@ -154,7 +154,7 @@ def make_model_table(scores_df, models, scores_df_detailed=None):
     # Fill missing metrics and compute average
     for metric in task_metrics:
         df[metric] = df.get(metric, np.nan)
-    df["average"] = compute_normalized_average(df, task_metrics)
+    df["average"] = compute_average(df, task_metrics)
     df = add_confidence_intervals(df, scores_df_detailed, "model", task_metrics)
 
     # Add machine-origin flags
@@ -218,7 +218,7 @@ def make_language_table(scores_df, languages, scores_df_detailed=None):
     # Fill missing metrics and compute average
     for metric in task_metrics:
         df[metric] = df.get(metric, np.nan)
-    df["average"] = compute_normalized_average(df, task_metrics)
+    df["average"] = compute_average(df, task_metrics)
 
     # For language table, we need to compute scores from detailed data to match CI calculation
     # (CI is computed from all samples, so score should be too)
@@ -231,7 +231,7 @@ def make_language_table(scores_df, languages, scores_df_detailed=None):
         for metric in task_metrics:
             if metric in detailed_pivot.columns:
                 df[metric] = detailed_pivot[metric]
-        df["average"] = compute_normalized_average(df, task_metrics)
+        df["average"] = compute_average(df, task_metrics)
 
     df = add_confidence_intervals(df, scores_df_detailed, "bcp_47", task_metrics)
 
@@ -275,7 +275,7 @@ def make_language_tier_history(scores_df, languages, models):
     )
     for metric in task_metrics:
         pivot[metric] = pivot.get(metric, np.nan)
-    pivot["proficiency_score"] = compute_normalized_average(pivot, task_metrics)
+    pivot["proficiency_score"] = compute_average(pivot, task_metrics)
     pivot = pivot.reset_index()
 
     # Aggregate by tier
@@ -321,7 +321,7 @@ def make_license_history(scores_df, models):
     )
     for metric in task_metrics:
         pivot[metric] = pivot.get(metric, np.nan)
-    pivot["proficiency_score"] = compute_normalized_average(pivot, task_metrics)
+    pivot["proficiency_score"] = compute_average(pivot, task_metrics)
 
     # Merge and classify
     df = pd.merge(
