@@ -1,4 +1,5 @@
 import os
+import time
 from pathlib import Path
 
 import pandas as pd
@@ -7,9 +8,12 @@ from datasets.exceptions import DatasetNotFoundError
 from huggingface_hub.errors import RepositoryNotFoundError
 from joblib.memory import Memory
 from langcodes import standardize_tag
+from requests.exceptions import ConnectionError as RequestsConnectionError
 
 cache = Memory(location=".cache", verbose=0).cache
 TOKEN = os.getenv("HUGGINGFACE_ACCESS_TOKEN")
+
+TRANSIENT_ERRORS = (RequestsConnectionError, ConnectionError, OSError)
 
 # Macrolanguage mappings: when standardize_tag returns a macrolanguage,
 # map it to the preferred specific variant for consistency across datasets.
@@ -36,16 +40,28 @@ def _get_dataset_config_names(dataset, **kwargs):
     return get_dataset_config_names(dataset, **kwargs)
 
 
+def _load_dataset_impl(dataset, subset, **kwargs):
+    return load_dataset(dataset, subset, **kwargs)
+
+
 @cache
 def _load_dataset(dataset, subset, **kwargs):
-    return load_dataset(dataset, subset, **kwargs)
+    last_error = None
+    for attempt in range(4):
+        try:
+            return _load_dataset_impl(dataset, subset, **kwargs)
+        except TRANSIENT_ERRORS as e:
+            last_error = e
+            if attempt < 3:
+                time.sleep(2**attempt)
+    raise last_error
 
 
 # Cache individual dataset items to avoid reloading entire datasets
 @cache
 def _get_dataset_item(dataset, subset, split, index, **kwargs):
     """Load a single item from a dataset efficiently"""
-    ds = load_dataset(dataset, subset, split=split, **kwargs)
+    ds = _load_dataset(dataset, subset, split=split, **kwargs)
     return ds[index] if index < len(ds) else None
 
 

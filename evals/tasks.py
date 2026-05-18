@@ -39,12 +39,13 @@ async def query(model, prompt):
             temperature=0,
             max_tokens=1024,
             extra_body=dict(
+                provider={"data_collection": "deny"},
                 reasoning=dict(
                     effort="low",  # Can be "high", "medium", or "low" (OpenAI-style)
                     # max_tokens=1024,  # Specific token limit (Anthropic-style)
                     # Optional: Default is false. All models support this.
                     exclude=True,  # Set to true to exclude reasoning tokens from response
-                )
+                ),
             ),
         )
     except Exception as e:

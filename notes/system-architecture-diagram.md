@@ -131,7 +131,7 @@ flowchart TD
 - **Static Curated Models**: Handpicked important models (~34 models) for comprehensive evaluation
 - **Dynamic Popular Models**: Web scraping capability available but currently disabled
 - **Quality Control**: Blocklist for problematic or incompatible models
-- **Model Validation**: API availability checks, cost filtering (≤$15/1M tokens), and exclusion of providers that train on user data
+- **Model Validation**: API availability checks, cost filtering (≤$15/1M tokens), and inclusion only when OpenRouter metadata shows at least one privacy-compatible provider
 - **Default Selection**: Top 40 models by default (configurable via N_MODELS)
 - **Metadata Enrichment**: Rich model information from OpenRouter and HuggingFace APIs
 

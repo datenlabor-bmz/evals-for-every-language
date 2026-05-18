@@ -20,6 +20,8 @@ important_models = [
     "meta-llama/llama-3.1-70b-instruct",  # 0.3$
     "meta-llama/llama-3-70b-instruct",  # 0.4$
     # "meta-llama/llama-2-70b-chat", # 0.9$; not properly supported by OpenRouter
+    "openai/gpt-5.4", # 15$
+    # "openai/gpt-5.3", # 15$
     "openai/gpt-5.2",
     "openai/gpt-5.1",
     "openai/gpt-5",
@@ -42,14 +44,15 @@ important_models = [
     "mistralai/mistral-medium-3.1",
     "mistralai/mistral-saba",  # 0.6$
     "mistralai/mistral-nemo",  # 0.08$
+    "google/gemini-3.1-pro-preview", #12$
     "google/gemini-3-pro-preview", # 12$
     "google/gemini-2.5-pro", # $10
     "google/gemini-2.5-flash",  # 0.6$
     "google/gemini-2.5-flash-lite",  # 0.3$
     "google/gemma-3-27b-it",  # 0.2$
     # "x-ai/grok-4", # $15
-    "minimax/minimax-m2.5",  # 1,1$
-    "moonshotai/kimi-k2.5", 
+    # "minimax/minimax-m2.5",  # 1,1$; ~53% ok, content=None often
+    # "moonshotai/kimi-k2.5",  # privacy filter or content=None 
     "cohere/command-a",
     # "qwen/qwen3-32b",
     # "qwen/qwen3-235b-a22b",
@@ -76,7 +79,9 @@ blocklist = [
     "perplexity/sonar-reasoning",
     "perplexity/sonar-reasoning-pro",
     "qwen/qwen3-vl-30b-a3b-thinking",
-    "alpindale/goliath-120b"
+    "alpindale/goliath-120b",
+    "z-ai/glm-4.6",  # ~33% ok, content=None often
+    "qwen/qwen3-235b-a22b",  # ~60% ok, content=None often
 ]
 
 transcription_models = [
@@ -100,18 +105,14 @@ def get_or_metadata(permaslug):
         m
         for m in models
         if (m["permaslug"] == permaslug or m["slug"] == permaslug)
-        # ensure that a provider endpoint is available
         and m["endpoint"]
-        # exclude free models
-        # the problem is that free models typically have very high rate-limiting
         and not m["endpoint"]["is_free"]
-        # exclude providers that train on user data
-        # this is crucial since we are submitting benchmark data
-        # make sure to additionally configure this in OpenRouter settings to avoid mistakes!
+        # OpenRouter privacy is provider-specific, so only keep models that
+        # have at least one non-free provider that does not train on prompts.
         and m["endpoint"]["provider_info"]["dataPolicy"]["training"] is False
     ]
     if len(slugs) == 0:
-        print(f"no appropriate model (not free and no user data training) found for {permaslug}")
+        print(f"no appropriate model (not free and privacy-compatible) found for {permaslug}")
     return slugs[0] if len(slugs) >= 1 else None
 
 
