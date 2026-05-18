@@ -1,4 +1,9 @@
-results/
+# Aggregated results snapshots (results.json, languages.json, models.json)
+# ARE tracked so the repo serves as the inspection point for the latest
+# eval run. Per-sample details + CSV exports stay out (size / churn).
+results/results-detailed.json
+results/*.csv
+results/*.log
 data/translations/
 floresp-*
 fleurs
@@ -8,6 +13,9 @@ spbleu
 *_credentials.json
 models_unfiltered.json
 **/*.DS_Store
+# The paper PDF: keep local for reference; don't publish via the Space
+2507.08538v1.pdf
+*.pdf
 
 # Python-generated files
 __pycache__/
@@ -26,3 +34,8 @@ wheels/
 
 
 notebooks/
+
+# Claude Code artifacts — keep local only, never commit
+CLAUDE.md
+AGENTS.md
+.claude/
