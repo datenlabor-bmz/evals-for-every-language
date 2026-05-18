@@ -9,16 +9,19 @@ license: cc-by-sa-4.0
 short_description: AI model evaluations for every language in the world.
 datasets:
 - openlanguagedata/flores_plus
-- google/fleurs
-- mozilla-foundation/common_voice_1_0
 - CohereForAI/Global-MMLU
+- masakhane/afrimmlu
+- masakhane/afrimgsm
+- masakhane/uhura-truthfulqa
 models:
-- meta-llama/Llama-3.3-70B-Instruct
-- mistralai/Mistral-Small-24B-Instruct-2501
-- deepseek-ai/DeepSeek-V3
-- microsoft/phi-4
-- openai/whisper-large-v3
+- openai/gpt-5
+- anthropic/claude-opus-4.5
+- google/gemini-3-pro-preview
+- meta-llama/llama-3.3-70b-instruct
+- deepseek/deepseek-v3.2-exp
+- mistralai/mistral-medium-3.1
 - google/gemma-3-27b-it
+- microsoft/phi-4
 tags:
 - leaderboard
 - submission:manual
@@ -29,7 +32,16 @@ tags:
 - eval:generation
 - language:English
 - language:German
+- language:Chinese
+- language:Hindi
+- language:Spanish
+- language:Arabic
+- language:Swahili
+- language:Yoruba
 ---
+
+<!-- The lists above are HF Spaces discoverability facets, not the full evaluation set. The canonical model list lives in evals/models.py (~42 curated frontier models); datasets are wired in evals/datasets_/. -->
+
 
 <!--
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference 

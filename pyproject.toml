@@ -1,7 +1,7 @@
 [project]
 name = "languagebench"
 version = "0.1.0"
-description = "Add your description here"
+description = "Multilingual LLM evaluation pipeline behind the AI Language Proficiency Monitor (arXiv:2507.08538)"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -18,7 +18,6 @@ dependencies = [
 [dependency-groups]
 dev = [
     "aiolimiter>=1.2.1",
-    "bert-score>=0.3.13",
     "datasets>=3.6.0",
     "elevenlabs>=1.58.1",
     "evaluate>=0.4.3",
@@ -34,7 +33,6 @@ dev = [
     "rich>=14.0.0",
     "sacrebleu>=2.5.1",
     "sentencepiece>=0.2.0",
-    "tiktoken>=0.9.0",
     "tqdm>=4.67.1",
     "transformers>=4.51.3",
 ]
