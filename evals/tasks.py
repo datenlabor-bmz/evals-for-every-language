@@ -13,7 +13,7 @@ from datasets_.truthfulqa import load_truthfulqa
 from google.cloud import translate_v2 as translate
 from langcodes import closest_supported_match
 from languages import languages, script_name
-from models import complete, translate_google
+from models import FatalAPIError, complete, translate_google
 
 bleu = evaluate.load("bleu")
 chrf = evaluate.load("chrf")
@@ -48,6 +48,9 @@ async def query(model, prompt):
                 ),
             ),
         )
+    except FatalAPIError:
+        # Account-level: re-raise so the eval loop aborts cleanly before save.
+        raise
     except Exception as e:
         print(f"exception for model {model}: {e}")
         return None

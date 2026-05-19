@@ -292,6 +292,26 @@ huggingface_rate_limit = AsyncLimiter(max_rate=5, time_period=1)
 google_rate_limit = AsyncLimiter(max_rate=10, time_period=1)
 
 
+class FatalAPIError(RuntimeError):
+    """Account-level failure (auth, key-limit, payment). Abort the whole run.
+
+    These errors apply to every subsequent call regardless of model/prompt, so
+    continuing the eval just floods results-detailed with bogus errors and
+    poisons the auto-blocklist. Raised by complete(); re-raised (not swallowed)
+    by query() in tasks.py so it propagates out of the eval loop.
+    """
+
+
+_FATAL_ERROR_MARKERS = (
+    "key limit exceeded",
+    "insufficient credits",
+    "insufficient_quota",
+    "invalid api key",
+    "unauthorized",
+    "payment required",
+)
+
+
 @cache
 async def complete(**kwargs) -> str | None:
     async with openrouter_rate_limit:
@@ -301,6 +321,14 @@ async def complete(**kwargs) -> str | None:
             if "filtered" in e.message:
                 return None
             raise e
+        except Exception as e:
+            msg = str(e).lower()
+            if any(marker in msg for marker in _FATAL_ERROR_MARKERS):
+                raise FatalAPIError(
+                    f"OpenRouter account-level failure: {e}. "
+                    "Aborting run before results-detailed is polluted."
+                ) from e
+            raise
     if not response.choices:
         raise Exception(response)
     return response.choices[0].message.content.strip()

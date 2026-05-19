@@ -77,7 +77,23 @@ async def evaluate():
     ]
     results = [r for batch in batch_results for result in batch for r in result]
     results = pd.DataFrame(results) if results else pd.DataFrame(columns=["task", "model", "bcp_47", "metric", "sentence_nr", "score", "origin"])
-    
+
+    # Defense-in-depth: if a huge fraction of NEW rows are errors, an
+    # infrastructure problem (rate limits, regional ban, dependency outage)
+    # likely degraded the run rather than the models actually being broken.
+    # Refuse to push the polluted snapshot so auto_blocklist doesn't kick in
+    # against innocent models on the next cycle. FatalAPIError already covers
+    # auth/credit failures upstream — this is the catch-all for everything else.
+    if not results.empty and "status" in results.columns:
+        new_error_rate = (results["status"] != "ok").mean()
+        if new_error_rate > 0.8:
+            raise RuntimeError(
+                f"Run produced {new_error_rate:.1%} errors in {len(results)} "
+                f"new rows (threshold 80%). Likely an infra failure; refusing "
+                f"to push to HF. Investigate the logs above and re-run when "
+                f"resolved."
+            )
+
     # Merge with cached results (immutable log, prefer latest results on conflict)
     all_results = pd.concat([old_results, results]).drop_duplicates(
         subset=["task", "model", "bcp_47", "metric", "sentence_nr"],
