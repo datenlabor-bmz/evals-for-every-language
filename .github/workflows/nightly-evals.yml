@@ -10,21 +10,63 @@ jobs:
     runs-on: ubuntu-latest
     # checking if this is working in case eval runs take longer than 6h github actions allowance
     timeout-minutes: 1440  # 24 hours timeout
+    env:
+      # Minimum balance (USD) required to start an eval run. Below this,
+      # subsequent steps are skipped so a scheduled cron doesn't burn through
+      # the last few cents on partial requests. The FatalAPIError guard in
+      # complete() handles running out mid-run; this is the "don't even start"
+      # gate. Bump if you want a wider safety margin.
+      MIN_OPENROUTER_BALANCE_USD: '1.0'
     steps:
       - uses: actions/checkout@v3
-      
+
+      - name: Pre-flight — check OpenRouter balance
+        id: balance
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          set -e
+          echo "Checking OpenRouter balance..."
+          # Try per-key remaining first (covers per-key caps).
+          auth_resp=$(curl -sS -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+            https://openrouter.ai/api/v1/auth/key 2>/dev/null || echo '{}')
+          remaining=$(echo "$auth_resp" | jq -r '.data.limit_remaining // empty' 2>/dev/null || echo '')
+          if [ -z "$remaining" ] || [ "$remaining" = "null" ]; then
+            # No per-key cap configured: fall back to account-level balance.
+            credits_resp=$(curl -sS -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+              https://openrouter.ai/api/v1/credits 2>/dev/null || echo '{}')
+            remaining=$(echo "$credits_resp" | \
+              jq -r '.data | ((.total_credits // 0) - (.total_usage // 0))' 2>/dev/null || echo '')
+            if [ -z "$remaining" ] || [ "$remaining" = "null" ]; then
+              remaining="-1"  # unknown — treat as insufficient
+            fi
+          fi
+          echo "remaining=$remaining"
+          echo "remaining=$remaining" >> "$GITHUB_OUTPUT"
+          threshold="${MIN_OPENROUTER_BALANCE_USD}"
+          if awk -v r="$remaining" -v t="$threshold" 'BEGIN { exit !(r+0 >= t+0) }'; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::OpenRouter balance OK: \$$remaining remaining (threshold \$$threshold). Proceeding."
+          else
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::OpenRouter balance below threshold: \$$remaining (need >= \$$threshold). Skipping eval. Top up at https://openrouter.ai/credits"
+          fi
+
       - name: Set up Python
+        if: steps.balance.outputs.proceed == 'true'
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-          
+
       - name: Install dependencies
+        if: steps.balance.outputs.proceed == 'true'
         run: |
           curl -LsSf https://astral.sh/uv/install.sh | sh
           # Use the `dev` dependency group defined in pyproject.toml
           uv sync --frozen --group dev
 
       - name: Write Google Cloud credentials
+        if: steps.balance.outputs.proceed == 'true'
         env:
           GCLOUD_CREDENTIALS_JSON: ${{ secrets.GCLOUD_CREDENTIALS_JSON }}
         run: |
@@ -33,6 +75,7 @@ jobs:
           python -c "import json; json.load(open('gcloud_credentials.json'))"
 
       - name: Run evaluations
+        if: steps.balance.outputs.proceed == 'true'
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
@@ -49,6 +92,7 @@ jobs:
           uv run evals/main.py
           
       - name: Restart HuggingFace Space
+        if: steps.balance.outputs.proceed == 'true'
         env:
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
         run: |
