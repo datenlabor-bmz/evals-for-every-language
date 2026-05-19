@@ -306,17 +306,28 @@ async def complete(**kwargs) -> str | None:
     return response.choices[0].message.content.strip()
 
 
-translate_client = translate.Client()
+# Lazy-init: building translate.Client() at import time tries to read
+# GOOGLE_APPLICATION_CREDENTIALS and crashes the whole module if creds are
+# missing — even for callers that never translate (backend, smoke tests).
+# Defer until first use so import works without GCP creds.
+_translate_client = None
+
+
+def _get_translate_client():
+    global _translate_client
+    if _translate_client is None:
+        _translate_client = translate.Client()
+    return _translate_client
 
 
 def get_google_supported_languages():
-    return [l["language"] for l in translate_client.get_languages()]
+    return [l["language"] for l in _get_translate_client().get_languages()]
 
 
 @cache
 async def translate_google(text, source_language, target_language):
     async with google_rate_limit:
-        response = translate_client.translate(
+        response = _get_translate_client().translate(
             text, source_language=source_language, target_language=target_language
         )
     return response["translatedText"]

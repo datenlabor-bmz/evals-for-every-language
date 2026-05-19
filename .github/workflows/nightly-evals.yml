@@ -23,11 +23,20 @@ jobs:
           curl -LsSf https://astral.sh/uv/install.sh | sh
           # Use the `dev` dependency group defined in pyproject.toml
           uv sync --frozen --group dev
-          
+
+      - name: Write Google Cloud credentials
+        env:
+          GCLOUD_CREDENTIALS_JSON: ${{ secrets.GCLOUD_CREDENTIALS_JSON }}
+        run: |
+          printf '%s' "$GCLOUD_CREDENTIALS_JSON" > gcloud_credentials.json
+          # Fail fast if the secret was empty/malformed.
+          python -c "import json; json.load(open('gcloud_credentials.json'))"
+
       - name: Run evaluations
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: gcloud_credentials.json
           N_SENTENCES: 10
           # Keep these aligned with defaults in evals/main.py for comparability
           N_LANGUAGES: 1000
