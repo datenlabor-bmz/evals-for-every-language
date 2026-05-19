@@ -173,7 +173,7 @@ def make_model_table(scores_df, models, scores_df_detailed=None):
     df = pd.merge(df, models, left_on="model", right_on="id", how="left")
     df["rank"] = df.index + 1
     df["creation_date"] = df["creation_date"].apply(
-        lambda x: x.isoformat() if x else None
+        lambda x: x.isoformat() if pd.notna(x) and hasattr(x, "isoformat") else None
     )
 
     # Select columns dynamically
@@ -295,7 +295,7 @@ def make_language_tier_history(scores_df, languages, models):
         tier_scores, models, left_on="model", right_on="id", how="left"
     )
     tier_scores["creation_date"] = tier_scores["creation_date"].apply(
-        lambda x: x.isoformat() if x else None
+        lambda x: x.isoformat() if pd.notna(x) and hasattr(x, "isoformat") else None
     )
 
     return tier_scores[
@@ -331,7 +331,7 @@ def make_license_history(scores_df, models):
         lambda x: "Open-source" if x == "open-source" else "Commercial"
     )
     df["creation_date"] = df["creation_date"].apply(
-        lambda x: x.isoformat() if x else None
+        lambda x: x.isoformat() if pd.notna(x) and hasattr(x, "isoformat") else None
     )
 
     return df[
