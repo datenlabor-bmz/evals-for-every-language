@@ -1,8 +1,8 @@
 name: Nightly Evaluation Run
 
 on:
-  # schedule:
-  #   - cron: '0 3 * * *'  # Run at 3am UTC every day
+  schedule:
+    - cron: '0 3 * * 1'  # Weekly: Mondays 3am UTC
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -31,7 +31,9 @@ jobs:
           N_SENTENCES: 10
           # Keep these aligned with defaults in evals/main.py for comparability
           N_LANGUAGES: 1000
-          N_MODELS: 40
+          # Bumped 2026-05-19 from 40 to 150 to cover the auto-discovered cohort
+          # (typically ~100 models after dedupe + cost cap).
+          N_MODELS: 150
         run: |
           uv run huggingface-cli login --token ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
           uv run evals/download_data.py

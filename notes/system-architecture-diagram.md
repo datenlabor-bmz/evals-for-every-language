@@ -18,7 +18,7 @@ flowchart TD
     H --> |Save| I[models.json]
     
     %% Model Validation & Cost Filtering
-    H --> |"Validate Models<br/>Check API Availability<br/>No User Data Training"| H1["Valid Models Only<br/>Cost ≤ $25/1M tokens"]
+    H --> |"Validate Models<br/>Check API Availability<br/>No User Data Training"| H1["Valid Models Only<br/>Cost ≤ $30/1M tokens"]
     H1 --> H2["Robust Model List<br/>Default: Top 40 models"]
     
     %% Language Data
@@ -131,7 +131,7 @@ flowchart TD
 - **Static Curated Models**: Handpicked important models (~42 models) for comprehensive evaluation
 - **Dynamic Popular Models**: Web scraping capability available but currently disabled
 - **Quality Control**: Blocklist for problematic or incompatible models
-- **Model Validation**: API availability checks, cost filtering (≤$25/1M tokens), and inclusion only when OpenRouter metadata shows at least one privacy-compatible provider
+- **Model Validation**: API availability checks, cost filtering (≤$30/1M tokens), and inclusion only when OpenRouter metadata shows at least one privacy-compatible provider
 - **Default Selection**: Top 40 models by default (configurable via N_MODELS)
 - **Metadata Enrichment**: Rich model information from OpenRouter and HuggingFace APIs
 
@@ -179,7 +179,7 @@ flowchart TD
 
 ## Data Flow Summary
 
-1. **Model Discovery**: Load curated models (~42) → validate API availability and cost (≤$25/1M tokens) → exclude providers training on user data → enrich with metadata from OpenRouter and HuggingFace
+1. **Model Discovery**: Load curated models (~42) → validate API availability and cost (≤$30/1M tokens) → exclude providers training on user data → enrich with metadata from OpenRouter and HuggingFace
 2. **Evaluation Setup**: Generate all valid Model × Language × Task combinations (default: 40 models × 1000 languages) with pre-computed language filtering and origin tracking
 3. **Task Execution**: Run evaluations using unified English prompting with reasoning templates, batch processing (2000 per batch), and rate limiting
 4. **Result Processing**: Aggregate scores by model+language+task+origin, compute bootstrap confidence intervals, and save to JSON files (results.json and results-detailed.json)
