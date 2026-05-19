@@ -81,6 +81,18 @@ def save(df: pd.DataFrame, fname: str):
     df.to_json(f"results/{fname}.json", orient="records", force_ascii=False, indent=2)
 
 
+def save_local_only(df: pd.DataFrame, fname: str):
+    """Write the snapshot to results/{fname}.json without pushing to HF.
+
+    Used during partial-scale eval runs (smoke tests, local development) so
+    the public dataset isn't truncated by a filtered aggregate. The next
+    full-scale run will push the canonical version.
+    """
+    df = df.drop(columns=["__index_level_0__"], errors="ignore")
+    Path("results").mkdir(exist_ok=True)
+    df.to_json(f"results/{fname}.json", orient="records", force_ascii=False, indent=2)
+
+
 def get_valid_task_languages(task_name: str) -> set:
     """Return set of bcp_47 codes that have data available for the given task."""
     from datasets_.flores import flores, splits

@@ -9,12 +9,27 @@ from models import models
 from rich import print
 from tasks import tasks
 from tqdm.asyncio import tqdm_asyncio
-from datasets_.util import load, save, get_valid_task_languages
+from datasets_.util import load, save, save_local_only, get_valid_task_languages
 from tqdm import tqdm
+
+# Canonical scale used in the nightly workflow. Reduced scale (smaller
+# N_LANGUAGES or N_MODELS) is OK for local validation, but pushing the
+# aggregated `results` dataset back to HF in that mode would truncate the
+# published table — see CANONICAL_*_FOR_PUSH and the guard in save() below.
+CANONICAL_N_LANGUAGES_FOR_PUSH = 1000
+CANONICAL_N_MODELS_FOR_PUSH = 100  # nightly uses 150; bar is "covers the full cohort"
 
 n_sentences = int(environ.get("N_SENTENCES", 10))
 n_languages = int(environ.get("N_LANGUAGES", 1000))
 n_models = int(environ.get("N_MODELS", 40))
+
+# When n_languages or n_models is smaller than canonical, the filter in
+# `results_agg` below would discard most rows and overwrite the public HF
+# aggregate. Detect that and downgrade to local-only writes.
+ALLOW_HF_PUSH_RESULTS = (
+    n_languages >= CANONICAL_N_LANGUAGES_FOR_PUSH
+    and n_models >= CANONICAL_N_MODELS_FOR_PUSH
+)
 
 async def evaluate():
     start_time = time.time()
@@ -86,10 +101,29 @@ async def evaluate():
         .reset_index()
     )
     
+    # results-detailed is append-merged (immutable log); safe to push from any scale.
     save(all_results, "results-detailed")
-    save(results_agg, "results")
-    save(models, "models")
-    save(languages, "languages")
+
+    # The aggregated tables are filtered by current_models × current_languages,
+    # so a partial-scale run (small N_LANGUAGES / N_MODELS) would truncate the
+    # published view. Refuse to push in that case; write locally only.
+    if ALLOW_HF_PUSH_RESULTS:
+        save(results_agg, "results")
+        save(models, "models")
+        save(languages, "languages")
+    else:
+        print(
+            f"[main] partial-scale run "
+            f"(N_LANGUAGES={n_languages}, N_MODELS={n_models}); "
+            f"writing aggregates LOCALLY only (skip HF push) to protect the "
+            f"public dataset. Push from a full-scale run "
+            f"(>={CANONICAL_N_LANGUAGES_FOR_PUSH} langs, "
+            f">={CANONICAL_N_MODELS_FOR_PUSH} models)."
+        )
+        save_local_only(results_agg, "results")
+        save_local_only(models, "models")
+        save_local_only(languages, "languages")
+
     elapsed = time.time() - start_time
     print(f"Evaluation completed in {str(timedelta(seconds=int(elapsed)))}")
 
