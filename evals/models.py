@@ -32,8 +32,7 @@ important_models = [
     "openai/gpt-4o",  # 10$
     "openai/gpt-3.5-turbo", # $1.50
     "openai/gpt-oss-120b",
-    "anthropic/claude-opus-4.6",  # 25$
-    "anthropic/claude-opus-4.5",  # 25$
+    "anthropic/claude-opus-4.8",
     "anthropic/claude-sonnet-4.5",
     "anthropic/claude-sonnet-4.6",
     "anthropic/claude-haiku-4.5",
