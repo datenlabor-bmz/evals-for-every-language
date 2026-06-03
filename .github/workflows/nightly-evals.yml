@@ -79,6 +79,9 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           HUGGINGFACE_ACCESS_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+          # huggingface_hub reads HF_TOKEN for any internal call that isn't
+          # passed an explicit token, so set it too (belt-and-suspenders).
+          HF_TOKEN: ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
           GOOGLE_APPLICATION_CREDENTIALS: gcloud_credentials.json
           N_SENTENCES: 10
           # Keep these aligned with defaults in evals/main.py for comparability
@@ -87,7 +90,19 @@ jobs:
           # (typically ~100 models after dedupe + cost cap).
           N_MODELS: 150
         run: |
-          uv run huggingface-cli login --token ${{ secrets.HUGGINGFACE_ACCESS_TOKEN }}
+          # `huggingface-cli login` only warms a credential cache; all dataset
+          # load/save calls in the code pass token=HUGGINGFACE_ACCESS_TOKEN
+          # explicitly, so this is non-essential. HF's whoami endpoint
+          # intermittently 429s — retry a few times, but never let it abort the
+          # run (a transient login 429 must not kill a multi-hour eval).
+          for attempt in 1 2 3 4 5; do
+            if uv run huggingface-cli login --token "$HUGGINGFACE_ACCESS_TOKEN"; then
+              echo "huggingface-cli login OK (attempt $attempt)"
+              break
+            fi
+            echo "huggingface-cli login failed (attempt $attempt); retrying in $((attempt * 15))s..."
+            sleep $((attempt * 15))
+          done || true
           uv run evals/download_data.py
           uv run evals/main.py
           
