@@ -176,6 +176,7 @@ _DISCOVERY_SKIP_TAGS = (
     "-preview", "-beta", "-experimental", ":free", "-latest",
     "-vision", "-vl", "-image", "-audio", "-tts", "-stt", "-embed",
     "-asr", "-transcribe", "-search", "rerank", "-ocr", "-edit",
+    "-voice", "voice", "-build",  # voice/agent-build endpoints, not general text LLMs
     "coder", "codex", "devstral", "codestral",
     "-thinking", "-reasoning", "-think", "-deep-research", "deepresearch",
     "-multi-agent", "safeguard",
@@ -184,10 +185,15 @@ _DISCOVERY_SKIP_TAGS = (
 # Skip these whole product families (named non-text models).
 _DISCOVERY_SKIP_PRODUCTS = (
     "whisper", "voxtral", "chirp", "kokoro", "orpheus", "zonos", "csm-",
+    "parakeet", "canary",  # NVIDIA ASR speech models
     "sora", "veo-", "wan-", "seedance", "seedream", "flux.", "imagine",
     "kling", "hailuo", "riverflow", "recraft", "morph-",
     "bge-", "gte-", "e5-", "multilingual-e5",
 )
+
+# Vision variants often tack a bare "v" onto the version (glm-4.5v, glm-5v-turbo)
+# rather than a "-vision"/"-vl" tag, so the substring filter above misses them.
+_VISION_SUFFIX_RE = re.compile(r"\d+(\.\d+)?v(-|$)")
 
 
 @cache
@@ -224,6 +230,8 @@ def discover_new_models(date: date) -> list[str]:
         slug_lower = slug.lower()
         if any(prod in slug_lower for prod in _DISCOVERY_SKIP_PRODUCTS):
             continue
+        if _VISION_SUFFIX_RE.search(slug_lower):
+            continue  # bare-"v" vision variant (e.g. glm-4.5v, glm-5v-turbo)
         if not m.get("endpoint"):
             continue
         if m["endpoint"].get("is_free"):
