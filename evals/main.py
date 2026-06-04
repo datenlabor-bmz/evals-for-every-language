@@ -5,7 +5,11 @@ from os import environ
 
 import pandas as pd
 from languages import languages
-from models import models
+from models import (
+    models,
+    AUTO_BLOCKLIST_MIN_ATTEMPTS,
+    AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD,
+)
 from rich import print
 from tasks import tasks
 from tqdm.asyncio import tqdm_asyncio
@@ -30,6 +34,60 @@ ALLOW_HF_PUSH_RESULTS = (
     n_languages >= CANONICAL_N_LANGUAGES_FOR_PUSH
     and n_models >= CANONICAL_N_MODELS_FOR_PUSH
 )
+
+def publishable_models(log_df, cohort_models):
+    """Cohort models safe to include in the published aggregate: full coverage
+    (guaranteed because we only checkpoint completed models) AND an acceptable
+    success rate. A model that is mostly errors over a meaningful sample is
+    *broken*, not *low-scoring* — keep it out of the aggregate (auto_blocklist
+    drops it from the cohort on the next run). This is the guard that prevents
+    a sparsely-successful model from showing an inflated mean."""
+    if "status" not in log_df.columns:
+        return set(cohort_models)
+    keep = set()
+    in_cohort = log_df[log_df["model"].isin(cohort_models)]
+    for mid, grp in in_cohort.groupby("model"):
+        total = len(grp)
+        failed = (grp["status"] == "error").sum()
+        if (total >= AUTO_BLOCKLIST_MIN_ATTEMPTS
+                and failed / total * 100 >= AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD):
+            continue
+        keep.add(mid)
+    return keep
+
+
+def checkpoint(log_df, cohort_models, cohort_languages, note):
+    """Push the immutable log + the aggregate (current cohort, healthy
+    fully-covered models only) to HuggingFace (or locally if below scale)."""
+    if "status" in log_df.columns:
+        valid = log_df[log_df["status"].isna() | (log_df["status"] == "ok")]
+    else:
+        valid = log_df
+    keep = publishable_models(log_df, cohort_models)
+    agg = (
+        valid[valid["model"].isin(keep) & valid["bcp_47"].isin(cohort_languages)]
+        .groupby(["model", "bcp_47", "task", "metric"])
+        .agg({"score": "mean", "origin": "first"})
+        .reset_index()
+    )
+    # results-detailed is append-merged (immutable log); safe at any scale.
+    save(log_df, "results-detailed")
+    # The aggregated tables are filtered by cohort_models × cohort_languages, so
+    # a partial-scale run would truncate the published view — push only from a
+    # full-scale run; otherwise local-only.
+    if ALLOW_HF_PUSH_RESULTS:
+        save(agg, "results")
+        save(models, "models")
+        save(languages, "languages")
+    else:
+        save_local_only(agg, "results")
+        save_local_only(models, "models")
+        save_local_only(languages, "languages")
+    print(f"  ✓ checkpoint after {note}: {len(keep)} models published, "
+          f"{len(log_df)} detailed rows "
+          f"({'HF' if ALLOW_HF_PUSH_RESULTS else 'local-only'})")
+    return agg
+
 
 async def evaluate():
     start_time = time.time()
@@ -63,82 +121,63 @@ async def evaluate():
         completed = set(completed_df.apply(tuple, axis=1))
         combis = combis[~combis.apply(lambda row: tuple(row) in completed, axis=1)]
 
-    print(f"Running {len(combis)} evaluation tasks...")
+    print(f"Running {len(combis)} evaluation tasks across {combis['model'].nunique()} models...")
 
-    # batching (asyncio.gather + rate-limiting can in principle run everything at once, but in practice batching is more efficient / necessary)
-    batch_size = 2000
-    batch_results = [
-        await tqdm_asyncio.gather(
-            *[tasks[task_name](model, bcp_47, sentence_nr)
-              for _, (task_name, model, bcp_47, sentence_nr) in batch.iterrows()]
-        )
-        for i in tqdm(range(0, len(combis), batch_size), colour='blue', desc='Batches')
-        for batch in [combis[i:i + batch_size]]
-    ]
-    results = [r for batch in batch_results for result in batch for r in result]
-    results = pd.DataFrame(results) if results else pd.DataFrame(columns=["task", "model", "bcp_47", "metric", "sentence_nr", "score", "origin"])
-
-    # Defense-in-depth: if a huge fraction of NEW rows are errors, an
-    # infrastructure problem (rate limits, regional ban, dependency outage)
-    # likely degraded the run rather than the models actually being broken.
-    # Refuse to push the polluted snapshot so auto_blocklist doesn't kick in
-    # against innocent models on the next cycle. FatalAPIError already covers
-    # auth/credit failures upstream — this is the catch-all for everything else.
-    if not results.empty and "status" in results.columns:
-        new_error_rate = (results["status"] != "ok").mean()
-        if new_error_rate > 0.8:
-            raise RuntimeError(
-                f"Run produced {new_error_rate:.1%} errors in {len(results)} "
-                f"new rows (threshold 80%). Likely an infra failure; refusing "
-                f"to push to HF. Investigate the logs above and re-run when "
-                f"resolved."
-            )
-
-    # Merge with cached results (immutable log, prefer latest results on conflict)
-    all_results = pd.concat([old_results, results]).drop_duplicates(
-        subset=["task", "model", "bcp_47", "metric", "sentence_nr"],
-        keep="last",
-    ) if not old_results.empty else results
-    
-    # Filter to current models × languages and aggregate.
-    # Only aggregate over successful evaluations (status == \"ok\" or missing).
     current_models = set(models.iloc[:n_models]["id"])
     current_languages = set(languages.head(n_languages)["bcp_47"])
-    if "status" in all_results.columns:
-        valid_mask = all_results["status"].isna() | (all_results["status"] == "ok")
-        valid_results = all_results[valid_mask]
-    else:
-        valid_results = all_results
 
-    results_agg = (
-        valid_results[valid_results["model"].isin(current_models) & valid_results["bcp_47"].isin(current_languages)]
-        .groupby(["model", "bcp_47", "task", "metric"])
-        .agg({"score": "mean", "origin": "first"})
-        .reset_index()
+    # We evaluate ONE MODEL AT A TIME and checkpoint to HuggingFace after each
+    # model finishes its ENTIRE matrix (every task × language × sentence
+    # attempted). This buys two things:
+    #   1. Progress survives interruption — the GitHub-hosted runner's hard 6h
+    #      cap, or a local laptop sleeping. The next run skips models already
+    #      fully logged (status=="ok" rows), so a large onboarding completes
+    #      across however many runs it takes instead of losing everything.
+    #   2. A model only enters the PUBLISHED aggregate once it has full
+    #      benchmark coverage, so a half-evaluated model can never show an
+    #      inflated score from a sparse sample (the failure mode that once put
+    #      a small model at rank #1).
+    all_results = old_results.copy() if not old_results.empty else pd.DataFrame(
+        columns=["task", "model", "bcp_47", "metric", "sentence_nr", "score", "origin", "status"]
     )
-    
-    # results-detailed is append-merged (immutable log); safe to push from any scale.
-    save(all_results, "results-detailed")
+    dedup_keys = ["task", "model", "bcp_47", "metric", "sentence_nr"]
+    batch_size = 2000
 
-    # The aggregated tables are filtered by current_models × current_languages,
-    # so a partial-scale run (small N_LANGUAGES / N_MODELS) would truncate the
-    # published view. Refuse to push in that case; write locally only.
-    if ALLOW_HF_PUSH_RESULTS:
-        save(results_agg, "results")
-        save(models, "models")
-        save(languages, "languages")
-    else:
-        print(
-            f"[main] partial-scale run "
-            f"(N_LANGUAGES={n_languages}, N_MODELS={n_models}); "
-            f"writing aggregates LOCALLY only (skip HF push) to protect the "
-            f"public dataset. Push from a full-scale run "
-            f"(>={CANONICAL_N_LANGUAGES_FOR_PUSH} langs, "
-            f">={CANONICAL_N_MODELS_FOR_PUSH} models)."
+    # Cohort order, so each checkpoint boundary is a fully-computed model.
+    # Models already fully cached have no pending combis and are skipped.
+    pending_models = [m for m in models.iloc[:n_models]["id"].tolist()
+                      if (combis["model"] == m).any()]
+    results_agg = None
+    for mi, model_id in enumerate(pending_models, 1):
+        model_combis = combis[combis["model"] == model_id]
+        print(f"[{mi}/{len(pending_models)}] {model_id}: {len(model_combis)} new samples")
+        model_out = []
+        for i in tqdm(range(0, len(model_combis), batch_size),
+                      colour="blue", desc=model_id):
+            batch = model_combis.iloc[i:i + batch_size]
+            batch_res = await tqdm_asyncio.gather(
+                *[tasks[task_name](model, bcp_47, sentence_nr)
+                  for _, (task_name, model, bcp_47, sentence_nr) in batch.iterrows()]
+            )
+            model_out.extend(r for result in batch_res for r in result)
+        model_df = pd.DataFrame(model_out) if model_out else pd.DataFrame(columns=all_results.columns)
+
+        if not model_df.empty and "status" in model_df.columns:
+            err = (model_df["status"] != "ok").mean()
+            if err > 0.8:
+                # Logged so auto_blocklist sees it; publish-health filter keeps
+                # it out of the aggregate this run.
+                print(f"  ⚠ {model_id}: {err:.0%} of new rows errored — logged, not published")
+
+        all_results = pd.concat([all_results, model_df]).drop_duplicates(
+            subset=dedup_keys, keep="last"
         )
-        save_local_only(results_agg, "results")
-        save_local_only(models, "models")
-        save_local_only(languages, "languages")
+        results_agg = checkpoint(all_results, current_models, current_languages, model_id)
+
+    if results_agg is None:
+        # Everything was already cached — still refresh the published tables
+        # from the existing log (e.g. cohort/cost metadata may have changed).
+        results_agg = checkpoint(all_results, current_models, current_languages, "no new work")
 
     elapsed = time.time() - start_time
     print(f"Evaluation completed in {str(timedelta(seconds=int(elapsed)))}")
