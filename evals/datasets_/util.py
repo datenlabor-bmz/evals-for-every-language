@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 from datasets import Dataset, get_dataset_config_names, load_dataset
 from datasets.exceptions import DatasetNotFoundError
-from huggingface_hub.errors import RepositoryNotFoundError
+from huggingface_hub.errors import HfHubHTTPError, RepositoryNotFoundError
 from joblib.memory import Memory
 from langcodes import standardize_tag
 from requests.exceptions import ConnectionError as RequestsConnectionError
@@ -75,10 +75,28 @@ def load(fname: str):
 
 def save(df: pd.DataFrame, fname: str):
     df = df.drop(columns=["__index_level_0__"], errors="ignore")
-    ds = Dataset.from_pandas(df)
-    ds.push_to_hub(f"fair-forward/evals-for-every-language-{fname}", token=TOKEN)
+    # Write the local snapshot first so progress is on disk even if the HF push
+    # later fails — cheap insurance for long, checkpoint-heavy runs.
     Path("results").mkdir(exist_ok=True)
     df.to_json(f"results/{fname}.json", orient="records", force_ascii=False, indent=2)
+    ds = Dataset.from_pandas(df)
+    # Retry the push with backoff: per-model checkpointing pushes often, and
+    # HF intermittently 429s / drops connections. A transient failure must not
+    # kill a multi-hour run; a persistent one still raises so we don't silently
+    # lose durability (the next run resumes from whatever did land on HF).
+    last_error = None
+    for attempt in range(5):
+        try:
+            ds.push_to_hub(f"fair-forward/evals-for-every-language-{fname}", token=TOKEN)
+            return
+        except (HfHubHTTPError, *TRANSIENT_ERRORS) as e:
+            last_error = e
+            if attempt < 4:
+                wait = 2 ** attempt * 5  # 5, 10, 20, 40s
+                print(f"[save] HF push of '{fname}' failed (attempt {attempt + 1}/5): "
+                      f"{e}; retrying in {wait}s...")
+                time.sleep(wait)
+    raise last_error
 
 
 def save_local_only(df: pd.DataFrame, fname: str):
