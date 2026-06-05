@@ -35,18 +35,24 @@ ALLOW_HF_PUSH_RESULTS = (
     and n_models >= CANONICAL_N_MODELS_FOR_PUSH
 )
 
-def publishable_models(log_df, cohort_models):
-    """Cohort models safe to include in the published aggregate: full coverage
-    (guaranteed because we only checkpoint completed models) AND an acceptable
-    success rate. A model that is mostly errors over a meaningful sample is
-    *broken*, not *low-scoring* — keep it out of the aggregate (auto_blocklist
-    drops it from the cohort on the next run). This is the guard that prevents
-    a sparsely-successful model from showing an inflated mean."""
+def publishable_models(log_df, covered_models):
+    """Models safe to include in the published aggregate.
+
+    `covered_models` must already be COVERAGE-COMPLETE (every expected
+    task × language × sentence attempted). The caller guarantees this — a
+    model is only added once its full matrix is done. Coverage is the load-
+    bearing guard: a sparsely-evaluated model (e.g. 5 of 200 languages) would
+    otherwise show an inflated mean and jump the leaderboard, which is exactly
+    the failure that once put a small model at rank #1.
+
+    On top of coverage we drop models that are *broken* (mostly errors over a
+    meaningful sample) rather than merely low-scoring — auto_blocklist removes
+    them from the cohort on the next run."""
     if "status" not in log_df.columns:
-        return set(cohort_models)
+        return set(covered_models)
     keep = set()
-    in_cohort = log_df[log_df["model"].isin(cohort_models)]
-    for mid, grp in in_cohort.groupby("model"):
+    in_scope = log_df[log_df["model"].isin(covered_models)]
+    for mid, grp in in_scope.groupby("model"):
         total = len(grp)
         failed = (grp["status"] == "error").sum()
         if (total >= AUTO_BLOCKLIST_MIN_ATTEMPTS
@@ -56,14 +62,14 @@ def publishable_models(log_df, cohort_models):
     return keep
 
 
-def checkpoint(log_df, cohort_models, cohort_languages, note):
-    """Push the immutable log + the aggregate (current cohort, healthy
-    fully-covered models only) to HuggingFace (or locally if below scale)."""
+def checkpoint(log_df, covered_models, cohort_languages, note):
+    """Push the immutable log + the aggregate (healthy, fully-covered models
+    only) to HuggingFace (or locally if below scale)."""
     if "status" in log_df.columns:
         valid = log_df[log_df["status"].isna() | (log_df["status"] == "ok")]
     else:
         valid = log_df
-    keep = publishable_models(log_df, cohort_models)
+    keep = publishable_models(log_df, covered_models)
     agg = (
         valid[valid["model"].isin(keep) & valid["bcp_47"].isin(cohort_languages)]
         .groupby(["model", "bcp_47", "task", "metric"])
@@ -147,6 +153,15 @@ async def evaluate():
     # Models already fully cached have no pending combis and are skipped.
     pending_models = [m for m in models.iloc[:n_models]["id"].tolist()
                       if (combis["model"] == m).any()]
+
+    # A model is COVERAGE-COMPLETE iff it has zero pending combis: either it was
+    # already fully evaluated before this run (not in pending_models), or this
+    # run finishes its full matrix below. Only coverage-complete models may be
+    # published — this is what stops a model with a handful of evaluated
+    # languages from showing an inflated mean and jumping the leaderboard.
+    covered = current_models - set(pending_models)
+    print(f"{len(covered)} models already fully covered; "
+          f"{len(pending_models)} pending this run")
     results_agg = None
     for mi, model_id in enumerate(pending_models, 1):
         model_combis = combis[combis["model"] == model_id]
@@ -172,12 +187,14 @@ async def evaluate():
         all_results = pd.concat([all_results, model_df]).drop_duplicates(
             subset=dedup_keys, keep="last"
         )
-        results_agg = checkpoint(all_results, current_models, current_languages, model_id)
+        # This model's full matrix is now attempted → coverage-complete.
+        covered.add(model_id)
+        results_agg = checkpoint(all_results, covered, current_languages, model_id)
 
     if results_agg is None:
         # Everything was already cached — still refresh the published tables
         # from the existing log (e.g. cohort/cost metadata may have changed).
-        results_agg = checkpoint(all_results, current_models, current_languages, "no new work")
+        results_agg = checkpoint(all_results, covered, current_languages, "no new work")
 
     elapsed = time.time() - start_time
     print(f"Evaluation completed in {str(timedelta(seconds=int(elapsed)))}")
