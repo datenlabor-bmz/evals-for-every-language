@@ -89,6 +89,11 @@ jobs:
           # Bumped 2026-05-19 from 40 to 150 to cover the auto-discovered cohort
           # (typically ~100 models after dedupe + cost cap).
           N_MODELS: 150
+          # GitHub-hosted runners hard-cap a job at 6h. Stop gracefully after
+          # the current model at 5.5h so the run exits cleanly, restarts the
+          # Space, and resumes the rest next run (per-model checkpointing makes
+          # this safe — completed models are skipped on the next run).
+          MAX_RUNTIME_SECONDS: 19800
         run: |
           # `huggingface-cli login` only warms a credential cache; all dataset
           # load/save calls in the code pass token=HUGGINGFACE_ACCESS_TOKEN

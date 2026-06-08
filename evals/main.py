@@ -27,6 +27,14 @@ n_sentences = int(environ.get("N_SENTENCES", 10))
 n_languages = int(environ.get("N_LANGUAGES", 1000))
 n_models = int(environ.get("N_MODELS", 40))
 
+# Optional wall-clock budget (seconds). GitHub-hosted runners hard-cap a job at
+# 6h regardless of `timeout-minutes`; a run cancelled at that wall shows as
+# "failed" and skips the post-run Space restart. With per-model checkpointing
+# we can instead stop GRACEFULLY after the current model once the budget is hit
+# — the run exits 0, the Space restarts with whatever finished, and the next
+# run resumes the rest (completed models are skipped). 0 = no limit (local runs).
+max_runtime_seconds = int(environ.get("MAX_RUNTIME_SECONDS", 0))
+
 # When n_languages or n_models is smaller than canonical, the filter in
 # `results_agg` below would discard most rows and overwrite the public HF
 # aggregate. Detect that and downgrade to local-only writes.
@@ -190,6 +198,13 @@ async def evaluate():
         # This model's full matrix is now attempted → coverage-complete.
         covered.add(model_id)
         results_agg = checkpoint(all_results, covered, current_languages, model_id)
+
+        if max_runtime_seconds and (time.time() - start_time) > max_runtime_seconds:
+            deferred = len(pending_models) - mi
+            print(f"[main] runtime budget ({max_runtime_seconds}s) reached after "
+                  f"{model_id}; exiting cleanly with {deferred} model(s) deferred "
+                  f"to the next run (their progress is already checkpointed).")
+            break
 
     if results_agg is None:
         # Everything was already cached — still refresh the published tables

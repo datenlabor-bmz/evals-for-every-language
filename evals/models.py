@@ -130,32 +130,52 @@ def get_or_metadata(permaslug):
 
 
 # Strip numeric version tokens AND date-snapshot suffixes from a slug to
-# derive a model "family" key. Size-tier suffixes (-pro, -mini, -flash,
-# -lite, -opus, -haiku, ...) stay so flagship and cheap-tier variants form
-# separate families.
+# derive a model "family" key: vendor + base product line, with version
+# numbers, date snapshots, parameter-size tokens AND size-tier / variant
+# suffixes (-mini, -flash, -pro, -8b, ...) all stripped. Everything that is
+# "the same model at a different size or minor revision" collapses to one key,
+# so auto-discovery keeps a SINGLE flagship per product line (highest cost
+# wins) instead of a dozen near-duplicate variants. This is deliberately
+# aggressive — the goal is to avoid flooding the cohort with size sweeps; a
+# specific variant we actually want is added by hand to important_models.
 #
 # Examples:
-#   openai/gpt-5.5-pro                -> openai/gpt-pro
-#   openai/gpt-5.4-mini               -> openai/gpt-mini
-#   anthropic/claude-opus-4.7         -> anthropic/claude-opus
-#   deepseek/deepseek-v4-pro          -> deepseek/deepseek-pro
-#   meta-llama/llama-3.3-70b-instruct -> meta-llama/llama-70b-instruct
-#   qwen/qwen3-235b-a22b-07-25        -> qwen/qwen-235b-a22b  (date suffix stripped)
+#   openai/gpt-5.5-pro                -> openai/gpt
+#   openai/gpt-5.4-mini               -> openai/gpt
+#   anthropic/claude-opus-4.7         -> anthropic/claude
+#   deepseek/deepseek-v4-pro          -> deepseek/deepseek
+#   mistralai/ministral-8b-2512       -> mistralai/ministral
+#   qwen/qwen3.6-flash                -> qwen/qwen
+#   nvidia/nemotron-3-super-120b-a12b -> nvidia/nemotron
 #   bytedance-seed/seed-1.6-20250625  -> bytedance-seed/seed
 _DATE_SUFFIX_RE = re.compile(
     r"-(20\d{6}|20\d{2}-\d{2}-\d{2}|\d{2}-\d{2}|\d{4})$"
 )
 _VERSION_SUFFIX_RE = re.compile(r"[-]?v?\d+(\.\d+)*(-exp|-instruct)?(?=($|-))")
+# Parameter-size tokens: -8b, -70b, -8x7b, -120b-a12b, -235b-a22b, -a3b ...
+_PARAM_SIZE_RE = re.compile(r"-a?\d+(?:\.\d+)?x?\d*b(?:-a\d+b)?\b")
+# Size-tier / variant words that denote "same line, different size or framing".
+_SIZE_TIER_TOKENS = frozenset({
+    "mini", "nano", "flash", "lite", "air", "turbo", "plus", "max", "pro",
+    "micro", "small", "medium", "large", "xl", "xxl", "edge", "ultra", "super",
+    "base", "fast", "chat", "instruct", "it", "hf", "opus", "sonnet", "haiku",
+})
 
 
 def _family_key(slug: str) -> str:
-    # Strip trailing date snapshots first (so version regex can match cleanly).
+    vendor, _, name = slug.partition("/")
+    # Strip trailing date snapshots first (so the version regex matches cleanly).
     while True:
-        new = _DATE_SUFFIX_RE.sub("", slug)
-        if new == slug:
+        new = _DATE_SUFFIX_RE.sub("", name)
+        if new == name:
             break
-        slug = new
-    return _VERSION_SUFFIX_RE.sub("", slug)
+        name = new
+    name = _VERSION_SUFFIX_RE.sub("", name)
+    name = _PARAM_SIZE_RE.sub("", name)
+    parts = [p for p in name.split("-") if p]
+    while len(parts) > 1 and parts[-1] in _SIZE_TIER_TOKENS:
+        parts.pop()
+    return f"{vendor}/{'-'.join(parts)}" if parts else f"{vendor}/{name}"
 
 
 # Providers we trust to ship general-purpose text LLMs. Adding a new vendor
