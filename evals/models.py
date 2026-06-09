@@ -1,4 +1,5 @@
 import re
+import time
 from datetime import date
 from os import getenv
 from pathlib import Path
@@ -109,7 +110,74 @@ cache = Memory(location=".cache", verbose=0).cache
 
 @cache
 def load_or_metadata(date: date):
-    return get("https://openrouter.ai/api/frontend/models").json()["data"]
+    """Fetch the OpenRouter model catalog, normalized to the shape the rest of
+    this module expects (slug / permaslug / created_at / endpoint.pricing / ...).
+
+    OpenRouter removed the undocumented /api/frontend/models endpoint (now 404),
+    so we build from the official /api/v1/models. That catalog no longer carries
+    per-provider data policy — privacy is instead enforced at REQUEST time via
+    provider.data_collection="deny" in complete() (a strictly stronger guarantee:
+    OpenRouter refuses to route a prompt to any training/retaining provider on
+    every call, rather than us trusting a scraped field). Each normalized entry
+    therefore reports dataPolicy.training=False so the existing downstream
+    filters pass; the real enforcement lives in complete()."""
+    headers = {"Authorization": f"Bearer {getenv('OPENROUTER_API_KEY')}"}
+    last_error = None
+    for attempt in range(4):
+        try:
+            resp = get(
+                "https://openrouter.ai/api/v1/models", headers=headers, timeout=30
+            )
+            data = resp.json()["data"]
+            break
+        except Exception as e:  # transient network / non-JSON / outage
+            last_error = e
+            if attempt < 3:
+                time.sleep(2**attempt)
+    else:
+        raise RuntimeError(
+            f"OpenRouter /api/v1/models fetch failed after retries: {last_error}"
+        )
+
+    normalized = []
+    for m in data:
+        slug = m.get("id")
+        if not slug:
+            continue
+        name = m.get("name") or slug
+        short_name = name.split(": ", 1)[1] if ": " in name else name
+        try:
+            completion = m["pricing"]["completion"]
+        except (KeyError, TypeError):
+            completion = None
+        try:
+            is_free = float(completion) == 0
+        except (TypeError, ValueError):
+            is_free = False
+        try:
+            created_at = pd.to_datetime(m.get("created"), unit="s", utc=True).isoformat()
+        except (TypeError, ValueError):
+            created_at = None
+        normalized.append(
+            {
+                "slug": slug,
+                "permaslug": m.get("canonical_slug") or slug,
+                "short_name": short_name,
+                "name": name,
+                "created_at": created_at,
+                # HuggingFace repo id (for open-weight size/license lookup);
+                # the old endpoint called this hf_slug.
+                "hf_slug": m.get("hugging_face_id") or None,
+                "endpoint": {
+                    "is_free": is_free,
+                    "pricing": {"completion": completion},
+                    # Privacy is enforced per-request in complete(); report
+                    # compatible so the catalog-level filters pass.
+                    "provider_info": {"dataPolicy": {"training": False}},
+                },
+            }
+        )
+    return normalized
 
 
 def get_or_metadata(permaslug):
@@ -120,12 +188,15 @@ def get_or_metadata(permaslug):
         if (m["permaslug"] == permaslug or m["slug"] == permaslug)
         and m["endpoint"]
         and not m["endpoint"]["is_free"]
-        # OpenRouter privacy is provider-specific, so only keep models that
-        # have at least one non-free provider that does not train on prompts.
+        # Privacy is now enforced per-request in complete() via
+        # provider.data_collection="deny" (the /api/v1/models catalog no longer
+        # exposes per-provider data policy). This dataPolicy check is kept for
+        # shape compatibility — load_or_metadata reports training=False — and
+        # always passes; the real guarantee lives in complete().
         and m["endpoint"]["provider_info"]["dataPolicy"]["training"] is False
     ]
     if len(slugs) == 0:
-        print(f"no appropriate model (not free and privacy-compatible) found for {permaslug}")
+        print(f"no appropriate model (not free) found for {permaslug}")
     return slugs[0] if len(slugs) >= 1 else None
 
 
@@ -186,7 +257,10 @@ _DISCOVERY_PROVIDER_ALLOWLIST = frozenset({
     "allenai", "microsoft", "liquid", "ibm-granite", "nvidia", "rekaai",
     "stepfun", "tencent", "z-ai", "bytedance-seed", "ai21", "nousresearch",
     "perplexity", "arcee-ai", "deepcogito", "prime-intellect", "writer",
-    "upstage", "openrouter",
+    "upstage",
+    # NOT "openrouter": its namespace holds routing meta-models and cloaked /
+    # stealth test models (auto, bodybuilder, fusion, pareto-code, ...), not
+    # real benchmarkable LLMs.
 })
 
 # Skip these substrings anywhere in the slug — covers transient snapshots,
@@ -359,6 +433,14 @@ _FATAL_ERROR_MARKERS = (
 
 @cache
 async def complete(**kwargs) -> str | None:
+    # Privacy enforcement (paper §3.3): force OpenRouter to route only to
+    # providers that do NOT train on or retain prompts, on every call. This
+    # replaces the old catalog pre-filter with a stronger per-request guarantee
+    # — the router cannot fall back to a training provider. Merge so a caller's
+    # own provider/extra_body settings are preserved.
+    extra_body = dict(kwargs.get("extra_body") or {})
+    extra_body["provider"] = {**extra_body.get("provider", {}), "data_collection": "deny"}
+    kwargs["extra_body"] = extra_body
     async with openrouter_rate_limit:
         try:
             response = await client.chat.completions.create(**kwargs)
