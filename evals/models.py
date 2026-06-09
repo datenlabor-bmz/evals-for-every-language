@@ -230,9 +230,27 @@ def discover_new_models(date: date) -> list[str]:
         return []
 
     cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=365)
-    curated_families = {_family_key(s) for s in important_models}
     blocked_families = {_family_key(s) for s in blocklist}
     blocked = set(blocklist) | set(load_auto_blocklist(date))
+
+    # Newest curated release date per family. We skip a discovered model only
+    # if we already hand-curate something in its family that is AT LEAST AS NEW.
+    # This is what lets a genuinely newer flagship from a lab we already track
+    # (e.g. a future Claude Opus 5 or GPT-6) still get surfaced — without it,
+    # the coarse family key would permanently block every future model from
+    # any curated lab.
+    important_set = set(important_models)
+    curated_dates: dict[str, pd.Timestamp] = {}
+    for m in catalog:
+        s = m.get("permaslug") or m.get("slug")
+        if s in important_set or m.get("slug") in important_set:
+            try:
+                c = pd.to_datetime(m["created_at"], utc=True)
+            except (TypeError, ValueError, KeyError):
+                continue
+            fam = _family_key(s)
+            if fam not in curated_dates or c > curated_dates[fam]:
+                curated_dates[fam] = c
 
     candidates = []
     for m in catalog:
@@ -274,8 +292,8 @@ def discover_new_models(date: date) -> list[str]:
         if created < cutoff:
             continue
         family = _family_key(slug)
-        if family in curated_families:
-            continue  # already represented in important_models — don't duplicate
+        if family in curated_dates and created <= curated_dates[family]:
+            continue  # we already curate a model in this family at least as new
         if family in blocked_families:
             continue  # date-suffixed snapshot of a blocklisted slug
         candidates.append((slug, created, family, cost_per_1m))
@@ -473,19 +491,28 @@ def get_training_policy(row):
     return row["endpoint"]["provider_info"]["dataPolicy"]["training"]
 
 
-# Auto-blocklist thresholds: a model is auto-excluded if it has attempted at
-# least MIN_ATTEMPTS evaluations and FAIL_PCT_THRESHOLD% or more returned an
-# error (content=None / filtered / etc.). Matches the manual blocklist's
-# existing quality bar ("~33% ok, content=None often" -> 67% fail -> blocked).
+# Auto-blocklist thresholds: a model is a blocklist CANDIDATE in a given run if
+# it has attempted at least MIN_ATTEMPTS evaluations and FAIL_PCT_THRESHOLD% or
+# more returned an error (content=None / filtered / etc.). Matches the manual
+# blocklist's bar ("~33% ok, content=None often" -> 67% fail -> blocked).
 AUTO_BLOCKLIST_MIN_ATTEMPTS = 100
 AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD = 50.0
+# ...but a single bad run does NOT exclude a model — a provider rate-limiting us
+# during a long run would otherwise wrongly blocklist a healthy model (and once
+# excluded it's never re-attempted, so it can't recover). A model must stay past
+# the threshold for this many CONSECUTIVE runs before it is actually excluded.
+# Strikes are persisted to HF (survives ephemeral CI runners) and maintained by
+# update_blocklist_strikes(); a model that recovers in any run drops back to 0.
+AUTO_BLOCKLIST_MIN_RUNS = 2
 
 
-def compute_model_health() -> pd.DataFrame:
-    """Per-model success/failure stats from results-detailed. Empty DF on miss."""
+def compute_model_health(detailed=None) -> pd.DataFrame:
+    """Per-model success/failure stats. Uses the passed results-detailed frame if
+    given (avoids re-downloading at end of a run), else loads it. Empty DF on miss."""
     from datasets_.util import load
 
-    detailed = load("results-detailed")
+    if detailed is None:
+        detailed = load("results-detailed")
     if detailed.empty or "status" not in detailed.columns:
         return pd.DataFrame(
             columns=["model", "total", "failed", "failed_pct", "score_nonfailed"]
@@ -504,19 +531,73 @@ def compute_model_health() -> pd.DataFrame:
 
 @cache
 def load_auto_blocklist(date: date) -> list[str]:
-    """Models past the failure threshold in observed history. Empty on first run."""
+    """Models excluded from the cohort: those that have stayed past the failure
+    threshold for >= AUTO_BLOCKLIST_MIN_RUNS consecutive runs. This is a cheap
+    READ of the persisted strike table (maintained by update_blocklist_strikes
+    at the end of each eval run) — safe to call at backend startup, and a single
+    bad run never excludes a model here. Empty before any strikes exist."""
     try:
-        health = compute_model_health()
+        from datasets_.util import load
+
+        strikes = load("model-health-strikes")
     except Exception as e:
-        print(f"[auto_blocklist] failed to load history: {e}; using empty list")
+        print(f"[auto_blocklist] failed to load strikes: {e}; using empty list")
         return []
+    if strikes.empty or "strikes" not in strikes.columns:
+        return []
+    return sorted(
+        strikes[strikes["strikes"] >= AUTO_BLOCKLIST_MIN_RUNS]["model"].tolist()
+    )
+
+
+def update_blocklist_strikes(detailed=None) -> pd.DataFrame:
+    """Recompute consecutive-bad-run strikes and persist them to HF. Called once
+    per eval run (from main.py) after results are merged. A model currently past
+    the failure threshold gets +1 strike; a model that has recovered (or never
+    failed) drops to 0 and out of the table. Models reaching AUTO_BLOCKLIST_MIN_RUNS
+    strikes are excluded by load_auto_blocklist on the NEXT run — so every model
+    gets at least one re-attempt before exclusion."""
+    from datasets_.util import load, save
+
+    health = compute_model_health(detailed)
+    cols = ["model", "strikes", "failed_pct"]
     if health.empty:
-        return []
+        return pd.DataFrame(columns=cols)
     bad = health[
         (health["total"] >= AUTO_BLOCKLIST_MIN_ATTEMPTS)
         & (health["failed_pct"] >= AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD)
     ]
-    return sorted(bad["model"].tolist())
+    try:
+        prior = load("model-health-strikes")
+        prior_map = (
+            dict(zip(prior["model"], prior["strikes"]))
+            if not prior.empty and "strikes" in prior.columns
+            else {}
+        )
+    except Exception:
+        prior_map = {}
+    fail_map = dict(zip(bad["model"], bad["failed_pct"]))
+    strikes_df = pd.DataFrame(
+        [
+            {
+                "model": m,
+                "strikes": int(prior_map.get(m, 0)) + 1,
+                "failed_pct": round(float(fail_map[m]), 1),
+            }
+            for m in sorted(fail_map)
+        ],
+        columns=cols,
+    )
+    save(strikes_df, "model-health-strikes")
+    blocked = sorted(
+        strikes_df[strikes_df["strikes"] >= AUTO_BLOCKLIST_MIN_RUNS]["model"].tolist()
+    )
+    print(
+        f"[strikes] {len(strikes_df)} model(s) failing this run; "
+        f"{len(blocked)} now at >= {AUTO_BLOCKLIST_MIN_RUNS} consecutive strikes "
+        f"(excluded next run): {blocked}"
+    )
+    return strikes_df
 
 
 @cache

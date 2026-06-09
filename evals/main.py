@@ -9,6 +9,7 @@ from models import (
     models,
     AUTO_BLOCKLIST_MIN_ATTEMPTS,
     AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD,
+    update_blocklist_strikes,
 )
 from rich import print
 from tasks import tasks
@@ -210,6 +211,14 @@ async def evaluate():
         # Everything was already cached — still refresh the published tables
         # from the existing log (e.g. cohort/cost metadata may have changed).
         results_agg = checkpoint(all_results, covered, current_languages, "no new work")
+
+    # Update consecutive-bad-run strikes (persisted to HF) so a model is only
+    # auto-blocklisted after staying broken across runs — not after a single run
+    # where a provider may have rate-limited us. Non-fatal if it fails.
+    try:
+        update_blocklist_strikes(all_results)
+    except Exception as e:
+        print(f"[main] could not update blocklist strikes: {e}")
 
     elapsed = time.time() - start_time
     print(f"Evaluation completed in {str(timedelta(seconds=int(elapsed)))}")
