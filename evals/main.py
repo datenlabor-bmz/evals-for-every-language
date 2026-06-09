@@ -10,6 +10,7 @@ from models import (
     AUTO_BLOCKLIST_MIN_ATTEMPTS,
     AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD,
     update_blocklist_strikes,
+    FatalAPIError,
 )
 from rich import print
 from tasks import tasks
@@ -179,11 +180,28 @@ async def evaluate():
         for i in tqdm(range(0, len(model_combis), batch_size),
                       colour="blue", desc=model_id):
             batch = model_combis.iloc[i:i + batch_size]
+            rows = [(t, m, b, s) for _, (t, m, b, s) in batch.iterrows()]
+            # return_exceptions: a single combo that throws (e.g. a flaky HF
+            # dataset download, a transient parse error) must NOT crash a
+            # multi-hour run. Log it as an error row (so it's re-attempted next
+            # run) and keep going. FatalAPIError (account-level) still aborts.
             batch_res = await tqdm_asyncio.gather(
-                *[tasks[task_name](model, bcp_47, sentence_nr)
-                  for _, (task_name, model, bcp_47, sentence_nr) in batch.iterrows()]
+                *[tasks[t](m, b, s) for (t, m, b, s) in rows],
+                return_exceptions=True,
             )
-            model_out.extend(r for result in batch_res for r in result)
+            for (t, m, b, s), res in zip(rows, batch_res):
+                if isinstance(res, FatalAPIError):
+                    raise res
+                if isinstance(res, BaseException):
+                    # Skip (don't log a row): the combo stays pending and is
+                    # re-attempted next run. We deliberately do NOT record an
+                    # error here — a transient dataset/parse failure isn't the
+                    # model's fault and shouldn't count toward its blocklist
+                    # strikes. (Model-level call failures are still recorded as
+                    # status="error" by the task itself.)
+                    print(f"  ! {t}/{m}/{b}#{s} skipped: {type(res).__name__}: {str(res)[:120]}")
+                else:
+                    model_out.extend(res)
         model_df = pd.DataFrame(model_out) if model_out else pd.DataFrame(columns=all_results.columns)
 
         if not model_df.empty and "status" in model_df.columns:

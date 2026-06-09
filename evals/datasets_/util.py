@@ -50,7 +50,11 @@ def _load_dataset(dataset, subset, **kwargs):
     for attempt in range(4):
         try:
             return _load_dataset_impl(dataset, subset, **kwargs)
-        except TRANSIENT_ERRORS as e:
+        # ValueError covers HF's "Couldn't find cache for config X" — a flaky
+        # download/build that left no cache; a retry usually succeeds. Bounded,
+        # so a genuinely-missing config still raises after 4 attempts (and the
+        # caller treats that one combo as an error rather than crashing).
+        except (*TRANSIENT_ERRORS, ValueError) as e:
             last_error = e
             if attempt < 3:
                 time.sleep(2**attempt)
