@@ -172,8 +172,17 @@ async def evaluate():
     covered = current_models - set(pending_models)
     print(f"{len(covered)} models already fully covered; "
           f"{len(pending_models)} pending this run")
+    def over_budget():
+        return max_runtime_seconds and (time.time() - start_time) > max_runtime_seconds
+
     results_agg = None
+    budget_hit = False
     for mi, model_id in enumerate(pending_models, 1):
+        # Don't START a new model once over budget — stop cleanly between models.
+        if over_budget():
+            print(f"[budget] {max_runtime_seconds}s reached before {model_id}; "
+                  f"{len(pending_models) - mi + 1} model(s) deferred to next run.")
+            break
         model_combis = combis[combis["model"] == model_id]
         print(f"[{mi}/{len(pending_models)}] {model_id}: {len(model_combis)} new samples")
         model_out = []
@@ -200,7 +209,24 @@ async def evaluate():
                     print(f"  ! {t}/{m}/{b}#{s} skipped: {type(res).__name__}: {str(res)[:120]}")
                 else:
                     model_out.extend(res)
+            # Budget can be hit MID-model (a rate-limited model can take >>1h).
+            # Stop at this batch boundary so we never blow past the 6h hard cap.
+            if over_budget():
+                budget_hit = True
+                break
         model_df = pd.DataFrame(model_out) if model_out else pd.DataFrame(columns=all_results.columns)
+        # Persist whatever completed (full model, or partial batches if the
+        # budget was hit). Partial work is saved to results-detailed so its
+        # done combos are skipped next run — but the model is NOT added to
+        # `covered`, so a partial model never enters the published aggregate.
+        all_results = pd.concat([all_results, model_df]).drop_duplicates(
+            subset=dedup_keys, keep="last"
+        )
+        if budget_hit:
+            print(f"[budget] {max_runtime_seconds}s reached mid-{model_id}; saved partial "
+                  f"progress, {len(pending_models) - mi} model(s) deferred to next run.")
+            results_agg = checkpoint(all_results, covered, current_languages, f"budget stop @ {model_id}")
+            break
 
         if not model_df.empty and "status" in model_df.columns:
             err = (model_df["status"] != "ok").mean()
@@ -209,19 +235,9 @@ async def evaluate():
                 # it out of the aggregate this run.
                 print(f"  ⚠ {model_id}: {err:.0%} of new rows errored — logged, not published")
 
-        all_results = pd.concat([all_results, model_df]).drop_duplicates(
-            subset=dedup_keys, keep="last"
-        )
         # This model's full matrix is now attempted → coverage-complete.
         covered.add(model_id)
         results_agg = checkpoint(all_results, covered, current_languages, model_id)
-
-        if max_runtime_seconds and (time.time() - start_time) > max_runtime_seconds:
-            deferred = len(pending_models) - mi
-            print(f"[main] runtime budget ({max_runtime_seconds}s) reached after "
-                  f"{model_id}; exiting cleanly with {deferred} model(s) deferred "
-                  f"to the next run (their progress is already checkpointed).")
-            break
 
     if results_agg is None:
         # Everything was already cached — still refresh the published tables
