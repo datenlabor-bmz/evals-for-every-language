@@ -181,24 +181,22 @@ async def evaluate():
                       colour="blue", desc=model_id):
             batch = model_combis.iloc[i:i + batch_size]
             rows = [(t, m, b, s) for _, (t, m, b, s) in batch.iterrows()]
-            # return_exceptions: a single combo that throws (e.g. a flaky HF
-            # dataset download, a transient parse error) must NOT crash a
-            # multi-hour run. Log it as an error row (so it's re-attempted next
-            # run) and keep going. FatalAPIError (account-level) still aborts.
-            batch_res = await tqdm_asyncio.gather(
-                *[tasks[t](m, b, s) for (t, m, b, s) in rows],
-                return_exceptions=True,
-            )
+            # A single combo that throws (e.g. a flaky HF dataset download) must
+            # NOT crash a multi-hour run. tqdm_asyncio.gather has no
+            # return_exceptions, so wrap each task: catch non-fatal errors and
+            # return them as a value; the combo is then skipped (stays pending,
+            # re-attempted next run) without counting toward the model's
+            # blocklist strikes. FatalAPIError (account-level) still propagates.
+            async def _safe(t, m, b, s):
+                try:
+                    return await tasks[t](m, b, s)
+                except FatalAPIError:
+                    raise
+                except BaseException as e:  # noqa: BLE001 - intentional catch-all
+                    return e
+            batch_res = await tqdm_asyncio.gather(*[_safe(t, m, b, s) for (t, m, b, s) in rows])
             for (t, m, b, s), res in zip(rows, batch_res):
-                if isinstance(res, FatalAPIError):
-                    raise res
                 if isinstance(res, BaseException):
-                    # Skip (don't log a row): the combo stays pending and is
-                    # re-attempted next run. We deliberately do NOT record an
-                    # error here — a transient dataset/parse failure isn't the
-                    # model's fault and shouldn't count toward its blocklist
-                    # strikes. (Model-level call failures are still recorded as
-                    # status="error" by the task itself.)
                     print(f"  ! {t}/{m}/{b}#{s} skipped: {type(res).__name__}: {str(res)[:120]}")
                 else:
                     model_out.extend(res)
