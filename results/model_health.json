@@ -1,10 +1,171 @@
 [
   {
+    "model":"deepseek\/deepseek-v3.2-speciale-20251201",
+    "total":41,
+    "failed":41,
+    "score_nonfailed":null,
+    "failed_pct":100.0
+  },
+  {
+    "model":"baidu\/ernie-4.5-21b-a3b",
+    "total":41,
+    "failed":41,
+    "score_nonfailed":null,
+    "failed_pct":100.0
+  },
+  {
+    "model":"writer\/palmyra-x5-20250428",
+    "total":15030,
+    "failed":14820,
+    "score_nonfailed":0.5586882343,
+    "failed_pct":98.6027944112
+  },
+  {
+    "model":"qwen\/qwen3-max",
+    "total":15030,
+    "failed":14683,
+    "score_nonfailed":0.5747516232,
+    "failed_pct":97.6912840985
+  },
+  {
+    "model":"qwen\/qwen3.5-9b-20260310",
+    "total":15030,
+    "failed":13688,
+    "score_nonfailed":0.894407076,
+    "failed_pct":91.0711909514
+  },
+  {
+    "model":"nvidia\/llama-3.3-nemotron-super-49b-v1.5",
+    "total":15030,
+    "failed":13455,
+    "score_nonfailed":0.6289847358,
+    "failed_pct":89.5209580838
+  },
+  {
+    "model":"qwen\/qwen3.6-27b-20260422",
+    "total":15030,
+    "failed":12655,
+    "score_nonfailed":0.8270723406,
+    "failed_pct":84.1982701264
+  },
+  {
+    "model":"qwen\/qwen3.5-397b-a17b-20260216",
+    "total":15030,
+    "failed":12500,
+    "score_nonfailed":0.8238520798,
+    "failed_pct":83.1669993347
+  },
+  {
+    "model":"deepcogito\/cogito-v2.1-671b-20251118",
+    "total":15030,
+    "failed":12478,
+    "score_nonfailed":0.5737762836,
+    "failed_pct":83.0206254158
+  },
+  {
+    "model":"z-ai\/glm-4.7-flash-20260119",
+    "total":15030,
+    "failed":12165,
+    "score_nonfailed":0.7328015015,
+    "failed_pct":80.9381237525
+  },
+  {
+    "model":"z-ai\/glm-5-turbo-20260315",
+    "total":15030,
+    "failed":12145,
+    "score_nonfailed":0.8322476499,
+    "failed_pct":80.8050565536
+  },
+  {
+    "model":"nvidia\/nemotron-nano-9b-v2",
+    "total":15030,
+    "failed":12002,
+    "score_nonfailed":0.4370867053,
+    "failed_pct":79.8536260812
+  },
+  {
+    "model":"nvidia\/nemotron-3-super-120b-a12b-20230311",
+    "total":15030,
+    "failed":11274,
+    "score_nonfailed":0.3930247453,
+    "failed_pct":75.0099800399
+  },
+  {
+    "model":"nousresearch\/hermes-4-405b",
+    "total":15030,
+    "failed":10151,
+    "score_nonfailed":0.2702287054,
+    "failed_pct":67.5382568197
+  },
+  {
     "model":"z-ai\/glm-4.6",
     "total":15030,
     "failed":10109,
     "score_nonfailed":0.8472325073,
     "failed_pct":67.2588157019
+  },
+  {
+    "model":"mistralai\/mistral-large-2512",
+    "total":15030,
+    "failed":9303,
+    "score_nonfailed":0.5400137224,
+    "failed_pct":61.8962075848
+  },
+  {
+    "model":"upstage\/solar-pro-3",
+    "total":15030,
+    "failed":8943,
+    "score_nonfailed":0.2903301643,
+    "failed_pct":59.500998004
+  },
+  {
+    "model":"google\/gemma-4-26b-a4b-it-20260403",
+    "total":15030,
+    "failed":8600,
+    "score_nonfailed":0.6435805501,
+    "failed_pct":57.2188955422
+  },
+  {
+    "model":"nvidia\/nemotron-3-nano-30b-a3b",
+    "total":15030,
+    "failed":8591,
+    "score_nonfailed":0.3274305545,
+    "failed_pct":57.1590153027
+  },
+  {
+    "model":"z-ai\/glm-5v-turbo-20260401",
+    "total":41,
+    "failed":23,
+    "score_nonfailed":0.9684492719,
+    "failed_pct":56.0975609756
+  },
+  {
+    "model":"mistralai\/mistral-small-2603",
+    "total":15030,
+    "failed":8335,
+    "score_nonfailed":0.7103749373,
+    "failed_pct":55.4557551564
+  },
+  {
+    "model":"qwen\/qwen3.5-122b-a10b-20260224",
+    "total":15030,
+    "failed":8218,
+    "score_nonfailed":0.6658006801,
+    "failed_pct":54.6773120426
+  },
+  {
+    "model":"deepseek\/deepseek-v3.1-terminus",
+    "total":15030,
+    "failed":8071,
+    "score_nonfailed":0.6103529696,
+    "failed_pct":53.6992681304
+  },
+  {
+    "model":"qwen\/qwen3.6-35b-a3b-20260415",
+    "total":15030,
+    "failed":7964,
+    "score_nonfailed":0.6591570315,
+    "failed_pct":52.9873586161
   },
   {
     "model":"minimax\/minimax-m2.5",
@@ -14,11 +175,123 @@
     "failed_pct":47.4384564205
   },
   {
+    "model":"stepfun\/step-3.5-flash",
+    "total":41,
+    "failed":19,
+    "score_nonfailed":0.7455997951,
+    "failed_pct":46.3414634146
+  },
+  {
+    "model":"moonshotai\/kimi-k2.6",
+    "total":15080,
+    "failed":6828,
+    "score_nonfailed":0.714649433,
+    "failed_pct":45.2785145889
+  },
+  {
+    "model":"rekaai\/reka-edge-2603",
+    "total":15030,
+    "failed":6279,
+    "score_nonfailed":0.19356793,
+    "failed_pct":41.7764471058
+  },
+  {
+    "model":"stepfun\/step-3.7-flash-20260528",
+    "total":15030,
+    "failed":6198,
+    "score_nonfailed":0.7388377159,
+    "failed_pct":41.2375249501
+  },
+  {
     "model":"qwen\/qwen3-235b-a22b",
     "total":15030,
     "failed":6075,
     "score_nonfailed":0.5493210221,
     "failed_pct":40.4191616766
+  },
+  {
+    "model":"ai21\/jamba-large-1.7",
+    "total":15080,
+    "failed":5789,
+    "score_nonfailed":0.4810803786,
+    "failed_pct":38.3885941645
+  },
+  {
+    "model":"prime-intellect\/intellect-3-20251126",
+    "total":15030,
+    "failed":5738,
+    "score_nonfailed":0.3868936552,
+    "failed_pct":38.1769793746
+  },
+  {
+    "model":"tencent\/hunyuan-a13b-instruct",
+    "total":15030,
+    "failed":5564,
+    "score_nonfailed":0.3154198804,
+    "failed_pct":37.0192947438
+  },
+  {
+    "model":"z-ai\/glm-4.5-air",
+    "total":15030,
+    "failed":4799,
+    "score_nonfailed":0.5064681541,
+    "failed_pct":31.9294743846
+  },
+  {
+    "model":"z-ai\/glm-4.5v",
+    "total":41,
+    "failed":13,
+    "score_nonfailed":0.8509373627,
+    "failed_pct":31.7073170732
+  },
+  {
+    "model":"arcee-ai\/trinity-mini-20251201",
+    "total":15080,
+    "failed":4602,
+    "score_nonfailed":0.3631567738,
+    "failed_pct":30.5172413793
+  },
+  {
+    "model":"ibm-granite\/granite-4.0-h-micro",
+    "total":15080,
+    "failed":4246,
+    "score_nonfailed":0.3396400581,
+    "failed_pct":28.1564986737
+  },
+  {
+    "model":"nousresearch\/hermes-4-70b",
+    "total":15080,
+    "failed":3832,
+    "score_nonfailed":0.2473206013,
+    "failed_pct":25.4111405836
+  },
+  {
+    "model":"amazon\/nova-2-lite-v1",
+    "total":15080,
+    "failed":3710,
+    "score_nonfailed":0.535897764,
+    "failed_pct":24.6021220159
+  },
+  {
+    "model":"deepseek\/deepseek-chat-v3.1",
+    "total":15080,
+    "failed":3299,
+    "score_nonfailed":0.5682361214,
+    "failed_pct":21.8766578249
+  },
+  {
+    "model":"liquid\/lfm-2-24b-a2b-20260224",
+    "total":15080,
+    "failed":2808,
+    "score_nonfailed":0.349189204,
+    "failed_pct":18.6206896552
+  },
+  {
+    "model":"bytedance-seed\/seed-1.6-flash-20250625",
+    "total":15080,
+    "failed":2783,
+    "score_nonfailed":0.3902097008,
+    "failed_pct":18.4549071618
   },
   {
     "model":"google\/translate-v2",
@@ -28,18 +301,67 @@
     "failed_pct":18.0412371134
   },
   {
-    "model":"qwen\/qwen3-30b-a3b",
-    "total":15030,
-    "failed":2186,
-    "score_nonfailed":0.4860680279,
-    "failed_pct":14.5442448436
+    "model":"deepseek\/deepseek-r1-0528",
+    "total":41,
+    "failed":7,
+    "score_nonfailed":0.816956768,
+    "failed_pct":17.0731707317
   },
   {
-    "model":"anthropic\/claude-sonnet-4.6",
+    "model":"openai\/gpt-oss-20b",
     "total":15030,
-    "failed":1193,
-    "score_nonfailed":0.6553656376,
-    "failed_pct":7.9374584165
+    "failed":2547,
+    "score_nonfailed":0.4648651834,
+    "failed_pct":16.9461077844
+  },
+  {
+    "model":"microsoft\/phi-4-mini-instruct",
+    "total":15080,
+    "failed":2517,
+    "score_nonfailed":0.2620524844,
+    "failed_pct":16.6909814324
+  },
+  {
+    "model":"google\/gemma-4-31b-it-20260402",
+    "total":15080,
+    "failed":2507,
+    "score_nonfailed":0.6070484846,
+    "failed_pct":16.624668435
+  },
+  {
+    "model":"z-ai\/glm-4-32b-0414",
+    "total":15030,
+    "failed":2492,
+    "score_nonfailed":0.4939664853,
+    "failed_pct":16.5801729874
+  },
+  {
+    "model":"google\/gemini-3.1-flash-lite",
+    "total":15080,
+    "failed":1827,
+    "score_nonfailed":0.6534476235,
+    "failed_pct":12.1153846154
+  },
+  {
+    "model":"qwen\/qwen3-30b-a3b",
+    "total":15030,
+    "failed":1813,
+    "score_nonfailed":0.4806886966,
+    "failed_pct":12.0625415835
+  },
+  {
+    "model":"nvidia\/nemotron-3-ultra-550b-a55b-20260604",
+    "total":15080,
+    "failed":1633,
+    "score_nonfailed":0.5317395427,
+    "failed_pct":10.8289124668
+  },
+  {
+    "model":"qwen\/qwen3-30b-a3b-instruct-2507",
+    "total":15030,
+    "failed":1252,
+    "score_nonfailed":0.4588521485,
+    "failed_pct":8.3300066534
   },
   {
     "model":"x-ai\/grok-4.1-fast",
@@ -49,11 +371,25 @@
     "failed_pct":7.9308050566
   },
   {
-    "model":"openai\/gpt-5",
+    "model":"qwen\/qwen3-next-80b-a3b-instruct-2509",
     "total":15030,
-    "failed":1175,
-    "score_nonfailed":0.6563698813,
-    "failed_pct":7.8176979375
+    "failed":1146,
+    "score_nonfailed":0.518827058,
+    "failed_pct":7.624750499
+  },
+  {
+    "model":"google\/gemma-3n-e4b-it",
+    "total":41,
+    "failed":3,
+    "score_nonfailed":0.7847097861,
+    "failed_pct":7.3170731707
+  },
+  {
+    "model":"openai\/gpt-5",
+    "total":15080,
+    "failed":1062,
+    "score_nonfailed":0.6516557567,
+    "failed_pct":7.0424403183
   },
   {
     "model":"allenai\/olmo-3.1-32b-instruct",
@@ -63,11 +399,53 @@
     "failed_pct":6.3007318696
   },
   {
-    "model":"deepseek\/deepseek-v3.2-exp",
+    "model":"mistralai\/ministral-3b-2512",
+    "total":15080,
+    "failed":925,
+    "score_nonfailed":0.3631905149,
+    "failed_pct":6.1339522546
+  },
+  {
+    "model":"anthropic\/claude-sonnet-4.6",
+    "total":15080,
+    "failed":873,
+    "score_nonfailed":0.6504398418,
+    "failed_pct":5.7891246684
+  },
+  {
+    "model":"mistralai\/ministral-8b-2512",
+    "total":15080,
+    "failed":709,
+    "score_nonfailed":0.4329534856,
+    "failed_pct":4.7015915119
+  },
+  {
+    "model":"deepseek\/deepseek-v4-flash-20260423",
+    "total":15080,
+    "failed":616,
+    "score_nonfailed":0.6238057314,
+    "failed_pct":4.0848806366
+  },
+  {
+    "model":"mistralai\/ministral-14b-2512",
+    "total":15080,
+    "failed":612,
+    "score_nonfailed":0.4586929167,
+    "failed_pct":4.0583554377
+  },
+  {
+    "model":"qwen\/qwen3.6-flash",
     "total":15030,
-    "failed":920,
-    "score_nonfailed":0.5855771228,
-    "failed_pct":6.121091151
+    "failed":554,
+    "score_nonfailed":0.5823627104,
+    "failed_pct":3.6859614105
+  },
+  {
+    "model":"ibm-granite\/granite-4.1-8b-20260429",
+    "total":15080,
+    "failed":553,
+    "score_nonfailed":0.4250007907,
+    "failed_pct":3.6671087533
   },
   {
     "model":"anthropic\/claude-opus-4.6",
@@ -77,46 +455,123 @@
     "failed_pct":3.5662009315
   },
   {
-    "model":"google\/gemini-3.1-pro-preview",
-    "total":15030,
-    "failed":534,
-    "score_nonfailed":0.6915737079,
-    "failed_pct":3.5528942116
+    "model":"deepseek\/deepseek-v3.2-exp",
+    "total":15080,
+    "failed":504,
+    "score_nonfailed":0.5810977119,
+    "failed_pct":3.3421750663
   },
   {
     "model":"openai\/gpt-5-nano",
+    "total":15080,
+    "failed":358,
+    "score_nonfailed":0.5014027303,
+    "failed_pct":2.374005305
+  },
+  {
+    "model":"bytedance-seed\/seed-2.0-mini-20260224",
+    "total":15080,
+    "failed":189,
+    "score_nonfailed":0.5152390813,
+    "failed_pct":1.2533156499
+  },
+  {
+    "model":"google\/gemini-3.1-pro-preview",
+    "total":15080,
+    "failed":188,
+    "score_nonfailed":0.6897643923,
+    "failed_pct":1.2466843501
+  },
+  {
+    "model":"bytedance-seed\/seed-1.6-20250625",
+    "total":15080,
+    "failed":177,
+    "score_nonfailed":0.5004845457,
+    "failed_pct":1.1737400531
+  },
+  {
+    "model":"openai\/gpt-5.5",
     "total":15030,
-    "failed":453,
-    "score_nonfailed":0.5038289898,
-    "failed_pct":3.0139720559
+    "failed":168,
+    "score_nonfailed":0.6520055238,
+    "failed_pct":1.1177644711
+  },
+  {
+    "model":"qwen\/qwen3.6-plus-04-02",
+    "total":15030,
+    "failed":155,
+    "score_nonfailed":0.6258724148,
+    "failed_pct":1.0312707917
   },
   {
     "model":"openai\/gpt-5.4",
     "total":15030,
-    "failed":247,
-    "score_nonfailed":0.6320077882,
-    "failed_pct":1.6433799069
+    "failed":150,
+    "score_nonfailed":0.6309648172,
+    "failed_pct":0.998003992
+  },
+  {
+    "model":"mistralai\/mistral-small-3.2-24b-instruct",
+    "total":15080,
+    "failed":139,
+    "score_nonfailed":0.4631506534,
+    "failed_pct":0.9217506631
+  },
+  {
+    "model":"anthropic\/claude-opus-4.8",
+    "total":15080,
+    "failed":128,
+    "score_nonfailed":0.661031115,
+    "failed_pct":0.848806366
+  },
+  {
+    "model":"openai\/gpt-5.3-chat-20260303",
+    "total":15030,
+    "failed":109,
+    "score_nonfailed":0.6358423209,
+    "failed_pct":0.7252162342
+  },
+  {
+    "model":"anthropic\/claude-opus-4.7",
+    "total":15080,
+    "failed":108,
+    "score_nonfailed":0.6685617849,
+    "failed_pct":0.7161803714
+  },
+  {
+    "model":"x-ai\/grok-4.20",
+    "total":15030,
+    "failed":89,
+    "score_nonfailed":0.6311292606,
+    "failed_pct":0.5921490353
   },
   {
     "model":"openai\/gpt-5.2",
-    "total":15030,
-    "failed":96,
-    "score_nonfailed":0.6242762659,
-    "failed_pct":0.6387225549
+    "total":15080,
+    "failed":86,
+    "score_nonfailed":0.6231101124,
+    "failed_pct":0.5702917772
+  },
+  {
+    "model":"bytedance-seed\/seed-2.0-lite-20260309",
+    "total":15080,
+    "failed":75,
+    "score_nonfailed":0.5853661867,
+    "failed_pct":0.4973474801
   },
   {
     "model":"openai\/gpt-5-mini",
-    "total":15030,
-    "failed":81,
-    "score_nonfailed":0.5571339927,
-    "failed_pct":0.5389221557
+    "total":15080,
+    "failed":66,
+    "score_nonfailed":0.5558036623,
+    "failed_pct":0.4376657825
   },
   {
     "model":"openai\/gpt-5.1",
-    "total":15030,
-    "failed":35,
-    "score_nonfailed":0.6182095927,
-    "failed_pct":0.2328675981
+    "total":15080,
+    "failed":28,
+    "score_nonfailed":0.6170952803,
+    "failed_pct":0.1856763926
   },
   {
     "model":"anthropic\/claude-opus-4.5",
@@ -127,121 +582,37 @@
   },
   {
     "model":"anthropic\/claude-sonnet-4.5",
-    "total":15030,
-    "failed":19,
-    "score_nonfailed":0.644467649,
-    "failed_pct":0.126413839
+    "total":15080,
+    "failed":17,
+    "score_nonfailed":0.6437023017,
+    "failed_pct":0.1127320955
   },
   {
     "model":"amazon\/nova-pro-v1",
-    "total":15030,
-    "failed":8,
-    "score_nonfailed":0.5459768526,
-    "failed_pct":0.0532268796
+    "total":15080,
+    "failed":7,
+    "score_nonfailed":0.5452692078,
+    "failed_pct":0.0464190981
   },
   {
     "model":"openai\/gpt-oss-120b",
     "total":15030,
-    "failed":8,
-    "score_nonfailed":0.5131642507,
-    "failed_pct":0.0532268796
+    "failed":4,
+    "score_nonfailed":0.5130942947,
+    "failed_pct":0.0266134398
   },
   {
-    "model":"mistralai\/mistral-nemo",
-    "total":15030,
-    "failed":1,
-    "score_nonfailed":0.3401549906,
-    "failed_pct":0.0066533599
-  },
-  {
-    "model":"qwen\/qwen3-vl-30b-a3b-thinking",
+    "model":"perplexity\/sonar-reasoning-pro",
     "total":17,
     "failed":0,
-    "score_nonfailed":0.5794774559,
+    "score_nonfailed":0.7141204358,
     "failed_pct":0.0
   },
   {
-    "model":"anthropic\/claude-3-7-sonnet-20250219",
-    "total":2818,
-    "failed":0,
-    "score_nonfailed":0.6793719385,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-3.5-turbo-0613",
+    "model":"alpindale\/goliath-120b",
     "total":170,
     "failed":0,
-    "score_nonfailed":0.5504296912,
-    "failed_pct":0.0
-  },
-  {
-    "model":"z-ai\/glm-4.5-air",
-    "total":140,
-    "failed":0,
-    "score_nonfailed":0.582694482,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-4.1",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.5585604761,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-4.1-mini",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.6424898144,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-4.1-nano",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.6064425983,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-4o",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.5881047852,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-4o-2024-11-20",
-    "total":17,
-    "failed":0,
-    "score_nonfailed":0.742557214,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-4o-mini",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.6541716124,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-5-codex",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.7040281767,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-5-chat-2025-08-07",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.639942047,
-    "failed_pct":0.0
-  },
-  {
-    "model":"qwen\/qwen3-8b-04-28",
-    "total":113,
-    "failed":0,
-    "score_nonfailed":0.6392222245,
+    "score_nonfailed":0.3700368906,
     "failed_pct":0.0
   },
   {
@@ -249,6 +620,20 @@
     "total":17,
     "failed":0,
     "score_nonfailed":0.6700323243,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/o4-mini-2025-04-16",
+    "total":167,
+    "failed":0,
+    "score_nonfailed":0.646647725,
+    "failed_pct":0.0
+  },
+  {
+    "model":"x-ai\/grok-3",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.6330974229,
     "failed_pct":0.0
   },
   {
@@ -266,213 +651,31 @@
     "failed_pct":0.0
   },
   {
-    "model":"nousresearch\/hermes-3-llama-3.1-405b",
-    "total":170,
+    "model":"qwen\/qwen3-8b-04-28",
+    "total":113,
     "failed":0,
-    "score_nonfailed":0.6629729711,
-    "failed_pct":0.0
-  },
-  {
-    "model":"x-ai\/grok-3",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.6330974229,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/o4-mini-2025-04-16",
-    "total":167,
-    "failed":0,
-    "score_nonfailed":0.646647725,
-    "failed_pct":0.0
-  },
-  {
-    "model":"perplexity\/sonar-reasoning-pro",
-    "total":17,
-    "failed":0,
-    "score_nonfailed":0.7141204358,
+    "score_nonfailed":0.6392222245,
     "failed_pct":0.0
   },
   {
     "model":"amazon\/nova-premier-v1",
-    "total":15030,
+    "total":15080,
     "failed":0,
-    "score_nonfailed":0.5273180978,
-    "failed_pct":0.0
-  },
-  {
-    "model":"openai\/gpt-3.5-turbo",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.3505272925,
-    "failed_pct":0.0
-  },
-  {
-    "model":"mistralai\/mixtral-8x7b-instruct",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.4240249599,
-    "failed_pct":0.0
-  },
-  {
-    "model":"neversleep\/noromaid-20b",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.2124753832,
-    "failed_pct":0.0
-  },
-  {
-    "model":"google\/gemma-3-27b-it",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.5467921901,
+    "score_nonfailed":0.5266995001,
     "failed_pct":0.0
   },
   {
     "model":"anthropic\/claude-sonnet-4",
-    "total":15030,
+    "total":15080,
     "failed":0,
-    "score_nonfailed":0.6243490094,
+    "score_nonfailed":0.6235642707,
     "failed_pct":0.0
   },
   {
-    "model":"anthropic\/claude-haiku-4.5",
-    "total":15030,
+    "model":"anthropic\/claude-3-7-sonnet-20250219",
+    "total":2818,
     "failed":0,
-    "score_nonfailed":0.5391267264,
-    "failed_pct":0.0
-  },
-  {
-    "model":"baidu\/ernie-4.5-300b-a47b",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.5751447662,
-    "failed_pct":0.0
-  },
-  {
-    "model":"cohere\/command-a",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.5053932299,
-    "failed_pct":0.0
-  },
-  {
-    "model":"cohere\/command-r-08-2024",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.5222153257,
-    "failed_pct":0.0
-  },
-  {
-    "model":"cohere\/command-r-plus-08-2024",
-    "total":6369,
-    "failed":0,
-    "score_nonfailed":0.3479812964,
-    "failed_pct":0.0
-  },
-  {
-    "model":"google\/gemini-2.0-flash-lite-001",
-    "total":17,
-    "failed":0,
-    "score_nonfailed":0.7041712433,
-    "failed_pct":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.4237452366,
-    "failed_pct":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash-image",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.713401524,
-    "failed_pct":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-flash-lite",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.5594649326,
-    "failed_pct":0.0
-  },
-  {
-    "model":"google\/gemini-2.5-pro",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.6415432467,
-    "failed_pct":0.0
-  },
-  {
-    "model":"google\/gemini-3-pro-preview",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.6580387071,
-    "failed_pct":0.0
-  },
-  {
-    "model":"anthropic\/claude-3.7-sonnet",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.632849603,
-    "failed_pct":0.0
-  },
-  {
-    "model":"moonshotai\/kimi-k2",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.55318705,
-    "failed_pct":0.0
-  },
-  {
-    "model":"meta-llama\/llama-3-70b-instruct",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.468044074,
-    "failed_pct":0.0
-  },
-  {
-    "model":"meta-llama\/llama-3.1-70b-instruct",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.4860431126,
-    "failed_pct":0.0
-  },
-  {
-    "model":"meta-llama\/llama-3.3-70b-instruct",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.4846053463,
-    "failed_pct":0.0
-  },
-  {
-    "model":"meta-llama\/llama-4-maverick",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.5585725974,
-    "failed_pct":0.0
-  },
-  {
-    "model":"microsoft\/phi-3-mini-128k-instruct",
-    "total":170,
-    "failed":0,
-    "score_nonfailed":0.3182626307,
-    "failed_pct":0.0
-  },
-  {
-    "model":"microsoft\/phi-4",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.3454741484,
-    "failed_pct":0.0
-  },
-  {
-    "model":"microsoft\/phi-4-multimodal-instruct",
-    "total":17,
-    "failed":0,
-    "score_nonfailed":0.7358366016,
+    "score_nonfailed":0.6793719385,
     "failed_pct":0.0
   },
   {
@@ -483,6 +686,160 @@
     "failed_pct":0.0
   },
   {
+    "model":"anthropic\/claude-3.7-sonnet",
+    "total":15030,
+    "failed":0,
+    "score_nonfailed":0.632849603,
+    "failed_pct":0.0
+  },
+  {
+    "model":"qwen\/qwen3-vl-30b-a3b-thinking",
+    "total":17,
+    "failed":0,
+    "score_nonfailed":0.5794774559,
+    "failed_pct":0.0
+  },
+  {
+    "model":"anthropic\/claude-haiku-4.5",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5380086427,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-3.5-turbo-0613",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.5504296912,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-5-codex",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.7040281767,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-5-chat-2025-08-07",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.639942047,
+    "failed_pct":0.0
+  },
+  {
+    "model":"microsoft\/phi-4-multimodal-instruct",
+    "total":17,
+    "failed":0,
+    "score_nonfailed":0.7358366016,
+    "failed_pct":0.0
+  },
+  {
+    "model":"microsoft\/phi-4",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.3449970743,
+    "failed_pct":0.0
+  },
+  {
+    "model":"microsoft\/phi-3-mini-128k-instruct",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.3182626307,
+    "failed_pct":0.0
+  },
+  {
+    "model":"meta-llama\/llama-4-maverick",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5580584586,
+    "failed_pct":0.0
+  },
+  {
+    "model":"meta-llama\/llama-3.3-70b-instruct",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.484181525,
+    "failed_pct":0.0
+  },
+  {
+    "model":"meta-llama\/llama-3.1-70b-instruct",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.4854957629,
+    "failed_pct":0.0
+  },
+  {
+    "model":"meta-llama\/llama-3-70b-instruct",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.467426787,
+    "failed_pct":0.0
+  },
+  {
+    "model":"cohere\/command-r-plus-08-2024",
+    "total":6369,
+    "failed":0,
+    "score_nonfailed":0.3479812964,
+    "failed_pct":0.0
+  },
+  {
+    "model":"google\/gemma-3-27b-it",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5460647648,
+    "failed_pct":0.0
+  },
+  {
+    "model":"google\/gemini-3-pro-preview",
+    "total":15030,
+    "failed":0,
+    "score_nonfailed":0.6580387071,
+    "failed_pct":0.0
+  },
+  {
+    "model":"google\/gemini-2.5-pro",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.6410620763,
+    "failed_pct":0.0
+  },
+  {
+    "model":"google\/gemini-2.5-flash-lite",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5588659385,
+    "failed_pct":0.0
+  },
+  {
+    "model":"google\/gemini-2.5-flash-image",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.713401524,
+    "failed_pct":0.0
+  },
+  {
+    "model":"google\/gemini-2.5-flash",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.4238758246,
+    "failed_pct":0.0
+  },
+  {
+    "model":"google\/gemini-2.0-flash-lite-001",
+    "total":17,
+    "failed":0,
+    "score_nonfailed":0.7041712433,
+    "failed_pct":0.0
+  },
+  {
+    "model":"cohere\/command-r-08-2024",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.5222153257,
+    "failed_pct":0.0
+  },
+  {
     "model":"mistralai\/magistral-small-2506",
     "total":120,
     "failed":0,
@@ -490,17 +847,115 @@
     "failed_pct":0.0
   },
   {
-    "model":"alpindale\/goliath-120b",
+    "model":"cohere\/command-a",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5047155086,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-3.5-turbo",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.3503358897,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-4o-mini",
     "total":170,
     "failed":0,
-    "score_nonfailed":0.3700368906,
+    "score_nonfailed":0.6541716124,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-4o-2024-11-20",
+    "total":17,
+    "failed":0,
+    "score_nonfailed":0.742557214,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-4o",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5872301625,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-4.1-nano",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.6064425983,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-4.1-mini",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.6424898144,
+    "failed_pct":0.0
+  },
+  {
+    "model":"openai\/gpt-4.1",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5577101349,
+    "failed_pct":0.0
+  },
+  {
+    "model":"baidu\/ernie-4.5-300b-a47b",
+    "total":15030,
+    "failed":0,
+    "score_nonfailed":0.5751447662,
+    "failed_pct":0.0
+  },
+  {
+    "model":"mistralai\/mistral-medium-3.1",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5110552261,
+    "failed_pct":0.0
+  },
+  {
+    "model":"nousresearch\/hermes-3-llama-3.1-405b",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.6629729711,
+    "failed_pct":0.0
+  },
+  {
+    "model":"neversleep\/noromaid-20b",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.2124753832,
+    "failed_pct":0.0
+  },
+  {
+    "model":"moonshotai\/kimi-k2",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.5523425103,
+    "failed_pct":0.0
+  },
+  {
+    "model":"mistralai\/mixtral-8x7b-instruct",
+    "total":170,
+    "failed":0,
+    "score_nonfailed":0.4240249599,
     "failed_pct":0.0
   },
   {
     "model":"mistralai\/mistral-saba",
-    "total":15030,
+    "total":15080,
     "failed":0,
-    "score_nonfailed":0.4565603305,
+    "score_nonfailed":0.4559403599,
+    "failed_pct":0.0
+  },
+  {
+    "model":"mistralai\/mistral-nemo",
+    "total":15080,
+    "failed":0,
+    "score_nonfailed":0.3398077816,
     "failed_pct":0.0
   },
   {
@@ -508,13 +963,6 @@
     "total":17,
     "failed":0,
     "score_nonfailed":0.70419565,
-    "failed_pct":0.0
-  },
-  {
-    "model":"mistralai\/mistral-medium-3.1",
-    "total":15030,
-    "failed":0,
-    "score_nonfailed":0.5117549741,
     "failed_pct":0.0
   }
 ]
