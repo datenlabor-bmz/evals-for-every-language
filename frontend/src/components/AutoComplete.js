@@ -114,12 +114,12 @@ const AutoComplete = ({ languages, onComplete }) => {
   }
 
   const buttonStyle = {
-    color: selectedLanguage ? '#333' : '#666',
-    border: '1px solid #ddd',
+    color: selectedLanguage ? 'var(--ink)' : 'var(--ink-muted)',
+    border: '1px solid var(--border)',
     padding: '0.75rem 1rem',
-    borderRadius: '4px',
+    borderRadius: 'var(--radius-sm)',
     fontSize: '0.95rem',
-    backgroundColor: '#fff',
+    backgroundColor: 'var(--surface)',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
@@ -135,7 +135,7 @@ const AutoComplete = ({ languages, onComplete }) => {
     fontSize: '0.95rem',
     width: '100%',
     backgroundColor: 'transparent',
-    color: '#333'
+    color: 'var(--ink)'
   }
 
   const dropdownStyle = {
@@ -143,20 +143,20 @@ const AutoComplete = ({ languages, onComplete }) => {
     top: '100%',
     left: 0,
     right: 0,
-    backgroundColor: '#fff',
-    border: '1px solid #ddd',
+    backgroundColor: 'var(--surface)',
+    border: '1px solid var(--border)',
     borderTop: 'none',
-    borderRadius: '0 0 4px 4px',
+    borderRadius: '0 0 var(--radius-sm) var(--radius-sm)',
     maxHeight: '300px',
     overflowY: 'auto',
     zIndex: 1000,
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+    boxShadow: 'var(--shadow-md)'
   }
 
   const itemStyle = {
     padding: '0.75rem 1rem',
     cursor: 'pointer',
-    borderBottom: '1px solid #f0f0f0',
+    borderBottom: '1px solid var(--hairline)',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -166,7 +166,7 @@ const AutoComplete = ({ languages, onComplete }) => {
   const clearButtonStyle = {
     background: 'none',
     border: 'none',
-    color: '#999',
+    color: 'var(--ink-subtle)',
     cursor: 'pointer',
     padding: '0.25rem',
     borderRadius: '50%',
@@ -186,11 +186,11 @@ const AutoComplete = ({ languages, onComplete }) => {
         onClick={handleContainerClick}
         onMouseEnter={e => {
           if (!selectedLanguage) {
-            e.target.style.borderColor = '#bbb'
+            e.target.style.borderColor = 'var(--accent)'
           }
         }}
         onMouseLeave={e => {
-          e.target.style.borderColor = '#ddd'
+          e.target.style.borderColor = 'var(--border)'
         }}
       >
         {selectedLanguage && !isOpen ? (
@@ -202,7 +202,7 @@ const AutoComplete = ({ languages, onComplete }) => {
               style={clearButtonStyle}
               onClick={handleClear}
               onMouseEnter={e => {
-                e.target.style.backgroundColor = '#f0f0f0'
+                e.target.style.backgroundColor = 'var(--accent-wash)'
               }}
               onMouseLeave={e => {
                 e.target.style.backgroundColor = 'transparent'
@@ -229,7 +229,7 @@ const AutoComplete = ({ languages, onComplete }) => {
           <span>Go to leaderboard for specific language...</span>
         )}
         {(!selectedLanguage || isOpen) && (
-          <span style={{ color: '#999', fontSize: '12px' }}>
+          <span style={{ color: 'var(--ink-subtle)', fontSize: '12px' }}>
             {isOpen ? '▲' : '▼'}
           </span>
         )}
@@ -238,7 +238,7 @@ const AutoComplete = ({ languages, onComplete }) => {
       {isOpen && (
         <div style={dropdownStyle}>
           {filteredLanguages.length === 0 ? (
-            <div style={{ ...itemStyle, color: '#999', cursor: 'default' }}>
+            <div style={{ ...itemStyle, color: 'var(--ink-subtle)', cursor: 'default' }}>
               No languages found
             </div>
           ) : (
@@ -248,7 +248,7 @@ const AutoComplete = ({ languages, onComplete }) => {
                 style={itemStyle}
                 onClick={() => handleSelect(language)}
                 onMouseEnter={e => {
-                  e.target.style.backgroundColor = '#f8f9fa'
+                  e.target.style.backgroundColor = 'var(--accent-wash)'
                 }}
                 onMouseLeave={e => {
                   e.target.style.backgroundColor = 'transparent'
@@ -258,11 +258,11 @@ const AutoComplete = ({ languages, onComplete }) => {
                   <div style={{ fontWeight: '500', marginBottom: '2px' }}>
                     {language.language_name} Leaderboard
                   </div>
-                  <div style={{ fontSize: '0.85rem', color: '#666' }}>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--ink-muted)' }}>
                     {language.autonym}
                   </div>
                 </div>
-                <div style={{ color: '#999', fontSize: '0.8rem' }}>
+                <div style={{ color: 'var(--ink-subtle)', fontSize: '0.8rem' }}>
                   {language.bcp_47}
                 </div>
               </div>
@@ -272,7 +272,7 @@ const AutoComplete = ({ languages, onComplete }) => {
             <div
               style={{
                 ...itemStyle,
-                color: '#999',
+                color: 'var(--ink-subtle)',
                 cursor: 'default',
                 fontStyle: 'italic'
               }}

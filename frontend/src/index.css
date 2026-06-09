@@ -1,21 +1,162 @@
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root {
+  /* Surfaces */
+  --bg: #fbfbfd;            /* soft cool off-white page background */
+  --surface: #ffffff;       /* cards, tables */
+  --surface-warm: #f7f8fc;  /* chart panel, subtle fills, row hover */
+
+  /* Ink */
+  --ink: #1b1d24;           /* headings + primary text (slate-ink) */
+  --ink-muted: #5e626e;     /* subtitles, secondary */
+  --ink-subtle: #9296a1;    /* tertiary labels */
+
+  /* Accent — indigo, used sparingly */
+  --accent: #4350c4;
+  --accent-hover: #343fa0;
+  --accent-wash: rgba(67, 80, 196, 0.08);
+
+  /* Lines */
+  --border: #e5e6ec;        /* structural borders, card edges */
+  --border-strong: #d4d6de;
+  --hairline: #eff0f4;      /* faint inner row separators */
+
+  /* Warmed, ivory-friendly table accents (replace blue/green/orange) */
+  --tbl-model-border: #d7daec; --tbl-model-head: #eef0f8;  /* soft periwinkle */
+  --tbl-lang-border:  #cde3cd; --tbl-lang-head:  #eff6ee;  /* soft sage */
+  --tbl-data-border:  #ecd9c5; --tbl-data-head:  #faf2e9;  /* soft sand */
+
+  /* Soft, warm-tinted shadows */
+  --shadow-sm: 0 1px 2px rgba(40, 33, 28, 0.05);
+  --shadow-md: 0 6px 20px rgba(40, 33, 28, 0.07);
+
+  /* Radius */
+  --radius: 12px;
+  --radius-sm: 8px;
+
+  /* Type */
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; /* clean system serif, headings */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: var(--font-mono);
 }
 
 html, body, #root {
   height: 100%;
 }
 
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Serif display headline (hero) */
+.hero-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 4vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 1.25rem 0 0.75rem 0;
+}
+
+/* ============================================================
+   Buttons (replace inline gradients + JS hover handlers)
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-wash);
+  border-color: var(--accent);
+  color: var(--accent-hover);
+}
+
+/* Quiet ghost link (top-right GitHub) */
+.ghost-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.ghost-link:hover {
+  background: var(--accent-wash);
+  border-color: var(--accent);
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+
+/* ============================================================
+   PrimeReact base tweaks
+   ============================================================ */
 .p-component, .pi {
   font-size: 0.8rem;
 }
@@ -26,7 +167,7 @@ html, body, #root {
 }
 
 .p-datatable-wrapper {
-  scrollbar-color: #f0f0f0 rgba(0, 0, 0, 0);
+  scrollbar-color: var(--border) transparent;
   border-radius: 0 0 6px 6px;
 }
 
@@ -35,92 +176,187 @@ html, body, #root {
 }
 
 .p-datatable .p-datatable-tbody > tr:hover {
-  background-color: #fafafa !important;
+  background-color: var(--surface-warm) !important;
 }
 
 .p-datatable .p-datatable-thead > tr > th {
-  border-bottom: 1px solid #e0e0e0;
-  background-color: #fafafa;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--surface-warm);
   font-weight: 500;
-  color: #555;
+  color: var(--ink-muted);
   padding: 0.75rem 1rem;
 }
 
 .p-datatable .p-datatable-tbody > tr > td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--hairline);
 }
 
-#model-table {
-  border: 2px solid #d1d5ff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+/* ============================================================
+   Table cards — IDs keep specificity over the PrimeReact theme
+   ============================================================ */
+#model-table, #language-table, #dataset-table {
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  background: var(--surface);
+}
+
+#model-table { border: 1px solid var(--tbl-model-border); }
+#language-table { border: 1px solid var(--tbl-lang-border); }
+#dataset-table { border: 1px solid var(--tbl-data-border); }
+
+#model-table .p-datatable-header,
+#language-table .p-datatable-header,
+#dataset-table .p-datatable-header {
+  border-top-width: 0;
+  border-radius: 6px 6px 0 0;
+  color: var(--ink);
+  padding: 1rem 1.25rem;
+  font-weight: 500;
 }
 
 #model-table .p-datatable-header {
-  border-top-width: 0px;
-  border-radius: 6px 6px 0 0;
-  background: #f0f3ff;
-  color: #333;
-  border-bottom: 2px solid #d1d5ff;
-  padding: 1rem 1.25rem;
-  font-weight: 500;
-}
-
-#language-table {
-  border: 2px solid #c8f2c8;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: var(--tbl-model-head);
+  border-bottom: 1px solid var(--tbl-model-border);
 }
 
 #language-table .p-datatable-header {
-  border-top-width: 0px;
-  border-radius: 6px 6px 0 0;
-  background: #f0fff0;
-  color: #333;
-  border-bottom: 2px solid #c8f2c8;
-  padding: 1rem 1.25rem;
-  font-weight: 500;
-}
-
-#dataset-table {
-  border: 2px solid #ffe4cc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: var(--tbl-lang-head);
+  border-bottom: 1px solid var(--tbl-lang-border);
 }
 
 #dataset-table .p-datatable-header {
-  border-top-width: 0px;
-  border-radius: 6px 6px 0 0;
-  background: #fff8f0;
-  color: #333;
-  border-bottom: 2px solid #ffe4cc;
-  padding: 1rem 1.25rem;
-  font-weight: 500;
+  background: var(--tbl-data-head);
+  border-bottom: 1px solid var(--tbl-data-border);
 }
 
+/* Chart panel */
 #figure {
   width: 100%;
   min-width: 600px;
-  height: 600px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 1rem;
-  background: #fafafa;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: auto;
+  min-height: 700px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1rem 1.5rem;
+  background: var(--surface-warm);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-sans);
 }
 
+/* Legacy PrimeReact autocomplete input — soften the dated hard shadow */
 .p-autocomplete-input {
   width: max(100%, 40vw);
   margin-top: 2vh;
-  border-radius: 0px;
-  border: 1px solid rgba(0, 0, 0, 0.7);
-  box-shadow: 3px 3px 1px 0px rgba(0, 0, 0, 0.2);;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
+/* Carousel indicators */
 .p-carousel-indicators button.p-link {
-  border-radius: 5px;
-  width: 10px;
-  height: 10px;
-  background-color: #000000;
+  border-radius: 999px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--border-strong);
+}
+
+.p-carousel-indicators .p-carousel-indicator.p-highlight button.p-link {
+  background-color: var(--accent);
+}
+
+/* ============================================================
+   PrimeReact accent harmonization (cyan -> clay).
+   index.css is imported AFTER theme.css (see index.js), so these
+   equal-specificity rules win without !important.
+   ============================================================ */
+.p-checkbox .p-checkbox-box.p-highlight {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.p-checkbox .p-checkbox-box.p-highlight:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.p-slider .p-slider-range {
+  background: var(--accent);
+}
+
+.p-slider .p-slider-handle {
+  border-color: var(--accent);
+}
+
+.p-slider .p-slider-handle:hover {
+  background: var(--accent);
+}
+
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item.p-highlight,
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  background: var(--accent-wash);
+  color: var(--accent-hover);
+}
+
+.p-multiselect .p-multiselect-token {
+  background: var(--accent-wash);
+  color: var(--accent-hover);
+}
+
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+  background: var(--accent-wash);
+  color: var(--ink);
+}
+
+.p-inputtext:enabled:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-wash);
+}
+
+/* ============================================================
+   Dialogs — cohesive with the hero (serif headings, clean chrome)
+   ============================================================ */
+.p-dialog {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.p-dialog .p-dialog-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+}
+
+.p-dialog .p-dialog-header .p-dialog-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.p-dialog .p-dialog-content {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--ink);
+}
+
+.p-dialog .p-dialog-content h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin: 1.6rem 0 0.5rem;
+}
+
+.p-dialog .p-dialog-content p,
+.p-dialog .p-dialog-content li {
+  color: var(--ink-muted);
+  line-height: 1.6;
 }

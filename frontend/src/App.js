@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { PrimeReactProvider } from 'primereact/api'
-import 'primereact/resources/themes/lara-light-cyan/theme.css'
 import ModelTable from './components/ModelTable'
 import LanguageTable from './components/LanguageTable'
 import DatasetTable from './components/DatasetTable'
@@ -12,6 +11,7 @@ import HistoryPlot from './components/HistoryPlot'
 import LanguageTierHistoryPlot from './components/LanguageTierHistoryPlot'
 import LicenseHistoryPlot from './components/LicenseHistoryPlot'
 import CostPlot from './components/CostPlot'
+import Footer from './components/Footer'
 import { Carousel } from 'primereact/carousel'
 import { Dialog } from 'primereact/dialog'
 import { Button } from 'primereact/button'
@@ -153,7 +153,7 @@ function App () {
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          width: '100vw'
+          width: '100%'
         }}
       >
         {/* <div
@@ -184,24 +184,7 @@ function App () {
             href='https://github.com/datenlabor-bmz/evals-for-every-language'
             target='_blank'
             rel='noopener noreferrer'
-            style={{
-              textDecoration: 'none',
-              color: '#6c757d',
-              fontSize: '1rem',
-              fontWeight: '500',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.375rem',
-              backgroundColor: '#f8f9fa',
-              border: '1px solid #e9ecef',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              transition: 'all 0.2s ease',
-              ':hover': {
-                backgroundColor: '#e9ecef',
-                color: '#495057'
-              }
-            }}
+            className='ghost-link'
           >
             <i className='pi pi-github' title='View on GitHub' />
             GitHub
@@ -228,21 +211,11 @@ function App () {
               🌍
             </span>
           </div>
-          <h1
-            style={{
-              fontSize: '2.5rem',
-              fontWeight: '600',
-              margin: '1rem 0 0.5rem 0',
-              color: '#333',
-              letterSpacing: '-0.01em'
-            }}
-          >
-            AI Language Benchmarks
-          </h1>
+          <h1 className='hero-title'>AI Language Benchmarks</h1>
           <p
             style={{
-              fontSize: '1.1rem',
-              color: '#666',
+              fontSize: '1.15rem',
+              color: 'var(--ink-muted)',
               margin: '0 0 2.5rem 0',
               fontWeight: '400',
               maxWidth: '700px',
@@ -263,68 +236,16 @@ function App () {
           >
             <button
               onClick={() => setAboutVisible(true)}
-              style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                color: 'white',
-                border: 'none',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '12px',
-                fontSize: '0.95rem',
-                fontWeight: '500',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                boxShadow: '0 4px 15px rgba(102, 126, 234, 0.25)',
-                transition: 'all 0.3s ease',
-                ':hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 8px 25px rgba(102, 126, 234, 0.35)'
-                }
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.35)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.25)';
-              }}
+              className='btn btn-primary'
             >
-              <span style={{ fontSize: '1.1rem' }}>📚</span>
               About this tool
             </button>
 
             <button
               onClick={() => setContributeVisible(true)}
               title='This feature is on our roadmap and will be available soon.'
-              style={{
-                background: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)',
-                color: '#6b46c1',
-                border: 'none',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '12px',
-                fontSize: '0.95rem',
-                fontWeight: '500',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                boxShadow: '0 4px 15px rgba(255, 154, 158, 0.25)',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 25px rgba(255, 154, 158, 0.35)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 4px 15px rgba(255, 154, 158, 0.25)';
-              }}
+              className='btn btn-secondary'
             >
-              <span style={{ fontSize: '1.1rem' }}>🚀</span>
               Add your model/benchmark
             </button>
           </div>
@@ -428,6 +349,7 @@ function App () {
             </>
           )}
         </main>
+        <Footer />
 
         {/* About Dialog */}
         <Dialog
@@ -441,7 +363,7 @@ function App () {
             <p>
               <i>languagebench</i> provides AI model evaluations for every language in the world.
             </p>
-            <h4>👥 Who is this for?</h4>
+            <h4>Who is this for?</h4>
             <ul>
               <li>
                 <b>Practitioners</b> can pick the best model for a given
@@ -455,7 +377,7 @@ function App () {
                 <b>Model developers</b> can compete on our benchmarks.
               </li>
             </ul>
-            <h4>⚡ Live Updates</h4>
+            <h4>Live Updates</h4>
             <p>
               Benchmark results automatically refresh every night and include
               the most popular models from{' '}
@@ -468,11 +390,11 @@ function App () {
               </a>
               , plus community-submitted models.
             </p>
-            <h4>⚠️ Note on interpretation</h4>
+            <h4>Note on interpretation</h4>
             <p>
               Results are currently based on a sample of 10 sentences per language and task to keep computation affordable. For this reason, we report confidence intervals and recommend treating small differences between models with caution. In future iterations, we plan to add more benchmark datasets and richer visualisations, with large-scale evaluations across many more prompts and tasks as a longer-term goal.
             </p>
-            <h4>✍️ Authors</h4>
+            <h4>Authors</h4>
             <p>
               languagebench is a collaboration between
               BMZ's{' '}
@@ -513,7 +435,7 @@ function App () {
               </a>{' '}
               of DFKI's Multilinguality and Language Technology Lab.
             </p>
-            <h4>🔗 Links</h4>
+            <h4>Links</h4>
             <p>
               <a
                 href='https://github.com/datenlabor-bmz/evals-for-every-language'
@@ -543,7 +465,7 @@ function App () {
           header='Contribute your Model/Benchmark'
         >
           <div>
-            <h4>🚀 Submit Your Model</h4>
+            <h4>Submit Your Model</h4>
             <p>
               Have a custom fine-tuned model you'd like to see on the
               leaderboard or a new benchmark you think should be added?
@@ -553,13 +475,13 @@ function App () {
                 href='https://forms.gle/ckvY9pS7XLcHYnaV8'
                 target='_blank'
                 rel='noopener noreferrer'
-                style={{ color: '#28a745', fontWeight: 'bold' }}
+                style={{ color: 'var(--accent)', fontWeight: 'bold' }}
               >
                 → Submit your model here
               </a>
             </p>
 
-            <h4>🔧 Contribute to Development</h4>
+            <h4>Contribute to Development</h4>
             <p>
               Help us expand language coverage and add new evaluation tasks:
             </p>
@@ -568,7 +490,7 @@ function App () {
                 href='https://github.com/datenlabor-bmz/evals-for-every-language/blob/main/CONTRIBUTING.md'
                 target='_blank'
                 rel='noopener noreferrer'
-                style={{ color: '#007bff', fontWeight: 'bold' }}
+                style={{ color: 'var(--accent)', fontWeight: 'bold' }}
               >
                 → Contribution guidelines
               </a>

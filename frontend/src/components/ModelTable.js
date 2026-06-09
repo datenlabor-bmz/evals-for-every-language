@@ -194,7 +194,7 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTr
     if (selectedLanguages.length === 0) {
       return (
         <span>
-          <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>AI Models</span>
+          <span style={{ fontWeight: 600, fontSize: '1.15em', color: 'var(--ink)' }}>AI Models</span>
           <span style={{ fontSize: '0.85em', marginLeft: '0.5rem' }}>
             Performance across {evaluatedLanguagesCount} evaluated languages
           </span>
@@ -203,7 +203,7 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTr
     } else if (selectedLanguages.length === 1) {
       return (
         <span>
-          <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>AI Models</span>
+          <span style={{ fontWeight: 600, fontSize: '1.15em', color: 'var(--ink)' }}>AI Models</span>
           <span style={{ fontSize: '0.85em', marginLeft: '0.5rem' }}>
             {selectedLanguages[0].language_name} performance
           </span>
@@ -213,7 +213,7 @@ const ModelTable = ({ data, selectedLanguages = [], allLanguages = [], machineTr
       const languageNames = selectedLanguages.map(lang => lang.language_name).join(', ')
       return (
         <span>
-          <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>AI Models</span>
+          <span style={{ fontWeight: 600, fontSize: '1.15em', color: 'var(--ink)' }}>AI Models</span>
           <span style={{ fontSize: '0.85em', marginLeft: '0.5rem' }}>
             Performance for {languageNames}
           </span>

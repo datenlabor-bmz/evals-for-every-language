@@ -106,7 +106,7 @@ const DatasetTable = ({ data }) => {
       groupRowsBy='group'
       header={
         <span>
-          <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>Datasets</span>
+          <span style={{ fontWeight: 600, fontSize: '1.15em', color: 'var(--ink)' }}>Datasets</span>
           <span style={{ fontSize: '0.85em', marginLeft: '0.5rem' }}>
             Multilingual datasets used for this evaluation, and beyond
           </span>

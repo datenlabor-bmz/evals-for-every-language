@@ -125,7 +125,7 @@ const LanguageTable = ({ data, selectedLanguages, setSelectedLanguages, totalMod
       dataKey='bcp_47'
       header={
         <span>
-          <span style={{ fontWeight: 'bold', fontSize: '1.1em' }}>Languages</span>
+          <span style={{ fontWeight: 600, fontSize: '1.15em', color: 'var(--ink)' }}>Languages</span>
           <span style={{ fontSize: '0.85em', marginLeft: '0.5rem' }}>
             Average performance of {totalModels} evaluated AI models
           </span>
