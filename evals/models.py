@@ -70,7 +70,8 @@ important_models = [
     "deepseek/deepseek-v4-pro",
     "x-ai/grok-4.20",
     "mistralai/mistral-medium-3.5",
-    "moonshotai/kimi-k2.6",
+    # "moonshotai/kimi-k2.6",  # removed 2026-06: ~58% errors + heavily
+    # rate-limited (one model ran >50min); kimi-k2 represents Moonshot instead.
     "google/gemini-3.1-flash-lite",
 ]
 
@@ -586,6 +587,12 @@ AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD = 50.0
 # Strikes are persisted to HF (survives ephemeral CI runners) and maintained by
 # update_blocklist_strikes(); a model that recovers in any run drops back to 0.
 AUTO_BLOCKLIST_MIN_RUNS = 2
+# Fast path: a model failing this badly is broken/unusable, not transiently
+# rate-limited — exclude it after a SINGLE bad run rather than waiting out the
+# grace period, so we don't keep spending on it. The grace only protects the
+# borderline band (FAIL_PCT_THRESHOLD .. IMMEDIATE_FAIL_PCT) where a provider
+# outage is a plausible explanation.
+AUTO_BLOCKLIST_IMMEDIATE_FAIL_PCT = 80.0
 
 
 def compute_model_health(detailed=None) -> pd.DataFrame:
@@ -659,11 +666,21 @@ def update_blocklist_strikes(detailed=None) -> pd.DataFrame:
     except Exception:
         prior_map = {}
     fail_map = dict(zip(bad["model"], bad["failed_pct"]))
+
+    def _strikes_for(model, fail_pct):
+        # Egregious failure → jump straight to the exclusion threshold (no
+        # grace). Otherwise increment so the borderline band needs MIN_RUNS
+        # consecutive bad runs.
+        incremented = int(prior_map.get(model, 0)) + 1
+        if fail_pct >= AUTO_BLOCKLIST_IMMEDIATE_FAIL_PCT:
+            return max(incremented, AUTO_BLOCKLIST_MIN_RUNS)
+        return incremented
+
     strikes_df = pd.DataFrame(
         [
             {
                 "model": m,
-                "strikes": int(prior_map.get(m, 0)) + 1,
+                "strikes": _strikes_for(m, fail_map[m]),
                 "failed_pct": round(float(fail_map[m]), 1),
             }
             for m in sorted(fail_map)
