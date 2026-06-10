@@ -589,10 +589,16 @@ AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD = 50.0
 AUTO_BLOCKLIST_MIN_RUNS = 2
 # Fast path: a model failing this badly is broken/unusable, not transiently
 # rate-limited — exclude it after a SINGLE bad run rather than waiting out the
-# grace period, so we don't keep spending on it. The grace only protects the
-# borderline band (FAIL_PCT_THRESHOLD .. IMMEDIATE_FAIL_PCT) where a provider
-# outage is a plausible explanation.
+# grace period, so we don't keep spending on it.
 AUTO_BLOCKLIST_IMMEDIATE_FAIL_PCT = 80.0
+# The 2-run grace is only worth it when retrying is CHEAP. A model that is
+# failing AND slow (heavily rate-limited) is expensive to retry and unlikely to
+# recover, so it's excluded immediately too. "Slow" = wall-clock seconds per
+# attempted sample above this, measured during the run. Healthy models run near
+# the 20 req/s limit (~0.05 s/sample); a rate-limited one is many times slower
+# (e.g. kimi-k2.6 ran ~0.7 s/sample). So the grace effectively only protects a
+# FAST, moderately-failing model — exactly "retry only if cheap to retry".
+AUTO_BLOCKLIST_SLOW_SEC_PER_SAMPLE = 0.3
 
 
 def compute_model_health(detailed=None) -> pd.DataFrame:
@@ -639,15 +645,20 @@ def load_auto_blocklist(date: date) -> list[str]:
     )
 
 
-def update_blocklist_strikes(detailed=None) -> pd.DataFrame:
+def update_blocklist_strikes(detailed=None, slow_models=None) -> pd.DataFrame:
     """Recompute consecutive-bad-run strikes and persist them to HF. Called once
     per eval run (from main.py) after results are merged. A model currently past
     the failure threshold gets +1 strike; a model that has recovered (or never
     failed) drops to 0 and out of the table. Models reaching AUTO_BLOCKLIST_MIN_RUNS
-    strikes are excluded by load_auto_blocklist on the NEXT run — so every model
-    gets at least one re-attempt before exclusion."""
+    strikes are excluded by load_auto_blocklist on the NEXT run.
+
+    The 2-run grace (one free re-attempt) only applies when retrying is cheap.
+    A failing model that is ALSO egregiously bad (>=80%) or SLOW (in
+    `slow_models`, measured this run) is excluded after a single run — we don't
+    spend more time/money re-attempting an expensive failure."""
     from datasets_.util import load, save
 
+    slow_models = slow_models or set()
     health = compute_model_health(detailed)
     cols = ["model", "strikes", "failed_pct"]
     if health.empty:
@@ -668,11 +679,12 @@ def update_blocklist_strikes(detailed=None) -> pd.DataFrame:
     fail_map = dict(zip(bad["model"], bad["failed_pct"]))
 
     def _strikes_for(model, fail_pct):
-        # Egregious failure → jump straight to the exclusion threshold (no
-        # grace). Otherwise increment so the borderline band needs MIN_RUNS
-        # consecutive bad runs.
+        # No grace if the failure is egregious OR slow-and-expensive-to-retry;
+        # otherwise increment so a fast, moderately-failing model gets one free
+        # re-attempt before exclusion.
         incremented = int(prior_map.get(model, 0)) + 1
-        if fail_pct >= AUTO_BLOCKLIST_IMMEDIATE_FAIL_PCT:
+        no_grace = fail_pct >= AUTO_BLOCKLIST_IMMEDIATE_FAIL_PCT or model in slow_models
+        if no_grace:
             return max(incremented, AUTO_BLOCKLIST_MIN_RUNS)
         return incremented
 

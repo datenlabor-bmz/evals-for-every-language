@@ -9,6 +9,7 @@ from models import (
     models,
     AUTO_BLOCKLIST_MIN_ATTEMPTS,
     AUTO_BLOCKLIST_FAIL_PCT_THRESHOLD,
+    AUTO_BLOCKLIST_SLOW_SEC_PER_SAMPLE,
     update_blocklist_strikes,
     FatalAPIError,
 )
@@ -177,6 +178,10 @@ async def evaluate():
 
     results_agg = None
     budget_hit = False
+    # Models that ran slowly this run (heavily rate-limited). If they're also
+    # failing, they're excluded without a grace re-attempt — retrying an
+    # expensive failure isn't worth the time/money.
+    slow_models = set()
     for mi, model_id in enumerate(pending_models, 1):
         # Don't START a new model once over budget — stop cleanly between models.
         if over_budget():
@@ -186,9 +191,12 @@ async def evaluate():
         model_combis = combis[combis["model"] == model_id]
         print(f"[{mi}/{len(pending_models)}] {model_id}: {len(model_combis)} new samples")
         model_out = []
+        model_started = time.time()
+        attempted = 0
         for i in tqdm(range(0, len(model_combis), batch_size),
                       colour="blue", desc=model_id):
             batch = model_combis.iloc[i:i + batch_size]
+            attempted += len(batch)
             rows = [(t, m, b, s) for _, (t, m, b, s) in batch.iterrows()]
             # A single combo that throws (e.g. a flaky HF dataset download) must
             # NOT crash a multi-hour run. tqdm_asyncio.gather has no
@@ -214,6 +222,13 @@ async def evaluate():
             if over_budget():
                 budget_hit = True
                 break
+        # Flag the model as slow if it took disproportionately long per sample
+        # this run (rate-limited). Needs a meaningful sample count to be reliable.
+        sec_per_sample = (time.time() - model_started) / max(attempted, 1)
+        if attempted >= 100 and sec_per_sample > AUTO_BLOCKLIST_SLOW_SEC_PER_SAMPLE:
+            slow_models.add(model_id)
+            print(f"  ⏱ {model_id}: {sec_per_sample:.2f}s/sample (slow / rate-limited)")
+
         model_df = pd.DataFrame(model_out) if model_out else pd.DataFrame(columns=all_results.columns)
         # Persist whatever completed (full model, or partial batches if the
         # budget was hit). Partial work is saved to results-detailed so its
@@ -248,7 +263,7 @@ async def evaluate():
     # auto-blocklisted after staying broken across runs — not after a single run
     # where a provider may have rate-limited us. Non-fatal if it fails.
     try:
-        update_blocklist_strikes(all_results)
+        update_blocklist_strikes(all_results, slow_models=slow_models)
     except Exception as e:
         print(f"[main] could not update blocklist strikes: {e}")
 
